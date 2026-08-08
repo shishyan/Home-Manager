@@ -1492,7 +1492,8 @@
   }
 
   function settingsTabs(activeSection) {
-    return `<nav class="settings-tabs" aria-label="Settings groups">${settingsGroups.map((item, index) => `<button type="button" data-route="settings/${item[0]}" class="tab-tone-${index + 1} ${activeSection === item[0] ? 'active' : ''}" ${activeSection === item[0] ? 'aria-current="page"' : ''} title="${e(item[3])}">${icon(item[2])}<span>${e(item[1])}</span></button>`).join('')}</nav>`;
+    const language = HM.i18n.current(HM.persona.current());
+    return `<div class="settings-heading-row"><nav class="settings-tabs" aria-label="Settings groups">${settingsGroups.map((item, index) => `<button type="button" data-route="settings/${item[0]}" class="tab-tone-${index + 1} ${activeSection === item[0] ? 'active' : ''}" ${activeSection === item[0] ? 'aria-current="page"' : ''} title="${e(item[3])}">${icon(item[2])}<span>${e(item[1])}</span></button>`).join('')}</nav><section class="settings-language-picker"><span>${icon('languages')}<span><b>App language</b><small>For ${e(HM.persona.current().name)}</small></span></span><div id="languageSwitcher" class="language-switcher" role="group" aria-label="Language"><button type="button" data-language="ta" class="${language === 'ta' ? 'active' : ''}" aria-pressed="${language === 'ta'}">தமிழ்</button><button type="button" data-language="en" class="${language === 'en' ? 'active' : ''}" aria-pressed="${language === 'en'}">EN</button></div></section></div>`;
   }
 
   function curriculumQualityAudit() {

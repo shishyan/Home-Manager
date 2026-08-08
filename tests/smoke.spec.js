@@ -64,7 +64,7 @@ test('household identity drives the shell, map link and browser title', async ({
   expect(breadcrumbLayout.separator).toContain('›');
   expect(breadcrumbLayout.centerDelta).toBeLessThan(2);
   expect(await page.locator('.page-identity').evaluate(element => [...element.children].map(child => child.id || child.className))).toEqual(['persona-crumb', 'breadcrumb', 'pageTitle']);
-  await expect(page.locator('.header-actions #languageSwitcher')).toBeVisible();
+  await expect(page.locator('.header-actions #languageSwitcher')).toHaveCount(0);
 
   await page.goto(`${app}#/settings/household`);
   await page.locator('#householdSettings [name="householdName"]').fill('Jaya Community Home');
@@ -163,9 +163,9 @@ test('Money navigation and routes are unavailable to child personas', async ({ p
 });
 
 test('parents default to Tamil and keep an independent language preference', async ({ page }) => {
-  const headerPositions = await page.evaluate(() => ({ language: document.querySelector('#languageSwitcher').getBoundingClientRect().left, title: document.querySelector('#pageTitle').getBoundingClientRect().left }));
-  expect(headerPositions.language).toBeGreaterThan(headerPositions.title);
+  await page.goto(`${app}#/settings/app`);
   await expect(page.locator('#languageSwitcher')).toBeInViewport();
+  await expect(page.locator('.settings-language-picker')).toContainText('App language');
   await expect(page.locator('#languageSwitcher [data-language="en"]')).toHaveAttribute('aria-pressed', 'true');
   await choosePersona(page, 'p1');
   await expect(page.locator('body')).toHaveAttribute('data-language', 'ta');
@@ -173,7 +173,7 @@ test('parents default to Tamil and keep an independent language preference', asy
   await expect(page.locator('#nav')).toContainText('இல்லம்');
   await expect(page.locator('#nav .nav-parent', { hasText: 'உணவு' })).toHaveCount(1);
   await expect(page.locator('#nav')).not.toContainText('சமையலறை');
-  await expect(page.locator('#pageTitle')).toHaveText('இன்று');
+  await expect(page.locator('#pageTitle')).toHaveText('செயலி & தரவு');
   await expect(page.locator('body')).not.toContainText(/[௦-௯]/);
   await expect(page.locator('#personaName')).toHaveText('Father');
 
@@ -419,6 +419,28 @@ test('mobile shell stays contained with an opaque navigation drawer', async ({ p
   await expect(page.locator('#sidebar')).toHaveCSS('z-index', '70');
   await expect(page.locator('#bottomNav')).toHaveCSS('visibility', 'hidden');
   await expect(page.locator('#sidebar')).toBeInViewport();
+});
+
+test('mobile header keeps the persona switcher on the right and language in Settings', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${app}#/study/curriculum`);
+  const placement = await page.evaluate(() => {
+    const header = document.querySelector('.topbar').getBoundingClientRect();
+    const persona = document.querySelector('#personaSwitcher').getBoundingClientRect();
+    const title = document.querySelector('#pageTitle').getBoundingClientRect();
+    return { personaRightGap: header.right - persona.right, personaLeft: persona.left, titleLeft: title.left };
+  });
+  expect(placement.personaRightGap).toBeLessThanOrEqual(10);
+  expect(placement.personaLeft).toBeGreaterThan(placement.titleLeft);
+  await expect(page.locator('.app-header #languageSwitcher')).toHaveCount(0);
+
+  await page.locator('#personaSwitcher').click();
+  await expect(page.locator('#personaMenu')).toBeVisible();
+  await page.locator('#personaMenu [data-persona="p1"]').click();
+  await expect(page.locator('#personaName')).toHaveText('Father');
+
+  await page.goto(`${app}#/settings/app`);
+  await expect(page.locator('.settings-language-picker #languageSwitcher')).toBeVisible();
 });
 
 test('Class 7 and Class 12 have separate official textbook libraries', async ({ page }) => {

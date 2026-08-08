@@ -2587,6 +2587,13 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 }
 
 /* Settings-facing curriculum content audit. */
+.settings-heading-row { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: stretch; gap: 10px; margin-bottom: 10px; }
+.settings-heading-row .settings-tabs { margin-bottom: 0; }
+.settings-language-picker { min-width: 220px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 7px 9px 7px 12px; color: #334155; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.88); }
+.settings-language-picker > span { display: flex; align-items: center; gap: 8px; }.settings-language-picker > span > svg { color: #7c3aed; }
+.settings-language-picker b, .settings-language-picker small { display: block; }.settings-language-picker b { font-size: 11px; }.settings-language-picker small { margin-top: 2px; color: var(--muted); font-size: 8px; }
+.settings-language-picker .language-switcher { border-color: rgba(124,58,237,.18); background: rgba(49,46,129,.09); }
+.settings-language-picker .language-switcher button { color: #64748b; }.settings-language-picker .language-switcher button.active { color: #5f1744; }
 .curriculum-quality-audit { border-top: 3px solid #7c3aed; }
 .curriculum-quality-audit .section-head { align-items: center; }
 .audit-score { min-width: 112px; display: grid; justify-items: end; padding-left: 18px; border-left: 1px solid var(--line); }
@@ -2609,6 +2616,13 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .curriculum-quality-audit > footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 13px; }.curriculum-quality-audit > footer small { color: var(--muted); }.curriculum-quality-audit > footer button { display: inline-flex; align-items: center; gap: 7px; }
 
 @media (max-width: 700px) {
+  .app-header .page-identity { display: flex; }
+  .app-header .page-identity #pageTitle { order: 1; }
+  .app-header .page-identity .persona-crumb { order: 2; margin-left: auto; }
+  .app-header .persona-menu { right: 0; left: auto; }
+  .app-header .header-actions { display: none; }
+  .settings-heading-row { grid-template-columns: 1fr; }
+  .settings-language-picker { min-width: 0; }
   .google-sync-counts { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .google-sync-counts > span { border-right: 1px solid rgba(15,118,110,.12); border-bottom: 1px solid rgba(15,118,110,.12); }
   .google-sync-counts > span:nth-child(2n) { border-right: 0; }
