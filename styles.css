@@ -575,7 +575,7 @@ textarea { min-height: 96px; resize: vertical; }
 .google-sync-progress.running .google-sync-track > span { background-size: 30px 30px; background-image: linear-gradient(135deg, rgba(255,255,255,.20) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.20) 50%, rgba(255,255,255,.20) 75%, transparent 75%), linear-gradient(90deg, #0f766e, #2dd4bf); animation: sync-stripes 1s linear infinite; }
 .google-sync-progress.failed { border-color: rgba(190,24,93,.22); background: rgba(255,241,242,.62); }
 .google-sync-progress.failed .google-sync-progress-head > span, .google-sync-progress.failed .google-sync-progress-head > strong { color: #be185d; }
-.google-sync-counts { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); border-top: 1px solid rgba(15,118,110,.12); }
+.google-sync-counts { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); border-top: 1px solid rgba(15,118,110,.12); }
 .google-sync-counts > span { display: grid; padding: 8px 8px 0; border-right: 1px solid rgba(15,118,110,.12); }
 .google-sync-counts > span:last-child { border-right: 0; }
 .google-sync-counts b { font-size: 14px; }
@@ -2584,6 +2584,42 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
   .topbar, body.chapter-workspace-open .topbar { gap: 5px; padding-inline: 6px; }
   .app-header .page-identity h1 { font-size: 15px; }
   .language-switcher button { min-width: 29px; padding-inline: 4px; }
+}
+
+/* Settings-facing curriculum content audit. */
+.curriculum-quality-audit { border-top: 3px solid #7c3aed; }
+.curriculum-quality-audit .section-head { align-items: center; }
+.audit-score { min-width: 112px; display: grid; justify-items: end; padding-left: 18px; border-left: 1px solid var(--line); }
+.audit-score strong { color: #6d28d9; font-size: 28px; line-height: 1; }
+.audit-score small { margin-top: 5px; color: var(--muted); font-size: 9px; }
+.audit-standards { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; margin: 14px 0; }
+.audit-standards span { min-height: 46px; display: flex; align-items: center; gap: 8px; padding: 9px 11px; color: #475569; border: 1px solid rgba(124,58,237,.12); border-radius: 9px; background: rgba(245,243,255,.55); font-size: 10px; font-weight: 750; }
+.audit-standards svg { color: #7c3aed; }
+.audit-issue-counts { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); overflow: hidden; border: 1px solid rgba(234,88,12,.15); border-radius: 9px; background: rgba(255,247,237,.58); }
+.audit-issue-counts span { min-height: 58px; display: grid; align-content: center; padding: 8px 12px; border-right: 1px solid rgba(234,88,12,.12); }
+.audit-issue-counts span:last-child { border-right: 0; }
+.audit-issue-counts b { color: #c2410c; font-size: 18px; }
+.audit-issue-counts small { color: var(--muted); font-size: 9px; }
+.audit-clear { display: flex; align-items: center; gap: 10px; padding: 14px; color: #0f766e; border-radius: 9px; background: rgba(240,253,250,.72); }
+.audit-clear b, .audit-clear small { display: block; }.audit-clear small { margin-top: 2px; color: var(--muted); }
+.audit-findings { margin-top: 12px; border-top: 1px solid var(--line); }
+.audit-findings summary { padding: 12px 2px 7px; color: #6d28d9; cursor: pointer; font-size: 11px; font-weight: 850; }
+.audit-findings article { display: grid; grid-template-columns: 24px minmax(0,1fr) auto; align-items: center; gap: 9px; padding: 9px 3px; border-bottom: 1px solid var(--line); }
+.audit-findings article > span { color: #ea580c; }.audit-findings article b, .audit-findings article small { display: block; }.audit-findings article small { margin-top: 2px; color: var(--muted); font-size: 9px; }.audit-findings article strong { color: #475569; font-size: 10px; }
+.curriculum-quality-audit > footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 13px; }.curriculum-quality-audit > footer small { color: var(--muted); }.curriculum-quality-audit > footer button { display: inline-flex; align-items: center; gap: 7px; }
+
+@media (max-width: 700px) {
+  .google-sync-counts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .google-sync-counts > span { border-right: 1px solid rgba(15,118,110,.12); border-bottom: 1px solid rgba(15,118,110,.12); }
+  .google-sync-counts > span:nth-child(2n) { border-right: 0; }
+  .google-sync-counts > span:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
+  .curriculum-quality-audit .section-head { align-items: flex-start; }
+  .audit-score { min-width: 88px; }
+  .audit-standards, .audit-issue-counts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .audit-issue-counts span:nth-child(2n) { border-right: 0; }
+  .audit-issue-counts span:nth-child(-n+2) { border-bottom: 1px solid rgba(234,88,12,.12); }
+  .audit-findings article { grid-template-columns: 22px minmax(0,1fr); }.audit-findings article strong { grid-column: 2; }
+  .curriculum-quality-audit > footer { align-items: stretch; flex-direction: column; }.curriculum-quality-audit > footer button { justify-content: center; }
 }
 
 /* Kitchen — Aurora Light */

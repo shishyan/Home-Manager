@@ -1626,7 +1626,7 @@
       const result = mergeSuggestions(suggestions, 'gmail', true);
       account.lastSync = new Date().toISOString();
       sync.lastRun = { startedAt, completedAt: account.lastSync, status: 'complete', accounts: 1, found: contactItems.length + taskItems.length + suggestions.length, added: contactResult.added + taskResult.added + result.added, applied: result.applied, contacts: contactItems.length, contactsStored: contactStorage.stored, calendar: calendarItems.length, tasks: taskItems.length, gmail: gmailItems.length, backups: 0, error: '' };
-      updateGoogleSyncProgress({ status: 'complete', phase: 'Sync complete', title: email, detail: `${contactStorage.stored} contacts stored in database · ${taskItems.length} tasks · ${suggestions.length} updates`, percent: 100, processed: contactItems.length + taskItems.length + suggestions.length, contacts: contactItems.length, calendar: calendarItems.length, tasks: taskItems.length, gmail: gmailItems.length, added: contactResult.added + taskResult.added + result.added });
+      updateGoogleSyncProgress({ status: 'complete', phase: 'Sync complete', title: email, detail: `${contactStorage.stored} contacts stored in database · ${taskItems.length} tasks · ${suggestions.length} updates`, percent: 100, processed: contactItems.length + taskItems.length + suggestions.length, contacts: contactItems.length, contactsStored: contactStorage.stored, calendar: calendarItems.length, tasks: taskItems.length, gmail: gmailItems.length, added: contactResult.added + taskResult.added + result.added });
       save(`${email} synced; ${result.applied} household updates added`);
       render();
     } catch (error) { toast(`Google connection failed: ${error.message}`); }
@@ -1748,6 +1748,7 @@
     panel.querySelector('[data-sync-bar]').style.width = `${percent}%`;
     if (state.processed !== undefined) panel.querySelector('[data-sync-processed]').textContent = state.processed;
     if (state.contacts !== undefined) panel.querySelector('[data-sync-contacts]').textContent = state.contacts;
+    if (state.contactsStored !== undefined) panel.querySelector('[data-sync-contacts-stored]').textContent = state.contactsStored;
     if (state.calendar !== undefined) panel.querySelector('[data-sync-calendar]').textContent = state.calendar;
     if (state.tasks !== undefined) panel.querySelector('[data-sync-tasks]').textContent = state.tasks;
     if (state.gmail !== undefined) panel.querySelector('[data-sync-gmail]').textContent = state.gmail;
@@ -1811,7 +1812,7 @@
       }
       const result = mergeSuggestions(suggestions, 'gmail', true);
       sync.lastRun = { startedAt, completedAt: new Date().toISOString(), status: 'complete', accounts: active.length, found: contactsCount + tasksCount + suggestions.length, added: contactsAdded + tasksAdded + result.added, applied: result.applied, contacts: contactsCount, contactsStored, calendar: calendarCount, tasks: tasksCount, gmail: gmailCount, backups, error: '' };
-      updateGoogleSyncProgress({ status: 'complete', phase: 'Sync complete', title: `${active.length} account${active.length === 1 ? '' : 's'} checked`, detail: `${contactsStored} contacts stored in database · ${tasksCount} tasks · ${suggestions.length} updates`, percent: 100, processed: contactsCount + tasksCount + suggestions.length, contacts: contactsCount, calendar: calendarCount, tasks: tasksCount, gmail: gmailCount, added: contactsAdded + tasksAdded + result.added });
+      updateGoogleSyncProgress({ status: 'complete', phase: 'Sync complete', title: `${active.length} account${active.length === 1 ? '' : 's'} checked`, detail: `${contactsStored} contacts stored in database · ${tasksCount} tasks · ${suggestions.length} updates`, percent: 100, processed: contactsCount + tasksCount + suggestions.length, contacts: contactsCount, contactsStored, calendar: calendarCount, tasks: tasksCount, gmail: gmailCount, added: contactsAdded + tasksAdded + result.added });
       save(result.added ? `${result.applied} trusted Google updates synced automatically` : 'Google sync completed with no new updates');
       render();
     } catch (error) { const sync = D.state.settings.googleSync; sync.lastRun = { ...(sync.lastRun || {}), completedAt: new Date().toISOString(), status: 'failed', error: error.message }; D.save(); updateGoogleSyncProgress({ status: 'failed', phase: 'Sync failed', title: 'Google sync needs attention', detail: error.message, percent: 100 }); toast(`Google sync failed: ${error.message}`); }

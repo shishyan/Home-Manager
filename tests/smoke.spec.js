@@ -1026,6 +1026,25 @@ test('English chapter ideas use authored teaching content instead of textbook ex
   await expect(summary.locator('[data-summary-subchapter]')).toHaveCount(3);
 });
 
+test('Settings reports curriculum content quality from the learner-facing chapter ideas', async ({ page }) => {
+  await page.goto(`${app}#/settings/app`);
+  const panel = page.locator('#curriculumQualityAudit');
+  await expect(panel).toBeVisible();
+  await expect(panel).toContainText('Chapter content audit');
+  await expect(panel).toContainText(/of \d+ chapters pass/);
+  await expect(panel).toContainText('Substantive explanations');
+  const audit = await page.evaluate(() => HM.views.curriculumQualityAudit());
+  expect(audit.total).toBeGreaterThan(100);
+  expect(audit.passed).toBeGreaterThan(0);
+  expect(audit.results.every(result => result.topics.length > 0)).toBe(true);
+  expect(audit.results.flatMap(result => result.topics).some(topic => /^This textbook section develops/i.test(topic.explanation))).toBe(false);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await expect(page.locator('#curriculumQualityAudit')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+});
+
 test('chapter foundations and relationship pictures remain readable on a phone', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${app}#/study/curriculum`);
@@ -1290,6 +1309,7 @@ test('four Google accounts authorize and sync directly without a connector', asy
   await expect(page.locator('#googleSyncProgress [data-sync-percent]')).toHaveText('100%');
   await expect(page.locator('#googleSyncProgress [data-sync-processed]')).toHaveText('12');
   await expect(page.locator('#googleSyncProgress [data-sync-contacts]')).toHaveText('1');
+  await expect(page.locator('#googleSyncProgress [data-sync-contacts-stored]')).toHaveText('1');
   await expect(page.locator('#googleSyncProgress [data-sync-gmail]')).toHaveText('9');
   await expect(page.locator('#googleSyncProgress [data-sync-calendar]')).toHaveText('1');
   await expect(page.locator('#googleSyncProgress [data-sync-tasks]')).toHaveText('1');
