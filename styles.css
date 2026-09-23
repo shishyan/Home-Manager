@@ -46,6 +46,7 @@
 /* Modern surface system: calm contrast, restrained colour and readable depth. */
 :root {
   --app-bg: #fbf7f3;
+  --canvas-tint: linear-gradient(135deg, rgba(33, 53, 84, .32), rgba(83, 96, 116, .24)), linear-gradient(rgba(222, 227, 233, .78), rgba(207, 216, 226, .84));
   --nature-overlay: rgba(252, 248, 244, .86);
   --shell-bg: rgba(255, 252, 248, .94);
   --band-odd: rgba(255, 244, 234, .90);
@@ -1695,7 +1696,7 @@ body[data-nature="wildflower"] { --app-bg: #fff0f5; --nature-image: url("assets/
 }
 
 /* Final modern polish */
-body[data-nature] { --shell-bg: rgba(250, 252, 255, .94); --band-odd: rgba(241, 245, 249, .92); --band-even: rgba(248, 250, 252, .94); }
+body[data-nature] { --app-bg: #c6d0dc; --shell-bg: rgba(250, 252, 255, .94); --band-odd: rgba(241, 245, 249, .92); --band-even: rgba(248, 250, 252, .94); }
 body[data-shell="ember"] { --shell-navigation-base: #48241f; --shell-navigation-bg: radial-gradient(circle at 8% 7%, rgba(255,93,68,.34), transparent 36%), radial-gradient(circle at 90% 16%, rgba(129,83,162,.32), transparent 43%), linear-gradient(115deg, #48241f 0%, #3d2435 48%, #27213f 100%); }
 body[data-shell="terracotta"] { --shell-navigation-base: #4b2b23; --shell-navigation-bg: radial-gradient(circle at 10% 8%, rgba(224,105,75,.30), transparent 38%), radial-gradient(circle at 88% 15%, rgba(177,118,91,.18), transparent 42%), linear-gradient(115deg, #4b2b23 0%, #3d2927 52%, #2b252d 100%); }
 body[data-shell="mulberry"] { --shell-navigation-base: #4a1f38; --shell-navigation-bg: radial-gradient(circle at 9% 8%, rgba(218,72,117,.30), transparent 38%), radial-gradient(circle at 90% 18%, rgba(139,92,246,.32), transparent 44%), linear-gradient(115deg, #4a1f38 0%, #42234a 50%, #292044 100%); }
@@ -1704,7 +1705,7 @@ body[data-shell="teal"] { --shell-navigation-base: #103d3b; --shell-navigation-b
 body[data-shell="teal"] { --shell-navigation-base: #0b3a37; --shell-navigation-bg: linear-gradient(rgba(4,35,33,.16), rgba(4,31,29,.24)), url("assets/backgrounds/teal-circuit-shell.png"), linear-gradient(118deg, #103d3b 0%, #174b42 50%, #203d32 100%); }
 .shell-style-teal .shell-style-swatch { background: linear-gradient(rgba(4,35,33,.12), rgba(4,31,29,.20)), url("assets/backgrounds/teal-circuit-shell.png") center / cover; }
 body { background-color: var(--shell-navigation-base); background-image: var(--shell-navigation-bg); background-position: center; background-size: cover; background-attachment: fixed; }
-body::after { inset: 56px var(--utility) 0 var(--sidebar); overflow: hidden; border-radius: 20px 20px 0 0; background-color: var(--app-bg); background-image: linear-gradient(rgba(253,249,245,.88), rgba(247,252,250,.93)), var(--nature-image); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: 0 -1px 0 rgba(255,255,255,.16), 0 -12px 34px rgba(10,16,31,.12); transition: inset .2s ease; }
+body::after { inset: 56px var(--utility) 0 var(--sidebar); overflow: hidden; border-radius: 20px 20px 0 0; background-color: var(--app-bg); background-image: var(--canvas-tint), var(--nature-image); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: 0 -1px 0 rgba(255,255,255,.16), 0 -12px 34px rgba(10,16,31,.12); transition: inset .2s ease; }
 .collapsed::after { left: 68px; }
 .learning-command-bar.subject-first { display: block; padding: 4px 6px; overflow: hidden; }
 .education-command-row { min-width: 0; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
@@ -2039,7 +2040,7 @@ button.primary:hover, .primary:hover { background: var(--accent-hover); border-c
 .state-learning > .chapter-subchapter-state, .chapter-subchapter-state[data-state="learning"] { color: #c2410c; }
 .state-mastered > .chapter-subchapter-state, .chapter-subchapter-state[data-state="mastered"] { color: #15803d; }
 
-.chapter-workspace { position: fixed; inset: 56px var(--utility) 0 var(--sidebar); z-index: 100; overflow: hidden; color: var(--ink); border-radius: 20px 20px 0 0; background-color: var(--app-bg); background-image: linear-gradient(rgba(253,249,245,.88), rgba(247,252,250,.93)), var(--nature-image); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: 0 -1px 0 rgba(255,255,255,.16), 0 -12px 34px rgba(10,16,31,.12); }
+.chapter-workspace { position: fixed; inset: 56px var(--utility) 0 var(--sidebar); z-index: 100; overflow: hidden; color: var(--ink); border-radius: 20px 20px 0 0; background-color: var(--app-bg); background-image: var(--canvas-tint), var(--nature-image); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: 0 -1px 0 rgba(255,255,255,.16), 0 -12px 34px rgba(10,16,31,.12); }
 .chapter-workspace[hidden] { display: none; }
 body.chapter-workspace-open { overflow: hidden; }
 body.chapter-workspace-open > #bottomNav,
