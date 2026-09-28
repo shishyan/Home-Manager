@@ -17,7 +17,7 @@
   let activeChapterWorkspace = null;
   let activeDeepDive = null;
   let chapterSupportCleanup = null;
-  let chapterRailMode = 'progress';
+  let chapterRailMode = 'guide';
   const googleSessions = new Map();
   const googleWorkspaceSessions = new Map();
   HM.workspace = { cache: {}, selected: {} };
@@ -35,7 +35,7 @@
 
   function applyChapterRailMode(rail, mode = chapterRailMode) {
     if (!rail) return;
-    chapterRailMode = ['progress','guide','notes'].includes(mode) ? mode : 'progress';
+    chapterRailMode = ['guide'].includes(mode) ? mode : 'guide';
     rail.querySelectorAll('[data-chapter-rail-tab]').forEach(button => {
       const active = button.dataset.chapterRailTab === chapterRailMode;
       button.classList.toggle('active', active);
@@ -524,6 +524,13 @@
     slot.hidden = !route.startsWith('study/');
     if (sections && !slot.hidden) slot.replaceChildren(sections);
     else if (slot.hidden) slot.replaceChildren();
+    if (!slot.hidden) {
+      const nav=slot.querySelector('.learning-section-tabs');
+      nav?.querySelectorAll('[data-study-section]').forEach(button=>button.remove());
+      const sections=[['summary','Study Guide'],['understand','Genius Mind'],['resource','Formulae / Key ideas'],['book','Read Book'],['notes','My Notes'],['practice','Practice & Tests'],['assignments','Assignments']];
+      sections.forEach(([key,label])=>{const button=document.createElement('button');button.type='button';button.dataset.studySection=key;button.textContent=label;if(activeChapterWorkspace?.section===key){button.classList.add('active');button.setAttribute('aria-current','page');}nav?.append(button);});
+      if(activeChapterWorkspace) nav?.querySelectorAll('[data-route]').forEach(button=>{button.classList.remove('active');button.removeAttribute('aria-current');});
+    }
   }
 
   function render() {
@@ -568,7 +575,7 @@
     renderNav();
     const homeName = renderHomeIdentity();
     const title = V.titles[route] || ['Today', homeName];
-    $('#breadcrumb').textContent = settingsSection() ? 'Settings' : V.groups[activeGroup].label;
+
     $('#pageTitle').textContent = title[0];
     document.title = title[0] + ' - ' + homeName;
     $('#content').dataset.view = route;
@@ -2298,12 +2305,13 @@
     renderNav();
     workspace.hidden = false;
     document.body.classList.add('chapter-workspace-open');
+    placeEducationMasterControls();
     refreshIcons();
     syncChapterSupportRail();
   }
 
   function openChapterWorkspace(lessonId, section = 'summary') {
-    chapterRailMode = 'progress';
+    chapterRailMode = 'guide';
     refreshChapterWorkspace(lessonId, section);
     $('#nav .education-chapter.active')?.focus();
   }
@@ -2322,8 +2330,9 @@
   }
 
   window.addEventListener('hm-study-progress', () => {
+    const expanded=[...document.querySelectorAll('.progress-chapter[open]')].map(el=>el.querySelector('[data-study-level]')?.dataset.lesson);
     if (activeChapterWorkspace) refreshChapterWorkspace(activeChapterWorkspace.lessonId,activeChapterWorkspace.section);
-    else render();
+    else {render();document.querySelectorAll('.progress-chapter').forEach(el=>{if(expanded.includes(el.querySelector('[data-study-level]')?.dataset.lesson))el.open=true;});}
   });
 
   document.addEventListener('change', event => {
@@ -2458,8 +2467,8 @@
       if (document.body.classList.contains('chapter-workspace-open')) {
         refreshChapterWorkspace(lessonId, activeChapterWorkspace?.section || 'summary');
         if (!subchapterProgress.closest('.daily-progress-panel')) requestAnimationFrame(() => document.querySelector(`[data-summary-subchapter="${CSS.escape(topicId)}"]`)?.scrollIntoView({ block: 'start' }));
-      } else render();
-      toast(next === 'mastered' ? 'Subchapter mastered' : next === 'learning' ? 'Subchapter marked learning' : 'Subchapter reset');
+      } else window.dispatchEvent(new CustomEvent('hm-study-progress'));
+      toast(next === 'mastered' ? 'Topic marked can explain' : next === 'learning' ? 'Subchapter marked learning' : 'Subchapter reset');
       return;
     }
     const chapterSubchapter = event.target.closest('[data-chapter-subchapter]');
@@ -2481,6 +2490,8 @@
       refreshChapterWorkspace(chapterSwitch.dataset.chapterSwitch, activeChapterWorkspace?.section || 'summary');
       return;
     }
+    const studySection = event.target.closest('[data-study-section]');
+    if(studySection){openChapterWorkspace(activeChapterWorkspace?.lessonId || V.defaultLessonId(),studySection.dataset.studySection);return;}
     const chapterRailTab = event.target.closest('[data-chapter-rail-tab]');
     if (chapterRailTab) {
       applyChapterRailMode(chapterRailTab.closest('.chapter-support-rail'), chapterRailTab.dataset.chapterRailTab);
