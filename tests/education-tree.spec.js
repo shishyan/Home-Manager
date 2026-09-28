@@ -5,7 +5,7 @@ test('class subject chapter tree switches learners and retains top section tabs'
   await expect(page.locator('.education-class > summary')).toHaveCount(2);
   await expect(page.locator('.education-class').first()).toContainText('Class 12');
   await expect(page.locator('.education-class').last()).toContainText('Class 7');
-  expect(await page.locator('#educationHeaderTabs .learning-section-tabs button').allTextContents()).toEqual(['Overview','Curriculum','Planner','Progress']);
+  expect(await page.locator('#educationHeaderTabs .learning-section-tabs button').allTextContents()).toEqual(['Overview','Curriculum','Planner']);
   const class7=page.locator('.education-class').last();
   const math=class7.locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});
   await math.locator('summary').click();

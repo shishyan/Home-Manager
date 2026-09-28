@@ -17,7 +17,7 @@
   let activeChapterWorkspace = null;
   let activeDeepDive = null;
   let chapterSupportCleanup = null;
-  let chapterRailMode = 'guide';
+  let chapterRailMode = 'progress';
   const googleSessions = new Map();
   const googleWorkspaceSessions = new Map();
   HM.workspace = { cache: {}, selected: {} };
@@ -35,7 +35,7 @@
 
   function applyChapterRailMode(rail, mode = chapterRailMode) {
     if (!rail) return;
-    chapterRailMode = mode === 'notes' ? 'notes' : 'guide';
+    chapterRailMode = ['progress','guide','notes'].includes(mode) ? mode : 'progress';
     rail.querySelectorAll('[data-chapter-rail-tab]').forEach(button => {
       const active = button.dataset.chapterRailTab === chapterRailMode;
       button.classList.toggle('active', active);
@@ -552,7 +552,7 @@
       go(movedSettingsRoute);
       return;
     }
-    const movedStudyRoute = { 'study/board': 'study/curriculum', 'study/schedule': 'study/planner', 'study/tasks': 'study/assignments', 'study/goals': 'study/reports', 'study/focus': 'study/practice', 'study/analytics': 'study/reports' }[route];
+    const movedStudyRoute = { 'study/reports': 'study/curriculum', 'study/board': 'study/curriculum', 'study/schedule': 'study/planner', 'study/tasks': 'study/assignments', 'study/goals': 'study/reports', 'study/focus': 'study/practice', 'study/analytics': 'study/reports' }[route];
     if (movedStudyRoute) { go(movedStudyRoute); return; }
     const first = route.split('/')[0];
     if (['home', 'community', 'study'].includes(first)) {
@@ -2303,6 +2303,7 @@
   }
 
   function openChapterWorkspace(lessonId, section = 'summary') {
+    chapterRailMode = 'progress';
     refreshChapterWorkspace(lessonId, section);
     $('#nav .education-chapter.active')?.focus();
   }
@@ -2319,6 +2320,11 @@
     render();
     document.querySelector('[data-chapter-card]')?.focus();
   }
+
+  window.addEventListener('hm-study-progress', () => {
+    if (activeChapterWorkspace) refreshChapterWorkspace(activeChapterWorkspace.lessonId,activeChapterWorkspace.section);
+    else render();
+  });
 
   document.addEventListener('change', event => {
     if (event.target.id === 'navigationGroup') {
@@ -2451,7 +2457,7 @@
       D.save();
       if (document.body.classList.contains('chapter-workspace-open')) {
         refreshChapterWorkspace(lessonId, activeChapterWorkspace?.section || 'summary');
-        requestAnimationFrame(() => document.querySelector(`[data-summary-subchapter="${CSS.escape(topicId)}"]`)?.scrollIntoView({ block: 'start' }));
+        if (!subchapterProgress.closest('.daily-progress-panel')) requestAnimationFrame(() => document.querySelector(`[data-summary-subchapter="${CSS.escape(topicId)}"]`)?.scrollIntoView({ block: 'start' }));
       } else render();
       toast(next === 'mastered' ? 'Subchapter mastered' : next === 'learning' ? 'Subchapter marked learning' : 'Subchapter reset');
       return;
@@ -2563,7 +2569,7 @@
         if (lesson) { lesson.mastery = mastery; lesson.status = status; }
       }
       D.save();
-      refreshChapterWorkspace(lessonId, 'progress');
+      refreshChapterWorkspace(lessonId, activeChapterWorkspace?.section || 'summary');
       toast('Chapter progress updated');
       return;
     }

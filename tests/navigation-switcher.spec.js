@@ -12,7 +12,7 @@ test('parent dropdown and education member switching', async ({ page }) => {
   const sasha = members.find(x => /sasha/i.test(x.name)); const ishaan = members.find(x => /ishaan/i.test(x.name));
   expect(sasha).toBeTruthy(); expect(ishaan).toBeTruthy();
   await page.locator('#educationLearner').selectOption(sasha.id);
-  await page.locator('.learning-section-tabs [data-route="study/reports"]').click();
+  await page.locator('.learning-section-tabs [data-route="study/curriculum"]').click();
   await page.locator('#educationLearner').selectOption(ishaan.id);
   await expect(page.locator('#personaName')).toContainText('Ishaan');
   expect(await page.evaluate(() => HM.data.state.settings.activeLearnerId)).toBe(ishaan.id);

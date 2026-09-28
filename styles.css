@@ -2817,3 +2817,58 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
   .collapsed #sidebar .persona-switcher strong, .collapsed #sidebar .persona-switcher > svg { display: block; }
   .collapsed .education-tree { display: block; }
 }
+.study-daily-heading h2 { margin: 6px 0; font-size: 25px; }
+.study-daily-heading p { max-width: 750px; line-height: 1.6; color: var(--muted); }
+.study-daily-counts { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 14px; }
+.study-daily-counts span { padding: 8px 12px; background: #eef2ff; border-radius: 10px; color: #37306d; }
+.study-chapter-list { display: grid; gap: 10px; }
+.study-chapter-row { display: grid; grid-template-columns: minmax(0,1fr) 135px 140px 90px; gap: 16px; align-items: center; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.94); }
+.study-chapter-title { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.study-chapter-title > span { color: #7c3aed; font-weight: 800; }
+.study-chapter-title button { display: grid; gap: 5px; text-align: left; padding: 0; background: transparent; border: 0; min-width: 0; }
+.study-chapter-title b { font-size: 15px; color: #273047; }
+.study-chapter-title small { color: #64748b; line-height: 1.5; }
+.study-chapter-row label, .daily-progress-panel > label { display: grid; gap: 5px; font-size: 11px; color: #64748b; }
+.study-chapter-row select, .daily-progress-panel select { width: 100%; }
+.study-chapter-row .is-studied { color: #086b56; background: #dcfce7; border-color: #86efac; }
+.study-open { color: #5b21b6; }
+.study-history { margin-top: 18px; }
+.study-history > summary { cursor: pointer; font-weight: 700; padding: 8px; }
+.daily-progress-panel { padding: 14px; background: #fff; border: 1px solid #dbe3ed; border-radius: 14px; display: grid; gap: 16px; color: #263047; }
+.daily-progress-panel h2 { font-size: 17px; margin: 5px 0; }
+.daily-progress-panel h3 { font-size: 13px; margin: 0 0 9px; }
+.daily-progress-panel p, .daily-progress-panel small { font-size: 11px; line-height: 1.6; color: #64748b; }
+.daily-topic-list { display: grid; gap: 6px; }
+.daily-topic-list button { display: grid; gap: 4px; text-align: left; padding: 10px; }
+.daily-topic-list button b { font-size: 12px; }
+.daily-topic-list button span { font-size: 10px; color: #0f766e; }
+.daily-stage-checks { border: 0; padding: 0; display: grid; gap: 9px; }
+.daily-stage-checks legend { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.daily-stage-checks label { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.daily-progress-panel form { display: grid; gap: 12px; }
+.daily-progress-panel form label { display: grid; gap: 5px; font-size: 12px; }
+.daily-progress-panel form label:has([type="checkbox"]) { display: flex; align-items: center; gap: 7px; }
+.daily-progress-panel input[type="checkbox"] { width: 17px; height: 17px; }
+.study-legacy > summary { font-size: 11px; cursor: pointer; color: #64748b; }
+.study-legacy .chapter-progress-panel { display: block; padding: 8px 0; }
+.study-legacy .chapter-seven-status { display: grid; grid-template-columns: 1fr; }
+.study-legacy .mastery-choices { grid-template-columns: 1fr; }
+.chapter-summary-layout:has(.daily-progress-panel) { grid-template-columns: minmax(0,1fr) 320px; gap: 20px; }
+.chapter-rail-tabs { display: flex; flex-wrap: wrap; }
+.chapter-rail-tabs [data-chapter-rail-tab="progress"] { color: #5b21b6; font-weight: 800; }
+@media(max-width:1100px) {
+  .study-chapter-row { grid-template-columns: minmax(0,1fr) 125px; gap: 12px; }
+  .chapter-summary-layout:has(.daily-progress-panel) { display: flex; flex-direction: column; }
+  .chapter-summary-layout:has(.daily-progress-panel) > .chapter-support-rail { display: grid; order: -1; position: static; width: 100%; max-height: none; padding: 0; }
+  .chapter-summary-layout:has(.daily-progress-panel) > :not(.chapter-support-rail) { width: 100%; }
+}
+@media(max-width:600px) {
+  .study-chapter-row { grid-template-columns: 1fr 1fr; padding: 13px; }
+  .study-chapter-title { grid-column: 1/-1; }
+  .study-open { grid-column: 1/-1; }
+  .chapter-workspace-content { padding: 12px; }
+}
+.chapter-summary-layout:has(.daily-progress-panel) > .chapter-support-rail { display: grid; }
+.chapter-workspace-shell:has(.chapter-section-book) { display: grid; grid-template-rows: auto minmax(0,1fr); }
+.chapter-workspace-shell:has(.chapter-section-book) .chapter-content-tabs { position: static; width: auto; max-width: none; }
+.chapter-workspace-content.chapter-section-book { padding: 20px; overflow: auto; }
