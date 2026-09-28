@@ -1435,7 +1435,7 @@ body[data-nature="wildflower"] { --app-bg: #fff0f5; --nature-image: url("assets/
   .kanban { grid-template-columns: repeat(4, minmax(250px, 82vw)); scroll-snap-type: x mandatory; }
   .kanban-column { display: block; scroll-snap-align: start; }
   .clock { margin-inline: 0; font-size: 50px; }
-  #bottomNav { position: fixed; inset: auto 0 0; z-index: 24; display: grid; grid-template-columns: repeat(5, 1fr); padding-bottom: env(safe-area-inset-bottom); background: var(--shell-bg); border-top: 1px solid var(--line); backdrop-filter: blur(20px); }
+  #bottomNav { position: fixed; inset: auto 0 0; z-index: 24; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding-bottom: env(safe-area-inset-bottom); background: var(--shell-bg); border-top: 1px solid var(--line); backdrop-filter: blur(20px); }
   #bottomNav button { min-height: 58px; display: grid; place-items: center; align-content: center; gap: 2px; padding: 6px 2px; border: 0; background: transparent; color: var(--muted); font-size: 10px; }
   #bottomNav button.active { color: var(--accent); font-weight: 800; }
   #bottomNav svg { width: 18px; height: 18px; }
@@ -2760,6 +2760,7 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .education-learner-label select { min-height: 36px; max-width: 180px; border-radius: 8px; padding: 4px 8px; color: #1e293b; background: #fff; }
 .collapsed .navigation-switcher { margin: 8px 2px; font-size: 0; }
 .collapsed .navigation-switcher select { padding-inline: 2px; font-size: 11px; }
+.contact-directory .card, .contact-directory a, .mail-sync-card .grid-2 > div { min-width: 0; overflow-wrap: anywhere; }
 /* Private daily email feed */
 .mail-sync-controls{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:18px 0}
 .mail-sync-controls>label:first-child{display:grid;gap:6px;flex:1;min-width:220px;font-size:.85rem;font-weight:600}

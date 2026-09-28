@@ -9,12 +9,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('local services prioritize Kovaipudur and expose verified sources', async ({ page }) => {
-  await expect(page.locator('.local-service-card')).toHaveCount(20);
+  await expect(page.locator('.local-service-card')).toHaveCount(26);
   await expect(page.locator('.local-service-card').first()).toContainText('Kovaipudur');
   await expect(page.locator('.emergency-dial-strip a')).toHaveCount(4);
-  await expect(page.locator('.local-service-card .service-source')).toHaveCount(20);
+  await expect(page.locator('.local-service-card .service-source')).toHaveCount(26);
   await page.locator('[data-status-filter]').selectOption('Kovaipudur');
-  await expect(page.locator('.local-service-card:visible')).toHaveCount(8);
+  await expect(page.locator('.local-service-card:visible')).toHaveCount(14);
 });
 
 test('family can add and edit a trusted home professional', async ({ page }) => {

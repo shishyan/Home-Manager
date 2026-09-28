@@ -4,7 +4,7 @@
   const $ = selector => document.querySelector(selector);
   let route = location.hash.slice(2) || 'global/overview';
   let workspace = route.split('/')[0];
-  const migratedGroup = ({ today: 'household', family: 'household', travel: 'leisure', web: 'leisure', entertainment: 'leisure' })[D.state.settings.activeGroup];
+  const migratedGroup = ({ today: 'household', family: 'household', kitchen: 'household', care: 'household', community: 'household', travel: 'leisure', web: 'household', entertainment: 'household' })[D.state.settings.activeGroup];
   let activeGroup = migratedGroup || D.state.settings.activeGroup || 'household';
   let expandedGroup = activeGroup;
   let lastDeleted = null;
@@ -187,14 +187,14 @@
     const lifeOwners = {
       property: 'household', bills: 'household', help: 'household', sustainability: 'household',
       travel: 'leisure', transport: 'leisure', vehicles: 'leisure', stays: 'leisure', travelProtection: 'leisure',
-      subscriptions: 'leisure', digital: 'leisure', webAccounts: 'leisure', aiServices: 'leisure', webHabits: 'leisure', games: 'leisure',
-      watch: 'leisure', listen: 'leisure', reading: 'leisure', play: 'leisure', outings: 'leisure',
+      subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
+      watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
       festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
-      health: 'care', emergency: 'care', pets: 'care', education: 'learning'
+      health: 'household', emergency: 'household', pets: 'household', education: 'learning'
     };
     if (lifeOwners[lifeDomain]) return lifeOwners[lifeDomain];
     if (currentRoute.startsWith('study/')) return 'learning';
-    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'leisure', 'community/events': 'community', 'community/polls': 'community' };
+    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
     return routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key])) || 'household';
   }
 
@@ -437,7 +437,7 @@
       const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
       return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
     }).join('')}</div>`;
-    const mobileItems = [['Today', 'sparkles', 'global/overview'], ['Calendar', 'calendar-days', 'home/calendar'], ['Tasks', 'list-checks', 'home/tasks'], ['Food', 'shopping-basket', route.startsWith('kitchen/') ? 'kitchen/overview' : 'home/inventory']];
+    const mobileItems = availableGroups.map(([key, item]) => [item.label, item.icon, item.route]);
     $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
     $('#helpNav').classList.toggle('active', route === 'global/questions');
@@ -1643,8 +1643,8 @@
       contacts.push(...(payload.connections || []).map(person => ({ sourceRef: `${account.email}:${person.resourceName}`, personId: account.personId, name: person.names?.[0]?.displayName || 'Unnamed contact', email: person.emailAddresses?.[0]?.value || '', phone: person.phoneNumbers?.[0]?.value || '', organization: person.organizations?.[0]?.name || '' })));
       pageToken = payload.nextPageToken || '';
       report({ phase: 'Syncing Contacts', detail: `${contacts.length} contacts found for ${account.email}`, contacts: contacts.length });
-    } while (pageToken && contacts.length < 2000);
-    return contacts.slice(0, 2000);
+    } while (pageToken);
+    return contacts;
   }
 
   function mergeGoogleContacts(items) {
@@ -2971,7 +2971,7 @@
   });
   window.addEventListener('hm-cloud-status', () => { if (route === 'settings/app') render(); });
   window.addEventListener('hm-cloud-state', () => {
-    activeGroup = ({ today: 'household', family: 'household', travel: 'leisure', web: 'leisure', entertainment: 'leisure' })[D.state.settings.activeGroup] || D.state.settings.activeGroup || 'household';
+    activeGroup = ({ today: 'household', family: 'household', kitchen: 'household', care: 'household', community: 'household', travel: 'leisure', web: 'household', entertainment: 'household' })[D.state.settings.activeGroup] || D.state.settings.activeGroup || 'household';
     applyTheme();
     render();
     toast('Family database updated');

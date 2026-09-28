@@ -4,6 +4,7 @@ test('parent dropdown and education member switching', async ({ page }) => {
   await page.goto('http://127.0.0.1:8765/');
   await page.evaluate(() => localStorage.clear()); await page.reload();
   await expect(page.locator('#nav .nav-parent')).toHaveCount(0);
+  expect(await page.locator('#navigationGroup option').allTextContents()).toEqual(['Home', 'Education', 'Finance', 'Travel', 'Contacts']);
   await page.locator('#navigationGroup').selectOption('learning');
   await expect(page).toHaveURL(/study\/curriculum/);
   await expect(page.locator('#sectionNav')).toHaveAttribute('aria-label', 'Education pages');
