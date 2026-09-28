@@ -142,24 +142,24 @@ test('global persona persists and scopes owned content while preserving shared r
 });
 
 test('Money navigation and routes are unavailable to child personas', async ({ page }) => {
-  await expect(page.locator('#nav').getByRole('button', { name: /Money menu/ })).toBeVisible();
+  await expect(page.locator('#navigationGroup option[value=money]')).toHaveCount(1);
 
   await choosePersona(page, 'p3');
   await expect(page.locator('body')).toHaveAttribute('data-persona-role', 'children');
-  await expect(page.locator('#nav').getByRole('button', { name: /Money menu/ })).toHaveCount(0);
+  await expect(page.locator('#navigationGroup option[value=money]')).toHaveCount(0);
 
   await page.goto(`${app}#/home/money/budget`);
   await expect(page).toHaveURL(/#\/global\/overview$/);
-  await expect(page.locator('#nav').getByRole('button', { name: /Money menu/ })).toHaveCount(0);
+  await expect(page.locator('#navigationGroup option[value=money]')).toHaveCount(0);
 
   await page.reload();
   await expect(page.locator('#personaName')).toHaveText(/.+/);
   await expect(page.locator('body')).toHaveAttribute('data-persona-role', 'children');
-  await expect(page.locator('#nav').getByRole('button', { name: /Money menu/ })).toHaveCount(0);
+  await expect(page.locator('#navigationGroup option[value=money]')).toHaveCount(0);
 
   await choosePersona(page, 'p1');
   await expect(page.locator('body')).toHaveAttribute('data-persona-role', 'parents');
-  await expect(page.locator('#nav').getByRole('button', { name: /Money menu/ })).toBeVisible();
+  await expect(page.locator('#navigationGroup option[value=money]')).toHaveCount(1);
 });
 
 test('parents default to Tamil and keep an independent language preference', async ({ page }) => {
@@ -171,7 +171,7 @@ test('parents default to Tamil and keep an independent language preference', asy
   await expect(page.locator('body')).toHaveAttribute('data-language', 'ta');
   await expect(page.locator('#languageSwitcher [data-language="ta"]')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('#nav')).toContainText('இல்லம்');
-  await expect(page.locator('#nav .nav-parent', { hasText: 'உணவு' })).toHaveCount(1);
+  await expect(page.locator('#navigationGroup option', { hasText: 'உணவு' })).toHaveCount(1);
   await expect(page.locator('#nav')).not.toContainText('சமையலறை');
   await expect(page.locator('#pageTitle')).toHaveText('செயலி & தரவு');
   await expect(page.locator('body')).not.toContainText(/[௦-௯]/);
@@ -180,8 +180,8 @@ test('parents default to Tamil and keep an independent language preference', asy
   await page.locator('#languageSwitcher [data-language="en"]').click();
   await expect(page.locator('body')).toHaveAttribute('data-language', 'en');
   await expect(page.locator('#nav')).toContainText('Home');
-  await expect(page.locator('#nav .nav-parent', { hasText: 'Food' })).toHaveCount(1);
-  await expect(page.locator('#nav .nav-parent', { hasText: 'உணவு' })).toHaveCount(0);
+  await expect(page.locator('#navigationGroup option', { hasText: 'Food' })).toHaveCount(1);
+  await expect(page.locator('#navigationGroup option', { hasText: 'உணவு' })).toHaveCount(0);
   await page.reload();
   await expect(page.locator('#languageSwitcher [data-language="en"]')).toHaveAttribute('aria-pressed', 'true');
   await page.goto(`${app}#/kitchen/recipes`);
@@ -266,8 +266,8 @@ test('all non-learning suites render without runtime errors', async ({ page }) =
 
 test('Today is the first page inside the Home menu', async ({ page }) => {
   await page.goto(`${app}#/global/overview`);
-  await expect(page.locator('#nav .nav-parent.active')).toContainText('Home');
-  await expect(page.locator('#nav .nav-parent', { hasText: 'Today' })).toHaveCount(0);
+  await expect(page.locator('#navigationGroup option:checked')).toContainText('Home');
+  await expect(page.locator('#navigationGroup option', { hasText: 'Today' })).toHaveCount(0);
   await expect(page.locator('#sectionNav .section-tab')).toHaveCount(3);
   await expect(page.locator('#sectionNav button').first()).toHaveText(/Today/);
   await expect(page.locator('#sectionNav button').first()).toHaveAttribute('aria-current', 'page');
@@ -318,7 +318,7 @@ test('all long pages scroll beneath the persistent top bar', async ({ page }) =>
 
 test('Home organizes Household and Family into tabs with focused submenus', async ({ page }) => {
   await page.goto(`${app}#/home/family`);
-  await expect(page.locator('#nav .nav-parent.active')).toContainText('Home');
+  await expect(page.locator('#navigationGroup option:checked')).toContainText('Home');
   await expect(page.locator('#sectionNav .section-tab')).toHaveCount(3);
   await expect(page.locator('#sectionNav .section-tab.active')).toContainText('Family');
   await expect(page.locator('#sectionNav .section-subitem')).toHaveCount(7);
@@ -333,7 +333,7 @@ test('Home organizes Household and Family into tabs with focused submenus', asyn
   await expect(page.locator('#sectionNav')).toContainText('Sustainability');
 
   await page.goto(`${app}#/home/care`);
-  await expect(page.locator('#nav .nav-parent.active')).toContainText('Health');
+  await expect(page.locator('#navigationGroup option:checked')).toContainText('Health');
   expect(await page.locator('#sectionNav button').count()).toBeLessThanOrEqual(7);
   await expect(page.locator('#sectionNav')).toContainText('Medicines');
   await expect(page.locator('#sectionNav')).toContainText('Elder care');
@@ -477,7 +477,7 @@ test('Class 7 and Class 12 have separate official textbook libraries', async ({ 
 
 test('Leisure combines Travel, Entertainment and Web Life as tabs', async ({ page }) => {
   await page.goto(`${app}#/home/travel`);
-  await expect(page.locator('#nav .nav-parent.active')).toContainText('Leisure');
+  await expect(page.locator('#navigationGroup option:checked')).toContainText('Leisure');
   await expect(page.locator('#sectionNav button')).toHaveCount(3);
   await expect(page.locator('#sectionNav')).toContainText('Travel');
   await expect(page.locator('#sectionNav')).toContainText('Entertainment');
@@ -653,7 +653,7 @@ test('curriculum chapters render as modern responsive cards', async ({ page }) =
   expect(shellTheme.canvas).toContain('rgb(37, 43, 75)');
   expect(shellTheme.canvas).toContain('rgb(33, 29, 56)');
   expect(shellTheme.color).toBe('rgb(248, 250, 252)');
-  const menuIconColors = await page.locator('#nav > .nav-tree-item > .nav-parent .nav-icon').evaluateAll(items => items.slice(0, 6).map(item => getComputedStyle(item).color));
+  const menuIconColors = await page.locator('#sectionNav .section-tab svg').evaluateAll(items => items.slice(0, 6).map(item => getComputedStyle(item).color));
   expect(new Set(menuIconColors).size).toBeGreaterThan(3);
   const cardPalette = await cards.first().evaluate(card => ({
     primary: getComputedStyle(card.querySelector('.chapter-sequence')).color,

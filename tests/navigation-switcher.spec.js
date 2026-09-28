@@ -1,0 +1,30 @@
+const { test, expect } = require('@playwright/test');
+test.setTimeout(120000);
+test('parent dropdown and education member switching', async ({ page }) => {
+  await page.goto('http://127.0.0.1:8765/');
+  await page.evaluate(() => localStorage.clear()); await page.reload();
+  await page.evaluate(() => { for (const [id, name] of [['p3','Ishaan'],['p4','Sasha']]) { HM.data.state.people.find(p => p.id === id).name = name; HM.data.state.academicProfiles.find(p => p.personId === id).name = name; } HM.data.save(); });
+  await page.reload();
+  await expect(page.locator('#nav .nav-parent')).toHaveCount(0);
+  await page.locator('#navigationGroup').selectOption('learning');
+  await expect(page).toHaveURL(/study\/curriculum/);
+  await expect(page.locator('#sectionNav')).toHaveAttribute('aria-label', 'Education pages');
+  const members = await page.locator('#educationLearner option').evaluateAll(options => options.map(o => ({id:o.value,name:o.textContent})));
+  const sasha = members.find(x => /sasha/i.test(x.name)); const ishaan = members.find(x => /ishaan/i.test(x.name));
+  expect(sasha).toBeTruthy(); expect(ishaan).toBeTruthy();
+  await page.locator('#educationLearner').selectOption(sasha.id);
+  await page.locator('#sectionNav [data-route="study/reports"]').click();
+  await page.locator('#educationLearner').selectOption(ishaan.id);
+  await expect(page.locator('#personaName')).toContainText('Ishaan');
+  expect(await page.evaluate(() => HM.data.state.settings.activeLearnerId)).toBe(ishaan.id);
+  await page.locator('#educationLearner').selectOption(sasha.id);
+  await expect(page.locator('#personaName')).toContainText('Sasha');
+  expect(await page.evaluate(() => HM.data.state.settings.activeLearnerId)).toBe(sasha.id);
+  await page.screenshot({path:'test-results/navigation-desktop.png'});
+  await page.setViewportSize({width:390,height:844});
+  await expect(page.locator('#educationLearner')).toBeVisible();
+  await page.locator('#educationLearner').selectOption(ishaan.id);
+  await expect(page.locator('#personaName')).toContainText('Ishaan');
+  await page.screenshot({path:'test-results/navigation-mobile.png'});
+});
+

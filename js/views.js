@@ -887,7 +887,7 @@
     const learningSections = jeeMode ? jeeSections : cbseSections;
     const sectionTabs = activeRenderRoute.startsWith('study/') ? `<nav class="learning-section-tabs" aria-label="Learning sections">${learningSections.map(([label, iconName, route]) => `<button type="button" data-route="${route}" class="${activeRenderRoute === route ? 'active' : ''}" ${activeRenderRoute === route ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span></button>`).join('')}</nav>` : '';
     const trackTabs = +p.grade === 12 ? `<nav class="learning-track-tabs" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>` : `<span class="learning-track-label">CBSE · Class ${e(p.grade)}</span>`;
-    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls">${trackTabs}${subjectTabs}</div>${sectionTabs}</div></div>${extension}`;
+    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls"><label class="education-learner-label" for="educationLearner">Student<select id="educationLearner" aria-label="Education student">${context.profiles.map(profile => `<option value="${e(profile.personId)}" ${profile.personId === context.activeId ? 'selected' : ''}>${e(profile.name)} · Class ${e(profile.grade)}</option>`).join('')}</select></label>${trackTabs}${subjectTabs}</div>${sectionTabs}</div></div>${extension}`;
   }
 
   function schoolHub(context) {

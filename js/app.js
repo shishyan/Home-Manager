@@ -430,23 +430,13 @@
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
     $('#workspaceMenuLabel').innerHTML = `<span><small>Daily & weekly</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
-    $('#nav').innerHTML = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key)).map(([key, item]) => {
-      const active = key === activeGroup;
-      const expanded = expandedGroup === key;
-      const children = expanded ? `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(item.label)} pages">${item.items.map((child, index) => {
-        const nested = child[3] || [];
-        const nestedActive = nested.some(subitem => route === subitem[2] || topRoute === subitem[2]);
-        const childActive = !activeSettings && (topRoute === child[2] || nestedActive);
-        const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => { const subActive = !activeSettings && (route === subitem[2] || topRoute === subitem[2]); return `<button type="button" data-route="${subitem[2]}" aria-label="Open ${D.esc(subitem[0])}" title="${D.esc(subitem[0])}" class="section-subitem ${subActive ? 'active' : ''}" ${subActive ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`; }).join('')}</div>` : '';
-        return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" title="${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
-      }).join('')}</div>` : '';
-      const direct = false;
-      const chevron = direct ? '' : `<i class="nav-chevron" data-lucide="${expanded ? 'chevron-down' : 'chevron-right'}"></i>`;
-      const expansionState = direct ? '' : ` aria-expanded="${expanded}"`;
-      const parentLabel = direct ? `Open ${item.label}` : `${expanded ? 'Collapse' : 'Expand'} ${item.label} menu`;
-      const navigation = direct ? `data-route="${item.route}"` : `data-group="${key}"`;
-      return `<div class="nav-tree-item"><button class="nav-parent ${active ? 'active' : ''} ${expanded && !direct ? 'expanded' : ''}" ${navigation} aria-label="${D.esc(parentLabel)}" title="${D.esc(parentLabel)}"${expansionState}><span class="nav-icon"><i data-lucide="${item.icon}"></i></span><span>${D.esc(item.label)}</span>${chevron}</button>${children}</div>`;
-    }).join('');
+    const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
+    $('#nav').innerHTML = `<label class="navigation-switcher" for="navigationGroup">Menu<select id="navigationGroup" aria-label="Menu section">${availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('')}</select></label><div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
+      const nested = child[3] || [];
+      const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
+      const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
+      return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
+    }).join('')}</div>`;
     const mobileItems = [['Today', 'sparkles', 'global/overview'], ['Calendar', 'calendar-days', 'home/calendar'], ['Tasks', 'list-checks', 'home/tasks'], ['Food', 'shopping-basket', route.startsWith('kitchen/') ? 'kitchen/overview' : 'home/inventory']];
     $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
@@ -2338,6 +2328,23 @@
     render();
     document.querySelector('[data-chapter-card]')?.focus();
   }
+
+  document.addEventListener('change', event => {
+    if (event.target.id === 'navigationGroup') {
+      const key = event.target.value;
+      if (V.groups[key] && personaCanSeeGroup(key)) go(V.groups[key].route);
+    }
+    if (event.target.id === 'educationLearner') {
+      const id = event.target.value;
+      if (!(D.state.academicProfiles || []).some(profile => profile.personId === id)) return;
+      if (document.body.classList.contains('chapter-workspace-open')) closeChapterWorkspace();
+      HM.persona.set(id);
+      D.state.settings.activeLearnerId = id;
+      D.save();
+      if (route === 'study/jee' && +HM.persona.academic()?.grade !== 12) go('study/curriculum');
+      else render();
+    }
+  });
 
   document.addEventListener('click', event => {
     const languageOption = event.target.closest('[data-language]');
