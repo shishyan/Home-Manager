@@ -81,19 +81,19 @@ test('global persona persists and scopes owned content while preserving shared r
   await expect(page.locator('#personaMenu')).toBeVisible();
   await expect(page.locator('.persona-option')).toHaveCount(5);
   await expect(page.locator('#personaMenu [data-persona="family"]')).toHaveAttribute('aria-selected', 'true');
-  await expect(page.locator('#personaMenu [data-persona="p3"] small')).toHaveText('Daughter');
-  await expect(page.locator('#personaMenu [data-persona="p4"] small')).toHaveText('Son');
+  await expect(page.locator('#personaMenu [data-persona="p3"] small')).toHaveText('Elder Sister');
+  await expect(page.locator('#personaMenu [data-persona="p4"] small')).toHaveText('Younger Male');
   await page.keyboard.press('Escape');
   await expect(page.locator('#personaMenu')).toBeHidden();
   await page.locator('#personaSwitcher').press('ArrowDown');
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Enter');
-  await expect(page.locator('#personaName')).toHaveText('Father');
+  await expect(page.locator('#personaName')).toHaveText('Nagarajan Balasubramanian');
 
   await page.evaluate(() => {
     HM.data.state.tasks.push(
-      { id: 'persona-p3', context: 'home', type: 'task', title: 'P3 private sentinel', category: 'Test', assignee: 'Ananya', dueAt: '2026-08-20', priority: 'medium', status: 'todo' },
-      { id: 'persona-p4', context: 'home', type: 'task', title: 'P4 private sentinel', category: 'Test', assignee: 'Arjun', dueAt: '2026-08-20', priority: 'medium', status: 'todo' },
+      { id: 'persona-p3', context: 'home', type: 'task', title: 'P3 private sentinel', category: 'Test', assignee: 'Sasha Nagarajan', dueAt: '2026-08-20', priority: 'medium', status: 'todo' },
+      { id: 'persona-p4', context: 'home', type: 'task', title: 'P4 private sentinel', category: 'Test', assignee: 'Ishaan Nagarajan', dueAt: '2026-08-20', priority: 'medium', status: 'todo' },
       { id: 'persona-shared', context: 'home', type: 'task', title: 'Shared family sentinel', category: 'Test', assignee: 'Family', dueAt: '2026-08-20', priority: 'medium', status: 'todo' }
     );
     HM.data.save();
@@ -103,7 +103,7 @@ test('global persona persists and scopes owned content while preserving shared r
   await page.click('[data-persona="p4"]');
   await expect(page.locator('body')).toHaveAttribute('data-active-persona', 'p4');
   await expect(page.locator('#content')).toHaveAttribute('data-active-persona', 'p4');
-  await expect(page.locator('#personaName')).toHaveText('Arjun');
+  await expect(page.locator('#personaName')).toHaveText('Ishaan Nagarajan');
   expect(await page.evaluate(() => localStorage.getItem(HM.persona.KEY))).toBe('p4');
 
   await page.goto(`${app}#/home/tasks`);
@@ -112,7 +112,7 @@ test('global persona persists and scopes owned content while preserving shared r
   await expect(page.locator('#content')).not.toContainText('P3 private sentinel');
 
   await page.reload();
-  await expect(page.locator('#personaName')).toHaveText('Arjun');
+  await expect(page.locator('#personaName')).toHaveText('Ishaan Nagarajan');
   await expect(page.locator('#content')).toContainText('P4 private sentinel');
   await expect(page.locator('#content')).not.toContainText('P3 private sentinel');
 
@@ -175,7 +175,7 @@ test('parents default to Tamil and keep an independent language preference', asy
   await expect(page.locator('#nav')).not.toContainText('சமையலறை');
   await expect(page.locator('#pageTitle')).toHaveText('செயலி & தரவு');
   await expect(page.locator('body')).not.toContainText(/[௦-௯]/);
-  await expect(page.locator('#personaName')).toHaveText('Father');
+  await expect(page.locator('#personaName')).toHaveText('Nagarajan Balasubramanian');
 
   await page.locator('#languageSwitcher [data-language="en"]').click();
   await expect(page.locator('body')).toHaveAttribute('data-language', 'en');
@@ -344,7 +344,7 @@ test('medicine entry stays in Medicines and remains searchable', async ({ page }
   await page.getByRole('button', { name: /Add medicine plan/i }).first().click();
   await expect(page.locator('#formTitle')).toHaveText('Add medicine plan');
   await page.locator('[name="title"]').fill('Vitamin D refill');
-  await page.locator('[name="owner"]').fill('Mother');
+  await page.locator('[name="owner"]').fill('Thamarai Elangovan');
   await page.locator('[name="dueDate"]').fill('2026-08-20');
   await page.locator('[name="frequency"]').selectOption('Monthly');
   await page.locator('[name="status"]').selectOption('active');
@@ -437,7 +437,7 @@ test('mobile header keeps the persona switcher on the right and language in Sett
   await page.locator('#personaSwitcher').click();
   await expect(page.locator('#personaMenu')).toBeVisible();
   await page.locator('#personaMenu [data-persona="p1"]').click();
-  await expect(page.locator('#personaName')).toHaveText('Father');
+  await expect(page.locator('#personaName')).toHaveText('Nagarajan Balasubramanian');
 
   await page.goto(`${app}#/settings/app`);
   await expect(page.locator('.settings-language-picker #languageSwitcher')).toBeVisible();
@@ -1507,5 +1507,5 @@ test('Contacts auto-import while Tasks remain reviewable before import', async (
   await expect(page.locator('[data-google-service="tasks"]')).toContainText('Renew library card');
   await page.locator('[data-google-action="task-import"]').click();
   await expect(page.locator('#content')).toContainText('Renew library card');
-  expect(await page.evaluate(() => HM.data.state.tasks.some(task => task.googleTaskId === 'gt-1' && task.assignee === 'Mother'))).toBe(true);
+  expect(await page.evaluate(() => HM.data.state.tasks.some(task => task.googleTaskId === 'gt-1' && task.assignee === 'Thamarai Elangovan'))).toBe(true);
 });

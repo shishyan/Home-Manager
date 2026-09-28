@@ -3,8 +3,6 @@ test.setTimeout(120000);
 test('parent dropdown and education member switching', async ({ page }) => {
   await page.goto('http://127.0.0.1:8765/');
   await page.evaluate(() => localStorage.clear()); await page.reload();
-  await page.evaluate(() => { for (const [id, name] of [['p3','Ishaan'],['p4','Sasha']]) { HM.data.state.people.find(p => p.id === id).name = name; HM.data.state.academicProfiles.find(p => p.personId === id).name = name; } HM.data.save(); });
-  await page.reload();
   await expect(page.locator('#nav .nav-parent')).toHaveCount(0);
   await page.locator('#navigationGroup').selectOption('learning');
   await expect(page).toHaveURL(/study\/curriculum/);
@@ -28,3 +26,26 @@ test('parent dropdown and education member switching', async ({ page }) => {
   await page.screenshot({path:'test-results/navigation-mobile.png'});
 });
 
+test('family identities persist through legacy restore, save and reset', async ({ page }) => {
+  await page.goto('http://127.0.0.1:8765/');
+  const expected = [
+    ['p1','Nagarajan Balasubramanian','Father'], ['p2','Thamarai Elangovan','Mother'],
+    ['p3','Sasha Nagarajan','Elder Sister'], ['p4','Ishaan Nagarajan','Younger Male']
+  ];
+  await page.evaluate(() => {
+    const old = HM.data.clone(HM.data.state);
+    for (const [id,name] of [['p1','Father'],['p2','Mother'],['p3','Ananya'],['p4','Arjun']]) old.people.find(p => p.id === id).name = name;
+    old.tasks.push({id:'legacy-owner',title:'Preserved task',assignee:'Ananya',status:'todo'});
+    old.academicProfiles.find(p => p.personId === 'p3').name = 'Ananya';
+    localStorage.setItem(HM.data.KEY, JSON.stringify(old));
+  });
+  await page.reload();
+  expect(await page.evaluate(() => HM.data.state.people.map(p => [p.id,p.name,p.householdRole]))).toEqual(expected);
+  expect(await page.evaluate(() => HM.data.state.tasks.find(t => t.id === 'legacy-owner').assignee)).toBe('Sasha Nagarajan');
+  expect(await page.evaluate(() => HM.data.state.academicProfiles.find(p => p.personId === 'p3').name)).toBe('Sasha Nagarajan');
+  await page.evaluate(() => { HM.data.state.people.find(p => p.id === 'p3').name = 'Ananya'; HM.data.save(); });
+  await page.reload();
+  expect(await page.evaluate(() => HM.data.state.people.map(p => [p.id,p.name,p.householdRole]))).toEqual(expected);
+  await page.evaluate(() => HM.data.reset()); await page.reload();
+  expect(await page.evaluate(() => HM.data.state.people.map(p => [p.id,p.name,p.householdRole]))).toEqual(expected);
+});
