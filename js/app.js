@@ -1718,6 +1718,8 @@
     });
     return messages.map(message => {
       const headers = Object.fromEntries((message.payload?.headers || []).map(header => [String(header.name).toLowerCase(), header.value]));
+      const senderAddress = String(headers.from || '').match(/[A-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Z0-9.-]+/i)?.[0] || '';
+      if (account.email.toLowerCase() === 'nagaraj957@gmail.com' && senderAddress.toLowerCase().includes('peepal')) return null;
       const body = gmailMessageText(message.payload);
       const text = `${headers.subject || ''} ${message.snippet || ''} ${body}`.slice(0, 24000);
       const category = classifyIntegrationText(text, sync.categories || integrationCategories);

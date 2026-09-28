@@ -1,0 +1,47 @@
+name: Daily encrypted family mail sync
+
+on:
+  schedule:
+    - cron: '30 0 * * *' # 06:00 Asia/Kolkata; GitHub may delay scheduled runs.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: family-mail-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test parser and encryption
+        run: node --test scripts/mail-sync/sync.test.mjs
+      - name: Fetch Gmail and encrypt family feed
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          MAIL_FEED_PASSWORD: ${{ secrets.MAIL_FEED_PASSWORD }}
+        run: node scripts/mail-sync/sync.mjs
+      - name: Publish encrypted feed only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- data/mail-sync.enc.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Refresh encrypted family mail feed'
+          git pull --rebase origin master
+          git push origin HEAD:master
+          # GITHUB_TOKEN pushes do not trigger push workflows. Dispatch deployment explicitly.
+          gh workflow run pages.yml --ref master

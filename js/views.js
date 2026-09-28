@@ -143,7 +143,7 @@
     'home/assets': ['Property & Assets', 'Repairs, property records and household assets'],
     'home/wisdom': ['Wisdom & Recognition', 'Family knowledge and points'],
     'home/directory': ['Home Directory', 'Family and service contacts'],
-    'home/sms': ['SMS Messages', 'Import and export SMS messages from your phone.'],
+    'home/sms': ['Messages', 'Daily email updates, calendar dates and imported phone messages.'],
     'home/property': ['Property & Assets', 'Repairs, property records and household assets'],
     'home/travel': ['Travel', 'Trips, transportation, vehicles, stays and protection'],
     'home/travel/spending': ['Travel Spending', 'Costs across trips, transport, vehicles and stays'],
@@ -500,7 +500,7 @@
       cells += `<div class="calendar-day ${date === today() ? 'is-today' : ''}"><small>${dayNumber > 0 && dayNumber <= days ? dayNumber : ''}</small>${dayEvents.map(x => `<button class="event ${e(x.context)}" data-route="${eventRoute(x.context)}">${e(x.title)}</button>`).join('')}</div>`;
     }
     const monthEvents = events.filter(x => isoDay(x.startAt).startsWith(`${year}-${String(month + 1).padStart(2, '0')}`)).sort((a, b) => String(a.startAt).localeCompare(String(b.startAt)));
-    return `<div class="toolbar"><div><small>Calendar</small><h2>${calendarCursor.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</h2></div><div class="row-actions"><button data-calendar-shift="-1" aria-label="Previous month">${icon('chevron-left')}</button><button data-calendar-shift="today">Today</button><button data-calendar-shift="1" aria-label="Next month">${icon('chevron-right')}</button></div><button class="primary" data-create="event" data-context="${context === 'all' ? 'home' : context}">${icon('plus')}<span>Event</span></button></div><div class="calendar-wrap"><div class="calendar">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(x => `<div class="calendar-day calendar-label"><b>${x}</b></div>`).join('')}${cells}</div><div class="calendar-agenda">${monthEvents.length ? monthEvents.map(x => row(x.title, `${D.date(x.startAt, { weekday: 'short', day: 'numeric', month: 'short' })} - ${x.venue || 'No venue'}`, badge(x.context))).join('') : empty('No events this month.', 'event', 'Add event')}</div></div>${context === 'all' ? calendarPanel() : ''}`;
+    return `<div class="toolbar"><div><small>Calendar</small><h2>${calendarCursor.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</h2></div><div class="row-actions"><button data-calendar-shift="-1" aria-label="Previous month">${icon('chevron-left')}</button><button data-calendar-shift="today">Today</button><button data-calendar-shift="1" aria-label="Next month">${icon('chevron-right')}</button></div><button class="primary" data-create="event" data-context="${context === 'all' ? 'home' : context}">${icon('plus')}<span>Event</span></button></div><div class="calendar-wrap"><div class="calendar">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(x => `<div class="calendar-day calendar-label"><b>${x}</b></div>`).join('')}${cells}</div><div class="calendar-agenda">${monthEvents.length ? monthEvents.map(x => row(x.title, `${D.date(x.startAt, { weekday: 'short', day: 'numeric', month: 'short' })} - ${x.venue || 'No venue'}`, badge(x.context))).join('') : empty('No events this month.', 'event', 'Add event')}</div></div>${context === 'all' ? `${HM.mailFeed?.renderCalendar() || ''}${calendarPanel()}` : ''}`;
   }
 
   function family() {
@@ -1643,7 +1643,7 @@
       'home/wisdom': wisdom,
       'home/directory': () => directory('home'),
       'home/notes': notesPanel,
-      'home/sms': smsPanel,
+      'home/sms': () => `${HM.mailFeed?.renderCard() || ''}${HM.mailFeed?.renderMessages() || ''}<details class="panel sms-backup"><summary>Phone SMS import and backup</summary>${smsPanel()}</details>`,
       'home/travel': () => `${lifeSuiteOverview('travel')}${gmailEssence(['travel'], 'Bookings and travel changes from Gmail', 'itineraries and action dates stay with Travel', true)}`,
       'home/travel/spending': () => lifeSuiteSpending('travel'),
       'home/web': () => `${lifeSuiteOverview('web')}${gmailEssence(['bills', 'deliveries', 'home'], 'Digital accounts, renewals and services from Gmail', 'recurring services and account notices stay with Web Life')}`,

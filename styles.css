@@ -2760,3 +2760,13 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .education-learner-label select { min-height: 36px; max-width: 180px; border-radius: 8px; padding: 4px 8px; color: #1e293b; background: #fff; }
 .collapsed .navigation-switcher { margin: 8px 2px; font-size: 0; }
 .collapsed .navigation-switcher select { padding-inline: 2px; font-size: 11px; }
+/* Private daily email feed */
+.mail-sync-controls{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:18px 0}
+.mail-sync-controls>label:first-child{display:grid;gap:6px;flex:1;min-width:220px;font-size:.85rem;font-weight:600}
+.mail-sync-controls input[type=password]{width:100%;padding:12px;border:1px solid var(--border,#dce3ed);border-radius:10px;background:var(--surface,#fff);color:inherit}
+.mail-sync-card details{margin-top:14px}.mail-sync-card summary,.sms-backup>summary{cursor:pointer;font-weight:650;padding:8px 0}
+.mail-feed-notice{font-size:.88rem;line-height:1.6;overflow-wrap:anywhere}
+.mail-message{padding:18px 0;border-bottom:1px solid var(--border,#dce3ed);display:grid;gap:8px;overflow-wrap:anywhere}
+.mail-message:last-child{border-bottom:0}.mail-message h3,.mail-message p{margin:0}.mail-message p{line-height:1.6}.mail-message small{color:var(--muted,#64748b)}
+.mail-message a{font-size:.85rem;width:fit-content}.mail-message .badge{margin-right:6px}.sms-backup{margin-top:18px}.sms-backup>section{margin-top:12px}
+@media(max-width:600px){.mail-sync-controls{align-items:stretch}.mail-sync-controls>label:first-child{min-width:100%}.mail-sync-controls>button,.mail-sync-controls>.file-button{flex:1;text-align:center}.mail-sync-card .section-head{align-items:flex-start;flex-wrap:wrap}}
