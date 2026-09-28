@@ -9,6 +9,10 @@ test('class subject chapter tree switches learners and retains top section tabs'
   const class7=page.locator('.education-class').last();
   const math=class7.locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});
   await math.locator('summary').click();
+  await expect(page).toHaveURL(/study\/overview/);
+  await expect(page.locator('#educationHeaderTabs [data-route="study/overview"]')).toHaveAttribute('aria-current','page');
+  await expect(page.locator('#sidebar #personaSwitcher')).toBeVisible();
+  await expect(page.locator('.app-header #personaSwitcher')).toHaveCount(0);
   const chapter=math.locator('[data-education-chapter]').first();
   const title=await chapter.locator('b').innerText();
   await chapter.click();
@@ -25,7 +29,16 @@ test('class subject chapter tree switches learners and retains top section tabs'
   await page.screenshot({path:'test-results/education-tree-desktop.png'});
   await page.setViewportSize({width:390,height:844});
   await expect.poll(async()=>Math.round((await page.locator('.app-shell').boundingBox()).x)).toBe(0);
-  await expect(page.locator('#content .learning-section-tabs')).toBeVisible();
+  await expect(page.locator('#educationHeaderTabs .learning-section-tabs')).toBeVisible();
+  const tabBox=await page.locator('#educationHeaderTabs').boundingBox();
+  expect(tabBox.x).toBeLessThan(60);
+  await page.locator('#menu').click();
+  await expect(page.locator('#sidebar #personaSwitcher')).toBeVisible();
+  await page.locator('#personaSwitcher').click();
+  await expect(page.locator('#personaMenu')).toBeVisible();
+  await page.locator('#personaMenu [data-persona="p3"]').click();
+  await expect(page.locator('#educationLearner')).toHaveValue('p3');
+  await expect.poll(async()=>Math.round((await page.locator('#sidebar').boundingBox()).x + (await page.locator('#sidebar').boundingBox()).width)).toBeLessThanOrEqual(0);
   await page.screenshot({path:'test-results/education-tree-mobile.png'});
   await page.setViewportSize({width:1280,height:720});
   const firstChapter=page.locator('.education-class').last().locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});

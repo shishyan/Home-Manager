@@ -520,24 +520,10 @@
   function placeEducationMasterControls() {
     const slot = $('#educationHeaderTabs');
     if (!slot) return;
-    const contentLearners = $('#content .learner-bar');
-    const contentControls = $('#content .education-master-controls');
-    const controls = contentControls || slot.querySelector('.education-master-controls');
-    const learners = contentLearners || slot.querySelector('.learner-bar');
-    const sections = $('#content .learning-section-tabs') || slot.querySelector('.learning-section-tabs');
-    const row = $('#content .education-command-row');
-    const useHeader = route.startsWith('study/') && window.innerWidth >= 1100;
-    slot.hidden = !useHeader;
-    if (!controls && !learners) { slot.replaceChildren(); return; }
-    if (useHeader) {
-      slot.replaceChildren(...[sections].filter(Boolean));
-    } else if (row) {
-      const sectionTabs = row.querySelector('.learning-section-tabs');
-      if (learners) row.insertBefore(learners, sectionTabs);
-      if (controls) row.insertBefore(controls, sectionTabs);
-      if (sections && sections.parentElement !== row) row.appendChild(sections);
-      slot.replaceChildren();
-    }
+    const sections = $('#content .learning-section-tabs');
+    slot.hidden = !route.startsWith('study/');
+    if (sections && !slot.hidden) slot.replaceChildren(sections);
+    else if (slot.hidden) slot.replaceChildren();
   }
 
   function render() {
@@ -2353,6 +2339,22 @@
   });
 
   document.addEventListener('click', event => {
+    const educationSubject = event.target.closest('[data-education-subject]');
+    if (educationSubject) {
+      event.preventDefault();
+      if (activeChapterWorkspace) closeChapterWorkspace();
+      const studentId = educationSubject.dataset.student;
+      const subject = educationSubject.dataset.educationSubject;
+      HM.persona.set(studentId);
+      D.state.settings.activeLearnerId = studentId;
+      D.state.settings.activeLearningSubject ||= {};
+      D.state.settings.activeLearningSubject[studentId] = subject;
+      D.state.settings.educationExpandedSubject = {studentId,subject};
+      D.save();
+      go('study/overview');
+      render();
+      return;
+    }
     const educationChapter = event.target.closest('[data-education-chapter]');
     if (educationChapter) {
       if (activeChapterWorkspace) closeChapterWorkspace();

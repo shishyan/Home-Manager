@@ -2792,3 +2792,28 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .education-header-tabs .learning-section-tabs button.active { color: #fff; }
 #content .education-command-row .education-master-controls { display: flex; }
 #content[data-view^="study/"] .learning-command-bar { display: block; }
+/* Profile selection belongs to the primary sidebar. */
+#sidebar > .persona-crumb { display: flex; margin: 4px 0 12px; flex-direction: column; align-items: stretch; flex: 0 0 auto; }
+#sidebar > .persona-crumb::after { display: none; }
+#sidebar .persona-switcher { width: 100%; height: auto; min-height: 44px; padding: 7px; justify-content: flex-start; }
+#sidebar .persona-switcher strong { display: block; white-space: normal; flex: 1; text-align: left; font-size: 12px; }
+#sidebar .persona-switcher > svg { display: block; flex: 0 0 16px; }
+#sidebar .persona-menu { position: static; width: 100%; margin-top: 7px; }
+.collapsed #sidebar .persona-switcher strong, .collapsed #sidebar .persona-switcher > svg { display: none; }
+.collapsed .education-tree { display: none; }
+/* Keep all four education sections in the top-left header at every width. */
+.workspace-study .education-header-tabs { display: flex !important; flex: 0 1 auto; justify-content: flex-start; overflow: visible; }
+.workspace-study .education-header-tabs[hidden] { display: none !important; }
+.education-header-tabs .learning-section-tabs { margin-left: 0; gap: 5px; }
+.education-header-tabs .learning-section-tabs button { min-height: 40px; padding: 8px 13px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); font-size: 12px; font-weight: 800; }
+.education-header-tabs .learning-section-tabs button.active { background: #fff; color: #362f79; border-color: #fff; box-shadow: 0 3px 12px rgba(0,0,0,.15); }
+@media(max-width:900px) {
+  .workspace-study .app-header .topbar { gap: 7px; padding: 0 7px; }
+  .workspace-study .app-header .page-identity, .workspace-study #utilityPersonaAvatar { display: none; }
+  .workspace-study .education-header-tabs { flex: 1; min-width: 0; }
+  .workspace-study .education-header-tabs .learning-section-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); width: 100%; flex: 1; gap: 3px; }
+  .workspace-study .education-header-tabs .learning-section-tabs button { justify-content: center; padding: 8px 3px; font-size: 10px; }
+  .workspace-study .education-header-tabs .learning-section-tabs button svg { display: none; }
+  .collapsed #sidebar .persona-switcher strong, .collapsed #sidebar .persona-switcher > svg { display: block; }
+  .collapsed .education-tree { display: block; }
+}
