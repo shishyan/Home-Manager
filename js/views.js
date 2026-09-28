@@ -860,6 +860,20 @@
     return jeeMode ? HM.genius.jeeSyllabus.filter(item => item.subject === context.selectedSubject) : schoolCurriculumLessons(context);
   }
 
+  function educationNavigation(activeLessonId = '') {
+    const activeId = D.state.settings.activeLearnerId;
+    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages">${[...(D.state.academicProfiles || [])].sort((a,b)=>+b.grade-+a.grade).map(profile => {
+      const selected = D.state.settings.activeLearningSubject?.[profile.personId] || 'Mathematics';
+      return `<details class="education-class" open><summary><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></summary>${profile.subjects.map(subject => {
+        const context = {profile,activeId:profile.personId,selectedSubject:subject};
+        const jee = +profile.grade === 12 && D.state.settings.activeLearningTrack?.[profile.personId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
+        const lessons = curriculumLessons(context, jee);
+        const custom = (D.state.syllabusItems || []).filter(item=>!jee && item.studentId===profile.personId && item.subject===subject && !/^sy-p[34]-/.test(item.id) && !lessons.some(lesson=>lesson.title.toLowerCase()===item.title.toLowerCase()));
+        return `<details class="education-subject" ${activeLessonId && profile.personId===activeId && subject===selected ? 'open' : ''}><summary>${e(subject)}<small>${lessons.length+custom.length}</small></summary><div>${[...lessons,...custom].map((lesson,index)=>`<button type="button" data-education-chapter="${e(lesson.id)}" data-track="${jee ? 'jee' : 'cbse'}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" class="education-chapter ${profile.personId===activeId && lesson.id===activeLessonId ? 'active' : ''}" ${profile.personId===activeId && lesson.id===activeLessonId ? 'aria-current="page"' : ''}><span>${index+1}</span><b>${e(lesson.title)}</b></button>`).join('') || '<p class="empty">No chapters added yet.</p>'}</div></details>`;
+      }).join('')}</details>`;
+    }).join('')}</div>`;
+  }
+
   function curriculumLessonById(context, lessonId) {
     return HM.genius.jeeSyllabus.find(item => item.id === lessonId) || schoolCurriculumLessons(context).find(item => item.id === lessonId) || (D.state.syllabusItems || []).find(item => item.id === lessonId && item.studentId === context.activeId);
   }
@@ -904,12 +918,12 @@
     const subjects = jeeMode ? ['Physics', 'Chemistry', 'Mathematics'] : context.profile.subjects;
     const selectedTab = subjects.includes(context.selectedSubject) ? context.selectedSubject : subjects[0];
     const subjectTabs = activeRenderRoute.startsWith('study/') ? `<nav class="subject-tabs subject-master-tabs" aria-label="Subjects">${subjects.map(subject => `<button type="button" data-learning-subject="${e(subject)}" class="${selectedTab === subject ? 'active' : ''}" aria-pressed="${selectedTab === subject}">${e(subject)}</button>`).join('')}</nav>` : '';
-    const cbseSections = [['Curriculum','route','study/curriculum'],['Planner','calendar-clock','study/planner'],['Overview','activity','study/overview'],['Progress','chart-no-axes-combined','study/reports']];
+    const cbseSections = [['Overview','activity','study/overview'],['Curriculum','route','study/curriculum'],['Planner','calendar-clock','study/planner'],['Progress','chart-no-axes-combined','study/reports']];
     const jeeSections = cbseSections;
     const learningSections = jeeMode ? jeeSections : cbseSections;
     const sectionTabs = activeRenderRoute.startsWith('study/') ? `<nav class="learning-section-tabs" aria-label="Learning sections">${learningSections.map(([label, iconName, route]) => `<button type="button" data-route="${route}" class="${activeRenderRoute === route ? 'active' : ''}" ${activeRenderRoute === route ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span></button>`).join('')}</nav>` : '';
     const trackTabs = +p.grade === 12 ? `<nav class="learning-track-tabs" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>` : `<span class="learning-track-label">CBSE · Class ${e(p.grade)}</span>`;
-    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls"><label class="education-learner-label" for="educationLearner">Student<select id="educationLearner" aria-label="Education student">${context.profiles.map(profile => `<option value="${e(profile.personId)}" ${profile.personId === context.activeId ? 'selected' : ''}>${e(profile.name)} · Class ${e(profile.grade)}</option>`).join('')}</select></label>${trackTabs}${subjectTabs}</div>${sectionTabs}</div></div>${extension}`;
+    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls"><label class="education-learner-label" for="educationLearner">Student<select id="educationLearner" aria-label="Education student">${context.profiles.map(profile => `<option value="${e(profile.personId)}" ${profile.personId === context.activeId ? 'selected' : ''}>${e(profile.name)} · Class ${e(profile.grade)}</option>`).join('')}</select></label>${trackTabs}</div>${sectionTabs}</div></div>${extension}`;
   }
 
   function schoolHub(context) {
@@ -1709,6 +1723,7 @@
     textbookAsset,
     chapterWorkspace,
     chapterWorkspaceNavigation,
+    educationNavigation,
     chapterSubchapters,
     validSubchapterTitle,
     isInstructionalApparatusTitle,

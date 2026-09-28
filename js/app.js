@@ -437,6 +437,9 @@
       const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
       return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
     }).join('')}</div>`;
+    if (activeGroup === 'learning') {
+      $('#sectionNav').outerHTML = V.educationNavigation(activeChapterWorkspace?.lessonId || '');
+    }
     const mobileItems = availableGroups.map(([key, item]) => [item.label, item.icon, item.route]);
     $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
@@ -521,16 +524,18 @@
     const contentControls = $('#content .education-master-controls');
     const controls = contentControls || slot.querySelector('.education-master-controls');
     const learners = contentLearners || slot.querySelector('.learner-bar');
+    const sections = $('#content .learning-section-tabs') || slot.querySelector('.learning-section-tabs');
     const row = $('#content .education-command-row');
     const useHeader = route.startsWith('study/') && window.innerWidth >= 1100;
     slot.hidden = !useHeader;
     if (!controls && !learners) { slot.replaceChildren(); return; }
     if (useHeader) {
-      slot.replaceChildren(...[learners, controls].filter(Boolean));
+      slot.replaceChildren(...[sections].filter(Boolean));
     } else if (row) {
       const sectionTabs = row.querySelector('.learning-section-tabs');
       if (learners) row.insertBefore(learners, sectionTabs);
       if (controls) row.insertBefore(controls, sectionTabs);
+      if (sections && sections.parentElement !== row) row.appendChild(sections);
       slot.replaceChildren();
     }
   }
@@ -2304,9 +2309,7 @@
     const lesson = V.lessonById(lessonId);
     activeChapterWorkspace = { lessonId, section };
     $('#chapterWorkspaceBody').innerHTML = V.chapterWorkspace(lessonId, section);
-    $('#nav').classList.add('chapter-nav-mode');
-    $('#nav').innerHTML = V.chapterWorkspaceNavigation(lessonId, section);
-    $('#workspaceMenuLabel').innerHTML = `<span><small>Education</small><b>${D.esc(lesson?.subject || 'Subject')} chapters</b></span><i data-lucide="list-tree"></i>`;
+    renderNav();
     workspace.hidden = false;
     document.body.classList.add('chapter-workspace-open');
     refreshIcons();
@@ -2315,7 +2318,7 @@
 
   function openChapterWorkspace(lessonId, section = 'summary') {
     refreshChapterWorkspace(lessonId, section);
-    $('#nav .chapter-workspace-close')?.focus();
+    $('#nav .education-chapter.active')?.focus();
   }
 
   function closeChapterWorkspace() {
@@ -2349,6 +2352,23 @@
   });
 
   document.addEventListener('click', event => {
+    const educationChapter = event.target.closest('[data-education-chapter]');
+    if (educationChapter) {
+      if (activeChapterWorkspace) closeChapterWorkspace();
+      const studentId = educationChapter.dataset.student;
+      HM.persona.set(studentId);
+      D.state.settings.activeLearnerId = studentId;
+      D.state.settings.activeLearningSubject ||= {};
+      D.state.settings.activeLearningSubject[studentId] = educationChapter.dataset.subject;
+      D.state.settings.activeLearningTrack ||= {};
+      D.state.settings.activeLearningTrack[studentId] = educationChapter.dataset.track || 'cbse';
+      D.save();
+      go('study/curriculum');
+      render();
+      openChapterWorkspace(educationChapter.dataset.educationChapter);
+      document.body.classList.remove('menu-open');
+      return;
+    }
     const languageOption = event.target.closest('[data-language]');
     if (languageOption?.closest('#languageSwitcher')) {
       HM.i18n.set(languageOption.dataset.language);
@@ -2678,7 +2698,10 @@
         const lessonId = routeTarget.dataset.lesson || activeChapterWorkspace?.lessonId || D.state.settings.activeGeniusLesson?.[D.state.settings.activeLearnerId] || D.state.settings.activePracticeLesson?.[D.state.settings.activeLearnerId] || V.defaultLessonId();
         if (lessonId) openChapterWorkspace(lessonId, 'practice');
         else go('study/curriculum');
-      } else go(routeTarget.dataset.route);
+      } else {
+        if (activeChapterWorkspace) closeChapterWorkspace();
+        go(routeTarget.dataset.route);
+      }
       if ($('#searchDialog').open) $('#searchDialog').close();
       if ($('#emergencyDialog').open) $('#emergencyDialog').close();
       toggleNotifications(false);

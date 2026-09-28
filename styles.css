@@ -2771,3 +2771,24 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .mail-message:last-child{border-bottom:0}.mail-message h3,.mail-message p{margin:0}.mail-message p{line-height:1.6}.mail-message small{color:var(--muted,#64748b)}
 .mail-message a{font-size:.85rem;width:fit-content}.mail-message .badge{margin-right:6px}.sms-backup{margin-top:18px}.sms-backup>section{margin-top:12px}
 @media(max-width:600px){.mail-sync-controls{align-items:stretch}.mail-sync-controls>label:first-child{min-width:100%}.mail-sync-controls>button,.mail-sync-controls>.file-button{flex:1;text-align:center}.mail-sync-card .section-head{align-items:flex-start;flex-wrap:wrap}}
+.education-tree { padding: 6px 0; }
+.education-class { margin: 5px 0 12px; }
+.education-class > summary { display: flex; flex-direction: column; padding: 10px; border-radius: 9px; background: rgba(255,255,255,.09); color: #fff; cursor: pointer; }
+.education-class > summary small { color: #cbd5e1; font-size: 10px; margin-top: 3px; }
+.education-subject { margin: 4px 0 4px 8px; }
+.education-subject > summary { display: flex; justify-content: space-between; gap: 8px; padding: 9px; color: #e2e8f0; font-size: 12px; cursor: pointer; border-radius: 7px; }
+.education-subject > summary::before { content: '\203a'; }
+.education-subject[open] > summary::before { content: '\2304'; }
+.education-subject > summary small { margin-left: auto; color: #94a3b8; }
+#nav .education-chapter { display: flex; align-items: flex-start; gap: 7px; width: 100%; padding: 8px 9px; margin: 2px 0; border: 0; border-radius: 7px; background: transparent; color: #cbd5e1; text-align: left; font-size: 11px; }
+#nav .education-chapter span { min-width: 18px; color: #94a3b8; }
+#nav .education-chapter b { font-weight: 500; line-height: 1.5; }
+#nav .education-chapter:hover, #nav .education-chapter.active { background: rgba(94,234,212,.13); color: #99f6e4; }
+.education-header-tabs .learning-section-tabs { margin-left: auto; flex: 0 0 auto; }
+.education-header-tabs .education-master-controls { flex: 0 1 auto; }
+.education-command-row .learning-section-tabs { margin-left: auto; }
+@media (max-width: 1099px) { .education-command-row { flex-wrap: wrap; } .education-command-row .learning-section-tabs { margin-left: auto; } }
+.education-header-tabs .learning-section-tabs button { color: #e2e8f0; }
+.education-header-tabs .learning-section-tabs button.active { color: #fff; }
+#content .education-command-row .education-master-controls { display: flex; }
+#content[data-view^="study/"] .learning-command-bar { display: block; }
