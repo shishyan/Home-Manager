@@ -13,6 +13,7 @@
   }
   function options(value) {return phases.map(([key,label])=>`<option value="${key}" ${key===value?'selected':''}>${label}</option>`).join('');}
   function studied(saved) {return (saved.days || []).some(day=>day.date===dateKey() && day.studied);}
+  const proficiencyColors={learning:'#db2777',revision:'#ea580c',expert:'#16a34a'};
   function save(lessonId,values,todayValues,refresh=true) {
     const studentId=D.state.settings.activeLearnerId;
     if (!HM.views.lessonById(lessonId)) return;
@@ -31,22 +32,47 @@
     else document.querySelector('.progress-save-status').textContent='Saved';
   }
   const levels=[['learning','Learning'],['revision','Revision'],['expert','Expert']];
+  function summary(context,lessons) {
+    const values=lessons.map(lesson=>percentages(context,lesson));
+    const avg=key=>values.length?Math.round(values.reduce((sum,item)=>sum+item[key],0)/values.length):0;
+    return {
+      values,
+      learning:avg('learning'),
+      revision:avg('revision'),
+      expert:avg('expert'),
+      overall:Math.round((avg('learning')+avg('revision')+avg('expert'))/3),
+      started:values.filter(item=>Object.values(item).some(value=>value>0)).length,
+      expertComplete:values.filter(item=>item.expert===100).length,
+      chapters:lessons.length
+    };
+  }
   function percentages(context,lesson) {
     const saved=record(context.activeId,lesson.id);
     const legacy=HM.views.chapterTracking(context,lesson).mastery || 0;
     return Object.fromEntries(levels.map(([key])=>[key, Math.max(0,Math.min(100,Math.round((saved.levels?.[key] ?? (key==='learning'?legacy:0))/10)*10))]));
   }
-  function overview(context,lessons) {
-    const values=lessons.map(lesson=>percentages(context,lesson));
-    const avg=key=>values.length?Math.round(values.reduce((sum,item)=>sum+item[key],0)/values.length):0;
-    const overall=Math.round(levels.reduce((sum,[key])=>sum+avg(key),0)/3);
-    const complete=values.filter(item=>item.expert===100).length,started=values.filter(item=>Object.values(item).some(value=>value>0)).length;
-    return `<section class="subject-progress-dashboard"><header><span class="section-kicker">SUBJECT DASHBOARD</span><h2>${e(context.selectedSubject)} at a glance</h2><p>Read-only progress across ${lessons.length} chapters. Update your percentages in Progress.</p></header><div class="dashboard-tiles"><article><small>Overall progress</small><strong>${overall}%</strong><span>Average of all three levels</span></article><article><small>Chapters started</small><strong>${started} / ${lessons.length}</strong><span>${lessons.length-started} ready to begin</span></article><article><small>Expert complete</small><strong>${complete}</strong><span>Chapters at 100% Expert</span></article>${levels.map(([key,label])=>`<article><small>${label} progress</small><strong>${avg(key)}%</strong><progress max="100" value="${avg(key)}" aria-label="${label} average"></progress></article>`).join('')}</div><div class="dashboard-charts"><section class="panel"><h3>Proficiency balance</h3>${levels.map(([key,label])=>`<div class="dashboard-bar"><span>${label}</span><progress max="100" value="${avg(key)}" aria-label="${label} progress chart"></progress><b>${avg(key)}%</b></div>`).join('')}</section><section class="panel"><h3>Chapter progress</h3><p>Learning · Revision · Expert</p><div class="dashboard-chapter-chart">${lessons.map((lesson,index)=>`<div class="dashboard-chapter-bars"><span title="${e(lesson.title)}">${index+1}. ${e(lesson.title)}</span>${levels.map(([key,label])=>`<progress max="100" value="${values[index][key]}" aria-label="${e(lesson.title)} ${label}: ${values[index][key]}%"></progress>`).join('')}<button type="button" class="dashboard-note-action" data-chapter-notes="${e(lesson.id)}" aria-label="My Notes for ${e(lesson.title)}"><i data-lucide="notebook-pen"></i></button></div>`).join('')}</div></section></div></section>`;
+  function overview(context,lessons,trackControl='') {
+    const stats=summary(context,lessons);
+    const valueFor=key=>stats[key];
+    const metrics=[['Overall proficiency',stats.overall,'sparkles','violet'],['Chapters started',`${stats.started}/${stats.chapters}`,'book-open-check','blue'],['Expert complete',stats.expertComplete,'badge-check','green']];
+    return `<section class="subject-progress-dashboard">
+      <header class="subject-dashboard-heading"><div><span class="section-kicker">SUBJECT DASHBOARD</span><h2>${e(context.selectedSubject)} at a glance</h2><p>Chapter progress across ${lessons.length} lessons. Update any chapter in Progress.</p></div><div class="study-dashboard-header-actions">${trackControl}<button type="button" class="study-dashboard-open" data-route="study/curriculum"><i data-lucide="route"></i> Update progress</button></div></header>
+      <div class="subject-dashboard-layout">
+        <section class="subject-dashboard-overview" aria-label="Subject proficiency summary">
+          <div class="subject-dashboard-metrics">${metrics.map(([label,value,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon"><i data-lucide="${iconName}"></i></span><div><small>${label}</small><strong>${value}${label==='Overall proficiency'?'%':''}</strong><span>${label==='Chapters started'?`${stats.chapters-stats.started} not started`:label==='Expert complete'?'At 100% Expert':'Learning · Revision · Expert average'}</span></div></article>`).join('')}</div>
+          <section class="subject-proficiency-chart"><div class="subject-chart-heading"><div><h3>Proficiency by level</h3><p>Average across all chapters</p></div><span>${stats.overall}%<small>overall</small></span></div>${levels.map(([key,label])=>`<div class="subject-chart-row level-${key}"><span>${label}</span><div class="subject-chart-track"><i style="width:${valueFor(key)}%"></i></div><b>${valueFor(key)}%</b></div>`).join('')}</section>
+        </section>
+        <section class="subject-chapter-summary"><header><div><h3>Chapter progress</h3><p>Learning, revision and expert confidence by chapter</p></div><span>${lessons.length} chapters</span></header>
+          <div class="chapter-summary-legend"><span>Chapter</span><span>Learning</span><span>Revision</span><span>Expert</span><span aria-label="Notes"></span></div>
+          <div class="chapter-summary-list">${lessons.map((lesson,index)=>`<article class="chapter-summary-row"><span class="chapter-summary-name"><i>${String(index+1).padStart(2,'0')}</i><b title="${e(lesson.title)}">${e(lesson.title)}</b></span>${levels.map(([key,label])=>`<span class="chapter-summary-level level-${key}" title="${label}: ${stats.values[index][key]}%"><i><b style="width:${stats.values[index][key]}%"></b></i><small>${stats.values[index][key]}%</small></span>`).join('')}<button type="button" class="dashboard-note-action" data-chapter-notes="${e(lesson.id)}" aria-label="My Notes for ${e(lesson.title)}"><i data-lucide="notebook-pen"></i></button></article>`).join('')}</div>
+        </section>
+      </div>
+    </section>`;
   }
-  function curriculum(context,lessons,learner,report) {
-    return `${learner}<section class="progress-workbench"><header class="progress-workbench-heading"><div><span class="section-kicker">YOUR LEARNING JOURNEY</span><h2>Chapter progress</h2><p>Choose each chapter’s proficiency level, then drag its percentage in 10% steps.</p></div><span class="progress-save-status" role="status">Changes save automatically</span></header><section class="progress-slider-list" aria-label="Chapter progress tracking"><div class="progress-grid-heading" aria-hidden="true"><span>Chapter</span><span>Proficiency</span><span>Progress</span><span>My Notes</span></div>${lessons.map((lesson,index)=>{
-      const selected=D.state.settings.chapterProgressLevel?.[context.activeId]?.[lesson.id] || 'learning',values=percentages(context,lesson),value=values[selected],label=levels.find(([key])=>key===selected)[1],tracking=HM.views.chapterTracking(context,lesson);
-      return `<article class="progress-slider-row"><div class="progress-slider-title"><span>${String(index+1).padStart(2,'0')}</span><b>${e(lesson.title)}</b></div><div class="chapter-level-picker" role="group" aria-label="${e(lesson.title)} proficiency">${levels.map(([key,name])=>`<button type="button" data-progress-level="${key}" data-level-lesson="${e(lesson.id)}" aria-pressed="${key===selected}" class="${key===selected?'selected':''}">${name}</button>`).join('')}</div><div class="progress-slider-main"><div class="progress-range-wrap"><input type="range" min="0" max="100" step="10" value="${value}" data-study-level="${selected}" data-lesson="${e(lesson.id)}" aria-label="${e(lesson.title)} ${label} progress" aria-valuetext="${value}%" style="--progress:${value}%"></div><output class="progress-range-value">${value}<small>%</small></output></div><button type="button" class="chapter-notes-action" data-chapter-notes="${e(lesson.id)}" aria-label="My Notes for ${e(lesson.title)}"><i data-lucide="notebook-pen"></i><span>My Notes</span></button></article>`;
+  function curriculum(context,lessons,learner,report,trackControl='') {
+    return `${learner}<section class="progress-workbench"><header class="progress-workbench-heading"><div><span class="section-kicker">YOUR LEARNING JOURNEY</span><h2>Chapter progress</h2><p>Choose each chapter’s proficiency level, then drag its percentage in 10% steps.</p></div><div class="study-dashboard-header-actions">${trackControl}<span class="progress-save-status" role="status">Changes save automatically</span></div></header><section class="progress-slider-list" aria-label="Chapter progress tracking"><div class="progress-grid-heading" aria-hidden="true"><span>Chapter</span><span>Proficiency</span><span>Progress</span><span>My Notes</span></div>${lessons.map((lesson,index)=>{
+      const requested=D.state.settings.chapterProgressLevel?.[context.activeId]?.[lesson.id],selected=levels.some(([key])=>key===requested)?requested:'learning',values=percentages(context,lesson),value=values[selected],label=levels.find(([key])=>key===selected)[1],tracking=HM.views.chapterTracking(context,lesson);
+      return `<article class="progress-slider-row"><div class="progress-slider-title"><span>${String(index+1).padStart(2,'0')}</span><b>${e(lesson.title)}</b></div><div class="chapter-level-picker" role="group" aria-label="${e(lesson.title)} proficiency">${levels.map(([key,name])=>`<button type="button" data-progress-level="${key}" data-level-lesson="${e(lesson.id)}" aria-pressed="${key===selected}" class="${key===selected?'selected':''}">${name}</button>`).join('')}</div><div class="progress-slider-main"><div class="progress-range-wrap"><input type="range" min="0" max="100" step="10" value="${value}" data-study-level="${selected}" data-lesson="${e(lesson.id)}" aria-label="${e(lesson.title)} ${label} progress" aria-valuetext="${value}%" style="--progress:${value}%;--slider-color:${proficiencyColors[selected]}"></div><output class="progress-range-value">${value}<small>%</small></output></div><button type="button" class="chapter-notes-action" data-chapter-notes="${e(lesson.id)}" aria-label="My Notes for ${e(lesson.title)}"><i data-lucide="notebook-pen"></i><span>My Notes</span></button></article>`;
     }).join('')}</section></section><details class="panel study-history"><summary>Assessments, attendance & earlier reports</summary>${report}</details>`;
   }
   function panel(context,lesson,tracking,legacy) {
@@ -97,5 +123,5 @@
     const minutes=raw===''?null:Number(raw);if(minutes!==null && (!Number.isInteger(minutes)||minutes<0||minutes>600))return;
     save(form.dataset.studyCheckin,{nextStep:String(fields.get('nextStep')||'').trim().slice(0,240)},{minutes,confidence:String(fields.get('confidence')||'')});
   });
-  HM.studyProgress={curriculum,panel,record,dateKey,overview};
+  HM.studyProgress={curriculum,panel,record,dateKey,overview,summary};
 })();

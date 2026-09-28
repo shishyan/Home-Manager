@@ -6,13 +6,14 @@ test('parent dropdown and education member switching', async ({ page }) => {
   await expect(page.locator('#nav .nav-parent')).toHaveCount(0);
   expect(await page.locator('#navigationGroup option').allTextContents()).toEqual(['Home', 'Education', 'Finance', 'Travel', 'Contacts']);
   await page.locator('#navigationGroup').selectOption('learning');
-  await expect(page).toHaveURL(/study\/curriculum/);
+  await expect(page).toHaveURL(/study\/student-overview/);
+  await expect(page.locator('.student-learning-dashboard')).toBeVisible();
   await expect(page.locator('#sectionNav')).toHaveAttribute('aria-label', 'Education pages');
   const members = await page.locator('#educationLearner option').evaluateAll(options => options.map(o => ({id:o.value,name:o.textContent})));
   const sasha = members.find(x => /sasha/i.test(x.name)); const ishaan = members.find(x => /ishaan/i.test(x.name));
   expect(sasha).toBeTruthy(); expect(ishaan).toBeTruthy();
   await page.locator('#personaSwitcher').click();await page.locator('#personaMenu [data-persona="p3"]').click();
-  await page.locator('.learning-section-tabs [data-route="study/curriculum"]').click();
+  await page.locator('#sidebar [data-education-page="study/curriculum"][data-student="p3"][data-subject="Mathematics"]').click();
   await page.locator('#personaSwitcher').click();await page.locator('#personaMenu [data-persona="p4"]').click();
   await expect(page.locator('#personaName')).toContainText('Ishaan');
   expect(await page.evaluate(() => HM.data.state.settings.activeLearnerId)).toBe(ishaan.id);

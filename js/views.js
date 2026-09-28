@@ -25,8 +25,8 @@
     leisure: { label: 'Leisure', icon: 'palmtree', note: 'Travel, entertainment and web life', route: 'home/travel', items: [
       ['Travel', 'luggage', 'home/travel'], ['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']
     ]},
-    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/curriculum', items: [
-      ['Progress', 'route', 'study/curriculum'], ['Planner', 'calendar-clock', 'study/planner'], ['Overview', 'activity', 'study/overview']
+    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
+      ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
     ]},
     community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
       ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
@@ -180,13 +180,15 @@
     'community/directory': ['Community Services', 'Essential local contacts'],
     'community/guides': ['Civic Guides', 'Self-service local information'],
     'community/participate': ['Events & Polls', 'Plans and local preferences'],
-    'study/overview': ['Education Dashboard', 'Peepal and CBSE progress'],
+    'study/student-overview': ['Student Dashboard', 'One view of every subject and the work ahead'],
+    'study/overview': ['Subject Dashboard', 'Chapter progress and learning signals by subject'],
     'study/books': ['Books', 'Focused local textbook library'],
     'study/genius': ['Genius Mind', 'Top-student methods, key concepts and chapter recall'],
     'study/jee': ['JEE Main', 'PCM concepts, worked reasoning and exam practice'],
     'study/curriculum': ['Progress', 'One connected journey through every curriculum chapter'],
-    'study/planner': ['Study Planner', 'School day and home study'],
+    'study/planner': ['Calendar', 'School dates and study blocks'],
     'study/assignments': ['Assignments', 'Homework, projects and practicals'],
+    'study/practice-hub': ['Practice & Assignments', 'Practice, tests and assignments'],
     'study/assessments': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/reports': ['Education Reports', 'Academic and whole-child review']
@@ -580,7 +582,7 @@
     vehicle: { label: 'Vehicles', route: 'home/life/vehicles', icon: 'car-front' },
     health: { label: 'Health & care', route: 'home/life/health', icon: 'heart-pulse' },
     family: { label: 'Family & celebrations', route: 'home/family', icon: 'users-round' },
-    learning: { label: 'Education', route: 'study/overview', icon: 'graduation-cap' },
+    learning: { label: 'Education', route: 'study/student-overview', icon: 'graduation-cap' },
     community: { label: 'Community', route: 'community/overview', icon: 'map-pinned' }
   };
   const lifeFinanceDomains = { property: 'housing', bills: 'housing', subscriptions: 'housing', digital: 'housing', help: 'housing', sustainability: 'housing', vehicles: 'vehicle', health: 'health', medicines: 'health', appointments: 'health', elders: 'health', emergency: 'health', pets: 'health', travel: 'family', festivals: 'family', documents: 'family', tax: 'family', insurance: 'family', legacy: 'family', education: 'learning' };
@@ -863,17 +865,25 @@
     return jeeMode ? HM.genius.jeeSyllabus.filter(item => item.subject === context.selectedSubject) : schoolCurriculumLessons(context);
   }
 
-  function educationNavigation(activeLessonId = '') {
+  function educationNavigation(activeSection = '') {
     const activeId = D.state.settings.activeLearnerId;
-    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages">${[...(D.state.academicProfiles || [])].sort((a,b)=>+b.grade-+a.grade).map(profile => {
+    const route = location.hash.slice(2) || 'study/overview';
+    const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice-hub':'Practice & Assignments'}[route] || '';
+    const pageLabelById = {'study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar',learning:'Learning',summary:'Learning',understand:'Learning',resource:'Learning',book:'Read Book','study/practice-hub':'Practice & Assignments'};
+    const activePage = activeSection || pageLabelById[D.state.settings.educationActivePage] || routePage;
+    const expandedSubject = D.state.settings.educationExpandedSubject;
+    const collapsedClasses=D.state.settings.educationCollapsedClasses || [];
+    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages"><button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}><i data-lucide="layout-dashboard"></i><span>Student dashboard</span></button>${[...(D.state.academicProfiles || [])].sort((a,b)=>+b.grade-+a.grade).map(profile => {
       const selected = D.state.settings.activeLearningSubject?.[profile.personId] || 'Mathematics';
-      return `<details class="education-class" open><summary><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></summary>${profile.subjects.map(subject => {
+      return `<details class="education-class" ${collapsedClasses.includes(profile.personId)?'':'open'}><summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}"><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></summary>${profile.subjects.map(subject => {
         const context = {profile,activeId:profile.personId,selectedSubject:subject};
         const jee = +profile.grade === 12 && D.state.settings.activeLearningTrack?.[profile.personId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
         const lessons = curriculumLessons(context, jee);
         const custom = (D.state.syllabusItems || []).filter(item=>!jee && item.studentId===profile.personId && item.subject===subject && !/^sy-p[34]-/.test(item.id) && !lessons.some(lesson=>lesson.title.toLowerCase()===item.title.toLowerCase()));
-        const pages=[['Overview','study/overview'],['Progress','study/curriculum'],['Planner','study/planner'],['Study Guide','summary'],['Genius Mind','understand'],['Formulae / Key ideas','resource'],['Read Book','book'],['My Notes','notes'],['Practice & Tests','practice'],['Assignments','assignments']];
-        return `<details class="education-subject" ${profile.personId===activeId && subject===selected ? 'open' : ''}><summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}">${e(subject)}</summary><div>${pages.map(([label,page])=>`<button type="button" class="education-page" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}">${label}</button>`).join('')}</div></details>`;
+        const pages=[['Overview','study/overview'],['Progress','study/curriculum'],['Calendar','study/planner'],['Learning','learning'],['Read Book','book'],['Practice & Assignments','study/practice-hub']];
+        const isActiveSubject=profile.personId===activeId && subject===selected;
+        const isExpanded=expandedSubject===false?false:expandedSubject?expandedSubject.studentId===profile.personId&&expandedSubject.subject===subject:isActiveSubject;
+        return `<details class="education-subject" ${isExpanded ? 'open' : ''}><summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>${e(subject)}</summary><div>${pages.map(([label,page])=>{const isActivePage=isActiveSubject&&pageLabelById[page]===activePage;return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''}>${label}</button>`;}).join('')}</div></details>`;
       }).join('')}</details>`;
     }).join('')}</div>`;
   }
@@ -916,18 +926,14 @@
   }
 
   function learnerBar(context) {
-    const p = context.profile;
     const extension = context.learningExtension === 'reports' ? examReadinessPanel(context) : '';
-    const jeeMode = +p.grade === 12 && (activeRenderRoute === 'study/jee' || D.state.settings.activeLearningTrack?.[context.activeId] === 'jee');
-    const subjects = jeeMode ? ['Physics', 'Chemistry', 'Mathematics'] : context.profile.subjects;
-    const selectedTab = subjects.includes(context.selectedSubject) ? context.selectedSubject : subjects[0];
-    const subjectTabs = activeRenderRoute.startsWith('study/') ? `<nav class="subject-tabs subject-master-tabs" aria-label="Subjects">${subjects.map(subject => `<button type="button" data-learning-subject="${e(subject)}" class="${selectedTab === subject ? 'active' : ''}" aria-pressed="${selectedTab === subject}">${e(subject)}</button>`).join('')}</nav>` : '';
-    const cbseSections = [['Overview','activity','study/overview'],['Progress','route','study/curriculum'],['Planner','calendar-clock','study/planner']];
-    const jeeSections = cbseSections;
-    const learningSections = jeeMode ? jeeSections : cbseSections;
-    const sectionTabs = activeRenderRoute.startsWith('study/') ? `<nav class="learning-section-tabs" aria-label="Learning sections">${learningSections.map(([label, iconName, route]) => `<button type="button" data-route="${route}" class="${activeRenderRoute === route ? 'active' : ''}" ${activeRenderRoute === route ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span></button>`).join('')}</nav>` : '';
-    const trackTabs = +p.grade === 12 ? `<nav class="learning-track-tabs" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>` : `<span class="learning-track-label">CBSE · Class ${e(p.grade)}</span>`;
-    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls"><label class="education-learner-label" for="educationLearner">Student<select id="educationLearner" aria-label="Education student">${context.profiles.map(profile => `<option value="${e(profile.personId)}" ${profile.personId === context.activeId ? 'selected' : ''}>${e(profile.name)} · Class ${e(profile.grade)}</option>`).join('')}</select></label>${trackTabs}</div>${sectionTabs}</div></div>${extension}`;
+    return extension;
+  }
+
+  function learningTrackControl(context) {
+    if (+context.profile.grade !== 12) return '';
+    const jeeMode = activeRenderRoute === 'study/jee' || D.state.settings.activeLearningTrack?.[context.activeId] === 'jee';
+    return `<nav class="learning-track-tabs inline-learning-track" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>`;
   }
 
   function schoolHub(context) {
@@ -972,15 +978,68 @@
 
   function studyOverview() {
     const c = academicContext();
-    const readiness = subjectReadiness(c);
+    const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee';
+    const lessons = curriculumLessons(c, jeeMode);
     const mastery = averageOf(c.syllabus.map(item => item.mastery));
     const completedAssessments = c.assessments.filter(item => item.status !== 'scheduled');
     const score = averageOf(completedAssessments.map(assessmentPercent));
     const due = c.deliverables.filter(item => !['done', 'submitted'].includes(item.status));
-    const upcomingExams = c.assessments.filter(item => item.status === 'scheduled' && item.date >= today()).sort((a, b) => String(a.date).localeCompare(String(b.date)));
-    const nextPlans = c.plans.filter(item => item.date >= today()).sort((a, b) => `${a.date}${a.startTime}`.localeCompare(`${b.date}${b.startTime}`)).slice(0, 7);
-    const weak = [...readiness].sort((a, b) => a.readiness - b.readiness).slice(0, 3);
-    return `${learnerBar(c)}${HM.studyProgress.overview(c,curriculumLessons(c,+c.profile.grade===12 && D.state.settings.activeLearningTrack?.[c.activeId]==='jee'))}<section class="metrics">${metric('Syllabus mastery', `${mastery}%`, `${c.syllabus.filter(item => item.status === 'mastered').length}/${c.syllabus.length} outcomes mastered`, 'book-open-check')}${metric('Assessment average', `${score}%`, `Target ${c.profile.targetPercent}%`, 'file-chart-column')}${metric('Open submissions', due.length, due.filter(item => item.dueDate <= today()).length ? 'Includes overdue work' : 'Homework and projects', 'clipboard-check')}${metric('Practice accuracy', `${practicePercent(c.practice)}%`, `${c.practice.reduce((sumValue, item) => sumValue + (+item.attempted || 0), 0)} questions logged`, 'brain-circuit')}</section><div class="grid-2 learning-dashboard"><section class="panel"><div class="section-head"><div><h2>Next study blocks</h2><p>A realistic plan for ${e(c.profile.name)}</p></div><button data-route="study/planner">Open planner</button></div>${nextPlans.length ? nextPlans.map(item => row(`${item.startTime} - ${item.activity}`, `${D.date(item.date, { weekday: 'short', day: 'numeric', month: 'short' })} - ${item.subject} - ${item.minutes} min`, academicStatus(item.status))).join('') : '<p class="empty">No study blocks planned.</p>'}</section><section class="panel"><div class="section-head"><div><h2>Priority subjects</h2><p>Lowest combined readiness first</p></div><button data-route="study/reports">Full report</button></div>${weak.map(item => `<div class="readiness-row"><span class="subject-dot"></span><div class="grow"><b>${e(item.subject)}</b><small>Mastery ${item.mastery}% - Tests ${item.test}% - Practice ${item.accuracy}%</small><div class="progress ${item.readiness < 60 ? 'over' : ''}"><span style="width:${clamp(item.readiness)}%"></span></div></div><strong>${item.readiness}%</strong></div>`).join('')}</section></div><section class="panel learning-actions"><div class="section-head"><div><h2>Do next</h2><p>Highest-impact actions based on current records</p></div></div><div class="action-strip">${upcomingExams.slice(0, 1).map(item => `<button data-route="study/assessments"><span>${icon('calendar-warning')}</span><span><small>UPCOMING EXAM</small><b>${e(item.subject)} - ${e(item.title)}</b><em>${D.date(item.date)}</em></span></button>`).join('')}${due.slice(0, 2).map(item => `<button data-route="study/assignments"><span>${icon('clipboard-check')}</span><span><small>SUBMISSION</small><b>${e(item.title)}</b><em>${D.date(item.dueDate)}</em></span></button>`).join('')}${weak.slice(0, 2).map(item => `<button data-route="study/practice"><span>${icon('brain-circuit')}</span><span><small>REINFORCE</small><b>${e(item.subject)}</b><em>${item.readiness}% ready</em></span></button>`).join('')}<button data-route="study/assessments"><span>${icon(c.profile.grade === 12 ? 'file-check-2' : 'notebook-tabs')}</span><span><small>${c.profile.grade === 12 ? 'BOARD PREP' : 'SCHOOL REVIEW'}</small><b>${c.profile.grade === 12 ? 'Check practical and theory gaps' : 'Review periodic-test gaps'}</b><em>Open assessment plan</em></span></button></div></section>${sectionFinance('learning', ['goal', 'education'])}`;
+    const attempts = c.practice.reduce((sumValue, item) => sumValue + (+item.attempted || 0), 0);
+    const values = [
+      ['Syllabus mastery', `${mastery}%`, `${c.syllabus.filter(item => item.status === 'mastered').length} of ${c.syllabus.length} outcomes`, 'book-open-check', 'violet'],
+      ['Assessment average', `${score}%`, `Target ${c.profile.targetPercent}%`, 'file-chart-column', 'blue'],
+      ['Open assignments', due.length, due.some(item => item.dueDate < today()) ? 'Includes overdue work' : 'Nothing overdue', 'clipboard-check', 'orange'],
+      ['Practice accuracy', `${practicePercent(c.practice)}%`, `${attempts} questions attempted`, 'brain-circuit', 'green']
+    ];
+    return `${learnerBar(c)}<section class="study-dashboard-compact" aria-label="${e(c.profile.name)} ${e(c.selectedSubject)} learning snapshot"><header><div><span class="section-kicker">SUBJECT SNAPSHOT</span><h2>${e(c.selectedSubject)} · Class ${e(c.profile.grade)}</h2><p>Assessment and activity overview for ${e(c.profile.name)}.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/practice-hub">${icon('arrow-up-right')} Review learning</button></div></header><div class="study-dashboard-metrics">${values.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div></section>${HM.studyProgress.overview(c,lessons,learningTrackControl(c))}`;
+  }
+
+  function studentStudyOverview() {
+    const c = academicContext();
+    const records = {
+      syllabus: (D.state.syllabusItems || []).filter(item => item.studentId === c.activeId),
+      assessments: (D.state.academicAssessments || []).filter(item => item.studentId === c.activeId && item.status !== 'scheduled'),
+      practice: (D.state.practiceLogs || []).filter(item => item.studentId === c.activeId),
+      deliverables: (D.state.academicDeliverables || []).filter(item => item.studentId === c.activeId)
+    };
+    const subjects = c.profile.subjects.map(subject => {
+      const context = { ...c, selectedSubject: subject };
+      context.syllabus = records.syllabus.filter(item => item.subject === subject);
+      context.assessments = records.assessments.filter(item => item.subject === subject);
+      context.practice = records.practice.filter(item => item.subject === subject);
+      const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
+      const lessons = curriculumLessons(context, jeeMode);
+      const progress = HM.studyProgress.summary(context, lessons);
+      const assessments = context.assessments.length ? averageOf(context.assessments.map(assessmentPercent)) : 0;
+      const attempts = context.practice.reduce((sum,item)=>sum+(+item.attempted||0),0);
+      const practice = attempts ? practicePercent(context.practice) : 0;
+      const readiness = Math.round(progress.overall * .5 + assessments * .3 + practice * .2);
+      return { subject, context, lessons, progress, assessments, practice, readiness, attempts };
+    });
+    const totalChapters = subjects.reduce((sum,item)=>sum+item.progress.chapters,0);
+    const started = subjects.reduce((sum,item)=>sum+item.progress.started,0);
+    const overall = averageOf(subjects.map(item=>item.progress.overall));
+    const assessments = records.assessments.length ? averageOf(records.assessments.map(assessmentPercent)) : 0;
+    const due = records.deliverables.filter(item=>!['done','submitted'].includes(item.status));
+    const attempts = records.practice.reduce((sum,item)=>sum+(+item.attempted||0),0);
+    const metricData = [
+      ['Overall chapter progress',`${overall}%`,`${started} of ${totalChapters} chapters started`,'chart-no-axes-column','violet'],
+      ['Assessment average',records.assessments.length?`${assessments}%`:'—',records.assessments.length?`${records.assessments.length} completed assessments`:'No marks recorded yet','file-chart-column','blue'],
+      ['Open assignments',due.length,due.some(item=>item.dueDate<today())?'Includes overdue work':'Across all subjects','clipboard-check','orange'],
+      ['Practice accuracy',attempts?`${practicePercent(records.practice)}%`:'—',`${attempts} questions attempted`,'brain-circuit','green']
+    ];
+    const subjectRows = subjects.map(item=>`<article class="student-subject-row">
+      <div class="student-subject-heading"><span class="student-subject-icon">${icon('book-open')}</span><div><h3>${e(item.subject)}</h3><small>${item.progress.chapters} chapters · ${item.progress.started} started · ${item.progress.expertComplete} Expert complete</small></div><strong>${item.readiness}%<small>snapshot</small></strong></div>
+      <div class="student-subject-bars" aria-label="${e(item.subject)} progress chart">${[['Chapter progress',item.progress.overall,'violet'],['Assessments',item.assessments,'blue'],['Practice',item.practice,'green']].map(([label,value,tone])=>`<div class="student-subject-bar tone-${tone}"><span>${label}</span><i><b style="width:${value}%"></b></i><strong>${value}%</strong></div>`).join('')}</div>
+      <div class="student-subject-actions"><span>Learning ${item.progress.learning}% · Revision ${item.progress.revision}% · Expert ${item.progress.expert}%</span><button type="button" data-select-learning-subject="${e(item.subject)}">${icon('arrow-up-right')} Subject dashboard</button></div>
+    </article>`).join('');
+    const upcoming = [...due].sort((a,b)=>String(a.dueDate).localeCompare(String(b.dueDate))).slice(0,4);
+    return `${learnerBar(c)}<section class="student-learning-dashboard" aria-label="${e(c.profile.name)} student dashboard">
+      <header class="student-dashboard-hero"><div><span class="section-kicker">STUDENT DASHBOARD · CLASS ${e(c.profile.grade)}</span><h2>${e(c.profile.name)}’s learning, across every subject</h2><p>A single view of chapter progress, school results, practice and work still to do.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/curriculum">${icon('route')} Open progress</button></div></header>
+      <div class="study-dashboard-metrics student-dashboard-metrics">${metricData.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div>
+      <div class="student-dashboard-columns"><section class="student-subject-chart"><header><div><h3>Subject progress</h3><p>Chapter, assessment and practice snapshots</p></div><span>${subjects.length} subjects</span></header><div class="student-subject-list">${subjectRows||'<p class="empty">No subjects are configured for this student.</p>'}</div></section>
+      <aside class="student-dashboard-due"><header><div><h3>Work to finish</h3><p>Upcoming assignments across subjects</p></div><button type="button" data-route="study/practice-hub">${icon('arrow-up-right')}</button></header>${upcoming.length?upcoming.map(item=>`<div class="student-due-row"><span>${icon(item.dueDate<today()?'calendar-clock':'calendar-days')}</span><div><b>${e(item.title)}</b><small>${e(item.subject)} · ${D.date(item.dueDate)}</small></div>${item.dueDate<today()?'<em>Overdue</em>':''}</div>`).join(''):'<p class="empty">No open assignments. Nice work.</p>'}</aside></div>
+    </section>`;
   }
 
   function curriculum() {
@@ -1113,7 +1172,7 @@
   function curriculumJourney() {
     const c = academicContext();
     const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee';
-    return HM.studyProgress.curriculum(c,curriculumLessons(c,jeeMode),learnerBar(c),learningReports(false));
+    return HM.studyProgress.curriculum(c,curriculumLessons(c,jeeMode),learnerBar(c),learningReports(false),learningTrackControl(c));
   }
 
   function chapterWorkspaceNavigation(lessonId, section = 'summary') {
@@ -1486,6 +1545,12 @@
     return `${learnerBar(c)}<section class="metrics compact-metrics">${metric('Accuracy', `${practicePercent(c.practice)}%`, `${attempted} questions attempted`, 'brain-circuit')}${metric('Practice time', `${c.practice.reduce((sumValue, item) => sumValue + (+item.minutes || 0), 0)} min`, 'Logged sessions', 'clock-3')}${metric('Main error', commonErrors[0]?.[0] || 'None', 'Correct the pattern', 'scan-search')}${metric('Practice sets', c.practice.length, 'NCERT and CBSE sources', 'notebook-pen')}</section><div class="practice-layout"><section class="panel timer practice-timer"><span class="context-badge study">Focused study</span><div class="clock" id="clock" role="timer" aria-live="polite">${format(timerSeconds)}</div><p>A completed 25-minute block is added to ${e(c.profile.name)}'s report.</p><div class="timer-actions"><button id="timerToggle" class="primary">${icon(timerId ? 'pause' : 'play')}<span>${timerId ? 'Pause' : 'Start'}</span></button><button data-timer="reset">Reset</button><button data-timer="5">5 min break</button><button data-timer="25">25 min focus</button></div></section><section class="panel"><div class="section-head"><div><h2>Error notebook</h2><p>Turn mistakes into the next practice set</p></div><button class="primary" data-create="practiceLog" data-student="${e(c.activeId)}">${icon('plus')}<span>Practice log</span></button></div>${commonErrors.map(([label, count]) => row(label, `${count} logged session${count === 1 ? '' : 's'}`, `<button data-route="study/planner">Plan correction</button>`)).join('') || '<p class="empty">No errors logged yet.</p>'}</section></div><section class="panel"><div class="section-head"><h2>Recent practice</h2></div><table class="table"><thead><tr><th>Date & source</th><th>Subject</th><th>Attempted</th><th>Correct</th><th>Accuracy</th><th>Error focus</th><th>Actions</th></tr></thead><tbody>${[...c.practice].sort((a, b) => String(b.date).localeCompare(String(a.date))).map(item => `<tr><td data-label="Date & source"><b>${D.date(item.date)}</b><small>${e(item.source)}</small></td><td data-label="Subject">${e(item.subject)}</td><td data-label="Attempted">${item.attempted}</td><td data-label="Correct">${item.correct}</td><td data-label="Accuracy"><b>${Math.round(item.correct / Math.max(1, item.attempted) * 100)}%</b></td><td data-label="Error focus">${e(item.errorType)}</td><td data-label="Actions"><span class="row-actions"><button class="icon-action" data-edit="practiceLog" data-id="${e(item.id)}" data-student="${e(c.activeId)}" aria-label="Edit practice log">${icon('pencil')}</button><button class="icon-action danger-action" data-delete="practiceLogs:${e(item.id)}" aria-label="Delete practice log">${icon('trash-2')}</button></span></td></tr>`).join('')}</tbody></table></section><section class="official-study-resources"><div class="section-head"><div><h2>Official study sources</h2><p>Open current CBSE and NCERT material</p></div></div>${resources.map(item => `<a href="${e(item.url)}" target="_blank" rel="noopener noreferrer"><span>${icon(item.type.includes('textbook') ? 'book-open' : 'external-link')}</span><span><b>${e(item.title)}</b><small>${e(item.type)}</small></span></a>`).join('')}</section>`;
   }
 
+  function practiceAssignmentsHub() {
+    const selected = D.state.settings.educationPracticeTab === 'assignments' ? 'assignments' : 'practice';
+    const tabs = `<nav class="learning-section-tabs practice-assignment-tabs" aria-label="Practice and assignment content"><button type="button" data-practice-hub-tab="practice" class="${selected === 'practice' ? 'active' : ''}" ${selected === 'practice' ? 'aria-current="page"' : ''}>${icon('list-checks')}<span>Practice & Tests</span></button><button type="button" data-practice-hub-tab="assignments" class="${selected === 'assignments' ? 'active' : ''}" ${selected === 'assignments' ? 'aria-current="page"' : ''}>${icon('clipboard-list')}<span>Assignments</span></button></nav>`;
+    return `${tabs}${selected === 'assignments' ? assignments() : practiceAndTests()}`;
+  }
+
   function learningReports(includeHeader = true) {
     const c = academicContext();
     c.learningExtension = 'reports';
@@ -1672,7 +1737,8 @@
       'community/tickets': tickets,
       'community/directory': () => directory('community'),
       'community/guides': guides,
-      'study/overview': () => `${studyOverview()}${gmailEssence(['school'], 'School email distilled into actions', 'assignments and dated actions are added to Education', true)}`,
+      'study/student-overview': studentStudyOverview,
+      'study/overview': studyOverview,
       'study/books': books,
       'study/genius': geniusMindTeacher,
       'study/jee': jeeMain,
@@ -1681,6 +1747,7 @@
       'study/assignments': () => `${assignments()}${gmailEssence(['school'], 'Assignments detected from school email', 'submission dates and teacher context stay beside school work')}`,
       'study/assessments': practiceAndTests,
       'study/practice': practiceAndTests,
+      'study/practice-hub': practiceAssignmentsHub,
       'study/reports': curriculumJourney,
       'study/board': curriculum,
       'study/schedule': studyPlanner,
@@ -1704,6 +1771,7 @@
     chapterTracking,
     educationNavigation,
     academicContext, curriculumLessons,
+    learningTrackControl,
     chapterSubchapters,
     validSubchapterTitle,
     isInstructionalApparatusTitle,

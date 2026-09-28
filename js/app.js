@@ -438,7 +438,7 @@
       return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
     }).join('')}</div>`;
     if (activeGroup === 'learning') {
-      $('#sectionNav').outerHTML = V.educationNavigation(activeChapterWorkspace?.lessonId || '');
+      $('#sectionNav').outerHTML = V.educationNavigation(activeChapterWorkspace?.section || '');
     }
     const mobileItems = availableGroups.map(([key, item]) => [item.label, item.icon, item.route]);
     $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
@@ -520,17 +520,8 @@
   function placeEducationMasterControls() {
     const slot = $('#educationHeaderTabs');
     if (!slot) return;
-    const sections = $('#content .learning-section-tabs');
-    slot.hidden = !route.startsWith('study/');
-    if (sections && !slot.hidden) slot.replaceChildren(sections);
-    else if (slot.hidden) slot.replaceChildren();
-    if (!slot.hidden) {
-      const nav=slot.querySelector('.learning-section-tabs');
-      nav?.querySelectorAll('[data-study-section]').forEach(button=>button.remove());
-      const sections=[['summary','Study Guide'],['understand','Genius Mind'],['resource','Formulae / Key ideas'],['book','Read Book'],['notes','My Notes'],['practice','Practice & Tests'],['assignments','Assignments']];
-      sections.forEach(([key,label])=>{const button=document.createElement('button');button.type='button';button.dataset.studySection=key;button.textContent=label;if(activeChapterWorkspace?.section===key){button.classList.add('active');button.setAttribute('aria-current','page');}nav?.append(button);});
-      if(activeChapterWorkspace) nav?.querySelectorAll('[data-route]').forEach(button=>{button.classList.remove('active');button.removeAttribute('aria-current');});
-    }
+    slot.hidden = true;
+    slot.replaceChildren();
   }
 
   function render() {
@@ -2360,10 +2351,27 @@
       const id=educationPage.dataset.student,subject=educationPage.dataset.subject,page=educationPage.dataset.educationPage;
       HM.persona.set(id);D.state.settings.activeLearnerId=id;
       D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
-      D.state.settings.educationExpandedSubject={studentId:id,subject};D.save();
+      D.state.settings.educationExpandedSubject={studentId:id,subject};
+      D.state.settings.educationActivePage=page;D.save();
       go(page.startsWith('study/')?page:'study/curriculum');render();
-      if(page==='notes')HM.educationUI.openNotes(V.defaultLessonId());else if(!page.startsWith('study/'))openChapterWorkspace(V.defaultLessonId(),page);
+      if(page==='learning')openChapterWorkspace(V.defaultLessonId(),'summary');else if(page==='book')openChapterWorkspace(V.defaultLessonId(),'book');
       document.body.classList.remove('menu-open');return;
+    }
+    const studentDashboard=event.target.closest('[data-education-student-dashboard]');
+    if(studentDashboard){if(activeChapterWorkspace)closeChapterWorkspace();go('study/student-overview');render();document.body.classList.remove('menu-open');return;}
+    const dashboardSubject=event.target.closest('[data-select-learning-subject]');
+    if(dashboardSubject){if(activeChapterWorkspace)closeChapterWorkspace();const subject=dashboardSubject.dataset.selectLearningSubject;const context=V.academicContext();if(context.profile.subjects.includes(subject)){D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[context.activeId]=subject;D.state.settings.educationExpandedSubject={studentId:context.activeId,subject};D.save();go('study/overview');render();}return;}
+    const educationClass=event.target.closest('[data-education-class]');
+    if(educationClass){
+      event.preventDefault();
+      const details=educationClass.closest('details');
+      const studentId=educationClass.dataset.educationClass;
+      const collapsed=new Set(D.state.settings.educationCollapsedClasses||[]);
+      if(details.open)collapsed.add(studentId);else collapsed.delete(studentId);
+      D.state.settings.educationCollapsedClasses=[...collapsed];
+      D.save();
+      details.open=!details.open;
+      return;
     }
     const educationSubject = event.target.closest('[data-education-subject]');
     if (educationSubject) {
@@ -2371,6 +2379,15 @@
       if (activeChapterWorkspace) closeChapterWorkspace();
       const studentId = educationSubject.dataset.student;
       const subject = educationSubject.dataset.educationSubject;
+      const subjectDetails=educationSubject.closest('details');
+      const currentSubject=D.state.settings.activeLearningSubject?.[studentId] || 'Mathematics';
+      if(studentId===D.state.settings.activeLearnerId&&subject===currentSubject){
+        const shouldExpand=!subjectDetails.open;
+        D.state.settings.educationExpandedSubject=shouldExpand?{studentId,subject}:false;
+        D.save();
+        subjectDetails.open=shouldExpand;
+        return;
+      }
       HM.persona.set(studentId);
       D.state.settings.activeLearnerId = studentId;
       D.state.settings.activeLearningSubject ||= {};
@@ -2502,8 +2519,10 @@
       return;
     }
     const studySection = event.target.closest('[data-study-section]');
-    if(studySection && studySection.dataset.studySection==='notes'){HM.educationUI.openNotes(activeChapterWorkspace?.lessonId || V.defaultLessonId());return;}
-    if(studySection){openChapterWorkspace(activeChapterWorkspace?.lessonId || V.defaultLessonId(),studySection.dataset.studySection);return;}
+    if(studySection && studySection.dataset.studySection==='notes'){D.state.settings.educationActivePage='notes';D.save();document.querySelectorAll('[data-study-section]').forEach(button=>{const active=button.dataset.studySection==='notes';button.classList.toggle('active',active);active?button.setAttribute('aria-current','page'):button.removeAttribute('aria-current');});HM.educationUI.openNotes(activeChapterWorkspace?.lessonId || V.defaultLessonId());return;}
+    if(studySection){D.state.settings.educationActivePage=studySection.dataset.studySection;D.save();openChapterWorkspace(activeChapterWorkspace?.lessonId || V.defaultLessonId(),studySection.dataset.studySection);return;}
+    const practiceHubTab=event.target.closest('[data-practice-hub-tab]');
+    if(practiceHubTab){D.state.settings.educationPracticeTab=practiceHubTab.dataset.practiceHubTab;D.save();render();return;}
     const chapterRailTab = event.target.closest('[data-chapter-rail-tab]');
     if (chapterRailTab) {
       applyChapterRailMode(chapterRailTab.closest('.chapter-support-rail'), chapterRailTab.dataset.chapterRailTab);
@@ -2733,6 +2752,7 @@
         else go('study/curriculum');
       } else {
         if (activeChapterWorkspace) closeChapterWorkspace();
+        if(routeTarget.dataset.route.startsWith('study/')){D.state.settings.educationActivePage=routeTarget.dataset.route;D.save();}
         go(routeTarget.dataset.route);
       }
       if ($('#searchDialog').open) $('#searchDialog').close();
