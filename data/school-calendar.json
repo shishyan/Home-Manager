@@ -1,0 +1,1796 @@
+{
+  "schema": 1,
+  "academicYear": "2026-27",
+  "checkedAt": "2026-09-28",
+  "coverageStart": "2026-09-01",
+  "coverageEnd": "2027-03-31",
+  "pending": [
+    "CBSE Class 12 subject-wise 2027 board and practical dates await official publication.",
+    "Class 7 exams and holidays follow the school timetable."
+  ],
+  "events": [
+    {
+      "id": "school-b126b552c689c4",
+      "date": "2026-09-04",
+      "endDate": "2026-09-04",
+      "title": "HOLIDAY - KRISHNA JAYANTHI",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=13",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ccb111fab95093",
+      "date": "2026-09-12",
+      "endDate": "2026-09-12",
+      "title": "2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-309d586c4b0694",
+      "date": "2026-09-14",
+      "endDate": "2026-09-14",
+      "title": "HOLIDAY - GANESH CHATHURTHI",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-8926ed95f89a90",
+      "date": "2026-09-15",
+      "endDate": "2026-09-15",
+      "title": "HOLIDAY - GANESH CHATHURTHI [**check] INTRA CCA",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-b47610e3c1ead4",
+      "date": "2026-09-16",
+      "endDate": "2026-09-16",
+      "title": "HOLIDAY - Half day (AN) - Procession (3rd Day) INTRA CCA",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ae0a9c155295f2",
+      "date": "2026-09-18",
+      "endDate": "2026-09-18",
+      "title": "HOLIDAY - Half day (AN) - Procession (5th Day)",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-49dc7e39225bd3",
+      "date": "2026-09-24",
+      "endDate": "2026-10-21",
+      "title": "CBSE LOC submission: normal-fee window",
+      "grades": [
+        12
+      ],
+      "type": "Notice",
+      "source": "cbse",
+      "sourceLabel": "CBSE official circular",
+      "sourceUrl": "https://www.cbse.gov.in/cbsenew/documents/LOC_2627_21092026.pdf#page=15",
+      "confirmation": "published",
+      "notes": "School submission for 2027 boards. Confirm candidate details and subject codes with Peepal. Online/non-challan payment deadline: 21 October."
+    },
+    {
+      "id": "school-d7a09b1418d563",
+      "date": "2026-09-26",
+      "endDate": "2026-09-26",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=14",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-bc392de8569a96",
+      "date": "2026-10-02",
+      "endDate": "2026-10-02",
+      "title": "HOLIDAY - GANDHI JAYANTHI",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=15",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-20536a50a445ff",
+      "date": "2026-10-09",
+      "endDate": "2026-10-09",
+      "title": "Pooja Celebration",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=15",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f949e0fc173144",
+      "date": "2026-10-17",
+      "endDate": "2026-10-17",
+      "title": "CBSE LOC: normal-fee challan generation deadline",
+      "grades": [
+        12
+      ],
+      "type": "Notice",
+      "source": "cbse",
+      "sourceLabel": "CBSE official circular",
+      "sourceUrl": "https://www.cbse.gov.in/cbsenew/documents/LOC_2627_21092026.pdf#page=17",
+      "confirmation": "published",
+      "notes": "School administration deadline for challan payments; earlier than the online deadline."
+    },
+    {
+      "id": "school-384f29d4edc4b7",
+      "date": "2026-10-22",
+      "endDate": "2026-10-22",
+      "title": "Answer paper discussion",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=16",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-4cdd7149b6a46d",
+      "date": "2026-10-22",
+      "endDate": "2026-10-30",
+      "title": "CBSE LOC: late-fee window",
+      "grades": [
+        12
+      ],
+      "type": "Notice",
+      "source": "cbse",
+      "sourceLabel": "CBSE official circular",
+      "sourceUrl": "https://www.cbse.gov.in/cbsenew/documents/LOC_2627_21092026.pdf#page=15",
+      "confirmation": "published",
+      "notes": "School administration window, not an examination. Late-fee challan generation closes 26 October."
+    },
+    {
+      "id": "school-7701d1586ad5d9",
+      "date": "2026-10-24",
+      "endDate": "2026-10-24",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=16",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-1bf2e95498071f",
+      "date": "2026-10-26",
+      "endDate": "2026-10-26",
+      "title": "CBSE LOC: late-fee challan generation deadline",
+      "grades": [
+        12
+      ],
+      "type": "Notice",
+      "source": "cbse",
+      "sourceLabel": "CBSE official circular",
+      "sourceUrl": "https://www.cbse.gov.in/cbsenew/documents/LOC_2627_21092026.pdf#page=17",
+      "confirmation": "published",
+      "notes": "Applies only when paying through challan."
+    },
+    {
+      "id": "school-3414b0ac0b0571",
+      "date": "2026-10-27",
+      "endDate": "2026-10-27",
+      "title": "CCA-5",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=16",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f65661e897998b",
+      "date": "2026-10-28",
+      "endDate": "2026-10-28",
+      "title": "CCA-5",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=16",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-50d9de6aeac3ce",
+      "date": "2026-11-02",
+      "endDate": "2026-11-04",
+      "title": "CBSE candidate-data correction window",
+      "grades": [
+        12
+      ],
+      "type": "Notice",
+      "source": "cbse",
+      "sourceLabel": "CBSE official circular",
+      "sourceUrl": "https://www.cbse.gov.in/cbsenew/documents/LOC_2627_21092026.pdf#page=10",
+      "confirmation": "published",
+      "notes": "Review the data-verification slip with the school for permitted corrections."
+    },
+    {
+      "id": "school-95a9bdb0d8ceb1",
+      "date": "2026-11-03",
+      "endDate": "2026-11-03",
+      "title": "TDE - 6 Learning - Cluster 2 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ec1395fce7d17c",
+      "date": "2026-11-04",
+      "endDate": "2026-11-04",
+      "title": "OPENDOOR 2 LEARNING - Cluster 2 PORTIONS",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-2f8cc741173b99",
+      "date": "2026-11-06",
+      "endDate": "2026-11-06",
+      "title": "Diwali Celebration at school",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-3ac2a17a871d35",
+      "date": "2026-11-07",
+      "endDate": "2026-11-07",
+      "title": "Diwalli holiday",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-2f18f8fc6ab127",
+      "date": "2026-11-08",
+      "endDate": "2026-11-08",
+      "title": "HOLIDAY - DIWALI",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-cdf2cfbd786e38",
+      "date": "2026-11-09",
+      "endDate": "2026-11-09",
+      "title": "Diwalli holiday",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-39cca61ec3ee67",
+      "date": "2026-11-10",
+      "endDate": "2026-11-10",
+      "title": "Diwalli holiday",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-506ad318860006",
+      "date": "2026-11-11",
+      "endDate": "2026-11-11",
+      "title": "OPENDOOR 2RE LEARNING - Cluster 2 PORTIONS",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-e8538b43cdc0e7",
+      "date": "2026-11-14",
+      "endDate": "2026-11-14",
+      "title": "2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f69d9eea34b4f8",
+      "date": "2026-11-17",
+      "endDate": "2026-11-17",
+      "title": "TDE - 6 RE-Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-e0db0b4be097fd",
+      "date": "2026-11-18",
+      "endDate": "2026-11-18",
+      "title": "CCA-6",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-02fc73a6c72ae3",
+      "date": "2026-11-18",
+      "endDate": "2026-11-18",
+      "title": "Pre-board 3 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=17",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-acff17a55ba0f1",
+      "date": "2026-11-20",
+      "endDate": "2026-11-20",
+      "title": "NATIONAL FINANCE OLYMPIAD GRADE 9 - 12",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-a0be3a40324481",
+      "date": "2026-11-21",
+      "endDate": "2026-11-21",
+      "title": "Club - 7 SLC-7",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-705f1c67ffe919",
+      "date": "2026-11-21",
+      "endDate": "2026-11-21",
+      "title": "Pre-board 3 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-b4a79671a36389",
+      "date": "2026-11-23",
+      "endDate": "2026-11-23",
+      "title": "Maths Exhibition - 1",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-dc960e2304796d",
+      "date": "2026-11-24",
+      "endDate": "2026-11-24",
+      "title": "CCA-6",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-fb3277221ee5ad",
+      "date": "2026-11-25",
+      "endDate": "2026-11-25",
+      "title": "Pre-board 3 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-de1e96a32a864d",
+      "date": "2026-11-25",
+      "endDate": "2026-11-25",
+      "title": "TDE 5 Learning - Cluster 3 PORTIONS",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-b2faab79f3eda5",
+      "date": "2026-11-28",
+      "endDate": "2026-11-28",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-5e3f3204c7a5fb",
+      "date": "2026-11-30",
+      "endDate": "2026-11-30",
+      "title": "Pre-board 3 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-c64a5edb0ad717",
+      "date": "2026-12-01",
+      "endDate": "2026-12-01",
+      "title": "TDE- 7 Learning - Cluster 3 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-bd8dfc2e287151",
+      "date": "2026-12-02",
+      "endDate": "2026-12-02",
+      "title": "TDE 5 Re -Learning - Cluster 3 PORTIONS",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-5b6d7decb13d38",
+      "date": "2026-12-03",
+      "endDate": "2026-12-03",
+      "title": "Pre-board 3 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-6ad1565358a1a4",
+      "date": "2026-12-05",
+      "endDate": "2026-12-05",
+      "title": "Club - 8 SLC-8",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=18",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-22f8e05481b983",
+      "date": "2026-12-07",
+      "endDate": "2026-12-07",
+      "title": "Pre-board 4 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-5e92afa6bcd1cb",
+      "date": "2026-12-08",
+      "endDate": "2026-12-08",
+      "title": "TDE- 7 RE- Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-315dc8a09978e9",
+      "date": "2026-12-09",
+      "endDate": "2026-12-09",
+      "title": "CCA-7",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ac439c086c81d0",
+      "date": "2026-12-10",
+      "endDate": "2026-12-10",
+      "title": "Pre-board 4 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-dd3039d7d9dac5",
+      "date": "2026-12-11",
+      "endDate": "2026-12-11",
+      "title": "R-1(PTM - 5 PB-3)",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-c3561a0183ab80",
+      "date": "2026-12-12",
+      "endDate": "2026-12-12",
+      "title": "2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-c609c5799246e9",
+      "date": "2026-12-15",
+      "endDate": "2026-12-15",
+      "title": "CCA-7",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f2a5ade1d6a24e",
+      "date": "2026-12-15",
+      "endDate": "2026-12-15",
+      "title": "Pre-board 4 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-3cf80be5889b87",
+      "date": "2026-12-16",
+      "endDate": "2026-12-16",
+      "title": "TDE- 6 Learning - Cluster 4 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-abe5a93629e820",
+      "date": "2026-12-18",
+      "endDate": "2026-12-18",
+      "title": "Pre-board 4 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-27be9cd4c7051b",
+      "date": "2026-12-19",
+      "endDate": "2026-12-19",
+      "title": "Class 7 examination day (E-1)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-e7fdd4537e01c7",
+      "date": "2026-12-21",
+      "endDate": "2026-12-21",
+      "title": "Class 7 examination day (E-2)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-704fba1396fe3e",
+      "date": "2026-12-22",
+      "endDate": "2026-12-22",
+      "title": "Class 7 examination day (E-3)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-837f2165c521a7",
+      "date": "2026-12-22",
+      "endDate": "2026-12-22",
+      "title": "Pre-board 4 examination",
+      "grades": [
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-0ecf03675cf3a1",
+      "date": "2026-12-23",
+      "endDate": "2026-12-23",
+      "title": "Class 7 examination day (E-4)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-238067c1455148",
+      "date": "2026-12-24",
+      "endDate": "2026-12-24",
+      "title": "Christmas Celebration",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-a34af2e4806f1a",
+      "date": "2026-12-24",
+      "endDate": "2026-12-24",
+      "title": "Class 7 examination day (E-5)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=19",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-7b15086a248f94",
+      "date": "2026-12-25",
+      "endDate": "2026-12-25",
+      "title": "HOLIDAY - CHRISTMAS",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f9e26e71d0d7f4",
+      "date": "2026-12-26",
+      "endDate": "2026-12-26",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-c489f633bad0c5",
+      "date": "2026-12-28",
+      "endDate": "2026-12-28",
+      "title": "Practical Readiness",
+      "grades": [
+        12
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-250521d01d7cd5",
+      "date": "2026-12-28",
+      "endDate": "2026-12-28",
+      "title": "Winter Holiday",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-e0d2657303086e",
+      "date": "2026-12-29",
+      "endDate": "2026-12-29",
+      "title": "Practical Readiness",
+      "grades": [
+        12
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-5be64c2509ca0b",
+      "date": "2026-12-29",
+      "endDate": "2026-12-29",
+      "title": "Winter Holiday",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-be226a17c4773e",
+      "date": "2026-12-30",
+      "endDate": "2026-12-30",
+      "title": "Practical Readiness",
+      "grades": [
+        12
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-eb02f7e2f0acaf",
+      "date": "2026-12-30",
+      "endDate": "2026-12-30",
+      "title": "Winter Holiday",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f7917cc0af0dd6",
+      "date": "2026-12-31",
+      "endDate": "2026-12-31",
+      "title": "Practical Readiness",
+      "grades": [
+        12
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": "Annual-calendar entry; subject and time await school confirmation."
+    },
+    {
+      "id": "school-a74fa04ecf6e92",
+      "date": "2026-12-31",
+      "endDate": "2026-12-31",
+      "title": "Winter Holiday",
+      "grades": [
+        7
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-a900a9ffd54286",
+      "date": "2027-01-01",
+      "endDate": "2027-01-01",
+      "title": "HOLIDAY - NEW YEAR",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-650167f461aa53",
+      "date": "2027-01-02",
+      "endDate": "2027-01-02",
+      "title": "Winter Holiday - tutors holiday",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-b0e684bc5ab55c",
+      "date": "2027-01-04",
+      "endDate": "2027-01-04",
+      "title": "Answer paper discussion",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-fed92d64d2bf1d",
+      "date": "2027-01-05",
+      "endDate": "2027-01-05",
+      "title": "TDE- 8 Learning - Cluster4 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-650dd9e0de4be8",
+      "date": "2027-01-06",
+      "endDate": "2027-01-06",
+      "title": "TDE- 6 RE- Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-c51d13fc3571b2",
+      "date": "2027-01-09",
+      "endDate": "2027-01-09",
+      "title": "PTM - 3 2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Student-Parent-Tutor meeting",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=20",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-66b528767fd074",
+      "date": "2027-01-11",
+      "endDate": "2027-01-11",
+      "title": "Art integration - 6",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ab6a77c25dcdcf",
+      "date": "2027-01-12",
+      "endDate": "2027-01-12",
+      "title": "Art integration - 7 TDE- 8 RE- Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-b7bfc7a0a94818",
+      "date": "2027-01-13",
+      "endDate": "2027-01-13",
+      "title": "Art integration - 8 CCA - 8",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-95bf5b508601cf",
+      "date": "2027-01-15",
+      "endDate": "2027-01-15",
+      "title": "HOLIDAY - PONGAL",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-288b3775defc86",
+      "date": "2027-01-16",
+      "endDate": "2027-01-16",
+      "title": "HOLIDAY - UZHAVAR THIRUNAL",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-02cf2ebf86c92f",
+      "date": "2027-01-18",
+      "endDate": "2027-01-18",
+      "title": "Art integration - 9",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-36a55846c56cad",
+      "date": "2027-01-19",
+      "endDate": "2027-01-19",
+      "title": "Art integration - 10 CCA-8",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-5971497fdbce8f",
+      "date": "2027-01-20",
+      "endDate": "2027-01-20",
+      "title": "Art integration - 11 OPEN DOOR -3 Learning - Cluster3 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-83940feeae9ed4",
+      "date": "2027-01-21",
+      "endDate": "2027-01-21",
+      "title": "Art integration - 12",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-78b5d097e3ba7e",
+      "date": "2027-01-22",
+      "endDate": "2027-01-22",
+      "title": "Art integration - 13",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-05f000ed025a43",
+      "date": "2027-01-23",
+      "endDate": "2027-01-23",
+      "title": "4th SATURDAY / THAI POOSUM",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-58a0cb0481c3be",
+      "date": "2027-01-26",
+      "endDate": "2027-01-26",
+      "title": "HOLIDAY - REPUBLIC DAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-83c71c145fecdc",
+      "date": "2027-01-27",
+      "endDate": "2027-01-27",
+      "title": "OPEN DOOR -3 RE - Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=21",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-2ceb30c72c5d26",
+      "date": "2027-02-02",
+      "endDate": "2027-02-02",
+      "title": "TDE-9 Learning- Cluster 3, 4 Important",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-5df3cb360f3e96",
+      "date": "2027-02-03",
+      "endDate": "2027-02-03",
+      "title": "OPEN DOOR -3 RE - Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-d065fb3e846806",
+      "date": "2027-02-05",
+      "endDate": "2027-02-05",
+      "title": "Computer science - exhibition - Automation, AI, Computerised",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-5e7ace27f5da9e",
+      "date": "2027-02-06",
+      "endDate": "2027-02-06",
+      "title": "Club - 9 SLC-9",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-d375560a68c93d",
+      "date": "2027-02-08",
+      "endDate": "2027-02-08",
+      "title": "Field trip -2",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-b4f19b2b75c258",
+      "date": "2027-02-09",
+      "endDate": "2027-02-09",
+      "title": "TDE-9 RE - Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-c023aaa304c11d",
+      "date": "2027-02-10",
+      "endDate": "2027-02-10",
+      "title": "Intra CCA",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f17653fec03204",
+      "date": "2027-02-13",
+      "endDate": "2027-02-13",
+      "title": "2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=22",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-06faa763efeacc",
+      "date": "2027-02-15",
+      "endDate": "2027-02-15",
+      "title": "Science Exhibition - 3 Theatre Fest Day -1",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-412d75ad2c4b8f",
+      "date": "2027-02-16",
+      "endDate": "2027-02-16",
+      "title": "Intra CCA Theatre fest Day -2",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-cf3d06fbbf8a04",
+      "date": "2027-02-17",
+      "endDate": "2027-02-17",
+      "title": "TDE - 7 Learning - Cluster 5 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-cd7d2f6ef91740",
+      "date": "2027-02-20",
+      "endDate": "2027-02-20",
+      "title": "Club -10 Validictory SLC-10",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-f84c2c8ea3a46d",
+      "date": "2027-02-22",
+      "endDate": "2027-02-22",
+      "title": "Talent show week Art pathway & Theater and Drama",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-ea823aab18634e",
+      "date": "2027-02-23",
+      "endDate": "2027-02-23",
+      "title": "TDE- 10 Learning - Cluster 5 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-40f58bbd6e0693",
+      "date": "2027-02-24",
+      "endDate": "2027-02-24",
+      "title": "OPEN DOOR - 4 Learning - Cluster 4 Portions",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-dba343c0f7ac22",
+      "date": "2027-02-27",
+      "endDate": "2027-02-27",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-654b066f4da6c0",
+      "date": "2027-03-02",
+      "endDate": "2027-03-02",
+      "title": "TDE- 10 RE Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-54234469898260",
+      "date": "2027-03-03",
+      "endDate": "2027-03-03",
+      "title": "OPEN DOOR - 4 RE Learning",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=23",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-bc9e87bb61d41b",
+      "date": "2027-03-09",
+      "endDate": "2027-03-09",
+      "title": "Ramzan celebration",
+      "grades": [
+        7
+      ],
+      "type": "School activity",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-8592cc6e9e9acf",
+      "date": "2027-03-10",
+      "endDate": "2027-03-10",
+      "title": "HOLIDAY - RAMZAN",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-c892d0059b8d2f",
+      "date": "2027-03-13",
+      "endDate": "2027-03-13",
+      "title": "2nd SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-e868c5c0a02e25",
+      "date": "2027-03-18",
+      "endDate": "2027-03-18",
+      "title": "Class 7 examination day (E-1)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-ff97f2106999e3",
+      "date": "2027-03-19",
+      "endDate": "2027-03-19",
+      "title": "Class 7 examination day (E-2)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-85f0e7266a03a2",
+      "date": "2027-03-20",
+      "endDate": "2027-03-20",
+      "title": "Class 7 examination day (E-3)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=24",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-361a466913e90d",
+      "date": "2027-03-22",
+      "endDate": "2027-03-22",
+      "title": "Class 7 examination day (E-4)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=25",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-39a92c081c4df2",
+      "date": "2027-03-23",
+      "endDate": "2027-03-23",
+      "title": "Class 7 examination day (E-5)",
+      "grades": [
+        7
+      ],
+      "type": "Exam",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=25",
+      "confirmation": "published",
+      "notes": "Published calendar code; subject timetable not yet supplied."
+    },
+    {
+      "id": "school-8970b410997565",
+      "date": "2027-03-26",
+      "endDate": "2027-03-26",
+      "title": "HOLIDAY - GOOD FRIDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=25",
+      "confirmation": "published",
+      "notes": ""
+    },
+    {
+      "id": "school-789797552222ce",
+      "date": "2027-03-27",
+      "endDate": "2027-03-27",
+      "title": "4th SATURDAY",
+      "grades": [
+        7,
+        12
+      ],
+      "type": "Holiday",
+      "source": "peepal",
+      "sourceLabel": "Peepal published calendar",
+      "sourceUrl": "https://www.peepalprodigy.in/images/academic-year-2026-2027.pdf#page=25",
+      "confirmation": "published",
+      "notes": ""
+    }
+  ]
+}

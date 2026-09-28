@@ -2991,6 +2991,7 @@
   $('#backdrop').onclick = () => { document.body.classList.remove('menu-open'); $('#menu').setAttribute('aria-expanded', 'false'); };
   $('#collapse').onclick = () => { D.state.settings.sidebarCollapsed = !D.state.settings.sidebarCollapsed; D.save(); applyTheme(); };
   $('#bottomNav').onclick = event => { if (event.target.closest('#bottomMore')) { document.body.classList.add('menu-open'); $('#menu').setAttribute('aria-expanded', 'true'); } };
+  window.addEventListener('hm-school-calendar', () => {if(['home/calendar','study/planner'].includes(route))render();});
   window.addEventListener('hashchange', render);
   document.body.addEventListener('change', event => {
     const fileInput = event.target.closest('[data-sms-import-file]');

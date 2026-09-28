@@ -2907,3 +2907,15 @@ body:has(#educationHeaderTabs:not([hidden])) .page-identity { display: none; }
 #educationHeaderTabs .learning-section-tabs { justify-content: flex-start; }
 .progress-chapter > summary b::before { content: '›'; display: inline-block; margin-right: 10px; font-size: 20px; color: #6366f1; }
 .progress-chapter[open] > summary b::before { transform: rotate(90deg); }
+.school-calendar-sources { margin: 20px 0; }
+.school-calendar-sources select { min-width: 140px; }
+.school-calendar-sources details { margin-top: 16px; }
+.school-calendar-sources input { max-width: 360px; }
+.school-calendar-sources p { font-size: 13px; line-height: 1.6; }
+.school-calendar-dialog { max-width: min(600px,90vw); border: 0; border-radius: 18px; padding: 24px; }
+.school-calendar-dialog::backdrop { background: rgba(15,23,42,.5); }
+.school-calendar-dialog form { float:right; }
+.school-calendar-dialog p { line-height:1.6; }
+.calendar-day .event.study { white-space:normal; text-align:left; }
+.calendar-agenda .row button { font-size:11px; }
+@media(max-width:600px) { .school-calendar-sources .section-head { flex-wrap:wrap; } .calendar-wrap .calendar { min-width:650px; } .calendar-wrap { overflow-x:auto; } }
