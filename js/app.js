@@ -2330,9 +2330,9 @@
   }
 
   window.addEventListener('hm-study-progress', () => {
-    const expanded=[...document.querySelectorAll('.progress-chapter[open]')].map(el=>el.querySelector('[data-study-level]')?.dataset.lesson);
+    const expanded=[...document.querySelectorAll('.progress-chapter[open]')].map(el=>el.dataset.lesson || el.querySelector('[data-study-level]')?.dataset.lesson);
     if (activeChapterWorkspace) refreshChapterWorkspace(activeChapterWorkspace.lessonId,activeChapterWorkspace.section);
-    else {render();document.querySelectorAll('.progress-chapter').forEach(el=>{if(expanded.includes(el.querySelector('[data-study-level]')?.dataset.lesson))el.open=true;});}
+    else {render();document.querySelectorAll('.progress-chapter').forEach(el=>{if(expanded.includes(el.dataset.lesson || el.querySelector('[data-study-level]')?.dataset.lesson))el.open=true;});}
   });
 
   document.addEventListener('change', event => {

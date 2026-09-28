@@ -13,7 +13,7 @@
   }
   function options(value) {return phases.map(([key,label])=>`<option value="${key}" ${key===value?'selected':''}>${label}</option>`).join('');}
   function studied(saved) {return (saved.days || []).some(day=>day.date===dateKey() && day.studied);}
-  function save(lessonId,values,todayValues) {
+  function save(lessonId,values,todayValues,refresh=true) {
     const studentId=D.state.settings.activeLearnerId;
     if (!HM.views.lessonById(lessonId)) return;
     D.state.settings.chapterDaily ||= {};
@@ -27,7 +27,8 @@
       Object.assign(entry,todayValues);
     }
     D.save();notice='Saved for this student. You can update it again anytime.';
-    window.dispatchEvent(new CustomEvent('hm-study-progress'));
+    if(refresh) window.dispatchEvent(new CustomEvent('hm-study-progress'));
+    else document.querySelector('.progress-save-status').textContent='Saved';
   }
   const levels=[['learning','Learning'],['revision','Revision'],['expert','Expert']];
   function percentages(context,lesson) {
@@ -40,7 +41,10 @@
     return `<section class="panel chapter-progress-overview"><h2>Chapter progress</h2><p>Read-only summary. Update Learning, Revision and Expert in the Progress tab. Overall is the average of the three levels.</p>${rows}</section>`;
   }
   function curriculum(context,lessons,learner,report) {
-    return `${learner}<section class="panel study-daily-heading"><h2>Progress</h2><p>Update each level in 10% steps. Learning: understand the ideas. Revision: recall and practise. Expert: explain and solve independently.</p><p role="status">${e(notice)}</p></section><section class="study-chapter-list" aria-label="Chapter progress tracking">${lessons.map(lesson=>{const values=percentages(context,lesson),tracking=HM.views.chapterTracking(context,lesson);return `<details class="panel progress-chapter"><summary><b>${e(lesson.title)}</b><span>${levels.map(([key,label])=>`${label} ${values[key]}%`).join(' · ')}</span></summary><div class="chapter-level-controls">${levels.map(([key,label])=>`<label>${label}<select data-study-level="${key}" data-lesson="${e(lesson.id)}" aria-label="${e(lesson.title)} ${label} progress">${Array.from({length:11},(_,index)=>index*10).map(value=>`<option value="${value}" ${values[key]===value?'selected':''}>${value}%</option>`).join('')}</select></label>`).join('')}</div>${panel(context,lesson,tracking,'')}</details>`;}).join('')}</section><details class="panel study-history"><summary>Assessments, attendance & earlier reports</summary>${report}</details>`;
+    const selected=D.state.settings.progressLevel?.[context.activeId] || '';
+    const selectedLevel=levels.find(([key])=>key===selected);
+    const descriptions=['Understand the ideas','Recall and practise','Explain and solve independently'];
+    return `${learner}<section class="progress-workbench"><header class="progress-workbench-heading"><div><span class="section-kicker">YOUR LEARNING JOURNEY</span><h2>Track your progress</h2><p>Choose a level, then drag each chapter to where you are.</p></div><span class="progress-save-status" role="status">${selectedLevel?'Changes save automatically':''}</span></header><div class="progress-level-picker" role="group" aria-label="Choose progress level">${levels.map(([key,label],index)=>`<button type="button" data-progress-level="${key}" aria-pressed="${key===selected}" class="${key===selected?'selected':''}"><span class="progress-level-number">0${index+1}</span><span><b>${label}</b><small>${descriptions[index]}</small></span><span class="progress-level-check" aria-hidden="true">${key===selected?'&#10003;':''}</span></button>`).join('')}</div>${selectedLevel?`<div class="progress-list-heading"><h3>${selectedLevel[1]} progress</h3><span>Drag in 10% steps</span></div><section class="progress-slider-list" aria-label="Chapter progress tracking">${lessons.map((lesson,index)=>{const values=percentages(context,lesson),value=values[selected],tracking=HM.views.chapterTracking(context,lesson);return `<article class="progress-slider-row"><div class="progress-slider-main"><div class="progress-slider-title"><span>${String(index+1).padStart(2,'0')}</span><b>${e(lesson.title)}</b></div><div class="progress-range-wrap"><input type="range" min="0" max="100" step="10" value="${value}" data-study-level="${selected}" data-lesson="${e(lesson.id)}" aria-label="${e(lesson.title)} ${selectedLevel[1]} progress" aria-valuetext="${value}%" style="--progress:${value}%"><div class="progress-range-labels" aria-hidden="true"><span>Just starting</span><span>Complete</span></div></div><output class="progress-range-value" aria-live="off">${value}<small>%</small></output></div><details class="progress-chapter" data-lesson="${e(lesson.id)}"><summary>Topic checks & notes</summary>${panel(context,lesson,tracking,'')}</details></article>`;}).join('')}</section>`:'<div class="progress-choose-prompt"><span aria-hidden="true">&#8593;</span><h3>Start with a level</h3><p>Learning, Revision and Expert each keep their own chapter percentages.</p></div>'}</section><details class="panel study-history"><summary>Assessments, attendance & earlier reports</summary>${report}</details>`;
   }
   function panel(context,lesson,tracking,legacy) {
     const saved=record(context.activeId,lesson.id),entry=(saved.days||[]).find(day=>day.date===dateKey())||{};
@@ -52,7 +56,7 @@
       const key=target.dataset.studyLevel,value=Number(target.value),id=target.dataset.lesson;
       if (levels.some(([level])=>level===key) && Number.isInteger(value) && value>=0 && value<=100 && value%10===0) {
         const saved=record(D.state.settings.activeLearnerId,id);
-        save(id,{levels:{...saved.levels,[key]:value}});
+        save(id,{levels:{...saved.levels,[key]:value}},undefined,false);
       }
     }
     if (target.matches('[data-study-status]') && phases.some(([key])=>key===target.value)) save(target.dataset.studyStatus,{status:target.value});
@@ -65,8 +69,23 @@
     }
   });
   document.addEventListener('click',event=>{
+    const level=event.target.closest('[data-progress-level]');
+    if(level && levels.some(([key])=>key===level.dataset.progressLevel)) {
+      D.state.settings.progressLevel ||= {};
+      D.state.settings.progressLevel[D.state.settings.activeLearnerId]=level.dataset.progressLevel;
+      D.save();window.dispatchEvent(new CustomEvent('hm-study-progress'));
+      document.querySelector(`[data-progress-level="${level.dataset.progressLevel}"]`)?.focus();return;
+    }
     const button=event.target.closest('[data-study-today]');
     if (button) save(button.dataset.studyToday,{}, {studied:true});
+  });
+  document.addEventListener('input',event=>{
+    const slider=event.target;
+    if(!slider.matches('input[type="range"][data-study-level]'))return;
+    slider.style.setProperty('--progress',slider.value+'%');
+    slider.setAttribute('aria-valuetext',slider.value+'%');
+    slider.closest('.progress-slider-main').querySelector('output').innerHTML=`${Number(slider.value)}<small>%</small>`;
+    document.querySelector('.progress-save-status').textContent='Release to save';
   });
   document.addEventListener('submit',event=>{
     const form=event.target.closest('[data-study-checkin]');if(!form)return;event.preventDefault();

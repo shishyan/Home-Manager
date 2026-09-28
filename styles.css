@@ -2919,3 +2919,66 @@ body:has(#educationHeaderTabs:not([hidden])) .page-identity { display: none; }
 .calendar-day .event.study { white-space:normal; text-align:left; }
 .calendar-agenda .row button { font-size:11px; }
 @media(max-width:600px) { .school-calendar-sources .section-head { flex-wrap:wrap; } .calendar-wrap .calendar { min-width:650px; } .calendar-wrap { overflow-x:auto; } }
+/* Pick a learning level, then update chapters with touch-friendly sliders. */
+.progress-workbench { background:#fff; border:1px solid #e2e8f0; border-radius:20px; padding:28px; margin:20px 0; box-shadow:0 8px 28px rgba(30,41,59,.06); }
+.progress-workbench-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.progress-workbench-heading h2 { font-size:26px; margin:6px 0 8px; color:#17243d; }
+.progress-workbench-heading p { font-size:13px; color:#64748b; margin:0; }
+.progress-save-status { color:#15803d; font-size:12px; flex-shrink:0; }
+.progress-level-picker { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:24px 0; }
+.progress-level-picker button { --level:#6366f1; display:flex; align-items:center; gap:12px; text-align:left; padding:16px; border:1px solid #e2e8f0; border-radius:14px; background:#f8fafc; color:#334155; transition:background .15s,border-color .15s; }
+.progress-level-picker button[data-progress-level="revision"] { --level:#0891b2; }
+.progress-level-picker button[data-progress-level="expert"] { --level:#b45309; }
+.progress-level-picker button.selected { border-color:var(--level); background:color-mix(in srgb,var(--level) 8%,white); box-shadow:0 0 0 1px var(--level); }
+.progress-level-number { display:grid; place-items:center; width:32px; height:32px; flex-shrink:0; border-radius:10px; background:#fff; color:var(--level); font-size:12px; font-weight:800; }
+.progress-level-picker button b { display:block; font-size:14px; }
+.progress-level-picker button small { display:block; font-size:11px; margin-top:4px; color:#64748b; line-height:1.4; }
+.progress-level-check { margin-left:auto; color:var(--level); font-weight:800; }
+.progress-list-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 0 16px; }
+.progress-list-heading h3 { font-size:16px; margin:0; }
+.progress-list-heading > span { color:#64748b; font-size:11px; }
+.progress-slider-row { border-top:1px solid #edf0f5; padding:20px 0; }
+.progress-slider-main { display:grid; grid-template-columns:minmax(190px,1fr) minmax(180px,1fr) 64px; align-items:center; gap:24px; }
+.progress-slider-title { display:flex; align-items:center; gap:12px; }
+.progress-slider-title > span { color:#94a3b8; font-size:11px; font-weight:600; }
+.progress-slider-title > b { color:#334155; font-size:13px; line-height:1.5; }
+.progress-range-wrap { min-width:0; }
+.progress-range-wrap input[type="range"] { --slider-color:#6366f1; appearance:none; -webkit-appearance:none; width:100%; height:8px; min-height:0; padding:0; margin:12px 0; border:0; border-radius:10px; background:linear-gradient(to right,var(--slider-color) var(--progress),#e7ecf3 var(--progress)); cursor:grab; box-shadow:none; touch-action:pan-y; }
+.progress-range-wrap input[data-study-level="revision"] { --slider-color:#0891b2; }
+.progress-range-wrap input[data-study-level="expert"] { --slider-color:#b45309; }
+.progress-range-wrap input[type="range"]:active { cursor:grabbing; }
+.progress-range-wrap input[type="range"]::-webkit-slider-thumb { appearance:none; width:24px; height:24px; border-radius:50%; border:3px solid #fff; background:var(--slider-color); box-shadow:0 1px 6px rgba(15,23,42,.25); }
+.progress-range-wrap input[type="range"]::-moz-range-thumb { width:18px; height:18px; border-radius:50%; border:3px solid #fff; background:var(--slider-color); box-shadow:0 1px 6px rgba(15,23,42,.25); }
+.progress-range-wrap input[type="range"]:focus-visible { outline:3px solid #c7d2fe; outline-offset:8px; }
+.progress-range-labels { display:flex; justify-content:space-between; font-size:10px; color:#94a3b8; }
+.progress-range-value { text-align:right; color:#334155; font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; }
+.progress-range-value small { font-size:12px; margin-left:2px; color:#94a3b8; }
+.progress-slider-row .progress-chapter { margin:12px 0 0 26px; }
+.progress-slider-row .progress-chapter > summary { justify-content:flex-start; padding:0; color:#64748b; font-size:11px; font-weight:600; }
+.progress-slider-row .progress-chapter > summary::before { content:'+'; font-size:16px; color:#94a3b8; }
+.progress-slider-row .progress-chapter[open] > summary::before { content:'-'; }
+.progress-slider-row .daily-progress-panel { margin-top:20px; }
+.progress-choose-prompt { text-align:center; padding:36px 16px 44px; border-top:1px solid #edf0f5; color:#64748b; }
+.progress-choose-prompt > span { font-size:24px; color:#6366f1; }
+.progress-choose-prompt h3 { color:#334155; font-size:16px; }
+.progress-choose-prompt p { font-size:12px; }
+@media(max-width:1000px) {
+ .progress-level-picker button { padding:12px; gap:8px; }
+ .progress-level-number { display:none; }
+ .progress-slider-main { gap:16px; }
+}
+@media(max-width:600px) {
+ .progress-workbench { padding:18px 14px; border-radius:16px; }
+ .progress-workbench-heading { align-items:flex-start; flex-direction:column; gap:10px; }
+ .progress-workbench-heading h2 { font-size:23px; }
+ .progress-level-picker { gap:8px; margin:20px 0; }
+ .progress-level-picker button { padding:12px 8px; justify-content:center; text-align:center; }
+ .progress-level-picker button small,.progress-level-check { display:none; }
+ .progress-level-picker button b { font-size:12px; }
+ .progress-slider-main { grid-template-columns:minmax(0,1fr) 52px; gap:8px 16px; }
+ .progress-slider-title { grid-column:1 / -1; }
+ .progress-slider-row { padding:18px 0; }
+ .progress-range-value { font-size:24px; }
+}
+.progress-range-wrap input[type="range"] { height:32px; background-size:100% 8px; background-repeat:no-repeat; background-position:center; }
+.progress-slider-row .progress-chapter > summary { flex-direction:row; align-items:center; gap:8px; }
