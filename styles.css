@@ -2982,3 +2982,25 @@ body:has(#educationHeaderTabs:not([hidden])) .page-identity { display: none; }
 }
 .progress-range-wrap input[type="range"] { height:32px; background-size:100% 8px; background-repeat:no-repeat; background-position:center; }
 .progress-slider-row .progress-chapter > summary { flex-direction:row; align-items:center; gap:8px; }
+#nav .education-page {display:block;width:100%;text-align:left;border:0;background:transparent;color:#cbd5e1;padding:9px 14px;border-radius:8px;font-size:12px;}
+#nav .education-page:hover {background:rgba(94,234,212,.13);color:#99f6e4;}
+.chapter-level-picker {display:flex;gap:6px;margin:14px 0;}
+.chapter-level-picker button {border:1px solid #e2e8f0;background:#f8fafc;color:#475569;border-radius:9px;padding:8px 14px;font-size:12px;}
+.chapter-level-picker button.selected {background:#eef2ff;color:#4338ca;border-color:#818cf8;}
+.chapter-level-label {font-size:12px;color:#64748b;}
+.subject-progress-dashboard {margin:20px 0;}
+.subject-progress-dashboard h2 {margin:8px 0;}
+.subject-progress-dashboard header p {color:#64748b;}
+.dashboard-tiles {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0;}
+.dashboard-tiles article {padding:22px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;display:grid;gap:10px;}
+.dashboard-tiles small,.dashboard-tiles span {color:#64748b;font-size:12px;}
+.dashboard-tiles strong {font-size:30px;color:#1e293b;}
+.dashboard-charts {display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start;}
+.dashboard-bar {display:grid;grid-template-columns:70px 1fr 40px;gap:12px;align-items:center;margin:22px 0;font-size:12px;}
+.subject-progress-dashboard progress {width:100%;height:10px;accent-color:#6366f1;}
+.dashboard-chapter-chart {display:grid;gap:14px;max-height:420px;overflow:auto;}
+.dashboard-chapter-bars {display:grid;gap:4px;}
+.dashboard-chapter-bars span {font-size:12px;margin-bottom:4px;}
+.dashboard-chapter-bars progress:nth-of-type(2) {accent-color:#0891b2;}
+.dashboard-chapter-bars progress:nth-of-type(3) {accent-color:#b45309;}
+@media(max-width:700px) {.dashboard-tiles {grid-template-columns:repeat(2,minmax(0,1fr));}.dashboard-charts {grid-template-columns:1fr;}.progress-slider-main .chapter-level-label {grid-column:1/-1;}.chapter-level-picker button {flex:1;padding:9px 6px;}}

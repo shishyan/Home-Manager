@@ -2354,6 +2354,17 @@
   });
 
   document.addEventListener('click', event => {
+    const educationPage=event.target.closest('[data-education-page]');
+    if(educationPage){
+      if(activeChapterWorkspace)closeChapterWorkspace();
+      const id=educationPage.dataset.student,subject=educationPage.dataset.subject,page=educationPage.dataset.educationPage;
+      HM.persona.set(id);D.state.settings.activeLearnerId=id;
+      D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
+      D.state.settings.educationExpandedSubject={studentId:id,subject};D.save();
+      go(page.startsWith('study/')?page:'study/curriculum');render();
+      if(!page.startsWith('study/'))openChapterWorkspace(V.defaultLessonId(),page);
+      document.body.classList.remove('menu-open');return;
+    }
     const educationSubject = event.target.closest('[data-education-subject]');
     if (educationSubject) {
       event.preventDefault();
