@@ -1,5 +1,5 @@
-﻿import * as pdfjs from '../assets/vendor/pdfjs/pdf.min.mjs';
-pdfjs.GlobalWorkerOptions.workerSrc='../assets/vendor/pdfjs/pdf.worker.min.mjs';
+import * as pdfjs from '../assets/vendor/pdfjs/pdf.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc=new URL('../assets/vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const params=new URLSearchParams(location.search),status=document.querySelector('#status'),input=document.querySelector('#page'),canvas=document.querySelector('#canvas');
 let doc,page=Number(params.get('page'))||1,scale=1,renderTask,sequence=0;
 async function render(){const token=++sequence;renderTask?.cancel();page=Math.max(1,Math.min(doc.numPages,page));input.value=page;document.querySelector('#previous').disabled=page===1;document.querySelector('#next').disabled=page===doc.numPages;const source=await doc.getPage(page);if(token!==sequence)return;const base=source.getViewport({scale:1}),width=Math.min(innerWidth-36,1100)*scale,viewport=source.getViewport({scale:width/base.width}),ratio=devicePixelRatio||1;canvas.width=Math.floor(viewport.width*ratio);canvas.height=Math.floor(viewport.height*ratio);canvas.style.width=viewport.width+'px';canvas.style.maxWidth=scale>1?'none':'100%';renderTask=source.render({canvasContext:canvas.getContext('2d'),viewport,transform:ratio!==1?[ratio,0,0,ratio,0,0]:null});try{await renderTask.promise;status.hidden=true;}catch(error){if(error.name!=='RenderingCancelledException')throw error;}}
