@@ -1703,6 +1703,7 @@
     chapterWorkspaceNavigation,
     chapterTracking,
     educationNavigation,
+    academicContext, curriculumLessons,
     chapterSubchapters,
     validSubchapterTitle,
     isInstructionalApparatusTitle,

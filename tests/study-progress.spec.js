@@ -1,4 +1,4 @@
-﻿const {test,expect}=require('@playwright/test');
+const {test,expect}=require('@playwright/test');
 test('subject pages dashboard and per chapter draggable proficiency',async({page})=>{
  await page.goto('http://127.0.0.1:8765/#/study/curriculum');await page.evaluate(()=>localStorage.clear());await page.reload();
  const math=page.locator('.education-class').last().locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});await math.locator('summary').click();

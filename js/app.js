@@ -431,7 +431,7 @@
     })[route] || route;
     $('#workspaceMenuLabel').innerHTML = `<span><small>Daily & weekly</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
     const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
-    $('#nav').innerHTML = `<label class="navigation-switcher" for="navigationGroup">Menu<select id="navigationGroup" aria-label="Menu section">${availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('')}</select></label><div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
+    $('#nav').innerHTML = `<label class="navigation-switcher" for="navigationGroup"><span class="sr-only">Menu</span><select id="navigationGroup" aria-label="Menu section">${availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('')}</select></label><div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
       const nested = child[3] || [];
       const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
       const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
@@ -2362,7 +2362,7 @@
       D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
       D.state.settings.educationExpandedSubject={studentId:id,subject};D.save();
       go(page.startsWith('study/')?page:'study/curriculum');render();
-      if(!page.startsWith('study/'))openChapterWorkspace(V.defaultLessonId(),page);
+      if(page==='notes')HM.educationUI.openNotes(V.defaultLessonId());else if(!page.startsWith('study/'))openChapterWorkspace(V.defaultLessonId(),page);
       document.body.classList.remove('menu-open');return;
     }
     const educationSubject = event.target.closest('[data-education-subject]');
@@ -2502,6 +2502,7 @@
       return;
     }
     const studySection = event.target.closest('[data-study-section]');
+    if(studySection && studySection.dataset.studySection==='notes'){HM.educationUI.openNotes(activeChapterWorkspace?.lessonId || V.defaultLessonId());return;}
     if(studySection){openChapterWorkspace(activeChapterWorkspace?.lessonId || V.defaultLessonId(),studySection.dataset.studySection);return;}
     const chapterRailTab = event.target.closest('[data-chapter-rail-tab]');
     if (chapterRailTab) {
@@ -2554,6 +2555,7 @@
       return;
     }
     const chapterTab = event.target.closest('[data-chapter-workspace-tab]');
+    if(chapterTab?.dataset.chapterWorkspaceTab==='notes'){HM.educationUI.openNotes(chapterTab.dataset.lesson);return;}
     if (chapterTab) {
       refreshChapterWorkspace(chapterTab.dataset.lesson, chapterTab.dataset.chapterWorkspaceTab);
       return;
