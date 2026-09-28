@@ -27,4 +27,11 @@ test('class subject chapter tree switches learners and retains top section tabs'
   await expect.poll(async()=>Math.round((await page.locator('.app-shell').boundingBox()).x)).toBe(0);
   await expect(page.locator('#content .learning-section-tabs')).toBeVisible();
   await page.screenshot({path:'test-results/education-tree-mobile.png'});
+  await page.setViewportSize({width:1280,height:720});
+  const firstChapter=page.locator('.education-class').last().locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});
+  await firstChapter.locator('summary').click();
+  await firstChapter.locator('[data-education-chapter]').first().click();
+  await page.locator('#navigationGroup').selectOption('household');
+  await expect(page.locator('#chapterWorkspace')).toBeHidden();
+  await expect(page).toHaveURL(/global\/overview/);
 });

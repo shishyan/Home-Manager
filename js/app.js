@@ -2337,6 +2337,7 @@
   document.addEventListener('change', event => {
     if (event.target.id === 'navigationGroup') {
       const key = event.target.value;
+      if (activeChapterWorkspace) closeChapterWorkspace();
       if (V.groups[key] && personaCanSeeGroup(key)) go(V.groups[key].route);
     }
     if (event.target.id === 'educationLearner') {
