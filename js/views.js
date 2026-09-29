@@ -136,29 +136,6 @@
   textbookCatalog.find(book => book.id === 'g7-tamil').pdfFiles = [
     ['அமுதத் தமிழ்', 11], ['அணிநிழல் காடு', 35], ['நாடு அதை நாடு', 61], ['அறிவியல் ஆக்கம்', 85], ['ஓதுவது ஒழியேல்', 109], ['கலைவண்ணம்', 131], ['நயத்தகு நாகரிகம்', 157], ['ஒப்புரவு ஒழுகு', 177], ['மானுடம் வெல்லும்', 201]
   ].map(([label, page], index) => ({ key: `tamil-unit-${index + 1}`, label, page, url: textbookAsset('assets/textbooks/class-7/tamil/tamil7-cbse-complete.pdf'), order: index + 1 }));
-  // Poorvi (Class 7 English) — 15 individual chapters across 5 unit PDFs (3 chapters per unit)
-  textbookCatalog.find(book => book.id === 'g7-english').pdfFiles = [
-    // Unit 1: Learning Together
-    ['The Day the River Spoke',        1,  'assets/textbooks/class-7/gepr1/gepr101.pdf'],
-    ['Try Again',                      16, 'assets/textbooks/class-7/gepr1/gepr101.pdf'],
-    ['Three Days to See',              22, 'assets/textbooks/class-7/gepr1/gepr101.pdf'],
-    // Unit 2: Wit and Humour
-    ['Animals, Birds, and Dr. Dolittle', 1, 'assets/textbooks/class-7/gepr1/gepr102.pdf'],
-    ['A Funny Man',                    16, 'assets/textbooks/class-7/gepr1/gepr102.pdf'],
-    ['Say the Right Thing',            21, 'assets/textbooks/class-7/gepr1/gepr102.pdf'],
-    // Unit 3: Dreams and Discoveries
-    ['My Brother\'s Great Invention',  1,  'assets/textbooks/class-7/gepr1/gepr103.pdf'],
-    ['Paper Boats',                    16, 'assets/textbooks/class-7/gepr1/gepr103.pdf'],
-    ['North, South, East, West',       22, 'assets/textbooks/class-7/gepr1/gepr103.pdf'],
-    // Unit 4: Travel and Adventure
-    ['The Tunnel',                     1,  'assets/textbooks/class-7/gepr1/gepr104.pdf'],
-    ['Travel',                         18, 'assets/textbooks/class-7/gepr1/gepr104.pdf'],
-    ['Conquering the Summit',          23, 'assets/textbooks/class-7/gepr1/gepr104.pdf'],
-    // Unit 5: Bravehearts
-    ['A Homage to Our Brave Soldiers', 1,  'assets/textbooks/class-7/gepr1/gepr105.pdf'],
-    ['My Dear Soldiers',               15, 'assets/textbooks/class-7/gepr1/gepr105.pdf'],
-    ['Rani Abbakka',                   21, 'assets/textbooks/class-7/gepr1/gepr105.pdf'],
-  ].map(([label, page, url], index) => ({ key: `english-ch-${index + 1}`, label, page, url: textbookAsset(url), order: index + 1 }));
 
   const titles = {
     'global/overview': ['Today', 'Your home command center'],
