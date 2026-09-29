@@ -1,4 +1,4 @@
-const {test,expect}=require('@playwright/test');
+﻿const {test,expect}=require('@playwright/test');
 
 test('compact colorful overview and progress across consolidated navigation',async({page})=>{
  await page.goto('http://127.0.0.1:8765/#/study/student-overview');await page.evaluate(()=>localStorage.clear());await page.reload();
