@@ -1,25 +1,25 @@
-/* === DESIGN TOKENS — Modern Abstract Dark System === */
+/* === DESIGN TOKENS — Deep Dark Obsidian Abstract System === */
 :root {
   color-scheme: dark;
-  --app-bg: #070a12;
+  --app-bg: #030509;
   --canvas-bg: transparent;
-  --nature-image: radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.18) 0px, transparent 55%), radial-gradient(at 85% 85%, rgba(20, 184, 166, 0.16) 0px, transparent 55%), radial-gradient(at 50% 30%, rgba(168, 85, 247, 0.12) 0px, transparent 50%), linear-gradient(180deg, #070a12 0%, #04060b 100%);
+  --nature-image: radial-gradient(at 15% 15%, rgba(45, 212, 191, 0.09) 0px, transparent 50%), radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.09) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(168, 85, 247, 0.06) 0px, transparent 50%), linear-gradient(180deg, #030509 0%, #010204 100%);
   --nature-overlay: transparent;
   --canvas-tint: none;
   --shell-bg: transparent;
-  --band-odd: rgba(255, 255, 255, .025);
+  --band-odd: rgba(255, 255, 255, .02);
   --band-even: transparent;
-  --ink: #f1f5f9;
-  --ink-soft: #cbd5e1;
+  --ink: #f8fafc;
+  --ink-soft: #e2e8f0;
   --muted: #94a3b8;
-  --line: rgba(255, 255, 255, .08);
-  --line-strong: rgba(255, 255, 255, .16);
-  --glass-strong: rgba(15, 23, 42, 0.78);
-  --glass: rgba(15, 23, 42, 0.45);
-  --glass-soft: rgba(15, 23, 42, 0.30);
-  --glass-hover: rgba(255, 255, 255, 0.08);
-  --solid: rgba(15, 23, 42, 0.45);
-  --surface: rgba(15, 23, 42, 0.35);
+  --line: rgba(255, 255, 255, .10);
+  --line-strong: rgba(255, 255, 255, .20);
+  --glass-strong: rgba(10, 14, 23, 0.85);
+  --glass: rgba(10, 14, 23, 0.58);
+  --glass-soft: rgba(10, 14, 23, 0.35);
+  --glass-hover: rgba(255, 255, 255, 0.10);
+  --solid: rgba(10, 14, 23, 0.58);
+  --surface: rgba(10, 14, 23, 0.45);
   --accent: #2dd4bf;
   --accent-hover: #14b8a6;
   --accent-soft: rgba(45, 212, 191, .15);
@@ -40,12 +40,13 @@
   --tone-5: #f472b6; --tone-5-soft: rgba(244, 114, 182, .12);
   --tone-6: #fbbf24; --tone-6-soft: rgba(251, 191, 36, .12);
   --tone-7: #38bdf8; --tone-7-soft: rgba(56, 189, 248, .12);
-  --shadow-sm: 0 4px 20px rgba(0, 0, 0, .35);
-  --shadow: 0 20px 50px rgba(0, 0, 0, .55);
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, .45);
+  --shadow: 0 20px 50px rgba(0, 0, 0, .65);
   --radius: 14px;
   --sidebar: 252px;
   --utility: 0px;
 }
+
 
 body[data-theme="light"] {
   color-scheme: dark;
@@ -1812,7 +1813,15 @@ body.persona-menu-open .app-header { z-index: 130; }
 #nav .nav-parent, .sidebar-bottom button { border-radius: 10px; }
 #nav .nav-parent:hover, .sidebar-bottom button:hover { background: var(--glass-hover); }
 #nav .nav-parent.active { background: var(--glass-strong); color: var(--accent); box-shadow: var(--shadow-sm); }
-.app-header, .workspace-study .app-header { color: var(--ink); border-bottom: 1px solid var(--line); background: var(--glass-soft); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: none; }
+.app-header, .workspace-study .app-header, .topbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--line);
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 .topbar { position: relative; background: transparent; border-bottom: 0; backdrop-filter: none; }
 .topbar::after { content: none; }
 body.settings-mode .app-header { position: fixed; inset: 0 var(--utility) auto var(--sidebar); z-index: 45; height: 56px; isolation: isolate; }
@@ -3526,4 +3535,64 @@ body[data-theme="light"] .workspace-study {background-image:linear-gradient(#f4f
   border: 1px dashed var(--level);
   background: transparent;
   box-shadow: none;
+}
+
+
+/* High-contrast crisp menu typography */
+#sidebar {
+  background: transparent !important;
+}
+#sidebar .brand b { color: #ffffff !important; font-size: 16px; font-weight: 800; }
+#sidebar .brand a { color: #cbd5e1 !important; font-size: 11px; }
+#sidebar .workspace-menu-label b { color: #ffffff !important; font-size: 13px; font-weight: 800; }
+#sidebar .workspace-menu-label small { color: #94a3b8 !important; font-size: 10px; font-weight: 700; }
+
+#nav .nav-group {
+  color: #94a3b8 !important;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.nav-section summary {
+  color: #cbd5e1 !important;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#nav .nav-parent, .sidebar-bottom button {
+  color: #f8fafc !important;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent !important;
+  transition: all .15s ease;
+}
+#nav .nav-parent:hover, .sidebar-bottom button:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+#nav .nav-parent.active {
+  color: var(--accent) !important;
+  background: rgba(45, 212, 191, 0.10) !important;
+  border-left: 3px solid var(--accent);
+  font-weight: 700;
+}
+.nav-chevron { color: #94a3b8 !important; }
+
+.section-nav button {
+  color: #f1f5f9 !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+.section-nav button:hover, .section-nav button.active {
+  color: var(--tab-color, var(--accent)) !important;
+}
+.section-nav .section-subnav .section-subitem {
+  color: #cbd5e1 !important;
+  font-size: 11px;
+}
+.section-nav .section-subnav .section-subitem:hover, .section-nav .section-subnav .section-subitem.active {
+  color: var(--tab-color, var(--accent)) !important;
 }
