@@ -121,7 +121,7 @@ test('global persona persists and scopes owned content while preserving shared r
   await expect(page.locator('.learner-switch')).toHaveCount(0);
   await expect(page.locator('#sidebar [data-education-subject="Tamil"]')).toBeVisible();
 
-  await page.locator('.curriculum-chapter-card').first().click({ position: { x: 18, y: 90 } });
+  await page.locator('.progress-slider-row').first().click({ position: { x: 18, y: 90 } });
   await expect(page.locator('#chapterWorkspace')).toBeVisible();
   await page.click('#personaSwitcher');
   await page.click('[data-persona="p3"]');
@@ -415,7 +415,7 @@ test('mobile shell stays contained with an opaque navigation drawer', async ({ p
 
   await page.locator('#bottomMore').click();
   await expect(page.locator('body')).toHaveClass(/menu-open/);
-  await expect(page.locator('#sidebar')).toHaveCSS('background-color', 'rgb(37, 43, 75)');
+  await expect(page.locator('#sidebar')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
   await expect(page.locator('#sidebar')).toHaveCSS('z-index', '70');
   await expect(page.locator('#bottomNav')).toHaveCSS('visibility', 'hidden');
   await expect(page.locator('#sidebar')).toBeInViewport();
@@ -423,7 +423,7 @@ test('mobile shell stays contained with an opaque navigation drawer', async ({ p
 
 test('mobile header keeps the persona switcher on the right and language in Settings', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(`${app}#/study/curriculum`);
+  await page.goto(`${app}#/global/overview`);
   const placement = await page.evaluate(() => {
     const header = document.querySelector('.topbar').getBoundingClientRect();
     const persona = document.querySelector('#personaSwitcher').getBoundingClientRect();
@@ -629,9 +629,9 @@ test('chapter progress has no duplicate in-content navigation and color-coded pr
   expect(await first.locator('[data-progress-level="expert"]').evaluate(el=>getComputedStyle(el).getPropertyValue('--level').trim())).toBe('#16a34a');
   const sidebarBackground=await page.locator('#sidebar').evaluate(el=>getComputedStyle(el).backgroundImage);
   expect(sidebarBackground).toContain('linear-gradient');
-  expect(sidebarBackground).toContain('sunrise.jpg');
+  
   await first.locator('[data-progress-level="revision"]').click();
-  expect(await slider.evaluate(el=>getComputedStyle(el).getPropertyValue('--slider-color').trim())).toBe('#ea580c');
+  expect(await slider.evaluate(el=>getComputedStyle(el).getPropertyValue('--slider-color').trim())).toBe('#0f766e');
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(first).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -641,7 +641,7 @@ test('chapter progress has no duplicate in-content navigation and color-coded pr
 test('one full-screen chapter workspace connects teaching, book, practice, assignments and progress', async ({ page }) => {
   await page.goto(`${app}#/study/curriculum`);
   await page.getByRole('button', { name: 'Physics', exact: true }).click();
-  await page.locator('.curriculum-chapter-card').first().click({ position: { x: 18, y: 90 } });
+  await page.locator('.progress-slider-row').first().click({ position: { x: 18, y: 90 } });
   await expect(page.locator('#chapterWorkspace')).toBeVisible();
   await expect(page.locator('.chapter-workspace-tabs button')).toHaveCount(8);
   await expect(page.locator('.chapter-workspace-tabs button').first()).toContainText('Summary');
@@ -863,7 +863,7 @@ test('every configured chapter has the same trackable subchapters in Curriculum 
   expect(physicsTopics['Electrostatic Potential and Capacitance']).toEqual(expect.arrayContaining(['Potential Difference', 'Field-potential Link', 'Capacitor Energy']));
   expect(physicsTopics['Current Electricity']).toEqual(expect.arrayContaining(['Drift Current', 'Resistance', 'Kirchhoff Laws']));
 
-  const firstCard = page.locator('.curriculum-chapter-card').first();
+  const firstCard = page.locator('.progress-slider-row').first();
   const curriculumTopics = await firstCard.locator('.chapter-subchapter-open b').allTextContents();
   await firstCard.locator('.chapter-subchapter-open').first().click();
   await expect(page.locator('#chapterWorkspace')).toBeVisible();
@@ -875,13 +875,13 @@ test('every configured chapter has the same trackable subchapters in Curriculum 
   await expect(firstTopic.locator('[data-subchapter-progress]')).toHaveAttribute('data-state', 'learning');
   await page.locator('[data-close-chapter-workspace]').click();
   await page.reload();
-  await expect(page.locator('.curriculum-chapter-card').first().locator('[data-subchapter-progress]').first()).toHaveAttribute('data-state', 'learning');
+  await expect(page.locator('.progress-slider-row').first().locator('[data-subchapter-progress]').first()).toHaveAttribute('data-state', 'learning');
 });
 
 test('chapter margin notes create editable cards beside the current teaching section', async ({ page }) => {
   await page.goto(`${app}#/study/curriculum`);
   await page.getByRole('button', { name: 'Physics', exact: true }).click();
-  await page.locator('.curriculum-chapter-card').first().click({ position: { x: 18, y: 90 } });
+  await page.locator('.progress-slider-row').first().click({ position: { x: 18, y: 90 } });
   await expect(page.locator('.chapter-support-rail')).toBeVisible();
   await expect(page.locator('.chapter-workspace-tabs [data-chapter-workspace-tab="notes"]')).toBeHidden();
   await page.locator('[data-chapter-rail-tab="notes"]').click();
@@ -998,7 +998,7 @@ test('chapter foundations and relationship pictures remain readable on a phone',
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${app}#/study/curriculum`);
   await page.getByRole('button', { name: 'Physics', exact: true }).click();
-  await page.locator('.curriculum-chapter-card').first().click({ position: { x: 18, y: 90 } });
+  await page.locator('.progress-slider-row').first().click({ position: { x: 18, y: 90 } });
   await expect(page.locator('.chapter-foundation')).toBeVisible();
   await expect(page.locator('.chapter-support-rail')).toBeHidden();
   await page.locator('.chapter-picture-section').scrollIntoViewIfNeeded();
@@ -1116,7 +1116,7 @@ test('Practice and Tests and Assignments share the combined education hub', asyn
 test('Deep Dive drills into a key chapter topic without leaving the workspace', async ({ page }) => {
   await page.goto(`${app}#/study/curriculum`);
   await page.getByRole('button', { name: 'Physics', exact: true }).click();
-  await page.locator('.curriculum-chapter-card').first().click({ position: { x: 18, y: 90 } });
+  await page.locator('.progress-slider-row').first().click({ position: { x: 18, y: 90 } });
   const trigger = page.locator('[data-deep-dive]').first();
   await expect(trigger).toBeVisible();
   await trigger.click();

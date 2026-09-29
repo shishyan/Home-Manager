@@ -26,7 +26,7 @@
       ['Travel', 'luggage', 'home/travel'], ['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']
     ]},
     learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
-      ['Overview', 'route', 'study/overview'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
+      ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
     ]},
     community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
       ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
@@ -95,9 +95,11 @@
     { id: 'g12-cs', code: 'lecs1', grade: 12, subject: 'Computer Science', title: 'Computer Science', publisher: 'NCERT', sourceUrl: 'https://ncert.nic.in/textbook.php?lecs1=0-13' }
   ];
 
+
   const bundledBookParts = {
     gegp1: ['ps','01','02','03','04','05','06','07','08'], gegp2: ['ps','01','02','03','04','05','06','07'],
-    gecu1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'], gepr1: ['ps','01','02','03','04','05'],
+    gecu1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'],
+    gepr1: ['ps','c01','c02','c03','c04','c05','c06','c07','c08','c09','c10','c11','c12','c13','c14','c15'],
     gees1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'], gees2: ['ps','01','02','03','04','05','06','07','08'],
     ghml1: ['ps','01','02','03','04','05','06','07','08','09','10'], gekb1: ['ps','01','02','03','04','05','06','07'],
     lemh1: ['01','02','03','04','05','06','a1','a2','an','ps'], lemh2: ['01','02','03','04','05','06','07','an','ps'],
@@ -111,7 +113,12 @@
     gegp1: { ps: 'Prelims', '01': 'Large Numbers Around Us', '02': 'Arithmetic Expressions', '03': 'A Peek Beyond the Point', '04': 'Expressions Using Letter-Numbers', '05': 'Parallel and Intersecting Lines', '06': 'Number Play', '07': 'A Tale of Three Intersecting Lines', '08': 'Working with Fractions' },
     gegp2: { ps: 'Prelims', '01': 'Geometric Twins', '02': 'Operations with Integers', '03': 'Finding Common Ground', '04': 'Another Peek Beyond the Point', '05': 'Connecting the Dots…', '06': 'Constructions and Tilings', '07': 'Finding the Unknown' },
     gecu1: { ps: 'Prelims', '01': 'The Ever-Evolving World of Science', '02': 'Exploring Substances: Acidic, Basic, and Neutral', '03': 'Electricity: Circuits and Their Components', '04': 'The World of Metals and Non-metals', '05': 'Changes Around Us: Physical and Chemical', '06': 'Adolescence: A Stage of Growth and Change', '07': 'Heat Transfer in Nature', '08': 'Measurement of Time and Motion', '09': 'Life Processes in Animals', '10': 'Life Processes in Plants', '11': 'Light: Shadows and Reflections', '12': 'Earth, Moon, and the Sun' },
-    gepr1: { ps: 'Prelims', '01': 'Learning Together', '02': 'Wit and Humour', '03': 'Dreams and Discoveries', '04': 'Travel and Adventure', '05': 'Bravehearts' },
+    gepr1: { ps: 'Prelims',
+      c01: 'The Day the River Spoke', c02: 'Try Again', c03: 'Three Days to See',
+      c04: 'Animals, Birds, and Dr. Dolittle', c05: 'A Funny Man', c06: 'Say the Right Thing',
+      c07: "My Brother's Great Invention", c08: 'Paper Boats', c09: 'North, South, East, West',
+      c10: 'The Tunnel', c11: 'Travel', c12: 'Conquering the Summit',
+      c13: 'A Homage to Our Brave Soldiers', c14: 'My Dear Soldiers', c15: 'Rani Abbakka' },
     gees1: { ps: 'Prelims', '01': 'Geographical Diversity of India', '02': 'Understanding the Weather', '03': 'Climates of India', '04': 'New Beginnings: Cities and States', '05': 'The Rise of Empires', '06': 'The Age of Reorganisation', '07': 'The Gupta Era: An Age of Tireless Creativity', '08': 'How the Land Becomes Sacred', '09': 'From the Rulers to the Ruled: Types of Governments', '10': 'The Constitution of India — An Introduction', '11': 'From Barter to Money', '12': 'Understanding Markets' },
     gees2: { ps: 'Prelims', '01': 'The Story of Indian Farming', '02': 'India and Her Neighbours', '03': 'Empires and Kingdoms: 6th to 10th Centuries', '04': 'Turning Tides: 11th and 12th Centuries', '05': 'India, a Home to Many', '06': 'The State, the Government, and You', '07': 'Infrastructure: Engine of India’s Development', '08': 'Banks and the Magic of Finance' },
     ghml1: { ps: 'प्रारंभिक पृष्ठ', '01': 'माँ, कह एक कहानी', '02': 'तीन बुद्धिमान', '03': 'फूल और काँटा', '04': 'पानी रे पानी', '05': 'नहीं होना बीमार', '06': 'गिरिधर कविराय की कुंडलियाँ', '07': 'वर्षा-बहार', '08': 'बिरजू महाराज से साक्षात्कार', '09': 'चिड़िया', '10': 'मीरा के पद' },
@@ -136,6 +143,25 @@
   textbookCatalog.find(book => book.id === 'g7-tamil').pdfFiles = [
     ['அமுதத் தமிழ்', 11], ['அணிநிழல் காடு', 35], ['நாடு அதை நாடு', 61], ['அறிவியல் ஆக்கம்', 85], ['ஓதுவது ஒழியேல்', 109], ['கலைவண்ணம்', 131], ['நயத்தகு நாகரிகம்', 157], ['ஒப்புரவு ஒழுகு', 177], ['மானுடம் வெல்லும்', 201]
   ].map(([label, page], index) => ({ key: `tamil-unit-${index + 1}`, label, page, url: textbookAsset('assets/textbooks/class-7/tamil/tamil7-cbse-complete.pdf'), order: index + 1 }));
+  // Poorvi (Grade 7 English) — 5 unit PDFs each containing 3 chapters; list all 15 individually for progress tracking.
+  textbookCatalog.find(book => book.id === 'g7-english').pdfFiles = [
+    { key: 'gepr1-c01', label: 'The Day the River Spoke',          url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 1 },
+    { key: 'gepr1-c02', label: 'Try Again',                        url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 2 },
+    { key: 'gepr1-c03', label: 'Three Days to See',                url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 3 },
+    { key: 'gepr1-c04', label: 'Animals, Birds, and Dr. Dolittle', url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 4 },
+    { key: 'gepr1-c05', label: 'A Funny Man',                      url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 5 },
+    { key: 'gepr1-c06', label: 'Say the Right Thing',              url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 6 },
+    { key: 'gepr1-c07', label: "My Brother's Great Invention",     url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 7 },
+    { key: 'gepr1-c08', label: 'Paper Boats',                      url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 8 },
+    { key: 'gepr1-c09', label: 'North, South, East, West',         url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 9 },
+    { key: 'gepr1-c10', label: 'The Tunnel',                       url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 10 },
+    { key: 'gepr1-c11', label: 'Travel',                           url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 11 },
+    { key: 'gepr1-c12', label: 'Conquering the Summit',            url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 12 },
+    { key: 'gepr1-c13', label: 'A Homage to Our Brave Soldiers',   url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 13 },
+    { key: 'gepr1-c14', label: 'My Dear Soldiers',                 url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 14 },
+    { key: 'gepr1-c15', label: 'Rani Abbakka',                     url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 15 },
+  ];
+
 
   const titles = {
     'global/overview': ['Today', 'Your home command center'],
@@ -991,8 +1017,7 @@
       ['Open assignments', due.length, due.some(item => item.dueDate < today()) ? 'Includes overdue work' : 'Nothing overdue', 'clipboard-check', 'orange'],
       ['Practice accuracy', `${practicePercent(c.practice)}%`, `${attempts} questions attempted`, 'brain-circuit', 'green']
     ];
-    const metricsHeader = `<section class="study-dashboard-compact" aria-label="${e(c.profile.name)} ${e(c.selectedSubject)} learning snapshot"><header><div><span class="section-kicker">SUBJECT SNAPSHOT</span><h2>${e(c.selectedSubject)} · Class ${e(c.profile.grade)}</h2><p>Assessment and activity overview for ${e(c.profile.name)}.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/practice-hub">${icon('arrow-up-right')} Review learning</button></div></header><div class="study-dashboard-metrics">${values.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div></section>`;
-    return `${learnerBar(c)}${metricsHeader}${HM.studyProgress.curriculum(c, lessons, '', learningReports(false), learningTrackControl(c))}`;
+    return `${learnerBar(c)}<section class="study-dashboard-compact" aria-label="${e(c.profile.name)} ${e(c.selectedSubject)} learning snapshot"><header><div><span class="section-kicker">SUBJECT SNAPSHOT</span><h2>${e(c.selectedSubject)} · Class ${e(c.profile.grade)}</h2><p>Assessment and activity overview for ${e(c.profile.name)}.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/practice-hub">${icon('arrow-up-right')} Review learning</button></div></header><div class="study-dashboard-metrics">${values.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div></section>${HM.studyProgress.curriculum(c, lessons, '', learningReports(false), learningTrackControl(c))}`;
   }
 
   function studentStudyOverview() {

@@ -3196,15 +3196,7 @@ body.workspace-study::after {background:rgba(244,247,252,.85);}
 .dashboard-chapter-chart {overflow:auto;}
 .progress-slider-row .progress-range-wrap input[type="range"] {margin:0;display:block;}
 .progress-slider-row .progress-slider-title {grid-column:auto;}
-.workspace-study {background-image:linear-gradient(#f4f7fcd9,#f4f7fcd9),url('assets/backgrounds/education.svg')!important;}
-#sidebar {background:#24324af5!important;color:#e2e8f0;border-right:1px solid #94a3b830;}
-#sidebar .brand-copy b {color:#f1f5f9;}
-#sidebar .brand-copy a {color:#b8c6db;}
-#sidebar .sidebar-bottom button {color:#cbd5e1;}
-#sidebar .education-class>summary {color:#f1f5f9;}
-#sidebar .education-subject>summary {color:#e2e8f0;}
-#sidebar .education-page {color:#cbd5e1;}
-#sidebar .navigation-switcher {position:sticky;top:0;z-index:3;padding:8px 0;background:#24324a;}
+body[data-theme="light"] .workspace-study {background-image:linear-gradient(#f4f7fcd9,#f4f7fcd9),url('assets/backgrounds/education.svg')!important;}
 .guide-card-content .chapter-summary-opening h1 {display:none;}
 .workspace-study .education-learner-label {display:none;}
 .workspace-study .learning-command-bar {background:transparent;border:0;box-shadow:none;}
@@ -3360,17 +3352,6 @@ body.workspace-study::after {background:rgba(244,247,252,.85);}
 }
 
 /* Study navigation: translucent nature-backed surfaces, readable active states, and aligned tree items. */
-body.workspace-study #sidebar,
-body.workspace-study .app-header {
-  background-color: rgba(36,50,74,.9) !important;
-  background-image: linear-gradient(rgba(36,50,74,.9),rgba(36,50,74,.9)),var(--nature-image) !important;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  backdrop-filter: blur(18px) saturate(120%);
-}
-body.workspace-study #sidebar { border-right-color: rgba(226,232,240,.24); }
-body.workspace-study #sidebar .navigation-switcher { background: transparent; }
 .education-tree { text-align: left; }
 .education-class > summary,
 .education-subject > summary {
