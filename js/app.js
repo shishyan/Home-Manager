@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const D = HM.data;
   const V = HM.views;
   const $ = selector => document.querySelector(selector);
