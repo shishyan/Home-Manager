@@ -1695,19 +1695,19 @@ body[data-nature="wildflower"] { --nature-image: url("assets/backgrounds/wildflo
 
 /* Final modern polish */
 body[data-nature] { --app-bg: #c6d0dc; --shell-bg: rgba(250, 252, 255, .94); --band-odd: rgba(241, 245, 249, .92); --band-even: rgba(248, 250, 252, .94); }
-body[data-shell="ember"] { --shell-navigation-base: #48241f; --shell-navigation-bg: radial-gradient(circle at 8% 7%, rgba(255,93,68,.34), transparent 36%), radial-gradient(circle at 90% 16%, rgba(129,83,162,.32), transparent 43%), linear-gradient(115deg, #48241f 0%, #3d2435 48%, #27213f 100%); }
-body[data-shell="terracotta"] { --shell-navigation-base: #4b2b23; --shell-navigation-bg: radial-gradient(circle at 10% 8%, rgba(224,105,75,.30), transparent 38%), radial-gradient(circle at 88% 15%, rgba(177,118,91,.18), transparent 42%), linear-gradient(115deg, #4b2b23 0%, #3d2927 52%, #2b252d 100%); }
-body[data-shell="mulberry"] { --shell-navigation-base: #4a1f38; --shell-navigation-bg: radial-gradient(circle at 9% 8%, rgba(218,72,117,.30), transparent 38%), radial-gradient(circle at 90% 18%, rgba(139,92,246,.32), transparent 44%), linear-gradient(115deg, #4a1f38 0%, #42234a 50%, #292044 100%); }
-body[data-shell="indigo"] { --shell-navigation-base: #252b4b; --shell-navigation-bg: radial-gradient(circle at 10% 8%, rgba(79,111,216,.24), transparent 38%), radial-gradient(circle at 90% 18%, rgba(111,76,175,.28), transparent 44%), linear-gradient(115deg, #252b4b 0%, #262743 52%, #211d38 100%); }
-body[data-shell="teal"] { --shell-navigation-base: #103d3b; --shell-navigation-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900'%3E%3Cg fill='none' stroke='%235de0c7' stroke-opacity='.20' stroke-width='2'%3E%3Cpath d='M0 120h170v90h160v-55h210v145h180'/%3E%3Cpath d='M0 360h110v-70h190v130h250v-65h210'/%3E%3Cpath d='M0 690h220v-115h180v75h260v-150h190'/%3E%3Cpath d='M1440 155h-180v120h-210v-70H870v160H700'/%3E%3Cpath d='M1440 475h-140v-85h-260v130H820'/%3E%3Cpath d='M1440 760h-230v-120h-170v70H790v-130H620'/%3E%3C/g%3E%3Cg fill='%2385f1d2' fill-opacity='.32'%3E%3Crect x='164' y='202' width='12' height='12' rx='2'/%3E%3Crect x='324' y='149' width='12' height='12' rx='2'/%3E%3Crect x='544' y='294' width='12' height='12' rx='2'/%3E%3Crect x='214' y='569' width='12' height='12' rx='2'/%3E%3Crect x='394' y='644' width='12' height='12' rx='2'/%3E%3Crect x='1254' y='269' width='12' height='12' rx='2'/%3E%3Crect x='1034' y='384' width='12' height='12' rx='2'/%3E%3Crect x='1204' y='634' width='12' height='12' rx='2'/%3E%3C/g%3E%3Cg fill='%230b3433' stroke='%2368d8c0' stroke-opacity='.34'%3E%3Crect x='606' y='328' width='228' height='228' rx='18' stroke-width='3'/%3E%3Crect x='650' y='372' width='140' height='140' rx='10' stroke-width='2'/%3E%3C/g%3E%3Cg stroke='%2368d8c0' stroke-opacity='.27' stroke-width='3'%3E%3Cpath d='M606 360h-42m42 42h-42m42 42h-42m42 42h-42m42 42h-42M834 360h42m-42 42h42m-42 42h42m-42 42h42m-42 42h42M640 328v-42m42 42v-42m42 42v-42m42 42v-42m42 42v-42M640 556v42m42-42v42m42-42v42m42-42v42m42-42v42'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(118deg, #103d3b 0%, #174b42 50%, #203d32 100%); }
-body[data-shell="teal"] { --shell-navigation-base: #0b3a37; --shell-navigation-bg: linear-gradient(rgba(4,35,33,.16), rgba(4,31,29,.24)), url("assets/backgrounds/teal-circuit-shell.png"), linear-gradient(118deg, #103d3b 0%, #174b42 50%, #203d32 100%); }
+
+
+
+
+
+
 
 /* Dark mode sidebar shell themes — tint sidebar with brand color accent at top */
-body[data-shell="ember"] #sidebar { background: linear-gradient(180deg, #2d1210 0%, #1a1420 100%); border-right-color: rgba(255,93,68,.12); }
-body[data-shell="terracotta"] #sidebar { background: linear-gradient(180deg, #2d1a11 0%, #1c1618 100%); border-right-color: rgba(224,105,75,.12); }
-body[data-shell="mulberry"] #sidebar { background: linear-gradient(180deg, #2a1122 0%, #1a1228 100%); border-right-color: rgba(218,72,117,.12); }
-body[data-shell="indigo"] #sidebar { background: linear-gradient(180deg, #131929 0%, #0f1221 100%); border-right-color: rgba(79,111,216,.14); }
-body[data-shell="teal"] #sidebar { background: linear-gradient(180deg, #091f1e 0%, #0d1a19 100%); border-right-color: rgba(20,184,166,.14); }
+
+
+
+
+
 /* Light mode sidebar shell themes — solid colored sidebar */
 body[data-theme="light"][data-shell="ember"] #sidebar { background: #48241f; color: #f1e8e6; border-right-color: rgba(0,0,0,.2); }
 body[data-theme="light"][data-shell="terracotta"] #sidebar { background: #4b2b23; color: #f1eae6; border-right-color: rgba(0,0,0,.2); }
@@ -1715,10 +1715,29 @@ body[data-theme="light"][data-shell="mulberry"] #sidebar { background: #4a1f38; 
 body[data-theme="light"][data-shell="indigo"] #sidebar { background: #252b4b; color: #e8ecf8; border-right-color: rgba(0,0,0,.2); }
 body[data-theme="light"][data-shell="teal"] #sidebar { background: #103d3b; color: #e6f4f3; border-right-color: rgba(0,0,0,.2); }
 .shell-style-teal .shell-style-swatch { background: linear-gradient(rgba(4,35,33,.12), rgba(4,31,29,.20)), url("assets/backgrounds/teal-circuit-shell.png") center / cover; }
-body { background-color: var(--app-bg); background-image: none; }
-body[data-theme="light"] { color-scheme: dark; --app-bg: #030509; --canvas-bg: transparent; --nature-overlay: transparent; --shell-bg: transparent; --ink: #f8fafc; --ink-soft: #cbd5e1; --muted: #94a3b8; --line: rgba(255,255,255,.10); --line-strong: rgba(255,255,255,.20); --glass-strong: rgba(15, 23, 42, 0.85); --glass: rgba(15, 23, 42, 0.58); --glass-soft: rgba(15, 23, 42, 0.35); --glass-hover: rgba(255, 255, 255, 0.10); --solid: rgba(15, 23, 42, 0.58); --surface: rgba(15, 23, 42, 0.45); }
-body::after { inset: 0 0 0 var(--sidebar); overflow: hidden; border-radius: 0; background-color: var(--app-bg); background-image: none; background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: none; border-left: 1px solid var(--line); transition: inset .2s ease, left .2s ease; }
-body[data-theme="light"]::after { border-radius: 0; background-image: var(--canvas-tint), var(--nature-image); box-shadow: none; }
+body {
+  background-color: #030509 !important;
+  background-image: var(--nature-image) !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  color: #f8fafc !important;
+}
+
+body::after {
+  inset: 0 0 0 var(--sidebar);
+  overflow: hidden;
+  border-radius: 0;
+  background-color: #030509 !important;
+  background-image: var(--nature-image) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  box-shadow: none;
+  border-left: 1px solid var(--line);
+  transition: inset .2s ease, left .2s ease;
+}
 .collapsed::after { left: 68px; }
 .learning-command-bar.subject-first { display: block; padding: 4px 6px; overflow: hidden; }
 .education-command-row { min-width: 0; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
