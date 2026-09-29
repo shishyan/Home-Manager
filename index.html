@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="styles.css?release=education-v1-0-38">
+  <link rel="stylesheet" href="styles.css?release=education-v1-0-39">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -44,22 +44,21 @@
           <h1 id="pageTitle">Today</h1>
         </div>
         <div id="headerKpis" class="header-kpis" aria-label="Current household signals"></div>
-        <div class="header-actions"></div>
+        <div class="header-actions">
+          <button type="button" id="quickAdd" class="primary" title="Add item" aria-label="Add item"><i data-lucide="plus"></i></button>
+          <button type="button" id="globalSearch" class="icon-button" title="Search (Ctrl+K)" aria-label="Search records and help" aria-haspopup="dialog" aria-controls="searchDialog"><i data-lucide="search"></i></button>
+          <button type="button" id="offlineAssistant" class="icon-button" title="Offline assistant" aria-label="Open offline assistant" aria-haspopup="dialog" aria-controls="offlineAiDialog"><i data-lucide="sparkles"></i></button>
+          <button type="button" id="notifications" class="icon-button has-indicator" title="Notifications" aria-label="Open notifications" aria-expanded="false"><i data-lucide="bell"></i></button>
+          <button type="button" id="emergency" class="emergency-button" title="Emergency help" aria-label="Open emergency help"><i data-lucide="siren"></i></button>
+          <button type="button" id="theme" class="icon-button" title="Next theme background" aria-label="Choose next theme background"><i data-lucide="palette"></i></button>
+          <span id="utilityPersonaAvatar" class="avatar" title="Family view" aria-label="Current persona: Family">FN</span>
+        </div>
       </div>
     </header>
     <main id="content" tabindex="-1"></main>
   </div>
 
-  <aside id="utilityRail" class="utility-rail" aria-label="Quick tools">
-    <button type="button" id="quickAdd" class="primary" title="Add item" aria-label="Add item"><i data-lucide="plus"></i></button>
-    <button type="button" id="globalSearch" class="icon-button" title="Search (Ctrl+K)" aria-label="Search records and help" aria-haspopup="dialog" aria-controls="searchDialog"><i data-lucide="search"></i></button>
-    <button type="button" id="offlineAssistant" class="icon-button" title="Offline assistant" aria-label="Open offline assistant" aria-haspopup="dialog" aria-controls="offlineAiDialog"><i data-lucide="sparkles"></i></button>
-    <button type="button" id="notifications" class="icon-button has-indicator" title="Notifications" aria-label="Open notifications" aria-expanded="false"><i data-lucide="bell"></i></button>
-    <button type="button" id="emergency" class="emergency-button" title="Emergency help" aria-label="Open emergency help"><i data-lucide="siren"></i></button>
-    <span class="utility-spacer"></span>
-    <button type="button" id="theme" class="icon-button" title="Next mountain background" aria-label="Choose next mountain background"><i data-lucide="palette"></i></button>
-    <span id="utilityPersonaAvatar" class="avatar" title="Family view" aria-label="Current persona: Family">FN</span>
-  </aside>
+  
 
   <aside id="notificationPanel" class="notification-panel" aria-label="Notifications" aria-hidden="true">
     <div class="panel-heading"><div><small>Attention</small><h2>Household signals</h2></div><button type="button" id="closeNotifications" class="icon-button" aria-label="Close notifications"><i data-lucide="x"></i></button></div>
@@ -190,14 +189,14 @@
   <script src="js/chapter-foundations-senior-language-cs.js"></script>
   <script src="js/textbook-sections.js"></script>
   <script src="js/kitchen.js"></script>
-  <script src="js/views.js?release=education-v1-0-38"></script>
+  <script src="js/views.js?release=education-v1-0-39"></script>
   <script type="module" src="js/cloud.js"></script>
   <script type="module" src="js/offline-ai.js"></script>
   <script src="js/mail-feed.js"></script>
   <script src="js/contact-feed.js"></script>
-  <script src="js/school-calendar.js?release=education-v1-0-38"></script>
-  <script src="js/study-progress.js?release=education-v1-0-38"></script>
-  <script src="js/education-ui.js?release=education-v1-0-38"></script>
-  <script src="js/app.js?release=education-v1-0-38"></script>
+  <script src="js/school-calendar.js?release=education-v1-0-39"></script>
+  <script src="js/study-progress.js?release=education-v1-0-39"></script>
+  <script src="js/education-ui.js?release=education-v1-0-39"></script>
+  <script src="js/app.js?release=education-v1-0-39"></script>
 </body>
 </html>
