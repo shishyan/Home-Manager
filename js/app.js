@@ -202,7 +202,7 @@
 
   function personaCanOpenRoute(currentRoute, persona = HM.persona.current()) {
     if (HM.persona.roleGroup(persona) !== 'children') return true;
-    return currentRoute.startsWith('study/') || currentRoute.startsWith('kitchen/') || currentRoute.includes('travel');
+    return currentRoute === 'global/overview' || currentRoute.startsWith('study/') || currentRoute.startsWith('kitchen/') || currentRoute.includes('travel');
   }
 
   function openBookDatabase() {
@@ -471,6 +471,7 @@
   }
 
   function renderHeaderKpis() {
+    if (!$('#headerKpis')) return;
     if (route.startsWith('study/')) {
       $('#headerKpis').hidden = true;
       $('#headerKpis').innerHTML = '';
@@ -2439,7 +2440,7 @@
       toast(`Now viewing ${persona.name}`);
       return;
     }
-    if (!event.target.closest('#personaMenu') && !$('#personaMenu').hidden) closePersonaMenu();
+    if (!event.target.closest('#personaMenu') && $('#personaMenu') && !$('#personaMenu').hidden) closePersonaMenu();
     if (event.target.closest('[data-close-chapter-workspace]')) {
       closeChapterWorkspace();
       return;
@@ -2741,6 +2742,8 @@
       openChapterWorkspace(practiceOpen.dataset.practiceOpen, 'practice');
       return;
     }
+    if (event.target.closest('#headerMenuTrigger')) { const m = document.getElementById('headerMenu'); const isHidden = m.hidden; m.hidden = !isHidden; event.target.closest('button').setAttribute('aria-expanded', !isHidden); return; }
+    if (!event.target.closest('#headerMenu') && document.getElementById('headerMenu') && !document.getElementById('headerMenu').hidden) { document.getElementById('headerMenu').hidden = true; document.getElementById('headerMenuTrigger')?.setAttribute('aria-expanded', 'false'); }
     const routeTarget = event.target.closest('[data-route]');
     if (routeTarget) {
       event.preventDefault();
@@ -3078,6 +3081,11 @@
   applyTheme();
   render();
 })();
+
+
+
+
+
 
 
 
