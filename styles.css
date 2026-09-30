@@ -6605,3 +6605,47 @@ details.education-class-group summary:hover,
   border-radius: 6px !important;
   font-size: 11px !important;
 }
+
+
+/* === LEFT ALIGNMENT & MENU GROUP HIGHLIGHTING === */
+
+#nav,
+.section-nav,
+.section-tab-group,
+.section-tab,
+.section-subitem,
+.section-subnav,
+.education-tree,
+details.education-class,
+details.education-class > summary,
+details.education-subject,
+details.education-subject > summary,
+.education-page,
+.persona-tabs,
+.persona-tab,
+.sidebar-bottom button {
+  text-align: left !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+/* Highlight Menu Groups slightly so they stand out from sub-items */
+.section-tab,
+details.education-class > summary,
+.nav-group,
+.nav-section summary {
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-left: 3px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 6px !important;
+  padding-left: 10px !important;
+  margin-top: 4px !important;
+  margin-bottom: 2px !important;
+}
+
+.section-tab.active,
+details.education-class[open] > summary {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-left-color: var(--accent, #38bdf8) !important;
+}
