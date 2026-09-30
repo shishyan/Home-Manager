@@ -4,7 +4,7 @@
   const $ = selector => document.querySelector(selector);
   let route = location.hash.slice(2) || 'global/overview';
   let workspace = route.split('/')[0];
-  const migratedGroup = ({ today: 'household', family: 'household', kitchen: 'household', care: 'household', community: 'household', travel: 'leisure', web: 'household', entertainment: 'household' })[D.state.settings.activeGroup];
+  const migratedGroup = ({ today: 'household', family: 'household', travel: 'leisure', web: 'leisure', entertainment: 'leisure' })[D.state.settings.activeGroup];
   let activeGroup = migratedGroup || D.state.settings.activeGroup || 'household';
   let expandedGroup = activeGroup;
   let lastDeleted = null;
@@ -35,7 +35,7 @@
 
   function applyChapterRailMode(rail, mode = chapterRailMode) {
     if (!rail) return;
-    chapterRailMode = ['guide'].includes(mode) ? mode : 'guide';
+    chapterRailMode = mode === 'notes' ? 'notes' : 'guide';
     rail.querySelectorAll('[data-chapter-rail-tab]').forEach(button => {
       const active = button.dataset.chapterRailTab === chapterRailMode;
       button.classList.toggle('active', active);
@@ -138,21 +138,26 @@
     if (profile) D.state.settings.activeLearnerId = persona.id;
     document.body.dataset.activePersona = persona.id;
     document.body.dataset.personaRole = HM.persona.roleGroup(persona);
-    
+    const trigger = $('#personaSwitcher');
+    const initials = HM.persona.initials(persona);
+    $('#personaInitials').textContent = initials;
+    $('#personaName').textContent = persona.name;
+    trigger.setAttribute('aria-label', `Switch persona. Current view: ${persona.name}`);
+    const utilityAvatar = $('#utilityPersonaAvatar');
+    if (utilityAvatar) {
+      utilityAvatar.textContent = initials;
+      utilityAvatar.title = `${persona.name} view`;
+      utilityAvatar.setAttribute('aria-label', `Current persona: ${persona.name}`);
+    }
     const options = [
       { id: HM.persona.FAMILY_ID, name: 'Family', householdRole: 'Shared household', isFamily: true },
       ...HM.persona.people()
     ];
-    
-    const tabsContainer = $('#personaTabs');
-    if (tabsContainer) {
-      tabsContainer.innerHTML = options.map(option => {
-        const selected = option.id === persona.id;
-        const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
-        return `<button type="button" class="persona-tab ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-pressed="${selected}">${D.esc(option.name)}</button>`;
-      }).join('');
-    }
-
+    $('#personaMenu').innerHTML = options.map(option => {
+      const selected = option.id === persona.id;
+      const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
+      return `<button type="button" class="persona-option" role="option" data-persona="${D.esc(option.id)}" aria-selected="${selected}" tabindex="${selected ? '0' : '-1'}"><span>${D.esc(optionInitials)}</span><span><b>${D.esc(option.name)}</b><small>${D.esc(option.householdRole || 'Family member')}</small></span><i data-lucide="check"></i></button>`;
+    }).join('');
     const language = HM.i18n.current(persona);
     document.querySelectorAll('#languageSwitcher [data-language]').forEach(button => {
       const selected = button.dataset.language === language;
@@ -182,27 +187,24 @@
     const lifeOwners = {
       property: 'household', bills: 'household', help: 'household', sustainability: 'household',
       travel: 'leisure', transport: 'leisure', vehicles: 'leisure', stays: 'leisure', travelProtection: 'leisure',
-      subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
-      watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
+      subscriptions: 'leisure', digital: 'leisure', webAccounts: 'leisure', aiServices: 'leisure', webHabits: 'leisure', games: 'leisure',
+      watch: 'leisure', listen: 'leisure', reading: 'leisure', play: 'leisure', outings: 'leisure',
       festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
-      health: 'household', emergency: 'household', pets: 'household', education: 'learning'
+      health: 'care', emergency: 'care', pets: 'care', education: 'learning'
     };
     if (lifeOwners[lifeDomain]) return lifeOwners[lifeDomain];
     if (currentRoute.startsWith('study/')) return 'learning';
-    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
+    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'leisure', 'community/events': 'community', 'community/polls': 'community' };
     return routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key])) || 'household';
   }
 
   function personaCanSeeGroup(groupKey, persona = HM.persona.current()) {
-    if (HM.persona.roleGroup(persona) === 'children') {
-      return ['learning', 'leisure', 'household'].includes(groupKey);
-    }
-    return true;
+    return !(HM.persona.roleGroup(persona) === 'children' && groupKey === 'money');
   }
 
   function personaCanOpenRoute(currentRoute, persona = HM.persona.current()) {
     if (HM.persona.roleGroup(persona) !== 'children') return true;
-    return currentRoute === 'global/overview' || currentRoute.startsWith('study/') || currentRoute.startsWith('kitchen/') || currentRoute.includes('travel');
+    return currentRoute !== 'home/finance' && !currentRoute.startsWith('home/money/') && currentRoute !== 'settings/money';
   }
 
   function openBookDatabase() {
@@ -427,19 +429,25 @@
       'home/life/insurance': 'home/family', 'home/life/tax': 'home/family', 'home/life/documents': 'home/family', 'home/life/legacy': 'home/family',
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
-    const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
-    const navSelect = $('#navigationGroup');
-    if (navSelect) navSelect.innerHTML = availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('');
-    $('#nav').innerHTML = `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${(HM.persona.roleGroup(HM.persona.current()) === 'children' && activeGroup === 'household' ? group.items.filter(child => ['Food'].includes(child[0])) : group.items).map((child, index) => {
-      const nested = child[3] || [];
-      const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
-      const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
-      return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
-    }).join('')}</div>`;
-    if (activeGroup === 'learning') {
-      $('#sectionNav').outerHTML = V.educationNavigation(activeChapterWorkspace?.section || '');
-    }
-    const mobileItems = availableGroups.map(([key, item]) => [item.label, item.icon, item.route]);
+    $('#workspaceMenuLabel').innerHTML = `<span><small>Daily & weekly</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
+    $('#nav').innerHTML = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key)).map(([key, item]) => {
+      const active = key === activeGroup;
+      const expanded = expandedGroup === key;
+      const children = expanded ? `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(item.label)} pages">${item.items.map((child, index) => {
+        const nested = child[3] || [];
+        const nestedActive = nested.some(subitem => route === subitem[2] || topRoute === subitem[2]);
+        const childActive = !activeSettings && (topRoute === child[2] || nestedActive);
+        const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => { const subActive = !activeSettings && (route === subitem[2] || topRoute === subitem[2]); return `<button type="button" data-route="${subitem[2]}" aria-label="Open ${D.esc(subitem[0])}" title="${D.esc(subitem[0])}" class="section-subitem ${subActive ? 'active' : ''}" ${subActive ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`; }).join('')}</div>` : '';
+        return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" title="${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
+      }).join('')}</div>` : '';
+      const direct = false;
+      const chevron = direct ? '' : `<i class="nav-chevron" data-lucide="${expanded ? 'chevron-down' : 'chevron-right'}"></i>`;
+      const expansionState = direct ? '' : ` aria-expanded="${expanded}"`;
+      const parentLabel = direct ? `Open ${item.label}` : `${expanded ? 'Collapse' : 'Expand'} ${item.label} menu`;
+      const navigation = direct ? `data-route="${item.route}"` : `data-group="${key}"`;
+      return `<div class="nav-tree-item"><button class="nav-parent ${active ? 'active' : ''} ${expanded && !direct ? 'expanded' : ''}" ${navigation} aria-label="${D.esc(parentLabel)}" title="${D.esc(parentLabel)}"${expansionState}><span class="nav-icon"><i data-lucide="${item.icon}"></i></span><span>${D.esc(item.label)}</span>${chevron}</button>${children}</div>`;
+    }).join('');
+    const mobileItems = [['Today', 'sparkles', 'global/overview'], ['Calendar', 'calendar-days', 'home/calendar'], ['Tasks', 'list-checks', 'home/tasks'], ['Food', 'shopping-basket', route.startsWith('kitchen/') ? 'kitchen/overview' : 'home/inventory']];
     $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
     $('#helpNav').classList.toggle('active', route === 'global/questions');
@@ -471,7 +479,6 @@
   }
 
   function renderHeaderKpis() {
-    if (!$('#headerKpis')) return;
     if (route.startsWith('study/')) {
       $('#headerKpis').hidden = true;
       $('#headerKpis').innerHTML = '';
@@ -520,8 +527,22 @@
   function placeEducationMasterControls() {
     const slot = $('#educationHeaderTabs');
     if (!slot) return;
-    slot.hidden = true;
-    slot.replaceChildren();
+    const contentLearners = $('#content .learner-bar');
+    const contentControls = $('#content .education-master-controls');
+    const controls = contentControls || slot.querySelector('.education-master-controls');
+    const learners = contentLearners || slot.querySelector('.learner-bar');
+    const row = $('#content .education-command-row');
+    const useHeader = route.startsWith('study/') && window.innerWidth >= 1100;
+    slot.hidden = !useHeader;
+    if (!controls && !learners) { slot.replaceChildren(); return; }
+    if (useHeader) {
+      slot.replaceChildren(...[learners, controls].filter(Boolean));
+    } else if (row) {
+      const sectionTabs = row.querySelector('.learning-section-tabs');
+      if (learners) row.insertBefore(learners, sectionTabs);
+      if (controls) row.insertBefore(controls, sectionTabs);
+      slot.replaceChildren();
+    }
   }
 
   function render() {
@@ -550,7 +571,7 @@
       go(movedSettingsRoute);
       return;
     }
-    const movedStudyRoute = { 'study/reports': 'study/curriculum', 'study/board': 'study/curriculum', 'study/schedule': 'study/planner', 'study/tasks': 'study/assignments', 'study/goals': 'study/reports', 'study/focus': 'study/practice', 'study/analytics': 'study/reports' }[route];
+    const movedStudyRoute = { 'study/board': 'study/curriculum', 'study/schedule': 'study/planner', 'study/tasks': 'study/assignments', 'study/goals': 'study/reports', 'study/focus': 'study/practice', 'study/analytics': 'study/reports' }[route];
     if (movedStudyRoute) { go(movedStudyRoute); return; }
     const first = route.split('/')[0];
     if (['home', 'community', 'study'].includes(first)) {
@@ -566,7 +587,8 @@
     renderNav();
     const homeName = renderHomeIdentity();
     const title = V.titles[route] || ['Today', homeName];
-
+    $('#breadcrumb').textContent = settingsSection() ? 'Settings' : V.groups[activeGroup].label;
+    $('#pageTitle').textContent = title[0];
     document.title = title[0] + ' - ' + homeName;
     $('#content').dataset.view = route;
     $('#content').dataset.activePersona = persona.id;
@@ -585,7 +607,7 @@
     $('#menu').setAttribute('aria-expanded', 'false');
     refreshIcons();
     HM.i18n.apply(document, route);
-    document.title = `${title[0]} - ${homeName}`;
+    document.title = `${$('#pageTitle').textContent} - ${homeName}`;
     requestAnimationFrame(() => $('#sectionNav .active')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     if (legacyPracticeLesson) requestAnimationFrame(() => openChapterWorkspace(legacyPracticeLesson, 'practice'));
   }
@@ -1631,8 +1653,8 @@
       contacts.push(...(payload.connections || []).map(person => ({ sourceRef: `${account.email}:${person.resourceName}`, personId: account.personId, name: person.names?.[0]?.displayName || 'Unnamed contact', email: person.emailAddresses?.[0]?.value || '', phone: person.phoneNumbers?.[0]?.value || '', organization: person.organizations?.[0]?.name || '' })));
       pageToken = payload.nextPageToken || '';
       report({ phase: 'Syncing Contacts', detail: `${contacts.length} contacts found for ${account.email}`, contacts: contacts.length });
-    } while (pageToken);
-    return contacts;
+    } while (pageToken && contacts.length < 2000);
+    return contacts.slice(0, 2000);
   }
 
   function mergeGoogleContacts(items) {
@@ -1706,8 +1728,6 @@
     });
     return messages.map(message => {
       const headers = Object.fromEntries((message.payload?.headers || []).map(header => [String(header.name).toLowerCase(), header.value]));
-      const senderAddress = String(headers.from || '').match(/[A-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Z0-9.-]+/i)?.[0] || '';
-      if (account.email.toLowerCase() === 'nagaraj957@gmail.com' && senderAddress.toLowerCase().includes('peepal')) return null;
       const body = gmailMessageText(message.payload);
       const text = `${headers.subject || ''} ${message.snippet || ''} ${body}`.slice(0, 24000);
       const category = classifyIntegrationText(text, sync.categories || integrationCategories);
@@ -2292,18 +2312,18 @@
     const lesson = V.lessonById(lessonId);
     activeChapterWorkspace = { lessonId, section };
     $('#chapterWorkspaceBody').innerHTML = V.chapterWorkspace(lessonId, section);
-    renderNav();
+    $('#nav').classList.add('chapter-nav-mode');
+    $('#nav').innerHTML = V.chapterWorkspaceNavigation(lessonId, section);
+    $('#workspaceMenuLabel').innerHTML = `<span><small>Education</small><b>${D.esc(lesson?.subject || 'Subject')} chapters</b></span><i data-lucide="list-tree"></i>`;
     workspace.hidden = false;
     document.body.classList.add('chapter-workspace-open');
-    placeEducationMasterControls();
     refreshIcons();
     syncChapterSupportRail();
   }
 
   function openChapterWorkspace(lessonId, section = 'summary') {
-    chapterRailMode = 'guide';
     refreshChapterWorkspace(lessonId, section);
-    $('#nav .education-chapter.active')?.focus();
+    $('#nav .chapter-workspace-close')?.focus();
   }
 
   function closeChapterWorkspace() {
@@ -2319,101 +2339,7 @@
     document.querySelector('[data-chapter-card]')?.focus();
   }
 
-  window.addEventListener('hm-study-progress', () => {
-    const expanded=[...document.querySelectorAll('.progress-chapter[open]')].map(el=>el.dataset.lesson || el.querySelector('[data-study-level]')?.dataset.lesson);
-    if (activeChapterWorkspace) refreshChapterWorkspace(activeChapterWorkspace.lessonId,activeChapterWorkspace.section);
-    else {render();document.querySelectorAll('.progress-chapter').forEach(el=>{if(expanded.includes(el.dataset.lesson || el.querySelector('[data-study-level]')?.dataset.lesson))el.open=true;});}
-  });
-
-  document.addEventListener('change', event => {
-    if (event.target.id === 'navigationGroup') {
-      const key = event.target.value;
-      if (activeChapterWorkspace) closeChapterWorkspace();
-      if (V.groups[key] && personaCanSeeGroup(key)) go(V.groups[key].route);
-    }
-    if (event.target.id === 'educationLearner') {
-      const id = event.target.value;
-      if (!(D.state.academicProfiles || []).some(profile => profile.personId === id)) return;
-      if (document.body.classList.contains('chapter-workspace-open')) closeChapterWorkspace();
-      HM.persona.set(id);
-      D.state.settings.activeLearnerId = id;
-      D.save();
-      if (route === 'study/jee' && +HM.persona.academic()?.grade !== 12) go('study/curriculum');
-      else render();
-    }
-  });
-
   document.addEventListener('click', event => {
-    const educationPage=event.target.closest('[data-education-page]');
-    if(educationPage){
-      if(activeChapterWorkspace)closeChapterWorkspace();
-      const id=educationPage.dataset.student,subject=educationPage.dataset.subject,page=educationPage.dataset.educationPage;
-      HM.persona.set(id);D.state.settings.activeLearnerId=id;
-      D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
-      D.state.settings.educationExpandedSubject={studentId:id,subject};
-      D.state.settings.educationActivePage=page;D.save();
-      go(page.startsWith('study/')?page:'study/curriculum');render();
-      if(page==='learning')openChapterWorkspace(V.defaultLessonId(),'summary');else if(page==='book')openChapterWorkspace(V.defaultLessonId(),'book');
-      document.body.classList.remove('menu-open');return;
-    }
-    const studentDashboard=event.target.closest('[data-education-student-dashboard]');
-    if(studentDashboard){if(activeChapterWorkspace)closeChapterWorkspace();go('study/student-overview');render();document.body.classList.remove('menu-open');return;}
-    const dashboardSubject=event.target.closest('[data-select-learning-subject]');
-    if(dashboardSubject){if(activeChapterWorkspace)closeChapterWorkspace();const subject=dashboardSubject.dataset.selectLearningSubject;const context=V.academicContext();if(context.profile.subjects.includes(subject)){D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[context.activeId]=subject;D.state.settings.educationExpandedSubject={studentId:context.activeId,subject};D.save();go('study/overview');render();}return;}
-    const educationClass=event.target.closest('[data-education-class]');
-    if(educationClass){
-      event.preventDefault();
-      const details=educationClass.closest('details');
-      const studentId=educationClass.dataset.educationClass;
-      const collapsed=new Set(D.state.settings.educationCollapsedClasses||[]);
-      if(details.open)collapsed.add(studentId);else collapsed.delete(studentId);
-      D.state.settings.educationCollapsedClasses=[...collapsed];
-      D.save();
-      details.open=!details.open;
-      return;
-    }
-    const educationSubject = event.target.closest('[data-education-subject]');
-    if (educationSubject) {
-      event.preventDefault();
-      if (activeChapterWorkspace) closeChapterWorkspace();
-      const studentId = educationSubject.dataset.student;
-      const subject = educationSubject.dataset.educationSubject;
-      const subjectDetails=educationSubject.closest('details');
-      const currentSubject=D.state.settings.activeLearningSubject?.[studentId] || 'Mathematics';
-      if(studentId===D.state.settings.activeLearnerId&&subject===currentSubject){
-        const shouldExpand=!subjectDetails.open;
-        D.state.settings.educationExpandedSubject=shouldExpand?{studentId,subject}:false;
-        D.save();
-        subjectDetails.open=shouldExpand;
-        return;
-      }
-      HM.persona.set(studentId);
-      D.state.settings.activeLearnerId = studentId;
-      D.state.settings.activeLearningSubject ||= {};
-      D.state.settings.activeLearningSubject[studentId] = subject;
-      D.state.settings.educationExpandedSubject = {studentId,subject};
-      D.save();
-      go('study/overview');
-      render();
-      return;
-    }
-    const educationChapter = event.target.closest('[data-education-chapter]');
-    if (educationChapter) {
-      if (activeChapterWorkspace) closeChapterWorkspace();
-      const studentId = educationChapter.dataset.student;
-      HM.persona.set(studentId);
-      D.state.settings.activeLearnerId = studentId;
-      D.state.settings.activeLearningSubject ||= {};
-      D.state.settings.activeLearningSubject[studentId] = educationChapter.dataset.subject;
-      D.state.settings.activeLearningTrack ||= {};
-      D.state.settings.activeLearningTrack[studentId] = educationChapter.dataset.track || 'cbse';
-      D.save();
-      go('study/curriculum');
-      render();
-      openChapterWorkspace(educationChapter.dataset.educationChapter);
-      document.body.classList.remove('menu-open');
-      return;
-    }
     const languageOption = event.target.closest('[data-language]');
     if (languageOption?.closest('#languageSwitcher')) {
       HM.i18n.set(languageOption.dataset.language);
@@ -2440,7 +2366,7 @@
       toast(`Now viewing ${persona.name}`);
       return;
     }
-    if (!event.target.closest('#personaMenu') && $('#personaMenu') && !$('#personaMenu').hidden) closePersonaMenu();
+    if (!event.target.closest('#personaMenu') && !$('#personaMenu').hidden) closePersonaMenu();
     if (event.target.closest('[data-close-chapter-workspace]')) {
       closeChapterWorkspace();
       return;
@@ -2493,9 +2419,9 @@
       D.save();
       if (document.body.classList.contains('chapter-workspace-open')) {
         refreshChapterWorkspace(lessonId, activeChapterWorkspace?.section || 'summary');
-        if (!subchapterProgress.closest('.daily-progress-panel')) requestAnimationFrame(() => document.querySelector(`[data-summary-subchapter="${CSS.escape(topicId)}"]`)?.scrollIntoView({ block: 'start' }));
-      } else window.dispatchEvent(new CustomEvent('hm-study-progress'));
-      toast(next === 'mastered' ? 'Topic marked can explain' : next === 'learning' ? 'Subchapter marked learning' : 'Subchapter reset');
+        requestAnimationFrame(() => document.querySelector(`[data-summary-subchapter="${CSS.escape(topicId)}"]`)?.scrollIntoView({ block: 'start' }));
+      } else render();
+      toast(next === 'mastered' ? 'Subchapter mastered' : next === 'learning' ? 'Subchapter marked learning' : 'Subchapter reset');
       return;
     }
     const chapterSubchapter = event.target.closest('[data-chapter-subchapter]');
@@ -2517,11 +2443,6 @@
       refreshChapterWorkspace(chapterSwitch.dataset.chapterSwitch, activeChapterWorkspace?.section || 'summary');
       return;
     }
-    const studySection = event.target.closest('[data-study-section]');
-    if(studySection && studySection.dataset.studySection==='notes'){D.state.settings.educationActivePage='notes';D.save();document.querySelectorAll('[data-study-section]').forEach(button=>{const active=button.dataset.studySection==='notes';button.classList.toggle('active',active);active?button.setAttribute('aria-current','page'):button.removeAttribute('aria-current');});HM.educationUI.openNotes(activeChapterWorkspace?.lessonId || V.defaultLessonId());return;}
-    if(studySection){D.state.settings.educationActivePage=studySection.dataset.studySection;D.save();openChapterWorkspace(activeChapterWorkspace?.lessonId || V.defaultLessonId(),studySection.dataset.studySection);return;}
-    const practiceHubTab=event.target.closest('[data-practice-hub-tab]');
-    if(practiceHubTab){D.state.settings.educationPracticeTab=practiceHubTab.dataset.practiceHubTab;D.save();render();return;}
     const chapterRailTab = event.target.closest('[data-chapter-rail-tab]');
     if (chapterRailTab) {
       applyChapterRailMode(chapterRailTab.closest('.chapter-support-rail'), chapterRailTab.dataset.chapterRailTab);
@@ -2573,7 +2494,6 @@
       return;
     }
     const chapterTab = event.target.closest('[data-chapter-workspace-tab]');
-    if(chapterTab?.dataset.chapterWorkspaceTab==='notes'){HM.educationUI.openNotes(chapterTab.dataset.lesson);return;}
     if (chapterTab) {
       refreshChapterWorkspace(chapterTab.dataset.lesson, chapterTab.dataset.chapterWorkspaceTab);
       return;
@@ -2611,7 +2531,7 @@
         if (lesson) { lesson.mastery = mastery; lesson.status = status; }
       }
       D.save();
-      refreshChapterWorkspace(lessonId, activeChapterWorkspace?.section || 'summary');
+      refreshChapterWorkspace(lessonId, 'progress');
       toast('Chapter progress updated');
       return;
     }
@@ -2742,8 +2662,6 @@
       openChapterWorkspace(practiceOpen.dataset.practiceOpen, 'practice');
       return;
     }
-    if (event.target.closest('#headerMenuTrigger')) { const m = document.getElementById('headerMenu'); const isHidden = m.hidden; m.hidden = !isHidden; event.target.closest('button').setAttribute('aria-expanded', !isHidden); return; }
-    if (!event.target.closest('#headerMenu') && document.getElementById('headerMenu') && !document.getElementById('headerMenu').hidden) { document.getElementById('headerMenu').hidden = true; document.getElementById('headerMenuTrigger')?.setAttribute('aria-expanded', 'false'); }
     const routeTarget = event.target.closest('[data-route]');
     if (routeTarget) {
       event.preventDefault();
@@ -2751,11 +2669,7 @@
         const lessonId = routeTarget.dataset.lesson || activeChapterWorkspace?.lessonId || D.state.settings.activeGeniusLesson?.[D.state.settings.activeLearnerId] || D.state.settings.activePracticeLesson?.[D.state.settings.activeLearnerId] || V.defaultLessonId();
         if (lessonId) openChapterWorkspace(lessonId, 'practice');
         else go('study/curriculum');
-      } else {
-        if (activeChapterWorkspace) closeChapterWorkspace();
-        if(routeTarget.dataset.route.startsWith('study/')){D.state.settings.educationActivePage=routeTarget.dataset.route;D.save();}
-        go(routeTarget.dataset.route);
-      }
+      } else go(routeTarget.dataset.route);
       if ($('#searchDialog').open) $('#searchDialog').close();
       if ($('#emergencyDialog').open) $('#emergencyDialog').close();
       toggleNotifications(false);
@@ -3025,7 +2939,6 @@
   $('#backdrop').onclick = () => { document.body.classList.remove('menu-open'); $('#menu').setAttribute('aria-expanded', 'false'); };
   $('#collapse').onclick = () => { D.state.settings.sidebarCollapsed = !D.state.settings.sidebarCollapsed; D.save(); applyTheme(); };
   $('#bottomNav').onclick = event => { if (event.target.closest('#bottomMore')) { document.body.classList.add('menu-open'); $('#menu').setAttribute('aria-expanded', 'true'); } };
-  window.addEventListener('hm-school-calendar', () => {if(['home/calendar','study/planner'].includes(route))render();});
   window.addEventListener('hashchange', render);
   document.body.addEventListener('change', event => {
     const fileInput = event.target.closest('[data-sms-import-file]');
@@ -3049,7 +2962,7 @@
   });
   window.addEventListener('hm-cloud-status', () => { if (route === 'settings/app') render(); });
   window.addEventListener('hm-cloud-state', () => {
-    activeGroup = ({ today: 'household', family: 'household', kitchen: 'household', care: 'household', community: 'household', travel: 'leisure', web: 'household', entertainment: 'household' })[D.state.settings.activeGroup] || D.state.settings.activeGroup || 'household';
+    activeGroup = ({ today: 'household', family: 'household', travel: 'leisure', web: 'leisure', entertainment: 'leisure' })[D.state.settings.activeGroup] || D.state.settings.activeGroup || 'household';
     applyTheme();
     render();
     toast('Family database updated');
@@ -3081,13 +2994,3 @@
   applyTheme();
   render();
 })();
-
-
-
-
-
-
-
-
-
-

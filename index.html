@@ -10,22 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="styles.css?release=v1-0-52">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   <aside id="sidebar" aria-label="Primary navigation">
-    <div class="brand" style="padding: 16px 14px 12px; margin: 0; background: transparent !important; border: 0 !important; display: flex; align-items: center; gap: 10px;">
-      <span class="brand-mark" aria-hidden="true" style="flex: 0 0 40px;"><i data-lucide="flower-2"></i></span>
-      <div class="brand-copy" style="flex: 1; min-width: 0; display: grid; gap: 0;">
-        <label class="sr-only" for="navigationGroup">Menu</label>
-        <div style="font-size: 9px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Lotus Naga Home</div>
-        <select id="navigationGroup" aria-label="Menu section" style="width: 100%; appearance: none; border: 0; background: transparent; padding: 0; color: #fff; font-weight: 800; font-size: 14px; cursor: pointer; outline: none; margin: 0;">
-        </select>
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"><i data-lucide="flower-2"></i></span>
+      <div class="brand-copy">
+        <b id="brandName">Lotus Naga Home</b>
+        <a id="brandAddress" href="https://www.google.com/maps/search/?api=1&amp;query=32%20SSS%20Jaya%20Enclave%2C%20Kovaipudur%2C%20Coimbatore%2C%20641042" target="_blank" rel="noopener noreferrer">32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042</a>
       </div>
-      <i data-lucide="chevron-down" style="color: rgba(255,255,255,0.4); width: 14px; height: 14px; flex: 0 0 auto;"></i>
     </div>
-    
+    <div id="workspaceMenuLabel" class="workspace-menu-label"></div>
     <nav id="nav"></nav>
     <div class="sidebar-bottom">
       <button type="button" id="helpNav" data-route="global/questions" title="Help and Guide" aria-label="Open Help and Guide"><i data-lucide="circle-help"></i><span>Help & Guide</span></button>
@@ -40,28 +37,29 @@
     <header class="app-header">
       <div class="topbar">
         <button type="button" id="menu" class="icon-button" title="Open navigation" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
-        
-        
-        
-        <div id="personaTabs" class="persona-tabs" aria-label="Switch profile"></div>
-        <div class="header-actions" style="position: relative;">
-          <button type="button" id="headerMenuTrigger" class="icon-button" title="Actions menu" aria-haspopup="menu" aria-expanded="false"><i data-lucide="more-vertical"></i></button>
-          <div id="headerMenu" class="actions-dropdown" hidden role="menu" aria-label="Quick actions">
-            <button type="button" id="quickAdd" role="menuitem"><i data-lucide="plus"></i> Add Item</button>
-            <button type="button" id="globalSearch" role="menuitem"><i data-lucide="search"></i> Search</button>
-            <button type="button" id="offlineAssistant" role="menuitem"><i data-lucide="sparkles"></i> Assistant</button>
-            <button type="button" id="notifications" role="menuitem"><i data-lucide="bell"></i> Notifications</button>
-            <button type="button" id="emergency" role="menuitem" style="color: #fda4af;"><i data-lucide="siren"></i> Emergency</button>
-            <button type="button" id="theme" role="menuitem"><i data-lucide="palette"></i> Theme</button>
-          </div>
+        <div class="page-identity">
+          <div class="persona-crumb" data-no-translate><button type="button" id="personaSwitcher" class="persona-switcher" aria-haspopup="listbox" aria-expanded="false" aria-controls="personaMenu"><span id="personaInitials">FN</span><strong id="personaName">Family</strong><i data-lucide="chevrons-up-down"></i></button><div id="personaMenu" class="persona-menu" role="listbox" aria-label="View the app as" hidden></div></div>
+          <small id="breadcrumb">Lotus Naga Home</small>
+          <h1 id="pageTitle">Today</h1>
         </div>
+        <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects"></div>
+        <div id="headerKpis" class="header-kpis" aria-label="Current household signals"></div>
+        <div class="header-actions"></div>
       </div>
     </header>
-    <a id="brandAddress" class="floating-address" href="https://www.google.com/maps/search/?api=1&amp;query=32%20SSS%20Jaya%20Enclave%2C%20Kovaipudur%2C%20Coimbatore%2C%20641042" target="_blank" rel="noopener noreferrer"><i data-lucide="map-pin"></i> 32 SSS Jaya Enclave, Kovaipudur</a>
-    <div class="content-header" style="padding: 14px 34px 0;">`n      <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects"></div><h1 id="brandName" style="font-size: 26px; font-weight: 800; margin: 0; color: var(--ink);">Lotus Naga Home</h1></div>`n    <main id="content" tabindex="-1"></main>
+    <main id="content" tabindex="-1"></main>
   </div>
 
-  
+  <aside id="utilityRail" class="utility-rail" aria-label="Quick tools">
+    <button type="button" id="quickAdd" class="primary" title="Add item" aria-label="Add item"><i data-lucide="plus"></i></button>
+    <button type="button" id="globalSearch" class="icon-button" title="Search (Ctrl+K)" aria-label="Search records and help" aria-haspopup="dialog" aria-controls="searchDialog"><i data-lucide="search"></i></button>
+    <button type="button" id="offlineAssistant" class="icon-button" title="Offline assistant" aria-label="Open offline assistant" aria-haspopup="dialog" aria-controls="offlineAiDialog"><i data-lucide="sparkles"></i></button>
+    <button type="button" id="notifications" class="icon-button has-indicator" title="Notifications" aria-label="Open notifications" aria-expanded="false"><i data-lucide="bell"></i></button>
+    <button type="button" id="emergency" class="emergency-button" title="Emergency help" aria-label="Open emergency help"><i data-lucide="siren"></i></button>
+    <span class="utility-spacer"></span>
+    <button type="button" id="theme" class="icon-button" title="Next mountain background" aria-label="Choose next mountain background"><i data-lucide="palette"></i></button>
+    <span id="utilityPersonaAvatar" class="avatar" title="Family view" aria-label="Current persona: Family">FN</span>
+  </aside>
 
   <aside id="notificationPanel" class="notification-panel" aria-label="Notifications" aria-hidden="true">
     <div class="panel-heading"><div><small>Attention</small><h2>Household signals</h2></div><button type="button" id="closeNotifications" class="icon-button" aria-label="Close notifications"><i data-lucide="x"></i></button></div>
@@ -192,22 +190,9 @@
   <script src="js/chapter-foundations-senior-language-cs.js"></script>
   <script src="js/textbook-sections.js"></script>
   <script src="js/kitchen.js"></script>
-  <script src="js/views.js?release=v1-0-52"></script>
+  <script src="js/views.js"></script>
   <script type="module" src="js/cloud.js"></script>
   <script type="module" src="js/offline-ai.js"></script>
-  <script src="js/mail-feed.js"></script>
-  <script src="js/contact-feed.js"></script>
-  <script src="js/school-calendar.js?release=v1-0-52"></script>
-  <script src="js/study-progress.js?release=v1-0-52"></script>
-  <script src="js/education-ui.js?release=v1-0-52"></script>
-  <script src="js/app.js?release=v1-0-52"></script>
-<div id="pageTitle" hidden></div>
+  <script src="js/app.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
