@@ -6549,3 +6549,59 @@ details.education-class-group summary:hover,
   margin: 0 !important;
   padding: 0 !important;
 }
+
+
+/* === CLEAN EDUCATION NAVIGATION TREE === */
+
+.education-tree {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  padding: 4px 0 !important;
+}
+
+.education-tree details.education-class,
+.education-tree details.education-subject {
+  margin: 2px 0 !important;
+}
+
+.education-tree details.education-class > summary,
+.education-tree details.education-subject > summary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+  color: var(--ink, #ffffff) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  user-select: none !important;
+}
+
+.education-tree details.education-class > summary:hover,
+.education-tree details.education-subject > summary:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.education-tree details.education-subject > summary.active {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+.education-pages-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  padding-left: 14px !important;
+  margin-top: 2px !important;
+}
+
+.education-page {
+  text-align: left !important;
+  width: 100% !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+}

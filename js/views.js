@@ -894,27 +894,57 @@
 
   function educationNavigation(activeSection = '') {
     const activeId = D.state.settings.activeLearnerId;
+    const currentPersona = HM.persona.current();
+
+    // Show Class 7 for Ishaan (p4), Class 12 for Sasha (p3).
+    // If current persona is a student, filter strictly to that student.
+    // If parent/family, show activeLearnerId's profile.
+    const targetStudentId = (currentPersona && ['p3', 'p4'].includes(currentPersona.id))
+      ? currentPersona.id
+      : (activeId || 'p4');
+
+    const allProfiles = D.state.academicProfiles || [];
+    const profilesToShow = allProfiles.filter(p => p.personId === targetStudentId);
+    const profiles = profilesToShow.length ? profilesToShow : allProfiles;
+
     const route = location.hash.slice(2) || 'study/overview';
     const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice-hub':'Practice & Assignments'}[route] || '';
     const pageLabelById = {'study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar',learning:'Learning',summary:'Learning',understand:'Learning',resource:'Learning',book:'Read Book','study/practice-hub':'Practice & Assignments'};
     const activePage = activeSection || pageLabelById[D.state.settings.educationActivePage] || routePage;
     const expandedSubject = D.state.settings.educationExpandedSubject;
-    const collapsedClasses=D.state.settings.educationCollapsedClasses || [];
-    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages"><button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}><i data-lucide="layout-dashboard"></i><span>Student dashboard</span></button>${[...(D.state.academicProfiles || [])].sort((a,b)=>+b.grade-+a.grade).map(profile => {
-      const selected = D.state.settings.activeLearningSubject?.[profile.personId] || 'Mathematics';
-      return `<details class="education-class" ${collapsedClasses.includes(profile.personId)?'':'open'}><summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}"><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></summary>${profile.subjects.map(subject => {
-        const context = {profile,activeId:profile.personId,selectedSubject:subject};
-        const jee = +profile.grade === 12 && D.state.settings.activeLearningTrack?.[profile.personId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
-        const lessons = curriculumLessons(context, jee);
-        const custom = (D.state.syllabusItems || []).filter(item=>!jee && item.studentId===profile.personId && item.subject===subject && !/^sy-p[34]-/.test(item.id) && !lessons.some(lesson=>lesson.title.toLowerCase()===item.title.toLowerCase()));
-        const pages=[['Overview','study/overview'],['Calendar','study/planner'],['Learning','learning'],['Read Book','book'],['Practice & Assignments','study/practice-hub']];
-        const isActiveSubject=profile.personId===activeId && subject===selected;
-        const isExpanded=expandedSubject===false?false:expandedSubject?expandedSubject.studentId===profile.personId&&expandedSubject.subject===subject:isActiveSubject;
-        return `<details class="education-subject" ${isExpanded ? 'open' : ''}><summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>${e(subject)}</summary><div>${pages.map(([label,page])=>{const isActivePage=isActiveSubject&&pageLabelById[page]===activePage;return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''}>${label}</button>`;}).join('')}</div></details>`;
-      }).join('')}</details>`;
-    }).join('')}</div>`;
-  }
+    const collapsedClasses = D.state.settings.educationCollapsedClasses || [];
 
+    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages">
+      <button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}>
+        <i data-lucide="layout-dashboard"></i><span>Student dashboard</span>
+      </button>
+      ${profiles.map(profile => {
+        const selected = D.state.settings.activeLearningSubject?.[profile.personId] || profile.subjects[0] || 'Mathematics';
+        const isClassOpen = !collapsedClasses.includes(profile.personId);
+        return `<details class="education-class" ${isClassOpen ? 'open' : ''}>
+          <summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}">
+            <b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small>
+          </summary>
+          ${profile.subjects.map(subject => {
+            const pages = [['Overview','study/overview'], ['Calendar','study/planner'], ['Learning','learning'], ['Read Book','book'], ['Practice & Assignments','study/practice-hub']];
+            const isActiveSubject = profile.personId === activeId && subject === selected;
+            const isExpanded = expandedSubject === false ? false : (expandedSubject ? (expandedSubject.studentId === profile.personId && expandedSubject.subject === subject) : isActiveSubject);
+            return `<details class="education-subject" ${isExpanded ? 'open' : ''}>
+              <summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>
+                <span>${e(subject)}</span>
+              </summary>
+              <div class="education-pages-list">
+                ${pages.map(([label, page]) => {
+                  const isActivePage = isActiveSubject && pageLabelById[page] === activePage;
+                  return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''}>${label}</button>`;
+                }).join('')}
+              </div>
+            </details>`;
+          }).join('')}
+        </details>`;
+      }).join('')}
+    </div>`;
+  }
   function curriculumLessonById(context, lessonId) {
     return HM.genius.jeeSyllabus.find(item => item.id === lessonId) || schoolCurriculumLessons(context).find(item => item.id === lessonId) || (D.state.syllabusItems || []).find(item => item.id === lessonId && item.studentId === context.activeId);
   }

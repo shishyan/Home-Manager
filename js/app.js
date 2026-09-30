@@ -2321,41 +2321,35 @@
     if(studentDashboard){if(activeChapterWorkspace)closeChapterWorkspace();go('study/student-overview');render();document.body.classList.remove('menu-open');return;}
     const dashboardSubject=event.target.closest('[data-select-learning-subject]');
     if(dashboardSubject){if(activeChapterWorkspace)closeChapterWorkspace();const subject=dashboardSubject.dataset.selectLearningSubject;const context=V.academicContext();if(context.profile.subjects.includes(subject)){D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[context.activeId]=subject;D.state.settings.educationExpandedSubject={studentId:context.activeId,subject};D.save();go('study/overview');render();}return;}
-    const educationClass=event.target.closest('[data-education-class]');
-    if(educationClass){
-      event.preventDefault();
-      const details=educationClass.closest('details');
-      const studentId=educationClass.dataset.educationClass;
-      const collapsed=new Set(D.state.settings.educationCollapsedClasses||[]);
-      if(details.open)collapsed.add(studentId);else collapsed.delete(studentId);
-      D.state.settings.educationCollapsedClasses=[...collapsed];
-      D.save();
-      details.open=!details.open;
+    const educationClass = event.target.closest('[data-education-class]');
+    if (educationClass) {
+      const details = educationClass.closest('details');
+      const studentId = educationClass.dataset.educationClass;
+      const collapsed = new Set(D.state.settings.educationCollapsedClasses || []);
+      setTimeout(() => {
+        if (details && details.open) collapsed.delete(studentId);
+        else collapsed.add(studentId);
+        D.state.settings.educationCollapsedClasses = [...collapsed];
+        D.save();
+      }, 50);
       return;
     }
     const educationSubject = event.target.closest('[data-education-subject]');
     if (educationSubject) {
-      event.preventDefault();
-      if (activeChapterWorkspace) closeChapterWorkspace();
+      if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
       const studentId = educationSubject.dataset.student;
       const subject = educationSubject.dataset.educationSubject;
-      const subjectDetails=educationSubject.closest('details');
-      const currentSubject=D.state.settings.activeLearningSubject?.[studentId] || 'Mathematics';
-      if(studentId===D.state.settings.activeLearnerId&&subject===currentSubject){
-        const shouldExpand=!subjectDetails.open;
-        D.state.settings.educationExpandedSubject=shouldExpand?{studentId,subject}:false;
-        D.save();
-        subjectDetails.open=shouldExpand;
-        return;
-      }
+      const subjectDetails = educationSubject.closest('details');
+
       HM.persona.set(studentId);
       D.state.settings.activeLearnerId = studentId;
       D.state.settings.activeLearningSubject ||= {};
       D.state.settings.activeLearningSubject[studentId] = subject;
-      D.state.settings.educationExpandedSubject = {studentId,subject};
+      const shouldExpand = subjectDetails ? !subjectDetails.open : true;
+      D.state.settings.educationExpandedSubject = shouldExpand ? { studentId, subject } : false;
       D.save();
-      go('study/overview');
-      render();
+      if (route.startsWith('study/')) render();
+      else go('study/overview');
       return;
     }
     const educationChapter = event.target.closest('[data-education-chapter]');
