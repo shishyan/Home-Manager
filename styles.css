@@ -6649,3 +6649,31 @@ details.education-class[open] > summary {
   background: rgba(255, 255, 255, 0.14) !important;
   border-left-color: var(--accent, #38bdf8) !important;
 }
+
+
+/* === FORCE LEFT ALIGNMENT FOR ALL EDUCATION MENU ITEMS & TABS === */
+
+.education-header-tabs,
+.education-command-row,
+.learning-command-bar,
+.learning-section-tabs,
+.learning-section-tabs button,
+#educationHeaderTabs,
+#educationHeaderTabs .learning-section-tabs,
+.education-tree,
+.education-pages-list,
+.education-page,
+.education-subject,
+.education-class {
+  margin-left: 0 !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+.education-header-tabs .learning-section-tabs,
+.education-command-row .learning-section-tabs,
+.learning-command-bar .learning-section-tabs {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  justify-content: flex-start !important;
+}
