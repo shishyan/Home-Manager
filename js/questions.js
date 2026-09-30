@@ -48,6 +48,9 @@
         'Where can I check whether a feature exists?')
     ]},
     { id: 'navigation', label: 'Finding your way', icon: 'signpost', route: 'global/overview', items: [
+      ...group('persona-reset', 'Everyone',
+        'How does top bar profile switching reset the sidebar to Mom (Food), Father (Finance), Kids (Education) or Family (All)?',
+        'How do 3-level proficiency tracks (Level 1: Learning, Level 2: Revision, Level 3: Expert) clarify study progress?'),
       ...group('sidebar', 'Everyone',
         'What do the seven sidebar groups mean?',
         'How do I switch between Household, Family and Money?',

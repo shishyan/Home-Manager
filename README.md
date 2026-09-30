@@ -38,6 +38,28 @@ Both learner profiles are connected to Peepal Prodigy School in Coimbatore. The 
 
 The seven Learning pages now also cover a confirmed school timetable, school calendar, attendance, daily student self-assessment, Student-Parent-Tutor review actions and co-curricular growth. These match Peepal's published emphasis on interdisciplinary and peer learning, hands-on application, learning skills, student-led review, physical education, clubs and activities. School-owned information links to the [Peepal secondary programme](https://www.peepalprodigy.in/secondary-school.html), [senior secondary subject groups](https://www.peepalprodigy.in/senior-secondary-school.html), [parent portal](https://crm.peepalprodigy.cloud/), [mandatory disclosure](https://www.peepalprodigy.in/images/saras.pdf), and the official [CBSE SARAS affiliation record](https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1930782).
 
+
+## Profile-Driven Navigation & 3-Level Study Progress
+
+### Profile-driven navigation auto-reset
+Switching family profiles on the top bar automatically resets the sidebar navigation to match each member's primary focus:
+- **Mom (Thamarai Elangovan):** Automatically switches to **Food & Kitchen** (`kitchen/overview`).
+- **Father (Nagarajan Balasubramanian):** Automatically switches to **Finance & Reporting** (`home/finance`).
+- **Kids (Sasha & Ishaan Nagarajan):** Automatically switches to **Education** (`study/student-overview`), strictly scoped to Class 12 for Sasha and Class 7 for Ishaan.
+- **Family (Everyone):** Switches to the main **Home Overview** (`global/overview`), displaying all shared household operations.
+
+### 3-Level Proficiency Progress Tracking
+Curriculum progress tracking explicitly divides chapter mastery into three distinct levels to prevent confusion:
+- **Level 1: Learning** (Initial concept understanding)
+- **Level 2: Revision** (Reinforcement and recall)
+- **Level 3: Expert** (100% confidence & mastery)
+
+The progress grid header dynamically tracks the active level currently being updated (e.g., `PROGRESS (LEVEL 1: LEARNING)`), and each chapter's output badge tags the exact level being recorded.
+
+### Clean & Clutter-Free UI
+- **Top Bar:** Clutter-free layout containing strictly the Family Member profile tabs for instant switching.
+- **Left-Aligned Sidebar:** Borderless, minimalist menu items with highlighted group headers for clear visual hierarchy.
+
 ## Product question audit
 
 Help & Guide checks 250 unique questions that family members commonly ask about the software itself: its purpose, navigation, adding and updating records, everyday workflows, family roles and safety, privacy and recovery, accessibility, feedback and known boundaries. The questions are organised into seven usability areas and seven family roles. Each answer opens the working destination, starts the relevant capture workflow, or states an unsupported capability directly.
