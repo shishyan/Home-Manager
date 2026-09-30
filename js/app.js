@@ -194,12 +194,15 @@
   }
 
   function personaCanSeeGroup(groupKey, persona = HM.persona.current()) {
-    return !(HM.persona.roleGroup(persona) === 'children' && groupKey === 'money');
+    if (HM.persona.roleGroup(persona) === 'children') {
+      return ['learning', 'leisure', 'household'].includes(groupKey);
+    }
+    return true;
   }
 
   function personaCanOpenRoute(currentRoute, persona = HM.persona.current()) {
     if (HM.persona.roleGroup(persona) !== 'children') return true;
-    return currentRoute !== 'home/finance' && !currentRoute.startsWith('home/money/') && currentRoute !== 'settings/money';
+    return currentRoute.startsWith('study/') || currentRoute.startsWith('kitchen/') || currentRoute.includes('travel');
   }
 
   function openBookDatabase() {
@@ -427,7 +430,7 @@
     const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
     const navSelect = $('#navigationGroup');
     if (navSelect) navSelect.innerHTML = availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('');
-    $('#nav').innerHTML = `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
+    $('#nav').innerHTML = `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${(HM.persona.roleGroup(HM.persona.current()) === 'children' && activeGroup === 'household' ? group.items.filter(child => ['Food'].includes(child[0])) : group.items).map((child, index) => {
       const nested = child[3] || [];
       const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
       const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
@@ -3076,4 +3079,8 @@
   applyTheme();
   render();
 })();
+
+
+
+
 
