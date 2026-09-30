@@ -6394,170 +6394,120 @@ body.workspace-study::after {background:rgba(244,247,252,.85);}
 
 /* === PROTECTIVE TEXT BACKINGS — Ensure 100% legibility on light/dark backgrounds === */
 
-/* Sidebar Brand Card */
-/* AVOIDED: #sidebar .brand { */
-  background: rgba(15, 23, 42, 0.65) !important;
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 12px !important;
-  padding: 10px 12px !important;
-  margin-bottom: 12px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30) !important;
-}
-/* AVOIDED: #sidebar .brand b { color: #ffffff !important; font-size: 15px; font-weight: 800; text-shadow: 0 1px 3px rgba(0,0,0,0.8); } */
-/* AVOIDED: #sidebar .brand a { color: #cbd5e1 !important; font-size: 11px; text-shadow: 0 1px 2px rgba(0,0,0,0.6); } */
+/* === CLEAN & BORDERLESS MENU ITEMS & ELEMENTS === */
 
-/* Workspace Selector Bar */
-/* AVOIDED: #sidebar .workspace-menu-label { */
-  background: rgba(15, 23, 42, 0.55) !important;
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.10) !important;
-  border-radius: 10px !important;
-  padding: 8px 12px !important;
-  margin-bottom: 10px !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
-}
-/* AVOIDED: #sidebar .workspace-menu-label b { color: #ffffff !important; font-size: 13px; font-weight: 800; text-shadow: 0 1px 3px rgba(0,0,0,0.8); } */
-/* AVOIDED: #sidebar .workspace-menu-label small { color: #94a3b8 !important; font-size: 10px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.6); } */
-
-/* Menu Group Titles & Summaries */
-/* AVOIDED: #nav .nav-group { */
-  color: #e2e8f0 !important;
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: rgba(15, 23, 42, 0.45) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 6px;
-  padding: 5px 10px !important;
-  margin: 10px 0 4px !important;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+/* Default state: borderless & transparent */
+#nav button,
+#nav summary,
+.nav-parent,
+.nav-section summary,
+.section-nav button,
+.section-tab,
+.section-subitem,
+.section-subnav .section-subitem,
+.persona-tab,
+.subject-tabs button,
+.learning-track-tabs,
+.learning-track-tabs button,
+.learning-section-tabs,
+.learning-section-tabs button,
+.education-header-tabs button,
+.learner-switch button,
+.education-student-dashboard,
+.education-chapter,
+.education-page,
+.education-command-row button,
+.genius-subject-switch nav button,
+.genius-section-tabs button,
+.practice-hub-tab,
+.chapter-workspace-tab,
+.chapter-rail-tab,
+.week-tabs button,
+details.education-class-group summary,
+.header-actions .icon-button,
+.header-actions button {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-shadow: none !important;
 }
 
-.nav-section summary {
-  color: #e2e8f0 !important;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: rgba(15, 23, 42, 0.40) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 6px;
-  padding: 6px 10px !important;
-  margin: 4px 0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-/* Primary Navigation Buttons (Pill Backing) */
-/* AVOIDED: #nav .nav-parent, .sidebar-bottom button { */
+/* Hover state: clean subtle background pill */
+#nav button:hover,
+#nav summary:hover,
+.nav-parent:hover,
+.nav-section summary:hover,
+.section-nav button:hover,
+.section-tab:hover,
+.section-subitem:hover,
+.section-subnav .section-subitem:hover,
+.persona-tab:hover,
+.subject-tabs button:hover,
+.learning-track-tabs button:hover,
+.learning-section-tabs button:hover,
+.education-header-tabs button:hover,
+.learner-switch button:hover,
+.education-student-dashboard:hover,
+.education-chapter:hover,
+.education-page:hover,
+.education-command-row button:hover,
+.genius-subject-switch nav button:hover,
+.genius-section-tabs button:hover,
+.practice-hub-tab:hover,
+.chapter-workspace-tab:hover,
+.chapter-rail-tab:hover,
+.week-tabs button:hover,
+details.education-class-group summary:hover,
+.header-actions .icon-button:hover,
+.header-actions button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: transparent !important;
   color: #ffffff !important;
-  font-size: 13px !important;
-  font-weight: 650 !important;
-  background: rgba(15, 23, 42, 0.58) !important;
-  backdrop-filter: blur(12px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.09) !important;
-  border-radius: 10px !important;
-  padding: 8px 12px !important;
-  margin-bottom: 4px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
-  transition: all 0.18s ease !important;
 }
 
-/* AVOIDED: #nav .nav-parent:hover, .sidebar-bottom button:hover { */
-  color: #ffffff !important;
-  background: rgba(30, 41, 59, 0.80) !important;
+/* Active / Selected state: subtle active pill */
+#nav button.active,
+.nav-parent.active,
+.section-nav button.active,
+.section-tab.active,
+.section-subitem.active,
+.section-subnav .section-subitem.active,
+.persona-tab.active,
+.subject-tabs button.active,
+.learning-track-tabs button.active,
+.learning-section-tabs button.active,
+.education-header-tabs button.active,
+.learner-switch button.active,
+.education-student-dashboard.active,
+.education-chapter.active,
+.education-page.active,
+.genius-subject-switch nav button.active,
+.genius-section-tabs button.active,
+.practice-hub-tab.active,
+.chapter-workspace-tab.active,
+.chapter-rail-tab.active,
+.week-tabs button.active {
+  background: rgba(255, 255, 255, 0.16) !important;
   border-color: rgba(255, 255, 255, 0.22) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
-  transform: translateX(3px);
-}
-
-/* AVOIDED: #nav .nav-parent.active { */
   color: #ffffff !important;
-  background: rgba(15, 118, 110, 0.55) !important;
-  border: 1px solid rgba(45, 212, 191, 0.50) !important;
-  border-left: 4px solid var(--accent) !important;
   font-weight: 750 !important;
-  box-shadow: 0 4px 16px rgba(15, 118, 110, 0.40) !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
 }
 
-/* Sub-navigation buttons (Section Tab Backings) */
-.section-nav button {
-  color: #ffffff !important;
-  font-size: 11px !important;
-  font-weight: 650 !important;
-  background: rgba(15, 23, 42, 0.50) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 8px !important;
-  padding: 5px 10px !important;
-  margin-bottom: 3px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.20) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) !important;
+/* Clean up containers */
+.learning-command-bar,
+.education-command-row,
+.section-subnav,
+.workspace-study .education-header-tabs .learning-section-tabs,
+.workspace-study .learning-command-bar .learning-section-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
-.section-nav button:hover, .section-nav button.active {
-  color: #ffffff !important;
-  background: rgba(30, 41, 59, 0.78) !important;
-  border-color: var(--tab-color, var(--accent)) !important;
-}
-
-.section-nav .section-subnav .section-subitem {
-  color: #f1f5f9 !important;
-  font-size: 11px !important;
-  background: rgba(15, 23, 42, 0.45) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 6px !important;
-  padding: 4px 8px !important;
-  margin-bottom: 2px !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
-}
-
-.section-nav .section-subnav .section-subitem:hover, .section-nav .section-subnav .section-subitem.active {
-  color: #ffffff !important;
-  background: rgba(15, 118, 110, 0.45) !important;
-  border-color: var(--accent) !important;
-}
-
-/* Header Page Title & Identity Protective Backing */
-/* AVOIDED: .app-header .page-identity { */
-  background: rgba(15, 23, 42, 0.60) !important;
-  backdrop-filter: blur(14px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 12px !important;
-  padding: 6px 16px !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30) !important;
-}
-
-/* AVOIDED: .app-header .page-identity h1 { */
-  color: #ffffff !important;
-  font-weight: 800 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
-}
-
-/* Topbar Header Action Buttons */
-.header-actions .icon-button, .header-actions button {
-  background: rgba(15, 23, 42, 0.65) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.30) !important;
-}
-.header-actions .icon-button:hover, .header-actions button:hover {
-  background: rgba(30, 41, 59, 0.85) !important;
-  border-color: rgba(255, 255, 255, 0.30) !important;
-}
+/* Persona Tab Container */
 .persona-tabs {
   display: flex;
   gap: 4px;
@@ -6568,120 +6518,3 @@ body.workspace-study::after {background:rgba(244,247,252,.85);}
   align-items: center;
 }
 .persona-tabs::-webkit-scrollbar { display: none; }
-.persona-tab {
-  white-space: nowrap;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink-soft);
-  border: 1px solid transparent;
-  font-size: 12px;
-  font-weight: 700;
-  transition: all 0.2s;
-}
-.persona-tab:hover {
-  background: rgba(255,255,255,0.06);
-  color: #fff;
-}
-.persona-tab.active {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  border-color: rgba(255,255,255,0.25);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.actions-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 100;
-  min-width: 180px;
-  background: rgba(15,23,42,0.85);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 12px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-.actions-dropdown button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: #e2e8f0;
-  font-size: 13px;
-  font-weight: 600;
-  background: transparent;
-  border: none;
-  text-align: left;
-}
-.actions-dropdown button:hover {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-}
-.actions-dropdown button svg {
-  width: 16px;
-  height: 16px;
-  opacity: 0.8;
-}
-/* AVOIDED: .floating-address { */
-  position: fixed;
-  bottom: 12px;
-  right: 12px;
-  z-index: 50;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--muted);
-  text-decoration: none;
-  background: rgba(15,23,42,0.6);
-  backdrop-filter: blur(8px);
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s;
-}
-/* AVOIDED: .floating-address svg { */
-  width: 12px;
-  height: 12px;
-}
-/* AVOIDED: .floating-address:hover { */
-  color: #fff;
-  background: rgba(15,23,42,0.8);
-  border-color: rgba(255,255,255,0.2);
-}
-
-
-
-/* AVOIDED: .context-switcher { */
-  appearance: none;
-  background: transparent;
-  border: 0;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 800;
-  padding: 4px 24px 4px 0;
-  margin: 0;
-  cursor: pointer;
-  outline: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-/* AVOIDED: .context-switcher:hover { */
-  opacity: 0.8;
-}
-
-
-
-
-/* AVOIDED: body[data-theme="light"] :is(.metric, .panel, .card, .learning-command-bar, .genius-classroom, .inline-book-reader, .mcq-workspace) { box-shadow: none; border: 1px solid var(--line); } */
-
-
