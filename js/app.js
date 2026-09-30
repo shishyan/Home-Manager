@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const D = HM.data;
   const V = HM.views;
   const $ = selector => document.querySelector(selector);
@@ -138,26 +138,21 @@
     if (profile) D.state.settings.activeLearnerId = persona.id;
     document.body.dataset.activePersona = persona.id;
     document.body.dataset.personaRole = HM.persona.roleGroup(persona);
-    const trigger = $('#personaSwitcher');
-    const initials = HM.persona.initials(persona);
-    $('#personaInitials').textContent = initials;
-    $('#personaName').textContent = persona.name;
-    trigger.setAttribute('aria-label', `Switch persona. Current view: ${persona.name}`);
-    const utilityAvatar = $('#utilityPersonaAvatar');
-    if (utilityAvatar) {
-      utilityAvatar.textContent = initials;
-      utilityAvatar.title = `${persona.name} view`;
-      utilityAvatar.setAttribute('aria-label', `Current persona: ${persona.name}`);
-    }
+    
     const options = [
       { id: HM.persona.FAMILY_ID, name: 'Family', householdRole: 'Shared household', isFamily: true },
       ...HM.persona.people()
     ];
-    $('#personaMenu').innerHTML = options.map(option => {
-      const selected = option.id === persona.id;
-      const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
-      return `<button type="button" class="persona-option" role="option" data-persona="${D.esc(option.id)}" aria-selected="${selected}" tabindex="${selected ? '0' : '-1'}"><span>${D.esc(optionInitials)}</span><span><b>${D.esc(option.name)}</b><small>${D.esc(option.householdRole || 'Family member')}</small></span><i data-lucide="check"></i></button>`;
-    }).join('');
+    
+    const tabsContainer = $('#personaTabs');
+    if (tabsContainer) {
+      tabsContainer.innerHTML = options.map(option => {
+        const selected = option.id === persona.id;
+        const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
+        return `<button type="button" class="persona-tab ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-pressed="${selected}">${D.esc(option.name)}</button>`;
+      }).join('');
+    }
+
     const language = HM.i18n.current(persona);
     document.querySelectorAll('#languageSwitcher [data-language]').forEach(button => {
       const selected = button.dataset.language === language;
@@ -429,9 +424,10 @@
       'home/life/insurance': 'home/family', 'home/life/tax': 'home/family', 'home/life/documents': 'home/family', 'home/life/legacy': 'home/family',
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
-    $('#workspaceMenuLabel').innerHTML = `<span><small>Daily & weekly</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
     const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
-    $('#nav').innerHTML = `<label class="navigation-switcher" for="navigationGroup"><span class="sr-only">Menu</span><select id="navigationGroup" aria-label="Menu section">${availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('')}</select></label><div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
+    const navSelect = $('#navigationGroup');
+    if (navSelect) navSelect.innerHTML = availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('');
+    $('#nav').innerHTML = `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${group.items.map((child, index) => {
       const nested = child[3] || [];
       const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
       const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
@@ -3080,3 +3076,4 @@
   applyTheme();
   render();
 })();
+
