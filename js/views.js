@@ -1483,8 +1483,8 @@
 
   function jeeMain() {
     const gradeTwelve = (D.state.academicProfiles || []).find(profile => +profile.grade === 12);
-    if (gradeTwelve && D.state.settings.activeLearnerId !== gradeTwelve.personId) D.state.settings.activeLearnerId = gradeTwelve.personId;
-    const learnerId = D.state.settings.activeLearnerId;
+    // Use the grade-12 profile locally — do NOT mutate the global activeLearnerId
+    const learnerId = gradeTwelve ? gradeTwelve.personId : D.state.settings.activeLearnerId;
     D.state.settings.activeGeniusMode ||= {};
     D.state.settings.activeGeniusMode[learnerId] = 'jee';
     D.state.settings.activeLearningTrack ||= {};
