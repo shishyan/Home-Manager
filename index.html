@@ -21,6 +21,41 @@
         <b id="brandName">Lotus Naga Home</b>
       </div>
     </div>
+    
+    <nav id="nav"></nav>
+    <div class="sidebar-bottom">
+      <button type="button" id="helpNav" data-route="global/questions" title="Help and Guide" aria-label="Open Help and Guide"><i data-lucide="circle-help"></i><span>Help & Guide</span></button>
+      <button type="button" id="settingsNav" data-route="settings/household" title="Settings" aria-label="Open Settings"><i data-lucide="settings-2"></i><span>Settings</span></button>
+      <button type="button" id="collapse" class="collapse-button" title="Collapse navigation" aria-label="Collapse navigation"><i data-lucide="panel-left-close"></i></button>
+    </div>
+  </aside>
+
+  <button id="backdrop" aria-label="Close navigation"></button>
+
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="topbar">
+        <button type="button" id="menu" class="icon-button" title="Open navigation" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
+        <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects"></div>
+        <div class="page-identity" style="display: flex; align-items: center; gap: 6px;">
+          <label class="sr-only" for="navigationGroup">Menu section</label>
+          <select id="navigationGroup" class="context-switcher" aria-label="Menu section">
+          </select>
+          <i data-lucide="chevron-down" style="color: var(--muted); width: 16px; height: 16px; flex-shrink: 0; pointer-events: none; margin-left: -20px;"></i>
+        </div>
+        <div id="headerKpis" class="header-kpis" aria-label="Current household signals"></div>
+        <div id="personaTabs" class="persona-tabs" aria-label="Switch profile"></div>
+        <div class="header-actions" style="position: relative;">
+          <button type="button" id="headerMenuTrigger" class="icon-button" title="Actions menu" aria-haspopup="menu" aria-expanded="false"><i data-lucide="more-vertical"></i></button>
+          <div id="headerMenu" class="actions-dropdown" hidden role="menu" aria-label="Quick actions">
+            <button type="button" id="quickAdd" role="menuitem"><i data-lucide="plus"></i> Add Item</button>
+            <button type="button" id="globalSearch" role="menuitem"><i data-lucide="search"></i> Search</button>
+            <button type="button" id="offlineAssistant" role="menuitem"><i data-lucide="sparkles"></i> Assistant</button>
+            <button type="button" id="notifications" role="menuitem"><i data-lucide="bell"></i> Notifications</button>
+            <button type="button" id="emergency" role="menuitem" style="color: #fda4af;"><i data-lucide="siren"></i> Emergency</button>
+            <button type="button" id="theme" role="menuitem"><i data-lucide="palette"></i> Theme</button>
+          </div>
+        </div>
       </div>
     </header>
     <a id="brandAddress" class="floating-address" href="https://www.google.com/maps/search/?api=1&amp;query=32%20SSS%20Jaya%20Enclave%2C%20Kovaipudur%2C%20Coimbatore%2C%20641042" target="_blank" rel="noopener noreferrer"><i data-lucide="map-pin"></i> 32 SSS Jaya Enclave, Kovaipudur</a>
@@ -169,6 +204,5 @@
   <script src="js/app.js?release=education-v1-0-43"></script>
 </body>
 </html>
-
 
 

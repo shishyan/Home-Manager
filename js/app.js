@@ -566,7 +566,6 @@
     const homeName = renderHomeIdentity();
     const title = V.titles[route] || ['Today', homeName];
 
-    $('#pageTitle').textContent = title[0];
     document.title = title[0] + ' - ' + homeName;
     $('#content').dataset.view = route;
     $('#content').dataset.activePersona = persona.id;
@@ -585,7 +584,7 @@
     $('#menu').setAttribute('aria-expanded', 'false');
     refreshIcons();
     HM.i18n.apply(document, route);
-    document.title = `${$('#pageTitle').textContent} - ${homeName}`;
+    document.title = `${title[0]} - ${homeName}`;
     requestAnimationFrame(() => $('#sectionNav .active')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     if (legacyPracticeLesson) requestAnimationFrame(() => openChapterWorkspace(legacyPracticeLesson, 'practice'));
   }
