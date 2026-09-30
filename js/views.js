@@ -899,7 +899,7 @@
     const activePage = activeSection || pageLabelById[D.state.settings.educationActivePage] || routePage;
     const expandedSubject = D.state.settings.educationExpandedSubject;
     const collapsedClasses=D.state.settings.educationCollapsedClasses || [];
-    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages"><button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}><i data-lucide="layout-dashboard"></i><span>Student dashboard</span></button>${[...(D.state.academicProfiles || [])].sort((a,b)=>+b.grade-+a.grade).map(profile => {
+    return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages"><button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}><i data-lucide="layout-dashboard"></i><span>Student dashboard</span></button>${[...(D.state.academicProfiles || [])].filter(p => p.personId === activeId).map(profile => {
       const selected = D.state.settings.activeLearningSubject?.[profile.personId] || 'Mathematics';
       return `<details class="education-class" ${collapsedClasses.includes(profile.personId)?'':'open'}><summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}"><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></summary>${profile.subjects.map(subject => {
         const context = {profile,activeId:profile.personId,selectedSubject:subject};
@@ -1483,8 +1483,7 @@
 
   function jeeMain() {
     const gradeTwelve = (D.state.academicProfiles || []).find(profile => +profile.grade === 12);
-    if (gradeTwelve && D.state.settings.activeLearnerId !== gradeTwelve.personId) D.state.settings.activeLearnerId = gradeTwelve.personId;
-    const learnerId = D.state.settings.activeLearnerId;
+    const learnerId = gradeTwelve ? gradeTwelve.personId : D.state.settings.activeLearnerId;
     D.state.settings.activeGeniusMode ||= {};
     D.state.settings.activeGeniusMode[learnerId] = 'jee';
     D.state.settings.activeLearningTrack ||= {};
@@ -1811,3 +1810,4 @@
     format
   };
 })();
+

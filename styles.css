@@ -1376,18 +1376,18 @@ menu button { min-height: 39px; padding: 8px 14px; border: 1px solid var(--line)
   .inbox-decision-grid { grid-template-columns: 1fr; }
 }
 
-body[data-nature="waterfall"] { --nature-image: url("assets/backgrounds/waterfall.jpg"); }
-body[data-nature="river"] { --nature-image: url("assets/backgrounds/river.jpg"); }
-body[data-nature="fern"] { --nature-image: url("assets/backgrounds/fern.jpg"); }
-body[data-nature="meadow"] { --nature-image: url("assets/backgrounds/meadow.jpg"); }
-body[data-nature="lotus"] { --nature-image: url("assets/backgrounds/lotus.jpg"); }
-body[data-nature="monsoon"] { --nature-image: url("assets/backgrounds/monsoon.jpg"); }
-body[data-nature="sunrise"] { --nature-image: url("assets/backgrounds/sunrise.jpg"); }
-body[data-nature="glacier"] { --nature-image: url("assets/backgrounds/glacier.jpg"); }
-body[data-nature="bamboo"] { --nature-image: url("assets/backgrounds/bamboo.jpg"); }
-body[data-nature="sky"] { --nature-image: url("assets/backgrounds/sky.jpg"); }
-body[data-nature="grove"] { --nature-image: url("assets/backgrounds/grove.jpg"); }
-body[data-nature="wildflower"] { --nature-image: url("assets/backgrounds/wildflower.jpg"); }
+body[data-theme="light"][data-nature="waterfall"] { --nature-image: url("assets/backgrounds/waterfall.jpg"); }
+body[data-theme="light"][data-nature="river"] { --nature-image: url("assets/backgrounds/river.jpg"); }
+body[data-theme="light"][data-nature="fern"] { --nature-image: url("assets/backgrounds/fern.jpg"); }
+body[data-theme="light"][data-nature="meadow"] { --nature-image: url("assets/backgrounds/meadow.jpg"); }
+body[data-theme="light"][data-nature="lotus"] { --nature-image: url("assets/backgrounds/lotus.jpg"); }
+body[data-theme="light"][data-nature="monsoon"] { --nature-image: url("assets/backgrounds/monsoon.jpg"); }
+body[data-theme="light"][data-nature="sunrise"] { --nature-image: url("assets/backgrounds/sunrise.jpg"); }
+body[data-theme="light"][data-nature="glacier"] { --nature-image: url("assets/backgrounds/glacier.jpg"); }
+body[data-theme="light"][data-nature="bamboo"] { --nature-image: url("assets/backgrounds/bamboo.jpg"); }
+body[data-theme="light"][data-nature="sky"] { --nature-image: url("assets/backgrounds/sky.jpg"); }
+body[data-theme="light"][data-nature="grove"] { --nature-image: url("assets/backgrounds/grove.jpg"); }
+body[data-theme="light"][data-nature="wildflower"] { --nature-image: url("assets/backgrounds/wildflower.jpg"); }
 
 @media (max-width: 700px) {
   .product-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1694,7 +1694,7 @@ body[data-nature="wildflower"] { --nature-image: url("assets/backgrounds/wildflo
 }
 
 /* Final modern polish */
-body[data-nature] { --app-bg: #c6d0dc; --shell-bg: rgba(250, 252, 255, .94); --band-odd: rgba(241, 245, 249, .92); --band-even: rgba(248, 250, 252, .94); }
+body[data-theme="light"][data-nature] { --app-bg: #c6d0dc; --shell-bg: rgba(250, 252, 255, .94); --band-odd: rgba(241, 245, 249, .92); --band-even: rgba(248, 250, 252, .94); }
 
 
 
@@ -3036,7 +3036,7 @@ body:has(#educationHeaderTabs:not([hidden])) .page-identity { display: none; }
 .dashboard-chapter-bars progress:nth-of-type(3) {accent-color:#b45309;}
 @media(max-width:700px) {.dashboard-tiles {grid-template-columns:repeat(2,minmax(0,1fr));}.dashboard-charts {grid-template-columns:1fr;}.progress-slider-main .chapter-level-label {grid-column:1/-1;}.chapter-level-picker button {flex:1;padding:9px 6px;}}
 /* Education: quiet image canvas, translucent surfaces, compact chapter grids. */
-body.workspace-study::before {background:linear-gradient(#f4f7fcda,#f4f7fcda),url('assets/backgrounds/education.svg') center/cover fixed;opacity:1;}
+body[data-theme="light"].workspace-study::before {background:linear-gradient(#f4f7fcda,#f4f7fcda),url('assets/backgrounds/education.svg') center/cover fixed;opacity:1;}
 .workspace-study #content {position:relative;color:#24324a;}
 .workspace-study :is(.panel,.progress-workbench,.dashboard-tiles article,.learner-bar,.metrics>*) {background:rgba(255,255,255,.67);border:1px solid #bccbe180;backdrop-filter:blur(7px);box-shadow:0 4px 20px #33415507;}
 #workspaceMenuLabel {display:none!important;}
@@ -3142,7 +3142,7 @@ body.workspace-study::before {background:linear-gradient(#f4f7fcda,#f4f7fcda),ur
 .education-notes-drawer footer {padding:16px 24px;border-top:1px solid #dbe3f0;display:flex;justify-content:flex-end;}
 @media(max-width:900px){.workspace-study .app-header .topbar{overflow:hidden}.header-actions{display:none}.guide-layout{grid-template-columns:1fr}.guide-chapters{max-height:220px;overflow:auto}.education-workspace-toolbar{padding:10px;gap:8px}.chapter-selector{gap:8px;flex:1;overflow:hidden}.chapter-selector label{display:none}.chapter-selector select{width:100%;max-width:none}.chapter-workspace-content{padding:12px}.guide-hero{padding:18px;gap:12px}.chapter-workspace-content .guide-hero h1{font-size:21px}.guide-card-content{padding:15px}.progress-workbench{padding:16px 10px}.progress-workbench-heading p{font-size:12px}.progress-slider-row{padding:10px 12px;gap:12px}.guide-card>summary{padding:14px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.education-notes-drawer[open]{animation:none}}
-body.workspace-study {background-image:url('assets/backgrounds/education.svg');}
+body[data-theme="light"].workspace-study {background-image:url('assets/backgrounds/education.svg');}
 body.workspace-study::after {background:rgba(244,247,252,.85);}
 .dashboard-chapter-bars {display:grid;grid-template-columns:minmax(160px,1.4fr) repeat(3,minmax(50px,1fr));align-items:center;gap:12px;padding:9px 12px;border-radius:6px;background: var(--glass)fff55;min-width:400px;}
 .dashboard-chapter-bars:nth-child(even){background:#e2e8f060;}
@@ -3808,4 +3808,6 @@ body[data-theme="light"] .workspace-study {background-image:linear-gradient(#f4f
   background: rgba(15,23,42,0.8);
   border-color: rgba(255,255,255,0.2);
 }
+
+
 
