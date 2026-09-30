@@ -6518,3 +6518,34 @@ details.education-class-group summary:hover,
   align-items: center;
 }
 .persona-tabs::-webkit-scrollbar { display: none; }
+
+
+/* === CLUTTER-FREE TOP BAR — FAMILY MEMBER TABS ONLY === */
+
+.topbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  height: 56px !important;
+  padding: 0 16px !important;
+  gap: 12px !important;
+}
+
+#headerKpis,
+.header-kpis,
+#educationHeaderTabs,
+.education-header-tabs,
+.app-header #breadcrumb,
+.app-header #pageTitle {
+  display: none !important;
+}
+
+.persona-tabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex: 1 1 auto !important;
+  overflow-x: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

@@ -471,50 +471,11 @@
   }
 
   function renderHeaderKpis() {
-    if (!$('#headerKpis')) return;
-    if (route.startsWith('study/')) {
-      $('#headerKpis').hidden = true;
-      $('#headerKpis').innerHTML = '';
-      return;
+    const kpis = $('#headerKpis');
+    if (kpis) {
+      kpis.hidden = true;
+      kpis.innerHTML = '';
     }
-    $('#headerKpis').hidden = false;
-    const day = new Date().toISOString().slice(0, 10);
-    const month = day.slice(0, 7);
-    const nextWeek = new Date(); nextWeek.setDate(nextWeek.getDate() + 7);
-    const weekEnd = nextWeek.toISOString().slice(0, 10);
-    const openTasks = HM.persona.scope(D.state.tasks).filter(item => D.status(item.status) !== 'done');
-    const upcoming = D.state.events.filter(item => item.startAt && item.startAt.slice(0, 10) >= day && item.startAt.slice(0, 10) <= weekEnd);
-    const lowStock = D.state.inventoryItems.filter(item => (+item.quantity || 0) <= 2);
-    const routeDomain = route.match(/(?:home|settings)\/life\/([^/]+)/)?.[1];
-    const records = routeDomain ? (D.state.lifeRecords || []).filter(item => item.domain === routeDomain) : [];
-    let items;
-    if (route === 'global/intelligence') {
-      const gmail = HM.persona.scope(D.state.syncSuggestions || []).filter(item => item.source === 'gmail');
-      items = [['Signals', gmail.length, route, 'mail-search'], ['Needs review', gmail.filter(item => item.status === 'pending').length, route, 'list-checks'], ['Detected', D.money(gmail.reduce((sum, item) => sum + (+item.amount || 0), 0)), route, 'indian-rupee']];
-    } else if (routeDomain) {
-      items = [['Records', records.length, route, 'database'], ['Need attention', records.filter(item => item.dueDate && item.dueDate <= weekEnd && !['done', 'paid'].includes(item.status)).length, route, 'bell-ring'], ['Tracked', D.money(records.reduce((sum, item) => sum + (+item.amount || 0), 0)), route, 'indian-rupee']];
-    } else if (route === 'home/finance' || route.startsWith('home/money/')) {
-      const expenses = D.state.expenses.filter(item => String(item.date).startsWith(month));
-      const planned = (D.state.budgets || []).reduce((sum, item) => sum + (+item.amount || 0), 0);
-      items = [['Budget', D.money(planned), 'home/money/budget', 'chart-pie'], ['Spent', D.money(expenses.reduce((sum, item) => sum + (+item.amount || 0), 0)), 'home/money/spending', 'wallet-cards'], ['Net worth', D.money((D.state.assets || []).reduce((sum, item) => sum + (+item.value || 0), 0) - (D.state.liabilities || []).reduce((sum, item) => sum + (+item.balance || 0), 0)), 'home/money/networth', 'scale']];
-    } else if (route.startsWith('study/')) {
-      const learnerId = D.state.settings.activeLearnerId;
-      const profile = D.state.academicProfiles.find(item => item.personId === learnerId) || D.state.academicProfiles[0];
-      const syllabus = D.state.syllabusItems.filter(item => item.studentId === learnerId);
-      const mastery = syllabus.length ? Math.round(syllabus.reduce((sum, item) => sum + (+item.mastery || 0), 0) / syllabus.length) : 0;
-      const due = D.state.academicDeliverables.filter(item => item.studentId === learnerId && !['done', 'submitted'].includes(item.status)).length;
-      items = [[`Class ${profile?.grade || ''}`, profile?.name || 'Learner', 'study/overview', 'graduation-cap'], ['Mastery', `${mastery}%`, 'study/curriculum', 'gauge'], ['Due work', due, 'study/assignments', 'clipboard-check']];
-    } else if (route.startsWith('kitchen/')) {
-      items = [['குறைந்த இருப்பு', lowStock.length, 'kitchen/shopping', 'shopping-basket'], ['சரக்கறைப் பொருட்கள்', D.state.inventoryItems.length, 'kitchen/pantry', 'package-open'], ['உணவுச் செய்முறைகள்', '100', 'kitchen/recipes', 'cooking-pot']];
-    } else if (route === 'home/inventory') {
-      items = [['Low stock', lowStock.length, route, 'shopping-basket'], ['Items', D.state.inventoryItems.length, route, 'package-open'], ['Meals', D.state.meals.filter(item => item.date >= day).length, route, 'cooking-pot']];
-    } else if (route.startsWith('settings/')) {
-      const sync = D.state.settings.googleSync || {};
-      items = [['Members', D.state.people.length, 'settings/people', 'users-round'], ['Google', (sync.accounts || []).filter(item => item.status === 'connected').length, 'settings/app', 'cloud'], ['Background', V.natureBackgrounds.find(item => item[0] === D.state.settings.appBackground)?.[1] || 'Mountain falls', 'settings/app', 'palette']];
-    } else {
-      items = [['Open tasks', openTasks.length, 'home/tasks', 'list-checks'], ['Next 7 days', upcoming.length, 'home/calendar', 'calendar-days'], ['Low stock', lowStock.length, 'home/inventory', 'shopping-basket']];
-    }
-    $('#headerKpis').innerHTML = items.map(item => `<button data-route="${item[2]}" title="Open ${D.esc(item[0])}"><i data-lucide="${item[3]}"></i><span><small>${D.esc(item[0])}</small><b>${D.esc(item[1])}</b></span></button>`).join('');
   }
 
   function placeEducationMasterControls() {
