@@ -112,26 +112,6 @@
     return name;
   }
 
-  function closePersonaMenu(restoreFocus = false) {
-    const menu = $('#personaMenu');
-    const trigger = $('#personaSwitcher');
-    if (!menu || !trigger) return;
-    menu.hidden = true;
-    trigger.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('persona-menu-open');
-    if (restoreFocus) trigger.focus();
-  }
-
-  function openPersonaMenu() {
-    const menu = $('#personaMenu');
-    const trigger = $('#personaSwitcher');
-    if (!menu || !trigger) return;
-    menu.hidden = false;
-    trigger.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('persona-menu-open');
-    menu.querySelector('[aria-selected="true"]')?.focus();
-  }
-
   function renderPersonaIdentity() {
     const persona = HM.persona.current();
     const profile = HM.persona.academic(persona);
@@ -140,9 +120,9 @@
     document.body.dataset.personaRole = HM.persona.roleGroup(persona);
     const trigger = $('#personaSwitcher');
     const initials = HM.persona.initials(persona);
-    $('#personaInitials').textContent = initials;
-    $('#personaName').textContent = persona.name;
-    trigger.setAttribute('aria-label', `Switch persona. Current view: ${persona.name}`);
+    
+    
+    
     const utilityAvatar = $('#utilityPersonaAvatar');
     if (utilityAvatar) {
       utilityAvatar.textContent = initials;
@@ -153,10 +133,10 @@
       { id: HM.persona.FAMILY_ID, name: 'Family', householdRole: 'Shared household', isFamily: true },
       ...HM.persona.people()
     ];
-    $('#personaMenu').innerHTML = options.map(option => {
+    $('#personaTabs').innerHTML = options.map(option => {
       const selected = option.id === persona.id;
       const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
-      return `<button type="button" class="persona-option" role="option" data-persona="${D.esc(option.id)}" aria-selected="${selected}" tabindex="${selected ? '0' : '-1'}"><span>${D.esc(optionInitials)}</span><span><b>${D.esc(option.name)}</b><small>${D.esc(option.householdRole || 'Family member')}</small></span><i data-lucide="check"></i></button>`;
+      return `<button type="button" class="persona-tab ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-pressed="${selected}">${D.esc(option.name)}</button>`;
     }).join('');
     const language = HM.i18n.current(persona);
     document.querySelectorAll('#languageSwitcher [data-language]').forEach(button => {
@@ -2340,6 +2320,86 @@
   }
 
   document.addEventListener('click', event => {
+    const educationPage=event.target.closest('[data-education-page]');
+    if(educationPage){
+      if(typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace)closeChapterWorkspace();
+      const id=educationPage.dataset.student,subject=educationPage.dataset.subject,page=educationPage.dataset.educationPage;
+      HM.persona.set(id);D.state.settings.activeLearnerId=id;
+      D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
+      D.state.settings.educationExpandedSubject={studentId:id,subject};
+      D.state.settings.educationActivePage=page;D.save();
+      go(page.startsWith('study/')?page:'study/curriculum');render();
+      if(page==='learning')openChapterWorkspace(V.defaultLessonId(),'summary');else if(page==='book')openChapterWorkspace(V.defaultLessonId(),'book');
+      document.body.classList.remove('menu-open');return;
+    }
+    const studentDashboard=event.target.closest('[data-education-student-dashboard]');
+    if(studentDashboard){if(typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace)closeChapterWorkspace();go('study/student-overview');render();document.body.classList.remove('menu-open');return;}
+    const dashboardSubject=event.target.closest('[data-select-learning-subject]');
+    if(dashboardSubject){if(typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace)closeChapterWorkspace();const subject=dashboardSubject.dataset.selectLearningSubject;const context=V.academicContext();if(context.profile.subjects.includes(subject)){D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[context.activeId]=subject;D.state.settings.educationExpandedSubject={studentId:context.activeId,subject};D.save();go('study/overview');render();}return;}
+    const educationClass=event.target.closest('[data-education-class]');
+    if(educationClass){
+      event.preventDefault();
+      const details=educationClass.closest('details');
+      const studentId=educationClass.dataset.educationClass;
+      const collapsed=new Set(D.state.settings.educationCollapsedClasses||[]);
+      if(details.open)collapsed.add(studentId);else collapsed.delete(studentId);
+      D.state.settings.educationCollapsedClasses=[...collapsed];
+      D.save();
+      details.open=!details.open;
+      return;
+    }
+    const educationSubject = event.target.closest('[data-education-subject]');
+    if (educationSubject) {
+      event.preventDefault();
+      if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
+      const studentId = educationSubject.dataset.student;
+      const subject = educationSubject.dataset.educationSubject;
+      const subjectDetails=educationSubject.closest('details');
+      const currentSubject=D.state.settings.activeLearningSubject?.[studentId] || 'Mathematics';
+      if(studentId===D.state.settings.activeLearnerId&&subject===currentSubject){
+        const shouldExpand=!subjectDetails.open;
+        D.state.settings.educationExpandedSubject=shouldExpand?{studentId,subject}:false;
+        D.save();
+        subjectDetails.open=shouldExpand;
+        return;
+      }
+      HM.persona.set(studentId);
+      D.state.settings.activeLearnerId = studentId;
+      D.state.settings.activeLearningSubject ||= {};
+      D.state.settings.activeLearningSubject[studentId] = subject;
+      D.state.settings.educationExpandedSubject = {studentId,subject};
+      D.save();
+      go('study/overview');
+      render();
+      return;
+    }
+    const educationChapter = event.target.closest('[data-education-chapter]');
+    if (educationChapter) {
+      if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
+      const studentId = educationChapter.dataset.student;
+      HM.persona.set(studentId);
+      D.state.settings.activeLearnerId = studentId;
+      D.state.settings.activeLearningSubject ||= {};
+      D.state.settings.activeLearningSubject[studentId] = educationChapter.dataset.subject;
+      D.state.settings.activeLearningTrack ||= {};
+      D.state.settings.activeLearningTrack[studentId] = educationChapter.dataset.track || 'cbse';
+      D.save();
+      go('study/curriculum');
+      render();
+      openChapterWorkspace(educationChapter.dataset.educationChapter);
+      document.body.classList.remove('menu-open');
+      return;
+    }
+    const personaTab = event.target.closest('.persona-tab');
+    if (personaTab) {
+      const persona = HM.persona.set(personaTab.dataset.persona);
+      const profile = HM.persona.academic(persona);
+      if (profile) D.state.settings.activeLearnerId = persona.id;
+      D.save();
+      render();
+      toast(`Now viewing ${persona.name}`);
+      return;
+    }
     const languageOption = event.target.closest('[data-language]');
     if (languageOption?.closest('#languageSwitcher')) {
       HM.i18n.set(languageOption.dataset.language);
@@ -2347,11 +2407,7 @@
       toast(languageOption.dataset.language === 'ta' ? 'தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது' : 'English selected');
       return;
     }
-    const personaTrigger = event.target.closest('#personaSwitcher');
-    if (personaTrigger) {
-      $('#personaMenu').hidden ? openPersonaMenu() : closePersonaMenu();
-      return;
-    }
+    
     const personaOption = event.target.closest('[data-persona]');
     if (personaOption) {
       const chapterWasOpen = document.body.classList.contains('chapter-workspace-open');
@@ -2359,14 +2415,14 @@
       const profile = HM.persona.academic(persona);
       if (profile) D.state.settings.activeLearnerId = persona.id;
       D.save();
-      closePersonaMenu();
+      
       document.body.classList.remove('menu-open');
       if (chapterWasOpen) closeChapterWorkspace();
       else render();
       toast(`Now viewing ${persona.name}`);
       return;
     }
-    if (!event.target.closest('#personaMenu') && !$('#personaMenu').hidden) closePersonaMenu();
+    if (!event.target.closest('#personaMenu') && !$('#personaMenu').hidden) 
     if (event.target.closest('[data-close-chapter-workspace]')) {
       closeChapterWorkspace();
       return;
@@ -2994,3 +3050,13 @@
   applyTheme();
   render();
 })();
+
+
+
+
+
+
+
+
+
+
