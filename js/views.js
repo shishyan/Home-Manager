@@ -25,13 +25,34 @@
     leisure: { label: 'Leisure', icon: 'palmtree', note: 'Travel, entertainment and web life', route: 'home/travel', items: [
       ['Travel', 'luggage', 'home/travel'], ['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']
     ]},
-    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/curriculum', items: [
-      ['Curriculum', 'route', 'study/curriculum'], ['Planner', 'calendar-clock', 'study/planner'], ['Overview', 'activity', 'study/overview'], ['Progress', 'chart-no-axes-combined', 'study/reports']
+    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
+      ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
     ]},
     community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
       ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
     ]}
   };
+
+  // Retain existing routes while consolidating the public menu into five sections.
+  groups.household.items[2][3] = groups.household.items[2][3].filter(item => item[2] !== 'home/directory');
+  groups.household.items.push(
+    ['Food', 'cooking-pot', groups.kitchen.route, groups.kitchen.items.slice(1)],
+    ['Health', 'heart-handshake', groups.care.route, groups.care.items.slice(1)],
+    ['Leisure', 'palmtree', 'home/entertainment', [['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']]],
+    ['Community', 'map-pinned', groups.community.route, groups.community.items.filter(item => !['community/overview', 'community/directory'].includes(item[2]))]
+  );
+  groups.money.label = 'Finance';
+  groups.leisure = { label: 'Travel', icon: 'luggage', note: 'Trips, transport and bookings', route: 'home/travel', items: [
+    ['Overview', 'luggage', 'home/travel'], ['Trips & packing', 'briefcase', 'home/life/travel'], ['Transport', 'train-front', 'home/life/transport'], ['Vehicles', 'car-front', 'home/life/vehicles'], ['Stays', 'bed-double', 'home/life/stays'], ['Travel protection', 'shield-check', 'home/life/travelProtection'], ['Spending', 'wallet-cards', 'home/travel/spending']
+  ] };
+  groups.contacts = { label: 'Contacts', icon: 'contact-round', note: 'Family address books and local services', route: 'home/directory', items: [
+    ['Family contacts', 'users-round', 'home/directory'], ['Kovaipudur services', 'map-pinned', 'community/directory']
+  ] };
+  delete groups.kitchen; delete groups.care; delete groups.community;
+  const menuOrder = ['household', 'learning', 'money', 'leisure', 'contacts'];
+  const orderedGroups = Object.fromEntries(menuOrder.map(key => [key, groups[key]]));
+  Object.keys(groups).forEach(key => delete groups[key]);
+  Object.assign(groups, orderedGroups);
 
   const settingsGroups = [
     ['household', 'Household profile', 'house', 'Home address, language and family defaults'],
@@ -74,9 +95,11 @@
     { id: 'g12-cs', code: 'lecs1', grade: 12, subject: 'Computer Science', title: 'Computer Science', publisher: 'NCERT', sourceUrl: 'https://ncert.nic.in/textbook.php?lecs1=0-13' }
   ];
 
+
   const bundledBookParts = {
     gegp1: ['ps','01','02','03','04','05','06','07','08'], gegp2: ['ps','01','02','03','04','05','06','07'],
-    gecu1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'], gepr1: ['ps','01','02','03','04','05'],
+    gecu1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'],
+    gepr1: ['ps','c01','c02','c03','c04','c05','c06','c07','c08','c09','c10','c11','c12','c13','c14','c15'],
     gees1: ['ps','01','02','03','04','05','06','07','08','09','10','11','12'], gees2: ['ps','01','02','03','04','05','06','07','08'],
     ghml1: ['ps','01','02','03','04','05','06','07','08','09','10'], gekb1: ['ps','01','02','03','04','05','06','07'],
     lemh1: ['01','02','03','04','05','06','a1','a2','an','ps'], lemh2: ['01','02','03','04','05','06','07','an','ps'],
@@ -90,7 +113,12 @@
     gegp1: { ps: 'Prelims', '01': 'Large Numbers Around Us', '02': 'Arithmetic Expressions', '03': 'A Peek Beyond the Point', '04': 'Expressions Using Letter-Numbers', '05': 'Parallel and Intersecting Lines', '06': 'Number Play', '07': 'A Tale of Three Intersecting Lines', '08': 'Working with Fractions' },
     gegp2: { ps: 'Prelims', '01': 'Geometric Twins', '02': 'Operations with Integers', '03': 'Finding Common Ground', '04': 'Another Peek Beyond the Point', '05': 'Connecting the Dots…', '06': 'Constructions and Tilings', '07': 'Finding the Unknown' },
     gecu1: { ps: 'Prelims', '01': 'The Ever-Evolving World of Science', '02': 'Exploring Substances: Acidic, Basic, and Neutral', '03': 'Electricity: Circuits and Their Components', '04': 'The World of Metals and Non-metals', '05': 'Changes Around Us: Physical and Chemical', '06': 'Adolescence: A Stage of Growth and Change', '07': 'Heat Transfer in Nature', '08': 'Measurement of Time and Motion', '09': 'Life Processes in Animals', '10': 'Life Processes in Plants', '11': 'Light: Shadows and Reflections', '12': 'Earth, Moon, and the Sun' },
-    gepr1: { ps: 'Prelims', '01': 'Learning Together', '02': 'Wit and Humour', '03': 'Dreams and Discoveries', '04': 'Travel and Adventure', '05': 'Bravehearts' },
+    gepr1: { ps: 'Prelims',
+      c01: 'The Day the River Spoke', c02: 'Try Again', c03: 'Three Days to See',
+      c04: 'Animals, Birds, and Dr. Dolittle', c05: 'A Funny Man', c06: 'Say the Right Thing',
+      c07: "My Brother's Great Invention", c08: 'Paper Boats', c09: 'North, South, East, West',
+      c10: 'The Tunnel', c11: 'Travel', c12: 'Conquering the Summit',
+      c13: 'A Homage to Our Brave Soldiers', c14: 'My Dear Soldiers', c15: 'Rani Abbakka' },
     gees1: { ps: 'Prelims', '01': 'Geographical Diversity of India', '02': 'Understanding the Weather', '03': 'Climates of India', '04': 'New Beginnings: Cities and States', '05': 'The Rise of Empires', '06': 'The Age of Reorganisation', '07': 'The Gupta Era: An Age of Tireless Creativity', '08': 'How the Land Becomes Sacred', '09': 'From the Rulers to the Ruled: Types of Governments', '10': 'The Constitution of India — An Introduction', '11': 'From Barter to Money', '12': 'Understanding Markets' },
     gees2: { ps: 'Prelims', '01': 'The Story of Indian Farming', '02': 'India and Her Neighbours', '03': 'Empires and Kingdoms: 6th to 10th Centuries', '04': 'Turning Tides: 11th and 12th Centuries', '05': 'India, a Home to Many', '06': 'The State, the Government, and You', '07': 'Infrastructure: Engine of India’s Development', '08': 'Banks and the Magic of Finance' },
     ghml1: { ps: 'प्रारंभिक पृष्ठ', '01': 'माँ, कह एक कहानी', '02': 'तीन बुद्धिमान', '03': 'फूल और काँटा', '04': 'पानी रे पानी', '05': 'नहीं होना बीमार', '06': 'गिरिधर कविराय की कुंडलियाँ', '07': 'वर्षा-बहार', '08': 'बिरजू महाराज से साक्षात्कार', '09': 'चिड़िया', '10': 'मीरा के पद' },
@@ -115,6 +143,25 @@
   textbookCatalog.find(book => book.id === 'g7-tamil').pdfFiles = [
     ['அமுதத் தமிழ்', 11], ['அணிநிழல் காடு', 35], ['நாடு அதை நாடு', 61], ['அறிவியல் ஆக்கம்', 85], ['ஓதுவது ஒழியேல்', 109], ['கலைவண்ணம்', 131], ['நயத்தகு நாகரிகம்', 157], ['ஒப்புரவு ஒழுகு', 177], ['மானுடம் வெல்லும்', 201]
   ].map(([label, page], index) => ({ key: `tamil-unit-${index + 1}`, label, page, url: textbookAsset('assets/textbooks/class-7/tamil/tamil7-cbse-complete.pdf'), order: index + 1 }));
+  // Poorvi (Grade 7 English) — 5 unit PDFs each containing 3 chapters; list all 15 individually for progress tracking.
+  textbookCatalog.find(book => book.id === 'g7-english').pdfFiles = [
+    { key: 'gepr1-c01', label: 'The Day the River Spoke',          url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 1 },
+    { key: 'gepr1-c02', label: 'Try Again',                        url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 2 },
+    { key: 'gepr1-c03', label: 'Three Days to See',                url: textbookAsset('assets/textbooks/class-7/gepr1/gepr101.pdf'), order: 3 },
+    { key: 'gepr1-c04', label: 'Animals, Birds, and Dr. Dolittle', url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 4 },
+    { key: 'gepr1-c05', label: 'A Funny Man',                      url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 5 },
+    { key: 'gepr1-c06', label: 'Say the Right Thing',              url: textbookAsset('assets/textbooks/class-7/gepr1/gepr102.pdf'), order: 6 },
+    { key: 'gepr1-c07', label: "My Brother's Great Invention",     url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 7 },
+    { key: 'gepr1-c08', label: 'Paper Boats',                      url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 8 },
+    { key: 'gepr1-c09', label: 'North, South, East, West',         url: textbookAsset('assets/textbooks/class-7/gepr1/gepr103.pdf'), order: 9 },
+    { key: 'gepr1-c10', label: 'The Tunnel',                       url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 10 },
+    { key: 'gepr1-c11', label: 'Travel',                           url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 11 },
+    { key: 'gepr1-c12', label: 'Conquering the Summit',            url: textbookAsset('assets/textbooks/class-7/gepr1/gepr104.pdf'), order: 12 },
+    { key: 'gepr1-c13', label: 'A Homage to Our Brave Soldiers',   url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 13 },
+    { key: 'gepr1-c14', label: 'My Dear Soldiers',                 url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 14 },
+    { key: 'gepr1-c15', label: 'Rani Abbakka',                     url: textbookAsset('assets/textbooks/class-7/gepr1/gepr105.pdf'), order: 15 },
+  ];
+
 
   const titles = {
     'global/overview': ['Today', 'Your home command center'],
@@ -143,7 +190,7 @@
     'home/assets': ['Property & Assets', 'Repairs, property records and household assets'],
     'home/wisdom': ['Wisdom & Recognition', 'Family knowledge and points'],
     'home/directory': ['Home Directory', 'Family and service contacts'],
-    'home/sms': ['SMS Messages', 'Import and export SMS messages from your phone.'],
+    'home/sms': ['Messages', 'Daily email updates, calendar dates and imported phone messages.'],
     'home/property': ['Property & Assets', 'Repairs, property records and household assets'],
     'home/travel': ['Travel', 'Trips, transportation, vehicles, stays and protection'],
     'home/travel/spending': ['Travel Spending', 'Costs across trips, transport, vehicles and stays'],
@@ -159,13 +206,15 @@
     'community/directory': ['Community Services', 'Essential local contacts'],
     'community/guides': ['Civic Guides', 'Self-service local information'],
     'community/participate': ['Events & Polls', 'Plans and local preferences'],
-    'study/overview': ['Education Dashboard', 'Peepal and CBSE progress'],
+    'study/student-overview': ['Student Dashboard', 'One view of every subject and the work ahead'],
+    'study/overview': ['Overview', 'Subject snapshot and chapter progress tracking'],
     'study/books': ['Books', 'Focused local textbook library'],
     'study/genius': ['Genius Mind', 'Top-student methods, key concepts and chapter recall'],
     'study/jee': ['JEE Main', 'PCM concepts, worked reasoning and exam practice'],
-    'study/curriculum': ['Curriculum', 'One connected journey through every curriculum chapter'],
-    'study/planner': ['Study Planner', 'School day and home study'],
+    'study/curriculum': ['Overview', 'Chapter progress and subject snapshot'],
+    'study/planner': ['Calendar', 'School dates and study blocks'],
     'study/assignments': ['Assignments', 'Homework, projects and practicals'],
+    'study/practice-hub': ['Practice & Assignments', 'Practice, tests and assignments'],
     'study/assessments': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/reports': ['Education Reports', 'Academic and whole-child review']
@@ -491,16 +540,19 @@
     const month = calendarCursor.getMonth();
     const firstOffset = (new Date(year, month, 1).getDay() + 6) % 7;
     const days = new Date(year, month + 1, 0).getDate();
-    const events = D.state.events.filter(x => (context === 'all' || x.context === context) && x.startAt);
+    const learnerId=context==='study'?D.state.settings.activeLearnerId:(HM.persona?.academic()?.personId || '');
+    const schoolEvents=HM.schoolCalendar?.events(learnerId)||[];
+    const events = [...D.state.events.filter(x => (context === 'all' || x.context === context) && x.startAt),...schoolEvents];
     let cells = '';
     for (let i = 0; i < 42; i++) {
       const dayNumber = i - firstOffset + 1;
       const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayNumber).padStart(2, '0')}`;
-      const dayEvents = dayNumber > 0 && dayNumber <= days ? events.filter(x => isoDay(x.startAt) === date) : [];
-      cells += `<div class="calendar-day ${date === today() ? 'is-today' : ''}"><small>${dayNumber > 0 && dayNumber <= days ? dayNumber : ''}</small>${dayEvents.map(x => `<button class="event ${e(x.context)}" data-route="${eventRoute(x.context)}">${e(x.title)}</button>`).join('')}</div>`;
+      const dayEvents = dayNumber > 0 && dayNumber <= days ? events.filter(x => isoDay(x.startAt) <= date && (x.endDate || isoDay(x.startAt)) >= date) : [];
+      cells += `<div class="calendar-day ${date === today() ? 'is-today' : ''}"><small>${dayNumber > 0 && dayNumber <= days ? dayNumber : ''}</small>${dayEvents.map(x => `<button class="event ${e(x.context)}" ${x.sourceLabel ? `data-school-calendar-event="${e(x.id)}"` : `data-route="${eventRoute(x.context)}"`}>${x.grades ? `G${e(x.grades.join('/'))} · ` : ''}${e(x.title)}</button>`).join('')}</div>`;
     }
-    const monthEvents = events.filter(x => isoDay(x.startAt).startsWith(`${year}-${String(month + 1).padStart(2, '0')}`)).sort((a, b) => String(a.startAt).localeCompare(String(b.startAt)));
-    return `<div class="toolbar"><div><small>Calendar</small><h2>${calendarCursor.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</h2></div><div class="row-actions"><button data-calendar-shift="-1" aria-label="Previous month">${icon('chevron-left')}</button><button data-calendar-shift="today">Today</button><button data-calendar-shift="1" aria-label="Next month">${icon('chevron-right')}</button></div><button class="primary" data-create="event" data-context="${context === 'all' ? 'home' : context}">${icon('plus')}<span>Event</span></button></div><div class="calendar-wrap"><div class="calendar">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(x => `<div class="calendar-day calendar-label"><b>${x}</b></div>`).join('')}${cells}</div><div class="calendar-agenda">${monthEvents.length ? monthEvents.map(x => row(x.title, `${D.date(x.startAt, { weekday: 'short', day: 'numeric', month: 'short' })} - ${x.venue || 'No venue'}`, badge(x.context))).join('') : empty('No events this month.', 'event', 'Add event')}</div></div>${context === 'all' ? calendarPanel() : ''}`;
+    const monthStart=`${year}-${String(month+1).padStart(2,'0')}-01`,monthEnd=`${year}-${String(month+1).padStart(2,'0')}-${String(days).padStart(2,'0')}`;
+    const monthEvents = events.filter(x => isoDay(x.startAt)<=monthEnd && (x.endDate||isoDay(x.startAt))>=monthStart).sort((a, b) => String(a.startAt).localeCompare(String(b.startAt)));
+    return `<div class="toolbar"><div><small>Calendar</small><h2>${calendarCursor.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</h2></div><div class="row-actions"><button data-calendar-shift="-1" aria-label="Previous month">${icon('chevron-left')}</button><button data-calendar-shift="today">Today</button><button data-calendar-shift="1" aria-label="Next month">${icon('chevron-right')}</button></div><button class="primary" data-create="event" data-context="${context === 'all' ? 'home' : context}">${icon('plus')}<span>Event</span></button></div><div class="calendar-wrap"><div class="calendar">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(x => `<div class="calendar-day calendar-label"><b>${x}</b></div>`).join('')}${cells}</div><div class="calendar-agenda">${monthEvents.length ? monthEvents.map(x => row(x.title, `${D.date(x.startAt, { weekday: 'short', day: 'numeric', month: 'short' })} - ${e(x.venue || 'No venue')}${x.endDate && x.endDate!==isoDay(x.startAt) ? ` · through ${e(D.date(x.endDate))}` : ''}`, x.sourceLabel ? `<button data-school-calendar-event="${e(x.id)}">Class ${e(x.grades.join(' & '))} · ${e(x.sourceLabel)}</button>` : badge(x.context))).join('') : empty('No events this month.', 'event', 'Add event')}</div></div>`;
   }
 
   function family() {
@@ -556,7 +608,7 @@
     vehicle: { label: 'Vehicles', route: 'home/life/vehicles', icon: 'car-front' },
     health: { label: 'Health & care', route: 'home/life/health', icon: 'heart-pulse' },
     family: { label: 'Family & celebrations', route: 'home/family', icon: 'users-round' },
-    learning: { label: 'Education', route: 'study/overview', icon: 'graduation-cap' },
+    learning: { label: 'Education', route: 'study/student-overview', icon: 'graduation-cap' },
     community: { label: 'Community', route: 'community/overview', icon: 'map-pinned' }
   };
   const lifeFinanceDomains = { property: 'housing', bills: 'housing', subscriptions: 'housing', digital: 'housing', help: 'housing', sustainability: 'housing', vehicles: 'vehicle', health: 'health', medicines: 'health', appointments: 'health', elders: 'health', emergency: 'health', pets: 'health', travel: 'family', festivals: 'family', documents: 'family', tax: 'family', insurance: 'family', legacy: 'family', education: 'learning' };
@@ -659,7 +711,8 @@
   function directory(scope) {
     const contacts = D.state.contacts.filter(x => x.scope === scope);
     if (scope === 'community') return communityServicesDirectory(contacts);
-    return `<div class="toolbar"><input data-filter aria-label="Search contacts" placeholder="Search contacts"><button class="primary" data-create="contact" data-scope="${scope}">${icon('user-plus')}<span>Contact</span></button></div><div class="cards">${contacts.length ? contacts.map(x => `<article class="card" data-filter-row><span class="badge">${e(x.category)}</span><h3>${e(x.name)}</h3><p>${e(x.hours)}</p>${x.phone ? `<a href="tel:${e(String(x.phone).replace(/[^+\d]/g, ''))}">${e(x.phone)}</a>` : x.email ? `<a href="mailto:${e(x.email)}">${e(x.email)}</a>` : '<small>No contact method saved</small>'}</article>`).join('') : empty('No contacts saved.', 'contact', 'Add contact')}</div>${scope === 'home' ? contactsPanel() : ''}`;
+    const personal = contacts.filter(x => !(x.id === 'c1' && x.name === 'Dr. Meena' && x.phone === '98765 43210'));
+    return `${HM.contactFeed?.render() || ''}<div class="toolbar"><input data-filter aria-label="Search contacts" placeholder="Search name, number, email or category"><select data-category-filter aria-label="Filter contacts by category"><option value="">All categories</option>${[...new Set(personal.map(x=>x.category))].filter(Boolean).sort().map(value=>`<option>${e(value)}</option>`).join('')}</select><button class="primary" data-create="contact" data-scope="${scope}">${icon('user-plus')}<span>Contact</span></button></div><div class="cards contact-directory">${personal.length ? personal.map(x => `<article class="card" data-filter-row data-category="${e(x.category)}"><span class="badge">${e(x.category)}</span><h3>${e(x.name)}</h3>${[...new Set([x.phone,...(x.phones||[])].filter(Boolean))].map(phone=>`<p><a href="tel:${e(String(phone).replace(/[^+\d]/g,''))}">${e(phone)}</a></p>`).join('')}${[...new Set([x.email,...(x.emails||[])].filter(Boolean))].map(email=>`<p><a href="mailto:${e(email)}">${e(email)}</a></p>`).join('')}${x.address?`<p>${e(x.address)}</p>`:''}<small>${e((x.sourceAccounts||[x.sourceAccount]).filter(Boolean).join(' · ') || x.hours || 'Family contact')}</small><div class="row-actions"><button data-edit="contact" data-id="${e(x.id)}" aria-label="Edit ${e(x.name)}">${icon('pencil')} Edit</button></div></article>`).join('') : empty('No family contacts imported yet.', 'contact', 'Add contact')}</div>${scope === 'home' ? contactsPanel() : ''}`;
   }
 
   function communityServicesDirectory(savedContacts) {
@@ -667,8 +720,8 @@
     const personal = savedContacts.filter(item => !['c2','c3'].includes(item.id));
     const categories = [...new Set(services.map(item => item.category))];
     const emergency = services.filter(item => ['svc112','svc108','svc101','svc100'].includes(item.id));
-    const serviceCard = item => `<article class="local-service-card" data-filter-row data-category="${e(item.category)}" data-status="${e(item.area)}"><header><span class="service-icon service-${e(item.category.toLowerCase().replace(/\s+/g,'-'))}">${icon(item.category === 'Medical' ? 'ambulance' : item.category === 'Emergency' ? 'siren' : item.category === 'Safety' ? 'shield-check' : item.category === 'Utilities' ? 'zap' : item.category === 'Civic' ? 'landmark' : item.category === 'Waste' ? 'recycle' : item.category === 'Transport' ? 'car-front' : item.category === 'Care' ? 'heart-handshake' : 'building-2')}</span><span><small>${e(item.area)} · ${e(item.category)}</small><h3>${e(item.name)}</h3></span><span class="official-mark ${item.official ? '' : 'listed'}">${icon(item.official ? 'badge-check' : 'list-checks')} ${item.official ? 'Official' : 'Listed · confirm'}</span></header><p>${e(item.note)}</p><div class="service-meta"><span>${icon('clock-3')} ${e(item.hours)}</span>${item.alternate ? `<span>${icon('phone-forwarded')} ${e(item.alternate)}</span>` : ''}</div><footer><a class="service-call" href="tel:${e(String(item.phone).replace(/[^+\d]/g,''))}">${icon('phone')}<span>${e(item.phone)}</span></a><a class="service-source" href="${e(item.source)}" target="_blank" rel="noopener noreferrer">${e(item.sourceLabel)} ${icon('external-link')}</a></footer></article>`;
-    return `<section class="services-hero"><div><span class="section-kicker">KOVAIPUDUR FIRST · COIMBATORE NEXT</span><h2>Local help, without the guesswork</h2><p>Official and clearly sourced contacts for emergencies, civic services, utilities and essential household needs. Kovaipudur-usable numbers appear first; city-wide escalation follows.</p></div><div class="verified-block">${icon('shield-check')}<span><b>${services.length} verified contacts</b><small>Checked ${D.date(HM.communityServices?.verifiedOn,{day:'numeric',month:'short',year:'numeric'})}</small></span></div></section><section class="emergency-dial-strip" aria-label="Emergency numbers">${emergency.map(item=>`<a href="tel:${e(item.phone)}"><span>${icon(item.id==='svc108'?'ambulance':item.id==='svc101'?'flame':item.id==='svc100'?'shield':'siren')}</span><span><small>${e(item.name)}</small><b>${e(item.phone)}</b></span></a>`).join('')}</section><div class="services-toolbar"><label>${icon('search')}<input data-filter aria-label="Search local services" placeholder="Search service, area or purpose"></label><select data-status-filter aria-label="Filter by area"><option value="">Both areas</option><option>Kovaipudur</option><option>Coimbatore</option></select><select data-category-filter aria-label="Filter by service"><option value="">All services</option>${categories.map(category=>`<option>${e(category)}</option>`).join('')}</select></div><section class="service-directory-grid">${services.map(serviceCard).join('')}</section><section class="trusted-providers"><div class="section-head"><div><span class="section-kicker">YOUR VERIFIED PEOPLE</span><h2>Trusted home professionals</h2><p>Save providers your family has personally used. Home Manager does not endorse unverified marketplace listings.</p></div><button class="primary" data-create="contact" data-scope="community">${icon('user-plus')}<span>Add trusted contact</span></button></div>${personal.length?`<div class="trusted-provider-grid">${personal.map(item=>`<article><span>${icon('contact-round')}</span><div><small>${e(item.category)}</small><b>${e(item.name)}</b><em>${e(item.hours)}</em></div><a href="tel:${e(String(item.phone||'').replace(/[^+\d]/g,''))}">${e(item.phone||'No phone')}</a><div class="row-actions"><button class="icon-action" data-edit="contact" data-id="${e(item.id)}" aria-label="Edit ${e(item.name)}">${icon('pencil')}</button><button class="icon-action danger-action" data-delete="contacts:${e(item.id)}" aria-label="Remove ${e(item.name)}">${icon('trash-2')}</button></div></article>`).join('')}</div>`:`<div class="provider-empty"><span>${icon('wrench')}</span><div><b>Build your trusted list</b><p>Add your plumber, electrician, appliance technician, water-purifier service, pest control, carpenter, internet provider or locksmith after your family verifies them.</p></div></div>`}</section><section class="service-boundary">${icon('info')}<p><b>Call emergency services only for a real emergency.</b> Office contacts and provider details can change; confirm identity, coverage and charges before allowing a private worker into the home. The Kovaipudur post-office number is directory-sourced and explicitly marked for confirmation.</p></section>`;
+    const serviceCard = item => `<article class="local-service-card" data-filter-row data-category="${e(item.category)}" data-status="${e(item.area)}"><header><span class="service-icon service-${e(item.category.toLowerCase().replace(/\s+/g,'-'))}">${icon(item.category === 'Medical' ? 'ambulance' : item.category === 'Emergency' ? 'siren' : item.category === 'Safety' ? 'shield-check' : item.category === 'Utilities' ? 'zap' : item.category === 'Civic' ? 'landmark' : item.category === 'Waste' ? 'recycle' : item.category === 'Transport' ? 'car-front' : item.category === 'Care' ? 'heart-handshake' : 'building-2')}</span><span><small>${e(item.area)} · ${e(item.category)}</small><h3>${e(item.name)}</h3></span><span class="official-mark ${item.official ? '' : 'listed'}">${icon(item.official ? 'badge-check' : 'list-checks')} ${item.providerPublished ? 'Provider website' : item.official ? 'Official' : 'Listed · confirm'}</span></header><p>${e(item.note)}</p>${item.address ? `<p>${e(item.address)}</p>` : ''}<div class="service-meta"><span>Checked ${e(item.verifiedOn)}</span><span>${icon('clock-3')} ${e(item.hours)}</span>${item.alternate ? `<span>${icon('phone-forwarded')} ${e(item.alternate)}</span>` : ''}</div><footer><a class="service-call" href="tel:${e(String(item.phone).replace(/[^+\d]/g,''))}">${icon('phone')}<span>${e(item.phone)}</span></a><a class="service-source" href="${e(item.source)}" target="_blank" rel="noopener noreferrer">${e(item.sourceLabel)} ${icon('external-link')}</a></footer></article>`;
+    return `<section class="services-hero"><div><span class="section-kicker">KOVAIPUDUR FIRST · COIMBATORE NEXT</span><h2>Local help, without the guesswork</h2><p>Official and clearly sourced contacts for emergencies, civic services, utilities and essential household needs. Kovaipudur-usable numbers appear first; city-wide escalation follows.</p></div><div class="verified-block">${icon('shield-check')}<span><b>${services.length} sourced contacts</b><small>Baseline checked ${D.date(HM.communityServices?.verifiedOn,{day:'numeric',month:'short',year:'numeric'})}</small></span></div></section><section class="emergency-dial-strip" aria-label="Emergency numbers">${emergency.map(item=>`<a href="tel:${e(item.phone)}"><span>${icon(item.id==='svc108'?'ambulance':item.id==='svc101'?'flame':item.id==='svc100'?'shield':'siren')}</span><span><small>${e(item.name)}</small><b>${e(item.phone)}</b></span></a>`).join('')}</section><div class="services-toolbar"><label>${icon('search')}<input data-filter aria-label="Search local services" placeholder="Search service, area or purpose"></label><select data-status-filter aria-label="Filter by area"><option value="">Both areas</option><option>Kovaipudur</option><option>Coimbatore</option></select><select data-category-filter aria-label="Filter by service"><option value="">All services</option>${categories.map(category=>`<option>${e(category)}</option>`).join('')}</select></div><section class="service-directory-grid">${services.map(serviceCard).join('')}</section><section class="trusted-providers"><div class="section-head"><div><span class="section-kicker">YOUR VERIFIED PEOPLE</span><h2>Trusted home professionals</h2><p>Save providers your family has personally used. Home Manager does not endorse unverified marketplace listings.</p></div><button class="primary" data-create="contact" data-scope="community">${icon('user-plus')}<span>Add trusted contact</span></button></div>${personal.length?`<div class="trusted-provider-grid">${personal.map(item=>`<article><span>${icon('contact-round')}</span><div><small>${e(item.category)}</small><b>${e(item.name)}</b><em>${e(item.hours)}</em></div><a href="tel:${e(String(item.phone||'').replace(/[^+\d]/g,''))}">${e(item.phone||'No phone')}</a><div class="row-actions"><button class="icon-action" data-edit="contact" data-id="${e(item.id)}" aria-label="Edit ${e(item.name)}">${icon('pencil')}</button><button class="icon-action danger-action" data-delete="contacts:${e(item.id)}" aria-label="Remove ${e(item.name)}">${icon('trash-2')}</button></div></article>`).join('')}</div>`:`<div class="provider-empty"><span>${icon('wrench')}</span><div><b>Build your trusted list</b><p>Add your plumber, electrician, appliance technician, water-purifier service, pest control, carpenter, internet provider or locksmith after your family verifies them.</p></div></div>`}</section><section class="service-boundary">${icon('info')}<p><b>Call emergency services only for a real emergency.</b> Office contacts and provider details can change; confirm identity, coverage and charges before allowing a private worker into the home. The Kovaipudur post-office number is directory-sourced and explicitly marked for confirmation.</p></section>`;
   }
 
   function lifeDueState(record) {
@@ -838,7 +891,6 @@
     return jeeMode ? HM.genius.jeeSyllabus.filter(item => item.subject === context.selectedSubject) : schoolCurriculumLessons(context);
   }
 
-  
   function educationNavigation(activeSection = '') {
     const activeId = D.state.settings.activeLearnerId;
     const route = location.hash.slice(2) || 'study/overview';
@@ -853,6 +905,7 @@
         const context = {profile,activeId:profile.personId,selectedSubject:subject};
         const jee = +profile.grade === 12 && D.state.settings.activeLearningTrack?.[profile.personId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
         const lessons = curriculumLessons(context, jee);
+        const custom = (D.state.syllabusItems || []).filter(item=>!jee && item.studentId===profile.personId && item.subject===subject && !/^sy-p[34]-/.test(item.id) && !lessons.some(lesson=>lesson.title.toLowerCase()===item.title.toLowerCase()));
         const pages=[['Overview','study/overview'],['Calendar','study/planner'],['Learning','learning'],['Read Book','book'],['Practice & Assignments','study/practice-hub']];
         const isActiveSubject=profile.personId===activeId && subject===selected;
         const isExpanded=expandedSubject===false?false:expandedSubject?expandedSubject.studentId===profile.personId&&expandedSubject.subject===subject:isActiveSubject;
@@ -860,6 +913,7 @@
       }).join('')}</details>`;
     }).join('')}</div>`;
   }
+
   function curriculumLessonById(context, lessonId) {
     return HM.genius.jeeSyllabus.find(item => item.id === lessonId) || schoolCurriculumLessons(context).find(item => item.id === lessonId) || (D.state.syllabusItems || []).find(item => item.id === lessonId && item.studentId === context.activeId);
   }
@@ -898,18 +952,14 @@
   }
 
   function learnerBar(context) {
-    const p = context.profile;
     const extension = context.learningExtension === 'reports' ? examReadinessPanel(context) : '';
-    const jeeMode = +p.grade === 12 && (activeRenderRoute === 'study/jee' || D.state.settings.activeLearningTrack?.[context.activeId] === 'jee');
-    const subjects = jeeMode ? ['Physics', 'Chemistry', 'Mathematics'] : context.profile.subjects;
-    const selectedTab = subjects.includes(context.selectedSubject) ? context.selectedSubject : subjects[0];
-    const subjectTabs = activeRenderRoute.startsWith('study/') ? `<nav class="subject-tabs subject-master-tabs" aria-label="Subjects">${subjects.map(subject => `<button type="button" data-learning-subject="${e(subject)}" class="${selectedTab === subject ? 'active' : ''}" aria-pressed="${selectedTab === subject}">${e(subject)}</button>`).join('')}</nav>` : '';
-    const cbseSections = [['Curriculum','route','study/curriculum'],['Planner','calendar-clock','study/planner'],['Overview','activity','study/overview'],['Progress','chart-no-axes-combined','study/reports']];
-    const jeeSections = cbseSections;
-    const learningSections = jeeMode ? jeeSections : cbseSections;
-    const sectionTabs = activeRenderRoute.startsWith('study/') ? `<nav class="learning-section-tabs" aria-label="Learning sections">${learningSections.map(([label, iconName, route]) => `<button type="button" data-route="${route}" class="${activeRenderRoute === route ? 'active' : ''}" ${activeRenderRoute === route ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span></button>`).join('')}</nav>` : '';
-    const trackTabs = +p.grade === 12 ? `<nav class="learning-track-tabs" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>` : `<span class="learning-track-label">CBSE · Class ${e(p.grade)}</span>`;
-    return `<div class="learning-command-bar subject-first"><div class="education-command-row"><div class="education-master-controls">${trackTabs}${subjectTabs}</div>${sectionTabs}</div></div>${extension}`;
+    return extension;
+  }
+
+  function learningTrackControl(context) {
+    if (+context.profile.grade !== 12) return '';
+    const jeeMode = activeRenderRoute === 'study/jee' || D.state.settings.activeLearningTrack?.[context.activeId] === 'jee';
+    return `<nav class="learning-track-tabs inline-learning-track" aria-label="Curriculum track"><button type="button" data-learning-track="cbse" class="${jeeMode ? '' : 'active'}" aria-pressed="${!jeeMode}">CBSE</button><button type="button" data-learning-track="jee" class="${jeeMode ? 'active' : ''}" aria-pressed="${jeeMode}">JEE Main</button></nav>`;
   }
 
   function schoolHub(context) {
@@ -954,15 +1004,68 @@
 
   function studyOverview() {
     const c = academicContext();
-    const readiness = subjectReadiness(c);
+    const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee';
+    const lessons = curriculumLessons(c, jeeMode);
     const mastery = averageOf(c.syllabus.map(item => item.mastery));
     const completedAssessments = c.assessments.filter(item => item.status !== 'scheduled');
     const score = averageOf(completedAssessments.map(assessmentPercent));
     const due = c.deliverables.filter(item => !['done', 'submitted'].includes(item.status));
-    const upcomingExams = c.assessments.filter(item => item.status === 'scheduled' && item.date >= today()).sort((a, b) => String(a.date).localeCompare(String(b.date)));
-    const nextPlans = c.plans.filter(item => item.date >= today()).sort((a, b) => `${a.date}${a.startTime}`.localeCompare(`${b.date}${b.startTime}`)).slice(0, 7);
-    const weak = [...readiness].sort((a, b) => a.readiness - b.readiness).slice(0, 3);
-    return `${learnerBar(c)}<section class="metrics">${metric('Syllabus mastery', `${mastery}%`, `${c.syllabus.filter(item => item.status === 'mastered').length}/${c.syllabus.length} outcomes mastered`, 'book-open-check')}${metric('Assessment average', `${score}%`, `Target ${c.profile.targetPercent}%`, 'file-chart-column')}${metric('Open submissions', due.length, due.filter(item => item.dueDate <= today()).length ? 'Includes overdue work' : 'Homework and projects', 'clipboard-check')}${metric('Practice accuracy', `${practicePercent(c.practice)}%`, `${c.practice.reduce((sumValue, item) => sumValue + (+item.attempted || 0), 0)} questions logged`, 'brain-circuit')}</section><div class="grid-2 learning-dashboard"><section class="panel"><div class="section-head"><div><h2>Next study blocks</h2><p>A realistic plan for ${e(c.profile.name)}</p></div><button data-route="study/planner">Open planner</button></div>${nextPlans.length ? nextPlans.map(item => row(`${item.startTime} - ${item.activity}`, `${D.date(item.date, { weekday: 'short', day: 'numeric', month: 'short' })} - ${item.subject} - ${item.minutes} min`, academicStatus(item.status))).join('') : '<p class="empty">No study blocks planned.</p>'}</section><section class="panel"><div class="section-head"><div><h2>Priority subjects</h2><p>Lowest combined readiness first</p></div><button data-route="study/reports">Full report</button></div>${weak.map(item => `<div class="readiness-row"><span class="subject-dot"></span><div class="grow"><b>${e(item.subject)}</b><small>Mastery ${item.mastery}% - Tests ${item.test}% - Practice ${item.accuracy}%</small><div class="progress ${item.readiness < 60 ? 'over' : ''}"><span style="width:${clamp(item.readiness)}%"></span></div></div><strong>${item.readiness}%</strong></div>`).join('')}</section></div><section class="panel learning-actions"><div class="section-head"><div><h2>Do next</h2><p>Highest-impact actions based on current records</p></div></div><div class="action-strip">${upcomingExams.slice(0, 1).map(item => `<button data-route="study/assessments"><span>${icon('calendar-warning')}</span><span><small>UPCOMING EXAM</small><b>${e(item.subject)} - ${e(item.title)}</b><em>${D.date(item.date)}</em></span></button>`).join('')}${due.slice(0, 2).map(item => `<button data-route="study/assignments"><span>${icon('clipboard-check')}</span><span><small>SUBMISSION</small><b>${e(item.title)}</b><em>${D.date(item.dueDate)}</em></span></button>`).join('')}${weak.slice(0, 2).map(item => `<button data-route="study/practice"><span>${icon('brain-circuit')}</span><span><small>REINFORCE</small><b>${e(item.subject)}</b><em>${item.readiness}% ready</em></span></button>`).join('')}<button data-route="study/assessments"><span>${icon(c.profile.grade === 12 ? 'file-check-2' : 'notebook-tabs')}</span><span><small>${c.profile.grade === 12 ? 'BOARD PREP' : 'SCHOOL REVIEW'}</small><b>${c.profile.grade === 12 ? 'Check practical and theory gaps' : 'Review periodic-test gaps'}</b><em>Open assessment plan</em></span></button></div></section>${sectionFinance('learning', ['goal', 'education'])}`;
+    const attempts = c.practice.reduce((sumValue, item) => sumValue + (+item.attempted || 0), 0);
+    const values = [
+      ['Syllabus mastery', `${mastery}%`, `${c.syllabus.filter(item => item.status === 'mastered').length} of ${c.syllabus.length} outcomes`, 'book-open-check', 'violet'],
+      ['Assessment average', `${score}%`, `Target ${c.profile.targetPercent}%`, 'file-chart-column', 'blue'],
+      ['Open assignments', due.length, due.some(item => item.dueDate < today()) ? 'Includes overdue work' : 'Nothing overdue', 'clipboard-check', 'orange'],
+      ['Practice accuracy', `${practicePercent(c.practice)}%`, `${attempts} questions attempted`, 'brain-circuit', 'green']
+    ];
+    return `${learnerBar(c)}<section class="study-dashboard-compact" aria-label="${e(c.profile.name)} ${e(c.selectedSubject)} learning snapshot"><header><div><span class="section-kicker">SUBJECT SNAPSHOT</span><h2>${e(c.selectedSubject)} · Class ${e(c.profile.grade)}</h2><p>Assessment and activity overview for ${e(c.profile.name)}.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/practice-hub">${icon('arrow-up-right')} Review learning</button></div></header><div class="study-dashboard-metrics">${values.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div></section>${HM.studyProgress.curriculum(c, lessons, '', learningReports(false), learningTrackControl(c))}`;
+  }
+
+  function studentStudyOverview() {
+    const c = academicContext();
+    const records = {
+      syllabus: (D.state.syllabusItems || []).filter(item => item.studentId === c.activeId),
+      assessments: (D.state.academicAssessments || []).filter(item => item.studentId === c.activeId && item.status !== 'scheduled'),
+      practice: (D.state.practiceLogs || []).filter(item => item.studentId === c.activeId),
+      deliverables: (D.state.academicDeliverables || []).filter(item => item.studentId === c.activeId)
+    };
+    const subjects = c.profile.subjects.map(subject => {
+      const context = { ...c, selectedSubject: subject };
+      context.syllabus = records.syllabus.filter(item => item.subject === subject);
+      context.assessments = records.assessments.filter(item => item.subject === subject);
+      context.practice = records.practice.filter(item => item.subject === subject);
+      const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee' && ['Physics','Chemistry','Mathematics'].includes(subject);
+      const lessons = curriculumLessons(context, jeeMode);
+      const progress = HM.studyProgress.summary(context, lessons);
+      const assessments = context.assessments.length ? averageOf(context.assessments.map(assessmentPercent)) : 0;
+      const attempts = context.practice.reduce((sum,item)=>sum+(+item.attempted||0),0);
+      const practice = attempts ? practicePercent(context.practice) : 0;
+      const readiness = Math.round(progress.overall * .5 + assessments * .3 + practice * .2);
+      return { subject, context, lessons, progress, assessments, practice, readiness, attempts };
+    });
+    const totalChapters = subjects.reduce((sum,item)=>sum+item.progress.chapters,0);
+    const started = subjects.reduce((sum,item)=>sum+item.progress.started,0);
+    const overall = averageOf(subjects.map(item=>item.progress.overall));
+    const assessments = records.assessments.length ? averageOf(records.assessments.map(assessmentPercent)) : 0;
+    const due = records.deliverables.filter(item=>!['done','submitted'].includes(item.status));
+    const attempts = records.practice.reduce((sum,item)=>sum+(+item.attempted||0),0);
+    const metricData = [
+      ['Overall chapter progress',`${overall}%`,`${started} of ${totalChapters} chapters started`,'chart-no-axes-column','violet'],
+      ['Assessment average',records.assessments.length?`${assessments}%`:'—',records.assessments.length?`${records.assessments.length} completed assessments`:'No marks recorded yet','file-chart-column','blue'],
+      ['Open assignments',due.length,due.some(item=>item.dueDate<today())?'Includes overdue work':'Across all subjects','clipboard-check','orange'],
+      ['Practice accuracy',attempts?`${practicePercent(records.practice)}%`:'—',`${attempts} questions attempted`,'brain-circuit','green']
+    ];
+    const subjectRows = subjects.map(item=>`<article class="student-subject-row">
+      <div class="student-subject-heading"><span class="student-subject-icon">${icon('book-open')}</span><div><h3>${e(item.subject)}</h3><small>${item.progress.chapters} chapters · ${item.progress.started} started · ${item.progress.expertComplete} Expert complete</small></div><strong>${item.readiness}%<small>snapshot</small></strong></div>
+      <div class="student-subject-bars" aria-label="${e(item.subject)} progress chart">${[['Chapter progress',item.progress.overall,'violet'],['Assessments',item.assessments,'blue'],['Practice',item.practice,'green']].map(([label,value,tone])=>`<div class="student-subject-bar tone-${tone}"><span>${label}</span><i><b style="width:${value}%"></b></i><strong>${value}%</strong></div>`).join('')}</div>
+      <div class="student-subject-actions"><span>Learning ${item.progress.learning}% · Revision ${item.progress.revision}% · Expert ${item.progress.expert}%</span><button type="button" data-select-learning-subject="${e(item.subject)}">${icon('arrow-up-right')} Subject dashboard</button></div>
+    </article>`).join('');
+    const upcoming = [...due].sort((a,b)=>String(a.dueDate).localeCompare(String(b.dueDate))).slice(0,4);
+    return `${learnerBar(c)}<section class="student-learning-dashboard" aria-label="${e(c.profile.name)} student dashboard">
+      <header class="student-dashboard-hero"><div><span class="section-kicker">STUDENT DASHBOARD · CLASS ${e(c.profile.grade)}</span><h2>${e(c.profile.name)}’s learning, across every subject</h2><p>A single view of chapter progress, school results, practice and work still to do.</p></div><div class="study-dashboard-header-actions">${learningTrackControl(c)}<button type="button" class="study-dashboard-open" data-route="study/curriculum">${icon('route')} Open progress</button></div></header>
+      <div class="study-dashboard-metrics student-dashboard-metrics">${metricData.map(([label,value,detail,iconName,tone])=>`<article class="study-dashboard-metric tone-${tone}"><span class="study-dashboard-icon">${icon(iconName)}</span><div><small>${e(label)}</small><strong>${e(value)}</strong><span>${e(detail)}</span></div></article>`).join('')}</div>
+      <div class="student-dashboard-columns"><section class="student-subject-chart"><header><div><h3>Subject progress</h3><p>Chapter, assessment and practice snapshots</p></div><span>${subjects.length} subjects</span></header><div class="student-subject-list">${subjectRows||'<p class="empty">No subjects are configured for this student.</p>'}</div></section>
+      <aside class="student-dashboard-due"><header><div><h3>Work to finish</h3><p>Upcoming assignments across subjects</p></div><button type="button" data-route="study/practice-hub">${icon('arrow-up-right')}</button></header>${upcoming.length?upcoming.map(item=>`<div class="student-due-row"><span>${icon(item.dueDate<today()?'calendar-clock':'calendar-days')}</span><div><b>${e(item.title)}</b><small>${e(item.subject)} · ${D.date(item.dueDate)}</small></div>${item.dueDate<today()?'<em>Overdue</em>':''}</div>`).join(''):'<p class="empty">No open assignments. Nice work.</p>'}</aside></div>
+    </section>`;
   }
 
   function curriculum() {
@@ -1094,35 +1197,8 @@
 
   function curriculumJourney() {
     const c = academicContext();
-    const subjectTheme = `subject-${String(c.selectedSubject || 'default').toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-    const chapterIconPool = ['book-open-check','lightbulb','workflow','network','git-branch','binary','calculator','flask-conical','atom','orbit','microscope','telescope','landmark','languages','feather','scroll-text','map','compass','shapes','brain','sparkles'];
-    const chapterIconOffset = ({ Physics: 8, Chemistry: 7, Mathematics: 2, 'Computer Science': 3, Science: 6, English: 13, 'English Core': 13, Tamil: 14, Hindi: 15, 'Social Science': 11, 'Kaushal Bodh': 17 })[c.selectedSubject] || 0;
     const jeeMode = +c.profile.grade === 12 && D.state.settings.activeLearningTrack?.[c.activeId] === 'jee';
-    const lessons = curriculumLessons(c, jeeMode);
-    D.state.settings.chapterMastery ||= {};
-    D.state.settings.chapterMastery[c.activeId] ||= {};
-    const masteryFor = lesson => D.state.settings.chapterMastery[c.activeId][lesson.id]?.mastery ?? (+lesson.mastery || 0);
-    const tracking = lessons.map(lesson => chapterTracking(c, lesson));
-    const completedStages = tracking.reduce((total, item) => total + item.complete, 0);
-    const summaryReady = tracking.filter(item => item.status.summary).length;
-    const mastered = tracking.filter(item => item.status.progress).length;
-    const nextLesson = lessons.find((lesson, index) => tracking[index].complete < chapterStages.length);
-    const rows = lessons.map((lesson, index) => {
-      const chapterVisual = chapterIconPool[(chapterIconOffset + index) % chapterIconPool.length];
-      const mastery = masteryFor(lesson);
-      const tracking = chapterTracking(c, lesson);
-      const nextStage = chapterStages.find(([key]) => !tracking.status[key])?.[1] || 'Revision';
-      const masteryLevels = [...new Set([0, 20, 40, 60, 80, 100, mastery])].sort((a, b) => a - b);
-      const tracker = `<div class="chapter-seven-track" aria-label="${tracking.complete} of 7 chapter stages complete">${chapterStages.map(([key, label]) => `<i class="${tracking.status[key] ? 'complete' : ''}" title="${e(label)}" aria-label="${e(label)} ${tracking.status[key] ? 'complete' : 'not complete'}"></i>`).join('')}</div>`;
-      const topicRows = tracking.topics.subchapters.map((topic, topicIndex) => {
-        const topicState = tracking.topics.states[topic.id];
-        const stateLabel = topicState === 'mastered' ? 'Mastered' : topicState === 'learning' ? 'Learning' : 'Not Started';
-        return `<div class="chapter-subchapter-row state-${e(topicState)}"><button type="button" class="chapter-subchapter-open" data-chapter-subchapter="${e(topic.id)}" data-lesson="${e(lesson.id)}"><span>${e(topic.number || `${index + 1}.${topicIndex + 1}`)}</span><b>${e(topic.title)}</b>${icon('chevron-right')}</button><button type="button" class="chapter-subchapter-state" data-subchapter-progress="${e(topic.id)}" data-lesson="${e(lesson.id)}" data-state="${e(topicState)}" aria-label="${e(topic.title)}: ${e(stateLabel)}">${icon(topicState === 'mastered' ? 'circle-check-big' : topicState === 'learning' ? 'circle-dot' : 'circle')}<span>${e(stateLabel)}</span></button></div>`;
-      }).join('');
-      return `<article class="curriculum-journey-row curriculum-chapter-card ${tracking.complete === 7 ? 'is-complete' : ''}" data-filter-row data-chapter-card="${e(lesson.id)}" role="button" tabindex="0" aria-label="Open chapter ${e(lesson.title)}"><header class="curriculum-card-head"><span class="chapter-sequence">${String(index + 1).padStart(2, '0')}</span><span class="chapter-card-state ${tracking.complete === 7 ? 'complete' : ''}">${tracking.complete === 7 ? icon('circle-check-big') : icon('circle-dashed')} ${tracking.complete === 7 ? 'Complete' : `${tracking.complete}/7 stages`}</span></header><div class="chapter-journey-copy"><span class="section-kicker">${e(lesson.term)} · ${e(lesson.competency)}</span><div class="chapter-card-title"><span class="chapter-card-visual" data-chapter-icon="${e(chapterVisual)}">${icon(chapterVisual)}</span><h2>${e(lesson.title)}</h2></div><div class="chapter-card-metrics"><span><b>${tracking.topics.percent}%</b><small>Topics</small></span><label class="chapter-card-mastery"><small>Mastery</small><select data-card-mastery="${e(lesson.id)}" aria-label="Update ${e(lesson.title)} mastery">${masteryLevels.map(value => `<option value="${value}" ${value === mastery ? 'selected' : ''}>${value}%</option>`).join('')}</select></label><span class="chapter-topic-total"><b>${tracking.topics.mastered}/${tracking.topics.total}</b><small>Mastered</small></span></div><div class="chapter-progress-line"><span><i style="width:${tracking.topics.percent}%"></i></span></div>${tracker}</div><section class="chapter-subchapter-list" aria-label="${e(lesson.title)} subchapters">${topicRows}</section><footer class="chapter-card-footer"><span><small>${tracking.complete === 7 ? 'Status' : 'Next step'}</small><b>${tracking.complete === 7 ? 'Ready to revise' : e(nextStage)}</b></span><span class="chapter-card-open-hint">Open ${icon('arrow-up-right')}</span></footer></article>`;
-    }).join('');
-    const metrics = [[lessons.length, 'Chapters'], [`${completedStages}/${lessons.length * chapterStages.length}`, 'Stages complete'], [summaryReady, 'Summaries reviewed'], [mastered, 'Mastered']];
-    return `${learnerBar(c)}<div class="curriculum-subject-theme ${subjectTheme}"><section class="curriculum-progress-strip" aria-label="${e(c.selectedSubject)} chapter progress"><header><span class="section-kicker">${jeeMode ? 'JEE MAIN' : `CBSE · CLASS ${e(c.profile.grade)}`} · ${e(c.selectedSubject)}</span><b>${nextLesson ? `Next: ${e(nextLesson.title)}` : 'All chapter stages complete'}</b><small>${nextLesson ? `${chapterStages.length - chapterTracking(c, nextLesson).complete} stages remain in this chapter` : 'Choose a chapter to revise mastery'}</small></header><div class="curriculum-strip-metrics">${metrics.map(([value, label]) => `<article><strong>${value}</strong><span>${label}</span></article>`).join('')}</div></section><section class="curriculum-journey-list">${rows || '<p class="empty">Choose a curriculum subject to see its chapters.</p>'}</section></div>`;
+    return HM.studyProgress.curriculum(c,curriculumLessons(c,jeeMode),learnerBar(c),learningReports(false),learningTrackControl(c));
   }
 
   function chapterWorkspaceNavigation(lessonId, section = 'summary') {
@@ -1138,6 +1214,7 @@
   }
 
   function chapterWorkspace(lessonId, section = 'summary') {
+    if (section === 'progress') section = 'summary';
     const c = academicContext();
     const jeeLesson = HM.genius.jeeSyllabus.find(item => item.id === lessonId);
     const lesson = curriculumLessonById(c, lessonId);
@@ -1229,7 +1306,7 @@
       ...questions.slice(0, 2).map(question => ({ prompt: question.stem, steps: [...(summary.problemFlow || []).slice(0, 2), question.why], answer: question.options?.[question.answer] || question.why }))
     ].slice(0, 3);
     const walkthroughExamplesSection = `<section class="chapter-first-example chapter-lesson-section"><div class="chapter-lesson-heading"><small>THREE GUIDED EXAMPLES</small><h2>See the Idea Work, Step by Step</h2><p>Each example shows the question, the reasoning moves and the final conclusion.</p></div><div class="chapter-worked-examples">${walkthroughExamples.map((item, index) => `<article><header><span>Example ${index + 1}</span><h3>${e(item.prompt)}</h3></header><ol>${(item.steps || []).slice(0, 4).map(step => `<li>${teachingText(step)}</li>`).join('')}</ol><footer><b>Answer</b><p>${teachingText(item.answer)}</p></footer></article>`).join('')}</div></section>`;
-    const summaryConceptMap = tracking.topics.subchapters.length ? `<section class="chapter-summary-map chapter-subchapter-summary chapter-lesson-section"><div class="chapter-lesson-heading"><small>CHAPTER ROADMAP</small><h2>Chapter ideas</h2><p>${tracking.topics.total} meaningful topics · progress is saved automatically.</p></div><div class="chapter-concept-lessons">${tracking.topics.subchapters.map((topic, index) => { const topicState = tracking.topics.states[topic.id]; const stateLabel = topicState === 'mastered' ? 'Mastered' : topicState === 'learning' ? 'Learning' : 'Not Started'; return `<article id="${e(topic.id)}" data-summary-subchapter="${e(topic.id)}" class="summary-subchapter state-${e(topicState)}" tabindex="-1"><header><span>Topic ${index + 1} of ${tracking.topics.total}${topic.number ? ` · Textbook ${e(topic.number)}` : ''}</span><button type="button" class="chapter-subchapter-state" data-subchapter-progress="${e(topic.id)}" data-lesson="${e(lesson.id)}" data-state="${e(topicState)}">${icon(topicState === 'mastered' ? 'circle-check-big' : topicState === 'learning' ? 'circle-dot' : 'circle')}<span>${e(stateLabel)}</span></button></header><div><h3>${e(topic.title)}</h3><section class="summary-topic-core"><small>CORE IDEA</small><p>${teachingText(topic.explanation)}</p></section>${topic.connection ? `<aside><span>${icon('git-branch')}<small>HOW IT CONNECTS</small></span><p>${teachingText(topic.connection)}</p></aside>` : ''}<footer><button type="button" class="topic-deep-dive" data-deep-dive data-lesson="${e(lesson.id)}" data-topic="${e(topic.title)}" data-explanation="${e(topic.explanation)}" data-connection="${e(topic.connection || summary.bigIdea)}">${icon('scan-search')}<span>Explore this idea</span></button></footer></div></article>`; }).join('')}</div></section>` : '';
+    const summaryConceptMap = tracking.topics.subchapters.length ? `<section class="chapter-summary-map chapter-subchapter-summary chapter-lesson-section"><div class="chapter-lesson-heading"><small>CHAPTER ROADMAP</small><h2>Chapter ideas</h2><p>${tracking.topics.total} meaningful topics · progress is saved automatically.</p></div><div class="chapter-concept-lessons">${tracking.topics.subchapters.map((topic, index) => { const topicState = tracking.topics.states[topic.id]; const stateLabel = topicState === 'mastered' ? 'Mastered' : topicState === 'learning' ? 'Learning' : 'Not Started'; return `<article id="${e(topic.id)}" data-summary-subchapter="${e(topic.id)}" class="summary-subchapter state-${e(topicState)}" tabindex="-1"><header><span>Topic ${index + 1} of ${tracking.topics.total}${topic.number ? ` · Textbook ${e(topic.number)}` : ''}</span><span class="chapter-subchapter-state">${icon(topicState === 'mastered' ? 'circle-check-big' : topicState === 'learning' ? 'circle-dot' : 'circle')}<span>${e(stateLabel)}</span></span></header><div><h3>${e(topic.title)}</h3><section class="summary-topic-core"><small>CORE IDEA</small><p>${teachingText(topic.explanation)}</p></section>${topic.connection ? `<aside><span>${icon('git-branch')}<small>HOW IT CONNECTS</small></span><p>${teachingText(topic.connection)}</p></aside>` : ''}<footer><button type="button" class="topic-deep-dive" data-deep-dive data-lesson="${e(lesson.id)}" data-topic="${e(topic.title)}" data-explanation="${e(topic.explanation)}" data-connection="${e(topic.connection || summary.bigIdea)}">${icon('scan-search')}<span>Explore this idea</span></button></footer></div></article>`; }).join('')}</div></section>` : '';
     const summaryPanel = `<article class="chapter-summary"><section class="chapter-foundation chapter-lesson-section"><span class="chapter-lesson-number">1</span><div class="chapter-lesson-heading"><small>WHAT THIS CHAPTER BUILDS ON</small><h2>Bring these ideas with you</h2><p>These familiar ideas are enough to begin this chapter.</p></div>${teachingSteps(foundation.remember || [])}</section><section class="chapter-vocabulary chapter-lesson-section"><span class="chapter-lesson-number">2</span><div class="chapter-lesson-heading"><small>MEET THE NEW LANGUAGE</small><h2>New words, in plain words</h2><p>Knowing these words makes the explanation and formulas easier to follow.</p></div><div class="chapter-word-cards">${wordCards}</div></section><header class="chapter-summary-opening chapter-lesson-section"><span class="chapter-lesson-number">3</span><div class="chapter-opening-copy"><span class="chapter-summary-icon">${icon('scroll-text')}</span><div><small>${e(lesson.subject)}</small><h1>${e(lesson.title)}</h1><h2>The chapter’s central idea</h2><p class="chapter-summary-bigidea">${e(summary.bigIdea)}</p><p class="chapter-summary-story">${e(summary.story)}</p></div></div></header><section class="chapter-picture-section chapter-lesson-section"><span class="chapter-lesson-number">4</span><div class="chapter-lesson-heading"><small>SEE THE RELATIONSHIP</small><h2>How the pieces connect</h2><p>Follow the arrows and explain what changes from one box to the next.</p></div>${relationshipVisual}</section>${summaryConceptMap}<section class="chapter-summary-results chapter-lesson-section"><span class="chapter-lesson-number">6</span><div class="chapter-lesson-heading"><small>KEEP THESE RELATIONSHIPS</small><h2>Facts and formulas that carry the chapter</h2><p>Each box holds one useful relationship. Name the quantities and units before using a formula.</p></div>${teachingSteps(summary.essentialResults || [], 1, true)}</section><section class="chapter-first-example chapter-lesson-section"><span class="chapter-lesson-number">7</span><div class="chapter-lesson-heading"><small>YOUR FIRST COMPLETE EXAMPLE</small><h2>Watch one idea become an answer</h2><p>${e(example.prompt || notes.example?.[0] || '')}</p></div>${teachingSteps(example.steps || summary.problemFlow || [])}${example.answer ? `<div class="chapter-example-answer"><span>${icon('badge-check')}</span><div><small>ANSWER AND MEANING</small><p>${e(example.answer)}</p></div></div>` : ''}</section><section class="chapter-summary-reasoning chapter-lesson-section"><span class="chapter-lesson-number">8</span><div class="chapter-lesson-heading"><small>USE THE METHOD AGAIN</small><h2>How to work through a question</h2><p>This is the thinking path to reuse when the numbers, diagram or wording changes.</p></div>${teachingSteps(summary.problemFlow || [])}</section><section class="chapter-summary-traps chapter-lesson-section"><span class="chapter-lesson-number">9</span><div class="chapter-lesson-heading"><small>STOP AND CHECK</small><h2>Mistakes to watch for</h2><p>These mistakes often look reasonable at first. The check beside each idea helps you catch them.</p></div>${teachingSteps(summary.examTraps || [])}</section><section class="chapter-summary-exam chapter-lesson-section"><span class="chapter-lesson-number">10</span><div class="chapter-lesson-heading"><small>SHOW WHAT YOU KNOW</small><h2>How to write a strong exam answer</h2><p>A clear answer shows the idea, the working and the conclusion in that order.</p></div><div class="chapter-exam-teaching"><div><h3>What earns marks</h3>${teachingSteps(notes.exam)}</div><div><h3>What proves you understand</h3><p>${e(guide.proof)}</p></div></div></section><section class="chapter-summary-recall chapter-lesson-section"><span class="chapter-lesson-number">11</span><div class="chapter-lesson-heading"><small>REBUILD IT FROM MEMORY</small><h2>What can you explain without looking?</h2><p>Use these prompts to find the one part that needs another look.</p></div>${teachingSteps(summary.rapidRecall || [])}</section></article>`;
     const workedSteps = notes.rich ? `<ol>${notes.rich.worked.steps.map(step => `<li>${e(step)}</li>`).join('')}</ol><p><b>Answer:</b> ${e(notes.rich.worked.answer)}</p><p class="worked-check"><b>Check:</b> ${e(notes.rich.worked.check)}</p>` : `<p><b>Reason:</b> ${e(notes.example[1])}</p>`;
     const learn = `<section class="chapter-learning-grid"><article class="chapter-big-idea"><span class="section-kicker">THE IDEA THAT UNLOCKS THIS CHAPTER</span><h2>${e(notes.bigIdea)}</h2><div class="chapter-concept-flow">${notes.visual.map((value, index) => `${index ? icon('arrow-right') : ''}<span>${e(value)}</span>`).join('')}</div><div class="chapter-guru"><span>${icon('sparkles')}</span><div><b>Guru’s insight</b><p>${e(notes.wisdom)}</p></div></div>${deepConcepts}</article><article><span class="section-kicker">CHAPTER CORE</span><h3>The Relationships That Matter</h3>${list(notes.must)}</article><article><span class="section-kicker">WORKED REASONING</span><h3>See How the Thinking Moves</h3><p><b>Problem:</b> ${e(notes.example[0])}</p>${workedSteps}</article><article><span class="section-kicker">COMMON TRAPS</span><h3>Where Marks Disappear</h3>${list(notes.rich?.traps || guide.traps)}</article></section>`;
@@ -1271,7 +1348,7 @@
     const marginNotes = D.state.settings.chapterSectionNotes?.[c.activeId]?.[lesson.id] || [];
     const marginNoteCards = `${personalNote ? `<article class="chapter-margin-note legacy" data-note-for="chapter"><header><span>Whole Chapter</span><small>Earlier note</small></header><p>${e(personalNote)}</p></article>` : ''}${marginNotes.map(note => `<article class="chapter-margin-note" data-note-for="${e(note.section || 'opening')}" data-note-id="${e(note.id)}"><header><span>${e(note.sectionLabel || 'Chapter Note')}</span><small>${e(note.updatedAt ? D.date(note.updatedAt) : 'Saved')}</small></header><textarea data-chapter-note-text="${e(note.id)}" aria-label="Edit note for ${e(note.sectionLabel || 'chapter section')}">${e(note.text)}</textarea><footer><button type="button" data-chapter-note-save="${e(note.id)}" data-lesson="${e(lesson.id)}">Save</button><button type="button" class="danger-action" data-chapter-note-delete="${e(note.id)}" data-lesson="${e(lesson.id)}" aria-label="Delete this note">${icon('trash-2')}</button></footer></article>`).join('')}`;
     const marginNotesPanel = `<section class="chapter-rail-panel chapter-margin-notes" data-chapter-rail-panel="notes" hidden><header><small>NOTES BESIDE THE LESSON</small><h2>My Notes</h2><p>Attached to: <b data-note-section-label>The Chapter’s Central Idea</b></p></header><div class="chapter-note-composer"><textarea data-chapter-note-draft data-lesson="${e(lesson.id)}" placeholder="Write what you understood, a formula, a mistake to avoid, or a question…"></textarea><button type="button" data-chapter-note-add="${e(lesson.id)}">${icon('plus')}<span>Add Note Card</span></button></div><div class="chapter-margin-note-list">${marginNoteCards}<p class="chapter-note-empty" data-chapter-note-empty>No note cards beside this section yet.</p></div></section>`;
-    const railShell = (guideContent, label) => `<aside class="chapter-support-rail" aria-label="${label}"><nav class="chapter-rail-tabs" aria-label="Right panel options"><button type="button" class="active" data-chapter-rail-tab="guide" aria-selected="true">Study Guide</button><button type="button" data-chapter-rail-tab="notes" aria-selected="false">My Notes${marginNotes.length ? `<span>${marginNotes.length}</span>` : ''}</button></nav><section class="chapter-rail-panel" data-chapter-rail-panel="guide">${guideContent}</section>${marginNotesPanel}</aside>`;
+    const railShell = (guideContent, label) => `<aside class="chapter-support-rail" aria-label="${label}"><section class="chapter-rail-panel" data-chapter-rail-panel="guide">${guideContent || `${chapterReferenceRail}${contextualSupports.join('')}`} </section></aside>`;
     const supportRail = railShell(`${chapterReferenceRail}${contextualSupports.join('')}`, 'Chapter reference, contextual support and notes');
     const understandSupportRail = railShell(contextualSupports.join(''), 'Contextual chapter support and notes');
     const chapterMasthead = `<header class="chapter-summary-masthead"><small>${e(lesson.subject)} · Chapter guide</small><h1>${e(lesson.title)}</h1></header>`;
@@ -1304,9 +1381,9 @@
     const panels = { summary: summaryWithSupport, understand: learningWithSupport, resource: resourcePanel, book: bookPanel, notes: notePanel, practice, assignments: assignmentPanel, progress: progressPanel };
     const canToggle = !['notes', 'progress', 'resource'].includes(section);
     const stageAction = canToggle ? `<button type="button" class="chapter-stage-toggle compact ${tracking.status[section] ? 'complete' : ''}" data-chapter-stage-toggle="${e(section)}" data-lesson="${e(lesson.id)}">${icon(tracking.status[section] ? 'circle-check-big' : 'circle')}<span>${tracking.status[section] ? 'Completed' : 'Mark complete'}</span></button>` : `<span class="chapter-tab-context">${icon(section === 'resource' ? resourceConfig.icon : tracking.status[section] ? 'circle-check-big' : 'info')}<b>${section === 'resource' ? `${resourceItems.length} explained ${resourceConfig.label.toLowerCase()}` : section === 'notes' ? 'Save a note to complete' : '80% mastery completes this stage'}</b></span>`;
-    const workspaceSections = [...chapterSections.slice(0, 2), ['resource', resourceConfig.label, resourceConfig.icon], ...chapterSections.slice(2)];
-    const workspaceTabs = `<header class="chapter-content-tabs"><nav class="chapter-workspace-tabs" aria-label="Chapter learning sections">${workspaceSections.map(([value,label,iconName]) => `<button type="button" data-chapter-workspace-tab="${value}" data-lesson="${e(lesson.id)}" class="${section === value ? 'active' : ''} ${value !== 'summary' && tracking.status[value] ? 'complete' : ''}" ${section === value ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span>${value !== 'summary' && tracking.status[value] ? icon('circle-check-big') : ''}</button>`).join('')}</nav>${stageAction}</header>`;
-    return `<div class="chapter-workspace-shell">${workspaceTabs}<main class="chapter-workspace-content chapter-section-${e(section)}">${panels[section] || cleanSummaryPanel}</main></div>`;
+    const workspaceSections = [...chapterSections.slice(0, 2), ['resource', resourceConfig.label, resourceConfig.icon], ...chapterSections.slice(2).filter(([key]) => key !== 'progress')];
+    const workspaceTabs = `<header class="chapter-content-tabs"><nav class="chapter-workspace-tabs" aria-label="Chapter learning sections">${workspaceSections.map(([value,label,iconName]) => `<button type="button" data-chapter-workspace-tab="${value}" data-lesson="${e(lesson.id)}" class="${section === value ? 'active' : ''} ${value !== 'summary' && tracking.status[value] ? 'complete' : ''}" ${section === value ? 'aria-current="page"' : ''}>${icon(iconName)}<span>${label}</span>${value !== 'summary' && tracking.status[value] ? icon('circle-check-big') : ''}</button>`).join('')}</nav></header>`;
+    return `<div class="chapter-workspace-shell"><main class="chapter-workspace-content chapter-section-${e(section)}">${['summary','understand'].includes(section) ? panels[section] : `<div class="chapter-summary-layout"><section>${panels[section] || cleanSummaryPanel}</section>${railShell('', 'Chapter progress')}</div>`}</main></div>`;
   }
 
   function books() {
@@ -1423,10 +1500,8 @@
     const plans = [...c.plans].sort((a, b) => `${a.date}${a.startTime}`.localeCompare(`${b.date}${b.startTime}`));
     const days = Array.from({ length: 7 }, (_, index) => { const value = new Date(`${today()}T00:00`); value.setDate(value.getDate() + index); return `${value.getFullYear()}-${String(value.getMonth() + 1).padStart(2, '0')}-${String(value.getDate()).padStart(2, '0')}`; });
     const total = plans.filter(item => days.includes(item.date)).reduce((sumValue, item) => sumValue + (+item.minutes || 0), 0);
-    const columnConfig = [['planned', 'Planned', 'calendar-clock'], ['done', 'Done', 'circle-check-big'], ['missed', 'Missed', 'rotate-ccw']];
-    const weekCalendar = `<section class="study-planner-surface"><div class="planner-surface-head"><div><span class="section-kicker">WEEK CALENDAR</span><h2>When the work happens</h2><p>Add blocks inside a date; open a block to edit it.</p></div><strong>${Math.round(total / 60 * 10) / 10} h</strong></div><div class="study-week-calendar">${days.map(date => { const items = plans.filter(item => item.date === date); return `<section class="${date === today() ? 'is-today' : ''}"><header><span><small>${D.date(date, { weekday: 'short' })}</small><b>${D.date(date, { day: 'numeric', month: 'short' })}</b></span><button class="icon-action" data-create="studyPlan" data-student="${e(c.activeId)}" data-date="${e(date)}" aria-label="Add study block on ${D.date(date)}">${icon('plus')}</button></header><div class="study-day-lane">${items.map(item => `<button class="study-calendar-block ${e(item.status)}" data-edit="studyPlan" data-id="${e(item.id)}" data-student="${e(c.activeId)}"><span>${e(item.startTime)}</span><b>${e(item.subject)}</b><small>${e(item.activity)} · ${item.minutes} min</small></button>`).join('') || `<button class="study-day-empty" data-create="studyPlan" data-student="${e(c.activeId)}" data-date="${e(date)}">${icon('plus')} Plan this day</button>`}</div></section>`; }).join('')}</div></section>`;
-    const kanban = `<section class="study-planner-surface"><div class="planner-surface-head"><div><span class="section-kicker">KANBAN BOARD</span><h2>Move work as it changes</h2><p>Drag cards between columns or use their move actions.</p></div></div><div class="study-plan-kanban">${columnConfig.map(([statusValue, label, iconName]) => { const items = plans.filter(item => item.status === statusValue); return `<section class="study-plan-column ${statusValue}" data-plan-drop="${statusValue}"><header><span>${icon(iconName)}</span><b class="grow">${label}</b><strong>${items.length}</strong>${statusValue === 'planned' ? `<button class="icon-action" data-create="studyPlan" data-student="${e(c.activeId)}" aria-label="Add planned study block">${icon('plus')}</button>` : ''}</header><div class="study-plan-cards">${items.map(item => `<article class="study-plan-card" draggable="true" data-study-plan="${e(item.id)}"><div class="study-plan-card-head"><span>${D.date(item.date, { weekday: 'short', day: 'numeric', month: 'short' })} · ${e(item.startTime)}</span><span class="row-actions"><button class="icon-action" data-edit="studyPlan" data-id="${e(item.id)}" data-student="${e(c.activeId)}" aria-label="Edit ${e(item.activity)}">${icon('pencil')}</button><button class="icon-action danger-action" data-delete="studyPlans:${e(item.id)}" aria-label="Delete ${e(item.activity)}">${icon('trash-2')}</button></span></div><b>${e(item.activity)}</b><p>${e(item.subject)} · ${item.minutes} min · ${e(item.method)}</p><div class="study-card-moves">${columnConfig.filter(column => column[0] !== statusValue).map(column => `<button data-plan-move="${e(item.id)}" data-status="${column[0]}">${icon(column[2])}<span>${column[1]}</span></button>`).join('')}</div></article>`).join('') || `<button class="study-column-empty" ${statusValue === 'planned' ? `data-create="studyPlan" data-student="${e(c.activeId)}"` : 'disabled'}>${statusValue === 'planned' ? `${icon('plus')} Add the first block` : `No ${label.toLowerCase()} blocks`}</button>`}</div></section>`; }).join('')}</div></section>`;
-    return `${learnerBar(c)}<section class="metrics compact-metrics">${metric('Planned this week', `${Math.round(total / 60 * 10) / 10} h`, 'Sustainable load', 'calendar-clock')}${metric('Study blocks', plans.filter(item => item.date >= today()).length, 'Upcoming', 'list-checks')}${metric('Subjects covered', new Set(plans.filter(item => item.date >= today()).map(item => item.subject)).size, `of ${c.profile.subjects.length}`, 'library-big')}${metric('Completed blocks', plans.filter(item => item.status === 'done').length, 'Build consistency', 'badge-check')}</section>${weekCalendar}${kanban}<section class="panel plan-guidance"><span>${icon('heart-pulse')}</span><div><b>Protect sleep and recovery</b><p>Use this planner to balance school, revision, exercise and sleep. More logged hours do not guarantee better marks; consistent retrieval practice and correction do.</p></div></section>`;
+    const weekCalendar = `<section class="study-planner-surface"><div class="planner-surface-head"><div><span class="section-kicker">WEEK SCHEDULE</span><h2>This week's study blocks & school dates</h2><p>Add study blocks for any day; tap a block to edit or complete it.</p></div><strong>${Math.round(total / 60 * 10) / 10} h planned</strong></div><div class="study-week-calendar">${days.map(date => { const items = plans.filter(item => item.date === date); return `<section class="${date === today() ? 'is-today' : ''}"><header><span><small>${D.date(date, { weekday: 'short' })}</small><b>${D.date(date, { day: 'numeric', month: 'short' })}</b></span><button class="icon-action" data-create="studyPlan" data-student="${e(c.activeId)}" data-date="${e(date)}" aria-label="Add study block on ${D.date(date)}">${icon('plus')}</button></header><div class="study-day-lane">${(HM.schoolCalendar?.events(c.activeId)||[]).filter(item=>item.date<=date && item.endDate>=date).map(item=>`<button class="study-calendar-block school-block" data-school-calendar-event="${e(item.id)}"><span>${e(item.time||item.type)}</span><b>${e(item.title)}</b><small>${e(item.sourceLabel)}</small></button>`).join('')}${items.map(item => `<button class="study-calendar-block ${e(item.status)}" data-edit="studyPlan" data-id="${e(item.id)}" data-student="${e(c.activeId)}"><span>${e(item.startTime)}</span><b>${e(item.subject)}</b><small>${e(item.activity)} · ${item.minutes} min</small></button>`).join('') || `<button class="study-day-empty" data-create="studyPlan" data-student="${e(c.activeId)}" data-date="${e(date)}">${icon('plus')} Plan this day</button>`}</div></section>`; }).join('')}</div></section>`;
+    return `${learnerBar(c)}${weekCalendar}${calendar('study')}`;
   }
 
   function assignmentsBase() {
@@ -1494,7 +1569,13 @@
     return `${learnerBar(c)}<section class="metrics compact-metrics">${metric('Accuracy', `${practicePercent(c.practice)}%`, `${attempted} questions attempted`, 'brain-circuit')}${metric('Practice time', `${c.practice.reduce((sumValue, item) => sumValue + (+item.minutes || 0), 0)} min`, 'Logged sessions', 'clock-3')}${metric('Main error', commonErrors[0]?.[0] || 'None', 'Correct the pattern', 'scan-search')}${metric('Practice sets', c.practice.length, 'NCERT and CBSE sources', 'notebook-pen')}</section><div class="practice-layout"><section class="panel timer practice-timer"><span class="context-badge study">Focused study</span><div class="clock" id="clock" role="timer" aria-live="polite">${format(timerSeconds)}</div><p>A completed 25-minute block is added to ${e(c.profile.name)}'s report.</p><div class="timer-actions"><button id="timerToggle" class="primary">${icon(timerId ? 'pause' : 'play')}<span>${timerId ? 'Pause' : 'Start'}</span></button><button data-timer="reset">Reset</button><button data-timer="5">5 min break</button><button data-timer="25">25 min focus</button></div></section><section class="panel"><div class="section-head"><div><h2>Error notebook</h2><p>Turn mistakes into the next practice set</p></div><button class="primary" data-create="practiceLog" data-student="${e(c.activeId)}">${icon('plus')}<span>Practice log</span></button></div>${commonErrors.map(([label, count]) => row(label, `${count} logged session${count === 1 ? '' : 's'}`, `<button data-route="study/planner">Plan correction</button>`)).join('') || '<p class="empty">No errors logged yet.</p>'}</section></div><section class="panel"><div class="section-head"><h2>Recent practice</h2></div><table class="table"><thead><tr><th>Date & source</th><th>Subject</th><th>Attempted</th><th>Correct</th><th>Accuracy</th><th>Error focus</th><th>Actions</th></tr></thead><tbody>${[...c.practice].sort((a, b) => String(b.date).localeCompare(String(a.date))).map(item => `<tr><td data-label="Date & source"><b>${D.date(item.date)}</b><small>${e(item.source)}</small></td><td data-label="Subject">${e(item.subject)}</td><td data-label="Attempted">${item.attempted}</td><td data-label="Correct">${item.correct}</td><td data-label="Accuracy"><b>${Math.round(item.correct / Math.max(1, item.attempted) * 100)}%</b></td><td data-label="Error focus">${e(item.errorType)}</td><td data-label="Actions"><span class="row-actions"><button class="icon-action" data-edit="practiceLog" data-id="${e(item.id)}" data-student="${e(c.activeId)}" aria-label="Edit practice log">${icon('pencil')}</button><button class="icon-action danger-action" data-delete="practiceLogs:${e(item.id)}" aria-label="Delete practice log">${icon('trash-2')}</button></span></td></tr>`).join('')}</tbody></table></section><section class="official-study-resources"><div class="section-head"><div><h2>Official study sources</h2><p>Open current CBSE and NCERT material</p></div></div>${resources.map(item => `<a href="${e(item.url)}" target="_blank" rel="noopener noreferrer"><span>${icon(item.type.includes('textbook') ? 'book-open' : 'external-link')}</span><span><b>${e(item.title)}</b><small>${e(item.type)}</small></span></a>`).join('')}</section>`;
   }
 
-  function learningReports() {
+  function practiceAssignmentsHub() {
+    const selected = D.state.settings.educationPracticeTab === 'assignments' ? 'assignments' : 'practice';
+    const tabs = `<nav class="learning-section-tabs practice-assignment-tabs" aria-label="Practice and assignment content"><button type="button" data-practice-hub-tab="practice" class="${selected === 'practice' ? 'active' : ''}" ${selected === 'practice' ? 'aria-current="page"' : ''}>${icon('list-checks')}<span>Practice & Tests</span></button><button type="button" data-practice-hub-tab="assignments" class="${selected === 'assignments' ? 'active' : ''}" ${selected === 'assignments' ? 'aria-current="page"' : ''}>${icon('clipboard-list')}<span>Assignments</span></button></nav>`;
+    return `${tabs}${selected === 'assignments' ? assignments() : practiceAndTests()}`;
+  }
+
+  function learningReports(includeHeader = true) {
     const c = academicContext();
     c.learningExtension = 'reports';
     const subjects = subjectReadiness(c).sort((a, b) => a.readiness - b.readiness);
@@ -1506,7 +1587,7 @@
       const action = item.mastery < item.test ? 'Re-teach the weakest concept, then check with three application questions.' : item.accuracy < item.test ? 'Review the error notebook and schedule one short correction set.' : 'Protect the planned revision block and confirm school feedback.';
       return `<div class="review-action"><span>${icon('arrow-up-right')}</span><div><b>${e(item.subject)}</b><p>${action}</p></div></div>`;
     }).join('') : `<div class="review-action"><span>${icon('circle-check-big')}</span><div><b>Progress is on target</b><p>Keep the weekly routine stable and ask the student to explain one thing learned well.</p></div></div>`;
-    return `${learnerBar(c)}<section class="metrics">${metric('Overall readiness', `${overall}%`, `Target ${c.profile.targetPercent}%`, 'gauge')}${metric('On-target subjects', subjects.filter(item => item.readiness >= c.profile.targetPercent).length, `of ${subjects.length}`, 'badge-check')}${metric('Focus recorded', `${focusMinutes} min`, 'Use with quality evidence', 'timer-reset')}${metric('Parent actions', interventions.length, interventions.length ? 'Review this week' : 'No urgent intervention', 'users-round')}</section><div class="grid-2"><section class="panel"><div class="section-head"><div><h2>Subject readiness</h2><p>Mastery 40% + assessments 40% + practice 20%</p></div></div>${subjects.map(item => `<div class="readiness-row"><span class="subject-dot"></span><div class="grow"><b>${e(item.subject)}</b><small>Curriculum ${item.mastery}% - Assessment ${item.test}% - Accuracy ${item.accuracy}%</small><div class="progress ${item.readiness < 60 ? 'over' : ''}"><span style="width:${clamp(item.readiness)}%"></span></div></div><strong>${item.readiness}%</strong></div>`).join('')}</section><section class="panel parent-review"><div class="section-head"><div><h2>Weekly parent review</h2><p>Support without micromanaging</p></div></div>${reviewItems}<div class="review-boundary"><b>Marks are evidence, not identity.</b><p>Use this dashboard to find support needs. Do not use it to compare siblings or punish a low score.</p></div></section></div><section class="panel"><div class="section-head"><div><h2>Readiness distribution</h2><p>Use the lowest bars to plan the next week</p></div></div><div class="chart readiness-chart" aria-label="Subject readiness">${subjects.map(item => `<div style="height:${Math.max(4, item.readiness)}%"><b>${item.readiness}%</b><span>${e(item.subject.split(' ')[0])}</span></div>`).join('')}</div></section><section class="panel module-inbox-brief"><div class="section-head"><div><span class="section-kicker">SCHOOL GMAIL EVIDENCE</span><h2>Parent decisions from school messages</h2><p>${schoolSignals.length} detected signals - ${schoolSignals.filter(item => item.status === 'pending').length} still need review</p></div><button data-route="global/intelligence">Full inbox report</button></div>${schoolSignals.length ? schoolSignals.slice(0, 7).map(item => row(item.title, `${item.sender || 'School'} - ${item.actionDate ? `act by ${D.date(item.actionDate)}` : D.date(item.receivedAt)}`, inboxStatus(item.status))).join('') : '<p class="empty">No school Gmail signals have been processed.</p>'}</section>`;
+    return `${includeHeader ? learnerBar(c) : ''}<section class="metrics">${metric('Overall readiness', `${overall}%`, `Target ${c.profile.targetPercent}%`, 'gauge')}${metric('On-target subjects', subjects.filter(item => item.readiness >= c.profile.targetPercent).length, `of ${subjects.length}`, 'badge-check')}${metric('Focus recorded', `${focusMinutes} min`, 'Use with quality evidence', 'timer-reset')}${metric('Parent actions', interventions.length, interventions.length ? 'Review this week' : 'No urgent intervention', 'users-round')}</section><div class="grid-2"><section class="panel"><div class="section-head"><div><h2>Subject readiness</h2><p>Mastery 40% + assessments 40% + practice 20%</p></div></div>${subjects.map(item => `<div class="readiness-row"><span class="subject-dot"></span><div class="grow"><b>${e(item.subject)}</b><small>Curriculum ${item.mastery}% - Assessment ${item.test}% - Accuracy ${item.accuracy}%</small><div class="progress ${item.readiness < 60 ? 'over' : ''}"><span style="width:${clamp(item.readiness)}%"></span></div></div><strong>${item.readiness}%</strong></div>`).join('')}</section><section class="panel parent-review"><div class="section-head"><div><h2>Weekly parent review</h2><p>Support without micromanaging</p></div></div>${reviewItems}<div class="review-boundary"><b>Marks are evidence, not identity.</b><p>Use this dashboard to find support needs. Do not use it to compare siblings or punish a low score.</p></div></section></div><section class="panel"><div class="section-head"><div><h2>Readiness distribution</h2><p>Use the lowest bars to plan the next week</p></div></div><div class="chart readiness-chart" aria-label="Subject readiness">${subjects.map(item => `<div style="height:${Math.max(4, item.readiness)}%"><b>${item.readiness}%</b><span>${e(item.subject.split(' ')[0])}</span></div>`).join('')}</div></section><section class="panel module-inbox-brief"><div class="section-head"><div><span class="section-kicker">SCHOOL GMAIL EVIDENCE</span><h2>Parent decisions from school messages</h2><p>${schoolSignals.length} detected signals - ${schoolSignals.filter(item => item.status === 'pending').length} still need review</p></div><button data-route="global/intelligence">Full inbox report</button></div>${schoolSignals.length ? schoolSignals.slice(0, 7).map(item => row(item.title, `${item.sender || 'School'} - ${item.actionDate ? `act by ${D.date(item.actionDate)}` : D.date(item.receivedAt)}`, inboxStatus(item.status))).join('') : '<p class="empty">No school Gmail signals have been processed.</p>'}</section>`;
   }
 
   function settingsLink(title, note, route, iconName) {
@@ -1665,7 +1746,7 @@
       'home/wisdom': wisdom,
       'home/directory': () => directory('home'),
       'home/notes': notesPanel,
-      'home/sms': smsPanel,
+      'home/sms': () => `${HM.mailFeed?.renderCard() || ''}${HM.mailFeed?.renderMessages() || ''}<details class="panel sms-backup"><summary>Phone SMS import and backup</summary>${smsPanel()}</details>`,
       'home/travel': () => `${lifeSuiteOverview('travel')}${gmailEssence(['travel'], 'Bookings and travel changes from Gmail', 'itineraries and action dates stay with Travel', true)}`,
       'home/travel/spending': () => lifeSuiteSpending('travel'),
       'home/web': () => `${lifeSuiteOverview('web')}${gmailEssence(['bills', 'deliveries', 'home'], 'Digital accounts, renewals and services from Gmail', 'recurring services and account notices stay with Web Life')}`,
@@ -1680,16 +1761,18 @@
       'community/tickets': tickets,
       'community/directory': () => directory('community'),
       'community/guides': guides,
-      'study/overview': () => `${studyOverview()}${gmailEssence(['school'], 'School email distilled into actions', 'assignments and dated actions are added to Education', true)}`,
+      'study/student-overview': studentStudyOverview,
+      'study/overview': studyOverview,
       'study/books': books,
       'study/genius': geniusMindTeacher,
       'study/jee': jeeMain,
-      'study/curriculum': curriculumJourney,
+      'study/curriculum': studyOverview,
       'study/planner': studyPlanner,
       'study/assignments': () => `${assignments()}${gmailEssence(['school'], 'Assignments detected from school email', 'submission dates and teacher context stay beside school work')}`,
       'study/assessments': practiceAndTests,
       'study/practice': practiceAndTests,
-      'study/reports': learningReports,
+      'study/practice-hub': practiceAssignmentsHub,
+      'study/reports': studyOverview,
       'study/board': curriculum,
       'study/schedule': studyPlanner,
       'study/tasks': assignments,
@@ -1709,6 +1792,10 @@
     textbookAsset,
     chapterWorkspace,
     chapterWorkspaceNavigation,
+    chapterTracking,
+    educationNavigation,
+    academicContext, curriculumLessons,
+    learningTrackControl,
     chapterSubchapters,
     validSubchapterTitle,
     isInstructionalApparatusTitle,
