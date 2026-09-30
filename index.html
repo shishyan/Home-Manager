@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="styles.css?release=education-v1-0-43">
+  <link rel="stylesheet" href="styles.css?release=v1-0-51">
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -18,9 +18,9 @@
     <div class="brand" style="padding: 16px 14px 12px; margin: 0; background: transparent !important; border: 0 !important; display: flex; align-items: center; gap: 10px;">
       <span class="brand-mark" aria-hidden="true" style="flex: 0 0 40px;"><i data-lucide="flower-2"></i></span>
       <div class="brand-copy" style="flex: 1; min-width: 0; display: grid; gap: 0;">
-        <label class="sr-only" for="navigationGroup">Workspace</label>
-        <div style="font-size: 9px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">WORKSPACE</div>
-        <select id="navigationGroup" aria-label="Workspace section" style="width: 100%; appearance: none; border: 0; background: transparent; padding: 0; color: var(--ink); font-weight: 800; font-size: 14px; cursor: pointer; outline: none; margin: 0;">
+        <label class="sr-only" for="navigationGroup">Menu</label>
+        <div style="font-size: 9px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">Lotus Naga Home</div>
+        <select id="navigationGroup" aria-label="Menu section" style="width: 100%; appearance: none; border: 0; background: transparent; padding: 0; color: #fff; font-weight: 800; font-size: 14px; cursor: pointer; outline: none; margin: 0;">
         </select>
       </div>
       <i data-lucide="chevron-down" style="color: rgba(255,255,255,0.4); width: 14px; height: 14px; flex: 0 0 auto;"></i>
@@ -42,7 +42,8 @@
         <button type="button" id="menu" class="icon-button" title="Open navigation" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
         <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects"></div>
         <div class="page-identity">
-          <h1 id="brandName" style="font-size: 20px; font-weight: 800; margin: 0; color: var(--ink);">Lotus Naga Home</h1>
+
+          <h1 id="pageTitle">Today</h1>
         </div>
         <div id="headerKpis" class="header-kpis" aria-label="Current household signals"></div>
         <div id="personaTabs" class="persona-tabs" aria-label="Switch profile"></div>
@@ -194,17 +195,19 @@
   <script src="js/chapter-foundations-senior-language-cs.js"></script>
   <script src="js/textbook-sections.js"></script>
   <script src="js/kitchen.js"></script>
-  <script src="js/views.js?release=education-v1-0-43"></script>
+  <script src="js/views.js?release=v1-0-51"></script>
   <script type="module" src="js/cloud.js"></script>
   <script type="module" src="js/offline-ai.js"></script>
   <script src="js/mail-feed.js"></script>
   <script src="js/contact-feed.js"></script>
-  <script src="js/school-calendar.js?release=education-v1-0-43"></script>
-  <script src="js/study-progress.js?release=education-v1-0-43"></script>
-  <script src="js/education-ui.js?release=education-v1-0-43"></script>
-  <script src="js/app.js?release=education-v1-0-43"></script>
+  <script src="js/school-calendar.js?release=v1-0-51"></script>
+  <script src="js/study-progress.js?release=v1-0-51"></script>
+  <script src="js/education-ui.js?release=v1-0-51"></script>
+  <script src="js/app.js?release=v1-0-51"></script>
+<div id="pageTitle" hidden></div>
 </body>
 </html>
+
 
 
 
