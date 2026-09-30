@@ -175,6 +175,9 @@
   }
 
   function groupForRoute(currentRoute) {
+    if (currentRoute.startsWith('study/')) return 'learning';
+    if (currentRoute.startsWith('kitchen/')) return 'kitchen';
+    if (currentRoute === 'home/finance' || currentRoute.startsWith('home/money/')) return 'money';
     const groupHasRoute = group => group?.items.some(item => item[2] === currentRoute || (item[3] || []).some(child => child[2] === currentRoute));
     if (groupHasRoute(V.groups[activeGroup])) return activeGroup;
     if (currentRoute === 'global/overview' || currentRoute === 'global/intelligence') return 'household';
@@ -188,7 +191,6 @@
       health: 'household', emergency: 'household', pets: 'household', education: 'learning'
     };
     if (lifeOwners[lifeDomain]) return lifeOwners[lifeDomain];
-    if (currentRoute.startsWith('study/')) return 'learning';
     const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
     return routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key])) || 'household';
   }
@@ -2393,7 +2395,7 @@
       // Reset menu and route based on persona:
       // Mom (p2) -> Kitchen/Food
       // Father (p1) -> Finance/Money
-      // Kids (p3/p4) -> Education
+      // Kids (p3/p4) -> Education (with expanded active subject & items)
       // Family (family/p0) -> Home (all items)
       if (personaId === 'p2') {
         go('kitchen/overview');
@@ -2401,6 +2403,13 @@
         go('home/finance');
       } else if (['p3', 'p4'].includes(personaId)) {
         D.state.settings.activeLearnerId = personaId;
+        const defaultSub = profile?.subjects?.[0] || (personaId === 'p3' ? 'English Core' : 'English');
+        D.state.settings.activeLearningSubject ||= {};
+        if (!D.state.settings.activeLearningSubject[personaId]) {
+          D.state.settings.activeLearningSubject[personaId] = defaultSub;
+        }
+        const activeSub = D.state.settings.activeLearningSubject[personaId];
+        D.state.settings.educationExpandedSubject = { studentId: personaId, subject: activeSub };
         D.save();
         go('study/student-overview');
       } else {

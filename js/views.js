@@ -925,17 +925,22 @@
           <summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}">
             <b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small>
           </summary>
-          ${profile.subjects.map(subject => {
+          ${profile.subjects.map((subject, sIdx) => {
             const pages = [['Overview','study/overview'], ['Calendar','study/planner'], ['Learning','learning'], ['Read Book','book'], ['Practice & Assignments','study/practice-hub']];
             const isActiveSubject = profile.personId === activeId && subject === selected;
-            const isExpanded = expandedSubject === false ? false : (expandedSubject ? (expandedSubject.studentId === profile.personId && expandedSubject.subject === subject) : isActiveSubject);
+            const isExpanded = expandedSubject === false
+              ? false
+              : (expandedSubject && expandedSubject.studentId === profile.personId)
+                ? (expandedSubject.subject === subject)
+                : (isActiveSubject || sIdx === 0);
+
             return `<details class="education-subject" ${isExpanded ? 'open' : ''}>
               <summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>
                 <span>${e(subject)}</span>
               </summary>
               <div class="education-pages-list">
                 ${pages.map(([label, page]) => {
-                  const isActivePage = isActiveSubject && pageLabelById[page] === activePage;
+                  const isActivePage = isActiveSubject && (pageLabelById[page] === activePage || route === page);
                   return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''}>${label}</button>`;
                 }).join('')}
               </div>
