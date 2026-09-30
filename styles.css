@@ -48,7 +48,7 @@
 }
 
 
-body[data-theme="light"] { color-scheme: dark; --app-bg: #030509; --canvas-bg: transparent; --nature-overlay: transparent; --shell-bg: transparent; --ink: #f8fafc; --ink-soft: #cbd5e1; --muted: #94a3b8; --line: rgba(255,255,255,.10); --line-strong: rgba(255,255,255,.20); --glass-strong: rgba(15, 23, 42, 0.85); --glass: rgba(15, 23, 42, 0.58); --glass-soft: rgba(15, 23, 42, 0.35); --glass-hover: rgba(255, 255, 255, 0.10); --solid: rgba(15, 23, 42, 0.58); --surface: rgba(15, 23, 42, 0.45); }
+body[data-theme="light"] { color-scheme: light; --app-bg: #fafafa; --canvas-bg: transparent; --nature-image: none; --nature-overlay: transparent; --shell-bg: #ffffff; --ink: #1f2937; --ink-soft: #4b5563; --muted: #6b7280; --line: rgba(0, 0, 0, 0.06); --line-strong: rgba(0, 0, 0, 0.12); --glass-strong: #fafafa; --glass: #fafafa; --glass-soft: #fafafa; --glass-hover: #f3f4f6; --solid: #fafafa; --surface: #fafafa; }
 
 
 
@@ -3830,5 +3830,10 @@ body[data-theme="light"] .workspace-study {background-image:linear-gradient(#f4f
 .context-switcher:hover {
   opacity: 0.8;
 }
+
+
+
+
+body[data-theme="light"] :is(.metric, .panel, .card, .learning-command-bar, .genius-classroom, .inline-book-reader, .mcq-workspace) { box-shadow: none; border: 1px solid var(--line); }
 
 
