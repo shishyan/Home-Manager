@@ -2421,8 +2421,7 @@
       else render();
       toast(`Now viewing ${persona.name}`);
       return;
-    }
-    if (!event.target.closest('#personaMenu') && !$('#personaMenu').hidden) 
+    } 
     if (event.target.closest('[data-close-chapter-workspace]')) {
       closeChapterWorkspace();
       return;
@@ -3044,12 +3043,13 @@
     if (chapterCard && event.target === chapterCard && ['Enter', ' '].includes(event.key)) { event.preventDefault(); openChapterWorkspace(chapterCard.dataset.chapterCard, 'summary'); return; }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); showSearch(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z' && lastDeleted) { event.preventDefault(); undoDelete(); }
-    if (event.key === 'Escape') { closePersonaMenu(!$('#personaMenu').hidden); document.body.classList.remove('menu-open'); toggleNotifications(false); if (document.body.classList.contains('chapter-workspace-open')) closeChapterWorkspace(); }
+    if (event.key === 'Escape') { document.body.classList.remove('menu-open'); toggleNotifications(false); if (document.body.classList.contains('chapter-workspace-open')) closeChapterWorkspace(); }
   });
 
   applyTheme();
   render();
 })();
+
 
 
 
