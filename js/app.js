@@ -205,26 +205,30 @@
   function groupForRoute(currentRoute) {
     if (currentRoute.startsWith('study/')) return 'learning';
     if (currentRoute.startsWith('kitchen/')) return 'household';
-    if (currentRoute === 'community/directory' || currentRoute === 'home/directory') return 'contacts';
+    if (currentRoute === 'community/directory') return 'community';
+    if (currentRoute === 'home/directory') return 'household';
     if (currentRoute === 'home/care' || currentRoute.startsWith('home/life/health') || currentRoute.startsWith('home/life/medicines') || currentRoute.startsWith('home/life/appointments') || currentRoute.startsWith('home/life/elders') || currentRoute.startsWith('home/life/emergency') || currentRoute.startsWith('home/life/pets')) return 'care';
-    if (currentRoute === 'home/travel' || currentRoute === 'home/entertainment' || currentRoute === 'home/web' || currentRoute.startsWith('home/life/travel') || currentRoute.startsWith('home/life/transport') || currentRoute.startsWith('home/life/vehicles') || currentRoute.startsWith('home/life/stays') || currentRoute.startsWith('home/life/travelProtection') || currentRoute === 'home/travel/spending' || currentRoute === 'home/entertainment/spending') return 'leisure';
     if (currentRoute === 'home/finance' || currentRoute.startsWith('home/money/')) return 'money';
     if (currentRoute.startsWith('community/')) return 'community';
+    if (currentRoute === 'home/travel' || currentRoute === 'home/entertainment' || currentRoute === 'home/web' || currentRoute.startsWith('home/life/travel') || currentRoute.startsWith('home/life/transport') || currentRoute.startsWith('home/life/vehicles') || currentRoute.startsWith('home/life/stays') || currentRoute.startsWith('home/life/travelProtection') || currentRoute === 'home/travel/spending' || currentRoute === 'home/entertainment/spending') return 'leisure';
+    const leisureDomains = ['subscriptions', 'digital', 'webAccounts', 'aiServices', 'webHabits', 'games', 'watch', 'listen', 'reading', 'play', 'outings'];
+    const lifeDomainMatch = currentRoute.match(/^home\/life\/([^/]+)$/)?.[1];
+    if (lifeDomainMatch && leisureDomains.includes(lifeDomainMatch)) return 'leisure';
+    if (lifeDomainMatch === 'education') return 'learning';
     const groupHasRoute = group => group?.items?.some(item => item[2] === currentRoute || (item[3] || []).some(child => child[2] === currentRoute));
     if (V.groups[activeGroup] && groupHasRoute(V.groups[activeGroup])) return activeGroup;
     const found = Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
     if (found) return found;
     if (currentRoute === 'global/overview' || currentRoute === 'global/intelligence') return 'household';
-    const lifeDomain = currentRoute.match(/^home\/life\/([^/]+)$/)?.[1];
     const lifeOwners = {
       property: 'household', bills: 'household', help: 'household', sustainability: 'household',
       travel: 'leisure', transport: 'leisure', vehicles: 'leisure', stays: 'leisure', travelProtection: 'leisure',
-      subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
-      watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
-      festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
+      subscriptions: 'leisure', digital: 'leisure', webAccounts: 'leisure', aiServices: 'leisure', webHabits: 'leisure', games: 'leisure',
+      watch: 'leisure', listen: 'leisure', reading: 'leisure', play: 'leisure', outings: 'leisure',
+      festivals: 'household', documents: 'household', tax: 'money', insurance: 'money', legacy: 'household',
       health: 'care', emergency: 'care', pets: 'care', education: 'learning'
     };
-    if (lifeOwners[lifeDomain] && V.groups[lifeOwners[lifeDomain]]) return lifeOwners[lifeDomain];
+    if (lifeOwners[lifeDomainMatch] && V.groups[lifeOwners[lifeDomainMatch]]) return lifeOwners[lifeDomainMatch];
     const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'leisure', 'community/events': 'community', 'community/polls': 'community', 'home/care': 'care' };
     const foundGroup = routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
     return (foundGroup && V.groups[foundGroup]) ? foundGroup : 'household';
@@ -485,7 +489,13 @@
     }
 
     // SIDEBAR: render sub-items of the active group only (no group list)
-    $('#workspaceMenuLabel').innerHTML = `<span><small>Navigation</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
+    const legacyOrder = ['household', 'learning', 'money', 'leisure', 'community'];
+    const selectOptions = legacyOrder.map(key => {
+      const item = V.groups[key];
+      if (!item) return '';
+      return `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label === 'Leisure' ? 'Travel' : (item.label === 'Money' ? 'Finance' : (key === 'community' ? 'Contacts' : item.label)))}</option>`;
+    }).join('');
+    $('#workspaceMenuLabel').innerHTML = `<span><small>Navigation</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i><select id="navigationGroup" class="sr-only" aria-label="Navigation group">${selectOptions}</select>`;
     // Always keep #nav in the DOM — never replace it with outerHTML
     let navEl = document.getElementById('nav');
     if (!navEl) {
@@ -2380,7 +2390,11 @@
     if (event.target.id === 'navigationGroup') {
       const key = event.target.value;
       if (activeChapterWorkspace) closeChapterWorkspace();
-      if (V.groups[key] && personaCanSeeGroup(key)) go(V.groups[key].route);
+      if (key === 'learning') {
+        go('study/student-overview');
+      } else if (V.groups[key] && personaCanSeeGroup(key)) {
+        go(V.groups[key].route);
+      }
     }
     if (event.target.id === 'educationLearner') {
       const id = event.target.value;
@@ -2508,22 +2522,29 @@
       toast(`Now viewing ${persona.name}`);
       return;
     }
-    const navParent = event.target.closest('.nav-parent, .group-tab');
-    if (navParent) {
+    const groupTab = event.target.closest('.group-tab, [data-group]');
+    if (groupTab && groupTab.dataset.group && V.groups[groupTab.dataset.group]) {
       if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
-      const groupKey = navParent.dataset.group;
-      if (groupKey && V.groups[groupKey]) {
-        activeGroup = groupKey;
-        expandedGroup = groupKey;
-        D.state.settings.activeGroup = activeGroup;
-        go(navParent.dataset.route || V.groups[groupKey].route);
-        document.body.classList.remove('menu-open');
-        return;
+      const groupKey = groupTab.dataset.group;
+      activeGroup = groupKey;
+      expandedGroup = groupKey;
+      D.state.settings.activeGroup = activeGroup;
+      const targetRoute = groupTab.dataset.route || V.groups[groupKey].route;
+      const currentPersona = HM.persona.current();
+      if (!personaCanOpenRoute(targetRoute, currentPersona)) {
+        HM.persona.set('p0');
       }
+      go(targetRoute);
+      document.body.classList.remove('menu-open');
+      return;
     }
     const routeTarget = event.target.closest('[data-route]');
     if (routeTarget && !event.target.closest('#personaSwitcher') && !event.target.closest('#personaMenu')) {
       if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
+      const currentPersona = HM.persona.current();
+      if (!personaCanOpenRoute(routeTarget.dataset.route, currentPersona)) {
+        HM.persona.set('p0');
+      }
       go(routeTarget.dataset.route);
       document.body.classList.remove('menu-open');
       return;

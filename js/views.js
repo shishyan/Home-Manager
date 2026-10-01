@@ -915,7 +915,7 @@
     const route = location.hash.slice(2) || 'study/overview';
     const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice-hub':'Practice & Assignments'}[route] || '';
     const pageLabelById = {'study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar',learning:'Learning',summary:'Learning',understand:'Learning',resource:'Learning',book:'Read Book','study/practice-hub':'Practice & Assignments'};
-    const activePage = activeSection || pageLabelById[D.state.settings.educationActivePage] || routePage;
+    const activePage = activeSection ? (pageLabelById[activeSection] || activeSection) : (pageLabelById[D.state.settings.educationActivePage] || routePage);
     const expandedSubject = D.state.settings.educationExpandedSubject;
     const collapsedClasses = D.state.settings.educationCollapsedClasses || [];
 
@@ -959,7 +959,7 @@
               </summary>
               <div class="education-pages-list">
                 ${pages.map(([label, page, pIcon], pIdx) => {
-                  const isActivePage = isActiveSubject && (pageLabelById[page] === activePage || route === page);
+                  const isActivePage = isActiveSubject && (page === activePage || pageLabelById[page] === activePage || route === page || (['learning', 'summary', 'understand', 'resource'].includes(page) && ['learning', 'summary', 'understand', 'resource'].includes(activePage)));
                   const pTone = ((sIdx + pIdx) % 6) + 1;
                   return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''} data-no-translate><span class="nav-icon" style="color:var(--tone-${pTone});"><i data-lucide="${pIcon}"></i></span><span>${label}</span></button>`;
                 }).join('')}
