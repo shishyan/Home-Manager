@@ -158,6 +158,11 @@
     if (personaAvatar) {
       personaAvatar.textContent = persona.isFamily ? 'FN' : HM.persona.initials(persona);
     }
+    const personaSwitcher = $('#personaSwitcher');
+    if (personaSwitcher) {
+      personaSwitcher.setAttribute('aria-label', `Switch persona. Current view: ${persona.name}`);
+      personaSwitcher.title = `Switch persona. Current view: ${persona.name}`;
+    }
     const utilityAvatar = $('#utilityPersonaAvatar');
     if (utilityAvatar) {
       utilityAvatar.textContent = persona.isFamily ? 'FN' : HM.persona.initials(persona);
@@ -174,13 +179,7 @@
       }).join('');
     }
     
-    const tabsContainer = $('#personaTabs');
-    if (tabsContainer) {
-      tabsContainer.innerHTML = options.map(option => {
-        const selected = option.id === persona.id;
-        return `<button type="button" class="persona-tab ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-pressed="${selected}">${D.esc(option.name.split(' ')[0])}</button>`;
-      }).join('');
-    }
+    // group tabs now rendered by renderNav()
 
     const language = HM.i18n.current(persona);
     document.querySelectorAll('#languageSwitcher [data-language]').forEach(button => {
@@ -207,7 +206,10 @@
     if (currentRoute.startsWith('study/')) return 'learning';
     if (currentRoute.startsWith('kitchen/')) return 'household';
     if (currentRoute === 'community/directory' || currentRoute === 'home/directory') return 'contacts';
+    if (currentRoute === 'home/care' || currentRoute.startsWith('home/life/health') || currentRoute.startsWith('home/life/medicines') || currentRoute.startsWith('home/life/appointments') || currentRoute.startsWith('home/life/elders') || currentRoute.startsWith('home/life/emergency') || currentRoute.startsWith('home/life/pets')) return 'care';
+    if (currentRoute === 'home/travel' || currentRoute === 'home/entertainment' || currentRoute === 'home/web' || currentRoute.startsWith('home/life/travel') || currentRoute.startsWith('home/life/transport') || currentRoute.startsWith('home/life/vehicles') || currentRoute.startsWith('home/life/stays') || currentRoute.startsWith('home/life/travelProtection') || currentRoute === 'home/travel/spending' || currentRoute === 'home/entertainment/spending') return 'leisure';
     if (currentRoute === 'home/finance' || currentRoute.startsWith('home/money/')) return 'money';
+    if (currentRoute.startsWith('community/')) return 'community';
     const groupHasRoute = group => group?.items?.some(item => item[2] === currentRoute || (item[3] || []).some(child => child[2] === currentRoute));
     if (V.groups[activeGroup] && groupHasRoute(V.groups[activeGroup])) return activeGroup;
     const found = Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
@@ -220,10 +222,10 @@
       subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
       watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
       festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
-      health: 'household', emergency: 'household', pets: 'household', education: 'learning'
+      health: 'care', emergency: 'care', pets: 'care', education: 'learning'
     };
     if (lifeOwners[lifeDomain] && V.groups[lifeOwners[lifeDomain]]) return lifeOwners[lifeDomain];
-    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household', 'home/care': 'household' };
+    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'leisure', 'community/events': 'community', 'community/polls': 'community', 'home/care': 'care' };
     const foundGroup = routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
     return (foundGroup && V.groups[foundGroup]) ? foundGroup : 'household';
   }
@@ -467,19 +469,54 @@
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
     const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
+
+    // Update hidden select (accessibility / legacy)
     const navSelect = $('#navigationGroup');
-    if (navSelect) navSelect.innerHTML = availableGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label)}</option>`).join('');
-    $('#nav').innerHTML = `<div id="sectionNav" class="section-nav" role="group" aria-label="${D.esc(group.label)} pages">${(HM.persona.roleGroup(HM.persona.current()) === 'children' && activeGroup === 'household' ? group.items.filter(child => ['Food'].includes(child[0])) : group.items).map((child, index) => {
-      const nested = child[3] || [];
-      const childActive = !activeSettings && (topRoute === child[2] || nested.some(item => route === item[2] || topRoute === item[2]));
-      const submenu = childActive && nested.length ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(item => `<button type="button" data-route="${item[2]}" class="section-subitem ${route === item[2] ? 'active' : ''}" ${route === item[2] ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`).join('')}</div>` : '';
-      return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="section-tab tab-tone-${index + 1} ${childActive ? 'active' : ''}" ${childActive ? 'aria-current="page"' : ''}><i data-lucide="${child[1]}"></i><span>${D.esc(child[0])}</span></button>${submenu}</div>`;
-    }).join('')}</div>`;
-    if (activeGroup === 'learning') {
-      $('#sectionNav').outerHTML = V.educationNavigation(activeChapterWorkspace?.section || '');
+    if (navSelect) {
+      const selectGroups = availableGroups.filter(([key]) => key !== 'care');
+      navSelect.innerHTML = selectGroups.map(([key, item]) => `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label === 'Leisure' ? 'Travel' : (item.label === 'Money' ? 'Finance' : item.label))}</option>`).join('');
     }
-    const mobileItems = availableGroups.map(([key, item]) => [item.label, item.icon, item.route]);
-    $('#bottomNav').innerHTML = mobileItems.map(item => { const active = route === item[2]; return `<button data-route="${item[2]}" aria-label="Open ${D.esc(item[0])}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item[1]}"></i><span>${D.esc(item[0])}</span></button>`; }).join('') + '<button id="bottomMore" aria-label="Open more navigation"><i data-lucide="layout-grid"></i><span>More</span></button>';
+
+    // TOP BAR: render group tabs into #personaTabs (replaces persona tabs)
+    const tabsContainer = $('#personaTabs');
+    if (tabsContainer) {
+      tabsContainer.innerHTML = availableGroups.map(([key, item]) => {
+        const active = key === activeGroup;
+        return `<button type="button" class="group-tab ${active ? 'active' : ''}" data-group="${key}" data-route="${item.route}" aria-pressed="${active}"><i data-lucide="${item.icon}"></i><span>${D.esc(item.label)}</span></button>`;
+      }).join('');
+    }
+
+    // SIDEBAR: render sub-items of the active group only (no group list)
+    $('#workspaceMenuLabel').innerHTML = `<span><small>Navigation</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
+    const navEl = document.getElementById('nav');
+    if (navEl) {
+      if (activeGroup === 'learning') {
+        const eduHtml = V.educationNavigation(activeChapterWorkspace?.section || '');
+        if (eduHtml) { navEl.outerHTML = eduHtml; }
+      } else {
+        navEl.innerHTML = group.items.map((child, index) => {
+          const nested = child[3] || [];
+          const nestedActive = nested.some(subitem => route === subitem[2] || topRoute === subitem[2]);
+          const childActive = !activeSettings && (topRoute === child[2] || nestedActive);
+          const direct = !nested.length;
+          const tone = `tab-tone-${index + 1}`;
+          const subnav = nested.length && childActive
+            ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => `<button type="button" data-route="${subitem[2]}" class="section-subitem ${route === subitem[2] ? 'active' : ''}" ${route === subitem[2] ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`).join('')}</div>`
+            : '';
+          return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent section-tab ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
+        }).join('');
+      }
+    }
+
+    // MOBILE BOTTOM NAV: group icons only
+    const bottomNavEl = $('#bottomNav');
+    if (bottomNavEl) {
+      bottomNavEl.innerHTML = availableGroups.map(([key, item]) => {
+        const active = key === activeGroup;
+        return `<button data-group="${key}" data-route="${item.route}" aria-label="Open ${D.esc(item.label)}" class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}><i data-lucide="${item.icon}"></i><span>${D.esc(item.label)}</span></button>`;
+      }).join('');
+    }
+
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
     $('#helpNav').classList.toggle('active', route === 'global/questions');
   }
@@ -568,6 +605,10 @@
     const title = V.titles[route] || ['Today', homeName];
 
     document.title = title[0] + ' - ' + homeName;
+    const pageTitleEl = $('#pageTitle');
+    if (pageTitleEl) pageTitleEl.textContent = title[0];
+    const breadcrumbEl = $('#breadcrumb');
+    if (breadcrumbEl) breadcrumbEl.textContent = title[1] || homeName;
     $('#content').dataset.view = route;
     $('#content').dataset.activePersona = persona.id;
     $('#content').innerHTML = V.render(route);
@@ -2383,12 +2424,9 @@
       HM.persona.set(studentId);
       D.state.settings.activeLearnerId = studentId;
       D.state.settings.activeLearningSubject ||= {};
-      D.state.settings.activeLearningSubject[studentId] = subject;
-      const shouldExpand = subjectDetails ? !subjectDetails.open : true;
-      D.state.settings.educationExpandedSubject = shouldExpand ? { studentId, subject } : false;
+      D.state.settings.educationExpandedSubject = { studentId, subject };
       D.save();
-      if (route.startsWith('study/')) render();
-      else go('study/overview');
+      go('study/overview');
       return;
     }
     const educationChapter = event.target.closest('[data-education-chapter]');
@@ -2459,6 +2497,19 @@
       else render();
       toast(`Now viewing ${persona.name}`);
       return;
+    }
+    const navParent = event.target.closest('.nav-parent, .group-tab');
+    if (navParent) {
+      if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
+      const groupKey = navParent.dataset.group;
+      if (groupKey && V.groups[groupKey]) {
+        activeGroup = groupKey;
+        expandedGroup = groupKey;
+        D.state.settings.activeGroup = activeGroup;
+        go(navParent.dataset.route || V.groups[groupKey].route);
+        document.body.classList.remove('menu-open');
+        return;
+      }
     }
     const routeTarget = event.target.closest('[data-route]');
     if (routeTarget && !event.target.closest('#personaSwitcher') && !event.target.closest('#personaMenu')) {
@@ -2730,7 +2781,7 @@
   $('#menu').onclick = () => { const open = !document.body.classList.contains('menu-open'); document.body.classList.toggle('menu-open', open); $('#menu').setAttribute('aria-expanded', String(open)); };
   $('#backdrop').onclick = () => { document.body.classList.remove('menu-open'); $('#menu').setAttribute('aria-expanded', 'false'); };
   $('#collapse').onclick = () => { D.state.settings.sidebarCollapsed = !D.state.settings.sidebarCollapsed; D.save(); applyTheme(); };
-  $('#bottomNav').onclick = event => { if (event.target.closest('#bottomMore')) { document.body.classList.add('menu-open'); $('#menu').setAttribute('aria-expanded', 'true'); } };
+  // bottomNav group-tab clicks are handled by the global delegated click handler
   window.addEventListener('hm-school-calendar', () => {if(['home/calendar','study/planner'].includes(route))render();});
   window.addEventListener('hashchange', render);
   document.body.addEventListener('change', event => {

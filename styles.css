@@ -1438,7 +1438,7 @@ body[data-nature="wildflower"] { --app-bg: #fff0f5; --nature-image: url("assets/
   .kanban { grid-template-columns: repeat(4, minmax(250px, 82vw)); scroll-snap-type: x mandatory; }
   .kanban-column { display: block; scroll-snap-align: start; }
   .clock { margin-inline: 0; font-size: 50px; }
-  #bottomNav { position: fixed; inset: auto 0 0; z-index: 24; display: grid; grid-template-columns: repeat(5, 1fr); padding-bottom: env(safe-area-inset-bottom); background: var(--shell-bg); border-top: 1px solid var(--line); backdrop-filter: blur(20px); }
+  #bottomNav { position: fixed; inset: auto 0 0; z-index: 24; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding-bottom: env(safe-area-inset-bottom); background: var(--shell-bg); border-top: 1px solid var(--line); backdrop-filter: blur(20px); }
   #bottomNav button { min-height: 58px; display: grid; place-items: center; align-content: center; gap: 2px; padding: 6px 2px; border: 0; background: transparent; color: var(--muted); font-size: 10px; }
   #bottomNav button.active { color: var(--accent); font-weight: 800; }
   #bottomNav svg { width: 18px; height: 18px; }
@@ -2764,35 +2764,49 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 
 .persona-tabs {
   display: flex;
-  gap: 4px;
+  gap: 3px;
   overflow-x: auto;
   scrollbar-width: none;
   flex: 1;
-  padding: 0 10px;
+  padding: 0 8px;
   align-items: center;
 }
 .persona-tabs::-webkit-scrollbar { display: none; }
-.persona-tab {
+/* Group tabs in topbar */
+.group-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   white-space: nowrap;
-  padding: 6px 14px;
-  border-radius: 999px;
+  padding: 6px 13px;
+  border-radius: 8px;
   background: transparent;
-  color: var(--ink-soft);
+  color: rgba(255,255,255,0.72);
   border: 1px solid transparent;
   font-size: 12px;
   font-weight: 700;
-  transition: all 0.2s;
+  transition: background .15s ease, color .15s ease;
+  flex-shrink: 0;
 }
-.persona-tab:hover {
-  background: rgba(255,255,255,0.06);
+.group-tab svg { width: 15px; height: 15px; }
+.group-tab:hover {
+  background: rgba(255,255,255,0.09);
   color: #fff;
 }
-.persona-tab.active {
-  background: rgba(255,255,255,0.12);
+.group-tab.active {
+  background: rgba(255,255,255,0.14);
   color: #fff;
-  border-color: rgba(255,255,255,0.25);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
+/* Sidebar sub-menu: nav-parent is now a flat list of sub-pages */
+#nav .nav-parent.section-tab {
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+/* Section subnav inside new sidebar */
+#nav .section-subnav { margin-left: 30px; }
 .education-tree { text-align: left; }
 .education-class > summary,
 .education-subject > summary {
