@@ -180,6 +180,22 @@ h1, h2, h3 { letter-spacing: 0; }
 .nav-tree-item:nth-child(7n + 5) > .nav-parent .nav-icon { color: var(--tone-5); }
 .nav-tree-item:nth-child(7n + 6) > .nav-parent .nav-icon { color: var(--tone-6); }
 .nav-tree-item:nth-child(7n) > .nav-parent .nav-icon { color: var(--tone-7); }
+/* Sub-menu sidebar items (.nav-sub-item is the new wrapper) */
+.nav-sub-item { display: grid; }
+.nav-sub-item:nth-child(7n + 1) > .nav-parent .nav-icon { color: var(--tone-1); }
+.nav-sub-item:nth-child(7n + 2) > .nav-parent .nav-icon { color: var(--tone-2); }
+.nav-sub-item:nth-child(7n + 3) > .nav-parent .nav-icon { color: var(--tone-3); }
+.nav-sub-item:nth-child(7n + 4) > .nav-parent .nav-icon { color: var(--tone-4); }
+.nav-sub-item:nth-child(7n + 5) > .nav-parent .nav-icon { color: var(--tone-5); }
+.nav-sub-item:nth-child(7n + 6) > .nav-parent .nav-icon { color: var(--tone-6); }
+.nav-sub-item:nth-child(7n) > .nav-parent .nav-icon { color: var(--tone-7); }
+/* Tab-tone vars on .nav-parent in sidebar for subnav border colours */
+#nav .nav-parent.tab-tone-1 { --tab-color: var(--tone-1); --tab-fill: var(--tone-1-soft); }
+#nav .nav-parent.tab-tone-2 { --tab-color: var(--tone-2); --tab-fill: var(--tone-2-soft); }
+#nav .nav-parent.tab-tone-3 { --tab-color: var(--tone-3); --tab-fill: var(--tone-3-soft); }
+#nav .nav-parent.tab-tone-4 { --tab-color: var(--tone-4); --tab-fill: var(--tone-4-soft); }
+#nav .nav-parent.tab-tone-5 { --tab-color: var(--tone-5); --tab-fill: var(--tone-5-soft); }
+#nav .nav-parent.tab-tone-6 { --tab-color: var(--tone-6); --tab-fill: var(--tone-6-soft); }
 .sidebar-bottom #helpNav svg { color: var(--tone-2); }
 .sidebar-bottom #settingsNav svg { color: var(--tone-4); }
 .sidebar-bottom { margin-top: auto; display: grid; gap: 4px; padding-top: 10px; }
@@ -199,6 +215,11 @@ h1, h2, h3 { letter-spacing: 0; }
 .section-nav svg { width: 15px; height: 15px; }
 .section-tab-group { display: grid; }
 .section-subnav { display: grid; gap: 1px; margin: 1px 0 3px 13px; padding-left: 8px; border-left: 1px solid color-mix(in srgb, var(--tab-color, var(--tone-1)) 35%, transparent); }
+#nav .section-subnav { margin-left: 31px; }
+#nav .section-subnav .section-subitem { position: relative; min-height: 27px; padding: 3px 8px; color: var(--ink-soft); font-size: 11px; font-weight: 650; background: transparent; border: 0; border-radius: 6px; text-align: left; width: 100%; display: flex; align-items: center; gap: 8px; }
+#nav .section-subnav .section-subitem:hover { color: var(--tab-color, var(--accent)); background: rgba(255,255,255,.08); }
+#nav .section-subnav .section-subitem.active { color: var(--tab-color, var(--accent)); background: var(--tab-fill, var(--accent-soft)); font-weight: 800; }
+#nav .section-subnav .section-subitem.active::before { content: ""; position: absolute; left: 0; width: 2px; height: 14px; border-radius: 3px; background: var(--tab-color, var(--accent)); }
 .section-nav .section-subnav .section-subitem { min-height: 27px; padding: 3px 8px; color: var(--ink-soft); font-size: 10px; font-weight: 650; }
 .section-nav .section-subnav .section-subitem:hover { color: var(--tab-color, var(--accent)); background: rgba(255, 255, 255, .08); }
 .section-nav .section-subnav .section-subitem.active { color: var(--tab-color, var(--accent)); background: var(--tab-fill, var(--accent-soft)); font-weight: 800; }
@@ -1784,6 +1805,15 @@ body.persona-menu-open .app-header { z-index: 130; }
 #sidebar .nav-tree-item:nth-child(7n+6) { --menu-accent: #7dd3fc; }
 #sidebar .nav-tree-item:nth-child(7n) { --menu-accent: #fde68a; }
 #sidebar .nav-tree-item > .nav-parent .nav-icon { color: var(--menu-accent); }
+/* nav-sub-item shell accent colours (new sub-menu sidebar) */
+#sidebar .nav-sub-item { --menu-accent: #99f6e4; }
+#sidebar .nav-sub-item:nth-child(7n+2) { --menu-accent: #c4b5fd; }
+#sidebar .nav-sub-item:nth-child(7n+3) { --menu-accent: #fdba74; }
+#sidebar .nav-sub-item:nth-child(7n+4) { --menu-accent: #86efac; }
+#sidebar .nav-sub-item:nth-child(7n+5) { --menu-accent: #fda4af; }
+#sidebar .nav-sub-item:nth-child(7n+6) { --menu-accent: #7dd3fc; }
+#sidebar .nav-sub-item:nth-child(7n) { --menu-accent: #fde68a; }
+#sidebar .nav-sub-item > .nav-parent .nav-icon { color: var(--menu-accent); }
 #sidebar #nav .nav-parent.active .nav-icon { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--menu-accent) 38%, transparent)); }
 #sidebar .section-nav { border-left-color: rgba(255,255,255,.18); }
 #sidebar .section-nav button { --tab-color: #99f6e4; --tab-fill: rgba(153,246,228,.1); color: var(--tab-color); }
@@ -1795,12 +1825,22 @@ body.persona-menu-open .app-header { z-index: 130; }
 #sidebar .section-nav .tab-tone-7 { --tab-color: #fde68a; --tab-fill: rgba(253,230,138,.1); }
 #sidebar .section-nav button:hover, #sidebar .section-nav button.active { color: var(--tab-color); background: var(--tab-fill); }
 #sidebar .section-nav button.active::before { background: var(--tab-color); }
+/* Shell tone-vars on direct sidebar nav-parent buttons */
+#sidebar #nav .nav-parent.tab-tone-1 { --tab-color: #99f6e4; --tab-fill: rgba(153,246,228,.1); --menu-accent: #99f6e4; }
+#sidebar #nav .nav-parent.tab-tone-2 { --tab-color: #c4b5fd; --tab-fill: rgba(196,181,253,.1); --menu-accent: #c4b5fd; }
+#sidebar #nav .nav-parent.tab-tone-3 { --tab-color: #fdba74; --tab-fill: rgba(253,186,116,.1); --menu-accent: #fdba74; }
+#sidebar #nav .nav-parent.tab-tone-4 { --tab-color: #86efac; --tab-fill: rgba(134,239,172,.1); --menu-accent: #86efac; }
+#sidebar #nav .nav-parent.tab-tone-5 { --tab-color: #fda4af; --tab-fill: rgba(253,164,175,.1); --menu-accent: #fda4af; }
+#sidebar #nav .nav-parent.tab-tone-6 { --tab-color: #7dd3fc; --tab-fill: rgba(125,211,252,.1); --menu-accent: #7dd3fc; }
+#sidebar #nav .nav-parent.tab-tone-7 { --tab-color: #fde68a; --tab-fill: rgba(253,230,138,.1); --menu-accent: #fde68a; }
+#sidebar #nav .nav-parent.active { background: rgba(255,255,255,.13); color: #fff; }
+#sidebar #nav .nav-parent .nav-icon { color: var(--menu-accent, #99f6e4); }
 #sidebar .sidebar-bottom { border-top-color: rgba(255,255,255,.1); }
 #sidebar .sidebar-bottom #helpNav svg { color: #c4b5fd; }
 #sidebar .sidebar-bottom #settingsNav svg { color: #86efac; }
 #sidebar .sidebar-bottom .collapse-button { border-color: rgba(255,255,255,.15); }
 #nav .nav-parent, .sidebar-bottom button { border-radius: 10px; }
-#nav .nav-parent:hover, .sidebar-bottom button:hover { background: #f1f5f9; }
+#nav .nav-parent:hover, .sidebar-bottom button:hover { background: rgba(0,0,0,.04); }
 #nav .nav-parent.active { background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.06), 0 4px 14px rgba(15,23,42,.05); }
 .app-header, .workspace-study .app-header { color: #f8fafc; border-bottom-color: transparent; background-color: var(--shell-navigation-base); background-image: var(--shell-navigation-bg); background-position: center; background-size: cover; background-attachment: fixed; box-shadow: none; backdrop-filter: none; }
 .topbar { position: relative; background: transparent; border-bottom: 0; backdrop-filter: none; }

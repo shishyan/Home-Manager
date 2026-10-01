@@ -488,11 +488,22 @@
 
     // SIDEBAR: render sub-items of the active group only (no group list)
     $('#workspaceMenuLabel').innerHTML = `<span><small>Navigation</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i>`;
-    const navEl = document.getElementById('nav');
+    // Always keep #nav in the DOM — never replace it with outerHTML
+    let navEl = document.getElementById('nav');
+    if (!navEl) {
+      // Recover if education previously replaced it
+      const sectionNav = document.getElementById('sectionNav');
+      if (sectionNav) {
+        const recovered = document.createElement('nav');
+        recovered.id = 'nav';
+        sectionNav.replaceWith(recovered);
+      }
+      navEl = document.getElementById('nav');
+    }
     if (navEl) {
       if (activeGroup === 'learning') {
-        const eduHtml = V.educationNavigation(activeChapterWorkspace?.section || '');
-        if (eduHtml) { navEl.outerHTML = eduHtml; }
+        // Education nav goes inside #nav as innerHTML
+        navEl.innerHTML = V.educationNavigation(activeChapterWorkspace?.section || '') || '';
       } else {
         navEl.innerHTML = group.items.map((child, index) => {
           const nested = child[3] || [];
@@ -503,7 +514,7 @@
           const subnav = nested.length && childActive
             ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => `<button type="button" data-route="${subitem[2]}" class="section-subitem ${route === subitem[2] ? 'active' : ''}" ${route === subitem[2] ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`).join('')}</div>`
             : '';
-          return `<div class="section-tab-group"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent section-tab ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
+          return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
         }).join('');
       }
     }
