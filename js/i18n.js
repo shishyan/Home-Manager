@@ -81,7 +81,22 @@
     'Family attention queue': 'குடும்ப கவனப் பட்டியல்', 'No urgent items': 'அவசரமானவை இல்லை', 'Apply': 'சேர்க்க', 'Accounts': 'கணக்குகள்',
     'Frequent senders': 'அடிக்கடி அனுப்புவோர்', 'Family account coverage': 'குடும்ப மின்னஞ்சல் இணைப்பு', 'Processed Gmail evidence': 'செயலாக்கப்பட்ட Gmail தகவல்கள்',
     'Signal': 'தகவல்', 'Family member': 'குடும்ப உறுப்பினர்', 'Received / action': 'பெற்றது / செயல்', 'Decision': 'முடிவு', 'Needs review': 'சரிபார்க்க வேண்டும்',
-    'Health records': 'உடல்நலப் பதிவுகள்', 'Upcoming appointments': 'வரவிருக்கும் மருத்துவ சந்திப்புகள்', 'Medicine schedule': 'மருந்து அட்டவணை', 'Emergency contacts': 'அவசரத் தொடர்புகள்'
+    'Health records': 'உடல்நலப் பதிவுகள்', 'Upcoming appointments': 'வரவிருக்கும் மருத்துவ சந்திப்புகள்', 'Medicine schedule': 'மருந்து அட்டவணை', 'Emergency contacts': 'அவசரத் தொடர்புகள்',
+    '100 Traditional Recipes': '100 பாரம்பரிய உணவுகள்', 'Weekly Meal Plan': 'வார உணவுத் திட்டம்', 'Pantry & Stock': 'சரக்கறையும் இருப்பும்', 'Shopping List': 'வாங்க வேண்டியவை',
+    'Cook · Plan · Stock': 'சமைக்க · திட்டமிட · நிரப்ப', 'Traditional Food Recipes': 'தமிழ் உணவுக் களஞ்சியம்',
+    '100 traditional recipes with step-by-step guides': 'தெளிவான பயனுடன் நூறு பாரம்பரிய உணவுகள்',
+    '7 menu plans from traditional to modern': 'பாரம்பரியத்திலிருந்து புதுமை வரை ஏழு திட்டங்கள்',
+    'Available stock and items needing replenishment': 'கைவசம் உள்ளவையும் மீண்டும் வாங்க வேண்டியவையும்',
+    'Automatic shopping list based on inventory levels': 'இருப்பின் அடிப்படையில் உருவாகும் பட்டியல்',
+    'Planning month': 'திட்டமிடும் மாதம்', 'Planning month updated': 'திட்டமிடும் மாதம் மாற்றப்பட்டது',
+    'Weekly meal plan updated': 'வார உணவுத் திட்டம் புதுப்பிக்கப்பட்டது', 'Weekly meal plan reset': 'வார உணவுத் திட்டம் மீட்டமைக்கப்பட்டது',
+    'Reset this week to default meal plan?': 'இந்த வாரத்தைத் தொடக்க உணவுத் திட்டத்திற்கு மீட்டமைக்கவா?',
+    'Only Home Manager can finalize the monthly meal plan.': 'இல்ல நிர்வாகி மட்டுமே மாத உணவுத் திட்டத்தை உறுதிசெய்ய முடியும்.',
+    'finalized the meal plan': 'உணவுத் திட்டத்தை உறுதிசெய்தார்', 'Item Name': 'பொருளின் பெயர்', 'Tamil Name': 'தமிழ்ப் பெயர்',
+    'Occasion / Purpose': 'எப்போது அல்லது எதற்காகப் பரிமாறலாம்', 'Ingredients': 'தேவையான பொருட்கள்',
+    'Instructions / Method': 'செய்முறை', 'Preparation Time': 'தேவையான நேரம்', 'Difficulty': 'செய்முறை நிலை',
+    'Easy': 'எளிது', 'Everyday': 'அன்றாடம்', 'Weekend': 'வார இறுதி', 'Recipe Name': 'உணவின் பெயர்',
+    'Recipe': 'உணவுச் செய்முறை', 'Pantry Item': 'சரக்கறைப் பொருள்', 'Tamil language selected': 'தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது'
   };
 
   const patterns = [
@@ -131,7 +146,7 @@
     const language = current();
     document.documentElement.lang = language === 'ta' ? 'ta' : 'en';
     document.body.dataset.language = language;
-    if (language !== 'ta' || !isHouseholdRoute(route)) return;
+    if (language !== 'ta') return;
     const targets = root instanceof Document ? [document.querySelector('#sidebar'), document.querySelector('.app-header'), document.querySelector('#content'), document.querySelector('#utilityRail'), document.querySelector('#notificationPanel'), document.querySelector('#bottomNav')] : [root];
     targets.filter(Boolean).forEach(target => {
       const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
@@ -153,7 +168,7 @@
   function observe() {
     if (!document.body || window.__hmLanguageObserver) return;
     window.__hmLanguageObserver = new MutationObserver(mutations => {
-      if (current() !== 'ta' || !isHouseholdRoute()) return;
+      if (current() !== 'ta') return;
       const roots = new Set();
       mutations.forEach(mutation => mutation.addedNodes.forEach(node => {
         if (node.nodeType === Node.ELEMENT_NODE) roots.add(node);

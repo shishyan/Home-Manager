@@ -14,8 +14,8 @@
       ]],
       ['Education', 'graduation-cap', 'study/student-overview']
     ]},
-    kitchen: { label: 'Food', icon: 'cooking-pot', note: 'சமைக்க · திட்டமிட · நிரப்ப', route: 'kitchen/overview', items: [
-      ['முகப்பு', 'cooking-pot', 'kitchen/overview'], ['100 பாரம்பரிய உணவுகள்', 'book-open', 'kitchen/recipes'], ['வார உணவுத் திட்டம்', 'calendar-range', 'kitchen/menus'], ['சரக்கறையும் இருப்பும்', 'package-open', 'kitchen/pantry'], ['வாங்க வேண்டியவை', 'shopping-cart', 'kitchen/shopping']
+    kitchen: { label: 'Food', icon: 'cooking-pot', note: 'Cook · Plan · Stock', route: 'kitchen/overview', items: [
+      ['Overview', 'cooking-pot', 'kitchen/overview'], ['100 Traditional Recipes', 'book-open', 'kitchen/recipes'], ['Weekly Meal Plan', 'calendar-range', 'kitchen/menus'], ['Pantry & Stock', 'package-open', 'kitchen/pantry'], ['Shopping List', 'shopping-cart', 'kitchen/shopping']
     ]},
     money: { label: 'Money', icon: 'indian-rupee', note: 'Consolidated family reporting', route: 'home/finance', items: [
       ['Overview', 'layout-dashboard', 'home/finance'], ['Budget', 'chart-pie', 'home/money/budget'], ['Cash flow', 'arrow-right-left', 'home/money/cashflow'], ['Spending', 'wallet-cards', 'home/money/spending'], ['Commitments', 'calendar-sync', 'home/money/commitments'], ['Net worth', 'scale', 'home/money/networth'], ['Reports', 'chart-no-axes-combined', 'home/money/reports']
@@ -183,11 +183,11 @@
     'home/money/networth': ['Net Worth', 'Household assets, liabilities and goals'],
     'home/money/reports': ['Money Reports', 'Trends, watchlists and exceptions'],
     'home/inventory': ['Supplies & Meals', 'Inventory and meal planning'],
-    'kitchen/overview': ['சமையலறை', 'தமிழ் உணவு · வாரத் திட்டம் · சரக்கறை இருப்பு'],
-    'kitchen/recipes': ['தமிழ் உணவுக் களஞ்சியம்', 'தெளிவான பயனுடன் நூறு பாரம்பரிய உணவுகள்'],
-    'kitchen/menus': ['வார உணவுத் திட்டம்', 'பாரம்பரியத்திலிருந்து புதுமை வரை ஏழு திட்டங்கள்'],
-    'kitchen/pantry': ['சரக்கறையும் இருப்பும்', 'கைவசம் உள்ளவையும் மீண்டும் வாங்க வேண்டியவையும்'],
-    'kitchen/shopping': ['வாங்க வேண்டியவை', 'இருப்பின் அடிப்படையில் உருவாகும் பட்டியல்'],
+    'kitchen/overview': ['Kitchen', 'Traditional Food · Weekly Plan · Pantry Stock'],
+    'kitchen/recipes': ['Traditional Food Recipes', '100 traditional recipes with step-by-step guides'],
+    'kitchen/menus': ['Weekly Meal Plan', '7 menu plans from traditional to modern'],
+    'kitchen/pantry': ['Pantry & Stock', 'Available stock and items needing replenishment'],
+    'kitchen/shopping': ['Shopping List', 'Automatic shopping list based on inventory levels'],
     'home/assets': ['Property & Assets', 'Repairs, property records and household assets'],
     'home/wisdom': ['Wisdom & Recognition', 'Family knowledge and points'],
     'home/directory': ['Home Directory', 'Family and service contacts'],

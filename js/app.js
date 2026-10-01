@@ -580,8 +580,8 @@
     income: () => [field('Income source', 'source'), field('Family member / owner', 'owner'), field('Amount', 'amount', 'number'), field('Frequency', 'frequency', 'text', ['One time', 'Monthly', 'Quarterly', 'Yearly']), field('Received / expected', 'date', 'date')],
     liability: () => [field('Loan or liability', 'title'), field('Type', 'type'), field('Outstanding balance', 'balance', 'number'), field('Monthly payment', 'payment', 'number'), field('Interest rate %', 'interestRate', 'number')],
     moneyGoal: () => [field('Savings goal', 'title'), field('Target amount', 'target', 'number'), field('Already saved', 'saved', 'number'), field('Monthly contribution', 'contribution', 'number'), field('Target date', 'dueDate', 'date')],
-    inventory: () => route.startsWith('kitchen/') ? [field('பொருளின் பெயர்', 'name'), field('வகை', 'category'), field('இருப்பின் அளவு', 'quantity', 'number'), field('அளவீடு', 'unit')] : [field('Item', 'name'), field('Category', 'category'), field('Quantity', 'quantity', 'number'), field('Unit', 'unit')],
-    kitchenRecipe: () => [field('உணவின் பெயர்', 'name'), field('தமிழ்ப் பெயர்', 'tamil'), field('உணவு வகை', 'category'), area('எப்போது அல்லது எதற்காகப் பரிமாறலாம்', 'purpose'), area('தேவையான பொருட்கள்', 'ingredients'), area('செய்முறை', 'method'), field('தேவையான நேரம்', 'time'), field('செய்முறை நிலை', 'difficulty', 'text', ['எளிது', 'அன்றாடம்', 'வார இறுதி'])],
+    inventory: () => [field('Item', 'name'), field('Category', 'category'), field('Quantity', 'quantity', 'number'), field('Unit', 'unit')],
+    kitchenRecipe: () => [field('Recipe Name', 'name'), field('Tamil Name', 'tamil'), field('Category', 'category'), area('Occasion / Purpose', 'purpose'), area('Ingredients', 'ingredients'), area('Instructions / Method', 'method'), field('Preparation Time', 'time'), field('Difficulty', 'difficulty', 'text', ['Easy', 'Everyday', 'Weekend'])],
     meal: () => [field('Meal', 'name'), field('Meal type', 'mealType', 'text', ['Breakfast', 'Lunch', 'Dinner', 'Snack']), field('Cook', 'cook'), field('Date', 'date', 'date')],
     issue: () => [field('Issue', 'title'), field('Category', 'category'), field('Location', 'location'), field('Priority', 'priority', 'text', ['low', 'medium', 'high'])],
     asset: () => [field('Asset', 'name'), field('Category', 'category'), field('Value', 'value', 'number'), field('Status', 'status', 'text', ['active', 'secured', 'maintenance'])],
@@ -624,14 +624,14 @@
     const collection = editCollections[kind];
     const record = source.editId && collection ? D.state[collection].find(x => x.id === source.editId) : null;
     const routeDomain = route.match(/^(?:home|settings)\/life\/([^/]+)$/)?.[1] || '';
-    const labels = { moneyGoal: 'savings goal', liability: 'loan or liability', income: 'income source', budget: 'section budget', expense: 'section expense', academicProfile: 'student profile', syllabus: 'syllabus item', studyPlan: 'study block', deliverable: 'assignment', assessment: 'assessment', practiceLog: 'practice session', schoolTimetable: 'school timetable period', schoolEvent: 'school calendar item', attendance: 'attendance day', reflection: 'self-assessment', tutorFeedback: 'tutor review', coCurricular: 'co-curricular activity' };
+    const labels = { kitchenRecipe: 'recipe', inventory: 'pantry item', moneyGoal: 'savings goal', liability: 'loan or liability', income: 'income source', budget: 'section budget', expense: 'section expense', academicProfile: 'student profile', syllabus: 'syllabus item', studyPlan: 'study block', deliverable: 'assignment', assessment: 'assessment', practiceLog: 'practice session', schoolTimetable: 'school timetable period', schoolEvent: 'school calendar item', attendance: 'attendance day', reflection: 'self-assessment', tutorFeedback: 'tutor review', coCurricular: 'co-curricular activity' };
     const lifeLabel = kind === 'life' ? HM.life.domains[source.domain || record?.domain || routeDomain]?.noun : '';
-    const kitchenForm = route.startsWith('kitchen/');
-    $('#formTitle').textContent = kitchenForm ? `${kind === 'kitchenRecipe' ? 'உணவுச் செய்முறை' : 'சரக்கறைப் பொருள்'} ${record ? 'திருத்தம்' : 'சேர்த்தல்'}` : (record ? 'Edit ' : 'Add ') + (lifeLabel || labels[kind] || kind);
-    $('#formContext').textContent = kitchenForm ? 'சமையலறை' : String(source.context || record?.context || workspace).toUpperCase();
-    $('#entityForm [data-close-dialog]')?.replaceChildren(document.createTextNode(kitchenForm ? 'விலக்கு' : 'Cancel'));
+    // kitchen form
+    $('#formTitle').textContent = (record ? 'Edit ' : 'Add ') + (lifeLabel || labels[kind] || kind);
+    $('#formContext').textContent = String(source.context || record?.context || workspace).toUpperCase();
+    $('#entityForm [data-close-dialog]')?.replaceChildren(document.createTextNode('Cancel'));
     const submitLabel = $('#entityForm button[value="default"] span');
-    if (submitLabel) submitLabel.textContent = kitchenForm ? 'சேமிக்க' : 'Save item';
+    if (submitLabel) submitLabel.textContent = 'Save item';
     $('#formFields').innerHTML = schema(source).join('');
     const form = $('#entityForm');
     form.dataset.kind = kind;
@@ -757,7 +757,7 @@
       const selectedYear = +(selectedMonth.slice(0, 4) || new Date().getFullYear());
       const monthSelect = document.createElement('select');
       monthSelect.dataset.kitchenMonth = '';
-      monthSelect.setAttribute('aria-label', HM.i18n.current() === 'ta' ? 'திட்டமிடும் மாதம்' : 'Planning month');
+      monthSelect.setAttribute('aria-label', 'Planning month');
       for (let year = selectedYear - 1; year <= selectedYear + 1; year += 1) for (let month = 0; month < 12; month += 1) {
         const option = document.createElement('option');
         option.value = `${year}-${String(month + 1).padStart(2, '0')}`;
@@ -777,7 +777,7 @@
     document.querySelectorAll('[data-menu-tab]').forEach(button => button.onclick = () => showKitchenWeek(button.dataset.menuTab));
     document.querySelectorAll('[data-kitchen-month]').forEach(input => input.onchange = () => {
       D.state.settings.kitchenMonth = input.value;
-      save('திட்டமிடும் மாதம் மாற்றப்பட்டது'); render();
+      save('Planning month updated'); render();
     });
     document.querySelectorAll('[data-edit-menu]').forEach(button => button.onclick = () => {
       const [week, day, meal] = button.dataset.editMenu.split(':');
@@ -785,29 +785,29 @@
       const month = button.dataset.month || D.state.settings.kitchenMonth || new Date().toISOString().slice(0, 7);
       const saved = D.state.kitchenMenus.find(item => +item.week === +week && item.personaId === personaId && item.month === month);
       const days = saved?.days || HM.kitchen.defaultMenu(+week).map(item => ({ ...item }));
-      const mealName = meal === 'breakfast' ? 'காலை உணவு' : meal === 'lunch' ? 'மதிய உணவு' : 'இரவு உணவு';
-      const next = prompt(`${days[day].day} · ${mealName} திருத்தம்`, days[day][meal]);
+      const mealName = meal === 'breakfast' ? 'Breakfast' : meal === 'lunch' ? 'Lunch' : 'Dinner';
+      const next = prompt(`${days[day].day} · ${mealName}`, days[day][meal]);
       if (next === null || !next.trim()) return;
       days[day][meal] = next.trim();
       if (saved) saved.days = days; else D.state.kitchenMenus.push({ id: D.uid('km'), week: +week, personaId, month, days });
-      save('வார உணவுத் திட்டம் புதுப்பிக்கப்பட்டது'); render();
+      save('Weekly meal plan updated'); render();
       requestAnimationFrame(() => showKitchenWeek(week));
     });
     document.querySelectorAll('[data-reset-kitchen-week]').forEach(button => button.onclick = () => {
       const week = +button.dataset.resetKitchenWeek;
-      if (!confirm('இந்த வாரத்தைத் தொடக்க உணவுத் திட்டத்திற்கு மீட்டமைக்கவா?')) return;
+      if (!confirm('Reset this week to default meal plan?')) return;
       D.state.kitchenMenus = D.state.kitchenMenus.filter(item => !(+item.week === week && item.personaId === button.dataset.persona && item.month === button.dataset.month));
-      save('வார உணவுத் திட்டம் மீட்டமைக்கப்பட்டது'); render();
+      save('Weekly meal plan reset'); render();
       requestAnimationFrame(() => showKitchenWeek(week));
     });
     document.querySelectorAll('[data-finalize-menu]').forEach(button => button.onclick = () => {
       const week = +button.dataset.finalizeMenu, persona = HM.persona.current(), month = button.dataset.month;
-      if (!/home manager|mother|wife/i.test(persona.householdRole || '')) { toast('இல்ல நிர்வாகி மட்டுமே மாத உணவுத் திட்டத்தை உறுதிசெய்ய முடியும்.'); return; }
+      if (!/home manager|mother|wife/i.test(persona.householdRole || '')) { toast('Only Home Manager can finalize the monthly meal plan.'); return; }
       const days = (D.state.kitchenMenus.find(item => +item.week === week && item.personaId === persona.id && item.month === month)?.days || HM.kitchen.defaultMenu(week)).map(day => ({ ...day }));
       const existing = D.state.kitchenFinalMenus.find(item => item.month === month && +item.week === week);
       const final = { id: existing?.id || D.uid('kf'), month, week, days, approvedBy: persona.name, approvedAt: new Date().toISOString() };
       if (existing) Object.assign(existing, final); else D.state.kitchenFinalMenus.push(final);
-      save(`${persona.name} உணவுத் திட்டத்தை உறுதிசெய்தார்`); render();
+      save(`${persona.name} finalized the meal plan`); render();
       requestAnimationFrame(() => showKitchenWeek(week));
     });
     document.querySelectorAll('[data-topic]').forEach(card => card.ondragstart = event => event.dataTransfer.setData('topic', card.dataset.topic));
@@ -2375,7 +2375,7 @@
     if (languageOption?.closest('#languageSwitcher')) {
       HM.i18n.set(languageOption.dataset.language);
       render();
-      toast(languageOption.dataset.language === 'ta' ? 'தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது' : 'English selected');
+      toast(languageOption.dataset.language === 'ta' ? 'Tamil language selected' : 'English selected');
       return;
     }
     const personaTrigger = event.target.closest('#personaSwitcher');
