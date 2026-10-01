@@ -143,12 +143,41 @@
       { id: HM.persona.FAMILY_ID, name: 'Family', householdRole: 'Shared household', isFamily: true },
       ...HM.persona.people()
     ];
+
+    const headerActions = $('.header-actions');
+    if (headerActions && !$('#personaSwitcher')) {
+      headerActions.hidden = false;
+      headerActions.innerHTML = `<button type="button" id="personaSwitcher" class="persona-switcher" aria-expanded="false" aria-haspopup="dialog" aria-controls="personaMenu"><span id="personaAvatar" class="avatar">FN</span><span class="persona-copy"><b id="personaName">Family</b><small id="personaRole">Shared household</small></span><i data-lucide="chevron-down"></i></button><div id="personaMenu" class="persona-menu" role="dialog" aria-label="Switch persona" hidden><div class="persona-menu-head"><h3>Family members</h3></div><div class="persona-menu-list"></div></div>`;
+    }
+
+    const personaName = $('#personaName');
+    if (personaName) personaName.textContent = persona.name;
+    const personaRole = $('#personaRole');
+    if (personaRole) personaRole.textContent = persona.isFamily ? 'Shared household' : (persona.householdRole || 'Member');
+    const personaAvatar = $('#personaAvatar');
+    if (personaAvatar) {
+      personaAvatar.textContent = persona.isFamily ? 'FN' : HM.persona.initials(persona);
+    }
+    const utilityAvatar = $('#utilityPersonaAvatar');
+    if (utilityAvatar) {
+      utilityAvatar.textContent = persona.isFamily ? 'FN' : HM.persona.initials(persona);
+      utilityAvatar.title = `${persona.name} view`;
+      utilityAvatar.setAttribute('aria-label', `Current persona: ${persona.name}`);
+    }
+
+    const menuList = $('#personaMenu .persona-menu-list');
+    if (menuList) {
+      menuList.innerHTML = options.map(option => {
+        const selected = option.id === persona.id;
+        const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
+        return `<button type="button" class="persona-option ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-selected="${selected}"><span class="avatar">${D.esc(optionInitials)}</span><span><b>${D.esc(option.name)}</b><small>${D.esc(option.isFamily ? 'Shared household' : (option.householdRole || 'Member'))}</small></span><i data-lucide="check"></i></button>`;
+      }).join('');
+    }
     
     const tabsContainer = $('#personaTabs');
     if (tabsContainer) {
       tabsContainer.innerHTML = options.map(option => {
         const selected = option.id === persona.id;
-        const optionInitials = option.isFamily ? 'FN' : HM.persona.initials({ ...option, isFamily: false });
         return `<button type="button" class="persona-tab ${selected ? 'active' : ''}" data-persona="${D.esc(option.id)}" aria-pressed="${selected}">${D.esc(option.name.split(' ')[0])}</button>`;
       }).join('');
     }
@@ -176,23 +205,27 @@
 
   function groupForRoute(currentRoute) {
     if (currentRoute.startsWith('study/')) return 'learning';
-    if (currentRoute.startsWith('kitchen/')) return 'kitchen';
+    if (currentRoute.startsWith('kitchen/')) return 'household';
+    if (currentRoute === 'community/directory' || currentRoute === 'home/directory') return 'contacts';
     if (currentRoute === 'home/finance' || currentRoute.startsWith('home/money/')) return 'money';
-    const groupHasRoute = group => group?.items.some(item => item[2] === currentRoute || (item[3] || []).some(child => child[2] === currentRoute));
-    if (groupHasRoute(V.groups[activeGroup])) return activeGroup;
+    const groupHasRoute = group => group?.items?.some(item => item[2] === currentRoute || (item[3] || []).some(child => child[2] === currentRoute));
+    if (V.groups[activeGroup] && groupHasRoute(V.groups[activeGroup])) return activeGroup;
+    const found = Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
+    if (found) return found;
     if (currentRoute === 'global/overview' || currentRoute === 'global/intelligence') return 'household';
     const lifeDomain = currentRoute.match(/^home\/life\/([^/]+)$/)?.[1];
     const lifeOwners = {
       property: 'household', bills: 'household', help: 'household', sustainability: 'household',
-      travel: 'household', transport: 'household', vehicles: 'household', stays: 'household', travelProtection: 'household',
+      travel: 'leisure', transport: 'leisure', vehicles: 'leisure', stays: 'leisure', travelProtection: 'leisure',
       subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
       watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
       festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
       health: 'household', emergency: 'household', pets: 'household', education: 'learning'
     };
-    if (lifeOwners[lifeDomain]) return lifeOwners[lifeDomain];
-    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'household', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
-    return routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key])) || 'household';
+    if (lifeOwners[lifeDomain] && V.groups[lifeOwners[lifeDomain]]) return lifeOwners[lifeDomain];
+    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household', 'home/care': 'household' };
+    const foundGroup = routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key]));
+    return (foundGroup && V.groups[foundGroup]) ? foundGroup : 'household';
   }
 
   function personaCanSeeGroup(groupKey, persona = HM.persona.current()) {
@@ -411,7 +444,11 @@
       }
       D.state.settings.activeGroup = activeGroup;
     }
-    const group = V.groups[activeGroup];
+    if (!V.groups[activeGroup]) {
+      activeGroup = 'household';
+      D.state.settings.activeGroup = 'household';
+    }
+    const group = V.groups[activeGroup] || V.groups.household;
     document.body.classList.remove('workspace-home', 'workspace-community', 'workspace-study', ...Object.keys(V.groups).map(key => `group-${key}`));
     document.body.classList.add('workspace-' + workspace);
     document.body.classList.add(`group-${activeGroup}`);
@@ -2421,6 +2458,13 @@
       if (chapterWasOpen) closeChapterWorkspace();
       else render();
       toast(`Now viewing ${persona.name}`);
+      return;
+    }
+    const routeTarget = event.target.closest('[data-route]');
+    if (routeTarget && !event.target.closest('#personaSwitcher') && !event.target.closest('#personaMenu')) {
+      if (typeof activeChapterWorkspace !== 'undefined' && activeChapterWorkspace) closeChapterWorkspace();
+      go(routeTarget.dataset.route);
+      document.body.classList.remove('menu-open');
       return;
     }
     const agendaPerson = event.target.closest('[data-agenda-person]');
