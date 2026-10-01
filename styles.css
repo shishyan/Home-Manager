@@ -6777,3 +6777,128 @@ details.education-class-group summary:hover,
 #nav details.education-subject > summary.active {
   color: #ffffff !important;
 }
+
+/* Calendar: Zero borders, colorful highlights, no heavy background wash */
+.calendar-wrap {
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 14px !important;
+  background: var(--glass-soft) !important;
+  overflow: hidden;
+}
+
+.calendar {
+  gap: 2px !important;
+  background: transparent !important;
+  padding: 6px !important;
+}
+
+.calendar-day {
+  border: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: none !important;
+  transition: transform 0.15s ease, background 0.15s ease;
+  padding: 8px 6px !important;
+}
+
+.calendar-day:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.calendar-day.calendar-label {
+  border: none !important;
+  background: transparent !important;
+  color: var(--muted) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 6px 4px !important;
+}
+
+.calendar-day.is-today {
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  position: relative;
+}
+
+.calendar-day.is-today > small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #059669, #7c3aed) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.35);
+}
+
+.calendar-day > small {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+/* Event pills: Colorful, crisp highlights with no muddy full cell background */
+.event,
+.calendar-day .event {
+  display: block;
+  margin-top: 4px;
+  padding: 4px 7px;
+  border-radius: 7px !important;
+  border: none !important;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #065f46 !important;
+  border-left: 3px solid #10b981 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.event:hover,
+.calendar-day .event:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+.event.study,
+.calendar-day .event.study {
+  background: rgba(124, 58, 237, 0.16) !important;
+  color: #5b21b6 !important;
+  border-left: 3px solid #8b5cf6 !important;
+}
+
+.event.community,
+.calendar-day .event.community {
+  background: rgba(236, 72, 153, 0.16) !important;
+  color: #9d174d !important;
+  border-left: 3px solid #ec4899 !important;
+}
+
+.calendar-agenda {
+  border: none !important;
+}
+
+.calendar-agenda .row {
+  border: none !important;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.school-calendar-sources {
+  border: none !important;
+  background: var(--glass-soft);
+  border-radius: 14px;
+}
+

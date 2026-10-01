@@ -2409,6 +2409,12 @@
   });
 
   document.addEventListener('click', event => {
+    const closeDialogBtn = event.target.closest('[data-close-dialog]');
+    if (closeDialogBtn) {
+      const dialogId = closeDialogBtn.dataset.closeDialog;
+      const targetDialog = dialogId ? document.getElementById(dialogId) : closeDialogBtn.closest('dialog');
+      if (targetDialog?.close) { targetDialog.close(); return; }
+    }
     const educationPage=event.target.closest('[data-education-page]');
     if(educationPage){
       if(activeChapterWorkspace)closeChapterWorkspace();
