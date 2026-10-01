@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --app-bg: #e0f2f1;
+  --app-bg: transparent;
   --nature-image: none;
   --nature-overlay: rgba(224, 242, 241, .57);
   --shell-bg: rgba(255, 250, 245, .615);
@@ -45,7 +45,7 @@
 
 /* Modern surface system: calm contrast, restrained colour and readable depth. */
 :root {
-  --app-bg: #ccfbf1;
+  --app-bg: transparent;
   --canvas-tint: linear-gradient(135deg, rgba(13, 148, 136, .15), rgba(15, 118, 110, .2)), linear-gradient(rgba(204, 251, 241, .75), rgba(153, 246, 228, .8));
   --nature-overlay: rgba(204, 251, 241, .86);
   --shell-bg: rgba(240, 253, 250, .94);
@@ -1708,7 +1708,8 @@ body[data-nature] { --app-bg: #ccfbf1; --shell-bg: rgba(250, 252, 255, .94); --b
 
 .shell-style-teal .shell-style-swatch { background: linear-gradient(rgba(4,35,33,.12), rgba(4,31,29,.20)), url("assets/backgrounds/teal-circuit-shell.png") center / cover; }
 body { background-color: var(--shell-navigation-base); background-image: var(--shell-navigation-bg); background-position: center; background-size: cover; background-attachment: fixed; }
-body::after { inset: 56px var(--utility) 0 var(--sidebar); overflow: hidden; border-radius: 20px 20px 0 0; background-color: var(--app-bg); background-image: var(--canvas-tint); background-position: center; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; box-shadow: 0 -1px 0 rgba(255,255,255,.16), 0 -12px 34px rgba(10,16,31,.12); transition: inset .2s ease; }
+body::after { inset: 56px var(--utility) 0 var(--sidebar); overflow: hidden; border-radius: 20px 20px 0 0; background: transparent; background-color: transparent; background-image: none; box-shadow: none; transition: inset .2s ease; }
+.app-shell, #content, main { background: transparent; background-color: transparent; }
 .collapsed::after { left: 68px; }
 .learning-command-bar.subject-first { display: block; padding: 4px 6px; overflow: hidden; }
 .education-command-row { min-width: 0; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
@@ -5994,7 +5995,7 @@ body.chapter-workspace-open .app-shell { margin-right: var(--utility); }
 @media(max-width:900px){.workspace-study .app-header .topbar{overflow:hidden}.header-actions{display:none}.guide-layout{grid-template-columns:1fr}.guide-chapters{max-height:220px;overflow:auto}.education-workspace-toolbar{padding:10px;gap:8px}.chapter-selector{gap:8px;flex:1;overflow:hidden}.chapter-selector label{display:none}.chapter-selector select{width:100%;max-width:none}.chapter-workspace-content{padding:12px}.guide-hero{padding:18px;gap:12px}.chapter-workspace-content .guide-hero h1{font-size:21px}.guide-card-content{padding:15px}.progress-workbench{padding:16px 10px}.progress-workbench-heading p{font-size:12px}.progress-slider-row{padding:10px 12px;gap:12px}.guide-card>summary{padding:14px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.education-notes-drawer[open]{animation:none}}
 /* AVOIDED: body[data-theme="light"].workspace-study {background-image:url('assets/backgrounds/education.svg');} */
-body.workspace-study::after {background:rgba(244,247,252,.85);}
+body.workspace-study::after {background:transparent;}
 .dashboard-chapter-bars {display:grid;grid-template-columns:minmax(160px,1.4fr) repeat(3,minmax(50px,1fr));align-items:center;gap:12px;padding:9px 12px;border-radius:6px;background: var(--glass)fff55;min-width:400px;}
 .dashboard-chapter-bars:nth-child(even){background:#e2e8f060;}
 .dashboard-chapter-bars span {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;}
