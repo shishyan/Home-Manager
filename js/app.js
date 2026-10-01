@@ -184,20 +184,20 @@
     const lifeDomain = currentRoute.match(/^home\/life\/([^/]+)$/)?.[1];
     const lifeOwners = {
       property: 'household', bills: 'household', help: 'household', sustainability: 'household',
-      travel: 'leisure', transport: 'leisure', vehicles: 'leisure', stays: 'leisure', travelProtection: 'leisure',
+      travel: 'household', transport: 'household', vehicles: 'household', stays: 'household', travelProtection: 'household',
       subscriptions: 'household', digital: 'household', webAccounts: 'household', aiServices: 'household', webHabits: 'household', games: 'household',
       watch: 'household', listen: 'household', reading: 'household', play: 'household', outings: 'household',
       festivals: 'household', documents: 'household', tax: 'household', insurance: 'household', legacy: 'household',
       health: 'household', emergency: 'household', pets: 'household', education: 'learning'
     };
     if (lifeOwners[lifeDomain]) return lifeOwners[lifeDomain];
-    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'leisure', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
+    const routeOwners = { 'home/assets': 'household', 'home/life/property': 'household', 'home/travel/spending': 'household', 'home/entertainment/spending': 'household', 'community/events': 'household', 'community/polls': 'household' };
     return routeOwners[currentRoute] || Object.keys(V.groups).find(key => groupHasRoute(V.groups[key])) || 'household';
   }
 
   function personaCanSeeGroup(groupKey, persona = HM.persona.current()) {
     if (HM.persona.roleGroup(persona) === 'children') {
-      return ['learning', 'leisure', 'household'].includes(groupKey);
+      return ['learning', 'household'].includes(groupKey);
     }
     return true;
   }

@@ -4,53 +4,65 @@
   let activeRenderRoute = '';
 
   const groups = {
-    household: { label: 'Home', icon: 'house', note: 'Household and family life', route: 'global/overview', items: [
+    household: { label: 'Home', icon: 'house', note: 'Household, food, health, leisure, community and family life', route: 'global/overview', items: [
       ['Today', 'sparkles', 'global/overview'],
       ['Household', 'house', 'home/overview', [
-        ['Tasks & routines', 'list-checks', 'home/tasks'], ['Food & recipes', 'cooking-pot', 'kitchen/overview'], ['Property & assets', 'wrench', 'home/property'], ['Domestic help', 'hand-helping', 'home/life/help'], ['Sustainability', 'leaf', 'home/life/sustainability']
+        ['Tasks & routines', 'list-checks', 'home/tasks'],
+        ['Property & upkeep', 'wrench', 'home/property'],
+        ['Domestic help', 'hand-helping', 'home/life/help'],
+        ['Sustainability', 'leaf', 'home/life/sustainability']
+      ]],
+      ['Food', 'cooking-pot', 'kitchen/overview', [
+        ['Overview', 'cooking-pot', 'kitchen/overview'],
+        ['100 Traditional Recipes', 'book-open', 'kitchen/recipes'],
+        ['Weekly Meal Plan', 'calendar-range', 'kitchen/menus'],
+        ['Pantry & Stock', 'package-open', 'kitchen/pantry'],
+        ['Shopping List', 'shopping-cart', 'kitchen/shopping']
+      ]],
+      ['Health', 'heart-pulse', 'home/care', [
+        ['Overview', 'heart-handshake', 'home/care'],
+        ['Health records', 'heart-pulse', 'home/life/health'],
+        ['Medicines', 'pill', 'home/life/medicines'],
+        ['Appointments', 'stethoscope', 'home/life/appointments'],
+        ['Elder care', 'accessibility', 'home/life/elders'],
+        ['Emergency', 'siren', 'home/life/emergency'],
+        ['Pets', 'paw-print', 'home/life/pets']
+      ]],
+      ['Leisure', 'palmtree', 'home/travel', [
+        ['Travel & trips', 'luggage', 'home/travel'],
+        ['Entertainment', 'clapperboard', 'home/entertainment'],
+        ['Web life', 'globe-2', 'home/web'],
+        ['Vehicles', 'car-front', 'home/life/vehicles']
+      ]],
+      ['Community', 'map-pinned', 'community/overview', [
+        ['Overview', 'map', 'community/overview'],
+        ['Local directory', 'life-buoy', 'community/directory'],
+        ['Updates', 'newspaper', 'community/feed'],
+        ['Events & polls', 'calendar-heart', 'community/participate'],
+        ['Civic issues', 'ticket-check', 'community/tickets']
       ]],
       ['Family', 'users-round', 'home/family', [
-        ['Calendar', 'calendar-days', 'home/calendar'], ['Celebrations', 'party-popper', 'home/life/festivals'], ['Documents', 'folders', 'home/life/documents'], ['Notes', 'sticky-note', 'home/notes'], ['Messages', 'message-circle', 'home/sms'], ['Contacts', 'contact-round', 'home/directory'], ['Protection & legacy', 'shield-check', 'home/family/protection']
+        ['Calendar', 'calendar-days', 'home/calendar'],
+        ['Celebrations', 'party-popper', 'home/life/festivals'],
+        ['Documents', 'folders', 'home/life/documents'],
+        ['Notes', 'sticky-note', 'home/notes'],
+        ['Messages', 'message-circle', 'home/sms'],
+        ['Protection & legacy', 'shield-check', 'home/family/protection']
       ]],
       ['Education', 'graduation-cap', 'study/student-overview']
-    ]},
-    kitchen: { label: 'Food', icon: 'cooking-pot', note: 'Cook · Plan · Stock', route: 'kitchen/overview', items: [
-      ['Overview', 'cooking-pot', 'kitchen/overview'], ['100 Traditional Recipes', 'book-open', 'kitchen/recipes'], ['Weekly Meal Plan', 'calendar-range', 'kitchen/menus'], ['Pantry & Stock', 'package-open', 'kitchen/pantry'], ['Shopping List', 'shopping-cart', 'kitchen/shopping']
-    ]},
-    money: { label: 'Money', icon: 'indian-rupee', note: 'Consolidated family reporting', route: 'home/finance', items: [
-      ['Overview', 'layout-dashboard', 'home/finance'], ['Budget', 'chart-pie', 'home/money/budget'], ['Cash flow', 'arrow-right-left', 'home/money/cashflow'], ['Spending', 'wallet-cards', 'home/money/spending'], ['Commitments', 'calendar-sync', 'home/money/commitments'], ['Net worth', 'scale', 'home/money/networth'], ['Reports', 'chart-no-axes-combined', 'home/money/reports']
-    ]},
-    care: { label: 'Health', icon: 'heart-handshake', note: 'Health and safety', route: 'home/care', items: [
-      ['Overview', 'heart-handshake', 'home/care'], ['Health', 'heart-pulse', 'home/life/health'], ['Medicines', 'pill', 'home/life/medicines'], ['Appointments', 'stethoscope', 'home/life/appointments'], ['Elder care', 'accessibility', 'home/life/elders'], ['Emergency', 'siren', 'home/life/emergency'], ['Pets', 'paw-print', 'home/life/pets']
-    ]},
-    leisure: { label: 'Leisure', icon: 'palmtree', note: 'Travel, entertainment and web life', route: 'home/travel', items: [
-      ['Travel', 'luggage', 'home/travel'], ['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']
     ]},
     learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
       ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
     ]},
-    community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
-      ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
+    money: { label: 'Finance', icon: 'indian-rupee', note: 'Consolidated family budget & reporting', route: 'home/finance', items: [
+      ['Overview', 'layout-dashboard', 'home/finance'], ['Bills & Obligations', 'receipt-text', 'home/money/commitments'], ['Budget', 'chart-pie', 'home/money/budget'], ['Cash flow', 'arrow-right-left', 'home/money/cashflow'], ['Spending', 'wallet-cards', 'home/money/spending'], ['Net worth', 'scale', 'home/money/networth'], ['Reports', 'chart-no-axes-combined', 'home/money/reports']
+    ]},
+    contacts: { label: 'Contacts', icon: 'contact-round', note: 'Family address books and Kovaipudur local directory', route: 'home/directory', items: [
+      ['Family contacts', 'users-round', 'home/directory'], ['Kovaipudur services & products', 'map-pinned', 'community/directory']
     ]}
   };
 
-  // Retain existing routes while consolidating the public menu into five sections.
-  groups.household.items[2][3] = groups.household.items[2][3].filter(item => item[2] !== 'home/directory');
-  groups.household.items.push(
-    ['Food', 'cooking-pot', groups.kitchen.route, groups.kitchen.items.slice(1)],
-    ['Health', 'heart-handshake', groups.care.route, groups.care.items.slice(1)],
-    ['Leisure', 'palmtree', 'home/entertainment', [['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']]],
-    ['Community', 'map-pinned', groups.community.route, groups.community.items.filter(item => !['community/overview', 'community/directory'].includes(item[2]))]
-  );
-  groups.money.label = 'Finance';
-  groups.leisure = { label: 'Travel', icon: 'luggage', note: 'Trips, transport and bookings', route: 'home/travel', items: [
-    ['Overview', 'luggage', 'home/travel'], ['Trips & packing', 'briefcase', 'home/life/travel'], ['Transport', 'train-front', 'home/life/transport'], ['Vehicles', 'car-front', 'home/life/vehicles'], ['Stays', 'bed-double', 'home/life/stays'], ['Travel protection', 'shield-check', 'home/life/travelProtection'], ['Spending', 'wallet-cards', 'home/travel/spending']
-  ] };
-  groups.contacts = { label: 'Contacts', icon: 'contact-round', note: 'Family address books and local services', route: 'home/directory', items: [
-    ['Family contacts', 'users-round', 'home/directory'], ['Kovaipudur services', 'map-pinned', 'community/directory']
-  ] };
-  delete groups.kitchen; delete groups.care; delete groups.community;
-  const menuOrder = ['household', 'learning', 'money', 'leisure', 'contacts'];
+  const menuOrder = ['household', 'learning', 'money', 'contacts'];
   const orderedGroups = Object.fromEntries(menuOrder.map(key => [key, groups[key]]));
   Object.keys(groups).forEach(key => delete groups[key]);
   Object.assign(groups, orderedGroups);
