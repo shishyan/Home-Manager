@@ -7,53 +7,59 @@
     household: { label: 'Home', icon: 'house', note: 'Household and family life', route: 'global/overview', items: [
       ['Today', 'sparkles', 'global/overview'],
       ['Household', 'house', 'home/overview', [
-        ['Tasks & routines', 'list-checks', 'home/tasks'], ['Food & recipes', 'cooking-pot', 'kitchen/overview'], ['Property & assets', 'wrench', 'home/property'], ['Domestic help', 'hand-helping', 'home/life/help'], ['Sustainability', 'leaf', 'home/life/sustainability']
+        ['Tasks & routines', 'list-checks', 'home/tasks'],
+        ['Food & recipes', 'cooking-pot', 'kitchen/overview'],
+        ['Property & upkeep', 'wrench', 'home/property'],
+        ['Domestic help', 'hand-helping', 'home/life/help'],
+        ['Sustainability', 'leaf', 'home/life/sustainability']
       ]],
       ['Family', 'users-round', 'home/family', [
-        ['Calendar', 'calendar-days', 'home/calendar'], ['Celebrations', 'party-popper', 'home/life/festivals'], ['Documents', 'folders', 'home/life/documents'], ['Notes', 'sticky-note', 'home/notes'], ['Messages', 'message-circle', 'home/sms'], ['Contacts', 'contact-round', 'home/directory'], ['Protection & legacy', 'shield-check', 'home/family/protection']
-      ]],
-      ['Education', 'graduation-cap', 'study/student-overview']
+        ['Calendar', 'calendar-days', 'home/calendar'],
+        ['Celebrations', 'party-popper', 'home/life/festivals'],
+        ['Documents', 'folders', 'home/life/documents'],
+        ['Notes', 'sticky-note', 'home/notes'],
+        ['Messages', 'message-circle', 'home/sms'],
+        ['Contacts', 'contact-round', 'home/directory'],
+        ['Protection & legacy', 'shield-check', 'home/family/protection']
+      ]]
     ]},
-    kitchen: { label: 'Food', icon: 'cooking-pot', note: 'Cook · Plan · Stock', route: 'kitchen/overview', items: [
-      ['Overview', 'cooking-pot', 'kitchen/overview'], ['100 Traditional Recipes', 'book-open', 'kitchen/recipes'], ['Weekly Meal Plan', 'calendar-range', 'kitchen/menus'], ['Pantry & Stock', 'package-open', 'kitchen/pantry'], ['Shopping List', 'shopping-cart', 'kitchen/shopping']
+    care: { label: 'Health', icon: 'heart-pulse', note: 'Health and safety', route: 'home/care', items: [
+      ['Overview', 'heart-handshake', 'home/care'],
+      ['Health records', 'heart-pulse', 'home/life/health'],
+      ['Medicines', 'pill', 'home/life/medicines'],
+      ['Appointments', 'stethoscope', 'home/life/appointments'],
+      ['Elder care', 'accessibility', 'home/life/elders'],
+      ['Emergency', 'siren', 'home/life/emergency'],
+      ['Pets', 'paw-print', 'home/life/pets']
     ]},
     money: { label: 'Money', icon: 'indian-rupee', note: 'Consolidated family reporting', route: 'home/finance', items: [
-      ['Overview', 'layout-dashboard', 'home/finance'], ['Budget', 'chart-pie', 'home/money/budget'], ['Cash flow', 'arrow-right-left', 'home/money/cashflow'], ['Spending', 'wallet-cards', 'home/money/spending'], ['Commitments', 'calendar-sync', 'home/money/commitments'], ['Net worth', 'scale', 'home/money/networth'], ['Reports', 'chart-no-axes-combined', 'home/money/reports']
+      ['Overview', 'layout-dashboard', 'home/finance'],
+      ['Bills & Obligations', 'receipt-text', 'home/money/commitments'],
+      ['Budget', 'chart-pie', 'home/money/budget'],
+      ['Cash flow', 'arrow-right-left', 'home/money/cashflow'],
+      ['Spending', 'wallet-cards', 'home/money/spending'],
+      ['Net worth', 'scale', 'home/money/networth'],
+      ['Reports', 'chart-no-axes-combined', 'home/money/reports']
     ]},
-    care: { label: 'Health', icon: 'heart-handshake', note: 'Health and safety', route: 'home/care', items: [
-      ['Overview', 'heart-handshake', 'home/care'], ['Health', 'heart-pulse', 'home/life/health'], ['Medicines', 'pill', 'home/life/medicines'], ['Appointments', 'stethoscope', 'home/life/appointments'], ['Elder care', 'accessibility', 'home/life/elders'], ['Emergency', 'siren', 'home/life/emergency'], ['Pets', 'paw-print', 'home/life/pets']
+    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/curriculum', items: [
+      ['Curriculum', 'route', 'study/curriculum'],
+      ['Planner', 'calendar-clock', 'study/planner'],
+      ['Overview', 'activity', 'study/overview'],
+      ['Progress', 'chart-no-axes-combined', 'study/reports']
     ]},
     leisure: { label: 'Leisure', icon: 'palmtree', note: 'Travel, entertainment and web life', route: 'home/travel', items: [
-      ['Travel', 'luggage', 'home/travel'], ['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']
-    ]},
-    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
-      ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
+      ['Travel', 'luggage', 'home/travel'],
+      ['Entertainment', 'clapperboard', 'home/entertainment'],
+      ['Web Life', 'globe-2', 'home/web']
     ]},
     community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
-      ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
+      ['Overview', 'map', 'community/overview'],
+      ['Updates', 'newspaper', 'community/feed'],
+      ['Events & polls', 'calendar-heart', 'community/participate'],
+      ['Civic issues', 'ticket-check', 'community/tickets'],
+      ['Local services', 'life-buoy', 'community/directory']
     ]}
   };
-
-  // Retain existing routes while consolidating the public menu into five sections.
-  groups.household.items[2][3] = groups.household.items[2][3].filter(item => item[2] !== 'home/directory');
-  groups.household.items.push(
-    ['Food', 'cooking-pot', groups.kitchen.route, groups.kitchen.items.slice(1)],
-    ['Health', 'heart-handshake', groups.care.route, groups.care.items.slice(1)],
-    ['Leisure', 'palmtree', 'home/entertainment', [['Entertainment', 'clapperboard', 'home/entertainment'], ['Web Life', 'globe-2', 'home/web']]],
-    ['Community', 'map-pinned', groups.community.route, groups.community.items.filter(item => !['community/overview', 'community/directory'].includes(item[2]))]
-  );
-  groups.money.label = 'Finance';
-  groups.leisure = { label: 'Travel', icon: 'luggage', note: 'Trips, transport and bookings', route: 'home/travel', items: [
-    ['Overview', 'luggage', 'home/travel'], ['Trips & packing', 'briefcase', 'home/life/travel'], ['Transport', 'train-front', 'home/life/transport'], ['Vehicles', 'car-front', 'home/life/vehicles'], ['Stays', 'bed-double', 'home/life/stays'], ['Travel protection', 'shield-check', 'home/life/travelProtection'], ['Spending', 'wallet-cards', 'home/travel/spending']
-  ] };
-  groups.contacts = { label: 'Contacts', icon: 'contact-round', note: 'Family address books and local services', route: 'home/directory', items: [
-    ['Family contacts', 'users-round', 'home/directory'], ['Kovaipudur services', 'map-pinned', 'community/directory']
-  ] };
-  delete groups.kitchen; delete groups.care; delete groups.community;
-  const menuOrder = ['household', 'learning', 'money', 'leisure', 'contacts'];
-  const orderedGroups = Object.fromEntries(menuOrder.map(key => [key, groups[key]]));
-  Object.keys(groups).forEach(key => delete groups[key]);
-  Object.assign(groups, orderedGroups);
 
   const settingsGroups = [
     ['household', 'Household profile', 'house', 'Home address, language and family defaults'],
@@ -904,8 +910,7 @@
       : (activeId || 'p4');
 
     const allProfiles = D.state.academicProfiles || [];
-    const profilesToShow = allProfiles.filter(p => p.personId === targetStudentId);
-    const profiles = profilesToShow.length ? profilesToShow : allProfiles;
+    const profiles = allProfiles;
 
     const route = location.hash.slice(2) || 'study/overview';
     const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice-hub':'Practice & Assignments'}[route] || '';
@@ -917,28 +922,46 @@
     return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages">
       <select id="educationLearner" class="sr-only" aria-label="Education student">${(D.state.academicProfiles || []).map(p => `<option value="${e(p.personId)}" ${p.personId === targetStudentId ? 'selected' : ''}>${e(p.name)} · Class ${e(p.grade)}</option>`).join('')}</select>
       <button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}>
-        <i data-lucide="layout-dashboard"></i><span>Student dashboard</span>
+        <span class="nav-icon" style="color:var(--tone-2,#c4b5fd);"><i data-lucide="layout-dashboard"></i></span><span>Student dashboard</span>
       </button>
       ${profiles.map(profile => {
         const selected = D.state.settings.activeLearningSubject?.[profile.personId] || profile.subjects[0] || 'Mathematics';
         const isClassOpen = !collapsedClasses.includes(profile.personId);
         return `<details class="education-class" ${isClassOpen ? 'open' : ''}>
           <summary data-education-class="${e(profile.personId)}" data-student="${e(profile.personId)}">
-            <b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small>
+            <span class="nav-icon" style="color:var(--tone-1,#99f6e4);"><i data-lucide="graduation-cap"></i></span>
+            <div class="class-summary-text"><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></div>
           </summary>
           ${profile.subjects.map((subject, sIdx) => {
-            const pages = [['Overview','study/overview'], ['Progress','study/curriculum'], ['Calendar','study/planner'], ['Learning','learning'], ['Read Book','book'], ['Practice & Assignments','study/practice-hub']];
+            const subjectIcons = {
+              'Mathematics': 'calculator', 'Science': 'flask-conical', 'English': 'book-open',
+              'English Core': 'book-open', 'Physics': 'atom', 'Chemistry': 'test-tube',
+              'Computer Science': 'binary', 'Social Science': 'globe', 'Hindi': 'languages',
+              'Tamil': 'languages', 'Kaushal Bodh': 'sparkles'
+            };
+            const sIcon = subjectIcons[subject] || 'book';
+            const toneIndex = (sIdx % 6) + 1;
+            const pages = [
+              ['Overview','study/overview','activity'],
+              ['Progress','study/curriculum','route'],
+              ['Calendar','study/planner','calendar-clock'],
+              ['Learning','learning','brain'],
+              ['Read Book','book','book-open-check'],
+              ['Practice & Assignments','study/practice-hub','list-checks']
+            ];
             const isActiveSubject = profile.personId === activeId && subject === selected;
-            const isExpanded = expandedSubject === false ? false : true;
+            const isExpanded = !expandedSubject || (expandedSubject.studentId === profile.personId && expandedSubject.subject === subject) || isActiveSubject;
 
-            return `<details class="education-subject" ${isExpanded ? 'open' : ''}>
+            return `<details class="education-subject tab-tone-${toneIndex}" ${isExpanded ? 'open' : ''}>
               <summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>
+                <span class="nav-icon" style="color:var(--tone-${toneIndex});"><i data-lucide="${sIcon}"></i></span>
                 <span>${e(subject)}</span>
               </summary>
               <div class="education-pages-list">
-                ${pages.map(([label, page]) => {
+                ${pages.map(([label, page, pIcon], pIdx) => {
                   const isActivePage = isActiveSubject && (pageLabelById[page] === activePage || route === page);
-                  return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''}>${label}</button>`;
+                  const pTone = ((sIdx + pIdx) % 6) + 1;
+                  return `<button type="button" class="education-page ${isActivePage?'active':''}" data-education-page="${page}" data-student="${e(profile.personId)}" data-subject="${e(subject)}" ${isActivePage?'aria-current="page"':''} data-no-translate><span class="nav-icon" style="color:var(--tone-${pTone});"><i data-lucide="${pIcon}"></i></span><span>${label}</span></button>`;
                 }).join('')}
               </div>
             </details>`;

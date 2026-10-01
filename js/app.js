@@ -231,9 +231,7 @@
   }
 
   function personaCanSeeGroup(groupKey, persona = HM.persona.current()) {
-    if (HM.persona.roleGroup(persona) === 'children') {
-      return ['learning', 'household'].includes(groupKey);
-    }
+    // Show all available navigation groups on the top bar
     return true;
   }
 
@@ -530,6 +528,7 @@
 
     $('#settingsNav').classList.toggle('active', Boolean(activeSettings));
     $('#helpNav').classList.toggle('active', route === 'global/questions');
+    refreshIcons();
   }
 
   function notificationItems() {

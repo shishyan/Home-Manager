@@ -20,14 +20,10 @@
       <div class="brand-copy">
         <b id="brandName">Lotus Naga Home</b>
       </div>
-      <button type="button" id="personaSwitcher" class="persona-switcher" aria-expanded="false" aria-haspopup="dialog" aria-controls="personaMenu"><span id="personaAvatar" class="avatar">FN</span><span class="persona-copy"><b id="personaName">Family</b><small id="personaRole">Shared household</small></span><i data-lucide="chevron-down"></i></button>
-      <div id="personaMenu" class="persona-menu" role="dialog" aria-label="Switch persona" hidden><div class="persona-menu-head"><h3>Family members</h3></div><div class="persona-menu-list"></div></div>
     </div>
     <div id="workspaceMenuLabel" class="workspace-menu-label"><select id="navigationGroup" class="sr-only" aria-label="Navigation group"></select></div>
     <nav id="nav"></nav>
     <div class="sidebar-bottom">
-      <button type="button" id="helpNav" data-route="global/questions" title="Help and Guide" aria-label="Open Help and Guide"><i data-lucide="circle-help"></i><span>Help & Guide</span></button>
-      <button type="button" id="settingsNav" data-route="settings/household" title="Settings" aria-label="Open Settings"><i data-lucide="settings-2"></i><span>Settings</span></button>
       <button type="button" id="collapse" class="collapse-button" title="Collapse navigation" aria-label="Collapse navigation"><i data-lucide="panel-left-close"></i></button>
     </div>
   </aside>
@@ -43,7 +39,14 @@
         <h1 id="pageTitle" hidden>Today</h1>
         <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects" hidden></div>
         <div id="headerKpis" class="header-kpis" aria-label="Current household signals" hidden></div>
-        <div class="header-actions" hidden></div>
+        <div class="header-actions">
+          <button type="button" id="helpNav" class="icon-button header-icon-btn" data-route="global/questions" title="Help & Guide" aria-label="Help & Guide"><i data-lucide="circle-help"></i></button>
+          <button type="button" id="settingsNav" class="icon-button header-icon-btn" data-route="settings/household" title="Settings" aria-label="Settings"><i data-lucide="settings-2"></i></button>
+          <div class="persona-header-wrap">
+            <button type="button" id="personaSwitcher" class="persona-switcher persona-icon-button" aria-expanded="false" aria-haspopup="dialog" aria-controls="personaMenu" title="Switch persona. Current view: Family" aria-label="Switch persona. Current view: Family"><span id="personaAvatar" class="avatar">FN</span><span class="persona-copy sr-only"><b id="personaName">Family</b><small id="personaRole">Shared household</small></span></button>
+            <div id="personaMenu" class="persona-menu header-persona-menu" role="dialog" aria-label="Switch persona" hidden><div class="persona-menu-head"><h3>Family members</h3></div><div class="persona-menu-list"></div></div>
+          </div>
+        </div>
       </div>
     </header>
     <main id="content" tabindex="-1"></main>

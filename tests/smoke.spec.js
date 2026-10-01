@@ -47,7 +47,7 @@ test('household identity drives the shell, map link and browser title', async ({
   expect(shellSurface.header).toBe(shellSurface.body);
   expect(shellSurface.headerBlur).toBe('none');
   expect(shellSurface.utility).toBe('none');
-  expect(shellSurface.contentInset).toEqual({ top: '56px', right: '64px', left: '252px', radius: '20px' });
+  expect(shellSurface.contentInset).toEqual({ top: '56px', right: '64px', left: '280px', radius: '20px' });
   expect(shellSurface.title).toBe('rgb(255, 255, 255)');
   const breadcrumbLayout = await page.evaluate(() => {
     const section = document.querySelector('#breadcrumb');

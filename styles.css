@@ -6609,129 +6609,171 @@ details.education-class-group summary:hover,
 }
 
 
-/* === CLEAN EDUCATION NAVIGATION TREE === */
+/* === CLEAN EDUCATION NAVIGATION TREE & SIDEBAR SUBMENU === */
 
 .education-tree {
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
   padding: 4px 0 !important;
+  width: 100% !important;
+}
+
+.education-student-dashboard {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-align: left !important;
+}
+
+.education-student-dashboard:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+.education-student-dashboard.active {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
 }
 
 .education-tree details.education-class,
 .education-tree details.education-subject {
-  margin: 2px 0 !important;
+  margin: 3px 0 !important;
+  width: 100% !important;
 }
 
 .education-tree details.education-class > summary,
 .education-tree details.education-subject > summary {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
-  padding: 8px 12px !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 8px 10px !important;
   border-radius: 8px !important;
   cursor: pointer !important;
   font-weight: 700 !important;
-  color: var(--ink, #ffffff) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
   background: transparent !important;
-  border: 1px solid transparent !important;
+  border: 0 !important;
   user-select: none !important;
+  text-align: left !important;
+  list-style: none !important;
+}
+
+.education-tree details.education-class > summary::-webkit-details-marker,
+.education-tree details.education-subject > summary::-webkit-details-marker {
+  display: none !important;
 }
 
 .education-tree details.education-class > summary:hover,
 .education-tree details.education-subject > summary:hover {
   background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+.education-tree details.education-class > summary .class-summary-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+}
+
+.education-tree details.education-class > summary .class-summary-text b {
+  color: #ffffff !important;
+  font-size: 13px !important;
+}
+
+.education-tree details.education-class > summary .class-summary-text small {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 11px !important;
 }
 
 .education-tree details.education-subject > summary.active {
-  background: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   color: #ffffff !important;
+}
+
+.education-tree details.education-subject > summary .nav-icon svg,
+.education-tree details.education-class > summary .nav-icon svg,
+.education-student-dashboard .nav-icon svg,
+.education-page .nav-icon svg {
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .education-pages-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 2px !important;
-  padding-left: 14px !important;
-  margin-top: 2px !important;
+  padding-left: 24px !important;
+  margin: 3px 0 !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+  margin-left: 14px !important;
 }
 
 .education-page {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
   text-align: left !important;
   width: 100% !important;
-  padding: 6px 12px !important;
+  padding: 6px 10px !important;
   border-radius: 6px !important;
-  font-size: 11px !important;
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer !important;
 }
 
+.education-page:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
 
-/* === LEFT ALIGNMENT & MENU GROUP HIGHLIGHTING === */
+.education-page.active {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+}
 
+/* Ensure all sidebar items in #nav are left aligned with consistent white text */
 #nav,
-.section-nav,
-.section-tab-group,
-.section-tab,
-.section-subitem,
-.section-subnav,
-.education-tree,
-details.education-class,
-details.education-class > summary,
-details.education-subject,
-details.education-subject > summary,
-.education-page,
-.persona-tabs,
-.persona-tab,
-.sidebar-bottom button {
-  text-align: left !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
+#nav * {
+  box-sizing: border-box;
 }
 
-/* Highlight Menu Groups slightly so they stand out from sub-items */
-.section-tab,
-details.education-class > summary,
-.nav-group,
-.nav-section summary {
-  font-weight: 800 !important;
+#nav .nav-parent,
+#nav .section-subitem,
+#nav .education-page,
+#nav .education-student-dashboard,
+#nav details > summary {
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+#nav .nav-parent:hover,
+#nav .section-subitem:hover,
+#nav .education-page:hover,
+#nav details > summary:hover {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.07) !important;
-  border-left: 3px solid rgba(255, 255, 255, 0.4) !important;
-  border-radius: 6px !important;
-  padding-left: 10px !important;
-  margin-top: 4px !important;
-  margin-bottom: 2px !important;
 }
 
-.section-tab.active,
-details.education-class[open] > summary {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-left-color: var(--accent, #38bdf8) !important;
-}
-
-
-/* === FORCE LEFT ALIGNMENT FOR ALL EDUCATION MENU ITEMS & TABS === */
-
-.education-header-tabs,
-.education-command-row,
-.learning-command-bar,
-.learning-section-tabs,
-.learning-section-tabs button,
-#educationHeaderTabs,
-#educationHeaderTabs .learning-section-tabs,
-.education-tree,
-.education-pages-list,
-.education-page,
-.education-subject,
-.education-class {
-  margin-left: 0 !important;
-  justify-content: flex-start !important;
-  text-align: left !important;
-}
-
-.education-header-tabs .learning-section-tabs,
-.education-command-row .learning-section-tabs,
-.learning-command-bar .learning-section-tabs {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  justify-content: flex-start !important;
+#nav .nav-parent.active,
+#nav .section-subitem.active,
+#nav .education-page.active,
+#nav details.education-subject > summary.active {
+  color: #ffffff !important;
 }
