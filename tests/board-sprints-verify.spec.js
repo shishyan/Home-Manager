@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
-test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
-  test('Master Overview displays full 70-day sprint concept and roadmap', async ({ page }) => {
+test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Question Bank', () => {
+  test('Master Overview displays 75-day architecture, weekly allocation rationale, and RAG gateway', async ({ page }) => {
     await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
 
@@ -24,36 +24,19 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
     const levelCards = page.locator('.level-card');
     await expect(levelCards).toHaveCount(4);
 
-    // Verify Power-Ups & Traps
-    const powerupTiles = page.locator('.powerup-tile');
-    const trapTiles = page.locator('.trap-tile');
-    await expect(powerupTiles).toHaveCount(3);
-    await expect(trapTiles).toHaveCount(3);
+    // Verify R-A-G Audit Gateway Hero Card & Buttons
+    const ragGateway = page.locator('#ragGatewayCard');
+    await expect(ragGateway).toBeVisible();
 
-    // Verify Interactive Checkpoint Quiz Cards
-    const checkpointCards = page.locator('.zen-checkpoint-card');
-    await expect(checkpointCards).toHaveCount(3);
+    const openRagBtn = page.locator('.btn-gateway-rag');
+    await expect(openRagBtn).toBeVisible();
+    await expect(openRagBtn).toContainText('Open High-Density R-A-G Audit Tracker');
 
-    // Verify Exam Protocol Steps
-    const protocolCards = page.locator('.protocol-step-card');
-    await expect(protocolCards).toHaveCount(4);
-
-    // Verify Interactive R-A-G Audit Tracker
-    const ragSection = page.locator('#ragAuditTracker');
-    await expect(ragSection).toBeVisible();
-
-    const ragCards = page.locator('.rag-chapter-card');
-    await expect(ragCards).toHaveCount(47);
-
-    // Test interactive toggle
-    const firstRed = page.locator('.rag-chapter-card[data-current-rag="red"]').first();
-    if (await firstRed.count() > 0) {
-      const chName = await firstRed.getAttribute('data-rag-chapter');
-      await firstRed.locator('.rag-t-green').click();
-      await page.waitForTimeout(300);
-      const updated = page.locator(`.rag-chapter-card[data-rag-chapter="${chName}"]`);
-      await expect(updated).toHaveAttribute('data-current-rag', 'green');
-    }
+    // Verify 75-Day Pedagogical Rationale Section
+    const rationaleSec = page.locator('#sprintRationale');
+    await expect(rationaleSec).toBeVisible();
+    const rationaleCards = page.locator('.rationale-card');
+    await expect(rationaleCards).toHaveCount(4);
 
     // Verify Subject Weightage Matrix
     const subjectCards = page.locator('.subject-card');
@@ -67,26 +50,104 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
     await page.screenshot({ path: 'master-board-sprint-overview.png' });
   });
 
-  test('Weekly Page (Week 1) is a clean, focused question deck WITHOUT repeated dashboard banner', async ({ page }) => {
-    await page.goto('http://localhost:8765/#/study/board-sprints/week-1', { waitUntil: 'networkidle' });
+  test('Dedicated R-A-G Chapter Audit Tracker displays 47 chapters in high-density list with real-time toggles', async ({ page }) => {
+    await page.goto('http://localhost:8765/#/study/board-sprints/rag', { waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
 
-    // Verify strategy dashboard is NOT rendered on weekly page
-    const strategyDashboards = page.locator('.zen-strategy-dashboard');
-    await expect(strategyDashboards).toHaveCount(0);
+    // Verify Title
+    const title = page.locator('.zen-title');
+    await expect(title).toContainText('R-A-G Chapter Audit Tracker');
 
-    // Verify question cards exist
+    // Verify KPI shelf
+    const redCount = page.locator('#ragRedCount');
+    const amberCount = page.locator('#ragAmberCount');
+    const greenCount = page.locator('#ragGreenCount');
+    await expect(redCount).toBeVisible();
+    await expect(amberCount).toBeVisible();
+    await expect(greenCount).toBeVisible();
+
+    // Verify High-Density Rows (all 47 chapters)
+    const ragRows = page.locator('.rag-chapter-card');
+    await expect(ragRows).toHaveCount(47);
+
+    // Test real-time interactive toggle
+    const firstRed = page.locator('.rag-chapter-card[data-current-rag="red"]').first();
+    if (await firstRed.count() > 0) {
+      const chName = await firstRed.getAttribute('data-rag-chapter');
+      await firstRed.locator('.rag-t-green').click();
+      await page.waitForTimeout(300);
+      const updated = page.locator(`.rag-chapter-card[data-rag-chapter="${chName}"]`);
+      await expect(updated).toHaveAttribute('data-current-rag', 'green');
+    }
+
+    // Test subject filter pill
+    const physFilter = page.locator('#ragSubjFilter button[data-val="Physics"]');
+    await physFilter.click();
+    await page.waitForTimeout(200);
+    const visibleCards = page.locator('.rag-chapter-card:visible');
+    await expect(visibleCards).toHaveCount(12);
+
+    // Reset to all
+    const allFilter = page.locator('#ragSubjFilter button[data-val="all"]');
+    await allFilter.click();
+    await page.waitForTimeout(200);
+    await expect(page.locator('.rag-chapter-card:visible')).toHaveCount(47);
+
+    // Take screenshot of dedicated RAG page
+    await page.screenshot({ path: 'rag-audit-tracker-list.png' });
+  });
+
+  test('Master 10-Year Question Bank displays 314+ questions with subject and chapter filters', async ({ page }) => {
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1000);
+
+    // Verify Header
+    const title = page.locator('.zen-title');
+    await expect(title).toContainText('10-Year Master Question Bank');
+
+    // Verify Question Cards exist and count is > 100 (314 total)
     const questionCards = page.locator('.board-question-card');
     const qCount = await questionCards.count();
-    expect(qCount).toBeGreaterThan(0);
+    expect(qCount).toBeGreaterThan(100);
 
-    // Verify bestselling Oswaal/Educart elements
+    // Verify caution and topper boxes
     const cautionBoxes = page.locator('.zen-caution-box');
     const topperBoxes = page.locator('.zen-topper-box');
     expect(await cautionBoxes.count()).toBeGreaterThan(0);
     expect(await topperBoxes.count()).toBeGreaterThan(0);
 
+    // Test Subject Filter Pill (e.g. Computer Science)
+    const csPill = page.locator('.zen-books-navbar button:has-text("Computer Science")');
+    if (await csPill.count() > 0) {
+      await csPill.click();
+      await page.waitForTimeout(500);
+      const csQuestions = page.locator('.board-question-card');
+      const csCount = await csQuestions.count();
+      expect(csCount).toBeGreaterThan(0);
+    }
+
+    // Take screenshot of Master Question Bank
+    await page.screenshot({ path: 'master-question-bank.png' });
+  });
+
+  test('Weekly Page (Week 1) has All Subjects pill and focused question deck', async ({ page }) => {
+    await page.goto('http://localhost:8765/#/study/board-sprints/week-1', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1000);
+
+    // Verify strategy dashboard banner is NOT rendered on weekly page
+    const strategyDashboards = page.locator('.zen-strategy-dashboard');
+    await expect(strategyDashboards).toHaveCount(0);
+
+    // Verify All Subjects pill is present and active
+    const allSubjectsPill = page.locator('.zen-book-pill:has-text("All Subjects")');
+    await expect(allSubjectsPill).toBeVisible();
+
+    // Verify questions are rendered across week 1
+    const questionCards = page.locator('.board-question-card');
+    const qCount = await questionCards.count();
+    expect(qCount).toBeGreaterThan(15);
+
     // Take screenshot of clean weekly deck
-    await page.screenshot({ path: 'week-1-question-deck.png' });
+    await page.screenshot({ path: 'week-1-all-subjects.png' });
   });
 });

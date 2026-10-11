@@ -48,12 +48,32 @@
     'Linear Programming': 'Mathematics',
     'Probability': 'Mathematics',
     'File Handling': 'Computer Science',
+    'File Handling in Python': 'Computer Science',
     'Relational Databases and SQL': 'Computer Science',
+    'Structured Query Language': 'Computer Science',
+    'Database Concepts': 'Computer Science',
+    'Database Interface': 'Computer Science',
+    'Interface Python with MySQL': 'Computer Science',
     'Python Revision Tour': 'Computer Science',
     'Python Functions': 'Computer Science',
     'Functions in Python': 'Computer Science',
+    'Functions': 'Computer Science',
+    'Python Scope': 'Computer Science',
     'Data Structures: Stacks': 'Computer Science',
+    'Data Structures': 'Computer Science',
+    'Stack': 'Computer Science',
+    'Stacks': 'Computer Science',
+    'Full Stack CS Blueprint': 'Computer Science',
     'Computer Networks': 'Computer Science',
+    'Matrices': 'Mathematics',
+    'Determinants': 'Mathematics',
+    'Vectors & 3D Geometry': 'Mathematics',
+    'Applications of Integrals': 'Mathematics',
+    'Writing Skills': 'English Core',
+    'Notice Writing': 'English Core',
+    'Invitations and Replies': 'English Core',
+    'Formal Invitation': 'English Core',
+    'Job Application': 'English Core',
     'The Last Lesson': 'English Core',
     'Lost Spring': 'English Core',
     'Deep Water': 'English Core',
@@ -1362,25 +1382,77 @@
     return list;
   }
 
+  // Helper functions for question counts
+  function getChapterQuestionCount(chName, allQuestions) {
+    if (!chName || !allQuestions) return 0;
+    const lower = chName.toLowerCase();
+    return allQuestions.filter(q => {
+      const qch = q.chapter.toLowerCase();
+      return qch === lower || qch.includes(lower) || lower.includes(qch);
+    }).length;
+  }
+
+  function getBookQuestionCount(bConf, allQuestions) {
+    if (!bConf || !bConf.chapters || !allQuestions) return 0;
+    const chapters = bConf.chapters;
+    return allQuestions.filter(q => {
+      if (bConf.subject && q.subject !== bConf.subject) return false;
+      return chapters.some(tc => {
+        const t = tc.toLowerCase();
+        const qc = q.chapter.toLowerCase();
+        return t === qc || t.includes(qc) || qc.includes(t);
+      });
+    }).length;
+  }
+
+  function getWeekTotalQuestions(weekKey, allQuestions) {
+    const wConf = WEEK_BOOK_MAP[weekKey];
+    if (!wConf || !wConf.books || !allQuestions) return 0;
+    const seen = new Set();
+    Object.values(wConf.books).forEach(bConf => {
+      const chapters = bConf.chapters || [];
+      allQuestions.forEach(q => {
+        if (bConf.subject && q.subject !== bConf.subject) return;
+        const matches = chapters.some(tc => {
+          const t = tc.toLowerCase();
+          const qc = q.chapter.toLowerCase();
+          return t === qc || t.includes(qc) || qc.includes(t);
+        });
+        if (matches) seen.add(q.id);
+      });
+    });
+    return seen.size;
+  }
+
   // Parse Route to Extract Week and Book
   function parseSprintRoute(route) {
     // Expected patterns:
     // study/board-sprints (Master Overview)
+    // study/board-sprints/rag (Dedicated RAG Audit Tracker list)
+    // study/board-sprints/questions (Master Question Bank)
     // study/board-sprints/week-X
-    // study/board-sprints/week-X/book-Y
+    // study/board-sprints/week-X/book-Y or week-X/all
     // study/board-sprints/formulae
     if (!route || typeof route !== 'string') {
-      return { isOverview: true, week: 'week-1', book: 'physics-1', isFormulae: false };
+      return { isOverview: true, week: 'week-1', book: 'all', isFormulae: false };
     }
 
     if (route.includes('formulae') || route.endsWith('/formulae')) {
-      return { isOverview: false, week: 'week-10', book: 'physics', isFormulae: true };
+      return { isOverview: false, isFormulae: true, week: 'week-10', book: 'physics' };
     }
 
     const parts = route.split('/').filter(Boolean);
     // parts[0] = 'study', parts[1] = 'board-sprints'
     if (parts.length <= 2 || parts[2] === 'overview') {
-      return { isOverview: true, week: 'week-1', book: 'physics-1', isFormulae: false };
+      return { isOverview: true, week: 'week-1', book: 'all', isFormulae: false };
+    }
+
+    if (parts[2] === 'rag' || parts[2].startsWith('rag')) {
+      return { isOverview: false, isRag: true, week: 'week-1', book: 'all', isFormulae: false };
+    }
+
+    if (parts[2] === 'questions' || parts[2].startsWith('questions')) {
+      return { isOverview: false, isQuestions: true, week: 'week-8', book: 'all', isFormulae: false };
     }
 
     let week = 'week-1';
@@ -1396,14 +1468,12 @@
         week = 'week-1';
       } else if (parts[2] === 'model') {
         week = 'week-9';
-      } else if (parts[2] === 'questions') {
-        week = 'week-8';
       }
     }
 
     const weekConfig = WEEK_BOOK_MAP[week] || WEEK_BOOK_MAP['week-1'];
-    if (!book || !weekConfig.books[book]) {
-      book = weekConfig.defaultBook;
+    if (book !== 'all' && (!book || !weekConfig.books[book])) {
+      book = 'all';
     }
 
     return { isOverview: false, week, book, isFormulae: week === 'week-10' };
@@ -1600,115 +1670,138 @@
           </div>
         </section>
 
-        <!-- INTERACTIVE R-A-G CHAPTER AUDIT TRACKER (LEVEL 1 IMPLEMENTATION) -->
-        <section class="rag-audit-tracker-section" id="ragAuditTracker">
+        <!-- INTERACTIVE R-A-G CHAPTER AUDIT GATEWAY (LEVEL 1 CLEARANCE ENGINE) -->
+        <section class="rag-audit-gateway-section" id="ragAuditTracker">
           <div class="system-header">
             <div class="system-title-wrap">
               <i data-lucide="shield-alert"></i>
               <h2>Interactive R-A-G Chapter Audit Tracker (Level 1 Mop-Up)</h2>
             </div>
-            <span class="system-badge">Syllabus Mop-Up Engine · Target: 0 Red Chapters</span>
-          </div>
-          <p class="rag-section-intro">
-            Categorize each chapter into <strong>Red</strong> (uncomfortable/avoided), <strong>Amber</strong> (needs formula & question revision), or <strong>Green</strong> (mastered 95%+). 
-            According to the 75-Day Protocol, <strong>all Red chapters must be cleared during Level 1 (Weeks 1–3)</strong> before moving into past paper marathons.
-          </p>
-
-          <!-- RAG KPI SHELF & READINESS PROGRESS METER -->
-          <div class="rag-kpi-shelf">
-            <div class="rag-kpi-card kpi-red" onclick="HM.setRagStatusFilter('red')" title="Filter Red Chapters">
-              <div class="kpi-icon"><i data-lucide="alert-circle"></i></div>
-              <div class="kpi-body">
-                <span class="kpi-label">Red Flag Chapters</span>
-                <span class="kpi-value" id="ragRedCount">${redCount}</span>
-                <small class="kpi-desc">Action: Urgent Level 1 Mop-Up</small>
-              </div>
-            </div>
-            <div class="rag-kpi-card kpi-amber" onclick="HM.setRagStatusFilter('amber')" title="Filter Amber Chapters">
-              <div class="kpi-icon"><i data-lucide="clock"></i></div>
-              <div class="kpi-body">
-                <span class="kpi-label">Amber Chapters</span>
-                <span class="kpi-value" id="ragAmberCount">${amberCount}</span>
-                <small class="kpi-desc">Action: 10-Yr Question Practice</small>
-              </div>
-            </div>
-            <div class="rag-kpi-card kpi-green" onclick="HM.setRagStatusFilter('green')" title="Filter Green Chapters">
-              <div class="kpi-icon"><i data-lucide="check-circle-2"></i></div>
-              <div class="kpi-body">
-                <span class="kpi-label">Green Mastered</span>
-                <span class="kpi-value" id="ragGreenCount">${greenCount}</span>
-                <small class="kpi-desc">Action: 3-Hour Mock Ready</small>
-              </div>
-            </div>
-            <div class="rag-kpi-card kpi-score">
-              <div class="kpi-icon"><i data-lucide="gauge"></i></div>
-              <div class="kpi-body">
-                <span class="kpi-label">Readiness Index</span>
-                <span class="kpi-value" id="ragReadinessScore">${readinessScore}%</span>
-                <small class="kpi-desc">Target: 95%+ Board Ready</small>
-              </div>
-            </div>
+            <span class="system-badge">Target: 0 Red Chapters Before Day 20</span>
           </div>
 
-          <!-- STACKED PROGRESS BAR -->
-          <div class="rag-meter-wrap">
+          <div class="rag-gateway-card" id="ragGatewayCard">
+            <div class="rag-gateway-text">
+              <p class="rag-gateway-lead">
+                Every chapter across Physics, Chemistry, Maths, CS, and English is categorized into <strong>Red</strong> (urgent mop-up), <strong>Amber</strong> (active practice), or <strong>Green</strong> (board-ready). 
+                Under the Conferenza 75-Day Framework, <strong>all Red chapters must be eliminated in Weeks 1–3</strong> to secure an airtight 40+ foundation baseline before Pre-Board II.
+              </p>
+              <div class="rag-gateway-action-row">
+                <button type="button" class="btn-gateway-rag" onclick="location.hash='#/study/board-sprints/rag'">
+                  <i data-lucide="check-check"></i>
+                  <span>Open High-Density R-A-G Audit Tracker (47 Chapters)</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+                <button type="button" class="btn-gateway-qb" onclick="location.hash='#/study/board-sprints/questions'">
+                  <i data-lucide="list-ordered"></i>
+                  <span>Browse 10-Year Question Bank (${allQuestions.length} Qs)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- RAG KPI STATS ON GATEWAY CARD -->
+            <div class="rag-gateway-kpis">
+              <div class="rg-stat rg-red" onclick="location.hash='#/study/board-sprints/rag'" title="Open Red chapters">
+                <span class="rg-val" id="ragRedCount">${redCount}</span>
+                <span class="rg-label">🔴 Red Urgent</span>
+              </div>
+              <div class="rg-stat rg-amber" onclick="location.hash='#/study/board-sprints/rag'" title="Open Amber chapters">
+                <span class="rg-val" id="ragAmberCount">${amberCount}</span>
+                <span class="rg-label">🟡 Amber Review</span>
+              </div>
+              <div class="rg-stat rg-green" onclick="location.hash='#/study/board-sprints/rag'" title="Open Green chapters">
+                <span class="rg-val" id="ragGreenCount">${greenCount}</span>
+                <span class="rg-label">🟢 Green Ready</span>
+              </div>
+              <div class="rg-stat rg-score" onclick="location.hash='#/study/board-sprints/rag'" title="View Readiness Index">
+                <span class="rg-val" id="ragReadinessScore">${readinessScore}%</span>
+                <span class="rg-label">Readiness Index</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACKED PROGRESS METER ON GATEWAY -->
+          <div class="rag-meter-wrap" style="margin-top: 0.75rem;">
             <div class="rag-meter-bar">
               <div class="rag-bar-segment seg-green" id="ragBarGreen" style="width: ${Math.round((greenCount / totalChapters) * 100)}%;" title="Green Mastered"></div>
               <div class="rag-bar-segment seg-amber" id="ragBarAmber" style="width: ${Math.round((amberCount / totalChapters) * 100)}%;" title="Amber Review"></div>
               <div class="rag-bar-segment seg-red" id="ragBarRed" style="width: ${Math.round((redCount / totalChapters) * 100)}%;" title="Red Urgent"></div>
             </div>
             <div class="rag-meter-labels">
-              <span>🟢 Green (${greenCount})</span>
-              <span>🟡 Amber (${amberCount})</span>
-              <span>🔴 Red (${redCount})</span>
+              <span>🟢 Green (${greenCount} chapters)</span>
+              <span>🟡 Amber (${amberCount} chapters)</span>
+              <span>🔴 Red (${redCount} chapters)</span>
             </div>
           </div>
+        </section>
 
-          <!-- RAG CONTROLS & FILTER BAR -->
-          <div class="rag-controls-bar">
-            <div class="rag-subject-filter-pills" id="ragSubjFilter">
-              <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagSubjectFilter('all')">All (${totalChapters})</button>
-              <button type="button" class="btn-rag-filter" data-val="Physics" onclick="HM.setRagSubjectFilter('Physics')">Physics</button>
-              <button type="button" class="btn-rag-filter" data-val="Chemistry" onclick="HM.setRagSubjectFilter('Chemistry')">Chemistry</button>
-              <button type="button" class="btn-rag-filter" data-val="Mathematics" onclick="HM.setRagSubjectFilter('Mathematics')">Math</button>
-              <button type="button" class="btn-rag-filter" data-val="Computer Science" onclick="HM.setRagSubjectFilter('Computer Science')">Computer Science</button>
-              <button type="button" class="btn-rag-filter" data-val="English Core" onclick="HM.setRagSubjectFilter('English Core')">English Core</button>
+        <!-- PEDAGOGICAL ARCHITECTURE & WEEKLY ALLOCATION RATIONALE -->
+        <section class="rationale-section" id="sprintRationale">
+          <div class="system-header">
+            <div class="system-title-wrap">
+              <i data-lucide="compass"></i>
+              <h2>75-Day Sprint Architecture: How Each Week Was Determined</h2>
             </div>
-            <div class="rag-status-filter-pills" id="ragStatusFilter">
-              <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagStatusFilter('all')">All Status</button>
-              <button type="button" class="btn-rag-filter filter-red" data-val="red" onclick="HM.setRagStatusFilter('red')">🔴 Red Only</button>
-              <button type="button" class="btn-rag-filter filter-amber" data-val="amber" onclick="HM.setRagStatusFilter('amber')">🟡 Amber Only</button>
-              <button type="button" class="btn-rag-filter filter-green" data-val="green" onclick="HM.setRagStatusFilter('green')">🟢 Green Only</button>
-            </div>
-            <div class="rag-search-box">
-              <input type="text" id="ragSearchInput" placeholder="Filter chapter name..." oninput="HM.handleRagSearch(this.value)">
-            </div>
+            <span class="system-badge">Pedagogical Sequencing & Allocation Rationale</span>
           </div>
 
-          <!-- CHAPTER CARDS MATRIX -->
-          <div class="rag-chapters-grid" id="ragChaptersGrid">
-            ${RAG_CHAPTERS.map(ch => {
-              const status = ragMap[ch.name] || ch.defaultRag || 'amber';
-              const subjConf = SUBJECT_CONFIG[ch.subject] || { color: '#0d9488', badgeBg: '#f0fdfa' };
-              return `
-                <div class="rag-chapter-card" data-rag-chapter="${escapeHtml(ch.name)}" data-subject="${escapeHtml(ch.subject)}" data-current-rag="${status}">
-                  <div class="rag-card-header">
-                    <span class="rag-subj-badge" style="background: ${subjConf.badgeBg}; color: ${subjConf.color};">
-                      ${escapeHtml(ch.subject)}
-                    </span>
-                    <span class="rag-weight-tag">${escapeHtml(ch.weight)}</span>
-                  </div>
-                  <h4 class="rag-chapter-title">${escapeHtml(ch.name)}</h4>
-                  <p class="rag-chapter-role">${escapeHtml(ch.role)}</p>
-                  
-                  <div class="rag-toggle-group">
-                    <button type="button" class="btn-rag-toggle rag-t-red ${status === 'red' ? 'active' : ''}" data-rag-color="red" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'red')">🔴 Red</button>
-                    <button type="button" class="btn-rag-toggle rag-t-amber ${status === 'amber' ? 'active' : ''}" data-rag-color="amber" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'amber')">🟡 Amber</button>
-                    <button type="button" class="btn-rag-toggle rag-t-green ${status === 'green' ? 'active' : ''}" data-rag-color="green" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'green')">🟢 Green</button>
-                  </div>
-                </div>
-              `;
-            }).join('')}
+          <div class="rationale-intro-box">
+            <p>
+              The 75-Day Sprint does not follow chronological textbook order. Instead, it uses an <strong>examiner-weighted pedagogical staging</strong> adapted from the CBSE Class 12 high-velocity revision framework:
+            </p>
+          </div>
+
+          <div class="rationale-levels-grid">
+            <article class="rationale-card rat-lv1">
+              <div class="rat-card-head">
+                <span class="rat-badge">LEVEL 1 · DAYS 1–20 (WEEKS 1–3)</span>
+                <h3>Foundation & Pre-Board II Climax</h3>
+              </div>
+              <p class="rat-desc"><strong>Pedagogical Goal:</strong> Guarantee an immediate 40+ mark foundation before PB2 starts (Oct 16) and eliminate every single RED chapter.</p>
+              <ul class="rat-points">
+                <li><strong>Week 1 (High-Yield Foundation):</strong> Locks high-weightage fundamentals: Electrostatics (16M), Solutions (14M), Python Functions & Scope (10M), Matrices (10M), and Flamingo (18M). These are essential prerequisites for electrodynamics, kinetics, and calculus.</li>
+                <li><strong>Week 2 (Laws & Numericals):</strong> Targets formula-driven certainty: Microscopic Ohm’s law, Kirchhoff’s loop proofs, Chemical Kinetics first-order half-life, File Handling (pickle/CSV), and official Notice/Invite formats.</li>
+                <li><strong>Week 3 (Pre-Board II Climax):</strong> AC series LCR resonance phasor (5M staple), Coordination Compounds CFT Δ₀ splitting, Maxima-Minima 5M optimization word problems, and CS LIFO Stack push/pop algorithms.</li>
+              </ul>
+            </article>
+
+            <article class="rationale-card rat-lv2">
+              <div class="rat-card-head">
+                <span class="rat-badge">LEVEL 2 · DAYS 21–45 (WEEKS 4–7)</span>
+                <h3>Mid-Sprint Numerical & Mechanism Mastery</h3>
+              </div>
+              <p class="rat-desc"><strong>Pedagogical Goal:</strong> Complete 100% of the syllabus by Day 45 while conquering the heaviest board mark magnets.</p>
+              <ul class="rat-points">
+                <li><strong>Week 4 (Diagnostic Gap Repair & SQL):</strong> Audits mistakes from Pre-Board II, trains Galvanometer conversions (shunt vs multiplier), Nernst EMF calculations, and 4-mark SQL GROUP BY / 2-Table Joins.</li>
+                <li><strong>Week 5 (Optics & Organics):</strong> The 18-mark optics juggernaut (Lens Maker formula, Telescope ray diagram, Huygens wavefronts) combined with Organic mechanisms (SN1 vs SN2 Walden inversion, Aldol, Cannizzaro) and Definite Integrals (King's Rule).</li>
+                <li><strong>Week 6 (Modern Physics & Amines):</strong> High-yield scoring units: Einstein’s Photoelectric equation, Bohr radius, Carbonyls, Hoffmann Bromamide degradation, Differential Equations, and Python MySQL connectors.</li>
+                <li><strong>Week 7 (3D Lines & Semiconductors):</strong> Final syllabus mop-up: Full-wave rectifiers, Biomolecules glucose/DNA, 3D Geometry shortest distance between skew lines, and Vistas ethics. <em>100% syllabus is completed here.</em></li>
+              </ul>
+            </article>
+
+            <article class="rationale-card rat-lv3">
+              <div class="rat-card-head">
+                <span class="rat-badge">LEVEL 3 · DAYS 46–65 (WEEKS 8–9)</span>
+                <h3>10-Year Question Bank & Timed 3-Hour Simulations</h3>
+              </div>
+              <p class="rat-desc"><strong>Pedagogical Goal:</strong> Transition from chapter study to full-paper speed, pattern recognition, and exam hall stamina.</p>
+              <ul class="rat-points">
+                <li><strong>Week 8 (10-Year Board Papers):</strong> Authentic 2015–2024 CBSE question bank analysis. 65–70% of CBSE marks come from recurring question blueprints. Students master step marking (where half-marks are awarded/deducted).</li>
+                <li><strong>Week 9 (January Full Model Exam):</strong> Full 3-hour timed simulations (10:30 AM – 1:30 PM). Trains the 160-minute target finish and reserves 20 minutes exclusively for the Error Leak Audit.</li>
+              </ul>
+            </article>
+
+            <article class="rationale-card rat-lv4">
+              <div class="rat-card-head">
+                <span class="rat-badge">LEVEL 4 · DAYS 66–75 (WEEKS 10–11)</span>
+                <h3>One-Page Formula Ledgers & Final Peak Calm</h3>
+              </div>
+              <p class="rat-desc"><strong>Pedagogical Goal:</strong> Zero new concepts, active recall without notes, sleep hygiene, and biological peak performance.</p>
+              <ul class="rat-points">
+                <li><strong>Week 10 (Formula & Code Ledgers):</strong> Active retrieval testing using compressed one-page formula, reaction, and code ledgers on blank sheets.</li>
+                <li><strong>Week 11 (Final Pre-Exam Taper):</strong> Reviewing personal Error Leak Logs (sign slips, forgotten units, pacing traps), circadian sleep alignment (8 hours), and walking into the exam hall completely centered.</li>
+              </ul>
+            </article>
           </div>
         </section>
 
@@ -2075,30 +2168,369 @@
     `;
   }
 
-  // Main View Renderer
-  function boardSprintsView(routeParam) {
-    const routeInfo = parseSprintRoute(routeParam);
-    if (routeInfo.isOverview) {
-      return renderMasterBoardSprintDashboard();
+  // Dedicated R-A-G Audit Tracker List View (Route: study/board-sprints/rag)
+  function renderRagAuditListView() {
+    const allQuestions = getAllQuestions();
+    const ragMap = getRagAuditMap();
+    const totalChapters = RAG_CHAPTERS.length;
+    let redCount = 0, amberCount = 0, greenCount = 0;
+    RAG_CHAPTERS.forEach(ch => {
+      const c = ragMap[ch.name] || ch.defaultRag || 'amber';
+      if (c === 'red') redCount++;
+      else if (c === 'amber') amberCount++;
+      else if (c === 'green') greenCount++;
+    });
+    const readinessScore = Math.round(((greenCount * 1.0 + amberCount * 0.5) / totalChapters) * 100);
+
+    return `
+      <div class="board-sprints-container rag-audit-page-container zen-focus-container" id="boardSprintsContainer">
+        <!-- HEADER -->
+        <header class="zen-sprint-header">
+          <div class="zen-header-main">
+            <div class="zen-header-titles">
+              <div class="master-badge-row" style="margin-bottom: 0.35rem;">
+                <span class="hero-badge"><i data-lucide="shield-alert"></i> Level 1 Mop-Up System</span>
+                <span class="hero-subbadge"><i data-lucide="check-check"></i> Target: 0 Red Chapters</span>
+                <span class="hero-tag">47 Core Chapters</span>
+              </div>
+              <h1 class="zen-title">R-A-G Chapter Audit Tracker</h1>
+              <p class="zen-subtitle">High-density syllabus audit table. Eliminate all Red chapters in Level 1 (Weeks 1–3) to lock a 40+ foundation baseline before Pre-Board II.</p>
+            </div>
+            <div class="zen-header-actions">
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="View 75-Day Master Plan">
+                <i data-lucide="compass"></i>
+                <span>Master Plan</span>
+              </button>
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints/questions'" title="Open 10-Year Question Bank">
+                <i data-lucide="list-ordered"></i>
+                <span>Question Bank</span>
+              </button>
+              <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Audit Checklist">
+                <i data-lucide="printer"></i>
+                <span>Print</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- KPI SHELF -->
+        <section class="rag-kpi-shelf" style="margin-top: 1rem;">
+          <div class="rag-kpi-card kpi-red" onclick="HM.setRagStatusFilter('red')" title="Filter Red Chapters">
+            <div class="kpi-icon"><i data-lucide="alert-circle"></i></div>
+            <div class="kpi-body">
+              <span class="kpi-label">Red Flag Chapters</span>
+              <span class="kpi-value" id="ragRedCount">${redCount}</span>
+              <small class="kpi-desc">Action: Urgent Level 1 Mop-Up</small>
+            </div>
+          </div>
+          <div class="rag-kpi-card kpi-amber" onclick="HM.setRagStatusFilter('amber')" title="Filter Amber Chapters">
+            <div class="kpi-icon"><i data-lucide="clock"></i></div>
+            <div class="kpi-body">
+              <span class="kpi-label">Amber Chapters</span>
+              <span class="kpi-value" id="ragAmberCount">${amberCount}</span>
+              <small class="kpi-desc">Action: 10-Yr Question Practice</small>
+            </div>
+          </div>
+          <div class="rag-kpi-card kpi-green" onclick="HM.setRagStatusFilter('green')" title="Filter Green Chapters">
+            <div class="kpi-icon"><i data-lucide="check-circle-2"></i></div>
+            <div class="kpi-body">
+              <span class="kpi-label">Green Mastered</span>
+              <span class="kpi-value" id="ragGreenCount">${greenCount}</span>
+              <small class="kpi-desc">Action: 3-Hour Mock Ready</small>
+            </div>
+          </div>
+          <div class="rag-kpi-card kpi-score">
+            <div class="kpi-icon"><i data-lucide="gauge"></i></div>
+            <div class="kpi-body">
+              <span class="kpi-label">Readiness Index</span>
+              <span class="kpi-value" id="ragReadinessScore">${readinessScore}%</span>
+              <small class="kpi-desc">Target: 95%+ Board Ready</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROGRESS METER -->
+        <div class="rag-meter-wrap" style="margin-top: 0.75rem;">
+          <div class="rag-meter-bar">
+            <div class="rag-bar-segment seg-green" id="ragBarGreen" style="width: ${Math.round((greenCount / totalChapters) * 100)}%;" title="Green Mastered"></div>
+            <div class="rag-bar-segment seg-amber" id="ragBarAmber" style="width: ${Math.round((amberCount / totalChapters) * 100)}%;" title="Amber Review"></div>
+            <div class="rag-bar-segment seg-red" id="ragBarRed" style="width: ${Math.round((redCount / totalChapters) * 100)}%;" title="Red Urgent"></div>
+          </div>
+          <div class="rag-meter-labels">
+            <span>🟢 Green (${greenCount})</span>
+            <span>🟡 Amber (${amberCount})</span>
+            <span>🔴 Red (${redCount})</span>
+          </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="rag-controls-bar" style="margin-top: 1rem;">
+          <div class="rag-subject-filter-pills" id="ragSubjFilter">
+            <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagSubjectFilter('all')">All (${totalChapters})</button>
+            <button type="button" class="btn-rag-filter" data-val="Physics" onclick="HM.setRagSubjectFilter('Physics')">Physics (12)</button>
+            <button type="button" class="btn-rag-filter" data-val="Chemistry" onclick="HM.setRagSubjectFilter('Chemistry')">Chemistry (10)</button>
+            <button type="button" class="btn-rag-filter" data-val="Mathematics" onclick="HM.setRagSubjectFilter('Mathematics')">Math (10)</button>
+            <button type="button" class="btn-rag-filter" data-val="Computer Science" onclick="HM.setRagSubjectFilter('Computer Science')">CS (5)</button>
+            <button type="button" class="btn-rag-filter" data-val="English Core" onclick="HM.setRagSubjectFilter('English Core')">English (10)</button>
+          </div>
+          <div class="rag-status-filter-pills" id="ragStatusFilter">
+            <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagStatusFilter('all')">All Status</button>
+            <button type="button" class="btn-rag-filter filter-red" data-val="red" onclick="HM.setRagStatusFilter('red')">🔴 Red Only</button>
+            <button type="button" class="btn-rag-filter filter-amber" data-val="amber" onclick="HM.setRagStatusFilter('amber')">🟡 Amber Only</button>
+            <button type="button" class="btn-rag-filter filter-green" data-val="green" onclick="HM.setRagStatusFilter('green')">🟢 Green Only</button>
+          </div>
+          <div class="rag-search-box">
+            <input type="text" id="ragSearchInput" placeholder="Filter chapter or focus..." oninput="HM.handleRagSearch(this.value)">
+          </div>
+        </div>
+
+        <!-- HIGH-DENSITY AUDIT LIST/TABLE -->
+        <div class="rag-audit-table-wrap" id="ragAuditTracker" style="margin-top: 1rem;">
+          <div class="rag-table-header">
+            <div class="rag-col rag-col-status">Status Toggle</div>
+            <div class="rag-col rag-col-subj">Subject</div>
+            <div class="rag-col rag-col-ch">Chapter Name & Derivation Focus</div>
+            <div class="rag-col rag-col-weight">Weight</div>
+            <div class="rag-col rag-col-qs">Practice Bank</div>
+            <div class="rag-col rag-col-yt">Masterclass Video</div>
+          </div>
+          <div class="rag-table-body" id="ragChaptersGrid">
+            ${RAG_CHAPTERS.map(ch => {
+              const status = ragMap[ch.name] || ch.defaultRag || 'amber';
+              const subjConf = SUBJECT_CONFIG[ch.subject] || { color: '#0d9488', badgeBg: '#f0fdfa' };
+              const ref = getChapterRef(ch.name);
+              const qCount = getChapterQuestionCount(ch.name, allQuestions);
+              return `
+                <div class="rag-table-row rag-chapter-card" data-rag-chapter="${escapeHtml(ch.name)}" data-subject="${escapeHtml(ch.subject)}" data-current-rag="${status}">
+                  <div class="rag-col rag-col-status">
+                    <div class="rag-toggle-group-sm">
+                      <button type="button" class="btn-rag-toggle rag-t-red ${status === 'red' ? 'active' : ''}" data-rag-color="red" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'red')" title="Mark as Red (Urgent / Confused)">🔴 Red</button>
+                      <button type="button" class="btn-rag-toggle rag-t-amber ${status === 'amber' ? 'active' : ''}" data-rag-color="amber" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'amber')" title="Mark as Amber (Review Formulas & Qs)">🟡 Amber</button>
+                      <button type="button" class="btn-rag-toggle rag-t-green ${status === 'green' ? 'active' : ''}" data-rag-color="green" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'green')" title="Mark as Green (Mastered 95%+)">🟢 Green</button>
+                    </div>
+                  </div>
+                  <div class="rag-col rag-col-subj">
+                    <span class="rag-subj-badge" style="background: ${subjConf.badgeBg}; color: ${subjConf.color};">
+                      ${escapeHtml(ch.subject)}
+                    </span>
+                  </div>
+                  <div class="rag-col rag-col-ch">
+                    <strong class="rag-ch-title">${escapeHtml(ch.name)}</strong>
+                    <span class="rag-ch-role">${escapeHtml(ch.role)}</span>
+                  </div>
+                  <div class="rag-col rag-col-weight">
+                    <span class="rag-weight-tag">${escapeHtml(ch.weight)}</span>
+                  </div>
+                  <div class="rag-col rag-col-qs">
+                    <button type="button" class="btn-rag-qs-link" onclick="location.hash='#/study/board-sprints/questions?chapter=' + encodeURIComponent('${escapeHtml(ch.name)}')" title="Practice authentic board questions for ${escapeHtml(ch.name)}">
+                      <span>${qCount} Qs</span>
+                      <i data-lucide="arrow-right"></i>
+                    </button>
+                  </div>
+                  <div class="rag-col rag-col-yt">
+                    <a href="${escapeHtml(ref.yt.url)}" target="_blank" rel="noopener noreferrer" class="btn-rag-yt-link" title="${escapeHtml(ref.yt.title)} (${escapeHtml(ref.yt.channel)})">
+                      <i data-lucide="play-circle"></i>
+                      <span>${escapeHtml(ref.yt.duration.split(' ')[0])} Tamil</span>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Master 10-Year Question Bank Browser (Route: study/board-sprints/questions)
+  function renderMasterQuestionBankView() {
+    const allQuestions = getAllQuestions();
+    const mastered = getMasteredSet();
+
+    // Check if query params specify a chapter filter (e.g. from RAG page)
+    const hash = location.hash;
+    let preselectedChapter = '';
+    if (hash.includes('chapter=')) {
+      const parts = hash.split('chapter=');
+      if (parts[1]) {
+        preselectedChapter = decodeURIComponent(parts[1].split('&')[0]);
+      }
     }
 
+    const currentSubject = state.qbSubject || 'all';
+    const currentChapter = preselectedChapter || (state.qbChapter || 'all');
+    const currentMarks = state.marks || 'all';
+    const searchQuery = (state.search || '').trim().toLowerCase();
+
+    // Filter questions
+    const filteredQuestions = allQuestions.filter(q => {
+      if (currentSubject !== 'all' && q.subject !== currentSubject) return false;
+      if (currentMarks !== 'all' && String(q.marks) !== String(currentMarks)) return false;
+      if (currentChapter !== 'all') {
+        const c1 = q.chapter.toLowerCase();
+        const c2 = currentChapter.toLowerCase();
+        if (c1 !== c2 && !c1.includes(c2) && !c2.includes(c1)) return false;
+      }
+      if (searchQuery) {
+        const text = `${q.chapter} ${q.stem} ${q.subject} ${q.type || ''} ${q.year || ''} ${q.modelAnswer || ''}`.toLowerCase();
+        if (!text.includes(searchQuery)) return false;
+      }
+      return true;
+    });
+
+    const masteredCount = filteredQuestions.filter(q => mastered.has(q.id)).length;
+    const progressPercent = filteredQuestions.length > 0 ? Math.round((masteredCount / filteredQuestions.length) * 100) : 0;
+
+    // Distinct chapters for dropdown
+    const availableChapters = Array.from(new Set(
+      allQuestions
+        .filter(q => currentSubject === 'all' || q.subject === currentSubject)
+        .map(q => q.chapter)
+    )).sort();
+
+    return `
+      <div class="board-sprints-container qb-page-container zen-focus-container" id="boardSprintsContainer">
+        <!-- HEADER -->
+        <header class="zen-sprint-header">
+          <div class="zen-header-main">
+            <div class="zen-header-titles">
+              <div class="master-badge-row" style="margin-bottom: 0.35rem;">
+                <span class="hero-badge"><i data-lucide="shield-check"></i> 10-Year CBSE Question Bank</span>
+                <span class="hero-subbadge"><i data-lucide="check-check"></i> ${allQuestions.length} Authentic Board Questions</span>
+                <span class="hero-tag">Step Marking & Caution Traps</span>
+              </div>
+              <h1 class="zen-title">10-Year Master Question Bank</h1>
+              <p class="zen-subtitle">Complete question browser across Physics (042), Chemistry (043), Mathematics (041), Computer Science (083), and English Core (301) with official CBSE marking rubrics.</p>
+            </div>
+            <div class="zen-header-actions">
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="View 75-Day Master Plan">
+                <i data-lucide="compass"></i>
+                <span>Master Plan</span>
+              </button>
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints/rag'" title="Open R-A-G Audit Tracker">
+                <i data-lucide="check-check"></i>
+                <span>R-A-G Audit</span>
+              </button>
+              <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Questions">
+                <i data-lucide="printer"></i>
+                <span>Print</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SUBJECT NAVBAR PILLS -->
+          <nav class="zen-books-navbar" aria-label="Filter question bank by subject">
+            <button type="button" class="zen-book-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
+              <i data-lucide="layers"></i>
+              <span>All Subjects (${allQuestions.length})</span>
+            </button>
+            ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
+              const sCount = allQuestions.filter(q => q.subject === sName).length;
+              return `
+                <button type="button" class="zen-book-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
+                  <i data-lucide="${sConf.icon}"></i>
+                  <span>${escapeHtml(sName)} (${sCount})</span>
+                </button>
+              `;
+            }).join('')}
+          </nav>
+        </header>
+
+        <!-- FILTER CONTROLS BAR -->
+        <section class="zen-filter-bar" style="margin-top: 1rem;">
+          <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
+            <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M Case</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M Long</button>
+          </div>
+
+          <div class="qb-chapter-select-wrap">
+            <select id="qbChapterSelect" class="qb-chapter-dropdown" onchange="HM.setQbChapter(this.value)">
+              <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters (${availableChapters.length})</option>
+              ${availableChapters.map(ch => `
+                <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="zen-search-wrap">
+            <i data-lucide="search" class="zen-search-icon"></i>
+            <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search questions, formulas, keywords..." value="${escapeHtml(state.search)}">
+            ${state.search ? `
+              <button type="button" class="search-clear-btn" id="sprintSearchClear" title="Clear search">
+                <i data-lucide="x"></i>
+              </button>
+            ` : ''}
+          </div>
+        </section>
+
+        <!-- SUMMARY STRIP -->
+        <div class="qb-summary-strip" style="margin-top: 0.75rem;">
+          <div class="qb-count-info">
+            <strong>Showing ${filteredQuestions.length}</strong> of ${allQuestions.length} questions
+            ${currentSubject !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentSubject)}</span>` : ''}
+            ${currentChapter !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentChapter)}</span>` : ''}
+            ${currentMarks !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentMarks)} Marks</span>` : ''}
+          </div>
+          <div class="qb-mastery-meter">
+            <span>${masteredCount}/${filteredQuestions.length} Mastered (${progressPercent}%)</span>
+            <div class="qb-meter-bar"><div class="qb-meter-fill" style="width: ${progressPercent}%;"></div></div>
+          </div>
+        </div>
+
+        <!-- QUESTIONS LIST -->
+        <main class="zen-questions-deck" id="zenQuestionsDeck" style="margin-top: 1rem;">
+          ${filteredQuestions.length === 0 ? `
+            <div class="sprint-empty-state zen-empty">
+              <i data-lucide="filter-x"></i>
+              <h3>No questions matched your current filters</h3>
+              <p>Try resetting the subject or chapter filters or clearing your search term.</p>
+              <button type="button" class="btn-zen-clear" onclick="HM.resetQbFilters()">Reset All Filters</button>
+            </div>
+          ` : filteredQuestions.map((q, idx) => renderQuestionCard(q, idx, mastered.has(q.id))).join('')}
+        </main>
+      </div>
+    `;
+  }
+
+  // Weekly Sprint Question Deck
+  function renderWeeklySprint(routeInfo) {
     const { week, book, isFormulae } = routeInfo;
     state.week = week;
     state.book = book;
 
     const currentWeekConf = WEEK_BOOK_MAP[week] || WEEK_BOOK_MAP['week-1'];
-    const currentBookConf = currentWeekConf.books[book] || currentWeekConf.books[currentWeekConf.defaultBook];
+    const isAll = (book === 'all');
+    const currentBookConf = (!isAll && currentWeekConf.books[book]) ? currentWeekConf.books[book] : null;
 
     const mastered = getMasteredSet();
     const allQuestions = getAllQuestions();
-    const countdown = getCountdownStats();
+    const weekTotalQuestions = getWeekTotalQuestions(week, allQuestions);
 
     // Filter questions by selected week and book
-    const targetChapters = currentBookConf ? currentBookConf.chapters : [];
-    const targetSubject = currentBookConf ? currentBookConf.subject : null;
+    let targetChapters = [];
+    let targetSubject = null;
+    let bookLabel = 'All Subjects';
+
+    if (!isAll && currentBookConf) {
+      targetChapters = currentBookConf.chapters || [];
+      targetSubject = currentBookConf.subject || null;
+      bookLabel = currentBookConf.label;
+    } else {
+      // Gather all chapters across all books in this week
+      Object.values(currentWeekConf.books).forEach(b => {
+        if (b.chapters) {
+          targetChapters = targetChapters.concat(b.chapters);
+        }
+      });
+      bookLabel = `All Subjects (${weekTotalQuestions} Questions)`;
+    }
 
     const filteredQuestions = allQuestions.filter(q => {
-      // Must match subject
+      // Must match subject if not 'all'
       if (targetSubject && q.subject !== targetSubject) return false;
       // If chapters are specified for this book in this week, match them with alias resilience
       if (targetChapters.length > 0) {
@@ -2124,9 +2556,6 @@
     const totalInBook = filteredQuestions.length;
     const progressPercent = totalInBook > 0 ? Math.round((masteredInBook / totalInBook) * 100) : 0;
 
-    const activeFirstCh = (targetChapters && targetChapters.length > 0) ? targetChapters[0] : (currentBookConf ? currentBookConf.label : 'General');
-    const activeBookRef = getChapterRef(activeFirstCh);
-
     return `
       <div class="board-sprints-container zen-focus-container" id="boardSprintsContainer">
         <!-- ZEN SPRINT HEADER (CALM, MINIMAL, ZERO CLUTTER) -->
@@ -2134,12 +2563,16 @@
           <div class="zen-header-main">
             <div class="zen-header-titles">
               <h1 class="zen-title">${escapeHtml(currentWeekConf.title)}</h1>
-              <p class="zen-subtitle">${escapeHtml(currentBookConf ? currentBookConf.label : '')} · <span>${totalInBook} Curated Questions</span></p>
+              <p class="zen-subtitle">${escapeHtml(bookLabel)} · <span>${totalInBook} Curated Questions</span></p>
             </div>
             <div class="zen-header-actions">
-              <button type="button" class="btn-zen-action" onclick="location.hash='#/global/overview'" title="Exit sprint and return to Home">
-                <i data-lucide="house"></i>
-                <span>Home</span>
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="Exit sprint and return to Master Plan">
+                <i data-lucide="compass"></i>
+                <span>Master Plan</span>
+              </button>
+              <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints/rag'" title="Open R-A-G Audit Tracker">
+                <i data-lucide="check-check"></i>
+                <span>R-A-G</span>
               </button>
               <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Study Sheet">
                 <i data-lucide="printer"></i>
@@ -2150,12 +2583,17 @@
 
           <!-- BOOK TABS (CLEAN, MINIMAL TEXT PILLS) -->
           <nav class="zen-books-navbar" aria-label="Select book for this week">
+            <button type="button" class="zen-book-pill ${isAll ? 'active' : ''}" data-route="study/board-sprints/${week}/all">
+              <i data-lucide="layers"></i>
+              <span>All Subjects (${weekTotalQuestions})</span>
+            </button>
             ${Object.entries(currentWeekConf.books).map(([bKey, bConf]) => {
-              const isActive = bKey === book;
+              const isActive = !isAll && bKey === book;
+              const bCount = getBookQuestionCount(bConf, allQuestions);
               return `
                 <button type="button" class="zen-book-pill ${isActive ? 'active' : ''}" data-route="study/board-sprints/${week}/${bKey}">
                   <i data-lucide="${bConf.icon}"></i>
-                  <span>${escapeHtml(bConf.label.split('·')[0].trim())}</span>
+                  <span>${escapeHtml(bConf.label.split('·')[0].trim())} (${bCount})</span>
                 </button>
               `;
             }).join('')}
@@ -2195,6 +2633,21 @@
         `}
       </div>
     `;
+  }
+
+  // Main View Renderer
+  function boardSprintsView(routeParam) {
+    const routeInfo = parseSprintRoute(routeParam);
+    if (routeInfo.isOverview) {
+      return renderMasterBoardSprintDashboard();
+    }
+    if (routeInfo.isRag) {
+      return renderRagAuditListView();
+    }
+    if (routeInfo.isQuestions) {
+      return renderMasterQuestionBankView();
+    }
+    return renderWeeklySprint(routeInfo);
   }
 
   // Render Individual Question Card
@@ -2435,5 +2888,22 @@
   // Export to window.HM
   HM.boardSprintsView = boardSprintsView;
   HM.boardSprintsState = state;
+  HM.boardSprintsRerender = rerender;
+  HM.setQbSubject = function(subj) {
+    state.qbSubject = subj;
+    state.qbChapter = 'all';
+    rerender();
+  };
+  HM.setQbChapter = function(ch) {
+    state.qbChapter = ch;
+    rerender();
+  };
+  HM.resetQbFilters = function() {
+    state.qbSubject = 'all';
+    state.qbChapter = 'all';
+    state.marks = 'all';
+    state.search = '';
+    rerender();
+  };
 
 })();

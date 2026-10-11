@@ -9835,6 +9835,434 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   font-weight: 800;
 }
 
+/* High-Density R-A-G Audit Table Styles */
+.rag-audit-page-container {
+  max-width: 1200px;
+}
+
+.rag-audit-table-wrap {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+}
+
+.rag-table-header {
+  display: grid;
+  grid-template-columns: 200px 110px 1fr 65px 85px 125px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.15rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.74rem;
+  font-weight: 750;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.rag-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.rag-table-row {
+  display: grid;
+  grid-template-columns: 200px 110px 1fr 65px 85px 125px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.15rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: #ffffff;
+  transition: background 0.15s ease;
+}
+
+.rag-table-row:hover {
+  background: #fafbfc;
+}
+
+.rag-table-row:last-child {
+  border-bottom: none;
+}
+
+.rag-table-row[data-current-rag="red"] {
+  border-left: 4px solid #ef4444;
+}
+
+.rag-table-row[data-current-rag="amber"] {
+  border-left: 4px solid #f59e0b;
+}
+
+.rag-table-row[data-current-rag="green"] {
+  border-left: 4px solid #10b981;
+}
+
+.rag-toggle-group-sm {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.rag-toggle-group-sm .btn-rag-toggle {
+  padding: 0.25rem 0.45rem;
+  font-size: 0.68rem;
+  border-radius: 5px;
+}
+
+.rag-col-ch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.rag-ch-title {
+  font-size: 0.86rem;
+  font-weight: 750;
+  color: #0f172a;
+}
+
+.rag-ch-role {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+.btn-rag-qs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.55rem;
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  border-radius: 6px;
+  color: #0f766e;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-rag-qs-link:hover {
+  background: #0d9488;
+  color: #ffffff;
+}
+
+.btn-rag-qs-link svg {
+  width: 12px;
+  height: 12px;
+}
+
+.btn-rag-yt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.55rem;
+  background: #faf5ff;
+  border: 1px solid #f3e8ff;
+  border-radius: 6px;
+  color: #7c3aed;
+  font-size: 0.74rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-rag-yt-link:hover {
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.btn-rag-yt-link svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* RAG Gateway Card (Master Dashboard) */
+.rag-gateway-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+}
+
+.rag-gateway-text {
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rag-gateway-lead {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rag-gateway-action-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-gateway-rag {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.6rem 1.15rem;
+  border-radius: 8px;
+  font-weight: 750;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+
+.btn-gateway-rag:hover {
+  background: #0d9488;
+  transform: translateY(-1px);
+}
+
+.btn-gateway-qb {
+  background: #ffffff;
+  color: #334155;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 650;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-gateway-qb:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.rag-gateway-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  min-width: 270px;
+}
+
+.rg-stat {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.rg-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.rg-red { border-left: 3px solid #ef4444; }
+.rg-amber { border-left: 3px solid #f59e0b; }
+.rg-green { border-left: 3px solid #10b981; }
+.rg-score { border-left: 3px solid #7c3aed; }
+
+.rg-val {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.rg-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Pedagogical Rationale Section */
+.rationale-section {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.02);
+}
+
+.rationale-intro-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.86rem;
+  color: #334155;
+  line-height: 1.55;
+}
+
+.rationale-intro-box p {
+  margin: 0;
+}
+
+.rationale-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.rationale-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #0d9488;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rat-lv1 { border-top-color: #ef4444; }
+.rat-lv2 { border-top-color: #3b82f6; }
+.rat-lv3 { border-top-color: #f59e0b; }
+.rat-lv4 { border-top-color: #10b981; }
+
+.rat-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.rat-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.rat-card-head h3 {
+  font-size: 0.98rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0;
+}
+
+.rat-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0;
+}
+
+.rat-points {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.77rem;
+  line-height: 1.45;
+  color: #334155;
+}
+
+.rat-points li strong {
+  color: #0f172a;
+}
+
+/* Question Bank Page */
+.qb-page-container {
+  max-width: 1200px;
+}
+
+.qb-chapter-select-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.qb-chapter-dropdown {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  outline: none;
+  cursor: pointer;
+  max-width: 240px;
+}
+
+.qb-summary-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.qb-count-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.qb-active-tag {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.qb-mastery-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.qb-meter-bar {
+  width: 100px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.qb-meter-fill {
+  height: 100%;
+  background: #10b981;
+  transition: width 0.3s ease;
+}
+
 /* CONFERENZA 75-DAY FRAMEWORK & BESTSELLER ELEMENTS */
 .four-levels-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

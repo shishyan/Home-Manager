@@ -66,6 +66,8 @@
       route: 'study/board-sprints',
       items: [
         ['75-Day Sprint Master Plan', 'compass', 'study/board-sprints'],
+        ['R-A-G Chapter Audit Tracker', 'check-check', 'study/board-sprints/rag'],
+        ['10-Year Question Bank (314+ Qs)', 'list-ordered', 'study/board-sprints/questions'],
         ['Week 1 · High-Yield Foundation', 'calendar', 'study/board-sprints/week-1'],
         ['Week 2 · Laws & Numericals', 'calendar', 'study/board-sprints/week-2'],
         ['Week 3 · Pre-Board II Climax', 'target', 'study/board-sprints/week-3'],
@@ -73,7 +75,7 @@
         ['Week 5 · Optics & Organics', 'calendar', 'study/board-sprints/week-5'],
         ['Week 6 · Modern Physics & Amines', 'calendar', 'study/board-sprints/week-6'],
         ['Week 7 · 3D Lines & Semiconductors', 'calendar', 'study/board-sprints/week-7'],
-        ['Week 8 · 10-Year Board Papers', 'list-ordered', 'study/board-sprints/week-8'],
+        ['Week 8 · 10-Year Board Papers', 'layers', 'study/board-sprints/week-8'],
         ['Week 9 · January Model Exam (Full 3h)', 'calendar-check', 'study/board-sprints/week-9'],
         ['Week 10 · Formula & Code Ledgers', 'sigma', 'study/board-sprints/week-10'],
         ['Week 11 · Final Calm Sprint & Taper', 'calendar-range', 'study/board-sprints/week-11']
