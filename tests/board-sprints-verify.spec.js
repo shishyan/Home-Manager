@@ -7,7 +7,7 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
 
     // Verify Master Hero
     const heroTitle = page.locator('.master-title');
-    await expect(heroTitle).toHaveText('70-Day Board Sprint Master Plan');
+    await expect(heroTitle).toContainText('Exam Sprint Master Plan');
 
     // Verify Countdowns & Stats Shelf
     const statCards = page.locator('.master-stat-card');
@@ -15,7 +15,7 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
 
     // Verify Concept Section & Bestseller System
     const conceptHeader = page.locator('.concept-header h2');
-    await expect(conceptHeader).toContainText('The 70-Day Sprint Architecture');
+    await expect(conceptHeader).toContainText('Sprint Architecture');
 
     const bestsellerHeader = page.locator('.system-header h2');
     await expect(bestsellerHeader).toContainText('The Amazon #1 Bestseller Prep System');

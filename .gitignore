@@ -18,3 +18,4 @@ vendor/wllama/esm/*
 !vendor/wllama/esm/wasm/
 vendor/wllama/esm/wasm/*
 !vendor/wllama/esm/wasm/wllama.wasm
+scratch/
