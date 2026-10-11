@@ -58,7 +58,26 @@
       ['Events & polls', 'calendar-heart', 'community/participate'],
       ['Civic issues', 'ticket-check', 'community/tickets'],
       ['Local services', 'life-buoy', 'community/directory']
-    ]}
+    ]},
+    boardSprints: {
+      label: 'The Board Sprints',
+      icon: 'flame',
+      note: 'CBSE Class 12 high-impact exam preparation & sprints',
+      route: 'study/board-sprints',
+      items: [
+        ['70-Day Sprint Master Plan', 'compass', 'study/board-sprints'],
+        ['Week 1 · High-Yield Foundation', 'calendar', 'study/board-sprints/week-1'],
+        ['Week 2 · Laws & Numericals', 'calendar', 'study/board-sprints/week-2'],
+        ['Week 3 · Pre-Board II Climax', 'target', 'study/board-sprints/week-3'],
+        ['Week 4 · Diagnostic & SQL', 'clipboard-check', 'study/board-sprints/week-4'],
+        ['Week 5 · Optics & Organics', 'calendar', 'study/board-sprints/week-5'],
+        ['Week 6 · Modern Physics & Amines', 'calendar', 'study/board-sprints/week-6'],
+        ['Week 7 · 3D Lines & Semiconductors', 'calendar', 'study/board-sprints/week-7'],
+        ['Week 8 · 10-Year Board Papers', 'list-ordered', 'study/board-sprints/week-8'],
+        ['Week 9 · January Model Exam (Full 3h)', 'calendar-check', 'study/board-sprints/week-9'],
+        ['Week 10 · Formula & Code Ledgers', 'sigma', 'study/board-sprints/week-10']
+      ]
+    }
   };
 
   const settingsGroups = [
@@ -224,7 +243,12 @@
     'study/practice-hub': ['Practice & Assignments', 'Practice, tests and assignments'],
     'study/assessments': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
-    'study/reports': ['Education Reports', 'Academic and whole-child review']
+    'study/reports': ['Education Reports', 'Academic and whole-child review'],
+    'study/board-sprints': ['The Board Sprints', 'CBSE Class 12 high-impact exam preparation & sprints'],
+    'study/board-sprints/pb2': ['Pre-Board II Sprint', 'High-yield targets & questions for Oct 16 - Nov 06 Pre-Board II'],
+    'study/board-sprints/model': ['January Model Sprint', 'Full syllabus mock & model exam sprint'],
+    'study/board-sprints/questions': ['High-Probability Question Bank', 'Class 12 CBSE questions with step marking & diagrams'],
+    'study/board-sprints/formulae': ['Formula & Derivation Ledgers', 'High-yield formulas, constants, laws and derivations']
   };
   titles['home/life'] = ['Family Life Registry', 'Every important family record in one place'];
   Object.entries(HM.life.domains).forEach(([key, config]) => {
@@ -913,8 +937,8 @@
     const profiles = allProfiles;
 
     const route = location.hash.slice(2) || 'study/overview';
-    const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice-hub':'Practice & Assignments'}[route] || '';
-    const pageLabelById = {'study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar',learning:'Learning',summary:'Learning',understand:'Learning',resource:'Learning',book:'Read Book','study/practice-hub':'Practice & Assignments'};
+    const routePage = {'study/student-overview':'Student Dashboard','study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar','study/books':'Read Book','study/practice':'Practice',practice:'Practice','study/practice-hub':'Assignments'}[route] || '';
+    const pageLabelById = {'study/overview':'Overview','study/curriculum':'Progress','study/planner':'Calendar',learning:'Learning',summary:'Learning',understand:'Learning',resource:'Learning',book:'Read Book','study/practice':'Practice',practice:'Practice','study/practice-hub':'Assignments'};
     const activePage = activeSection ? (pageLabelById[activeSection] || activeSection) : (pageLabelById[D.state.settings.educationActivePage] || routePage);
     const expandedSubject = D.state.settings.educationExpandedSubject;
     const collapsedClasses = D.state.settings.educationCollapsedClasses || [];
@@ -932,6 +956,14 @@
             <span class="nav-icon" style="color:var(--tone-1,#99f6e4);"><i data-lucide="graduation-cap"></i></span>
             <div class="class-summary-text"><b>Class ${e(profile.grade)}</b><small>${e(profile.name)}</small></div>
           </summary>
+          ${(+profile.grade === 12 || profile.personId === 'p3') ? `
+            <div class="education-class-sprints-row" style="padding: 4px 8px 6px;">
+              <button type="button" class="education-sprints-btn ${route.startsWith('study/board-sprints') ? 'active' : ''}" data-route="study/board-sprints" data-student="${e(profile.personId)}" ${route.startsWith('study/board-sprints') ? 'aria-current="page"' : ''} style="display:flex; align-items:center; gap:8px; width:100%; border-radius:6px; font-weight:700; color:#ea580c;">
+                <span class="nav-icon" style="color:#ea580c;"><i data-lucide="flame"></i></span>
+                <span>The Board Sprints</span>
+              </button>
+            </div>
+          ` : ''}
           ${profile.subjects.map((subject, sIdx) => {
             const subjectIcons = {
               'Mathematics': 'calculator', 'Science': 'flask-conical', 'English': 'book-open',
@@ -1368,7 +1400,9 @@
     const learn = `<section class="chapter-learning-grid"><article class="chapter-big-idea"><span class="section-kicker">THE IDEA THAT UNLOCKS THIS CHAPTER</span><h2>${e(notes.bigIdea)}</h2><div class="chapter-concept-flow">${notes.visual.map((value, index) => `${index ? icon('arrow-right') : ''}<span>${e(value)}</span>`).join('')}</div><div class="chapter-guru"><span>${icon('sparkles')}</span><div><b>Guru’s insight</b><p>${e(notes.wisdom)}</p></div></div>${deepConcepts}</article><article><span class="section-kicker">CHAPTER CORE</span><h3>The Relationships That Matter</h3>${list(notes.must)}</article><article><span class="section-kicker">WORKED REASONING</span><h3>See How the Thinking Moves</h3><p><b>Problem:</b> ${e(notes.example[0])}</p>${workedSteps}</article><article><span class="section-kicker">COMMON TRAPS</span><h3>Where Marks Disappear</h3>${list(notes.rich?.traps || guide.traps)}</article></section>`;
     const bookPanel = bookEntry ? `<section class="chapter-book-panel"><iframe title="${e(bookEntry.part.label)} textbook section" src="${e(`${bookEntry.part.url}#${bookEntry.part.page ? `page=${bookEntry.part.page}&` : ''}view=FitH`)}"></iframe></section>` : `<section class="chapter-empty-state">${icon('book-x')}<h2>No exact book section is mapped yet</h2><p>The teacher notes and guided questions remain available.</p></section>`;
     const explainedChecks = notes.rich?.guidedQuestions?.map((question, index) => `<article class="guided-teaching-check"><span class="question-number">${questions.length + index + 1}</span><div><h3>${e(question.question)}</h3><div class="guided-explanation"><span>${icon('lightbulb')}</span><p><b>Teacher’s answer:</b> ${e(question.answer)} ${e(question.explanation)}</p></div></div></article>`).join('') || '';
-    const practice = `<section class="chapter-guided-practice"><header><span class="section-kicker">PRACTICE & TESTS</span><h2>Questions With Complete Explanations</h2><p>Every question reveals the correct choice, the reasoning behind it, and the distinction that makes the other choices fail.</p></header>${questions.map((question, questionIndex) => `<article><span class="question-number">${questionIndex + 1}</span><div><h3>${e(question.stem)}</h3><div class="guided-options">${question.options.map((option, optionIndex) => `<div class="${optionIndex === question.answer ? 'correct' : ''}"><span>${String.fromCharCode(65 + optionIndex)}</span><p>${e(option)}</p>${optionIndex === question.answer ? icon('circle-check-big') : ''}</div>`).join('')}</div><div class="guided-explanation"><span>${icon('lightbulb')}</span><p><b>Why ${String.fromCharCode(65 + question.answer)} is correct:</b> ${e(question.why)}</p></div></div></article>`).join('')}${explainedChecks}</section>`;
+    const probableList = (window.HM && window.HM.getChapterProbableQuestions) ? window.HM.getChapterProbableQuestions(lesson) : [];
+    const probableBlock = probableList.length ? `<section class="chapter-probable-questions-block" aria-label="Most probable board exam questions"><header class="probable-block-header"><div><span class="section-kicker">CBSE BOARD & PRE-BOARD PREPARATION</span><h2>Most Probable Chapter Questions</h2><p>Curated 10-year recurring questions with model answers, step-marking breakdowns, and diagrams.</p></div><span class="badge-prob-count">${probableList.length} Curated Questions</span></header><div class="probable-cards-list">${probableList.map((q, idx) => `<article class="probable-q-card" id="probable-q-${e(q.id || idx)}"><header class="probable-card-header"><div class="probable-badges"><span class="badge-marks">${e(q.marks)} Marks</span><span class="badge-type">${e(q.type || 'Board Question')}</span><span class="badge-prob">${e(q.prob || 'High Probability')}</span></div><span class="probable-index">Question ${idx + 1}</span></header><div class="probable-q-body"><h3 class="probable-q-stem">${q.stem}</h3>${q.diagram || ''}<details class="probable-answer-accordion" open><summary><span>${icon('badge-check')} Model Answer & Step-by-Step Marking Scheme</span><small>CBSE Standard</small></summary><div class="probable-answer-content"><div class="model-answer-text">${q.modelAnswer}</div>${q.explanation ? `<div class="examiner-tip-box">${icon('lightbulb')} <div><b>Examiner Insight:</b> ${e(q.explanation)}</div></div>` : ''}${q.stepMarking ? `<div class="step-marking-box">${icon('clipboard-check')} <div><b>Step Marking:</b> ${e(q.stepMarking)}</div></div>` : ''}</div></details></div></article>`).join('')}</div></section>` : '';
+    const practice = `${probableBlock}<section class="chapter-guided-practice"><header><span class="section-kicker">PRACTICE & TESTS</span><h2>Questions With Complete Explanations</h2><p>Every question reveals the correct choice, the reasoning behind it, and the distinction that makes the other choices fail.</p></header>${questions.map((question, questionIndex) => `<article><span class="question-number">${questionIndex + 1}</span><div><h3>${e(question.stem)}</h3><div class="guided-options">${question.options.map((option, optionIndex) => `<div class="${optionIndex === question.answer ? 'correct' : ''}"><span>${String.fromCharCode(65 + optionIndex)}</span><p>${e(option)}</p>${optionIndex === question.answer ? icon('circle-check-big') : ''}</div>`).join('')}</div><div class="guided-explanation"><span>${icon('lightbulb')}</span><p><b>Why ${String.fromCharCode(65 + question.answer)} is correct:</b> ${e(question.why)}</p></div></div></article>`).join('')}${explainedChecks}</section>`;
     const assignmentPanel = `<section class="chapter-assignment-panel"><header><span class="section-kicker">SCHOOL WORK · ${e(lesson.subject)}</span><h2>Assignments connected to this subject</h2><p>Finish teacher-assigned work here; this learning view does not ask students to create more work.</p></header>${assignments.length ? assignments.map(item => `<article><span>${icon(item.type === 'Practical' ? 'flask-conical' : item.type === 'Project' ? 'presentation' : 'clipboard-check')}</span><div><b>${e(item.title)}</b><p>${e(item.notes || item.type)}</p><small>${D.date(item.dueDate)} · ${e(item.status)}</small></div>${academicStatus(item.status)}</article>`).join('') : '<p class="empty">No school assignment is currently recorded for this subject.</p>'}</section>`;
     D.state.settings.geniusNotes ||= {};
     D.state.settings.geniusNotes[c.activeId] ||= {};
@@ -1838,11 +1872,15 @@
       'study/focus': practiceAndTests,
       'study/analytics': learningReports
     };
+    if (route.startsWith('study/board-sprints')) {
+      return (window.HM && window.HM.boardSprintsView) ? window.HM.boardSprintsView(route) : '';
+    }
     return (map[route] || unified)();
   }
 
   window.HM.views = {
     groups,
+    boardSprintsView: (...args) => (window.HM && window.HM.boardSprintsView) ? window.HM.boardSprintsView(...args) : '',
     shellStyles,
     settingsGroups,
     natureBackgrounds,

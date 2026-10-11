@@ -203,6 +203,7 @@
   }
 
   function groupForRoute(currentRoute) {
+    if (currentRoute.startsWith('study/board-sprints')) return 'boardSprints';
     if (currentRoute.startsWith('study/')) return 'learning';
     if (currentRoute.startsWith('kitchen/')) return 'household';
     if (currentRoute === 'community/directory') return 'community';
@@ -465,12 +466,23 @@
         : ['subscriptions', 'digital', 'webAccounts', 'aiServices', 'webHabits', 'games'].includes(leisureDomain)
           ? 'home/web'
           : '';
-    const topRoute = leisureTopRoute || ({
+    const boardSprintTopRoute = route.startsWith('study/board-sprints')
+      ? (route.split('/').length >= 3 ? route.split('/').slice(0, 3).join('/') : 'study/board-sprints/week-1')
+      : '';
+    const topRoute = boardSprintTopRoute || leisureTopRoute || ({
       'home/assets': 'home/property', 'home/life/property': 'home/property', 'home/life/bills': 'home/property',
       'home/life/insurance': 'home/family', 'home/life/tax': 'home/family', 'home/life/documents': 'home/family', 'home/life/legacy': 'home/family',
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
-    const availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
+
+    const isZenSprintMode = activeGroup === 'boardSprints';
+    document.body.classList.toggle('zen-sprint-mode', isZenSprintMode);
+
+    let availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
+    if (isZenSprintMode) {
+      // ZEN FOCUS MODE: except for Home menu, everything else hides when board sprint mode is on
+      availableGroups = availableGroups.filter(([key]) => key === 'household' || key === 'boardSprints');
+    }
 
     // Update hidden select (accessibility / legacy)
     const navSelect = $('#navigationGroup');
@@ -489,13 +501,15 @@
     }
 
     // SIDEBAR: render sub-items of the active group only (no group list)
-    const legacyOrder = ['household', 'learning', 'money', 'leisure', 'community'];
+    const legacyOrder = ['household', 'learning', 'money', 'leisure', 'community', 'boardSprints'];
     const selectOptions = legacyOrder.map(key => {
       const item = V.groups[key];
       if (!item) return '';
       return `<option value="${key}" ${key === activeGroup ? 'selected' : ''}>${D.esc(item.label === 'Leisure' ? 'Travel' : (item.label === 'Money' ? 'Finance' : (key === 'community' ? 'Contacts' : item.label)))}</option>`;
     }).join('');
-    $('#workspaceMenuLabel').innerHTML = `<span><small>Navigation</small><b>${D.esc(group.label)}</b></span><i data-lucide="${group.icon}"></i><select id="navigationGroup" class="sr-only" aria-label="Navigation group">${selectOptions}</select>`;
+    const labelTitle = isZenSprintMode ? 'Sprint Weeks' : D.esc(group.label);
+    const labelKicker = isZenSprintMode ? '🌿 Zen Focus' : 'Navigation';
+    $('#workspaceMenuLabel').innerHTML = `<span><small>${labelKicker}</small><b>${labelTitle}</b></span><i data-lucide="${group.icon}"></i><select id="navigationGroup" class="sr-only" aria-label="Navigation group">${selectOptions}</select>`;
     // Always keep #nav in the DOM — never replace it with outerHTML
     let navEl = document.getElementById('nav');
     if (!navEl) {
@@ -2419,12 +2433,17 @@
     if(educationPage){
       if(activeChapterWorkspace)closeChapterWorkspace();
       const id=educationPage.dataset.student,subject=educationPage.dataset.subject,page=educationPage.dataset.educationPage;
-      HM.persona.set(id);D.state.settings.activeLearnerId=id;
-      D.state.settings.activeLearningSubject ||= {};D.state.settings.activeLearningSubject[id]=subject;
-      D.state.settings.educationExpandedSubject={studentId:id,subject};
+      if (id) { HM.persona.set(id); D.state.settings.activeLearnerId=id; }
+      if (subject) {
+        D.state.settings.activeLearningSubject ||= {};
+        D.state.settings.activeLearningSubject[id]=subject;
+        D.state.settings.educationExpandedSubject={studentId:id,subject};
+      }
       D.state.settings.educationActivePage=page;D.save();
       go(page.startsWith('study/')?page:'study/curriculum');render();
-      if(page==='learning')openChapterWorkspace(V.defaultLessonId(),'summary');else if(page==='book')openChapterWorkspace(V.defaultLessonId(),'book');
+      if(page==='learning')openChapterWorkspace(V.defaultLessonId(),'summary');
+      else if(page==='book')openChapterWorkspace(V.defaultLessonId(),'book');
+      else if(page==='practice')openChapterWorkspace(V.defaultLessonId(),'practice');
       document.body.classList.remove('menu-open');return;
     }
     const studentDashboard=event.target.closest('[data-education-student-dashboard]');

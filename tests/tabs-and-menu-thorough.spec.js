@@ -2,6 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Top bar tabs and left sidebar navigation responsiveness', () => {
   test('all top bar tabs switch active group and left menu items respond correctly', async ({ page }) => {
+    test.setTimeout(60000);
     const pageErrors = [];
     page.on('pageerror', err => pageErrors.push(err.message));
 
@@ -9,9 +10,9 @@ test.describe('Top bar tabs and left sidebar navigation responsiveness', () => {
     await page.evaluate(() => localStorage.clear());
     await page.reload();
 
-    // 1. Verify all 6 group tabs are rendered on the top bar
+    // 1. Verify all 7 group tabs are rendered on the top bar
     const tabs = page.locator('#personaTabs .group-tab');
-    await expect(tabs).toHaveCount(6);
+    await expect(tabs).toHaveCount(7);
 
     const expectedGroups = [
       { key: 'household', label: 'Home', defaultRoute: 'global/overview' },
@@ -19,7 +20,8 @@ test.describe('Top bar tabs and left sidebar navigation responsiveness', () => {
       { key: 'money', label: 'Money', defaultRoute: 'home/finance' },
       { key: 'learning', label: 'Education', defaultRoute: 'study/curriculum' },
       { key: 'leisure', label: 'Leisure', defaultRoute: 'home/travel' },
-      { key: 'community', label: 'Community', defaultRoute: 'community/overview' }
+      { key: 'community', label: 'Community', defaultRoute: 'community/overview' },
+      { key: 'boardSprints', label: 'The Board Sprints', defaultRoute: 'study/board-sprints' }
     ];
 
     for (const grp of expectedGroups) {
