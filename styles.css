@@ -2777,7 +2777,20 @@ body.chapter-workspace-open > #sidebar .sidebar-bottom { display: none; }
 .app-shell,.workspace-study .app-shell,body.settings-mode .app-shell{padding-top:56px}
 .app-header,.workspace-study .app-header,body.settings-mode .app-header,body.chapter-workspace-open .app-header{position:fixed;inset:0 var(--utility) auto var(--sidebar);z-index:110;height:56px;isolation:isolate}
 .collapsed .app-header,.workspace-study.collapsed .app-header,body.settings-mode.collapsed .app-header,body.chapter-workspace-open.collapsed .app-header{left:68px}
-#content{position:relative;z-index:1}
+#content {
+  position: relative;
+  z-index: 1;
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(circle 800px at 10% 10%, rgba(13, 148, 136, 0.03), transparent),
+    radial-gradient(circle 800px at 90% 20%, rgba(124, 58, 237, 0.03), transparent),
+    radial-gradient(circle 600px at 50% 80%, rgba(13, 148, 136, 0.02), transparent),
+    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-attachment: fixed;
+  min-height: calc(100vh - 56px);
+}
 @media(max-width:900px){.app-header,.workspace-study .app-header,body.settings-mode .app-header,body.chapter-workspace-open .app-header,.collapsed .app-header,.workspace-study.collapsed .app-header,body.settings-mode.collapsed .app-header,body.chapter-workspace-open.collapsed .app-header{right:0;left:0}}
 
 /* Verified local services directory */
@@ -5670,7 +5683,20 @@ body.chapter-workspace-open .app-shell { margin-right: var(--utility); }
 .app-shell,.workspace-study .app-shell,body.settings-mode .app-shell{padding-top:56px}
 /* AVOIDED: .app-header,.workspace-study .app-header,body.settings-mode .app-header,body.chapter-workspace-open .app-header{position:fixed;inset:0 var(--utility) auto var(--sidebar);z-index:110;height:56px;isolation:isolate} */
 /* AVOIDED: .collapsed .app-header,.workspace-study.collapsed .app-header,body.settings-mode.collapsed .app-header,body.chapter-workspace-open.collapsed .app-header{left:68px} */
-#content{position:relative;z-index:1}
+#content {
+  position: relative;
+  z-index: 1;
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(circle 800px at 10% 10%, rgba(13, 148, 136, 0.03), transparent),
+    radial-gradient(circle 800px at 90% 20%, rgba(124, 58, 237, 0.03), transparent),
+    radial-gradient(circle 600px at 50% 80%, rgba(13, 148, 136, 0.02), transparent),
+    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-attachment: fixed;
+  min-height: calc(100vh - 56px);
+}
 @media(max-width:900px){.app-header,.workspace-study .app-header,body.settings-mode .app-header,body.chapter-workspace-open .app-header,.collapsed .app-header,.workspace-study.collapsed .app-header,body.settings-mode.collapsed .app-header,body.chapter-workspace-open.collapsed .app-header{right:0;left:0}}
 
 /* Verified local services directory */
