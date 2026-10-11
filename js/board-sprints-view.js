@@ -1550,7 +1550,13 @@
             <a href="assets/exam-papers/cbse-class12-computer-science/2025-26-sqp.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="clipboard-list"></i><span><b>2025–26 Sample Question Paper</b><small>37 questions · 70 marks · current paper structure</small></span></a>
             <a href="assets/exam-papers/cbse-class12-computer-science/2025-26-ms.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="badge-check"></i><span><b>2025–26 Marking Scheme</b><small>Answer points and mark allocation for the sample paper</small></span></a>
             <a href="assets/exam-papers/cbse-class12-computer-science/2024-25-ms.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="file-check-2"></i><span><b>2024–25 Marking Scheme</b><small>Additional worked answer reference for revision</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/practice-questions.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="layers-3"></i><span><b>Practice Questions</b><small>Additional downloaded question set for chapter practice</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/practice-questions-marking-scheme.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="list-checks"></i><span><b>Practice Marking Scheme</b><small>Use after completing the interactive deck</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2015-16-sqp-set2.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="history"></i><span><b>Archive Paper · 2015–16</b><small>Extra historical question patterns</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2016-17-sqp.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="history"></i><span><b>Archive Paper · 2016–17</b><small>Extra historical question patterns</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2018-19-sqp.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="history"></i><span><b>Archive Paper · 2018–19</b><small>Extra historical question patterns</small></span></a>
           </div>
+          <div class="official-cs-interactive-note"><i data-lucide="mouse-pointer-click"></i><span><b>Interactive practice is above this source shelf.</b> Enter any weekly training deck to answer one question at a time, reveal the model answer and explanation, mark it mastered and track the error pattern. PDFs remain available only as official reference copies.</span></div>
         </section>
       </div>
     `;

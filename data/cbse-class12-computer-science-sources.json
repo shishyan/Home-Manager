@@ -10,6 +10,10 @@
     {"id":"sqp-2024-25","title":"Sample Question Paper 2024–25","type":"sample-paper","file":"assets/exam-papers/cbse-class12-computer-science/2024-25-sqp.pdf","answersIncluded":false,"markingScheme":"assets/exam-papers/cbse-class12-computer-science/2024-25-ms.pdf","detail":"Previous session paper for timed practice and pattern comparison."},
     {"id":"sqp-2022-23","title":"Sample Question Paper 2022–23","type":"sample-paper","file":"assets/exam-papers/cbse-class12-computer-science/2022-23-sqp.pdf","answersIncluded":true,"markingScheme":"assets/exam-papers/cbse-class12-computer-science/2022-23-ms.pdf","detail":"Archive paper with an official marking scheme."},
     {"id":"sqp-2021-22","title":"Sample Question Paper 2021–22","type":"sample-paper","file":"assets/exam-papers/cbse-class12-computer-science/2021-22-sqp.pdf","answersIncluded":false,"markingScheme":"assets/exam-papers/cbse-class12-computer-science/2021-22-ms.pdf","detail":"Archive paper for additional question exposure."}
+    ,{"id":"practice-questions","title":"Downloaded Practice Questions","type":"practice-set","file":"assets/exam-papers/cbse-class12-computer-science/practice-questions.pdf","answersIncluded":false,"markingScheme":"assets/exam-papers/cbse-class12-computer-science/practice-questions-marking-scheme.pdf","detail":"Additional downloaded Computer Science question set."},
+    {"id":"archive-2015-16","title":"Archive SQP 2015–16 Set 2","type":"archive-paper","file":"assets/exam-papers/cbse-class12-computer-science/2015-16-sqp-set2.pdf","answersIncluded":false,"detail":"Historical paper for pattern recognition."},
+    {"id":"archive-2016-17","title":"Archive SQP 2016–17","type":"archive-paper","file":"assets/exam-papers/cbse-class12-computer-science/2016-17-sqp.pdf","answersIncluded":false,"detail":"Historical paper for pattern recognition."},
+    {"id":"archive-2018-19","title":"Archive SQP 2018–19","type":"archive-paper","file":"assets/exam-papers/cbse-class12-computer-science/2018-19-sqp.pdf","answersIncluded":false,"detail":"Historical paper for pattern recognition."}
   ],
   "answerWorkflow": [
     "Attempt the question without opening the marking scheme.",
