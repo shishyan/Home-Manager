@@ -1166,6 +1166,26 @@
     }
   }
 
+  // Helper for localStorage student MCQ answers
+  const ANSWERS_STORAGE_KEY = 'hm_board_sprints_mcq_answers';
+  function getStoredAnswers() {
+    try {
+      const raw = localStorage.getItem(ANSWERS_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  }
+  function saveUserAnswer(qId, selectedOption, isCorrect) {
+    try {
+      const ans = getStoredAnswers();
+      ans[qId] = { selected: selectedOption, isCorrect, timestamp: Date.now() };
+      localStorage.setItem(ANSWERS_STORAGE_KEY, JSON.stringify(ans));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   // =========================================================================
   // INTERACTIVE R-A-G CHAPTER AUDIT TRACKER (LEVEL 1 IMPLEMENTATION)
   // =========================================================================
@@ -2440,7 +2460,7 @@
         <section class="zen-filter-bar" style="margin-top: 1rem;">
           <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
             <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+            <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
             <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
             <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
             <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M Case</button>
@@ -2606,7 +2626,7 @@
           <section class="zen-filter-bar">
             <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
               <button type="button" class="zen-mark-btn ${state.marks === 'all' ? 'active' : ''}" data-marks-filter="all">All</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+              <button type="button" class="zen-mark-btn ${state.marks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
               <button type="button" class="zen-mark-btn ${state.marks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
               <button type="button" class="zen-mark-btn ${state.marks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
               <button type="button" class="zen-mark-btn ${state.marks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
@@ -2653,6 +2673,12 @@
   // Render Individual Question Card
   function renderQuestionCard(q, idx, isMastered) {
     const hasValidDiagram = q.diagram && q.diagram.trim().length > 30 && !q.diagram.includes('<svg></svg>');
+    const hasOptions = q.options && Array.isArray(q.options) && q.options.length > 0;
+    const storedAnswers = getStoredAnswers();
+    const userAns = storedAnswers[q.id];
+    const isAnsCorrect = userAns ? userAns.isCorrect : false;
+    const selectedLetter = userAns ? ((userAns.selected || '').match(/[a-d]/i) || [''])[0].toLowerCase() : null;
+    const correctLetter = (q.correctOption || '').match(/[a-d]/i) ? (q.correctOption.match(/[a-d]/i)[0].toLowerCase()) : null;
 
     return `
       <article class="board-question-card zen-card ${isMastered ? 'is-mastered' : ''}" id="card-${escapeHtml(q.id)}">
@@ -2687,6 +2713,53 @@
             <div class="q-stem-text">${q.stem}</div>
           </div>
 
+          <!-- INTERACTIVE MCQ OPTIONS (CBSE SECTION A) -->
+          ${hasOptions ? `
+            <div class="q-mcq-container" data-qid="${escapeHtml(q.id)}" data-correct="${escapeHtml(q.correctOption || '')}">
+              <div class="mcq-options-grid ${q.options.length <= 4 && q.options.every(o => o.length < 40) ? 'grid-2col' : ''}">
+                ${q.options.map((opt, optIdx) => {
+                  const match = opt.match(/^\(([a-d])\)\s*(.*)$/i);
+                  const optLetterChar = match ? match[1].toLowerCase() : String.fromCharCode(97 + optIdx);
+                  const letterDisplay = `(${optLetterChar})`;
+                  const optText = match ? match[2] : opt;
+
+                  let optClass = 'mcq-option-btn';
+                  if (userAns) {
+                    if (optLetterChar === selectedLetter) {
+                      optClass += isAnsCorrect ? ' is-correct' : ' is-incorrect';
+                    } else if (!isAnsCorrect && optLetterChar === correctLetter) {
+                      optClass += ' is-correct-revealed';
+                    }
+                  }
+
+                  return `
+                    <button type="button" class="${optClass}" data-qid="${escapeHtml(q.id)}" data-option="${escapeHtml(letterDisplay)}" data-correct="${escapeHtml(q.correctOption || '')}">
+                      <span class="mcq-letter">${escapeHtml(letterDisplay)}</span>
+                      <span class="mcq-text">${optText}</span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+
+              <!-- Real-time Feedback Banner -->
+              <div class="mcq-feedback-banner ${userAns ? (isAnsCorrect ? 'fb-correct' : 'fb-incorrect') : ''}" style="${userAns ? 'display:flex;' : 'display:none;'}">
+                ${userAns ? (isAnsCorrect ? `
+                  <i data-lucide="check-circle-2" class="fb-icon"></i>
+                  <div class="fb-text">
+                    <strong>Correct! Option ${escapeHtml((q.correctOption || '').toUpperCase())} is accurate.</strong>
+                    <span>Step explanation and examiner notes are open below.</span>
+                  </div>
+                ` : `
+                  <i data-lucide="alert-circle" class="fb-icon"></i>
+                  <div class="fb-text">
+                    <strong>Incorrect. The correct answer is ${escapeHtml((q.correctOption || '').toUpperCase())}.</strong>
+                    <span>See step explanation and CBSE caution trap below.</span>
+                  </div>
+                `) : ''}
+              </div>
+            </div>
+          ` : ''}
+
           <!-- SVG Visual Diagram (ONLY IF VALID NON-EMPTY CONTENT) -->
           ${hasValidDiagram ? `
             <div class="q-card-diagram">
@@ -2714,7 +2787,7 @@
           ` : ''}
 
           <!-- Model Answer & Marking Scheme -->
-          <details class="q-card-accordion zen-accordion" open>
+          <details class="q-card-accordion zen-accordion" ${userAns || !hasOptions ? 'open' : ''}>
             <summary class="q-accordion-summary">
               <div class="summary-left">
                 <i data-lucide="check-check"></i>
@@ -2835,6 +2908,68 @@
     if (event.target.closest('#sprintSearchClear')) {
       state.search = '';
       rerender();
+      return;
+    }
+
+    // Interactive MCQ Option Selection
+    const mcqBtn = event.target.closest('.mcq-option-btn');
+    if (mcqBtn) {
+      event.preventDefault();
+      const qId = mcqBtn.dataset.qid;
+      const selected = mcqBtn.dataset.option; // e.g. '(b)'
+      const correct = (mcqBtn.dataset.correct || '').trim(); // e.g. '(b)'
+
+      const cleanSelected = (selected.match(/[a-d]/i) || [''])[0].toLowerCase();
+      const cleanCorrect = (correct.match(/[a-d]/i) || [''])[0].toLowerCase();
+      const isCorrect = cleanSelected === cleanCorrect;
+
+      saveUserAnswer(qId, selected, isCorrect);
+
+      // Find the card container
+      const card = document.getElementById(`card-${qId}`);
+      if (card) {
+        // Update button states within this card's mcq container
+        const allBtns = card.querySelectorAll('.mcq-option-btn');
+        allBtns.forEach(btn => {
+          btn.classList.remove('is-selected', 'is-correct', 'is-incorrect', 'is-correct-revealed');
+          const optLetter = (btn.dataset.option.match(/[a-d]/i) || [''])[0].toLowerCase();
+          if (optLetter === cleanSelected) {
+            btn.classList.add('is-selected', isCorrect ? 'is-correct' : 'is-incorrect');
+          } else if (!isCorrect && optLetter === cleanCorrect) {
+            btn.classList.add('is-correct-revealed');
+          }
+        });
+
+        // Show feedback banner
+        const fb = card.querySelector('.mcq-feedback-banner');
+        if (fb) {
+          fb.style.display = 'flex';
+          fb.className = `mcq-feedback-banner ${isCorrect ? 'fb-correct' : 'fb-incorrect'}`;
+          fb.innerHTML = isCorrect ? `
+            <i data-lucide="check-circle-2" class="fb-icon"></i>
+            <div class="fb-text">
+              <strong>Correct! Option ${escapeHtml(correct.toUpperCase())} is accurate.</strong>
+              <span>Step explanation and examiner notes are open below.</span>
+            </div>
+          ` : `
+            <i data-lucide="alert-circle" class="fb-icon"></i>
+            <div class="fb-text">
+              <strong>Incorrect. The correct answer is ${escapeHtml(correct.toUpperCase())}.</strong>
+              <span>See step explanation and CBSE caution trap below.</span>
+            </div>
+          `;
+        }
+
+        // Automatically open the model answer accordion so the student can study the explanation!
+        const details = card.querySelector('.q-card-accordion');
+        if (details) {
+          details.open = true;
+        }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }
       return;
     }
 

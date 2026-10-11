@@ -97,7 +97,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.screenshot({ path: 'rag-audit-tracker-list.png' });
   });
 
-  test('Master 10-Year Question Bank displays 314+ questions with subject and chapter filters', async ({ page }) => {
+  test('Master 10-Year Question Bank displays 500+ questions with interactive 1M MCQs and student tracking', async ({ page }) => {
     await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
 
@@ -105,16 +105,42 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     const title = page.locator('.zen-title');
     await expect(title).toContainText('10-Year Master Question Bank');
 
-    // Verify Question Cards exist and count is > 100 (314 total)
+    // Verify Question Cards count is >= 500 (507 total)
     const questionCards = page.locator('.board-question-card');
     const qCount = await questionCards.count();
-    expect(qCount).toBeGreaterThan(100);
+    expect(qCount).toBeGreaterThanOrEqual(500);
 
     // Verify caution and topper boxes
     const cautionBoxes = page.locator('.zen-caution-box');
     const topperBoxes = page.locator('.zen-topper-box');
     expect(await cautionBoxes.count()).toBeGreaterThan(0);
     expect(await topperBoxes.count()).toBeGreaterThan(0);
+
+    // Test 1M (MCQ / A-R) Marks Filter
+    const mcqPill = page.locator('.zen-mark-btn[data-marks-filter="1"]').first();
+    await expect(mcqPill).toBeVisible();
+    await mcqPill.click();
+    await page.waitForTimeout(500);
+
+    // Verify MCQ containers are rendered
+    const mcqContainers = page.locator('.q-mcq-container');
+    const mcqCount = await mcqContainers.count();
+    expect(mcqCount).toBeGreaterThan(100);
+
+    // Test interactive option selection on first MCQ
+    const firstMcq = mcqContainers.first();
+    const firstOpt = firstMcq.locator('.mcq-option-btn').first();
+    await firstOpt.click();
+    await page.waitForTimeout(300);
+
+    // Verify option is selected and feedback banner is shown
+    await expect(firstOpt).toHaveClass(/is-selected/);
+    const feedbackBanner = firstMcq.locator('.mcq-feedback-banner');
+    await expect(feedbackBanner).toBeVisible();
+
+    // Verify answer saved in localStorage
+    const savedAnswers = await page.evaluate(() => localStorage.getItem('hm_board_sprints_mcq_answers'));
+    expect(savedAnswers).not.toBeNull();
 
     // Test Subject Filter Pill (e.g. Computer Science)
     const csPill = page.locator('.zen-books-navbar button:has-text("Computer Science")');

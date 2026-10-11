@@ -6633,6 +6633,6747 @@ SELECT COUNT(DISTINCT City) FROM DEPARTMENT;
         "mnemonic": "Denizens = Proud Citizens; Chivalric = Knightly Fearless Swagger."
     });
 
+
+    // --- 10-YEAR OFFICIAL CBSE 1-MARK MCQS & ASSERTION-REASONING (2015–2024) ---
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Analytical Recall",
+        "stem": "An electric dipole of moment p is placed in a uniform electric field E. The torque experienced by the dipole is maximum when the angle theta between p and E is:",
+        "options": [
+            "(a) 0°",
+            "(b) 90°",
+            "(c) 180°",
+            "(d) 45°"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 90°</strong><br><br>The torque on a dipole in a uniform electric field is given by \\(\\tau = pE \\sin\\theta\\). Maximum torque occurs when \\(\\sin\\theta = 1\\), which corresponds to \\(\\theta = 90^\\circ\\). At \\(0^\\circ\\) and \\(180^\\circ\\), \\(\\sin\\theta = 0\\), so torque is zero.",
+        "stepMarking": "(1 Mark) Correct option (b) with formula \\(\\tau = pE\\sin\\theta\\).",
+        "cautionTrap": "Do not confuse maximum torque (at 90°) with maximum potential energy (at 180°, unstable equilibrium).",
+        "topperTip": "Cross product \\(\\boldsymbol{\\tau} = \\mathbf{p} \\times \\mathbf{E}\\) always peaks at perpendicular orientation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 (Set 55/2/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Conceptual Application",
+        "stem": "A point charge +q is placed at the centre of a cube of side L. The electric flux emerging through any ONE face of the cube is:",
+        "options": [
+            "(a) q / ε₀",
+            "(b) q / (6ε₀)",
+            "(c) q / (4πε₀L)",
+            "(d) zero"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) q / (6ε₀)</strong><br><br>By Gauss's Law, the total electric flux through the entire closed cube is \\(\\Phi_{total} = \\frac{q}{\\varepsilon_0}\\). Since a cube has 6 symmetric faces, the flux through any single face is \\(\\Phi_{face} = \\frac{1}{6}\\Phi_{total} = \\frac{q}{6\\varepsilon_0}\\).",
+        "stepMarking": "(1 Mark) Total flux \\(q/\\varepsilon_0\\) divided equally by 6 faces.",
+        "cautionTrap": "Read carefully whether the question asks for the total flux (q/ε₀) or flux through ONE face (q/6ε₀).",
+        "topperTip": "Flux is independent of side length L. If the side is doubled, flux through the face remains unchanged.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Two electric field lines never cross each other.<br>Reason (R): If they intersect, at the point of intersection there would be two tangents, meaning two directions of electric field, which is impossible.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The tangent to an electric field line at any point gives the direction of the electric field at that point. If two lines intersect, there would be two unique tangents at a single point, implying two net field directions simultaneously, which violates the uniqueness of vector field lines. Both A and R are true and R correctly explains A.",
+        "stepMarking": "(1 Mark) Identification of (a) with valid reason.",
+        "cautionTrap": "Examiners often flip Reason to: 'electric field is a scalar quantity' - always read the exact reason wording.",
+        "topperTip": "Standard CBSE rule: electric field at any point has one unique vector resultant.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 (Delhi Set 1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formula Application",
+        "stem": "The electric field intensity at a distance r from an infinitely long straight uniformly charged wire of linear charge density λ varies as:",
+        "options": [
+            "(a) 1 / r²",
+            "(b) 1 / r",
+            "(c) r",
+            "(d) independent of r"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 1 / r</strong><br><br>From Gauss's Law, the electric field due to an infinite line charge is \\(E = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\). Thus, \\(E \\propto \\frac{1}{r}\\). For a point charge \\(E \\propto 1/r^2\\), and for an infinite plane sheet \\(E\\) is independent of \\(r\\).",
+        "stepMarking": "(1 Mark) Stating formula \\(E = \\lambda / (2\\pi\\varepsilon_0 r)\\) and selecting \\(1/r\\).",
+        "cautionTrap": "Do not confuse line charge (1/r) with point charge (1/r²) or electric dipole (1/r³).",
+        "topperTip": "Comparative checklist: Point charge = 1/r² | Dipole = 1/r³ | Line charge = 1/r | Sheet = r⁰ (constant).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Physical Units",
+        "stem": "The SI unit of electric permittivity of free space (ε₀) is:",
+        "options": [
+            "(a) C² N⁻¹ m⁻²",
+            "(b) N m² C⁻²",
+            "(c) N C⁻² m²",
+            "(d) C² N m⁻²"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) C² N⁻¹ m⁻²</strong><br><br>From Coulomb's Law \\(F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q_1 q_2}{r^2}\\), we have \\(\\varepsilon_0 = \\frac{q_1 q_2}{4\\pi F r^2}\\).<br>Units: \\(\\frac{\\text{C} \\times \\text{C}}{\\text{N} \\times \\text{m}^2} = \\text{C}^2\\text{N}^{-1}\\text{m}^{-2}\\) (also equivalent to \\(\\text{F}\\cdot\\text{m}^{-1}\\)).",
+        "stepMarking": "(1 Mark) Deriving unit from Coulomb's Law.",
+        "cautionTrap": "Option (b) is the unit of Coulomb constant \\(k = 1/(4\\pi\\varepsilon_0)\\), which is the exact reciprocal!",
+        "topperTip": "Remember: \\(k = \\text{N}\\cdot\\text{m}^2\\cdot\\text{C}^{-2}\\), therefore \\(\\varepsilon_0 = k^{-1} = \\text{C}^2\\cdot\\text{N}^{-1}\\cdot\\text{m}^{-2}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electric Charges and Fields", {
+        "id": "phy-ec-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Electrostatic field lines do not form closed loops.<br>Reason (R): Electrostatic field is conservative in nature, starting from positive charges and ending on negative charges.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Since the work done by an electrostatic field along any closed path is zero (\\(\\oint \\mathbf{E} \\cdot d\\mathbf{l} = 0\\)), electric field lines cannot close upon themselves. They originate on positive charges and terminate on negative charges. Contrast with magnetic field lines, which always form continuous closed loops.",
+        "stepMarking": "(1 Mark) Conservative nature implies closed line integral is zero.",
+        "cautionTrap": "Do not confuse with magnetic field lines or induced electric fields (Faraday's law), which DO form closed loops!",
+        "topperTip": "Mnemonic: E-static = Open strands (start (+) end (-)) | B-field = Closed loops (no monopoles).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/3/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Conceptual Physics",
+        "stem": "An equipotential surface and electric field lines at any point are oriented at an angle of:",
+        "options": [
+            "(a) 0°",
+            "(b) 45°",
+            "(c) 90°",
+            "(d) 180°"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) 90°</strong><br><br>On an equipotential surface, \\(dV = 0\\). The work done in moving a test charge is \\(dW = -q (\\mathbf{E} \\cdot d\\mathbf{r}) = -q E dr \\cos\\theta = 0\\). Since \\(q \\neq 0\\) and \\(E \\neq 0\\), \\(\\cos\\theta = 0 \\implies \\theta = 90^\\circ\\). Electric field lines are always perpendicular to equipotential surfaces.",
+        "stepMarking": "(1 Mark) Selection of 90° using \\(dW = 0\\).",
+        "cautionTrap": "If electric field had a parallel component, work would be required to move a charge, violating constant potential.",
+        "topperTip": "Equipotential surfaces are always orthogonal to field lines in any conservative field.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formula Application",
+        "stem": "A parallel plate capacitor is charged by a battery and then disconnected. A dielectric slab of dielectric constant K is now inserted between the plates. What happens to the potential difference (V) and energy stored (U)?",
+        "options": [
+            "(a) V increases by K, U increases by K",
+            "(b) V decreases to V/K, U decreases to U/K",
+            "(c) V remains constant, U decreases to U/K",
+            "(d) V decreases to V/K, U remains constant"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) V decreases to V/K, U decreases to U/K</strong><br><br>Since the battery is <em>disconnected</em>, the charge \\(Q\\) remains constant. Capacitance increases: \\(C' = KC\\).<br>Potential difference: \\(V' = \\frac{Q}{C'} = \\frac{Q}{KC} = \\frac{V}{K}\\) (decreases).<br>Energy stored: \\(U' = \\frac{Q^2}{2C'} = \\frac{Q^2}{2KC} = \\frac{U}{K}\\) (decreases).",
+        "stepMarking": "(1 Mark) Battery disconnected \\(\\implies Q = \\text{const}\\), \\(V' = V/K\\), \\(U' = U/K\\).",
+        "cautionTrap": "Check battery status: Disconnected = Q is constant! If battery remained CONNECTED, V would be constant and U would INCREASE to KU.",
+        "topperTip": "Master Rule: Battery Disconnected = Q fixed, V & U decrease by K | Battery Connected = V fixed, Q & U increase by K.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The electric field inside the cavity of a charged conductor is always zero, irrespective of the shape or size of the cavity.<br>Reason (R): Electrostatic shielding occurs because all excess charge resides exclusively on the outer surface of the conductor.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In electrostatic equilibrium, free charges inside a conductor redistribute until the internal electric field is everywhere zero. Gaussian surface enclosed completely within the conducting material contains zero charge; hence no field penetrates into the cavity. This is the basis of electrostatic shielding (Faraday cage). Both statements are true and R explains A.",
+        "stepMarking": "(1 Mark) Confirming Faraday shielding principle.",
+        "cautionTrap": "This holds true provided there are NO charges placed inside the cavity itself.",
+        "topperTip": "Key application: Sensitive coaxial cables and metal car bodies during lightning storms.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-mcq-2021-1",
+        "marks": 1,
+        "year": "CBSE 2021 (Term 1 Exam)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Analytical Computation",
+        "stem": "Three capacitors of capacitances 2 µF, 3 µF, and 6 µF are connected in series. The equivalent capacitance of the combination is:",
+        "options": [
+            "(a) 11 µF",
+            "(b) 1 µF",
+            "(c) 0.5 µF",
+            "(d) 3 µF"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 1 µF</strong><br><br>In series combination: \\(\\frac{1}{C_{eq}} = \\frac{1}{C_1} + \\frac{1}{C_2} + \\frac{1}{C_3} = \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = \\frac{3 + 2 + 1}{6} = \\frac{6}{6} = 1\\).<br>Therefore, \\(C_{eq} = 1\\ \\mu\\text{F}\\).",
+        "stepMarking": "(1 Mark) Correct series reciprocal calculation.",
+        "cautionTrap": "Do not add them directly (11 µF); that is for parallel combination!",
+        "topperTip": "Sanity check: Equivalent capacitance in series is ALWAYS strictly less than the smallest individual capacitor (1 µF < 2 µF).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Potential Definition",
+        "stem": "The work done in carrying an electron from point A to point B on an equipotential surface where V = 10 V is:",
+        "options": [
+            "(a) 1.6 × 10⁻¹⁸ J",
+            "(b) zero",
+            "(c) 16 J",
+            "(d) -10 J"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) zero</strong><br><br>Work done \\(W = q \\Delta V = q (V_B - V_A)\\). Since points A and B lie on the same equipotential surface, \\(V_B = V_A = 10\\text{ V}\\), giving \\(\\Delta V = 0\\), so \\(W = 0\\).",
+        "stepMarking": "(1 Mark) \\(\\Delta V = 0 \\implies W = 0\\).",
+        "cautionTrap": "Do not multiply charge \\(e\\) by 10 V; work depends on potential DIFFERENCE, not absolute potential.",
+        "topperTip": "Equipotential = Equal Potential = Zero Work for any path along the surface.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-ep-ar-2022-1",
+        "marks": 1,
+        "year": "CBSE 2022 Term 1",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Electric potential is constant throughout the volume of a charged conducting sphere and has the same value as on its surface.<br>Reason (R): The electric field inside a charged conducting sphere is zero.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Since \\(E = -\\frac{dV}{dr}\\) and \\(E = 0\\) inside a conductor, \\(\\frac{dV}{dr} = 0\\), which implies \\(V = \\text{constant}\\) from center to surface: \\(V_{in} = V_{surface} = \\frac{1}{4\\pi\\varepsilon_0}\\frac{q}{R}\\). Thus, both A and R are true and R is the correct explanation of A.",
+        "stepMarking": "(1 Mark) Relation \\(E = -dV/dr = 0 \\implies V = \\text{constant}\\).",
+        "cautionTrap": "Students often wrongly assume that zero electric field means zero potential. Potential is non-zero and constant!",
+        "topperTip": "Derivative of constant is zero: \\(E = 0 \\iff V = \\text{constant}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/2/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formula Analysis",
+        "stem": "When the temperature of a metallic conductor is increased, its resistivity increases because:",
+        "options": [
+            "(a) relaxation time τ increases",
+            "(b) relaxation time τ decreases",
+            "(c) electron density n increases",
+            "(d) electron mass m increases"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) relaxation time τ decreases</strong><br><br>Resistivity is given by \\(\\rho = \\frac{m}{n e^2 \\tau}\\). For metals, electron density \\(n\\) is practically temperature-independent. As temperature rises, lattice vibrations increase, causing more frequent collisions, which shortens the average relaxation time \\(\\tau\\). Since \\(\\rho \\propto 1/\\tau\\), resistivity increases.",
+        "stepMarking": "(1 Mark) Formula \\(\\rho = m / (ne^2\\tau)\\) and stating \\(\\tau\\) decreases.",
+        "cautionTrap": "In semiconductors, resistivity decreases because \\(n\\) increases exponentially. In metals, \\(n\\) is constant and \\(\\tau\\) controls resistivity.",
+        "topperTip": "Remember: Metals \\(\\implies \\tau\\) dominates (decreases \\(\\to \\rho\\) rises) | Semiconductors \\(\\implies n\\) dominates (increases \\(\\to \\rho\\) drops).",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 (Set 55/4/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Circuit Laws",
+        "stem": "Kirchhoff's Junction Rule (First Law) and Loop Rule (Second Law) are based respectively on the conservation of:",
+        "options": [
+            "(a) energy and charge",
+            "(b) charge and energy",
+            "(c) momentum and energy",
+            "(d) charge and momentum"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) charge and energy</strong><br><br>Kirchhoff's Junction Rule (\\(\\sum I = 0\\)) is based on the <strong>Conservation of Electric Charge</strong> (no accumulation of charge at a node). Kirchhoff's Loop Rule (\\(\\sum \\Delta V = 0\\)) is based on the <strong>Conservation of Energy</strong> (net work done moving a charge around a closed conservative loop is zero).",
+        "stepMarking": "(1 Mark) Identifying Junction = Charge, Loop = Energy.",
+        "cautionTrap": "Do not swap the order: Junction is Charge, Loop is Energy!",
+        "topperTip": "Mnemonic: <strong>J-C, L-E</strong> (Junction-Charge, Loop-Energy).",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The terminal voltage of a cell is always less than its EMF when it is delivering current to an external load.<br>Reason (R): Inside the cell, there is an internal resistance r which drops voltage equal to Ir.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>During discharging (delivering current \\(I\\)), the terminal potential difference is \\(V = E - Ir\\). Because \\(Ir > 0\\), \\(V < E\\). Note: during charging, current flows in reverse so \\(V = E + Ir > E\\). For a discharging cell, both A and R are true and R correctly explains A.",
+        "stepMarking": "(1 Mark) Terminal voltage equation \\(V = E - Ir\\).",
+        "cautionTrap": "Remember that during CHARGING, \\(V = E + Ir\\), so terminal voltage exceeds EMF. The assertion specifies delivering current (discharging).",
+        "topperTip": "Discharging: \\(V = E - Ir\\) | Charging: \\(V = E + Ir\\) | Open Circuit: \\(V = E\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Proportionality Reasoning",
+        "stem": "A wire of resistance R is stretched uniformly such that its length is doubled. Its new resistance will be:",
+        "options": [
+            "(a) 2R",
+            "(b) 4R",
+            "(c) R/2",
+            "(d) R/4"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 4R</strong><br><br>When a wire is stretched, its volume \\(V = A \\cdot l\\) remains constant. If length becomes \\(l' = 2l\\), the cross-sectional area becomes \\(A' = A/2\\).<br>New resistance: \\(R' = \\rho \\frac{l'}{A'} = \\rho \\frac{2l}{A/2} = 4 \\rho \\frac{l}{A} = 4R\\).",
+        "stepMarking": "(1 Mark) Volume conservation \\(A' = A/2\\) leading to \\(R' = 4R\\).",
+        "cautionTrap": "Careless mistake: students often forget that area shrinks when stretched, and pick 2R.",
+        "topperTip": "Shortcut formula: For uniform stretching, \\(R' = n^2 R\\). Here \\(n = 2\\), so \\(R' = 2^2 R = 4R\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Wheatstone Bridge",
+        "stem": "In a Wheatstone bridge circuit with four arms P, Q, R, S, the bridge is balanced when:",
+        "options": [
+            "(a) P · Q = R · S",
+            "(b) P / Q = R / S",
+            "(c) P + Q = R + S",
+            "(d) P - Q = R - S"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) P / Q = R / S</strong><br><br>At balance point, the potentials at the two intermediate junctions are equal, meaning zero current flows through the galvanometer. This condition is satisfied when the ratio of adjacent resistances is equal: \\(\\frac{P}{Q} = \\frac{R}{S}\\).",
+        "stepMarking": "(1 Mark) Balanced Wheatstone ratio.",
+        "cautionTrap": "Do not select cross-multiplication without checking variables: \\(P \\cdot S = Q \\cdot R\\).",
+        "topperTip": "Wheatstone bridge is most sensitive when all four resistances are approximately equal in magnitude.",
+        "mnemonic": ""
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-ce-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Constantan and Manganin alloys are used to make standard resistance coils.<br>Reason (R): These alloys possess very high resistivity and nearly negligible temperature coefficient of resistance.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Standard resistance coils require resistance that remains constant regardless of temperature fluctuations caused by Joule heating. Constantan and Manganin have high resistivity (so only short lengths are needed) and extremely low \\(\\alpha\\) (temperature coefficient of resistance), making their resistance invariant with temperature. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Valid reasoning linking low alpha to standard resistors.",
+        "cautionTrap": "Do not confuse standard resistors (Manganin/Constantan) with heating elements (Nichrome) or fuse wires (lead-tin alloy).",
+        "topperTip": "Standard resistors = High resistivity + Low temp coefficient (Manganin / Constantan).",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formula Application",
+        "stem": "A charged particle moves with velocity v in a uniform magnetic field B perpendicular to v. The work done by the magnetic force on the particle is:",
+        "options": [
+            "(a) zero",
+            "(b) q(v · B)",
+            "(c) qvB",
+            "(d) 1/2 m v²"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) zero</strong><br><br>The magnetic Lorentz force is \\(\\mathbf{F}_m = q(\\mathbf{v} \\times \\mathbf{B})\\), which is always perpendicular to velocity \\(\\mathbf{v}\\). Instantaneous power is \\(P = \\mathbf{F}_m \\cdot \\mathbf{v} = 0\\). Therefore, the work done is strictly zero, and the kinetic energy/speed of the charged particle remains constant.",
+        "stepMarking": "(1 Mark) \\(\\mathbf{F} \\perp \\mathbf{v} \\implies W = 0\\).",
+        "cautionTrap": "Magnetic force changes the direction of velocity (causes centripetal acceleration), but does ZERO work.",
+        "topperTip": "Magnetic field does zero work on isolated free charges; speed and KE are conserved.",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Galvanometer Conversion",
+        "stem": "To convert a moving coil galvanometer of resistance G into a voltmeter of range V, we must connect:",
+        "options": [
+            "(a) a low resistance in parallel",
+            "(b) a high resistance in series",
+            "(c) a low resistance in series",
+            "(d) a high resistance in parallel"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) a high resistance in series</strong><br><br>A voltmeter is connected in parallel with the circuit element and must draw minimal current. Therefore, it requires very high total resistance, achieved by adding a high multiplier resistance \\(R\\) in series with the galvanometer: \\(R = \\frac{V}{I_g} - G\\). (In contrast, an ammeter requires a low shunt in parallel).",
+        "stepMarking": "(1 Mark) Identifying high resistance in series for voltmeter.",
+        "cautionTrap": "Ammeter = Low shunt in Parallel | Voltmeter = High resistance in Series. Do not invert!",
+        "topperTip": "Mnemonic: <strong>A-P-L</strong> (Ammeter-Parallel-Low) vs <strong>V-S-H</strong> (Voltmeter-Series-High).",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Two parallel wires carrying currents in the same direction attract each other.<br>Reason (R): Magnetic field lines produced by parallel currents produce mutually attractive electrostatic forces.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) A is true but R is false</strong><br><br>Parallel wires carrying current in the same direction attract each other by the magnetic force \\(F/L = \\frac{\\mu_0 I_1 I_2}{2\\pi d}\\) (applying Right-Hand Thumb Rule and Fleming's Left-Hand Rule). However, the force is purely <strong>magnetic</strong>, not electrostatic (current-carrying wires are electrically neutral). Thus, Assertion is true, but Reason is false.",
+        "stepMarking": "(1 Mark) Recognizing wires are neutral, so force is magnetic, not electrostatic.",
+        "cautionTrap": "Reason claims 'electrostatic forces' - a classic CBSE distractor! Current-carrying wires have zero net charge.",
+        "topperTip": "Like currents attract; unlike currents repel (opposite of charges where like charges repel!).",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formula Application",
+        "stem": "The magnetic field B at the centre of a circular coil of radius R carrying current I is proportional to:",
+        "options": [
+            "(a) I / R",
+            "(b) I / R²",
+            "(c) I · R",
+            "(d) I² / R"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) I / R</strong><br><br>From the Biot-Savart Law, the magnetic field at the centre of a circular coil of \\(N\\) turns is \\(B = \\frac{\\mu_0 N I}{2R}\\). Hence \\(B \\propto \\frac{I}{R}\\).",
+        "stepMarking": "(1 Mark) Formula \\(B = \\mu_0 I / (2R)\\).",
+        "cautionTrap": "At large distance on the axis \\(x \\gg R\\), \\(B \\propto 1/x^3\\). At the centre, \\(B \\propto 1/R\\).",
+        "topperTip": "Coil centre = \\(\\mu_0 I / (2R)\\) | Straight infinite wire = \\(\\mu_0 I / (2\\pi r)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Lorentz Force",
+        "stem": "Under what condition does a charged particle pass through crossed electric (E) and magnetic (B) fields undeflected?",
+        "options": [
+            "(a) v = E / B",
+            "(b) v = B / E",
+            "(c) v = E · B",
+            "(d) v = \\sqrt{E/B}"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) v = E / B</strong><br><br>For zero deflection, the electric force must balance the magnetic force: \\(qE = qvB \\implies v = \\frac{E}{B}\\). This is the velocity selector principle used in J.J. Thomson's e/m experiment.",
+        "stepMarking": "(1 Mark) Velocity selector relation \\(v = E/B\\).",
+        "cautionTrap": "Ensure \\(\\mathbf{E} \\perp \\mathbf{B} \\perp \\mathbf{v}\\); if fields are not mutually perpendicular, the condition does not hold.",
+        "topperTip": "Dimensional check: \\([E] = \\text{V/m}\\), \\([B] = \\text{T} = \\text{V}\\cdot\\text{s/m}^2\\), so \\(E/B = \\text{m/s}\\) (velocity).",
+        "mnemonic": ""
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mcm-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A soft iron core is used in a moving coil galvanometer.<br>Reason (R): Soft iron has high magnetic permeability, which makes the magnetic field strong and radial.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>A cylindrical soft iron core placed between concave magnetic poles channels the magnetic flux radially and intensifies the field. A radial magnetic field ensures the plane of the coil is always parallel to the field lines (\\(\\theta = 90^\\circ\\)), making the deflecting torque \\(\\tau = NIAB\\) independent of deflection angle \\(\\phi\\), yielding a linear scale: \\(I \\propto \\phi\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Identifying soft iron creates high permeability radial field.",
+        "cautionTrap": "Soft iron is used because of high permeability and low retentivity/coercivity.",
+        "topperTip": "Radial field = plane of coil parallel to B = maximum constant torque (sin θ = 1).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/2/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Magnetic Properties",
+        "stem": "A diamagnetic substance is brought near the north pole of a strong bar magnet. It experiences:",
+        "options": [
+            "(a) a strong attraction",
+            "(b) a weak repulsion",
+            "(c) a weak attraction",
+            "(d) no force"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) a weak repulsion</strong><br><br>Diamagnetic materials develop weak magnetization in a direction opposite to the applied magnetic field. Hence, they are weakly repelled by either pole (North or South) of a magnet.",
+        "stepMarking": "(1 Mark) Diamagnetic materials are weakly repelled.",
+        "cautionTrap": "Diamagnets are repelled by BOTH poles (North and South), not just North.",
+        "topperTip": "Susceptibility check: Diamagnetic: \\(\\chi < 0\\) (small negative) | Paramagnetic: \\(\\chi > 0\\) (small positive) | Ferromagnetic: \\(\\chi \\gg 1\\) (large positive).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Curie Law",
+        "stem": "According to Curie's Law, the magnetic susceptibility χ of a paramagnetic substance varies with absolute temperature T as:",
+        "options": [
+            "(a) χ ∝ T",
+            "(b) χ ∝ 1/T",
+            "(c) χ ∝ T²",
+            "(d) χ is independent of T"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) χ ∝ 1/T</strong><br><br>Curie's Law states \\(\\chi = \\frac{C}{T}\\), where \\(C\\) is Curie's constant and \\(T\\) is absolute temperature in Kelvin. Thermal agitation disrupts dipole alignment, reducing susceptibility as temperature increases. (Note: Diamagnetism is independent of temperature).",
+        "stepMarking": "(1 Mark) Curie relation \\(\\chi \\propto 1/T\\).",
+        "cautionTrap": "Diamagnetism does NOT follow Curie's law; its susceptibility is independent of temperature!",
+        "topperTip": "Paramagnetic = \\(\\chi \\propto 1/T\\) | Ferromagnetic (above Curie temp) = \\(\\chi \\propto 1/(T - T_c)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Gauss's Law for magnetism states that net magnetic flux through any closed Gaussian surface is always zero.<br>Reason (R): Isolated magnetic poles (magnetic monopoles) do not exist in nature.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Gauss's law in magnetism is \\(\\oint \\mathbf{B} \\cdot d\\mathbf{A} = 0\\). Because magnetic poles always exist in equal and opposite pairs (dipoles), any closed surface enclosing a magnet encloses equal north and south pole strengths, meaning every entering flux line also leaves. Monopoles do not exist. Both A and R are true and R is the correct explanation of A.",
+        "stepMarking": "(1 Mark) Connecting \\(\\oint B\\cdot dA = 0\\) with absence of monopoles.",
+        "cautionTrap": "In electrostatics, \\(\\oint E\\cdot dA = q/\\varepsilon_0\\) because isolated electric charges exist.",
+        "topperTip": "E-flux can be non-zero (monopoles exist) | B-flux through closed surface is strictly zero (no monopoles).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Physical Units",
+        "stem": "The SI unit of magnetic dipole moment is:",
+        "options": [
+            "(a) A m²",
+            "(b) A / m",
+            "(c) T m",
+            "(d) J / T²"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) A m²</strong><br><br>Magnetic dipole moment of a planar loop is \\(M = I \\cdot A\\).<br>Current \\(I\\) is in amperes (A) and area \\(A\\) is in \\(\\text{m}^2\\), giving \\(\\text{A}\\cdot\\text{m}^2\\) (or \\(\\text{J}/\\text{T}\\) from \\(U = -M B\\)).",
+        "stepMarking": "(1 Mark) Identifying \\(\\text{A}\\cdot\\text{m}^2\\) or \\(\\text{J}/\\text{T}\\).",
+        "cautionTrap": "Option (b) A/m is the unit of magnetization \\(M = m_{net}/V\\) or magnetic intensity \\(H\\).",
+        "topperTip": "Dipole moment = \\(\\text{A}\\cdot\\text{m}^2\\) | Magnetization \\(M\\) = \\(\\text{A}/\\text{m}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Relative Permeability",
+        "stem": "For a diamagnetic material, the relative magnetic permeability μᵣ satisfies:",
+        "options": [
+            "(a) μᵣ < 0",
+            "(b) 0 < μᵣ < 1",
+            "(c) μᵣ = 1",
+            "(d) μᵣ > 1"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 0 < μᵣ < 1</strong><br><br>Relative permeability is \\(\\mu_r = 1 + \\chi\\). For diamagnetic materials, \\(\\chi\\) is a small negative number (e.g. \\(-10^{-5}\\)). Thus, \\(0 < \\mu_r < 1\\). For superconductors (perfect diamagnetism), \\(\\chi = -1\\) and \\(\\mu_r = 0\\). Relative permeability is never negative.",
+        "stepMarking": "(1 Mark) \\(\\mu_r = 1 + \\chi\\) where \\(-1 \\le \\chi < 0 \\implies 0 < \\mu_r < 1\\).",
+        "cautionTrap": "Permeability \\(\\mu_r\\) cannot be negative; only susceptibility \\(\\chi\\) is negative!",
+        "topperTip": "Summary: Diamagnetic: \\(0 < \\mu_r < 1\\) | Paramagnetic: \\(\\mu_r > 1\\) (slightly) | Ferromagnetic: \\(\\mu_r \\gg 1\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Superconductors exhibit perfect diamagnetism with magnetic susceptibility χ = -1.<br>Reason (R): Superconductors expel magnetic field lines from their interior, a phenomenon known as the Meissner effect.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The Meissner effect describes the complete expulsion of magnetic flux lines from inside a superconducting material when cooled below its critical temperature (\\(B = 0\\)). Since \\(B = \\mu_0(H + M) = 0\\), we have \\(M = -H\\), which means \\(\\chi = M/H = -1\\) and \\(\\mu_r = 0\\). Both A and R are true and R correctly explains A.",
+        "stepMarking": "(1 Mark) Connecting Meissner effect \\(B=0\\) with \\(\\chi = -1\\).",
+        "cautionTrap": "A perfect conductor would trap preexisting flux; only a true superconductor expels all flux (Meissner effect).",
+        "topperTip": "Superconductor = Perfect Diamagnet = \\(\\chi = -1\\), \\(\\mu_r = 0\\), \\(B_{inside} = 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Lenz Law",
+        "stem": "Lenz's Law for the direction of induced EMF is a direct consequence of the principle of conservation of:",
+        "options": [
+            "(a) charge",
+            "(b) energy",
+            "(c) momentum",
+            "(d) magnetic flux"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) energy</strong><br><br>Lenz's Law states that the induced current opposes the change in magnetic flux that produces it. Mechanical work done against this opposing magnetic force is transformed into electrical energy. If induced current aided the change, it would generate free electrical energy without work, violating the <strong>Law of Conservation of Energy</strong>.",
+        "stepMarking": "(1 Mark) Identifying conservation of energy.",
+        "cautionTrap": "Do not confuse Faraday's law formula (rate of change of flux) with the underlying conservation law (energy).",
+        "topperTip": "High-frequency CBSE MCQ: Lenz's Law = Conservation of Energy.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Self Inductance Formula",
+        "stem": "If the number of turns per unit length in a long solenoid is doubled while keeping its radius and length constant, its self-inductance L becomes:",
+        "options": [
+            "(a) 2 times",
+            "(b) 4 times",
+            "(c) unchanged",
+            "(d) 1/2 times"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 4 times</strong><br><br>Self-inductance of a solenoid is \\(L = \\mu_0 n^2 A l\\), where \\(n\\) is the number of turns per unit length. Since \\(L \\propto n^2\\), doubling \\(n\\) results in \\(L' = 2^2 L = 4L\\).",
+        "stepMarking": "(1 Mark) Formula \\(L = \\mu_0 n^2 A l\\) yielding 4 times.",
+        "cautionTrap": "Common slip: assuming \\(L \\propto N\\); in reality \\(L \\propto N^2\\) or \\(n^2\\).",
+        "topperTip": "Inductance is always proportional to the square of turns (\\(L \\propto N^2\\)).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Eddy currents are minimized by using laminated metallic cores rather than continuous solid cores in transformers.<br>Reason (R): Laminations insulate sheets from one another, breaking continuous conductive loops and increasing resistance to eddy currents.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In a solid metal core, changing magnetic flux induces large circulating eddy currents that cause significant \\(I^2 R\\) Joule heating losses. Slicing the core into thin laminations coated with insulating varnish confines eddy currents to small loops within thin sheets. The high resistance of the insulated boundaries dramatically reduces total eddy current losses. Both statements are true and R explains A.",
+        "stepMarking": "(1 Mark) Valid explanation of laminated core minimizing eddy currents.",
+        "cautionTrap": "Eddy currents are not eliminated completely, only minimized.",
+        "topperTip": "Core lamination = high resistance path = reduced \\(I_{eddy}\\) = reduced heat dissipation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-mcq-2021-1",
+        "marks": 1,
+        "year": "CBSE 2021 (Term 1 Exam)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Motional EMF",
+        "stem": "A conducting rod of length L moves with uniform velocity v perpendicular to both its length and a uniform magnetic field B. The induced EMF developed across its ends is:",
+        "options": [
+            "(a) B · v · L",
+            "(b) 1/2 B v L²",
+            "(c) B v / L",
+            "(d) zero"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) B · v · L</strong><br><br>The motional EMF induced across a straight conductor moving perpendicular to a uniform magnetic field is \\(\\varepsilon = B v L\\). (If rotated about one end, EMF is \\(\\frac{1}{2} B \\omega L^2\\)).",
+        "stepMarking": "(1 Mark) Motional EMF formula \\(\\varepsilon = BvL\\).",
+        "cautionTrap": "Option (b) \\(1/2 B \\omega L^2\\) applies to rotating rod, not linear translation!",
+        "topperTip": "Translational motion = \\(BvL\\) | Rotational motion about pivot = \\(\\frac{1}{2} B \\omega L^2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-mcq-2017-1",
+        "marks": 1,
+        "year": "CBSE 2017 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Physical Units",
+        "stem": "1 Henry is equivalent to:",
+        "options": [
+            "(a) 1 V · s · A⁻¹",
+            "(b) 1 V · A · s⁻¹",
+            "(c) 1 V · s⁻¹ · A⁻¹",
+            "(d) 1 V · A⁻²"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 1 V · s · A⁻¹</strong><br><br>From induced EMF equation \\(\\varepsilon = -L \\frac{dI}{dt}\\), we have \\(L = \\frac{\\varepsilon}{|dI/dt|}\\).<br>Units: \\(\\frac{\\text{Volt}}{\\text{Ampere} / \\text{second}} = \\text{V}\\cdot\\text{s}\\cdot\\text{A}^{-1} = \\text{Wb}\\cdot\\text{A}^{-1} = \\Omega\\cdot\\text{s}\\).",
+        "stepMarking": "(1 Mark) Deriving \\(\\text{V}\\cdot\\text{s}/\\text{A}\\) from \\(L = \\varepsilon / (dI/dt)\\).",
+        "cautionTrap": "Remember that \\(L/R\\) has units of time (seconds), so \\(1\\text{ Henry} = 1\\ \\Omega\\cdot\\text{s}\\).",
+        "topperTip": "Unit equivalents: \\(1\\text{ H} = 1\\text{ V}\\cdot\\text{s}/\\text{A} = 1\\text{ Wb}/\\text{A} = 1\\ \\Omega\\cdot\\text{s}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-ar-2022-1",
+        "marks": 1,
+        "year": "CBSE 2022 Term 1",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): When a metallic plate is swung like a pendulum between magnetic poles, its oscillations are rapidly damped.<br>Reason (R): Electromagnetic damping occurs due to eddy currents induced in the oscillating plate opposing its motion.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>As the plate enters and exits the magnetic field, changing magnetic flux induces eddy currents. By Lenz's law, the magnetic force on these eddy currents opposes the plate's motion, dissipating kinetic energy as heat and rapidly bringing the plate to rest. This is electromagnetic damping. Both statements are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Valid reasoning linking eddy currents to electromagnetic damping.",
+        "cautionTrap": "If slots are cut into the copper plate (comb-like structure), eddy currents are disrupted and damping decreases.",
+        "topperTip": "Cutting slots in oscillating plates demonstrates how breaking eddy loops reduces damping.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/3/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Resonance Condition",
+        "stem": "In a series LCR alternating current circuit at resonance, the phase difference between applied voltage and resultant current is:",
+        "options": [
+            "(a) π/2",
+            "(b) zero",
+            "(c) π",
+            "(d) π/4"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) zero</strong><br><br>At electrical resonance, inductive reactance equals capacitive reactance: \\(X_L = X_C\\). Net reactance is \\(X = X_L - X_C = 0\\).<br>Phase angle: \\(\\tan\\phi = \\frac{X_L - X_C}{R} = 0 \\implies \\phi = 0\\).<br>Voltage and current are completely in phase, circuit impedance is purely resistive (\\(Z = R\\)), and power factor is unity (\\(\\cos\\phi = 1\\)).",
+        "stepMarking": "(1 Mark) Resonant condition \\(X_L = X_C \\implies \\phi = 0\\).",
+        "cautionTrap": "Do not confuse the phase of individual elements (V_L leads by 90°, V_C lags by 90°) with net circuit phase (0).",
+        "topperTip": "Resonance Checklist: \\(Z = R\\) (minimum), \\(I = V/R\\) (maximum), \\(\\phi = 0\\), \\(\\cos\\phi = 1\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Power Factor",
+        "stem": "The average power dissipated in a purely inductive or purely capacitive AC circuit over a complete cycle is:",
+        "options": [
+            "(a) V_rms · I_rms",
+            "(b) 1/2 V_rms · I_rms",
+            "(c) zero",
+            "(d) V² / ωL"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) zero</strong><br><br>Average power is \\(P_{avg} = V_{rms} I_{rms} \\cos\\phi\\). In a purely inductive circuit, current lags voltage by \\(\\pi/2\\), and in a purely capacitive circuit, current leads by \\(\\pi/2\\). In both cases, \\(\\phi = 90^\\circ\\), so power factor \\(\\cos 90^\\circ = 0\\). Therefore, \\(P_{avg} = 0\\) (wattless current).",
+        "stepMarking": "(1 Mark) Power factor \\(\\cos(90^\\circ) = 0 \\implies P_{avg} = 0\\).",
+        "cautionTrap": "Energy is stored in magnetic/electric fields during one quarter cycle and returned in the next quarter cycle.",
+        "topperTip": "Pure L or Pure C = Wattless current (\\(P = 0\\)) | Pure R = Maximum power dissipation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A capacitor blocks direct current (DC) while allowing alternating current (AC) to pass.<br>Reason (R): Capacitive reactance is inversely proportional to frequency, so for DC (f = 0), capacitive reactance is infinite.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Capacitive reactance is \\(X_C = \\frac{1}{2\\pi f C}\\). For direct current, frequency \\(f = 0\\), which gives \\(X_C = \\infty\\) (open circuit). Thus, once charged, a capacitor blocks DC completely. For AC, \\(f > 0\\), providing finite reactance and allowing continuous displacement current. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Formula \\(X_C = 1/(2\\pi f C)\\) and evaluating at \\(f=0\\).",
+        "cautionTrap": "Conversely, an inductor offers zero reactance to DC (\\(X_L = 2\\pi f L = 0\\)) and high reactance to high-frequency AC.",
+        "topperTip": "Capacitor: Blocks DC (\\(X_C = \\infty\\)), passes AC | Inductor: Passes DC (\\(X_L = 0\\)), chokes high-freq AC.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "RMS Value",
+        "stem": "The peak voltage of a domestic 220 V AC supply is approximately:",
+        "options": [
+            "(a) 220 V",
+            "(b) 311 V",
+            "(c) 155 V",
+            "(d) 440 V"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 311 V</strong><br><br>The declared value of an AC supply is always its RMS value: \\(V_{rms} = 220\\text{ V}\\).<br>Peak voltage: \\(V_0 = \\sqrt{2} \\times V_{rms} = 1.414 \\times 220 \\approx 311.1\\text{ V}\\).",
+        "stepMarking": "(1 Mark) Calculation \\(V_0 = \\sqrt{2} V_{rms} = 311\\text{ V}\\).",
+        "cautionTrap": "This is why a 220 V AC shock is more fatal than a 220 V DC shock: AC reaches peak potential of ±311 V twice per cycle!",
+        "topperTip": "Always remember: AC meters read RMS values, not peak or average.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Transformer Principle",
+        "stem": "In an ideal step-up transformer, which of the following quantities increases in the secondary coil compared to the primary?",
+        "options": [
+            "(a) Voltage",
+            "(b) Current",
+            "(c) Frequency",
+            "(d) Power"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Voltage</strong><br><br>In a step-up transformer, secondary turns \\(N_s > N_p\\), so secondary voltage \\(V_s > V_p\\). By conservation of energy (\\(P = V_p I_p = V_s I_s\\)), current decreases (\\(I_s < I_p\\)). Frequency remains strictly identical (\\(f_s = f_p\\)), and for an ideal transformer power is constant.",
+        "stepMarking": "(1 Mark) Identifying voltage increases while current decreases.",
+        "cautionTrap": "A transformer changes voltage and current; it NEVER changes frequency or increases power!",
+        "topperTip": "Step-up: \\(V\\) steps UP, \\(I\\) steps DOWN, \\(f\\) & \\(P\\) unchanged.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A choke coil is preferred over an ohmic resistor to adjust current in an AC circuit.<br>Reason (R): An ideal choke coil has high inductance and negligible resistance, dissipating nearly zero average power.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>When current is reduced using an ordinary resistor, energy is lost as heat via Joule heating (\\(P = I^2 R\\)). A choke coil has high inductance \\(L\\) and almost zero resistance \\(R\\). Its power factor \\(\\cos\\phi = R/Z \\approx 0\\), meaning \\(P_{avg} = V_{rms} I_{rms} \\cos\\phi \\approx 0\\). It reduces AC current without wasteful power dissipation. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Power factor of choke coil is near zero.",
+        "cautionTrap": "A choke coil only works in AC circuits; in a DC circuit it offers zero inductive reactance!",
+        "topperTip": "Choke coil = Wattless current regulation in AC.",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Total Internal Reflection",
+        "stem": "Total Internal Reflection (TIR) can occur only when light travels from:",
+        "options": [
+            "(a) a denser medium to a rarer medium with angle of incidence i > critical angle i_c",
+            "(b) a rarer medium to a denser medium with i > i_c",
+            "(c) a denser medium to a rarer medium with i < i_c",
+            "(d) any medium to any other medium at normal incidence"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) denser medium to rarer medium with i > i_c</strong><br><br>The two essential conditions for Total Internal Reflection are:<br>1. Light must travel from an optically denser medium toward an optically rarer medium.<br>2. The angle of incidence in the denser medium must exceed the critical angle (\\(i > i_c\\)), where \\(\\sin i_c = 1/n\\).",
+        "stepMarking": "(1 Mark) Identifying both necessary conditions for TIR.",
+        "cautionTrap": "TIR can NEVER occur when light travels from rarer to denser, no matter how large the incident angle!",
+        "topperTip": "TIR Conditions: (1) Denser \\(\\to\\) Rarer, (2) \\(i > i_c = \\sin^{-1}(1/n)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Lens Maker Formula",
+        "stem": "A convex lens of glass (refractive index 1.5) is immersed in water (refractive index 1.33). Its focal length will:",
+        "options": [
+            "(a) increase",
+            "(b) decrease",
+            "(c) remain unchanged",
+            "(d) become negative"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) increase</strong><br><br>From the Lens Maker's Formula: \\(\\frac{1}{f} = \\left(\\frac{n_{lens}}{n_{med}} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\).<br>In air: \\(\\frac{n_g}{1} - 1 = 1.5 - 1 = 0.5\\).<br>In water: \\(\\frac{n_g}{n_w} - 1 = \\frac{1.5}{1.33} - 1 = 1.128 - 1 = 0.128\\).<br>Since \\((n_{rel} - 1)\\) decreases by almost a factor of 4, the focal length \\(f\\) increases by approximately 4 times.",
+        "stepMarking": "(1 Mark) Using Lens Maker formula to show relative index decreases \\(\\implies f\\) increases.",
+        "cautionTrap": "If immersed in a liquid with index GREATER than glass (e.g. 1.65), its focal length becomes negative (convex behaves as concave).",
+        "topperTip": "Standard result: Focal length of glass lens in water is \\(4 \\times f_{air}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In an astronomical telescope in normal adjustment, the length of the telescope tube is f_o + f_e.<br>Reason (R): In normal adjustment, the final image is formed at infinity, so the focal points of objective and eyepiece coincide.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In normal adjustment, parallel rays from a distant object form an intermediate real inverted image at the principal focus of the objective (\\(v_o = f_o\\)). For the final image to be viewed at infinity (relaxed eye), this intermediate image must coincide with the first focal point of the eyepiece (\\(u_e = f_e\\)). Hence, tube length \\(L = f_o + f_e\\) and magnifying power \\(m = -f_o/f_e\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Telescope tube length \\(L = f_o + f_e\\) at normal adjustment.",
+        "cautionTrap": "If image is at near point \\(D = 25\\text{ cm}\\), tube length is \\(f_o + u_e\\) where \\(1/v_e - 1/u_e = 1/f_e\\).",
+        "topperTip": "Astronomical telescope normal adjustment: \\(L = f_o + f_e\\), \\(m = -f_o / f_e\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Optical Power",
+        "stem": "Two thin lenses of powers +3.5 D and -1.5 D are placed in contact. The focal length of the combination is:",
+        "options": [
+            "(a) +50 cm",
+            "(b) +20 cm",
+            "(c) -50 cm",
+            "(d) +100 cm"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) +50 cm</strong><br><br>Net power of thin lenses in contact: \\(P = P_1 + P_2 = +3.5\\text{ D} - 1.5\\text{ D} = +2.0\\text{ D}\\).<br>Focal length: \\(f = \\frac{1}{P} = \\frac{1}{+2.0\\text{ m}^{-1}} = +0.5\\text{ m} = +50\\text{ cm}\\).",
+        "stepMarking": "(1 Mark) \\(P = P_1 + P_2 = +2.0\\text{ D} \\implies f = 1/P = 0.5\\text{ m} = 50\\text{ cm}\\).",
+        "cautionTrap": "Always convert focal length from meters to centimeters carefully (0.5 m = 50 cm).",
+        "topperTip": "Algebraic sum of powers: \\(P = P_1 + P_2\\); \\(f = 100/P\\) in cm.",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-mcq-2016-1",
+        "marks": 1,
+        "year": "CBSE 2016 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Prism Formula",
+        "stem": "At minimum deviation (δ = δ_m) through an equilateral triangular glass prism, the refracted ray inside the prism is:",
+        "options": [
+            "(a) parallel to the base of the prism",
+            "(b) perpendicular to the base",
+            "(c) inclined at 45° to the base",
+            "(d) totally internally reflected"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) parallel to the base of the prism</strong><br><br>At the angle of minimum deviation, ray symmetry holds: angle of incidence equals angle of emergence (\\(i = e\\)), and the internal angle of refraction at both faces is equal (\\(r_1 = r_2 = A/2\\)). For an equilateral prism, this symmetric path makes the refracted ray inside run parallel to the base.",
+        "stepMarking": "(1 Mark) Identifying ray is parallel to base at minimum deviation.",
+        "cautionTrap": "This parallel condition holds strictly at minimum deviation, not at arbitrary angles of incidence.",
+        "topperTip": "Minimum deviation conditions: \\(i = e\\), \\(r_1 = r_2 = A/2\\), internal ray parallel to base.",
+        "mnemonic": ""
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Optical fibres transmit light signals over long distances with almost zero attenuation.<br>Reason (R): Optical fibres operate on the phenomenon of multiple Total Internal Reflections without any absorption loss at the cladding interface.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>An optical fibre consists of a central core of higher refractive index \\(n_1\\) surrounded by cladding of lower refractive index \\(n_2 < n_1\\). Light injected at an angle less than the acceptance angle strikes the core-cladding boundary at \\(i > i_c\\) and undergoes total internal reflection with 100% reflectance (no loss across the boundary). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Describing TIR at core-cladding interface.",
+        "cautionTrap": "The refractive index of core must ALWAYS be strictly greater than cladding (\\(n_{core} > n_{cladding}\\)).",
+        "topperTip": "Condition for optical fibre: \\(n_{core} > n_{cladding}\\), \\(i > i_c\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/2/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Wavefront Geometry",
+        "stem": "The shape of the wavefront originating from a point source at a finite distance is:",
+        "options": [
+            "(a) spherical",
+            "(b) cylindrical",
+            "(c) planar",
+            "(d) elliptical"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) spherical</strong><br><br>A point source emits waves uniformly in all directions in 3D space. The locus of points oscillating in the same phase at a given instant is a sphere centred at the source. (A linear slit source produces a cylindrical wavefront, and any source at infinite distance produces a planar wavefront).",
+        "stepMarking": "(1 Mark) Identifying spherical wavefront for point source.",
+        "cautionTrap": "Point source at FINITE distance = Spherical | Point source at INFINITE distance = Plane wavefront.",
+        "topperTip": "Wavefront summary: Point source = Sphere | Line source = Cylinder | Distant source = Plane.",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "YDSE Formula",
+        "stem": "In Young's double-slit experiment, if the separation between the slits is halved and the distance between slits and screen is doubled, the fringe width will:",
+        "options": [
+            "(a) remain unchanged",
+            "(b) double",
+            "(c) quadruple (become 4 times)",
+            "(d) halve"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) quadruple (become 4 times)</strong><br><br>Fringe width in YDSE is \\(\\beta = \\frac{\\lambda D}{d}\\).<br>New parameters: \\(D' = 2D\\) and \\(d' = d/2\\).<br>New fringe width: \\(\\beta' = \\frac{\\lambda (2D)}{(d/2)} = 4 \\frac{\\lambda D}{d} = 4\\beta\\).",
+        "stepMarking": "(1 Mark) \\(\\beta = \\lambda D / d \\implies \\beta' = 4\\beta\\).",
+        "cautionTrap": "Do not confuse capital D (screen distance) with lowercase d (slit separation).",
+        "topperTip": "\\(\\beta \\propto D\\) and \\(\\beta \\propto 1/d\\). Doubling numerator and halving denominator multiplies by 4.",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Two independent sodium lamps cannot produce a sustained interference pattern.<br>Reason (R): Two independent light sources can never maintain a constant phase difference (they are mutually incoherent).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>For sustained interference, the phase difference between waves must remain constant over time (coherence). In independent sources, atoms emit light wave-trains of duration \\(\\sim 10^{-10}\\text{ s}\\) with random phase jumps. Hence, the interference pattern shifts billions of times per second, blurring to uniform illumination. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Defining coherence requirement for sustained interference.",
+        "cautionTrap": "Even two identical laser pointers from the same factory are mutually incoherent because their cavities oscillate independently.",
+        "topperTip": "To get coherent sources in practice, divide a SINGLE source by wavefront division (YDSE) or amplitude division (thin films).",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-mcq-2021-1",
+        "marks": 1,
+        "year": "CBSE 2021 (Term 1 Exam)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Phase vs Path Difference",
+        "stem": "For constructive interference (maxima), the path difference Δx between two interfering waves of wavelength λ must be:",
+        "options": [
+            "(a) n λ",
+            "(b) (2n + 1) λ/2",
+            "(c) (2n - 1) λ",
+            "(d) n λ/2"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) n λ</strong><br><br>Constructive interference requires phase difference \\(\\phi = 2n\\pi\\).<br>Since path difference \\(\\Delta x = \\frac{\\lambda}{2\\pi}\\phi = \\frac{\\lambda}{2\\pi}(2n\\pi) = n\\lambda\\) (where \\(n = 0, 1, 2, \\dots\\)). For destructive interference (minima), \\(\\Delta x = (2n + 1)\\frac{\\lambda}{2}\\).",
+        "stepMarking": "(1 Mark) Constructive \\(\\Delta x = n\\lambda\\).",
+        "cautionTrap": "Do not confuse path difference with phase difference: Maxima \\(\\iff \\phi = 2n\\pi\\), \\(\\Delta x = n\\lambda\\).",
+        "topperTip": "Interference: Maxima = \\(n\\lambda\\) | Minima = \\((2n+1)\\lambda/2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Diffraction Width",
+        "stem": "In single slit diffraction of slit width a with light of wavelength λ, the angular width of the central maximum is:",
+        "options": [
+            "(a) λ / a",
+            "(b) 2λ / a",
+            "(c) λ / 2a",
+            "(d) a / λ"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 2λ / a</strong><br><br>The first diffraction minimum on either side of the central maximum occurs at \\(\\sin\\theta_1 \\approx \\theta_1 = \\frac{\\lambda}{a}\\). The central maximum extends between \\(-\\theta_1\\) and \\(+\\theta_1\\), so its full angular width is \\(2\\theta_1 = \\frac{2\\lambda}{a}\\).",
+        "stepMarking": "(1 Mark) Angular width \\(2\\lambda/a\\).",
+        "cautionTrap": "Option (a) \\(\\lambda/a\\) is the semi-angular width (from center to first minimum). Full width is \\(2\\lambda/a\\).",
+        "topperTip": "Central maximum width is TWICE the width of any subsequent secondary maximum.",
+        "mnemonic": ""
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): When light enters water from air, its speed and wavelength decrease, but its frequency remains unchanged.<br>Reason (R): Frequency is an intrinsic characteristic of the light source, representing the rate of oscillations.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>When light travels into a medium of refractive index \\(n\\), its velocity drops to \\(v = c/n\\). Since boundary continuity requires charges in the medium to oscillate at the driven frequency, frequency \\(\\nu\\) remains invariant. Consequently, wavelength contracts: \\(\\lambda' = v/\\nu = \\lambda/n\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Frequency depends only on source; \\(v = c/n\\), \\(\\lambda' = \\lambda/n\\).",
+        "cautionTrap": "Colour of light is determined by its frequency, not its wavelength in a medium.",
+        "topperTip": "Universal rule for wave refraction: \\(\\nu = \\text{constant}\\), \\(v \\propto \\lambda\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Photoelectric Effect",
+        "stem": "If the intensity of incident monochromatic radiation in a photoelectric experiment is doubled without changing frequency, which quantity will double?",
+        "options": [
+            "(a) Maximum kinetic energy of photoelectrons",
+            "(b) Stopping potential",
+            "(c) Saturation photocurrent",
+            "(d) Threshold frequency"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Saturation photocurrent</strong><br><br>Intensity of radiation is the number of photons incident per unit area per second. Doubling intensity doubles the number of photons hitting the surface per second. Since one photon ejects one electron (above threshold), the number of emitted photoelectrons per second doubles, doubling the saturation photocurrent. Kinetic energy and stopping potential depend strictly on frequency (\\(h\\nu\\)), not intensity.",
+        "stepMarking": "(1 Mark) Saturation current \\(\\propto\\) intensity.",
+        "cautionTrap": "Intensity changes CURRENT. Frequency changes KINETIC ENERGY and STOPPING POTENTIAL.",
+        "topperTip": "Master Rule: Intensity = Quantity (photons/sec \\(\\to\\) current) | Frequency = Quality (energy per photon \\(\\to\\) KE & \\(V_0\\)).",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "de Broglie Wavelength",
+        "stem": "The de Broglie wavelength of an electron accelerated from rest through a potential difference of V volts is given by:",
+        "options": [
+            "(a) 1.227 / \\sqrt{V} nm",
+            "(b) 0.1227 / \\sqrt{V} nm",
+            "(c) 12.27 / V nm",
+            "(d) \\sqrt{V} / 1.227 nm"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 1.227 / \\sqrt{V} nm</strong><br><br>The de Broglie wavelength is \\(\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2m e V}}\\).<br>Substituting \\(h = 6.63 \\times 10^{-34}\\text{ J}\\cdot\\text{s}\\), \\(m = 9.11 \\times 10^{-31}\\text{ kg}\\), and \\(e = 1.6 \\times 10^{-19}\\text{ C}\\):<br>\\(\\lambda = \\frac{1.227}{\\sqrt{V}}\\text{ nm} = \\frac{12.27}{\\sqrt{V}}\text{ \\AA}\\).",
+        "stepMarking": "(1 Mark) Formula \\(\\lambda = 1.227 / \\sqrt{V}\\text{ nm}\\).",
+        "cautionTrap": "Watch the unit: \\(1.227/\\sqrt{V}\\) is in NANOMETERS (nm), while \\(12.27/\\sqrt{V}\\) is in ANGSTROMS (Å).",
+        "topperTip": "For \\(V = 100\\text{ V}\\), \\(\\lambda = 1.227 / \\sqrt{100} = 0.1227\\text{ nm} = 1.227\\text{ \\AA}\\) (X-ray wavelength regime).",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Photoelectric emission is an instantaneous process, occurring within 10⁻⁹ seconds of illumination.<br>Reason (R): An incident photon transfers its entire quantum of energy to a single conduction electron in an elastic collision.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Classical wave theory predicted a time lag of hours for an electron to accumulate enough energy from spread-out wave fronts to escape. In quantum theory, light consists of localized quanta (photons). When a photon collides with an electron, the transfer of energy \\(h\\nu\\) is instantaneous (\\(< 10^{-9}\\text{ s}\\)). Both A and R are true and R correctly explains A.",
+        "stepMarking": "(1 Mark) Particle nature explains absence of time lag.",
+        "cautionTrap": "Time lag absence was the decisive experimental proof that refuted classical wave theory of light.",
+        "topperTip": "Instantaneous emission \\(\\iff\\) 1 photon collides with 1 electron.",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Slope of Graph",
+        "stem": "The slope of the graph between stopping potential (V₀) and frequency (ν) of incident radiation is equal to:",
+        "options": [
+            "(a) h / e",
+            "(b) e / h",
+            "(c) h · e",
+            "(d) work function W₀"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) h / e</strong><br><br>Einstein's photoelectric equation is \\(e V_0 = h\\nu - \\phi_0 \\implies V_0 = \\left(\\frac{h}{e}\\right)\\nu - \\frac{\\phi_0}{e}\\).<br>Comparing with \\(y = mx + c\\), the slope is \\(m = \\frac{h}{e}\\). This slope is a universal constant, independent of the metal cathode used.",
+        "stepMarking": "(1 Mark) Identifying slope as \\(h/e\\).",
+        "cautionTrap": "If the graph is plotted as Kinetic Energy (KE) vs frequency, the slope is \\(h\\). For Stopping Potential (V₀) vs frequency, the slope is \\(h/e\\).",
+        "topperTip": "Slope of \\(V_0\\) vs \\(\\nu\\) = \\(h/e\\) | Slope of \\(K_{max}\\) vs \\(\\nu\\) = \\(h\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "de Broglie Comparison",
+        "stem": "An electron and a proton have the same kinetic energy. Which particle has the longer de Broglie wavelength?",
+        "options": [
+            "(a) Electron",
+            "(b) Proton",
+            "(c) Both have the same wavelength",
+            "(d) Cannot be determined"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Electron</strong><br><br>The de Broglie wavelength is \\(\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2mK}}\\).<br>Since kinetic energy \\(K\\) is identical, \\(\\lambda \\propto \\frac{1}{\\sqrt{m}}\\).<br>Because the mass of an electron is much smaller than the mass of a proton (\\(m_e \\approx m_p / 1836\\)), the electron has a significantly longer de Broglie wavelength.",
+        "stepMarking": "(1 Mark) \\(\\lambda \\propto 1/\\sqrt{m} \\implies \\lambda_e > \\lambda_p\\).",
+        "cautionTrap": "If they had the same MOMENTUM \\(p\\), their wavelengths would be identical (\\(\\lambda = h/p\\)). Here, KINETIC ENERGY is equal.",
+        "topperTip": "Same momentum \\(\\implies\\) equal \\(\\lambda\\) | Same KE \\(\\implies\\) lighter particle has larger \\(\\lambda\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A photon has zero rest mass, but possesses momentum p = h / λ.<br>Reason (R): According to relativistic physics, momentum is carried by energy p = E / c, and a photon always travels at speed c in vacuum.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>A photon never exists at rest; its rest mass is defined as zero. However, it carries finite energy \\(E = h\\nu\\). From relativistic relation \\(E^2 = p^2 c^2 + m_0^2 c^4\\), setting \\(m_0 = 0\\) gives \\(E = pc\\), so momentum \\(p = \\frac{E}{c} = \\frac{h\\nu}{c} = \\frac{h}{\\lambda}\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Valid deduction linking \\(E = pc\\) and \\(p = h/\\lambda\\).",
+        "cautionTrap": "Do not compute photon momentum using classical \\(p = mv\\); use \\(p = h/\\lambda = E/c\\).",
+        "topperTip": "Photon properties: \\(m_0 = 0\\), \\(v = c\\), \\(E = h\\nu\\), \\(p = h/\\lambda\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Bohr Model",
+        "stem": "According to Bohr's model of hydrogen atom, the radius of the nth stationary orbit varies as:",
+        "options": [
+            "(a) n",
+            "(b) n²",
+            "(c) 1 / n",
+            "(d) 1 / n²"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) n²</strong><br><br>In Bohr's theory, the orbital radius is \\(r_n = \\frac{n^2 h^2 \\varepsilon_0}{\\pi m e^2} = n^2 r_1\\) (where \\(r_1 = 0.529\\text{ \\AA}\\) is the Bohr radius). Thus \\(r_n \\propto n^2\\). (Velocity varies as \\(v_n \\propto 1/n\\), and energy varies as \\(E_n \\propto -1/n^2\\)).",
+        "stepMarking": "(1 Mark) \\(r_n \\propto n^2\\).",
+        "cautionTrap": "Radius varies as \\(n^2\\), but energy varies inversely as \\(1/n^2\\).",
+        "topperTip": "Bohr proportionalities: Radius \\(r \\propto n^2\\) | Velocity \\(v \\propto 1/n\\) | Energy \\(E \\propto -1/n^2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Spectral Series",
+        "stem": "Which spectral series of the hydrogen emission spectrum lies in the visible region of electromagnetic radiation?",
+        "options": [
+            "(a) Lyman series",
+            "(b) Balmer series",
+            "(c) Paschen series",
+            "(d) Brackett series"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Balmer series</strong><br><br>The transitions ending at principal quantum number \\(n_1 = 2\\) from higher levels (\\(n_2 = 3, 4, 5, \\dots\\)) form the Balmer series, which emits photons with wavelengths in the visible light range (400 nm - 700 nm). Lyman series (\\(n_1 = 1\\)) lies in the ultraviolet (UV) region, while Paschen, Brackett, and Pfund series lie in the infrared (IR) region.",
+        "stepMarking": "(1 Mark) Identifying Balmer series as visible.",
+        "cautionTrap": "Lyman is UV (highest energy), Balmer is VISIBLE, Paschen/Brackett/Pfund are INFRARED.",
+        "topperTip": "Mnemonic: <strong>L-UV, B-Vis, P-IR</strong> (Lyman-UV, Balmer-Visible, Paschen-IR).",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Nuclear density is approximately constant (independent of mass number A) for all stable nuclei.<br>Reason (R): The nuclear radius is proportional to A^(1/3), so both nuclear volume and nuclear mass scale linearly with A.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The radius of a nucleus of mass number \\(A\\) is \\(R = R_0 A^{1/3}\\) (where \\(R_0 \\approx 1.2\\text{ fm}\\)).<br>Nuclear volume: \\(V = \\frac{4}{3}\\pi R^3 = \\frac{4}{3}\\pi R_0^3 A \\propto A\\).<br>Nuclear mass: \\(M \\approx A \\times m_N \\propto A\\).<br>Density: \\(\\rho = M/V = \\frac{A m_N}{\\frac{4}{3}\\pi R_0^3 A} = \\frac{3 m_N}{4\\pi R_0^3} \\approx 2.3 \\times 10^{17}\\text{ kg/m}^3\\) (constant for all nuclei). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Deriving density is independent of A using \\(R = R_0 A^{1/3}\\).",
+        "cautionTrap": "Nuclear density is gigantic (\\(\\sim 10^{17}\\text{ kg/m}^3\\)) and does NOT vary between light nuclei like \\(^4\\text{He}\\) and heavy nuclei like \\(^{238}\\text{U}\\).",
+        "topperTip": "Nuclear density \\(\\approx 2.3 \\times 10^{17}\\text{ kg/m}^3\\) (independent of mass number A).",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Nuclear Binding Energy",
+        "stem": "The average binding energy per nucleon is maximum (approx 8.75 MeV/nucleon) for the nucleus:",
+        "options": [
+            "(a) ₁H²",
+            "(b) ₂He⁴",
+            "(c) ₂₆Fe⁵⁶",
+            "(d) ₉₂U²³⁸"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) ₂₆Fe⁵⁶</strong><br><br>In the binding energy per nucleon curve, \\(E_{bn}\\) peaks at approximately \\(8.75\\text{ MeV/nucleon}\\) for iron \\(^{56}_{26}\\text{Fe}\\), representing the most tightly bound and stable nucleus in nature. Nuclei lighter than iron undergo nuclear fusion to increase binding energy, while nuclei heavier than iron undergo nuclear fission.",
+        "stepMarking": "(1 Mark) Identifying Fe-56 as peak of binding energy curve.",
+        "cautionTrap": "He-4 has a local peak (approx 7 MeV), but the absolute global maximum is Fe-56.",
+        "topperTip": "Fe-56 is the most stable nucleus; fusion occurs to the left, fission occurs to the right.",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Energy Calculation",
+        "stem": "The ground state energy of hydrogen atom is -13.6 eV. The energy of an electron in its second excited state (n = 3) is:",
+        "options": [
+            "(a) -6.8 eV",
+            "(b) -3.4 eV",
+            "(c) -1.51 eV",
+            "(d) -0.85 eV"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) -1.51 eV</strong><br><br>The energy in the nth Bohr orbit is \\(E_n = -\\frac{13.6}{n^2}\\text{ eV}\\).<br>Note carefully: 'Second excited state' corresponds to principal quantum number \\(n = 3\\) (ground state is \\(n=1\\), first excited state is \\(n=2\\)).<br>\\(E_3 = -\\frac{13.6}{3^2} = -\\frac{13.6}{9} = -1.51\\text{ eV}\\).",
+        "stepMarking": "(1 Mark) Identifying \\(n=3\\) for second excited state and calculating \\(-1.51\\text{ eV}\\).",
+        "cautionTrap": "Common CBSE trap: 'Second excited state' means \\(n = 3\\), NOT \\(n = 2\\)! (n = 2 gives -3.4 eV, option b).",
+        "topperTip": "State index: Ground = n=1 | 1st Excited = n=2 (-3.4 eV) | 2nd Excited = n=3 (-1.51 eV) | 3rd Excited = n=4 (-0.85 eV).",
+        "mnemonic": ""
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The nuclear force between two neutrons is equal in strength to the nuclear force between two protons at the same separation.<br>Reason (R): Nuclear strong forces are charge-independent.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Experimental evidence shows that the strong nuclear force acts identically between (neutron-neutron), (proton-neutron), and (proton-proton) at the same distance, disregarding electric charge. (Of course, between protons there is also a repulsive Coulomb force, but the <em>nuclear component</em> itself is charge-independent). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Nuclear force is charge-independent: \\(F_{nn} = F_{pn} = F_{pp}\\).",
+        "cautionTrap": "Do not conflate total force (which includes Coulomb repulsion between protons) with the strong nuclear force alone.",
+        "topperTip": "Strong nuclear force properties: Short-range, charge-independent, strongest in nature, exhibits saturation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 55/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Semiconductor Physics",
+        "stem": "At absolute zero temperature (0 K), an intrinsic semiconductor behaves as:",
+        "options": [
+            "(a) an ideal conductor",
+            "(b) a superconductor",
+            "(c) an ideal insulator",
+            "(d) a metallic alloy"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) an ideal insulator</strong><br><br>At 0 K, thermal energy is zero. All valence electrons in the semiconductor remain locked within covalent bonds. The valence band is completely full and the conduction band is completely empty, with zero free charge carriers (\\(n_e = n_h = 0\\)). Hence, its conductivity is zero and it acts as an ideal insulator.",
+        "stepMarking": "(1 Mark) Conduction band is empty at 0 K \\(\\implies\\) ideal insulator.",
+        "cautionTrap": "In metals, conductivity increases as temperature falls. In semiconductors, conductivity decreases to ZERO at 0 K.",
+        "topperTip": "Semiconductor conductivity \\(\\sigma \\propto e^{-E_g / 2kT}\\); at \\(T \\to 0\\), \\(\\sigma \\to 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "p-n Junction Diode",
+        "stem": "In a forward-biased p-n junction diode, the width of the depletion layer and the height of the potential barrier:",
+        "options": [
+            "(a) both increase",
+            "(b) both decrease",
+            "(c) width increases, barrier decreases",
+            "(d) width decreases, barrier increases"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) both decrease</strong><br><br>Under forward bias (p connected to positive, n to negative), the applied external electric field opposes the built-in barrier field (\\(V_{effective} = V_0 - V\\)). This pushes majority carriers toward the junction, neutralizing uncompensated donor and acceptor ions at the edges. Thus, the depletion layer becomes narrower and the potential barrier height decreases.",
+        "stepMarking": "(1 Mark) Forward bias decreases both barrier height and depletion width.",
+        "cautionTrap": "Under REVERSE bias, applied field aids the barrier field, so both depletion width and barrier height INCREASE.",
+        "topperTip": "Forward Bias: Barrier \\(\\downarrow\\), Depletion Width \\(\\downarrow\\), Resistance \\(\\downarrow\\) | Reverse Bias: All \\(\\uparrow\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): An n-type semiconductor crystal carries zero net electric charge (electrically neutral).<br>Reason (R): In an n-type semiconductor, although free electrons outnumber holes, their negative charge is exactly balanced by the positive donor impurity ion cores locked in the lattice.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>A common misconception is that n-type semiconductors are negatively charged because electrons are majority carriers. However, the donor atom (e.g. Phosphorus with 5 valence electrons) is neutral before doping. When it donates an electron to the conduction band, it leaves behind an immobile \\(\\text{P}^+\\) ion core. Net charge \\(= q_{electrons} + q_{holes} + q_{donor\\ ions} = 0\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Doped semiconductors are electrically neutral due to balance by fixed ion cores.",
+        "cautionTrap": "Huge student pitfall! Never say an n-type semiconductor has negative charge. Both n-type and p-type crystals are electrically neutral!",
+        "topperTip": "Crystal neutrality is inviolable: \\(n_e + N_A^- = n_h + N_D^+\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-mcq-2021-1",
+        "marks": 1,
+        "year": "CBSE 2021 (Term 1 Exam)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Rectifier Frequency",
+        "stem": "If the input AC frequency to a full-wave rectifier is 50 Hz, the output ripple frequency is:",
+        "options": [
+            "(a) 25 Hz",
+            "(b) 50 Hz",
+            "(c) 100 Hz",
+            "(d) 200 Hz"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) 100 Hz</strong><br><br>In a full-wave rectifier, both positive and negative half-cycles of the AC input are rectified into unidirectional pulses in the same direction. For each complete 50 Hz cycle (20 ms period), the output produces two positive half-sine pulses (10 ms period).<br>Output frequency: \\(f_{out} = 2 \\times f_{in} = 2 \\times 50\\text{ Hz} = 100\\text{ Hz}\\).<br>(For half-wave rectifier, \\(f_{out} = f_{in} = 50\\text{ Hz}\\)).",
+        "stepMarking": "(1 Mark) Full-wave \\(f_{out} = 2 f_{in} = 100\\text{ Hz}\\).",
+        "cautionTrap": "Half-wave rectifier output frequency is \\(f\\) (50 Hz); Full-wave rectifier output frequency is \\(2f\\) (100 Hz).",
+        "topperTip": "Half-wave: \\(f_{out} = f\\) | Full-wave: \\(f_{out} = 2f\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Doping Mechanism",
+        "stem": "To obtain a p-type semiconductor, pure Silicon crystal must be doped with trivalent atoms such as:",
+        "options": [
+            "(a) Phosphorus",
+            "(b) Arsenic",
+            "(c) Indium",
+            "(d) Antimony"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Indium</strong><br><br>A p-type semiconductor requires trivalent impurities (Group 13 elements with 3 valence electrons) which create an electron deficiency (hole). Examples: Boron (B), Aluminium (Al), Gallium (Ga), Indium (In). Phosphorus, Arsenic, and Antimony are pentavalent (Group 15) and produce n-type semiconductors.",
+        "stepMarking": "(1 Mark) Identifying Indium as trivalent dopant.",
+        "cautionTrap": "B, Al, Ga, In = Trivalent \\(\\to\\) p-type | P, As, Sb = Pentavalent \\(\\to\\) n-type.",
+        "topperTip": "Mnemonic: <strong>B-A-G-I</strong> (Boron, Al, Ga, In) for p-type.",
+        "mnemonic": ""
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-se-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Carbon, Silicon, and Germanium all belong to Group 14 with 4 valence electrons, but Diamond is an insulator while Silicon is a semiconductor.<br>Reason (R): The energy bandgap of Diamond is very large (approx 5.4 eV), whereas the bandgap of Silicon is only 1.1 eV.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Although Carbon, Silicon, and Germanium have four valence electrons in their outermost shell, carbon valence electrons reside in the \\(n=2\\) shell, very close to the nucleus, forming extremely tight covalent bonds with a large bandgap \\(E_g \\approx 5.4\\text{ eV} > 3\\text{ eV}\\) (insulator). In Silicon (\\(n=3\\)), \\(E_g = 1.1\\text{ eV}\\), and in Germanium (\\(n=4\\)), \\(E_g = 0.7\\text{ eV}\\), which thermal energy at room temperature can bridge. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Diamond has \\(E_g = 5.4\\text{ eV}\\) (insulator) vs Silicon \\(E_g = 1.1\\text{ eV}\\) (semiconductor).",
+        "cautionTrap": "Bandgap values: Diamond (5.4 eV), Silicon (1.1 eV), Germanium (0.7 eV).",
+        "topperTip": "Insulator: \\(E_g > 3\\text{ eV}\\) | Semiconductor: \\(E_g < 3\\text{ eV}\\) | Metal: \\(E_g = 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Henry's Law",
+        "stem": "The value of Henry's law constant K_H for a gas in water:",
+        "options": [
+            "(a) increases with increase in temperature, leading to lower solubility",
+            "(b) decreases with increase in temperature, leading to higher solubility",
+            "(c) is independent of temperature",
+            "(d) increases with increase in pressure"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) increases with increase in temperature, leading to lower solubility</strong><br><br>According to Henry's Law, \\(p = K_H \\cdot x\\), where \\(x\\) is the mole fraction (solubility) in liquid. For a constant gas pressure \\(p\\), solubility \\(x = p / K_H\\). As temperature rises, \\(K_H\\) increases, which causes gas solubility \\(x\\) to decrease. This is why aquatic species are more comfortable in cold water than warm water (higher dissolved O₂).",
+        "stepMarking": "(1 Mark) Identifying \\(K_H\\) increases with \\(T\\), reducing solubility.",
+        "cautionTrap": "Higher \\(K_H\\) means LOWER solubility! Do not confuse high constant with high solubility.",
+        "topperTip": "Aquatic life prefers cold water because \\(T \\downarrow \\implies K_H \\downarrow \\implies \\text{Solubility of } O_2 \\uparrow\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 (Set 56/2/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Colligative Properties",
+        "stem": "Which of the following 0.10 M aqueous solutions will have the highest boiling point?",
+        "options": [
+            "(a) 0.10 M NaCl",
+            "(b) 0.10 M BaCl₂",
+            "(c) 0.10 M Glucose",
+            "(d) 0.10 M Al₂(SO₄)₃"
+        ],
+        "correctOption": "(d)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (d) 0.10 M Al₂(SO₄)₃</strong><br><br>Elevation in boiling point is a colligative property: \\(\\Delta T_b = i \\cdot K_b \\cdot m\\).<br>For equal molalities, \\(\\Delta T_b\\) is proportional to van't Hoff factor \\(i\\):<br>• Glucose: \\(i = 1\\)<br>• NaCl: \\(i = 2\\)<br>• BaCl₂: \\(i = 3\\)<br>• Al₂(SO₄)₃: \\(i = 5\\) (\\(2\\text{Al}^{3+} + 3\\text{SO}_4^{2-}\\)).<br>Since Al₂(SO₄)₃ produces 5 moles of ions per formula unit, it has the largest \\(\\Delta T_b\\) and highest boiling point.",
+        "stepMarking": "(1 Mark) Calculating \\(i = 5\\) for \\(\\text{Al}_2(\\text{SO}_4)_3\\) leading to maximum \\(\\Delta T_b\\).",
+        "cautionTrap": "If the question asked for FREEZING point, \\(\\text{Al}_2(\\text{SO}_4)_3\\) would have the LOWEST freezing point due to maximum depression!",
+        "topperTip": "High \\(i\\) \\(\\implies\\) Highest Boiling Point, Lowest Freezing Point, Lowest Vapour Pressure, Highest Osmotic Pressure.",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A solution of chloroform and acetone exhibits negative deviation from Raoult's Law.<br>Reason (R): Acetone and chloroform molecules form strong intermolecular hydrogen bonding, making A-B attractive forces stronger than A-A and B-B forces.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>When chloroform (\\(\\text{CHCl}_3\\)) and acetone (\\(\\text{CH}_3\\text{COCH}_3\\)) are mixed, the slightly acidic hydrogen atom of chloroform forms a hydrogen bond with the carbonyl oxygen of acetone: \\(\\text{Cl}_3\\text{C}-\\text{H}\\cdots\\text{O}=\\text{C}(\\text{CH}_3)_2\\). These A-B interactions are stronger than original dipole interactions in pure components, reducing escaping tendency (lower vapour pressure, \\(\\Delta H_{mix} < 0\\), \\(\\Delta V_{mix} < 0\\)). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Identifying H-bonding between chloroform and acetone causing negative deviation.",
+        "cautionTrap": "Ethanol + Acetone exhibits POSITIVE deviation (breaks hydrogen bonds). Chloroform + Acetone exhibits NEGATIVE deviation.",
+        "topperTip": "Negative deviation: \\(F_{AB} > F_{AA}, F_{BB}\\), \\(\\Delta H < 0\\), \\(\\Delta V < 0\\), VP decreases, Maximum boiling azeotrope.",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Osmotic Pressure",
+        "stem": "Osmotic pressure (Π) of a solution is preferred over other colligative properties for determining the molar mass of biomolecules and polymers because:",
+        "options": [
+            "(a) it is measured at room temperature and molarity is used instead of molality",
+            "(b) it is independent of solute concentration",
+            "(c) it requires freezing the delicate protein solution",
+            "(d) its magnitude is very small and difficult to detect"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) it is measured at room temperature and molarity is used instead of molality</strong><br><br>Osmotic pressure has three distinct advantages for biomolecules (proteins, DNA, polymers):<br>1. Measurements are made at room temperature (proteins denature at high temperatures and precipitate on freezing).<br>2. Even for highly dilute solutions of massive polymers, osmotic pressure \\(\\Pi = CRT\\) is large enough to be measured accurately compared to tiny \\(\\Delta T_b\\) or \\(\\Delta T_f\\).<br>3. Concentration is expressed directly in molarity (mol/L).",
+        "stepMarking": "(1 Mark) Identifying room temperature measurement and measurable magnitude.",
+        "cautionTrap": "Proteins are unstable at elevated boiling temperatures; never use boiling elevation for enzymes.",
+        "topperTip": "Biomolecule molar mass \\(\\implies\\) Osmotic Pressure (\\(\\Pi = CRT\\)) is the gold standard method.",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "van't Hoff Factor",
+        "stem": "If acetic acid undergoes 100% dimerization in benzene, the van't Hoff factor i is:",
+        "options": [
+            "(a) 2.0",
+            "(b) 0.5",
+            "(c) 1.0",
+            "(d) 1.5"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 0.5</strong><br><br>For association into dimers (\\(2\\text{CH}_3\\text{COOH} \\rightleftharpoons (\\text{CH}_3\\text{COOH})_2\\)), the formula for association is \\(i = 1 - \\alpha\\left(1 - \\frac{1}{n}\\right)\\).<br>For 100% dimerization: \\(\\alpha = 1\\) and \\(n = 2\\).<br>\\(i = 1 - 1\\left(1 - \\frac{1}{2}\\right) = 1 - 0.5 = 0.5\\).",
+        "stepMarking": "(1 Mark) Association formula \\(i = 1/2 = 0.5\\).",
+        "cautionTrap": "Dissociation gives \\(i > 1\\); Association gives \\(i < 1\\)! In benzene, carboxylic acids dimerize via double hydrogen bonding.",
+        "topperTip": "Complete dimerization \\(\\implies i = 1/2 = 0.5\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Solutions", {
+        "id": "chem-sol-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): When intravenous fluid is administered to a patient, it must be isotonic with blood plasma.<br>Reason (R): If cells are placed in a hypotonic solution, water moves inside the red blood cells, causing them to swell and burst (haemolysis).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Blood plasma is isotonic with 0.9% (m/V) NaCl solution (normal saline). If injected IV fluid is hypotonic (lower osmotic pressure), endosmosis drives water into RBCs causing cell lysis (haemolysis). If hypertonic, exosmosis shrinks the cells (crenation). Thus, IV fluids must be strictly isotonic. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Connecting isotonicity with prevention of haemolysis.",
+        "cautionTrap": "Hypertonic \\(\\to\\) RBCs shrink (crenation); Hypotonic \\(\\to\\) RBCs swell/burst (haemolysis).",
+        "topperTip": "Standard isotonic reference: 0.9% (mass/volume) aqueous NaCl solution.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Kohlrausch Law",
+        "stem": "According to Kohlrausch's Law of independent migration of ions, the limiting molar conductivity (Λ°_m) of MgCl₂ is expressed as:",
+        "options": [
+            "(a) λ°(Mg²⁺) + λ°(Cl⁻)",
+            "(b) λ°(Mg²⁺) + 2 λ°(Cl⁻)",
+            "(c) 2 λ°(Mg²⁺) + λ°(Cl⁻)",
+            "(d) [λ°(Mg²⁺) + λ°(Cl⁻)] / 2"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) λ°(Mg²⁺) + 2 λ°(Cl⁻)</strong><br><br>Kohlrausch's Law states that limiting molar conductivity is the sum of individual ionic conductivities multiplied by stoichiometric coefficients: \\(\\Lambda_m^\\circ(\\text{MgCl}_2) = \\lambda^\\circ(\\text{Mg}^{2+}) + 2\\lambda^\\circ(\\text{Cl}^-)\\).",
+        "stepMarking": "(1 Mark) Stoichiometric multiplication of chloride ion conductivity by 2.",
+        "cautionTrap": "Always multiply the ion conductivity by its stoichiometric coefficient in the balanced formula unit (2 for Cl⁻).",
+        "topperTip": "Kohlrausch Law: Multiply by stoichiometry!",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Conductivity vs Dilution",
+        "stem": "With dilution (decreasing concentration), what happens to specific conductivity (κ) and molar conductivity (Λ_m)?",
+        "options": [
+            "(a) Both κ and Λ_m increase",
+            "(b) Both κ and Λ_m decrease",
+            "(c) κ decreases while Λ_m increases",
+            "(d) κ increases while Λ_m decreases"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) κ decreases while Λ_m increases</strong><br><br>Specific conductivity \\(\\kappa\\) is the conductance of ions present in 1 mL of solution. On dilution, ions per unit volume decrease, so \\(\\kappa\\) decreases. Molar conductivity \\(\\Lambda_m = \\frac{\\kappa \\times 1000}{M}\\) increases because the increase in volume containing 1 mole of electrolyte outweighs the decrease in \\(\\kappa\\).",
+        "stepMarking": "(1 Mark) \\(\\kappa\\) decreases (fewer ions/mL), \\(\\Lambda_m\\) increases.",
+        "cautionTrap": "Specific conductivity \\(\\kappa\\) strictly DECREASES on dilution.",
+        "topperTip": "Dilution effect: \\(\\kappa \\downarrow\\) (fewer ions per cm³) | \\(\\Lambda_m \\uparrow\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Galvanized iron sheets do not rust even if the zinc coating is scratched and iron is exposed.<br>Reason (R): Zinc has a more negative standard reduction potential (E° = -0.76 V) than iron (E° = -0.44 V), so zinc acts as a sacrificial anode and oxidizes preferentially.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Standard reduction potentials: \\(E^\\circ(\\text{Zn}^{2+}/\\text{Zn}) = -0.76\\text{ V}\\) and \\(E^\\circ(\\text{Fe}^{2+}/\\text{Fe}) = -0.44\\text{ V}\\). Because Zinc has a more negative reduction potential, it oxidizes much more readily than iron, supplying electrons to protect it (cathodic/sacrificial protection). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Zinc has more negative E°, hence oxidizes first.",
+        "cautionTrap": "Tin-plated iron rusts faster once scratched because tin (E° = -0.14 V) is less active than iron!",
+        "topperTip": "Sacrificial anode: More negative \\(E^\\circ\\) oxidizes preferentially.",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Electrochemical Relation",
+        "stem": "The relationship between standard cell potential E°_cell and equilibrium constant K_c at 298 K is:",
+        "options": [
+            "(a) E°_cell = (0.059 / n) log K_c",
+            "(b) E°_cell = (0.059 / n) ln K_c",
+            "(c) log K_c = (0.059 / n) E°_cell",
+            "(d) E°_cell = - (n / 0.059) log K_c"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) E°_cell = (0.059 / n) log K_c</strong><br><br>At equilibrium: \\(E_{cell} = 0\\). From Nernst equation at 298 K, \\(E^\\circ_{cell} = \\frac{0.059}{n}\\log K_c\\).",
+        "stepMarking": "(1 Mark) Standard equilibrium relation.",
+        "cautionTrap": "Logarithm base is 10 (log), not natural logarithm (ln).",
+        "topperTip": "Equilibrium: \\(E_{cell} = 0\\), \\(\\Delta G = 0\\), \\(E^\\circ_{cell} = \\frac{0.059}{n}\\log K_c\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Faraday Law",
+        "stem": "The quantity of charge required to reduce 1 mole of MnO₄⁻ to Mn²⁺ in acidic medium is:",
+        "options": [
+            "(a) 1 F",
+            "(b) 3 F",
+            "(c) 5 F",
+            "(d) 7 F"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) 5 F</strong><br><br>Oxidation state of Mn changes from +7 in \\(\\text{MnO}_4^-\\) to +2 in \\(\\text{Mn}^{2+}\\), requiring a gain of 5 electrons per formula unit: \\(\\text{MnO}_4^- + 8\\text{H}^+ + 5e^- \\to \\text{Mn}^{2+} + 4\\text{H}_2\\text{O}\\). Charge = 5 Faradays.",
+        "stepMarking": "(1 Mark) Oxidation state change from +7 to +2 requires 5 F.",
+        "cautionTrap": "Only 5 electrons are gained (7 - 2 = 5), not 7.",
+        "topperTip": "Faradays needed = \\(\\Delta(\\text{Oxidation Number}) \\times \\text{moles}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Electrochemistry", {
+        "id": "chem-ec-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In a lead storage battery, the density of H₂SO₄ decreases during discharge.<br>Reason (R): During discharging, H₂SO₄ is consumed and water is produced at both electrodes according to: Pb + PbO₂ + 2H₂SO₄ → 2PbSO₄ + 2H₂O.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>During discharge, sulfuric acid is consumed to form insoluble \\(\\text{PbSO}_4\\) while water is generated. Electrolyte density drops from \\(\\sim 1.30\\text{ g/mL}\\) to \\(< 1.20\\text{ g/mL}\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Discharge reaction shows consumption of H2SO4 and production of water.",
+        "cautionTrap": "During recharging, H2SO4 is regenerated and density increases.",
+        "topperTip": "Lead storage battery: Discharging consumes \\(\\text{H}_2\\text{SO}_4\\), Recharging regenerates \\(\\text{H}_2\\text{SO}_4\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Units of Rate Constant",
+        "stem": "The unit of rate constant (k) for a second-order reaction is:",
+        "options": [
+            "(a) s⁻¹",
+            "(b) mol L⁻¹ s⁻¹",
+            "(c) L mol⁻¹ s⁻¹",
+            "(d) L² mol⁻² s⁻¹"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) L mol⁻¹ s⁻¹</strong><br><br>General unit for rate constant of nth order reaction is \\((\\text{mol L}^{-1})^{1-n} \\text{s}^{-1}\\).<br>For \\(n = 2\\): \\((\\text{mol L}^{-1})^{1-2} \\text{s}^{-1} = (\\text{mol L}^{-1})^{-1} \\text{s}^{-1} = \\text{L mol}^{-1}\\text{s}^{-1}\\).<br>(For \\(n=0\\): \\(\\text{mol L}^{-1}\\text{s}^{-1}\\); for \\(n=1\\): \\(\\text{s}^{-1}\\)).",
+        "stepMarking": "(1 Mark) General formula \\((\\text{mol L}^{-1})^{1-n} \\text{s}^{-1}\\) for \\(n=2\\).",
+        "cautionTrap": "\\(\\text{s}^{-1}\\) is for first-order; \\(\\text{mol L}^{-1}\\text{s}^{-1}\\) is for zero-order.",
+        "topperTip": "Master Unit Formula: \\(k = [\\text{mol L}^{-1}]^{1-n} \\text{s}^{-1}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Half-Life Calculation",
+        "stem": "A first-order reaction has a rate constant k = 6.93 × 10⁻³ s⁻¹. The time required for 75% completion of the reaction is:",
+        "options": [
+            "(a) 100 s",
+            "(b) 200 s",
+            "(c) 300 s",
+            "(d) 400 s"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 200 s</strong><br><br>For a first-order reaction, \\(t_{1/2} = \\frac{0.693}{k} = \\frac{0.693}{6.93 \\times 10^{-3}} = 100\\text{ s}\\).<br>Time for 75% completion is two half-lives (reactant drops from 100% \\(\\to\\) 50% \\(\\to\\) 25%):<br>\\(t_{75\\%} = 2 \\times t_{1/2} = 2 \\times 100\\text{ s} = 200\\text{ s}\\).",
+        "stepMarking": "(1 Mark) \\(t_{1/2} = 100\\text{ s}\\) and \\(t_{75\\%} = 2 t_{1/2} = 200\\text{ s}\\).",
+        "cautionTrap": "Do not stop at 100 s; that is 50% completion!",
+        "topperTip": "First order milestones: \\(t_{75\\%} = 2 t_{1/2}\\), \\(t_{87.5\\%} = 3 t_{1/2}\\), \\(t_{99.9\\%} = 10 t_{1/2}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Molecularity of a reaction can never be zero, fractional, or greater than three.<br>Reason (R): Molecularity is the number of reactant molecules colliding simultaneously in an elementary step, and simultaneous collision of more than three molecules has negligible probability.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Order of reaction is experimentally determined and can be 0, fractional, or negative. In contrast, molecularity is a theoretical count of participating molecules in an elementary step. It must be a positive integer (1, 2, or 3). Simultaneous collision of 4 or more particles at the same instant with correct orientation and threshold energy is statistically almost impossible. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Molecularity is theoretical integer \\(\\le 3\\) based on collision probability.",
+        "cautionTrap": "Order can be zero/fractional, but molecularity is strictly non-zero positive integer.",
+        "topperTip": "Order = Experimental (any real number) | Molecularity = Elementary step collision count (1, 2, or 3 only).",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Arrhenius Equation",
+        "stem": "The slope of the linear plot of ln k versus 1/T for a chemical reaction is equal to:",
+        "options": [
+            "(a) -E_a / R",
+            "(b) +E_a / R",
+            "(c) -E_a / (2.303 R)",
+            "(d) ln A"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) -E_a / R</strong><br><br>From Arrhenius equation: \\(k = A e^{-E_a / RT} \\implies \\ln k = \\ln A - \\frac{E_a}{R}\\left(\\frac{1}{T}\\right)\\).<br>Comparing with \\(y = c + mx\\), plotting \\(\\ln k\\) vs \\(1/T\\) gives slope \\(m = -\\frac{E_a}{R}\\).<br>(If \\(\\log_{10} k\\) is plotted against \\(1/T\\), the slope is \\(-\\frac{E_a}{2.303 R}\\)).",
+        "stepMarking": "(1 Mark) Plot of \\(\\ln k\\) vs \\(1/T\\) has slope \\(-E_a/R\\).",
+        "cautionTrap": "Watch the natural log (ln) vs log base 10 (log): ln gives \\(-E_a/R\\); log gives \\(-E_a/(2.303 R)\\).",
+        "topperTip": "Slope of \\(\\ln k\\) vs \\(1/T\\) = \\(-E_a/R\\) | Slope of \\(\\log k\\) vs \\(1/T\\) = \\(-E_a/(2.303 R)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Catalyst Effect",
+        "stem": "A catalyst increases the rate of a chemical reaction primarily by:",
+        "options": [
+            "(a) lowering the activation energy through an alternate pathway",
+            "(b) increasing the standard enthalpy change ΔH",
+            "(c) increasing the equilibrium constant K_c",
+            "(d) decreasing the collision frequency"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) lowering the activation energy through an alternate pathway</strong><br><br>A catalyst provides an alternative reaction mechanism with a lower activation energy barrier (\\(E_a' < E_a\\)). According to the Arrhenius equation \\(k = A e^{-E_a/RT}\\), a lower \\(E_a\\) increases rate constant \\(k\\) exponentially. A catalyst never alters \\(\\Delta H\\), \\(\\Delta G\\), or the equilibrium constant \\(K_c\\) (it speeds up forward and reverse reactions equally).",
+        "stepMarking": "(1 Mark) Catalyst lowers activation energy without altering thermodynamics.",
+        "cautionTrap": "A catalyst does NOT change \\(\\Delta H\\), \\(\\Delta G\\), or \\(K_{eq}\\).",
+        "topperTip": "Catalyst lowers \\(E_a\\) and shortens time to reach equilibrium; all thermodynamic state functions remain unchanged.",
+        "mnemonic": ""
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-ck-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): For a zero-order reaction, the half-life period (t_1/2) is directly proportional to the initial concentration of the reactant.<br>Reason (R): For a zero-order reaction, the integrated rate equation gives t_1/2 = [R]_0 / (2k).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>For a zero-order reaction, \\([R] = [R]_0 - kt\\). Setting \\([R] = [R]_0/2\\) at \\(t = t_{1/2}\\) yields \\(t_{1/2} = \\frac{[R]_0}{2k}\\). Thus, \\(t_{1/2} \\propto [R]_0\\). (In contrast, for a first-order reaction \\(t_{1/2} = 0.693/k\\), which is independent of initial concentration). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Deriving \\(t_{1/2} = [R]_0 / (2k)\\) for zero-order.",
+        "cautionTrap": "Zero-order: \\(t_{1/2} \\propto [R]_0\\) | First-order: \\(t_{1/2}\\) is independent of \\([R]_0\\).",
+        "topperTip": "General rule: \\(t_{1/2} \\propto [R]_0^{1-n}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Transition Metal Trends",
+        "stem": "Which of the following 3d transition metal series elements exhibits the highest oxidation state (+7)?",
+        "options": [
+            "(a) Chromium (Cr)",
+            "(b) Manganese (Mn)",
+            "(c) Iron (Fe)",
+            "(d) Vanadium (V)"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Manganese (Mn)</strong><br><br>The electronic configuration of Manganese is \\([\\text{Ar}] 3d^5 4s^2\\). It has 7 valence electrons (five unpaired 3d electrons and two 4s electrons). By utilizing all 7 electrons in bonding, it exhibits oxidation states from +2 to +7 (e.g. \\(\\text{KMnO}_4\\)), the highest in the 3d series.",
+        "stepMarking": "(1 Mark) Identifying Mn (+7) in \\(\\text{KMnO}_4\\).",
+        "cautionTrap": "Osmium (Os) and Ruthenium (Ru) exhibit +8 in d-block, but within the 3d series, Mn has the highest (+7).",
+        "topperTip": "3d Series Max Oxidation: \\(\\text{Sc}(+3), \\text{Ti}(+4), \\text{V}(+5), \\text{Cr}(+6), \\mathbf{Mn(+7)}, \\text{Fe}(+6)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Magnetic Moment",
+        "stem": "The spin-only magnetic moment of Fe²⁺ ion (Z = 26) is approximately:",
+        "options": [
+            "(a) 1.73 BM",
+            "(b) 2.83 BM",
+            "(c) 4.90 BM",
+            "(d) 5.92 BM"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) 4.90 BM</strong><br><br>\\(\\text{Fe}\\) (Z = 26): \\([\\text{Ar}] 3d^6 4s^2\\).<br>\\(\\text{Fe}^{2+}\\): \\([\\text{Ar}] 3d^6\\).<br>Applying Hund's rule for \\(d^6\\): 1 pair + 4 unpaired electrons (\\(n = 4\\)).<br>Spin-only magnetic moment: \\(\\mu = \\sqrt{n(n+2)} = \\sqrt{4(4+2)} = \\sqrt{24} \\approx 4.899 \\approx 4.90\\text{ BM}\\).",
+        "stepMarking": "(1 Mark) \\(n = 4\\) unpaired electrons \\(\\implies \\mu = \\sqrt{24} = 4.90\\text{ BM}\\).",
+        "cautionTrap": "Common mistake: calculating with 6 electrons; \\(d^6\\) has only 4 UNPAIRED electrons.",
+        "topperTip": "Unpaired electrons cheat-sheet: \\(n=1 \\to 1.73\\), \\(n=2 \\to 2.83\\), \\(n=3 \\to 3.87\\), \\(n=4 \\to 4.90\\), \\(n=5 \\to 5.92\\text{ BM}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Zirconium (Zr, 4d) and Hafnium (Hf, 5d) have almost identical atomic and ionic radii.<br>Reason (R): The filling of 4f orbitals before 5d causes Lanthanoid Contraction due to poor shielding of nuclear charge by 4f electrons.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The intervention of the 14 lanthanoid elements involves progressive filling of 4f orbitals. The diffused shape of 4f electrons provides very poor screening/shielding of the increasing nuclear charge (\\(Z\\) increases by 32 units). Consequently, outer electrons experience greater effective nuclear charge, causing Lanthanoid Contraction. This contraction exactly offsets normal group radius increase, making Zr (160 pm) and Hf (159 pm) twin elements. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Connecting poor 4f shielding to Lanthanoid contraction.",
+        "cautionTrap": "Do not confuse shielding order: \\(s > p > d > f\\). 4f has the WORST shielding effect.",
+        "topperTip": "Lanthanoid contraction consequences: (1) Zr/Hf identical radii, (2) Difficult chemical separation, (3) High density of 5d metals.",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Transition Metal Colour",
+        "stem": "Which of the following aqueous ions is completely colourless?",
+        "options": [
+            "(a) Ti³⁺",
+            "(b) Cu²⁺",
+            "(c) Sc³⁺",
+            "(d) Fe³⁺"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Sc³⁺</strong><br><br>Color in transition metal ions arises from \\(d\\text{-}d\\) transitions of unpaired d electrons.<br>• \\(\\text{Sc}^{3+}\\) (Z = 21): \\([\\text{Ar}] 3d^0\\) (completely empty d-subshell, no d electrons for \\(d\\text{-}d\\) transition) \\(\\implies\\) colourless.<br>• \\(\\text{Ti}^{3+}\\): \\(3d^1\\) (purple/violet).<br>• \\(\\text{Cu}^{2+}\\): \\(3d^9\\) (blue).<br>• \\(\\text{Fe}^{3+}\\): \\(3d^5\\) (yellow/brown).",
+        "stepMarking": "(1 Mark) \\(\\text{Sc}^{3+}\\) has \\(d^0\\) configuration, hence colourless.",
+        "cautionTrap": "Both \\(d^0\\) (e.g. \\(\\text{Sc}^{3+}, \\text{Ti}^{4+}\\)) and \\(d^{10}\\) (e.g. \\(\\text{Zn}^{2+}, \\text{Cu}^+\\)) ions are completely colourless.",
+        "topperTip": "Colourless transition ions: \\(d^0\\) and \\(d^{10}\\) configurations (no \\(d\\text{-}d\\) transitions possible).",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Interstitial Compounds",
+        "stem": "Which of the following is NOT a characteristic property of interstitial compounds formed by transition metals?",
+        "options": [
+            "(a) They have high melting points, higher than pure metals",
+            "(b) They are very hard (some approach diamond hardness)",
+            "(c) They lose metallic electrical conductivity completely",
+            "(d) They are chemically inert"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) They lose metallic electrical conductivity completely</strong><br><br>Interstitial compounds retain their metallic electrical and thermal conductivity because free conduction electrons remain delocalized. In fact, they exhibit: (1) higher melting points than pure metals, (2) extreme hardness (carbides), (3) retained metallic conductivity, and (4) chemical inertness.",
+        "stepMarking": "(1 Mark) Identifying that interstitial compounds retain metallic conductivity.",
+        "cautionTrap": "Remember that interstitial compounds RETAIN metallic conductivity; they do NOT become insulators.",
+        "topperTip": "Interstitial compounds: Small non-metals (H, C, N, B) trapped in lattice gaps; retain conductivity + gain extreme hardness.",
+        "mnemonic": ""
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Potassium permanganate (KMnO₄) is intensely purple/violet even though Mn is in +7 oxidation state with a 3d⁰ configuration.<br>Reason (R): The intense color is caused by Charge Transfer from oxygen (O²⁻) ligands to the empty d orbitals of Mn(VII).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Although \\(\\text{Mn(VII)}\\) in \\(\\text{MnO}_4^-\\) has no unpaired d electrons (\\(3d^0\\)), it absorbs yellow-green light intensely because of Ligand-to-Metal Charge Transfer (LMCT). An electron transiently transfers from a \\(2p\\) orbital of oxygen (\\(\\text{O}^{2-}\\)) to an empty \\(3d\\) orbital of \\(\\text{Mn}^{7+}\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Color in \\(\\text{KMnO}_4\\) and \\(\\text{K}_2\\text{Cr}_2\\text{O}_7\\) is due to LMCT, not \\(d\\text{-}d\\) transitions.",
+        "cautionTrap": "Classic exam question! Never say KMnO4 is coloured due to d-d transitions (it has 0 d electrons!).",
+        "topperTip": "Intense color in \\(\\text{KMnO}_4\\) and \\(\\text{K}_2\\text{Cr}_2\\text{O}_7\\) = Charge Transfer Spectra (LMCT).",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "IUPAC Nomenclature",
+        "stem": "The correct IUPAC name of the complex [Co(NH₃)₅(CO₃)]Cl is:",
+        "options": [
+            "(a) Pentaamminecarbonatocobalt(III) chloride",
+            "(b) Pentaamminecarbonatocobalt(II) chloride",
+            "(c) Carbonatopentaamminecobalt(III) chloride",
+            "(d) Pentaamminechlorocobalt(III) carbonate"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Pentaamminecarbonatocobalt(III) chloride</strong><br><br>Rules:<br>1. Ligands listed alphabetically: 'ammine' (a) before 'carbonato' (c).<br>2. Ligand count: 5 ammines = 'pentaammine', \\(\\text{CO}_3^{2-}\\) = 'carbonato'.<br>3. Oxidation state of Co: \\(x + 5(0) + (-2) + (-1) = 0 \\implies x = +3\\) \\(\\to\\) cobalt(III).<br>4. Counter ion named last: chloride.<br>Result: Pentaamminecarbonatocobalt(III) chloride.",
+        "stepMarking": "(1 Mark) Alphabetical order + correct oxidation state (III).",
+        "cautionTrap": "Notice 'ammine' has double 'm'; do not confuse with organic 'amine' (single m).",
+        "topperTip": "Alphabetical order of ligands ignores multiplying prefixes: 'pentaammine' is ordered under 'a'.",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Valence Bond Theory",
+        "stem": "The hybridization, geometry, and magnetic nature of [Co(NH₃)₆]³⁺ are respectively:",
+        "options": [
+            "(a) sp³d², octahedral, paramagnetic",
+            "(b) d²sp³, octahedral, diamagnetic",
+            "(c) sp³d², octahedral, diamagnetic",
+            "(d) d²sp³, octahedral, paramagnetic"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) d²sp³, octahedral, diamagnetic</strong><br><br>\\(\\text{Co}^{3+}\\) (Z = 27): \\([\\text{Ar}] 3d^6\\).<br>In presence of strong field ligand \\(\\text{NH}_3\\), pairing of 3d electrons occurs, forcing all 6 electrons into 3 lower orbitals (\\(t_{2g}^6\\)). This leaves two empty inner 3d orbitals, one 4s, and three 4p orbitals to form \\(d^2sp^3\\) hybrid orbitals. Since all electrons are paired, it is diamagnetic (inner orbital complex).",
+        "stepMarking": "(1 Mark) Strong ligand causes pairing \\(\\implies d^2sp^3\\) + diamagnetic.",
+        "cautionTrap": "In contrast, \\([\\text{CoF}_6]^{3-}\\) contains weak fluoride ligand, so no pairing occurs: \\(sp^3d^2\\) outer orbital and paramagnetic.",
+        "topperTip": "\\([\\text{Co}(\\text{NH}_3)_6]^{3+}\\) = \\(d^2sp^3\\), diamagnetic | \\([\\text{CoF}_6]^{3-}\\) = \\(sp^3d^2\\), paramagnetic.",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Linkage isomerism arises in coordination compounds containing ambidentate ligands.<br>Reason (R): Ambidentate ligands such as NO₂⁻ and SCN⁻ possess two different donor atoms and can coordinate through either atom.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>An ambidentate ligand can coordinate through either of its two donor atoms (e.g., \\(\\text{NO}_2^-\\): via N as nitro, or via O as nitrito; \\(\\text{SCN}^-\\): via S as thiocyanato, or via N as isothiocyanato). Complexes exhibiting linkage isomerism have identical stoichiometric formulas but differ in which atom is bonded to the central metal ion (e.g. \\([\\text{Co}(\\text{NH}_3)_5(\\text{NO}_2)]\\text{Cl}_2\\) vs \\([\\text{Co}(\\text{NH}_3)_5(\\text{ONO})]\\text{Cl}_2\\)). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Identifying linkage isomerism linked to ambidentate ligands.",
+        "cautionTrap": "Do not confuse linkage isomerism (ambidentate) with coordination isomerism (interchange of ligands between two complex ions).",
+        "topperTip": "Ambidentate ligands: \\(\\text{NO}_2^-\\), \\(\\text{SCN}^-\\), \\(\\text{CN}^-\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Crystal Field Theory",
+        "stem": "In an octahedral crystal field, the 3d orbitals split into two sets: t_2g and e_g. The orbitals belonging to the e_g set are:",
+        "options": [
+            "(a) d_xy, d_yz, d_zx",
+            "(b) d_x²-y², d_z²",
+            "(c) d_xy, d_z²",
+            "(d) d_x²-y², d_yz"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) d_x²-y², d_z²</strong><br><br>In an octahedral geometry, ligands approach along the Cartesian axes (x, y, z). The axial orbitals \\(d_{x^2-y^2}\\) and \\(d_{z^2}\\) point directly toward the negative ligands, experiencing greater electrostatic repulsion and rising to a higher energy level denoted as \\(e_g\\). The non-axial orbitals \\(d_{xy}, d_{yz}, d_{zx}\\) point between axes and form the lower energy \\(t_{2g}\\) set.",
+        "stepMarking": "(1 Mark) Axial orbitals \\(d_{x^2-y^2}\\) and \\(d_{z^2}\\) form \\(e_g\\).",
+        "cautionTrap": "In TETRAHEDRAL crystal field, splitting is reversed: \\(e\\) is lower and \\(t_2\\) is higher.",
+        "topperTip": "Octahedral: \\(t_{2g}\\) lower by \\(0.4\\Delta_o\\), \\(e_g\\) higher by \\(0.6\\Delta_o\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Chelate Effect",
+        "stem": "Which of the following complex ions has the highest thermodynamic stability?",
+        "options": [
+            "(a) [Fe(H₂O)₆]³⁺",
+            "(b) [Fe(NH₃)₆]³⁺",
+            "(c) [Fe(C₂O₄)₃]³⁻",
+            "(d) [FeCl₆]³⁻"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) [Fe(C₂O₄)₃]³⁻</strong><br><br>Oxalate ion (\\(\\text{C}_2\\text{O}_4^{2-}\\)) is a bidentate chelating ligand that forms stable 5-membered chelate rings with the iron ion. Chelate complexes are significantly more stable than analogous complexes formed by monodentate ligands (\\(\\text{H}_2\\text{O}, \\text{NH}_3, \\text{Cl}^-\\)) due to the <strong>chelate effect</strong> (large positive entropy change \\(\\Delta S > 0\\) upon formation).",
+        "stepMarking": "(1 Mark) Chelate effect enhances stability of polydentate complexes.",
+        "cautionTrap": "Even though NH3 is a strong ligand, chelation by oxalate imparts greater thermodynamic stability.",
+        "topperTip": "Chelate effect: Ring formation \\(\\implies\\) high \\(\\Delta S\\) \\(\\implies\\) maximum stability.",
+        "mnemonic": ""
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-cc-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): cis-[Pt(NH₃)₂Cl₂] (cisplatin) is an effective anticancer drug, while the trans isomer is clinically inactive.<br>Reason (R): cis-[Pt(NH₃)₂Cl₂] coordinates specifically to adjacent guanine bases in cancer DNA, forming intrastrand cross-links that disrupt cell division.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Cisplatin has two labile chloride ligands on the same side of the square planar platinum complex. Inside cancer cells, low chloride concentration prompts hydrolysis, allowing Pt to bind adjacent nitrogen atoms of two neighboring guanine bases on the same DNA strand. The resulting structural bend prevents DNA repair and triggers apoptosis. The trans isomer cannot form this specific 1,2-intrastrand cross-link. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Geometric specificity of cisplatin in anticancer binding.",
+        "cautionTrap": "Only the CIS isomer is biologically active as cisplatin; transplatin is ineffective.",
+        "topperTip": "Biological applications: Cisplatin = Anticancer | EDTA = Lead poisoning antidote.",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Mechanism Comparison",
+        "stem": "The reaction of an optically active 2-bromooctane with aqueous KOH proceeds primarily by S_N2 mechanism resulting in:",
+        "options": [
+            "(a) complete retention of configuration",
+            "(b) complete inversion of configuration (Walden inversion)",
+            "(c) complete racemization",
+            "(d) elimination product only"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) complete inversion of configuration (Walden inversion)</strong><br><br>The \\(\\text{S}_N2\\) mechanism is a bimolecular, single-step concerted process where the incoming nucleophile (\\(\\text{OH}^-\\)) attacks the chiral carbon from the side opposite to the leaving group (backside attack). This results in 100% optical inversion (umbrella turning inside out), known as Walden inversion. (Racemization occurs via \\(\\text{S}_N1\\) due to planar carbocation intermediate).",
+        "stepMarking": "(1 Mark) Identifying \\(\\text{S}_N2\\) produces complete inversion (Walden inversion).",
+        "cautionTrap": "\\(\\text{S}_N1\\) leads to RACEMIZATION (partial inversion + retention). \\(\\text{S}_N2\\) leads to 100% INVERSION.",
+        "topperTip": "Mnemonic: \\(\\text{S}_N2\\) = Backside attack \\(\\to\\) Walden Inversion | \\(\\text{S}_N1\\) = Planar carbocation \\(\\to\\) Racemization.",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Reactivity Order",
+        "stem": "Which of the following alkyl halides is most reactive toward S_N1 substitution?",
+        "options": [
+            "(a) (CH₃)₃C-Br",
+            "(b) (CH₃)₂CH-Br",
+            "(c) CH₃CH₂-Br",
+            "(d) CH₃-Br"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) (CH₃)₃C-Br</strong><br><br>The rate-determining step in an \\(\\text{S}_N1\\) reaction is the formation of a carbocation intermediate. Tertiary (3°) carbocations are stabilized by hyperconjugation (9 \\(\\alpha\\)-hydrogens in \\((\\text{CH}_3)_3\\text{C}^+\\)) and +I inductive effects of three methyl groups. Therefore, the reactivity order for \\(\\text{S}_N1\\) is: \\(3^\\circ > 2^\\circ > 1^\\circ > \\text{methyl}\\).",
+        "stepMarking": "(1 Mark) Tertiary alkyl halide forms most stable carbocation.",
+        "cautionTrap": "Reactivity orders are opposite: \\(\\text{S}_N1\\) is \\(3^\\circ > 2^\\circ > 1^\\circ\\); \\(\\text{S}_N2\\) is \\(\\text{methyl} > 1^\\circ > 2^\\circ > 3^\\circ\\) (due to steric hindrance).",
+        "topperTip": "\\(\\text{S}_N1\\) rate depends on carbocation stability (3° fastest) | \\(\\text{S}_N2\\) rate depends on steric access (1° fastest).",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Chlorobenzene is extremely less reactive towards nucleophilic substitution compared to chloroethane.<br>Reason (R): In chlorobenzene, the C-Cl bond acquires partial double bond character due to resonance with the benzene ring.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Chlorobenzene is inert to nucleophilic substitution under mild conditions due to four reasons:<br>1. Resonance effect: Lone pair of Cl delocalizes with \\(\\pi\\)-system, imparting partial double bond character (shorter and stronger 169 pm C-Cl bond vs 177 pm in alkyl halide).<br>2. \\(sp^2\\) hybridized carbon (greater s-character holds electrons tighter).<br>3. Instability of phenyl cation.<br>4. Electrostatic repulsion from electron-rich benzene ring. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Partial double bond character in C-Cl bond causes low reactivity.",
+        "cautionTrap": "Under drastic conditions (Dow's process: NaOH, 623 K, 300 atm), substitution DOES occur to form phenol.",
+        "topperTip": "Haloarene low reactivity: Resonance + \\(sp^2\\) carbon + phenyl cation instability.",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Reagent Function",
+        "stem": "Heating an alkyl halide with alcoholic KOH yields primarily:",
+        "options": [
+            "(a) an alcohol",
+            "(b) an alkene",
+            "(c) an ether",
+            "(d) an alkane"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) an alkene</strong><br><br>Alcoholic KOH contains ethoxide ion (\\(\\text{C}_2\\text{H}_5\\text{O}^-\\)), a strong, bulky base that promotes \\(\\beta\\)-elimination (dehydrohalogenation) according to Saytzeff's rule to yield the more substituted, stable <strong>alkene</strong>. In contrast, <em>aqueous KOH</em> contains solvated \\(\\text{OH}^-\\), which behaves as a nucleophile, undergoing substitution to yield an alcohol.",
+        "stepMarking": "(1 Mark) Alcoholic KOH promotes elimination to yield alkene.",
+        "cautionTrap": "Classic CBSE distinction: Alc. KOH = Elimination \\(\\to\\) Alkene | Aq. KOH = Substitution \\(\\to\\) Alcohol.",
+        "topperTip": "Mnemonic: <strong>Alc-Elim-Alkene</strong> vs <strong>Aq-Sub-Alcohol</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Named Reactions",
+        "stem": "The reaction of an alkyl halide with metallic sodium in dry ether to synthesize higher symmetrical alkanes is known as:",
+        "options": [
+            "(a) Wurtz reaction",
+            "(b) Fittig reaction",
+            "(c) Wurtz-Fittig reaction",
+            "(d) Frankland reaction"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Wurtz reaction</strong><br><br>\\(2\\text{R-X} + 2\\text{Na} \\xrightarrow{\\text{dry ether}} \\text{R-R} + 2\\text{NaX}\\) is the <strong>Wurtz reaction</strong>.<br>• Two aryl halides + Na = <strong>Fittig reaction</strong> (biphenyl).<br>• One alkyl + one aryl halide + Na = <strong>Wurtz-Fittig reaction</strong> (alkylbenzene).",
+        "stepMarking": "(1 Mark) Identifying Wurtz reaction for alkyl halides.",
+        "cautionTrap": "Alkyl + Alkyl = Wurtz | Aryl + Aryl = Fittig | Alkyl + Aryl = Wurtz-Fittig.",
+        "topperTip": "Wurtz reaction gives excellent yields only for symmetrical alkanes with an EVEN number of carbon atoms.",
+        "mnemonic": ""
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-hha-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Chloroform (CHCl₃) is stored in dark, closed bottles completely filled to the brim.<br>Reason (R): In presence of sunlight and atmospheric oxygen, chloroform oxidizes slowly to form phosgene (COCl₂), an extremely poisonous gas.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Reaction: \\(2\\text{CHCl}_3 + \\text{O}_2 \\xrightarrow{\\text{light}} 2\\text{COCl}_2 + 2\\text{HCl}\\). Carbonyl chloride (phosgene) is a deadly asphyxiant gas. To prevent oxidation, chloroform is stored in amber-colored bottles filled to the neck (to exclude air), and ~1% ethanol is added to convert any formed phosgene into harmless diethyl carbonate: \\(\\text{COCl}_2 + 2\\text{C}_2\\text{H}_5\\text{OH} \\to (\\text{C}_2\\text{H}_5\\text{O})_2\\text{CO} + 2\\text{HCl}\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Explaining phosgene formation and use of amber bottles.",
+        "cautionTrap": "Ethanol is added as a stabilizer to neutralize trace phosgene, not as a reactant.",
+        "topperTip": "Dark bottle + brim fill + 1% ethanol = complete protection against toxic phosgene.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Lucas Test",
+        "stem": "When treated with Lucas reagent (conc. HCl + anhydrous ZnCl₂), which alcohol produces immediate turbidity at room temperature?",
+        "options": [
+            "(a) 2-Methylpropan-2-ol (tert-butanol)",
+            "(b) Propan-2-ol",
+            "(c) Ethanol",
+            "(d) Methanol"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 2-Methylpropan-2-ol (tert-butanol)</strong><br><br>The Lucas test distinguishes primary, secondary, and tertiary alcohols based on the formation of an insoluble alkyl chloride:<br>• <strong>Tertiary (3°) alcohols</strong> form stable carbocations and produce <strong>immediate turbidity</strong>.<br>• <strong>Secondary (2°) alcohols</strong> produce turbidity within <strong>5 minutes</strong>.<br>• <strong>Primary (1°) alcohols</strong> produce no turbidity at room temperature (only on heating).<br>2-Methylpropan-2-ol is tertiary and reacts immediately.",
+        "stepMarking": "(1 Mark) 3° alcohol gives immediate turbidity with Lucas reagent.",
+        "cautionTrap": "ZnCl2 acts as a Lewis acid to facilitate cleavage of the C-O bond.",
+        "topperTip": "Lucas Test Turbidity: 3° = Instant | 2° = 5 minutes | 1° = Clear (no turbidity at room temp).",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Acidity of Phenols",
+        "stem": "Which of the following compounds is the most acidic?",
+        "options": [
+            "(a) Phenol",
+            "(b) p-Nitrophenol",
+            "(c) p-Cresol",
+            "(d) Ethanol"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) p-Nitrophenol</strong><br><br>Acidity depends on the stability of the conjugate base (phenoxide ion). The nitro group (\\(-\\text{NO}_2\\)) is a powerful electron-withdrawing group via strong \\(-M\\) and \\(-I\\) effects. At the para position, it effectively disperses the negative charge of the phenoxide ion over the benzene ring and onto oxygen atoms. Conversely, methyl in p-cresol is electron-donating (+I, hyperconjugation), which destabilizes phenoxide.",
+        "stepMarking": "(1 Mark) -NO2 group at para position stabilizes phenoxide via -M effect.",
+        "cautionTrap": "Ethanol is least acidic (alcohols are weaker acids than water, pKa ~ 16). Phenol is pKa ~ 10, and p-nitrophenol is pKa ~ 7.15.",
+        "topperTip": "Acidity order: 2,4,6-trinitrophenol (picric acid) > p-nitrophenol > o-nitrophenol > phenol > p-cresol > ethanol.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Boiling points of alcohols are much higher than those of isomeric ethers and haloalkanes of comparable molar mass.<br>Reason (R): Alcohol molecules undergo extensive intermolecular hydrogen bonding due to the polar O-H bond.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In alcohols, the hydrogen atom bonded to electronegative oxygen forms strong intermolecular hydrogen bonds, associating molecules into large clusters that require substantial thermal energy to separate (e.g. ethanol bp = 351 K vs methoxymethane bp = 248 K). Ethers and haloalkanes lack an H atom attached to O/F/N, so they cannot form intermolecular H-bonds. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Intermolecular hydrogen bonding elevates boiling point of alcohols.",
+        "cautionTrap": "Ethers can form H-bonds with WATER, but cannot form H-bonds with THEMSELVES.",
+        "topperTip": "Boiling point hierarchy: Carboxylic acids > Alcohols > Aldehydes/Ketones > Ethers > Alkanes.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Williamson Ether Synthesis",
+        "stem": "In Williamson ether synthesis, treating sodium tert-butoxide with methyl bromide yields:",
+        "options": [
+            "(a) tert-butyl methyl ether",
+            "(b) 2-methylpropene (isobutylene)",
+            "(c) dimethyl ether",
+            "(d) di-tert-butyl ether"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) tert-butyl methyl ether</strong><br><br>Williamson ether synthesis involves \\(\\text{S}_N2\\) displacement of halide by an alkoxide. For successful synthesis of an unsymmetrical ether with a 3° group, the alkyl halide MUST be 1° (or methyl):<br>\\((\\text{CH}_3)_3\\text{C-O}^- \\text{Na}^+ + \\text{CH}_3\\text{Br} \\xrightarrow{\\text{S}_N2} (\\text{CH}_3)_3\\text{C-O-CH}_3 + \\text{NaBr}\\).<br>If a 3° alkyl halide were used with sodium methoxide, elimination would dominate to produce an alkene.",
+        "stepMarking": "(1 Mark) Primary halide with bulky alkoxide undergoes substitution to form ether.",
+        "cautionTrap": "Trap: If you react \\((\\text{CH}_3)_3\\text{C-Br}\\) with \\(\\text{CH}_3\\text{ONa}\\), the product is 2-methylpropene (elimination)! Halide must be 1°.",
+        "topperTip": "Rule of Williamson: Alkyl halide must ALWAYS be primary (1°) or methyl; alkoxide can be 1°, 2°, or 3°.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Named Reactions",
+        "stem": "Treating phenol with chloroform (CHCl₃) in aqueous NaOH followed by acidification yields salicylaldehyde. This reaction is known as:",
+        "options": [
+            "(a) Reimer-Tiemann reaction",
+            "(b) Kolbe's reaction",
+            "(c) Friedel-Crafts acylation",
+            "(d) Gattermann reaction"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Reimer-Tiemann reaction</strong><br><br>The reaction introduces a formyl (\\(-\\text{CHO}\\)) group ortho to the phenolic \\(-\\text{OH}\\) group to produce <strong>salicylaldehyde</strong> (2-hydroxybenzaldehyde). The electrophile generated in situ is dichlorocarbene (\\(:\\text{CCl}_2\\)). If carbon tetrachloride (\\(\\text{CCl}_4\\)) is used instead of \\(\\text{CHCl}_3\\), salicylic acid is obtained.",
+        "stepMarking": "(1 Mark) Identifying Reimer-Tiemann reaction.",
+        "cautionTrap": "Kolbe's reaction uses \\(\\text{CO}_2 + \\text{NaOH}\\) to form SALICYLIC ACID. Reimer-Tiemann uses \\(\\text{CHCl}_3 + \\text{NaOH}\\) to form SALICYLALDEHYDE.",
+        "topperTip": "Mnemonic: Reimer-Tiemann = \\(\\text{CHCl}_3\\) \\(\\to\\) Salicylaldehyde | Kolbe = \\(\\text{CO}_2\\) \\(\\to\\) Salicylic acid.",
+        "mnemonic": ""
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-ape-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): o-Nitrophenol is steam volatile and has a lower boiling point than p-nitrophenol.<br>Reason (R): o-Nitrophenol exhibits intramolecular hydrogen bonding (chelation), whereas p-nitrophenol forms intermolecular hydrogen bonds.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In o-nitrophenol, the proximity of the \\(-\\text{NO}_2\\) and \\(-\\text{OH}\\) groups allows an internal, 6-membered hydrogen-bonded ring (intramolecular H-bond). This prevents association with neighboring molecules, yielding lower boiling point and steam volatility. In p-nitrophenol, functional groups are too far apart for internal bonding, so molecules associate through intermolecular H-bonds into high-boiling chains. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Intramolecular H-bonding makes ortho isomer steam volatile.",
+        "cautionTrap": "Ortho = INTRAmolecular (steam volatile) | Para = INTERmolecular (high boiling point, non-volatile).",
+        "topperTip": "Steam distillation is used experimentally to separate a mixture of ortho- and para-nitrophenols.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Distinction Tests",
+        "stem": "Which of the following compounds gives a yellow precipitate of CHI₃ when warmed with I₂ and aqueous NaOH (Iodoform test)?",
+        "options": [
+            "(a) Pentan-3-one",
+            "(b) Pentan-2-one",
+            "(c) Benzaldehyde",
+            "(d) Methanol"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Pentan-2-one</strong><br><br>The Iodoform test is positive only for compounds containing a methyl ketone group (\\(\\text{CH}_3-\\text{C}=\\text{O}\\)) or a secondary methyl carbinol group (\\(\\text{CH}_3-\\text{CH(OH)}-\\)). Pentan-2-one (\\(\\text{CH}_3-\\text{CO}-\\text{CH}_2\\text{CH}_2\\text{CH}_3\\)) contains the \\(\\text{CH}_3\\text{C}=\\text{O}\\) group and forms yellow insoluble iodoform (\\(\\text{CHI}_3\\), mp 392 K). Pentan-3-one has ethyl groups on both sides and gives a negative test.",
+        "stepMarking": "(1 Mark) Identifying \\(\\text{CH}_3\\text{CO}-\\) group in pentan-2-one.",
+        "cautionTrap": "Pentan-3-one has carbonyl at position 3 (no methyl ketone); hence it fails the iodoform test.",
+        "topperTip": "Iodoform positive structures: \\(\\text{CH}_3\\text{C}=\\text{O}\\) and \\(\\text{CH}_3\\text{CH(OH)}-\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Cannizzaro Reaction",
+        "stem": "Which of the following aldehydes undergoes disproportionation (Cannizzaro reaction) when treated with 50% concentrated NaOH?",
+        "options": [
+            "(a) Acetaldehyde (CH₃CHO)",
+            "(b) Benzaldehyde (C₆H₅CHO)",
+            "(c) Propanal (CH₃CH₂CHO)",
+            "(d) Butanal (CH₃CH₂CH₂CHO)"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Benzaldehyde (C₆H₅CHO)</strong><br><br>The Cannizzaro reaction is given only by aldehydes lacking \\(\\alpha\\)-hydrogen atoms. When heated with concentrated alkali, one molecule is reduced to an alcohol while another is oxidized to a carboxylic acid salt:<br>\\(2\\text{C}_6\\text{H}_5\\text{CHO} + \\text{NaOH} \\to \\text{C}_6\\text{H}_5\\text{CH}_2\\text{OH} + \\text{C}_6\\text{H}_5\\text{COONa}\\).<br>Acetaldehyde, propanal, and butanal possess \\(\\alpha\\)-hydrogens and undergo Aldol condensation instead.",
+        "stepMarking": "(1 Mark) Benzaldehyde lacks alpha-hydrogen, undergoing Cannizzaro reaction.",
+        "cautionTrap": "Aldehydes WITH \\(\\alpha\\)-H undergo ALDOL. Aldehydes WITHOUT \\(\\alpha\\)-H undergo CANNIZZARO.",
+        "topperTip": "Cannizzaro candidates (no \\(\\alpha\\)-H): \\(\\text{HCHO}\\), \\(\\text{C}_6\\text{H}_5\\text{CHO}\\), \\((\\text{CH}_3)_3\\text{C-CHO}\\) (trimethylacetaldehyde).",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Carboxylic acids are significantly stronger acids than phenols.<br>Reason (R): In carboxylate ion, the negative charge is delocalized over two highly electronegative oxygen atoms, whereas in phenoxide ion, it is delocalized over less electronegative carbon atoms.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Although phenoxide ion has five resonance structures, four place negative charge on electropositive ring carbons, which contributes little to stabilization. In the carboxylate anion (\\(\\text{RCOO}^-\\)), the two resonance contributors are completely equivalent and place the negative charge entirely on two electronegative oxygen atoms. Thus, carboxylate is far more stable than phenoxide, making carboxylic acids stronger acids (pKa ~ 4.8 vs pKa ~ 10 for phenol). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Carboxylate resonance involves two equivalent electronegative oxygens.",
+        "cautionTrap": "Do not count number of resonance structures blindly: 2 equivalent oxygen structures beats 5 non-equivalent carbon structures!",
+        "topperTip": "Equivalent resonance structures involving electronegative atoms provide superior thermodynamic stabilization.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Carbonyl Reduction",
+        "stem": "The reduction of a carbonyl compound (aldehyde or ketone) to a hydrocarbon using zinc amalgam and concentrated HCl (Zn-Hg / conc. HCl) is known as:",
+        "options": [
+            "(a) Clemmensen reduction",
+            "(b) Wolff-Kishner reduction",
+            "(c) Rosenmund reduction",
+            "(d) Stephen reduction"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Clemmensen reduction</strong><br><br>• \\(>\\text{C}=\\text{O} + 4[\\text{H}] \\xrightarrow{\\text{Zn-Hg / conc. HCl}} >\\text{CH}_2 + \\text{H}_2\\text{O}\\) is the <strong>Clemmensen reduction</strong> (acidic conditions).<br>• \\(>\\text{C}=\\text{O} \\xrightarrow{\\text{NH}_2\\text{NH}_2 / \\text{KOH, ethylene glycol, } \\Delta} >\\text{CH}_2 + \\text{N}_2\\) is the <strong>Wolff-Kishner reduction</strong> (basic conditions).<br>• Rosenmund converts acid chloride to aldehyde (\\(\\text{Pd/BaSO}_4\\)).",
+        "stepMarking": "(1 Mark) Identifying Clemmensen reduction.",
+        "cautionTrap": "Acid-sensitive substrates cannot use Clemmensen (use Wolff-Kishner). Base-sensitive substrates cannot use Wolff-Kishner (use Clemmensen).",
+        "topperTip": "Clemmensen = Acidic (Zn-Hg/HCl) | Wolff-Kishner = Basic (\\(\\text{NH}_2\\text{NH}_2\\)/KOH).",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Carboxylic Acid Reaction",
+        "stem": "Carboxylic acids do not form addition products with 2,4-dinitrophenylhydrazine (2,4-DNP) or sodium bisulphite because:",
+        "options": [
+            "(a) the carbonyl carbon is sterically hindered",
+            "(b) resonance with the -OH group reduces the electrophilicity of the carbonyl carbon",
+            "(c) they exist only as dimers",
+            "(d) the C=O bond is non-polar"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) resonance with the -OH group reduces the electrophilicity of the carbonyl carbon</strong><br><br>In carboxylic acids, the lone pair on the hydroxyl oxygen atom delocalizes into the carbonyl group: \\(\\text{R-C}(=\\text{O})-\\ddot{\\text{O}}\\text{H} \\longleftrightarrow \\text{R-C}(\\text{O}^-)=\\text{O}^+\\text{H}\\). This resonance dispersal substantially reduces the partial positive charge on the carbonyl carbon compared to aldehydes and ketones. Consequently, it is not electrophilic enough to be attacked by weak nucleophiles like 2,4-DNP.",
+        "stepMarking": "(1 Mark) Lone pair of -OH reduces positive charge on carbonyl carbon.",
+        "cautionTrap": "Do not confuse lack of nucleophilic addition in carboxylic acids with aldehyde/ketone reactivity.",
+        "topperTip": "Carboxylic acids fail 2,4-DNP, NaHSO3, and Fehling's tests because resonance diminishes carbonyl electrophilicity.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-akc-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Trichloroacetic acid (CCl₃COOH) is a much stronger acid than acetic acid (CH₃COOH).<br>Reason (R): Three strongly electronegative chlorine atoms exert a powerful -I inductive effect that disperses the negative charge of the carboxylate ion, stabilizing it.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The three chlorine atoms attached to the \\(\\alpha\\)-carbon exert an additive, electron-withdrawing inductive effect (\\(-I\\)). This pulls electron density away from the \\(\\text{COO}^-\\) group, dispersing the negative charge over a larger volume and dramatically stabilizing the conjugate base trichloroacetate. Acetic acid possesses a methyl group with an electron-donating \\(+I\\) effect that destabilizes carboxylate. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) -I effect of 3 chlorine atoms stabilizes carboxylate anion.",
+        "cautionTrap": "Acidity scales with number and electronegativity of halogens: \\(\\text{CF}_3\\text{COOH} > \\text{CCl}_3\\text{COOH} > \\text{CHCl}_2\\text{COOH} > \\text{CH}_2\\text{ClCOOH} > \\text{CH}_3\\text{COOH}\\).",
+        "topperTip": "Electron-withdrawing groups (EWG, -I, -M) \\(\\uparrow\\) acidity | Electron-donating groups (EDG, +I, +M) \\(\\downarrow\\) acidity.",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Basicity Trends",
+        "stem": "The correct order of basic strength of methyl-substituted amines in aqueous solution is:",
+        "options": [
+            "(a) (CH₃)₂NH > CH₃NH₂ > (CH₃)₃N > NH₃",
+            "(b) (CH₃)₃N > (CH₃)₂NH > CH₃NH₂ > NH₃",
+            "(c) CH₃NH₂ > (CH₃)₂NH > (CH₃)₃N > NH₃",
+            "(d) (CH₃)₂NH > (CH₃)₃N > CH₃NH₂ > NH₃"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) (CH₃)₂NH > CH₃NH₂ > (CH₃)₃N > NH₃</strong><br><br>In aqueous solution, basicity is governed by three competing factors: (1) +I inductive effect, (2) solvation energy (hydrogen bonding of ammonium cation with water), and (3) steric hindrance. The combined optimum balance for methyl group is: \\(2^\\circ > 1^\\circ > 3^\\circ > \\text{NH}_3\\) (code: <strong>213</strong>). For ethyl groups, greater +I makes \\(2^\\circ > 3^\\circ > 1^\\circ > \\text{NH}_3\\) (code: <strong>231</strong>).",
+        "stepMarking": "(1 Mark) Identifying aqueous basicity order 2° > 1° > 3° for methyl amines.",
+        "cautionTrap": "In the GAS PHASE, steric/solvation effects are absent, so basicity follows purely inductive effect: \\(3^\\circ > 2^\\circ > 1^\\circ > \\text{NH}_3\\). In AQUEOUS, methyl is 213!",
+        "topperTip": "Aqueous Amine Basicity Mnemonic: <strong>Methyl = 2-1-3</strong> | <strong>Ethyl = 2-3-1</strong> | <strong>Gas phase = 3-2-1</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Hinsberg Reagent",
+        "stem": "Which class of amines reacts with Hinsberg's reagent (benzenesulphonyl chloride) to form a precipitate that is completely insoluble in aqueous KOH?",
+        "options": [
+            "(a) Primary (1°) amine",
+            "(b) Secondary (2°) amine",
+            "(c) Tertiary (3°) amine",
+            "(d) Quaternary ammonium salt"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Secondary (2°) amine</strong><br><br>Hinsberg test distinctions:<br>• <strong>Primary (1°) amines</strong> form N-alkylbenzenesulphonamide containing an acidic hydrogen on nitrogen; hence it dissolves in aqueous KOH.<br>• <strong>Secondary (2°) amines</strong> form N,N-dialkylbenzenesulphonamide lacking any hydrogen on nitrogen; it is insoluble in alkali (KOH).<br>• <strong>Tertiary (3°) amines</strong> do not react with Hinsberg reagent.",
+        "stepMarking": "(1 Mark) Secondary amine derivative lacks acidic H, remaining insoluble in KOH.",
+        "cautionTrap": "1° amine derivative DISSOLVES in KOH (due to acidic N-H). 2° amine derivative is INSOLUBLE in KOH.",
+        "topperTip": "Hinsberg reagent summary: 1° = Reacts + Dissolves in KOH | 2° = Reacts + Insoluble in KOH | 3° = No reaction.",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Aniline is a weaker base than cyclohexylamine.<br>Reason (R): In aniline, the lone pair of electrons on nitrogen is delocalized over the aromatic benzene ring through resonance, making it less available for protonation.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In aniline, the unshared electron pair on nitrogen is in conjugation with the benzene \\(\\pi\\)-system. Five resonance structures delocalize electron density onto ortho and para positions of the ring. Furthermore, anilinium ion has only two resonance structures, meaning protonation is thermodynamically disfavoured. In cyclohexylamine, there is no resonance; nitrogen lone pair is localized on \\(sp^3\\) carbon and basicity is high (pKb ~ 3.3 vs pKb ~ 9.4 for aniline). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Resonance delocalization of nitrogen lone pair decreases basicity.",
+        "cautionTrap": "Cyclohexylamine is aliphatic (no benzene resonance), hence far more basic than aromatic aniline.",
+        "topperTip": "Aromatic amines are always weaker bases than aliphatic amines due to resonance delocalization.",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Named Reactions",
+        "stem": "In the Hoffmann bromamide degradation reaction, the number of moles of NaOH and Br₂ consumed per mole of primary amide are:",
+        "options": [
+            "(a) 4 moles NaOH and 1 mole Br₂",
+            "(b) 2 moles NaOH and 2 moles Br₂",
+            "(c) 1 mole NaOH and 1 mole Br₂",
+            "(d) 4 moles NaOH and 2 moles Br₂"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 4 moles NaOH and 1 mole Br₂</strong><br><br>Balanced reaction equation:<br>\\(\\text{R-CONH}_2 + \\text{Br}_2 + 4\\text{NaOH} \\to \\text{R-NH}_2 + \\text{Na}_2\\text{CO}_3 + 2\\text{NaBr} + 2\\text{H}_2\\text{O}\\).<br>Exactly 1 mole of \\(\\text{Br}_2\\) and 4 moles of \\(\\text{NaOH}\\) are consumed to degrade the amide into a primary amine with ONE less carbon atom.",
+        "stepMarking": "(1 Mark) Stoichiometry of 4 NaOH and 1 Br2.",
+        "cautionTrap": "High-frequency numerical trap! Note that the product amine has ONE LESS carbon atom than starting amide.",
+        "topperTip": "Hoffmann bromamide: \\(1\\text{ RCONH}_2 + 1\\text{ Br}_2 + 4\\text{ NaOH} \\to 1\\text{ RNH}_2\\) (step-down descent of series).",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Carbylamine Test",
+        "stem": "Heating an aliphatic or aromatic primary amine with chloroform and alcoholic KOH produces an extremely foul-smelling substance called an:",
+        "options": [
+            "(a) isocyanide (carbylamine)",
+            "(b) alkyl cyanide",
+            "(c) amide",
+            "(d) azo dye"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) isocyanide (carbylamine)</strong><br><br>Carbylamine reaction:<br>\\(\\text{R-NH}_2 + \\text{CHCl}_3 + 3\\text{KOH (alc.)} \\xrightarrow{\\Delta} \\text{R-NC} + 3\\text{KCl} + 3\\text{H}_2\\text{O}\\).<br>Alkyl/aryl isocyanides (\\(\\text{R-N}\\equiv\\text{C}\\)) have an intolerable foul odour. This reaction is specific to <strong>primary (1°) amines only</strong>; secondary and tertiary amines do NOT give this test.",
+        "stepMarking": "(1 Mark) Primary amines form isocyanides in Carbylamine test.",
+        "cautionTrap": "Secondary and tertiary amines do NOT show the carbylamine test. It is specific for 1° amines only.",
+        "topperTip": "Carbylamine test: Specific diagnostic test for 1° amines (both aliphatic and aromatic).",
+        "mnemonic": ""
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Arenediazonium salts (e.g. benzenediazonium chloride) are stable in aqueous solution at 273-278 K, whereas aliphatic diazonium salts decompose explosively even at 0 °C.<br>Reason (R): In arenediazonium cations, the positive charge is delocalized into the benzene ring through resonance.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In arenediazonium ion (\\(\\text{C}_6\\text{H}_5\\text{N}_2^+\\)), resonance between the diazonium group and the benzene ring provides temporary stabilization at ice-cold temperatures (0-5 °C or 273-278 K). In aliphatic diazonium salts (\\(\\text{R-N}_2^+\\)), no resonance stabilization exists; they spontaneously liberate nitrogen gas (\\(\\text{N}_2\\)) to form carbocations that undergo immediate solvolysis. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Resonance stabilizes arenediazonium ion at 0-5 °C.",
+        "cautionTrap": "Arenediazonium salts must be kept below 5 °C; above 5 °C, they hydrolyze to phenol with evolution of N2.",
+        "topperTip": "Diazotization reaction temperature MUST be maintained strictly between 273 K - 278 K (0 - 5 °C).",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 56/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Glucose Structure Proof",
+        "stem": "Prolonged heating of D-glucose with hydroiodic acid (HI) in the presence of red phosphorus yields:",
+        "options": [
+            "(a) n-Hexane",
+            "(b) Gluconic acid",
+            "(c) Saccharic acid",
+            "(d) Sorbitol"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) n-Hexane</strong><br><br>Reaction: \\(\\text{CHO-(CHOH)}_4-\\text{CH}_2\\text{OH} \\xrightarrow{\\text{HI, } \\Delta} \\text{CH}_3-\\text{CH}_2-\\text{CH}_2-\\text{CH}_2-\\text{CH}_2-\\text{CH}_3\\) (n-Hexane).<br>This reduction reaction was the critical historic proof demonstrating that all six carbon atoms in D-glucose are linked in an unbranched, straight chain.",
+        "stepMarking": "(1 Mark) HI reduction proves unbranched 6-carbon straight chain (n-hexane).",
+        "cautionTrap": "Bromine water oxidizes glucose to GLUCONIC ACID. Conc. HNO3 oxidizes to SACCHARIC ACID. HI reduces to N-HEXANE.",
+        "topperTip": "Glucose Structure Proofs: HI \\(\\to\\) n-hexane (straight chain) | \\(\\text{Br}_2\\) water \\(\\to\\) gluconic acid (aldehyde group) | \\(\\text{HNO}_3\\) \\(\\to\\) saccharic acid (primary alcohol).",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Protein Denaturation",
+        "stem": "During denaturation of a globular protein by heating or chemical change, which structural level remains intact?",
+        "options": [
+            "(a) Primary structure",
+            "(b) Secondary structure",
+            "(c) Tertiary structure",
+            "(d) Quaternary structure"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Primary structure</strong><br><br>Denaturation involves disruption of weak non-covalent interactions (hydrogen bonds, ionic interactions, disulfide bridges, hydrophobic contacts) that stabilize the secondary (\\(\\alpha\\)-helix, \\(\\beta\\)-sheet), tertiary, and quaternary structures of a protein. The covalent peptide bonds linking amino acids in the sequence are strong and remain intact. Hence, <strong>primary structure is completely preserved</strong>.",
+        "stepMarking": "(1 Mark) Primary structure remains intact during denaturation.",
+        "cautionTrap": "Secondary, tertiary, and quaternary structures unfold, but primary sequence never breaks during denaturation.",
+        "topperTip": "Denaturation destroys biological activity and 2°/3°/4° structures; Primary sequence remains 100% intact.",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): DNA contains thymine, whereas RNA contains uracil in place of thymine.<br>Reason (R): Both thymine and uracil are pyrimidine nitrogenous bases that form complementary base pairs with adenine.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Both A and R are true but R is not the correct explanation of A</strong><br><br>Assertion is true: DNA contains adenine (A), guanine (G), cytosine (C), and thymine (T), whereas RNA replaces thymine with uracil (U).<br>Reason is true: Both T and U are pyrimidines and both form two hydrogen bonds with adenine (A-T in DNA, A-U in RNA).<br>However, Reason does not explain WHY DNA evolved thymine (5-methyluracil) instead of uracil: thymine is selected in DNA because spontaneous cytosine deamination produces uracil; having thymine allows repair enzymes to recognize uracil as damage and preserve genomic fidelity. Thus, both statements are true, but R is not the correct explanation of A.",
+        "stepMarking": "(1 Mark) Identifying both true but R does not explain why RNA has U instead of T.",
+        "cautionTrap": "Subtle CBSE question: both statements are biologically true facts, but R does not explain the evolutionary reason.",
+        "topperTip": "Bases: DNA = A, G, C, T | RNA = A, G, C, U. Purines = A, G; Pyrimidines = C, T, U.",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Vitamins Classification",
+        "stem": "Which of the following vitamins is water-soluble and must be supplied regularly in the diet because it is excreted readily in urine?",
+        "options": [
+            "(a) Vitamin A",
+            "(b) Vitamin D",
+            "(c) Vitamin C",
+            "(d) Vitamin K"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Vitamin C</strong><br><br>Vitamins are classified into two groups:<br>• <strong>Fat-soluble vitamins:</strong> Vitamins A, D, E, K (stored in liver and adipose tissues; not readily excreted).<br>• <strong>Water-soluble vitamins:</strong> B-complex vitamins and Vitamin C (ascorbic acid). Because they dissolve in water, excess amounts are readily excreted in urine, so they cannot be stored and must be supplied regularly in diet (except Vitamin B12).",
+        "stepMarking": "(1 Mark) Vitamin C is water-soluble and excreted in urine.",
+        "cautionTrap": "Fat-soluble vitamins: A, D, E, K. Water-soluble: B-group and Vitamin C.",
+        "topperTip": "Mnemonic: <strong>K-E-D-A</strong> are Fat-soluble; <strong>B & C</strong> are Water-soluble.",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Peptide Bond Nature",
+        "stem": "The peptide linkage formed between two amino acid molecules in a protein chain is structurally an:",
+        "options": [
+            "(a) ester linkage",
+            "(b) amide linkage (-CO-NH-)",
+            "(c) ether linkage",
+            "(d) glycosidic linkage"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) amide linkage (-CO-NH-)</strong><br><br>When the \\(-\\text{COOH}\\) group of one \\(\\alpha\\)-amino acid condenses with the \\(-\\text{NH}_2\\) group of another amino acid with elimination of a water molecule, an amide linkage \\(-\\text{CO}-\\text{NH}-\\) is formed. In biochemistry, this specific amide bond is known as a <strong>peptide linkage</strong> (or peptide bond). (Glycosidic linkage connects monosaccharides in carbohydrates).",
+        "stepMarking": "(1 Mark) Peptide bond is chemically an amide linkage (-CO-NH-).",
+        "cautionTrap": "Do not confuse: Peptide = Amide (proteins) | Glycosidic = Ether (carbohydrates) | Phosphodiester = Ester (nucleic acids).",
+        "topperTip": "Biochemical linkages: Proteins = Peptide (-CO-NH-) | Polysaccharides = Glycosidic (-C-O-C-) | DNA/RNA = Phosphodiester.",
+        "mnemonic": ""
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Amino acids are crystalline solids with relatively high melting points and water solubility, behaving like salts rather than simple amines or carboxylic acids.<br>Reason (R): In aqueous solution, the basic -NH₂ group accepts a proton while the acidic -COOH group donates a proton to form a dipolar Zwitterion: H₃N⁺-CH(R)-COO⁻.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Because amino acids contain both an acidic carboxyl group and a basic amino group in the same molecule, internal acid-base neutralization occurs to generate a dipolar ion called a <strong>zwitterion</strong> (\\(\\text{H}_3\\text{N}^+-\\text{CH(R)}-\\text{COO}^-\\)). In the solid state, strong electrostatic attractions exist between oppositely charged zwitterionic poles, giving amino acids high melting points (above 200 °C) and salt-like behavior. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Zwitterion formation explains salt-like crystalline properties.",
+        "cautionTrap": "At the isoelectric point, the zwitterion has net zero charge and does not migrate in an electric field.",
+        "topperTip": "Zwitterion: Internal salt form \\(\\text{H}_3\\text{N}^+-\\text{CH(R)}-\\text{COO}^-\\) explains high mp and water solubility.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Equivalence Relations",
+        "stem": "Let R be a relation on the set of natural numbers N defined by R = {(a, b) : a = b - 2, b > 6}. Which of the following ordered pairs belongs to R?",
+        "options": [
+            "(a) (2, 4)",
+            "(b) (3, 8)",
+            "(c) (6, 8)",
+            "(d) (8, 7)"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) (6, 8)</strong><br><br>Given conditions:<br>1. \\(b > 6\\)<br>2. \\(a = b - 2\\).<br>Checking options:<br>• (a) (2, 4): \\(b = 4 \\ngtr 6\\) (violates \\(b > 6\\)).<br>• (b) (3, 8): \\(b = 8 > 6\\), but \\(a = 8 - 2 = 6 \\neq 3\\).<br>• (c) (6, 8): \\(b = 8 > 6\\) and \\(a = 8 - 2 = 6\\). Both satisfied! \\((6, 8) \\in R\\).<br>• (d) (8, 7): \\(a = 7 - 2 = 5 \\neq 8\\).",
+        "stepMarking": "(1 Mark) Testing condition \\(b > 6\\) and \\(a = b - 2\\) yields (6, 8).",
+        "cautionTrap": "In (2, 4), \\(a = 4 - 2 = 2\\) is true, but students forget the condition \\(b > 6\\)!",
+        "topperTip": "Always verify EVERY stated constraint (both the formula and the domain restriction \\(b > 6\\)).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Bijective Functions",
+        "stem": "The function f: R → R defined by f(x) = x³ is:",
+        "options": [
+            "(a) one-one and onto (bijective)",
+            "(b) one-one but not onto",
+            "(c) onto but not one-one",
+            "(d) neither one-one nor onto"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) one-one and onto (bijective)</strong><br><br>1. <strong>Injective (One-One):</strong> \\(f(x_1) = f(x_2) \\implies x_1^3 = x_2^3 \\implies x_1 = x_2\\) (since cube root over real numbers is unique). Hence \\(f\\) is one-one.<br>2. <strong>Surjective (Onto):</strong> For any \\(y \\in \\mathbb{R}\\), let \\(x = y^{1/3} \\in \\mathbb{R}\\). Then \\(f(x) = (y^{1/3})^3 = y\\). The range is \\(\\mathbb{R}\\), which equals the codomain. Hence \\(f\\) is onto.<br>Since it is both one-one and onto, \\(f\\) is <strong>bijective</strong>.",
+        "stepMarking": "(1 Mark) Proof of injectivity and surjectivity over R.",
+        "cautionTrap": "If the function were \\(f(x) = x^2\\) or \\(x^4\\), it would be neither one-one nor onto on \\(\\mathbb{R}\\). Odd powers over \\(\\mathbb{R}\\) are bijections.",
+        "topperTip": "Quick test: Odd degree monic monomials (\\(x, x^3, x^5\\)) on \\(\\mathbb{R} \\to \\mathbb{R}\\) are strictly monotonic and always bijective.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The relation R on the set of all integers Z defined by R = {(a, b) : 2 divides (a - b)} is an equivalence relation.<br>Reason (R): R is reflexive, symmetric, and transitive.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>1. <strong>Reflexive:</strong> For all \\(a \\in \\mathbb{Z}\\), \\(a - a = 0 = 2 \\times 0\\) (2 divides 0). So \\((a, a) \\in R\\).<br>2. <strong>Symmetric:</strong> If \\((a, b) \\in R\\), then \\(a - b = 2k \\implies b - a = 2(-k)\\), so \\((b, a) \\in R\\).<br>3. <strong>Transitive:</strong> If \\((a, b) \\in R\\) and \\((b, c) \\in R\\), then \\(a - b = 2k_1\\) and \\(b - c = 2k_2\\). Adding: \\(a - c = 2(k_1 + k_2)\\), so \\((a, c) \\in R\\).<br>By definition, a relation that is reflexive, symmetric, and transitive is an equivalence relation. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Standard definition and verification of equivalence relation.",
+        "cautionTrap": "Zero is divisible by any non-zero integer; so reflexivity \\(a - a = 0\\) holds universally.",
+        "topperTip": "Equivalence relation checklist: (1) \\((a, a) \\in R\\), (2) \\((a, b) \\in R \\implies (b, a) \\in R\\), (3) \\((a, b), (b, c) \\in R \\implies (a, c) \\in R\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Counting Relations",
+        "stem": "If a set A contains 3 elements, the total number of distinct relations that can be defined on A is:",
+        "options": [
+            "(a) 2³ = 8",
+            "(b) 2⁹ = 512",
+            "(c) 3² = 9",
+            "(d) 2⁶ = 64"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 2⁹ = 512</strong><br><br>If a set \\(A\\) has \\(n\\) elements, the Cartesian product \\(A \\times A\\) contains \\(n \\times n = n^2\\) elements.<br>Here, \\(n = 3\\), so \\(n(A \\times A) = 3^2 = 9\\).<br>A relation on \\(A\\) is defined as any subset of \\(A \\times A\\). The total number of subsets of a set with 9 elements is \\(2^9 = 512\\).",
+        "stepMarking": "(1 Mark) Number of relations on set of \\(n\\) elements is \\(2^{n^2} = 2^9 = 512\\).",
+        "cautionTrap": "Do not confuse total relations (\\(2^{n^2}\\)) with reflexive relations (\\(2^{n(n-1)}\\)) or symmetric relations (\\(2^{n(n+1)/2}\\)).",
+        "topperTip": "Formulas for relations on set with \\(n\\) elements: Total = \\(2^{n^2}\\) | Symmetric = \\(2^{n(n+1)/2}\\) | Reflexive = \\(2^{n(n-1)}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Domain & Range",
+        "stem": "The domain of the real-valued function f(x) = \\sqrt{9 - x²} is:",
+        "options": [
+            "(a) (-3, 3)",
+            "(b) [-3, 3]",
+            "(c) [0, 3]",
+            "(d) (-∞, -3] ∪ [3, ∞)"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) [-3, 3]</strong><br><br>For \\(f(x)\\) to be real, the quantity under the square root must be non-negative:<br>\\(9 - x^2 \\ge 0 \\implies x^2 \\le 9 \\implies -3 \\le x \\le 3\\).<br>In interval notation, the domain is the closed interval \\([-3, 3]\\). (The range of this function is \\([0, 3]\\)).",
+        "stepMarking": "(1 Mark) Inequality \\(9 - x^2 \\ge 0 \\implies x \\in [-3, 3]\\).",
+        "cautionTrap": "Watch closed brackets vs open brackets: at \\(x = \\pm 3\\), \\(\\sqrt{9-9} = 0\\), which is valid, so brackets are CLOSED: [-3, 3].",
+        "topperTip": "Square root domain: radicand \\(\\ge 0\\) | Denominator \\(\\neq 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The relation R on the set A = {1, 2, 3} given by R = {(1, 2), (2, 1)} is symmetric but neither reflexive nor transitive.<br>Reason (R): For reflexivity, (a, a) must belong to R for every a in A; here (1, 1), (2, 2), (3, 3) are missing.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>• <strong>Symmetric:</strong> \\((1, 2) \\in R\\) and \\((2, 1) \\in R\\). Yes.<br>• <strong>Not Reflexive:</strong> \\((1, 1) \\notin R\\), \\((2, 2) \\notin R\\), \\((3, 3) \\notin R\\).<br>• <strong>Not Transitive:</strong> \\((1, 2) \\in R\\) and \\((2, 1) \\in R\\), but \\((1, 1) \\notin R\\).<br>Both A and R are true and R correctly explains the failure of reflexivity. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Testing symmetric, failure of reflexive, and failure of transitive.",
+        "cautionTrap": "Many students wrongly assume {(1, 2), (2, 1)} is transitive! Since (1, 2) and (2, 1) are in R, transitivity requires (1, 1) to be in R as well.",
+        "topperTip": "Transitivity trap: \\((a, b) \\in R\\) and \\((b, a) \\in R\\) forces \\((a, a) \\in R\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Principal Value Branch",
+        "stem": "The principal value of cos⁻¹(-1/2) is equal to:",
+        "options": [
+            "(a) π/3",
+            "(b) 2π/3",
+            "(c) -π/3",
+            "(d) 4π/3"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 2π/3</strong><br><br>The principal value branch of \\(\\cos^{-1} x\\) is \\([0, \\pi]\\).<br>For negative inputs: \\(\\cos^{-1}(-x) = \\pi - \\cos^{-1}(x)\\).<br>\\(\\cos^{-1}\\left(-\\frac{1}{2}\\right) = \\pi - \\cos^{-1}\\left(\\frac{1}{2}\\right) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\).<br>Since \\(\\frac{2\\pi}{3} \\in [0, \\pi]\\), it is the correct principal value.",
+        "stepMarking": "(1 Mark) Using \\(\\cos^{-1}(-x) = \\pi - \\cos^{-1}(x)\\) to get \\(2\\pi/3\\).",
+        "cautionTrap": "Do not write \\(-\\pi/3\\)! \\(\\cos^{-1} x\\) outputs are strictly in \\([0, \\pi]\\); negative values are impossible.",
+        "topperTip": "Negative argument rules: \\(\\sin^{-1}(-x) = -\\sin^{-1} x\\), \\(\\tan^{-1}(-x) = -\\tan^{-1} x\\) vs \\(\\cos^{-1}(-x) = \\pi - \\cos^{-1} x\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Evaluation",
+        "stem": "The value of sin⁻¹(sin(3π/5)) is:",
+        "options": [
+            "(a) 3π/5",
+            "(b) 2π/5",
+            "(c) -3π/5",
+            "(d) π/5"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 2π/5</strong><br><br>The principal value branch of \\(\\sin^{-1} x\\) is \\([-\\pi/2, \\pi/2]\\).<br>Notice that \\(\\frac{3\\pi}{5} = 108^\\circ > 90^\\circ\\), which lies outside the principal branch! We must rewrite it:<br>\\(\\sin\\left(\\frac{3\\pi}{5}\\right) = \\sin\\left(\\pi - \\frac{2\\pi}{5}\\right) = \\sin\\left(\\frac{2\\pi}{5}\\right)\\).<br>Since \\(\\frac{2\\pi}{5} = 72^\\circ \\in [-\\pi/2, \\pi/2]\\):<br>\\(\\sin^{-1}\\left(\\sin\\left(\\frac{3\\pi}{5}\\right)\\right) = \\sin^{-1}\\left(\\sin\\left(\\frac{2\\pi}{5}\\right)\\right) = \\frac{2\\pi}{5}\\).",
+        "stepMarking": "(1 Mark) Reducing \\(3\\pi/5\\) to principal branch \\(2\\pi/5\\).",
+        "cautionTrap": "Classic CBSE trap! \\(\\sin^{-1}(\\sin \\theta) = \\theta\\) is valid ONLY if \\(\\theta \\in [-\\pi/2, \\pi/2]\\). Picking 3π/5 gets zero marks.",
+        "topperTip": "Always verify if the angle falls in the principal branch: \\(\\sin^{-1} \\to [-\\pi/2, \\pi/2]\\), \\(\\cos^{-1} \\to [0, \\pi]\\), \\(\\tan^{-1} \\to (-\\pi/2, \\pi/2)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The domain of the function f(x) = sin⁻¹(2x) is [-1/2, 1/2].<br>Reason (R): The domain of sin⁻¹(u) is -1 ≤ u ≤ 1.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The argument of \\(\\sin^{-1}\\) must satisfy \\(-1 \\le u \\le 1\\). Here \\(u = 2x\\), so \\(-1 \\le 2x \\le 1 \\implies -\\frac{1}{2} \\le x \\le \\frac{1}{2}\\), giving the domain \\([-1/2, 1/2]\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Connecting definition of domain of \\(\\sin^{-1}\\) with \\(-1/2 \\le x \\le 1/2\\).",
+        "cautionTrap": "Do not confuse domain (inputs x) with range (outputs y in radians).",
+        "topperTip": "Domain of \\(\\sin^{-1}(kx)\\) is \\([-1/k, 1/k]\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Principal Value",
+        "stem": "The principal value of tan⁻¹(-√3) is:",
+        "options": [
+            "(a) π/3",
+            "(b) 2π/3",
+            "(c) -π/3",
+            "(d) 5π/6"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) -π/3</strong><br><br>The principal value branch of \\(\\tan^{-1} x\\) is the open interval \\((-\\pi/2, \\pi/2)\\).<br>Since \\(\\tan^{-1}(-x) = -\\tan^{-1}(x)\\):<br>\\(\\tan^{-1}(-\\sqrt{3}) = -\\tan^{-1}(\\sqrt{3}) = -\\frac{\\pi}{3}\\).<br>Since \\(-\\frac{\\pi}{3} \\in (-\\pi/2, \\pi/2)\\), it is the correct principal value.",
+        "stepMarking": "(1 Mark) Using \\(\\tan^{-1}(-x) = -\\tan^{-1}(x)\\).",
+        "cautionTrap": "Do not pick 2π/3; that is in the second quadrant, outside the range of arctan.",
+        "topperTip": "Range of \\(\\tan^{-1} x\\) is \\((-\\pi/2, \\pi/2)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Complementary Identity",
+        "stem": "For all x ∈ [-1, 1], the value of sin⁻¹(x) + cos⁻¹(x) is identically equal to:",
+        "options": [
+            "(a) 0",
+            "(b) π/2",
+            "(c) π",
+            "(d) 2π"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) π/2</strong><br><br>Let \\(\\sin^{-1} x = \\theta \\implies x = \\sin\\theta = \\cos\\left(\\frac{\\pi}{2} - \\theta\\right)\\).<br>Therefore, \\(\\cos^{-1} x = \\frac{\\pi}{2} - \\theta = \\frac{\\pi}{2} - \\sin^{-1} x\\).<br>Hence, \\(\\sin^{-1} x + \\cos^{-1} x = \\frac{\\pi}{2}\\).<br>(Similarly, \\(\\tan^{-1} x + \\cot^{-1} x = \\frac{\\pi}{2}\\) and \\(\\sec^{-1} x + \\csc^{-1} x = \\frac{\\pi}{2}\\)).",
+        "stepMarking": "(1 Mark) Complementary inverse identity.",
+        "cautionTrap": "Valid strictly when \\(x \\in [-1, 1]\\).",
+        "topperTip": "Standard triad: \\(\\sin^{-1}x + \\cos^{-1}x = \\pi/2\\), \\(\\tan^{-1}x + \\cot^{-1}x = \\pi/2\\), \\(\\sec^{-1}x + \\csc^{-1}x = \\pi/2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The value of tan(sin⁻¹(3/5)) is equal to 3/4.<br>Reason (R): In a right-angled triangle with opposite side 3 and hypotenuse 5, the adjacent side is 4, so tan θ = opposite / adjacent = 3/4.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Let \\(\\theta = \\sin^{-1}(3/5) \\implies \\sin\\theta = 3/5\\).<br>By Pythagorean theorem, adjacent side is \\(b = \\sqrt{5^2 - 3^2} = \\sqrt{16} = 4\\).<br>Then \\(\\tan\\theta = \\frac{\\text{opp}}{\\text{adj}} = \\frac{3}{4}\\). Thus \\(\\tan(\\sin^{-1}(3/5)) = 3/4\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Pythagorean conversion of inverse trig functions.",
+        "cautionTrap": "Always ensure the angle lies in the first quadrant where all trig ratios are positive.",
+        "topperTip": "Right triangle method: Opp = 3, Hyp = 5 \\(\\implies\\) Adj = 4 \\(\\implies \\tan = 3/4\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Determinant Properties",
+        "stem": "If A is a square matrix of order 3 × 3 such that |A| = 5, then the value of |adj A| is:",
+        "options": [
+            "(a) 5",
+            "(b) 25",
+            "(c) 125",
+            "(d) 1/5"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 25</strong><br><br>For any square matrix \\(A\\) of order \\(n\\), the determinant of its adjoint is given by \\(|\\text{adj } A| = |A|^{n-1}\\).<br>Here, order \\(n = 3\\) and \\(|A| = 5\\).<br>\\(|\\text{adj } A| = 5^{3-1} = 5^2 = 25\\).<br>(If \\(n=3\\), \\(|A \\cdot \\text{adj } A| = |A|^n = 5^3 = 125\\)).",
+        "stepMarking": "(1 Mark) Formula \\(|\\text{adj } A| = |A|^{n-1} = 5^2 = 25\\).",
+        "cautionTrap": "Do not confuse \\(|\\text{adj } A| = |A|^{n-1}\\) with \\(|k A| = k^n |A|\\) or \\(|A \\cdot \\text{adj } A| = |A|^n\\).",
+        "topperTip": "Master Determinant Identities: (1) \\(|\\text{adj } A| = |A|^{n-1}\\), (2) \\(|kA| = k^n |A|\\), (3) \\(|\\text{adj}(\\text{adj } A)| = |A|^{(n-1)^2}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Scalar Multiplication",
+        "stem": "If A is a 3 × 3 matrix and |A| = 4, then the determinant of the scalar multiple matrix |2A| is:",
+        "options": [
+            "(a) 8",
+            "(b) 16",
+            "(c) 32",
+            "(d) 64"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) 32</strong><br><br>For an \\(n \\times n\\) matrix \\(A\\) and scalar \\(k\\), the determinant property is \\(|kA| = k^n |A|\\).<br>Here, \\(k = 2\\), order \\(n = 3\\), and \\(|A| = 4\\):<br>\\(|2A| = 2^3 \\times |A| = 8 \\times 4 = 32\\).",
+        "stepMarking": "(1 Mark) Formula \\(|kA| = k^n |A| = 2^3 \\times 4 = 32\\).",
+        "cautionTrap": "Common student blunder: multiplying 2 by 4 to get 8 (option a). You must raise 2 to the power \\(n = 3\\)!",
+        "topperTip": "\\(|kA| = k^n |A|\\). Always count the order \\(n\\) of the matrix first.",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): For any square matrix A, the matrix A + A^T is always symmetric.<br>Reason (R): (A + A^T)^T = A^T + (A^T)^T = A^T + A = A + A^T.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Let \\(B = A + A^T\\). Taking transpose:<br>\\(B^T = (A + A^T)^T = A^T + (A^T)^T = A^T + A = A + A^T = B\\).<br>Since \\(B^T = B\\), the matrix is symmetric by definition. (Similarly, \\(A - A^T\\) is always skew-symmetric because \\((A - A^T)^T = -(A - A^T)\\)). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Standard proof of symmetry using transpose properties.",
+        "cautionTrap": "Remember: \\(A + A^T\\) is symmetric, while \\(A - A^T\\) is skew-symmetric.",
+        "topperTip": "Every square matrix can be uniquely expressed as \\(A = \\frac{1}{2}(A + A^T) + \\frac{1}{2}(A - A^T)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Singular Matrix",
+        "stem": "The matrix A = [[2, x], [4, 8]] is singular if the value of x is:",
+        "options": [
+            "(a) 2",
+            "(b) 4",
+            "(c) 8",
+            "(d) 16"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 4</strong><br><br>A square matrix is singular if its determinant is zero: \\(|A| = 0\\).<br>\\(|A| = (2)(8) - (x)(4) = 16 - 4x = 0\\).<br>\\(4x = 16 \\implies x = 4\\).",
+        "stepMarking": "(1 Mark) Condition \\(|A| = 0 \\implies 16 - 4x = 0 \\implies x = 4\\).",
+        "cautionTrap": "Singular = \\(|A| = 0\\) (non-invertible). Non-singular = \\(|A| \\neq 0\\) (invertible).",
+        "topperTip": "Singular matrix has no inverse because \\(A^{-1} = \\frac{\\text{adj } A}{|A|}\\) involves division by zero.",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Matrix Inverse",
+        "stem": "If A and B are invertible matrices of the same order, then (AB)⁻¹ is equal to:",
+        "options": [
+            "(a) A⁻¹ B⁻¹",
+            "(b) B⁻¹ A⁻¹",
+            "(c) A B⁻¹",
+            "(d) B A⁻¹"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) B⁻¹ A⁻¹</strong><br><br>The reversal law of inverses states that \\((AB)^{-1} = B^{-1} A^{-1}\\).<br>Proof: \\((AB)(B^{-1} A^{-1}) = A(B B^{-1}) A^{-1} = A I A^{-1} = A A^{-1} = I\\).<br>(Similarly, for transposes: \\((AB)^T = B^T A^T\\)).",
+        "stepMarking": "(1 Mark) Reversal law \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+        "cautionTrap": "Do not write \\(A^{-1} B^{-1}\\); matrix multiplication is non-commutative in general!",
+        "topperTip": "Reversal law applies to both Inverses and Transposes: \\((AB)^{-1} = B^{-1}A^{-1}\\) and \\((AB)^T = B^T A^T\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-md-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The determinant of a skew-symmetric matrix of odd order is always zero.<br>Reason (R): For a skew-symmetric matrix A of order n, A^T = -A, which gives |A| = (-1)^n |A|.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>By definition of skew-symmetric matrix: \\(A^T = -A\\).<br>Taking determinants: \\(|A^T| = |-A|\\).<br>Since \\(|A^T| = |A|\\) and \\(|-A| = (-1)^n |A|\\), we have \\(|A| = (-1)^n |A|\\).<br>When \\(n\\) is odd, \\((-1)^n = -1\\), giving \\(|A| = -|A| \\implies 2|A| = 0 \\implies |A| = 0\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Proof that odd-order skew-symmetric matrix has determinant 0.",
+        "cautionTrap": "This holds strictly for ODD order (3x3, 5x5). An even order skew-symmetric matrix (2x2, 4x4) can have non-zero determinant (which is a perfect square).",
+        "topperTip": "Determinant of odd skew-symmetric = 0 | All diagonal elements of skew-symmetric = 0.",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Continuity Condition",
+        "stem": "The function f(x) = { k x + 1, if x ≤ 5; 3x - 5, if x > 5 } is continuous at x = 5. The value of k is:",
+        "options": [
+            "(a) 9/5",
+            "(b) 2",
+            "(c) 7/5",
+            "(d) 3"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 9/5</strong><br><br>For continuity at \\(x = 5\\), left-hand limit and right-hand limit must be equal:<br>\\(\\lim_{x \\to 5^-} f(x) = k(5) + 1 = 5k + 1\\).<br>\\(\\lim_{x \\to 5^+} f(x) = 3(5) - 5 = 15 - 5 = 10\\).<br>Equating: \\(5k + 1 = 10 \\implies 5k = 9 \\implies k = \\frac{9}{5}\\).",
+        "stepMarking": "(1 Mark) Equating \\(5k + 1 = 10 \\implies k = 9/5\\).",
+        "cautionTrap": "Careless arithmetic: \\(15 - 5 = 10\\); \\(10 - 1 = 9\\); \\(k = 9/5\\).",
+        "topperTip": "Continuity at \\(x=c\\): \\(\\text{LHL} = \\text{RHL} = f(c)\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Differentiability",
+        "stem": "The function f(x) = |x - 2| is:",
+        "options": [
+            "(a) continuous and differentiable at x = 2",
+            "(b) continuous but not differentiable at x = 2",
+            "(c) neither continuous nor differentiable at x = 2",
+            "(d) differentiable but not continuous at x = 2"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) continuous but not differentiable at x = 2</strong><br><br>1. <strong>Continuity:</strong> \\(\\lim_{x \\to 2} |x - 2| = 0 = f(2)\\). The graph has no break, so it is continuous.<br>2. <strong>Differentiability:</strong><br>Left-hand derivative: \\(L f'(2) = \\lim_{h \\to 0^-} \\frac{|2+h-2| - 0}{h} = \\frac{-h}{h} = -1\\).<br>Right-hand derivative: \\(R f'(2) = \\lim_{h \\to 0^+} \\frac{|2+h-2| - 0}{h} = \\frac{h}{h} = +1\\).<br>Since \\(L f'(2) \\neq R f'(2)\\), the curve has a sharp corner (cusp) and is not differentiable at \\(x = 2\\).",
+        "stepMarking": "(1 Mark) Showing LHD = -1, RHD = +1, hence non-differentiable at vertex.",
+        "cautionTrap": "Differentiability implies continuity, but continuity does NOT imply differentiability!",
+        "topperTip": "Any modulus function \\(|x - a|\\) is continuous everywhere on \\(\\mathbb{R}\\), but non-differentiable at its sharp vertex \\(x = a\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): If a function f is differentiable at a point c, then it is necessarily continuous at c.<br>Reason (R): Differentiability means lim_{h→0} [f(c+h) - f(c)]/h exists, which implies lim_{h→0} [f(c+h) - f(c)] = 0.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>We write: \\(f(x) - f(c) = \\frac{f(x) - f(c)}{x - c} \\cdot (x - c)\\).<br>Taking limits as \\(x \\to c\\):<br>\\(\\lim_{x \\to c} [f(x) - f(c)] = \\lim_{x \\to c}\\frac{f(x) - f(c)}{x - c} \\cdot \\lim_{x \\to c}(x - c) = f'(c) \\cdot 0 = 0\\).<br>Thus \\(\\lim_{x \\to c} f(x) = f(c)\\), which is the definition of continuity. Hence differentiability strictly implies continuity. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Rigorous limit proof that differentiability implies continuity.",
+        "cautionTrap": "The converse is FALSE: a function can be continuous but not differentiable (e.g. \\(|x|\\) at \\(x=0\\)).",
+        "topperTip": "Differentiable \\(\\implies\\) Continuous (Always True) | Continuous \\(\\implies\\) Differentiable (Not Necessarily True).",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Parametric Differentiation",
+        "stem": "If x = a cos θ and y = a sin θ, the value of dy/dx is:",
+        "options": [
+            "(a) tan θ",
+            "(b) -cot θ",
+            "(c) cot θ",
+            "(d) -tan θ"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) -cot θ</strong><br><br>Differentiating with respect to parameter \\(\\theta\\):<br>\\(\\frac{dx}{d\\theta} = -a\\sin\\theta\\)<br>\\(\\frac{dy}{d\\theta} = a\\cos\\theta\\)<br>Applying chain rule for parametric equations:<br>\\(\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{a\\cos\\theta}{-a\\sin\\theta} = -\\cot\\theta\\).",
+        "stepMarking": "(1 Mark) \\(\\frac{dy}{dx} = \\frac{a\\cos\\theta}{-a\\sin\\theta} = -\\cot\\theta\\).",
+        "cautionTrap": "Don't forget the negative sign from the derivative of \\(\\cos\\theta\\) (\\(-\\sin\\theta\\))!",
+        "topperTip": "Geometric interpretation: Circle \\(x^2 + y^2 = a^2\\) has tangent slope \\(dy/dx = -x/y = -a\\cos\\theta / a\\sin\\theta = -\\cot\\theta\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Logarithmic Differentiation",
+        "stem": "The derivative of y = xˣ with respect to x is:",
+        "options": [
+            "(a) x · xˣ⁻¹ = xˣ",
+            "(b) xˣ (1 + ln x)",
+            "(c) xˣ ln x",
+            "(d) xˣ / (1 + ln x)"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) xˣ (1 + ln x)</strong><br><br>Taking natural logarithm on both sides:<br>\\(\\ln y = x \\ln x\\).<br>Differentiating implicitly with respect to \\(x\\):<br>\\(\\frac{1}{y} \\frac{dy}{dx} = x \\cdot \\frac{1}{x} + \\ln x \\cdot 1 = 1 + \\ln x\\).<br>Multiplying by \\(y\\): \\(\\frac{dy}{dx} = y (1 + \\ln x) = x^x (1 + \\ln x)\\).",
+        "stepMarking": "(1 Mark) Logarithmic differentiation gives \\(x^x(1 + \\ln x)\\).",
+        "cautionTrap": "Do NOT apply power rule \\(n x^{n-1}\\); that is valid only for constant exponents! Here exponent is a variable.",
+        "topperTip": "Function to power of function (\\(u(x)^{v(x)}\\)) ALWAYS requires logarithmic differentiation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cd-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The derivative of sin⁻¹(x) with respect to cos⁻¹(x) is -1.<br>Reason (R): For all x in [-1, 1], sin⁻¹(x) + cos⁻¹(x) = π/2 (a constant).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Let \\(u = \\sin^{-1} x\\) and \\(v = \\cos^{-1} x\\).<br>We know \\(u + v = \\frac{\\pi}{2} \\implies u = \\frac{\\pi}{2} - v\\).<br>Differentiating \\(u\\) with respect to \\(v\\):<br>\\(\\frac{du}{dv} = \\frac{d}{dv}\\left(\\frac{\\pi}{2} - v\\right) = 0 - 1 = -1\\).<br>Both A and R are true and R is the exact, elegant explanation. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Using \\(u + v = \\pi/2 \\implies du/dv = -1\\).",
+        "cautionTrap": "You could compute \\(\\frac{du/dx}{dv/dx} = \\frac{1/\\sqrt{1-x^2}}{-1/\\sqrt{1-x^2}} = -1\\), but using the identity \\(u+v=\\pi/2\\) directly proves Reason explains Assertion.",
+        "topperTip": "When differentiating two inverse functions related by an identity, use the identity to differentiate in 5 seconds.",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Rate of Change",
+        "stem": "The radius of a circle is increasing at the uniform rate of 3 cm/s. At what rate is the area of the circle increasing when the radius is 10 cm?",
+        "options": [
+            "(a) 30π cm²/s",
+            "(b) 60π cm²/s",
+            "(c) 90π cm²/s",
+            "(d) 60 cm²/s"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 60π cm²/s</strong><br><br>Area of a circle: \\(A = \\pi r^2\\).<br>Differentiating with respect to time \\(t\\):<br>\\(\\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt}\\).<br>Given \\(\\frac{dr}{dt} = 3\\text{ cm/s}\\) and \\(r = 10\\text{ cm}\\):<br>\\(\\frac{dA}{dt} = 2\\pi (10)(3) = 60\\pi\\text{ cm}^2\\text{/s}\\).",
+        "stepMarking": "(1 Mark) Chain rule \\(dA/dt = 2\\pi r (dr/dt) = 60\\pi\\text{ cm}^2\\text{/s}\\).",
+        "cautionTrap": "Do not forget \\(\\pi\\); options often have 60 vs 60π.",
+        "topperTip": "Related rates standard: Differentiate geometric formula implicitly with respect to \\(t\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Increasing/Decreasing",
+        "stem": "The function f(x) = 2x³ - 9x² + 12x + 5 is strictly decreasing in the interval:",
+        "options": [
+            "(a) (1, 2)",
+            "(b) (-∞, 1)",
+            "(c) (2, ∞)",
+            "(d) (-∞, 2)"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) (1, 2)</strong><br><br>A function is strictly decreasing where its first derivative is negative (\\(f'(x) < 0\\)).<br>\\(f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2)\\).<br>Setting up sign chart for \\((x - 1)(x - 2) < 0\\):<br>The product is negative strictly between the roots: \\(1 < x < 2\\), i.e., interval \\((1, 2)\\).",
+        "stepMarking": "(1 Mark) Factorizing derivative \\(6(x-1)(x-2) < 0 \\implies x \\in (1, 2)\\).",
+        "cautionTrap": "In \\((-\\infty, 1)\\) and \\((2, \\infty)\\), \\(f'(x) > 0\\), so the function is strictly INCREASING there.",
+        "topperTip": "Wavy curve method: Quadratic with positive leading coefficient is negative strictly between its real roots.",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The function f(x) = eˣ is strictly increasing for all real x.<br>Reason (R): The derivative f'(x) = eˣ > 0 for all x in (-∞, ∞).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The derivative of \\(f(x) = e^x\\) is \\(f'(x) = e^x\\). Since the exponential function \\(e^x\\) is strictly positive for every real number \\(x\\) (\\(e^x > 0\\) for all \\(x \\in \\mathbb{R}\\)), the first derivative is everywhere strictly positive. By theorem, a function with \\(f'(x) > 0\\) on an interval is strictly increasing. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) \\(f'(x) = e^x > 0\\) implies strictly increasing.",
+        "cautionTrap": "\\(e^x\\) never equals zero or becomes negative for any real \\(x\\).",
+        "topperTip": "Strictly increasing: \\(f'(x) > 0\\) | Strictly decreasing: \\(f'(x) < 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Maxima and Minima",
+        "stem": "The maximum value of the function f(x) = sin x + cos x in the interval [0, π/2] is:",
+        "options": [
+            "(a) 1",
+            "(b) √2",
+            "(c) 2",
+            "(d) 1/√2"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) √2</strong><br><br>Rewrite using harmonic addition: \\(f(x) = \\sqrt{2}\\left(\\frac{1}{\\sqrt{2}}\\sin x + \\frac{1}{\\sqrt{2}}\\cos x\\right) = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\).<br>The sine function has a maximum value of 1 when its argument is \\(\\pi/2\\), which occurs at \\(x + \\pi/4 = \\pi/2 \\implies x = \\pi/4 \\in [0, \\pi/2]\\).<br>Maximum value: \\(\\sqrt{2} \\times 1 = \\sqrt{2}\\).",
+        "stepMarking": "(1 Mark) Max value \\(\\sqrt{a^2 + b^2} = \\sqrt{1^2 + 1^2} = \\sqrt{2}\\).",
+        "cautionTrap": "At endpoints \\(x=0\\) and \\(x=\\pi/2\\), \\(f(x) = 1\\), which is the minimum in this interval!",
+        "topperTip": "Standard formula: For \\(a\\sin x + b\\cos x\\), the maximum value is \\(\\sqrt{a^2 + b^2}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Critical Points",
+        "stem": "The point of inflection on the curve y = x³ is:",
+        "options": [
+            "(a) (1, 1)",
+            "(b) (0, 0)",
+            "(c) (-1, -1)",
+            "(d) does not exist"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) (0, 0)</strong><br><br>A point of inflection is a point where the concavity of the curve changes (second derivative changes sign).<br>\\(y = x^3 \\implies y' = 3x^2 \\implies y'' = 6x\\).<br>Setting \\(y'' = 0 \\implies 6x = 0 \\implies x = 0\\).<br>For \\(x < 0\\), \\(y'' < 0\\) (concave downward); for \\(x > 0\\), \\(y'' > 0\\) (concave upward). Since concavity changes at \\(x = 0\\), \\((0, 0)\\) is a point of inflection.",
+        "stepMarking": "(1 Mark) \\(y'' = 6x\\) changes sign across \\(x = 0\\).",
+        "cautionTrap": "At \\(x=0\\), \\(y' = 0\\) and \\(y'' = 0\\). It is NOT a local maximum or minimum (first derivative test: \\(3x^2 \\ge 0\\), strictly increasing).",
+        "topperTip": "Inflection point condition: \\(f''(x) = 0\\) and \\(f''(x)\\) changes sign across the point.",
+        "mnemonic": ""
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Of all rectangles of given perimeter, a square has the maximum area.<br>Reason (R): For a rectangle with perimeter 2P and length x, the area A(x) = x(P - x) has a unique critical point at x = P/2 where d²A/dx² = -2 < 0.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Let perimeter be constant \\(2P = 2(x + y) \\implies y = P - x\\).<br>Area \\(A(x) = x(P - x) = Px - x^2\\).<br>\\(A'(x) = P - 2x = 0 \\implies x = P/2\\).<br>Then \\(y = P - P/2 = P/2 = x\\) (all four sides equal \\(\\implies\\) square).<br>Second derivative: \\(A''(x) = -2 < 0\\), confirming this critical point is a local maximum. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Standard optimization proof showing square maximizes area.",
+        "cautionTrap": "Given perimeter \\(\\implies\\) Square has max area | Given area \\(\\implies\\) Square has MINIMUM perimeter.",
+        "topperTip": "Symmetry in geometric optimization: Extremum usually occurs when dimensions are equal (rectangle becomes square, cuboid becomes cube).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "King's Rule",
+        "stem": "The value of the definite integral ∫₀^(π/2) (sin x) / (sin x + cos x) dx is:",
+        "options": [
+            "(a) π/2",
+            "(b) π/4",
+            "(c) π",
+            "(d) 0"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) π/4</strong><br><br>Let \\(I = \\int_0^{\\pi/2} \\frac{\\sin x}{\\sin x + \\cos x} dx\\) ...(1)<br>Applying King's Rule \\(\\int_0^a f(x)dx = \\int_0^a f(a - x)dx\\):<br>\\(I = \\int_0^{\\pi/2} \\frac{\\sin(\\pi/2 - x)}{\\sin(\\pi/2 - x) + \\cos(\\pi/2 - x)} dx = \\int_0^{\\pi/2} \\frac{\\cos x}{\\cos x + \\sin x} dx\\) ...(2)<br>Adding (1) and (2):<br>\\(2I = \\int_0^{\\pi/2} \\frac{\\sin x + \\cos x}{\\sin x + \\cos x} dx = \\int_0^{\\pi/2} 1 dx = [x]_0^{\\pi/2} = \\frac{\\pi}{2}\\).<br>Therefore, \\(I = \\frac{\\pi}{4}\\).",
+        "stepMarking": "(1 Mark) King's rule yields \\(2I = \\pi/2 \\implies I = \\pi/4\\).",
+        "cautionTrap": "Don't forget to divide by 2 at the end! \\(2I = \\pi/2 \\implies I = \\pi/4\\).",
+        "topperTip": "Universal shortcut: For any symmetric integrand \\(\\int_a^b \\frac{f(x)}{f(x) + f(a+b-x)} dx = \\frac{b - a}{2}\\). Here \\((\\pi/2 - 0)/2 = \\pi/4\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Special Integrand Formula",
+        "stem": "The value of ∫ eˣ [tan x + sec² x] dx is:",
+        "options": [
+            "(a) eˣ sec² x + C",
+            "(b) eˣ tan x + C",
+            "(c) eˣ sec x + C",
+            "(d) eˣ tan² x + C"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) eˣ tan x + C</strong><br><br>Using the standard integral identity: \\(\\int e^x [f(x) + f'(x)] dx = e^x f(x) + C\\).<br>Let \\(f(x) = \\tan x\\). Then its derivative is \\(f'(x) = \\sec^2 x\\).<br>Matching the form directly gives \\(e^x \\tan x + C\\).",
+        "stepMarking": "(1 Mark) Standard form \\(\\int e^x [f(x) + f'(x)] dx = e^x f(x) + C\\).",
+        "cautionTrap": "Identify which term is \\(f(x)\\) and which is \\(f'(x)\\). The answer always takes the primitive function \\(f(x)\\), not the derivative.",
+        "topperTip": "Standard CBSE 1-mark template: \\(\\int e^x [f(x) + f'(x)] dx = e^x f(x) + C\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The definite integral ∫₋₁¹ x³ · cos(x) dx is equal to 0.<br>Reason (R): The integrand f(x) = x³ cos(x) is an odd function, and the integral of an odd function over a symmetric interval [-a, a] is zero.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Test for symmetry: \\(f(-x) = (-x)^3 \\cos(-x) = -x^3 \\cos x = -f(x)\\).<br>Thus \\(f(x)\\) is an <strong>odd function</strong>. By property of definite integrals, \\(\\int_{-a}^a f(x)dx = 0\\) whenever \\(f(x)\\) is odd. Here the interval \\([-1, 1]\\) is symmetric, so the integral is 0. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Identifying \\(f(-x) = -f(x)\\) over symmetric interval evaluates to 0.",
+        "cautionTrap": "Always verify that the interval is symmetric around origin ([-a, a]). If interval is [0, 1], odd property does not apply.",
+        "topperTip": "Odd function over \\([-a, a]\\) = 0 | Even function over \\([-a, a]\\) = \\(2 \\int_0^a f(x)dx\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Standard Formula",
+        "stem": "The value of ∫ 1 / (x² + 16) dx is:",
+        "options": [
+            "(a) 1/4 tan⁻¹(x/4) + C",
+            "(b) tan⁻¹(x/4) + C",
+            "(c) 1/16 tan⁻¹(x/16) + C",
+            "(d) 1/4 ln |x + 4| + C"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 1/4 tan⁻¹(x/4) + C</strong><br><br>Using the standard formula: \\(\\int \\frac{1}{x^2 + a^2} dx = \\frac{1}{a} \\tan^{-1}\\left(\\frac{x}{a}\\right) + C\\).<br>Here \\(a^2 = 16 \\implies a = 4\\).<br>\\(\\int \\frac{1}{x^2 + 4^2} dx = \\frac{1}{4} \\tan^{-1}\\left(\\frac{x}{4}\\right) + C\\).",
+        "stepMarking": "(1 Mark) Formula application with \\(a = 4\\).",
+        "cautionTrap": "Do not forget the factor \\(1/a = 1/4\\) outside the arctan function!",
+        "topperTip": "Standard forms: \\(\\int \\frac{dx}{x^2+a^2} = \\frac{1}{a}\\tan^{-1}(x/a)\\) | \\(\\int \\frac{dx}{\\sqrt{a^2-x^2}} = \\sin^{-1}(x/a)\\) (no 1/a outside for sine inverse!).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Integration by Parts",
+        "stem": "The integral ∫ ln(x) dx is equal to:",
+        "options": [
+            "(a) 1/x + C",
+            "(b) x ln x - x + C",
+            "(c) x ln x + x + C",
+            "(d) (ln x)² / 2 + C"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) x ln x - x + C</strong><br><br>Apply integration by parts with \\(u = \\ln x\\) and \\(dv = 1 \\cdot dx\\):<br>\\(du = \\frac{1}{x} dx\\) and \\(v = x\\).<br>\\(\\int u dv = u v - \\int v du\\)<br>\\(\\int \\ln x dx = x \\ln x - \\int x \\left(\\frac{1}{x}\\right) dx = x \\ln x - \\int 1 dx = x \\ln x - x + C\\).",
+        "stepMarking": "(1 Mark) By parts formula yields \\(x\\ln x - x + C\\).",
+        "cautionTrap": "\\(1/x\\) is the DERIVATIVE of \\(\\ln x\\), not the integral!",
+        "topperTip": "Standard result: \\(\\int \\ln x dx = x(\\ln x - 1) + C\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Integrals", {
+        "id": "math-int-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The value of ∫₀¹ x (1 - x)⁹ dx is equal to 1/110.<br>Reason (R): Using the property ∫₀^a f(x) dx = ∫₀^a f(a - x) dx, the integral transforms into ∫₀¹ (1 - x) x⁹ dx.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Expanding \\((1 - x)^9\\) via binomial theorem is tedious. Applying \\(\\int_0^a f(x)dx = \\int_0^a f(a - x)dx\\):<br>Replace \\(x\\) with \\(1 - x\\):<br>\\(I = \\int_0^1 (1 - x) [1 - (1 - x)]^9 dx = \\int_0^1 (1 - x) x^9 dx = \\int_0^1 (x^9 - x^{10}) dx\\).<br>Integrating: \\(\\left[\\frac{x^{10}}{10} - \\frac{x^{11}}{11}\\right]_0^1 = \\frac{1}{10} - \\frac{1}{11} = \\frac{11 - 10}{110} = \\frac{1}{110}\\). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) King's rule avoids expansion and gives 1/110.",
+        "cautionTrap": "Always look for \\(a - x\\) transformation whenever integrands contain powers like \\((1 - x)^n\\).",
+        "topperTip": "\\(\\int_0^1 x^m (1 - x)^n dx = \\frac{m! n!}{(m + n + 1)!}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Order and Degree",
+        "stem": "The order and degree of the differential equation d²y/dx² + sin(dy/dx) = 0 are respectively:",
+        "options": [
+            "(a) order = 2, degree = 1",
+            "(b) order = 2, degree is not defined",
+            "(c) order = 1, degree = 2",
+            "(d) order = 1, degree is not defined"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) order = 2, degree is not defined</strong><br><br>1. <strong>Order</strong> is the highest order derivative appearing in the equation. Here the highest derivative is \\(\\frac{d^2y}{dx^2}\\), so the order is <strong>2</strong>.<br>2. <strong>Degree</strong> is the power of the highest order derivative when the differential equation is a polynomial in all its derivatives. Because \\(\\frac{dy}{dx}\\) is enclosed inside a transcendental function (\\(\\sin(dy/dx)\\)), the equation cannot be written as a polynomial in derivatives. Therefore, the degree is <strong>not defined</strong>.",
+        "stepMarking": "(1 Mark) Order is 2; degree is not defined due to sine of derivative.",
+        "cautionTrap": "Common error: writing degree = 1. Degree is defined ONLY when the equation is a polynomial in derivatives!",
+        "topperTip": "Transcendental functions of derivatives (\\(\\sin(y')\\), \\(e^{y'}\\), \\(\\ln(y')\\)) make degree NOT DEFINED; order remains valid.",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Integrating Factor",
+        "stem": "The integrating factor (I.F.) for the linear differential equation dy/dx + y · sec x = tan x is:",
+        "options": [
+            "(a) sec x + tan x",
+            "(b) sec x - tan x",
+            "(c) ln |sec x + tan x|",
+            "(d) sec² x"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) sec x + tan x</strong><br><br>The standard first-order linear differential equation is \\(\\frac{dy}{dx} + P y = Q\\), where \\(P = \\sec x\\).<br>Integrating factor is given by:<br>\\(\\text{I.F.} = e^{\\int P dx} = e^{\\int \\sec x dx} = e^{\\ln |\\sec x + \\tan x|} = \\sec x + \\tan x\\).",
+        "stepMarking": "(1 Mark) \\(\\text{I.F.} = e^{\\int \\sec x dx} = \\sec x + \\tan x\\).",
+        "cautionTrap": "Do not leave the exponential: \\(e^{\\ln u} = u\\); answer is \\(\\sec x + \\tan x\\), not \\(\\ln|\\sec x + \\tan x|\\).",
+        "topperTip": "Linear differential equation: Always put in standard form \\(dy/dx + Py = Q\\) before integrating \\(P\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The general solution of a differential equation of order n contains exactly n arbitrary constants.<br>Reason (R): A particular solution is obtained by giving specific numerical values to all arbitrary constants using boundary/initial conditions.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Both A and R are true but R is not the correct explanation of A</strong><br><br>Assertion is true: Integrating an \\(n\\)th-order differential equation \\(n\\) times naturally introduces \\(n\\) independent constants of integration. Hence, the general solution of order \\(n\\) has exactly \\(n\\) arbitrary constants.<br>Reason is true: A particular solution is free from arbitrary constants, obtained by fixing constants via initial conditions.<br>However, Reason defines what a particular solution is, rather than explaining mathematically why an \\(n\\)th-order equation requires \\(n\\) integrations. Thus, both statements are true, but R is not the correct explanation of A.",
+        "stepMarking": "(1 Mark) Both statements true; R is definition of particular solution, not mathematical proof of order n.",
+        "cautionTrap": "Number of arbitrary constants in GENERAL solution of order 4 is 4. Number of arbitrary constants in PARTICULAR solution is ZERO.",
+        "topperTip": "Constants in General Solution = Order of equation \\(n\\) | Constants in Particular Solution = 0.",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Separation of Variables",
+        "stem": "The general solution of the differential equation dy/dx = e^(x - y) is:",
+        "options": [
+            "(a) eʸ = eˣ + C",
+            "(b) e⁻ʸ = eˣ + C",
+            "(c) eʸ = e⁻ˣ + C",
+            "(d) eˣ · eʸ = C"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) eʸ = eˣ + C</strong><br><br>Rewrite the right-hand side using laws of exponents:<br>\\(\\frac{dy}{dx} = \\frac{e^x}{e^y}\\).<br>Separating variables:<br>\\(e^y dy = e^x dx\\).<br>Integrating both sides:<br>\\(\\int e^y dy = \\int e^x dx \\implies e^y = e^x + C\\).",
+        "stepMarking": "(1 Mark) Separating variables to get \\(e^y = e^x + C\\).",
+        "cautionTrap": "Careless mistake: \\(e^{x-y} = e^x / e^y\\), not \\(e^x - e^y\\).",
+        "topperTip": "Separation of variables: Group all \\(y\\) terms with \\(dy\\) and all \\(x\\) terms with \\(dx\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Homogeneous Form",
+        "stem": "Which of the following differential equations is homogeneous of degree 0?",
+        "options": [
+            "(a) dy/dx = (x² + y²) / (xy)",
+            "(b) dy/dx = (x² + y) / (x + y²)",
+            "(c) dy/dx = (x + y + 1) / (x - y)",
+            "(d) dy/dx = (x³ + y) / x²"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) dy/dx = (x² + y²) / (xy)</strong><br><br>A differential equation \\(\\frac{dy}{dx} = f(x, y)\\) is homogeneous if \\(f(\\lambda x, \\lambda y) = \\lambda^0 f(x, y)\\).<br>For option (a): \\(\\frac{(\\lambda x)^2 + (\\lambda y)^2}{(\\lambda x)(\\lambda y)} = \\frac{\\lambda^2(x^2 + y^2)}{\\lambda^2(xy)} = \\frac{x^2 + y^2}{xy}\\). All terms in numerator and denominator have identical total degree 2. Hence it is homogeneous.",
+        "stepMarking": "(1 Mark) Testing degree of terms; (x² + y²)/(xy) has uniform degree 2.",
+        "cautionTrap": "In (c), the constant term (+1) violates homogeneity (degree 0 while others have degree 1).",
+        "topperTip": "Homogeneous test: Every monomial term must have the exact same total degree.",
+        "mnemonic": ""
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The differential equation representing the family of concentric circles x² + y² = a² is x + y (dy/dx) = 0.<br>Reason (R): Differentiating x² + y² = a² with respect to x eliminates the single arbitrary parameter a.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Family of concentric circles centred at origin: \\(x^2 + y^2 = a^2\\) (where \\(a\\) is arbitrary parameter).<br>Differentiating with respect to \\(x\\):<br>\\(2x + 2y \\frac{dy}{dx} = 0 \\implies x + y \\frac{dy}{dx} = 0\\).<br>This eliminates \\(a\\) in one differentiation, yielding a first-order differential equation. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Differentiating \\(x^2 + y^2 = a^2\\) eliminates parameter \\(a\\).",
+        "cautionTrap": "Number of arbitrary constants in family of curves = Order of resulting differential equation.",
+        "topperTip": "To form differential equation: Differentiate as many times as there are independent arbitrary constants.",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Direction Cosines",
+        "stem": "If a line makes angles 90°, 60°, and 30° with positive x, y, and z axes respectively, its direction cosines are:",
+        "options": [
+            "(a) 0, 1/2, √3/2",
+            "(b) 1, 1/2, √3/2",
+            "(c) 0, √3/2, 1/2",
+            "(d) 1/2, 1/2, √3/2"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 0, 1/2, √3/2</strong><br><br>Direction cosines are \\(l = \\cos\\alpha\\), \\(m = \\cos\\beta\\), \\(n = \\cos\\gamma\\).<br>Given \\(\\alpha = 90^\\circ, \\beta = 60^\\circ, \\gamma = 30^\\circ\\):<br>• \\(l = \\cos 90^\\circ = 0\\)<br>• \\(m = \\cos 60^\\circ = 1/2\\)<br>• \\(n = \\cos 30^\\circ = \\sqrt{3}/2\\).<br>Verification: \\(l^2 + m^2 + n^2 = 0 + 1/4 + 3/4 = 4/4 = 1\\).",
+        "stepMarking": "(1 Mark) Calculating \\(\\cos 90^\\circ = 0, \\cos 60^\\circ = 1/2, \\cos 30^\\circ = \\sqrt{3}/2\\).",
+        "cautionTrap": "Direction cosines must always satisfy \\(l^2 + m^2 + n^2 = 1\\).",
+        "topperTip": "Direction cosines are the components of a unit vector in that direction: \\(\\hat{u} = l\\hat{i} + m\\hat{j} + n\\hat{k}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Perpendicular Lines",
+        "stem": "Two lines with direction ratios a₁, b₁, c₁ and a₂, b₂, c₂ are perpendicular to each other if and only if:",
+        "options": [
+            "(a) a₁/a₂ = b₁/b₂ = c₁/c₂",
+            "(b) a₁a₂ + b₁b₂ + c₁c₂ = 0",
+            "(c) a₁a₂ = b₁b₂ = c₁c₂",
+            "(d) a₁ + a₂ + b₁ + b₂ + c₁ + c₂ = 0"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) a₁a₂ + b₁b₂ + c₁c₂ = 0</strong><br><br>The parallel vector directions of the lines are \\(\\mathbf{b}_1 = a_1\\hat{i} + b_1\\hat{j} + c_1\\hat{k}\\) and \\(\\mathbf{b}_2 = a_2\\hat{i} + b_2\\hat{j} + c_2\\hat{k}\\).<br>Two vectors are perpendicular if and only if their dot product is zero:<br>\\(\\mathbf{b}_1 \\cdot \\mathbf{b}_2 = a_1 a_2 + b_1 b_2 + c_1 c_2 = 0\\).<br>(Condition (a) \\(a_1/a_2 = b_1/b_2 = c_1/c_2\\) is the condition for PARALLEL lines).",
+        "stepMarking": "(1 Mark) Perpendicular condition \\(a_1 a_2 + b_1 b_2 + c_1 c_2 = 0\\).",
+        "cautionTrap": "Perpendicular = Dot product is 0 | Parallel = Direction ratios are proportional.",
+        "topperTip": "Perpendicular: \\(\\sum a_1 a_2 = 0\\) | Parallel: \\(a_1/a_2 = b_1/b_2 = c_1/c_2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Skew lines are lines in three-dimensional space that are neither intersecting nor parallel.<br>Reason (R): Skew lines do not lie in the same plane (they are non-coplanar).",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In two-dimensional geometry, any two lines must either intersect or be parallel. In three dimensions, lines can exist in different parallel planes without intersecting and without having the same direction. These non-coplanar, non-intersecting, non-parallel lines are called <strong>skew lines</strong>. Shortest distance between them is \\(d = \\frac{|(\\mathbf{a}_2 - \\mathbf{a}_1) \\cdot (\\mathbf{b}_1 \\times \\mathbf{b}_2)|}{|\\mathbf{b}_1 \\times \\mathbf{b}_2|}\\). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Non-coplanar property defines skew lines in 3D.",
+        "cautionTrap": "Skew lines cannot exist in 2D Euclidean space; they require at least 3 dimensions.",
+        "topperTip": "Coplanar lines in 3D: \\((\\mathbf{a}_2 - \\mathbf{a}_1) \\cdot (\\mathbf{b}_1 \\times \\mathbf{b}_2) = 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Vector Line Equation",
+        "stem": "The Cartesian equation of a line passing through (2, -3, 4) and parallel to the vector 3i - j + 2k is:",
+        "options": [
+            "(a) (x - 2)/3 = (y + 3)/(-1) = (z - 4)/2",
+            "(b) (x + 2)/3 = (y - 3)/(-1) = (z + 4)/2",
+            "(c) (x - 3)/2 = (y + 1)/(-3) = (z - 2)/4",
+            "(d) (x - 2)/2 = (y + 3)/(-3) = (z - 4)/4"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) (x - 2)/3 = (y + 3)/(-1) = (z - 4)/2</strong><br><br>The Cartesian equation of a line through point \\((x_1, y_1, z_1)\\) with direction ratios \\(a, b, c\\) is:<br>\\(\\frac{x - x_1}{a} = \\frac{y - y_1}{b} = \\frac{z - z_1}{c}\\).<br>Here \\((x_1, y_1, z_1) = (2, -3, 4)\\) and \\((a, b, c) = (3, -1, 2)\\):<br>\\(\\frac{x - 2}{3} = \\frac{y - (-3)}{-1} = \\frac{z - 4}{2} \\implies \\frac{x - 2}{3} = \\frac{y + 3}{-1} = \\frac{z - 4}{2}\\).",
+        "stepMarking": "(1 Mark) Standard Cartesian form of line.",
+        "cautionTrap": "Signs in numerator: \\(y - (-3) = y + 3\\). Do not swap point with direction vector.",
+        "topperTip": "Standard line format: \\(\\frac{x - x_0}{a} = \\frac{y - y_0}{b} = \\frac{z - z_0}{c}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Distance from Origin",
+        "stem": "The distance of the point P(3, 4, 5) from the y-axis is:",
+        "options": [
+            "(a) 4",
+            "(b) \\sqrt{34}",
+            "(c) 5",
+            "(d) \\sqrt{41}"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) \\sqrt{34}</strong><br><br>The projection of point \\(P(x, y, z)\\) on the y-axis is \\(N(0, y, 0) = (0, 4, 0)\\).<br>The perpendicular distance from \\(P\\) to the y-axis is:<br>\\(d = \\sqrt{x^2 + z^2} = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34}\\).<br>(Distance from x-axis is \\(\\sqrt{y^2 + z^2}\\); distance from z-axis is \\(\\sqrt{x^2 + y^2}\\)).",
+        "stepMarking": "(1 Mark) Distance from y-axis is \\(\\sqrt{x^2 + z^2} = \\sqrt{34}\\).",
+        "cautionTrap": "Common slip: picking 4 (which is just the y-coordinate!). Perpendicular distance to y-axis depends on x and z.",
+        "topperTip": "Distance of \\((x, y, z)\\) from: x-axis = \\(\\sqrt{y^2+z^2}\\) | y-axis = \\(\\sqrt{x^2+z^2}\\) | z-axis = \\(\\sqrt{x^2+y^2}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The lines (x - 1)/2 = (y - 2)/3 = (z - 3)/4 and (x - 2)/3 = (y - 3)/4 = (z - 4)/5 are coplanar.<br>Reason (R): For two lines to be coplanar, the scalar triple product (a₂ - a₁) · (b₁ × b₂) must equal zero.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Here \\(\\mathbf{a}_1 = (1, 2, 3)\\), \\(\\mathbf{a}_2 = (2, 3, 4) \\implies \\mathbf{a}_2 - \\mathbf{a}_1 = (1, 1, 1)\\).<br>Direction vectors: \\(\\mathbf{b}_1 = (2, 3, 4)\\) and \\(\\mathbf{b}_2 = (3, 4, 5)\\).<br>Condition for coplanarity: determinant of these three row vectors must be zero:<br>\\(\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 4 \\\\ 3 & 4 & 5 \\end{vmatrix}\\).<br>Subtract \\(R_2 - R_1 = (1, 2, 3)\\) and \\(R_3 - R_2 = (1, 1, 1)\\). Rows become proportional, so determinant = 0. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Coplanarity determinant test evaluates to 0.",
+        "cautionTrap": "Coplanar lines either intersect or are parallel. Skew lines have non-zero determinant.",
+        "topperTip": "Coplanar condition: \\(\\begin{vmatrix} x_2-x_1 & y_2-y_1 & z_2-z_1 \\\\ a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\end{vmatrix} = 0\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Feasible Region",
+        "stem": "The corner points of the bounded feasible region for an LPP are (0, 0), (5, 0), (3, 4), and (0, 5). The maximum value of the objective function Z = 4x + 3y occurs at:",
+        "options": [
+            "(a) (5, 0)",
+            "(b) (3, 4)",
+            "(c) (0, 5)",
+            "(d) (0, 0)"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) (3, 4)</strong><br><br>Evaluate objective function \\(Z = 4x + 3y\\) at all corner points:<br>• At (0, 0): \\(Z = 4(0) + 3(0) = 0\\)<br>• At (5, 0): \\(Z = 4(5) + 3(0) = 20\\)<br>• At (3, 4): \\(Z = 4(3) + 3(4) = 12 + 12 = 24\\) (Maximum)<br>• At (0, 5): \\(Z = 4(0) + 3(5) = 15\\).<br>Maximum value is 24, occurring at corner point (3, 4).",
+        "stepMarking": "(1 Mark) Corner point evaluation showing max value 24 at (3, 4).",
+        "cautionTrap": "Calculate values systematically for every single corner point to avoid arithmetic slips.",
+        "topperTip": "Corner Point Theorem: Optimal value of an LPP always occurs at a vertex (corner point) of the feasible region.",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Optimal Solutions",
+        "stem": "If an objective function Z = ax + by attains its maximum value at TWO distinct corner points of a feasible region, then the maximum value occurs at:",
+        "options": [
+            "(a) only those two points",
+            "(b) the midpoint of the line segment joining them only",
+            "(c) every point on the line segment joining these two points",
+            "(d) no other point"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) every point on the line segment joining these two points</strong><br><br>If the maximum value of \\(Z\\) is attained at two distinct vertices \\(P_1(x_1, y_1)\\) and \\(P_2(x_2, y_2)\\), then the objective function is parallel to the boundary edge joining them. By linearity, \\(Z\\) attains the exact same maximum value at every convex combination \\(\\lambda P_1 + (1 - \\lambda) P_2\\) for all \\(\\lambda \\in [0, 1]\\), yielding infinitely many optimal solutions along that line segment.",
+        "stepMarking": "(1 Mark) Linearity ensures every point on segment joining two optimal points is also optimal.",
+        "cautionTrap": "There are not just 2 points; there are INFINITELY MANY optimal solutions along the entire connecting edge.",
+        "topperTip": "Multiple optimal solutions: When objective line is parallel to a constraint boundary, the entire edge segment is optimal.",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): For an unbounded feasible region, the maximum value M of Z = ax + by at a corner point may or may not be the true maximum.<br>Reason (R): For M to be the true maximum in an unbounded region, the open half-plane ax + by > M must have NO common points with the feasible region.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In an unbounded feasible region, the corner point method is necessary but not sufficient. Let \\(M\\) be the largest value among all corner points. We must plot the inequality \\(ax + by > M\\). If this open half-plane intersects the feasible region, points exist where \\(Z > M\\), meaning no maximum exists. If it has zero points in common, \\(M\\) is the true maximum. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Unbounded region test requires checking intersection with open half-plane.",
+        "cautionTrap": "Never declare a maximum in an UNBOUNDED region without explicitly stating the open half-plane test!",
+        "topperTip": "Unbounded LPP Rule: \\(ax + by > M\\) must have NO intersection with feasible region for max to exist.",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Convex Region",
+        "stem": "The feasible region for an LPP is always a:",
+        "options": [
+            "(a) concave polygon",
+            "(b) convex polygon",
+            "(c) circle",
+            "(d) parabola"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) convex polygon</strong><br><br>Each linear inequality constraint defines a closed half-plane, which is a convex set. The feasible region is the intersection of finitely many half-planes (including non-negativity \\(x \\ge 0, y \\ge 0\\)). The intersection of any collection of convex sets is always a <strong>convex set</strong> (convex polygon in 2D), meaning the line segment connecting any two feasible points lies entirely within the region.",
+        "stepMarking": "(1 Mark) Feasible region is always a convex set.",
+        "cautionTrap": "Feasible regions are NEVER concave. A non-convex feasible region cannot arise from linear constraints.",
+        "topperTip": "Convex set property: Line segment connecting any two interior points lies 100% within the set.",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Non-negativity Constraints",
+        "stem": "In linear programming, the constraints x ≥ 0 and y ≥ 0 restrict the feasible region to:",
+        "options": [
+            "(a) First quadrant",
+            "(b) Second quadrant",
+            "(c) Third quadrant",
+            "(d) Fourth quadrant"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) First quadrant</strong><br><br>The condition \\(x \\ge 0\\) represents the right half-plane (quadrants I and IV), and \\(y \\ge 0\\) represents the upper half-plane (quadrants I and II). Their intersection is \\(x \\ge 0, y \\ge 0\\), which corresponds strictly to the <strong>First Quadrant</strong> (including the positive axes). These are called non-negativity restrictions because real-world quantities (items, hours) cannot be negative.",
+        "stepMarking": "(1 Mark) Non-negativity constraints restrict region to Quadrant I.",
+        "cautionTrap": "Negative coordinates are physically meaningless in standard manufacturing/diet LPP models.",
+        "topperTip": "Non-negativity restrictions: \\(x \\ge 0, y \\ge 0 \\implies\\) Region is in Quadrant 1.",
+        "mnemonic": ""
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lp-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): If the system of linear inequalities defining an LPP has no common region, the problem has no feasible solution.<br>Reason (R): A feasible solution must satisfy all the given constraints and non-negativity restrictions simultaneously.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>By definition, the feasible region is the set of all points that satisfy every constraint and non-negativity condition simultaneously. If constraints are contradictory (e.g., \\(x + y \\le 2\\) and \\(x + y \\ge 5\\) with \\(x, y \\ge 0\\)), their intersection is the empty set (\\(\\emptyset\\)). With no points available, no solution can exist. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Infeasible LPP occurs when constraint intersection is empty.",
+        "cautionTrap": "Infeasible problem = Empty region | Unbounded problem = Region extends to infinity.",
+        "topperTip": "LPP possibilities: (1) Unique optimal, (2) Infinitely many optimals, (3) Unbounded, (4) Infeasible (no solution).",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 65/1/1)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Conditional Probability",
+        "stem": "If P(A) = 0.4, P(B) = 0.8, and P(B|A) = 0.6, then P(A ∪ B) is equal to:",
+        "options": [
+            "(a) 0.96",
+            "(b) 0.24",
+            "(c) 0.88",
+            "(d) 0.72"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 0.96</strong><br><br>1. From conditional probability: \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\).<br>\\(P(A \\cap B) = P(B|A) \\times P(A) = 0.6 \\times 0.4 = 0.24\\).<br>2. By addition theorem of probability:<br>\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.4 + 0.8 - 0.24 = 1.20 - 0.24 = 0.96\\).",
+        "stepMarking": "(1 Mark) \\(P(A \\cap B) = 0.24\\), \\(P(A \\cup B) = 0.4 + 0.8 - 0.24 = 0.96\\).",
+        "cautionTrap": "Do not simply add \\(0.4 + 0.8 = 1.2\\) (probability cannot exceed 1!). Must subtract \\(P(A \\cap B)\\).",
+        "topperTip": "Standard sequence: Find intersection first via \\(P(A \\cap B) = P(A) P(B|A)\\), then find union via addition theorem.",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Independent Events",
+        "stem": "If A and B are two independent events with P(A) = 0.3 and P(B) = 0.5, then P(A ∩ B') is:",
+        "options": [
+            "(a) 0.15",
+            "(b) 0.35",
+            "(c) 0.20",
+            "(d) 0.50"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 0.15</strong><br><br>If events \\(A\\) and \\(B\\) are independent, then \\(A\\) and \\(B'\\) are also independent.<br>\\(P(B') = 1 - P(B) = 1 - 0.5 = 0.5\\).<br>\\(P(A \\cap B') = P(A) \\times P(B') = 0.3 \\times 0.5 = 0.15\\).<br>(Alternatively: \\(P(A \\cap B') = P(A) - P(A \\cap B) = 0.3 - (0.3 \\times 0.5) = 0.3 - 0.15 = 0.15\\)).",
+        "stepMarking": "(1 Mark) \\(P(A \\cap B') = P(A)P(B') = 0.3 \\times 0.5 = 0.15\\).",
+        "cautionTrap": "Independent events rule: \\(P(A \\cap B) = P(A)P(B)\\). Do not confuse with mutually exclusive events (where \\(P(A \\cap B) = 0\\)).",
+        "topperTip": "If \\(A\\) and \\(B\\) are independent, then so are: (1) \\(A\\) and \\(B'\\), (2) \\(A'\\) and \\(B\\), (3) \\(A'\\) and \\(B'\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Two mutually exclusive events with non-zero probabilities can never be independent.<br>Reason (R): For mutually exclusive events, P(A ∩ B) = 0, whereas for independent events with P(A) > 0 and P(B) > 0, P(A ∩ B) = P(A) · P(B) > 0.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Mutually exclusive means the events cannot occur together (\\(A \\cap B = \\emptyset \\implies P(A \\cap B) = 0\\)). For independent events, \\(P(A \\cap B) = P(A) P(B)\\). Since \\(P(A) > 0\\) and \\(P(B) > 0\\), their product is strictly positive (\\(P(A)P(B) > 0\\)). Thus \\(P(A \\cap B)\\) cannot simultaneously be zero and positive. Mutually exclusive non-null events are never independent (in fact, knowing one occurred tells you with 100% certainty the other did not!). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Rigorous proof connecting \\(P(A \\cap B) = 0\\) vs \\(P(A)P(B) > 0\\).",
+        "cautionTrap": "Students frequently confuse mutually exclusive with independent: they are practically opposites for non-empty events!",
+        "topperTip": "Mutually exclusive: Disjoint sets (\\(P(A \\cap B) = 0\\)) | Independent: Probabilistic independence (\\(P(A|B) = P(A)\\)).",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Complementary Probability",
+        "stem": "A problem in mathematics is given to three students whose chances of solving it are 1/2, 1/3, and 1/4. What is the probability that the problem is solved?",
+        "options": [
+            "(a) 1/24",
+            "(b) 3/4",
+            "(c) 23/24",
+            "(d) 1/4"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 3/4</strong><br><br>The problem is solved if at least one student solves it.<br>Use the complement: \\(P(\\text{solved}) = 1 - P(\\text{none solves it})\\).<br>Chances of students FAILING to solve are:<br>\\(P(A') = 1 - 1/2 = 1/2\\)<br>\\(P(B') = 1 - 1/3 = 2/3\\)<br>\\(P(C') = 1 - 1/4 = 3/4\\).<br>Since attempts are independent:<br>\\(P(\\text{none solves}) = \\frac{1}{2} \\times \\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{24} = \\frac{1}{4}\\).<br>Therefore, \\(P(\\text{solved}) = 1 - \\frac{1}{4} = \\frac{3}{4}\\).",
+        "stepMarking": "(1 Mark) Complement \\(1 - (1/2)(2/3)(3/4) = 1 - 1/4 = 3/4\\).",
+        "cautionTrap": "Do not add probabilities directly: \\(1/2 + 1/3 + 1/4 = 13/12 > 1\\) (invalid!). Always use complement for 'at least one'.",
+        "topperTip": "Classic CBSE problem: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Random Variable Distribution",
+        "stem": "The probability distribution of a discrete random variable X is given by P(X = 0) = k, P(X = 1) = 2k, P(X = 2) = 3k. The value of k is:",
+        "options": [
+            "(a) 1/3",
+            "(b) 1/6",
+            "(c) 1/2",
+            "(d) 1"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 1/6</strong><br><br>For any valid probability distribution, the sum of probabilities of all possible outcomes must equal 1:<br>\\(\\sum P(X = x_i) = 1\\).<br>\\(k + 2k + 3k = 1\\).<br>\\(6k = 1 \\implies k = \\frac{1}{6}\\).",
+        "stepMarking": "(1 Mark) Sum of probabilities \\(6k = 1 \\implies k = 1/6\\).",
+        "cautionTrap": "Make sure each individual probability \\(P(X = x_i) \\ge 0\\) and \\(\\le 1\\). Here \\(k=1/6\\) satisfies both.",
+        "topperTip": "Probability distribution axioms: (1) \\(0 \\le P(x_i) \\le 1\\) for all \\(i\\), (2) \\(\\sum P(x_i) = 1\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Bayes' Theorem computes the posterior probability P(E_i | A) of a cause E_i given that event A has occurred.<br>Reason (R): Bayes' Theorem is expressed as P(E_i | A) = [P(E_i) P(A | E_i)] / [Σ P(E_j) P(A | E_j)], where {E_1, E_2, ... E_n} forms a partition of sample space.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Bayes' Theorem reverses the conditioning, computing the posterior probability of an underlying hypothesis \\(E_i\\) after observing evidence \\(A\\). The denominator is the Law of Total Probability \\(P(A) = \\sum P(E_j) P(A|E_j)\\), while the numerator is \\(P(E_i \\cap A) = P(E_i)P(A|E_i)\\). Both A and R are true and R provides the mathematical foundation and explanation.",
+        "stepMarking": "(1 Mark) Bayes formula and posterior probability definition.",
+        "cautionTrap": "Hypotheses \\(E_1, E_2, \\dots E_n\\) must form a pairwise disjoint, exhaustive partition of sample space (\\(\\sum P(E_i) = 1\\)).",
+        "topperTip": "Bayes formula structure: \\(P(E_i|A) = \\frac{\\text{Prior} \\times \\text{Likelihood}}{\\text{Total Probability}}\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 4)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Python Scope (LEGB)",
+        "stem": "Consider the following Python code snippet:<br><pre><code>x = 10\ndef func():\n    global x\n    x = 25\n    y = 5\nfunc()\nprint(x)</code></pre>What will be the output?",
+        "options": [
+            "(a) 10",
+            "(b) 25",
+            "(c) 5",
+            "(d) NameError: name 'x' is not defined"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 25</strong><br><br>The statement <code>global x</code> inside the function instructs Python that assignments to <code>x</code> modify the module-level global variable rather than creating a local variable. Inside <code>func()</code>, <code>x = 25</code> updates the global <code>x</code>. Therefore, the subsequent <code>print(x)</code> outputs <strong>25</strong>.",
+        "stepMarking": "(1 Mark) Identifying global keyword modifies global scope x to 25.",
+        "cautionTrap": "Without the <code>global x</code> declaration, an assignment <code>x = 25</code> would create a local variable, leaving the global <code>x</code> as 10.",
+        "topperTip": "Python scope resolution follows the <strong>LEGB</strong> rule: Local \\(\\to\\) Enclosing \\(\\to\\) Global \\(\\to\\) Built-in.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Default Arguments",
+        "stem": "Which of the following function headers contains a valid syntax for default arguments in Python?",
+        "options": [
+            "(a) def calc(a = 10, b, c = 20):",
+            "(b) def calc(a, b = 10, c = 20):",
+            "(c) def calc(a = 10, b = 20, c):",
+            "(d) def calc(a = 10, b, c):"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) def calc(a, b = 10, c = 20):</strong><br><br>In Python syntax rules, non-default arguments must always precede default arguments. Once a parameter is given a default value, all subsequent parameters following it in the parameter list must also have default values. Only option (b) places the positional argument <code>a</code> before the default arguments <code>b = 10</code> and <code>c = 20</code>.",
+        "stepMarking": "(1 Mark) Non-default arguments cannot follow default arguments.",
+        "cautionTrap": "SyntaxError: non-default argument follows default argument occurs if any parameter without a default follows one with a default.",
+        "topperTip": "Golden Rule of Python headers: Positional arguments FIRST, Default arguments LAST.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): When a Python list is passed as an argument to a function and modified in-place using .append(), the changes are reflected in the original caller list.<br>Reason (R): In Python, arguments are passed by object reference, and lists are mutable objects whose internal state can change without altering their memory ID.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Python uses 'pass-by-object-reference'. When a mutable object (such as a list or dictionary) is passed into a function, the local parameter receives a reference to the exact same object in memory. In-place mutating operations (e.g. <code>L.append(x)</code>, <code>L[0] = y</code>) alter the underlying memory buffer, so the caller sees the changes. If an immutable object (int, string, tuple) is modified, a new object is created, leaving caller unaffected. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Identifying pass-by-object-reference and mutability of lists.",
+        "cautionTrap": "Rebinding (e.g. <code>L = [1, 2]</code>) inside the function rebinds only the local name and does NOT affect the caller list!",
+        "topperTip": "In-place mutation (<code>.append()</code>, <code>.extend()</code>) affects caller; Reassignment (<code>=</code>) creates a local binding.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2022-1",
+        "marks": 1,
+        "year": "CBSE 2022 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Return Values",
+        "stem": "What is the return data type of a Python function that executes: return 10, 'CBSE', 95.5?",
+        "options": [
+            "(a) list",
+            "(b) tuple",
+            "(c) dictionary",
+            "(d) set"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) tuple</strong><br><br>In Python, when multiple values separated by commas are returned from a function without explicit enclosing brackets, Python automatically packs them into a <strong>tuple</strong>: <code>(10, 'CBSE', 95.5)</code>.",
+        "stepMarking": "(1 Mark) Multiple return values are packed into a tuple.",
+        "cautionTrap": "Commas create tuples, not lists! Lists require explicit square brackets <code>[ ]</code>.",
+        "topperTip": "Python tuple packing: <code>return a, b, c</code> is equivalent to <code>return (a, b, c)</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Positional vs Keyword Arguments",
+        "stem": "Which of the following function calls is INVALID for the function def greet(name, msg = 'Good morning'):?",
+        "options": [
+            "(a) greet('Amit')",
+            "(b) greet('Amit', 'Hello')",
+            "(c) greet(msg = 'Hi', name = 'Amit')",
+            "(d) greet(msg = 'Hi', 'Amit')"
+        ],
+        "correctOption": "(d)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (d) greet(msg = 'Hi', 'Amit')</strong><br><br>In Python function calls, positional arguments cannot appear after keyword arguments. In call (d), the positional argument <code>'Amit'</code> follows the keyword argument <code>msg = 'Hi'</code>, which raises a <code>SyntaxError: positional argument follows keyword argument</code>.",
+        "stepMarking": "(1 Mark) Positional arguments cannot follow keyword arguments in calls.",
+        "cautionTrap": "In calls just like in headers: Positional FIRST, Keywords LAST.",
+        "topperTip": "Valid: <code>greet('Amit', msg='Hi')</code>. Invalid: <code>greet(name='Amit', 'Hi')</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 4)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "File Modes",
+        "stem": "Which file mode opens a text file for both reading and writing without truncating (overwriting) the existing content?",
+        "options": [
+            "(a) 'w+'",
+            "(b) 'r+'",
+            "(c) 'a+'",
+            "(d) 'w'"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 'r+'</strong><br><br>• <strong>'r+'</strong>: Opens file for reading and writing. The file pointer is placed at the beginning. Existing data is retained (not truncated). If file does not exist, raises FileNotFoundError.<br>• <strong>'w+'</strong>: Truncates (deletes) existing content immediately upon opening.<br>• <strong>'a+'</strong>: Places write pointer at the end for appending.",
+        "stepMarking": "(1 Mark) Identifying 'r+' preserves content while enabling read/write.",
+        "cautionTrap": "Dangerous trap: 'w+' immediately clears the entire file to 0 bytes!",
+        "topperTip": "Read + Write without deleting: <strong>'r+'</strong> | Append + Read: <strong>'a+'</strong> | Overwrite: <strong>'w+'</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Binary Serialization",
+        "stem": "Which Python standard library module is used for serializing (pickling) and de-serializing complex Python objects into binary files?",
+        "options": [
+            "(a) csv",
+            "(b) pickle",
+            "(c) binary",
+            "(d) json"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) pickle</strong><br><br>The <code>pickle</code> module serializes any Python object hierarchy into a byte stream (<code>pickle.dump(obj, file_handle)</code>) and deserializes a byte stream back into a Python object (<code>pickle.load(file_handle)</code>). The binary file must be opened in modes <code>'wb'</code> or <code>'rb'</code>.",
+        "stepMarking": "(1 Mark) Identifying pickle module.",
+        "cautionTrap": "Always open the file in binary mode ('wb' or 'rb') when using pickle, otherwise TypeError occurs.",
+        "topperTip": "Writing binary: <code>pickle.dump(obj, f)</code> | Reading binary: <code>pickle.load(f)</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): When opening a CSV file with open('data.csv', 'w'), the newline='' parameter must be specified.<br>Reason (R): On Windows, without newline='', the csv.writer writes an extra carriage return (\\r), producing unwanted blank lines between rows.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>By default on Windows, text-mode write operations convert newline characters \\(\\backslash n\\) into carriage-return/newline pairs (\\(\\backslash r\\backslash n\\)). The <code>csv.writer</code> module performs its own internal RFC 4180 line termination. Without <code>newline=''</code>, a double translation occurs, inserting an empty blank row after every line written. Supplying <code>newline=''</code> disables universal newline translation. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Correct explanation of newline='' in CSV writing on Windows.",
+        "cautionTrap": "Students often lose 1 mark in board practicals and theory by writing <code>open('data.csv', 'w')</code> without <code>newline=''</code>.",
+        "topperTip": "Standard CSV write template: <code>with open('file.csv', 'w', newline='') as f:</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2021-1",
+        "marks": 1,
+        "year": "CBSE 2021 (Term 1 Exam)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Pointer Movement",
+        "stem": "Which file method moves the file cursor/pointer to a specified byte offset position in a file?",
+        "options": [
+            "(a) tell()",
+            "(b) seek()",
+            "(c) move()",
+            "(d) shift()"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) seek()</strong><br><br>• <strong>seek(offset, whence)</strong>: Repositions the file read/write pointer to the designated byte location.<br>• <strong>tell()</strong>: Returns the current integer byte position of the file pointer.",
+        "stepMarking": "(1 Mark) seek() moves cursor; tell() reports current position.",
+        "cautionTrap": "Do not swap them: <code>tell()</code> tells WHERE you are; <code>seek()</code> moves you THERE.",
+        "topperTip": "Mnemonic: <strong>seek()</strong> = go to position | <strong>tell()</strong> = ask position.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Reading Methods",
+        "stem": "Which method reads the entire remaining contents of a text file and returns a list of strings where each string is one line?",
+        "options": [
+            "(a) read()",
+            "(b) readline()",
+            "(c) readlines()",
+            "(d) readall()"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) readlines()</strong><br><br>• <strong>read()</strong>: Returns the whole file as a single string.<br>• <strong>readline()</strong>: Returns the next single line as a string.<br>• <strong>readlines()</strong>: Returns all lines as a Python <strong>list of strings</strong> (e.g. <code>['line1\\n', 'line2\\n']</code>).",
+        "stepMarking": "(1 Mark) readlines() returns list of lines.",
+        "cautionTrap": "read() returns a string; readlines() returns a list of strings.",
+        "topperTip": "Reading methods summary: <code>read()</code> \\(\\to\\) <code>str</code> | <code>readline()</code> \\(\\to\\) <code>str</code> (one line) | <code>readlines()</code> \\(\\to\\) <code>list[str]</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 4)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "LIFO Architecture",
+        "stem": "A Stack data structure operates on which of the following ordering principles?",
+        "options": [
+            "(a) FIFO (First In, First Out)",
+            "(b) LIFO (Last In, First Out)",
+            "(c) Priority-based",
+            "(d) Random Access"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) LIFO (Last In, First Out)</strong><br><br>A Stack is a linear data structure in which insertions (Push) and deletions (Pop) take place exclusively at one end, designated as the <strong>Top</strong>. The most recently inserted element is always the first one to be removed, adhering to the <strong>LIFO (Last In, First Out)</strong> or FILO principle. (Queues operate on FIFO).",
+        "stepMarking": "(1 Mark) Identifying Stack operates on LIFO.",
+        "cautionTrap": "Queue = FIFO | Stack = LIFO. Do not confuse the two!",
+        "topperTip": "Real-world stack examples: Stack of cafeteria plates, browser Back button history, recursion call stack.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Underflow Condition",
+        "stem": "Attempting to delete (pop) an element from a Stack that contains no elements results in an error condition known as:",
+        "options": [
+            "(a) Overflow",
+            "(b) Underflow",
+            "(c) Deadlock",
+            "(d) Memory Leak"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Underflow</strong><br><br>• <strong>Underflow:</strong> Occurs when a pop operation is invoked on an empty stack (<code>len(stack) == 0</code>).<br>• <strong>Overflow:</strong> Occurs when a push operation is attempted on a statically allocated stack that has reached maximum fixed capacity.",
+        "stepMarking": "(1 Mark) Popping from empty stack is Underflow.",
+        "cautionTrap": "Pushing into full stack = Overflow; Popping from empty stack = Underflow.",
+        "topperTip": "Standard CBSE Stack pop snippet must check: <code>if len(s) == 0: print('Underflow')</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In a Python list implementation of a Stack, using .append() for Push and .pop() for Pop provides optimal O(1) amortized time performance.<br>Reason (R): Operating at the end of a dynamic array list avoids shifting remaining elements, whereas operating at index 0 requires O(n) element shifts.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In Python lists, adding or removing items from the end (<code>stack.append(x)</code> and <code>stack.pop()</code>) takes \\(O(1)\\) constant time because adjacent elements do not need to be moved. If we pushed at index 0 (<code>insert(0, x)</code>) and popped at index 0 (<code>pop(0)</code>), every operation would force every remaining element to shift one position in memory, yielding terrible \\(O(n)\\) performance. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Top of stack at list end ensures O(1) performance.",
+        "cautionTrap": "Always designate the END of the list as Top of Stack for performance and standard CBSE answers.",
+        "topperTip": "Stack operations: <code>stack.append(item)</code> (Push) and <code>stack.pop()</code> (Pop).",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2022-1",
+        "marks": 1,
+        "year": "CBSE 2022 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Stack Tracing",
+        "stem": "Elements A, B, C, D are pushed in order into a stack. Two pop operations are performed, then element E is pushed, followed by one pop. What element is now at the top of the stack?",
+        "options": [
+            "(a) B",
+            "(b) C",
+            "(c) A",
+            "(d) E"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) B</strong><br><br>Trace:<br>1. Push A, B, C, D \\(\\implies\\) Stack: [A, B, C, D] (Top is D)<br>2. Pop \\(\\implies\\) removes D. Stack: [A, B, C] (Top is C)<br>3. Pop \\(\\implies\\) removes C. Stack: [A, B] (Top is B)<br>4. Push E \\(\\implies\\) Stack: [A, B, E] (Top is E)<br>5. Pop \\(\\implies\\) removes E. Stack: [A, B]<br>Element currently at the top of the stack is <strong>B</strong>.",
+        "stepMarking": "(1 Mark) Step-by-step trace showing B is at top.",
+        "cautionTrap": "Carefully track each pop in LIFO reverse order.",
+        "topperTip": "Draw a vertical cup and cross out elements from top down.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Expression Evaluation",
+        "stem": "Which notation does not require parentheses to dictate operator precedence and is evaluated using a Stack from left to right?",
+        "options": [
+            "(a) Infix notation",
+            "(b) Postfix (Reverse Polish) notation",
+            "(c) Prefix notation",
+            "(d) Algebraic notation"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Postfix (Reverse Polish) notation</strong><br><br>In Postfix notation (e.g. <code>A B + C *</code>), operators appear immediately after their operands. Postfix expressions are completely unambiguous without requiring brackets or operator precedence rules, and compilers evaluate them cleanly using a single pass with an evaluation stack.",
+        "stepMarking": "(1 Mark) Postfix notation is evaluated using a stack without parentheses.",
+        "cautionTrap": "Infix requires parentheses to override precedence; Postfix order is strictly intrinsic.",
+        "topperTip": "Compilers convert human-written Infix \\(\\to\\) Postfix using stacks, then evaluate Postfix using stacks.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 4)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Primary Key Constraints",
+        "stem": "Which of the following constraints in SQL enforces both UNIQUE values and NOT NULL simultaneously on a table attribute?",
+        "options": [
+            "(a) UNIQUE",
+            "(b) PRIMARY KEY",
+            "(c) FOREIGN KEY",
+            "(d) CHECK"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) PRIMARY KEY</strong><br><br>A <strong>PRIMARY KEY</strong> uniquely identifies each tuple (record) in a relation and enforces two inviolable conditions: (1) no two rows can have identical values (uniqueness), and (2) it cannot accept NULL values (entity integrity). The UNIQUE constraint permits NULL values, whereas PRIMARY KEY strictly forbids them.",
+        "stepMarking": "(1 Mark) Primary Key enforces unique and not null.",
+        "cautionTrap": "UNIQUE allows one or more NULL values in SQL; PRIMARY KEY never permits NULL.",
+        "topperTip": "PRIMARY KEY = UNIQUE + NOT NULL + Only ONE per table.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Aggregate Functions",
+        "stem": "A table EMP has 5 rows where the attribute Bonus contains values: 1000, 2000, NULL, 3000, NULL. What will SELECT COUNT(Bonus), COUNT(*) FROM EMP; return?",
+        "options": [
+            "(a) 5, 5",
+            "(b) 3, 5",
+            "(c) 3, 3",
+            "(d) 5, 3"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 3, 5</strong><br><br>• <strong>COUNT(column_name)</strong>: Counts only non-NULL entries in that column. There are 3 non-NULL values (1000, 2000, 3000), so <code>COUNT(Bonus) = 3</code>.<br>• <strong>COUNT(*)</strong>: Counts the total number of rows in the table, completely ignoring whether columns contain NULLs. There are 5 rows, so <code>COUNT(*) = 5</code>.",
+        "stepMarking": "(1 Mark) COUNT(col) ignores NULLs (3); COUNT(*) counts all rows (5).",
+        "cautionTrap": "High-frequency CBSE trap! All SQL aggregate functions (SUM, AVG, COUNT, MIN, MAX) ignore NULLs, EXCEPT COUNT(*).",
+        "topperTip": "COUNT(Bonus) ignores NULL \\(\\to\\) 3 | COUNT(*) counts every row \\(\\to\\) 5.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In SQL, the HAVING clause is used to filter records after grouping with GROUP BY, whereas WHERE filters individual rows before grouping.<br>Reason (R): WHERE clause cannot be used with aggregate functions like SUM() or AVG().",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The SQL execution order is: <code>FROM \\(\\to\\) WHERE \\(\\to\\) GROUP BY \\(\\to\\) HAVING \\(\\to\\) SELECT</code>. Because WHERE operates on raw individual rows before groups are formed, it is syntactically invalid to write aggregate conditions inside WHERE (e.g. <code>WHERE AVG(marks) > 80</code> throws an error). The HAVING clause was introduced specifically to filter groups using aggregate functions. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Distinguishing WHERE (pre-group row filter) vs HAVING (post-group aggregate filter).",
+        "cautionTrap": "Never write an aggregate function in a WHERE clause! Always use HAVING for aggregates.",
+        "topperTip": "WHERE filters rows (no aggregates); HAVING filters groups (uses aggregates).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Cartesian Product",
+        "stem": "Table Student has degree 5 and cardinality 20. Table Stream has degree 3 and cardinality 4. The Cartesian product of Student and Stream will have degree and cardinality of:",
+        "options": [
+            "(a) degree = 8, cardinality = 80",
+            "(b) degree = 15, cardinality = 24",
+            "(c) degree = 8, cardinality = 24",
+            "(d) degree = 15, cardinality = 80"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) degree = 8, cardinality = 80</strong><br><br>• <strong>Degree</strong> is the number of columns (attributes). For Cartesian product, degrees are <strong>added</strong>: \\(5 + 3 = 8\\).<br>• <strong>Cardinality</strong> is the number of rows (tuples). For Cartesian product, cardinalities are <strong>multiplied</strong>: \\(20 \\times 4 = 80\\).",
+        "stepMarking": "(1 Mark) Degree adds (5 + 3 = 8), Cardinality multiplies (20 * 4 = 80).",
+        "cautionTrap": "Do not swap them! Degrees ADD; Cardinalities MULTIPLY.",
+        "topperTip": "Cartesian Product Formula: \\(\\text{Degree} = D_1 + D_2\\) | \\(\\text{Cardinality} = C_1 \\times C_2\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Pattern Matching",
+        "stem": "Which SQL query selects all students whose names start with the letter 'S' and have exactly four letters in total?",
+        "options": [
+            "(a) SELECT * FROM Student WHERE name LIKE 'S%';",
+            "(b) SELECT * FROM Student WHERE name LIKE 'S___';",
+            "(c) SELECT * FROM Student WHERE name = 'S***';",
+            "(d) SELECT * FROM Student WHERE name LIKE 'S_4';"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) SELECT * FROM Student WHERE name LIKE 'S___';</strong><br><br>In SQL pattern matching with the <code>LIKE</code> operator:<br>• <strong>% (percent)</strong>: Matches zero or more arbitrary characters.<br>• <strong>_ (underscore)</strong>: Matches <strong>exactly one</strong> character.<br>To match names with first letter 'S' followed by exactly 3 more characters (total 4 characters), three underscores are required: <code>'S___'</code>.",
+        "stepMarking": "(1 Mark) Three underscores after 'S' represents exactly 4 characters total.",
+        "cautionTrap": "Option (a) 'S%' matches ANY length starting with S (e.g. 'Shubham', 'Sasha'). We need exactly 4 characters.",
+        "topperTip": "SQL Wildcards: <code>%</code> = any number of characters | <code>_</code> = exactly one character.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 (Set 4)",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Guided Media Comparison",
+        "stem": "Which transmission medium provides the highest data transfer bandwidth, immunity to electromagnetic interference (EMI), and maximum security against eavesdropping?",
+        "options": [
+            "(a) Coaxial cable",
+            "(b) Optical fibre cable",
+            "(c) Shielded Twisted Pair (STP)",
+            "(d) Infrared"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Optical fibre cable</strong><br><br>Optical fibre cables transmit data as light pulses via Total Internal Reflection through glass/silica cores. Because light does not emit or interact with electrical fields, it is completely immune to electromagnetic interference (EMI) and radio frequency noise. It provides ultra-high bandwidth (gigabits to terabits/sec) and cannot be easily tapped without breaking signal continuity.",
+        "stepMarking": "(1 Mark) Optical fibre provides highest bandwidth and zero EMI.",
+        "cautionTrap": "Twisted pair is cheap but prone to noise; coaxial is medium; optical fibre is fastest and immune to EMI.",
+        "topperTip": "High bandwidth + long distance + EMI immune = Optical Fibre Cable.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Network Devices",
+        "stem": "Which networking device operates at the physical layer to regenerate incoming attenuated signals so they can travel longer cable distances?",
+        "options": [
+            "(a) Repeater",
+            "(b) Router",
+            "(c) Gateway",
+            "(d) Bridge"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Repeater</strong><br><br>Signals travelling through physical copper cables suffer attenuation (loss of amplitude/energy over distance). A <strong>Repeater</strong> operates at Layer 1 (Physical layer) to amplify/regenerate the signal back to original strength and retransmit it. (In CBSE Case Studies, a repeater is recommended whenever cable distance between blocks exceeds 70-100 meters).",
+        "stepMarking": "(1 Mark) Repeater regenerates attenuated signals.",
+        "cautionTrap": "A repeater regenerates signals; a router routes packets between different networks.",
+        "topperTip": "CBSE Case Study Rule: If distance between buildings > 70m \\(\\implies\\) install a <strong>Repeater</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Star topology is the most widely deployed LAN topology in modern office campus networks.<br>Reason (R): In star topology, failure of a single computer or cable does not bring down the rest of the network, and adding/removing nodes is straightforward.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In a Star topology, each workstation is connected via its own dedicated cable to a central switch/hub. If a single drop cable or client node fails, only that specific node is disconnected; the rest of the network remains operational. Fault isolation is simple. (Contrast with Bus topology, where a break in the backbone cable collapses the entire network). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Robustness and fault isolation make Star topology the standard.",
+        "cautionTrap": "The only single point of failure in a star topology is the central switch itself.",
+        "topperTip": "CBSE Case Study Topology: Always recommend <strong>Star Topology</strong> with a central Switch for high reliability.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "IP Addressing",
+        "stem": "How many bits are used in an IPv4 address and an IPv6 address respectively?",
+        "options": [
+            "(a) 32 bits and 64 bits",
+            "(b) 32 bits and 128 bits",
+            "(c) 64 bits and 128 bits",
+            "(d) 16 bits and 32 bits"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 32 bits and 128 bits</strong><br><br>• <strong>IPv4</strong>: Uses <strong>32 bits</strong> (4 bytes) written as four decimal octets separated by dots (e.g. 192.168.1.1), providing \\(2^{32} \\approx 4.3\\) billion addresses.<br>• <strong>IPv6</strong>: Uses <strong>128 bits</strong> (16 bytes) written as eight groups of four hexadecimal digits separated by colons, providing \\(2^{128}\\) addresses.",
+        "stepMarking": "(1 Mark) IPv4 = 32 bits; IPv6 = 128 bits.",
+        "cautionTrap": "MAC address is 48 bits (6 bytes). Do not confuse with IP addresses!",
+        "topperTip": "Address lengths: IPv4 = 32 bits | MAC Address = 48 bits | IPv6 = 128 bits.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Server Placement Rule",
+        "stem": "In the CBSE 80-20 rule for network campus design, the server must be installed in the building block that:",
+        "options": [
+            "(a) has the largest geographic area",
+            "(b) houses the maximum number of computers",
+            "(c) is closest to the main entrance gate",
+            "(d) has the minimum number of computers"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) houses the maximum number of computers</strong><br><br>According to the 80/20 network traffic rule, 80% of data traffic is local within the same segment. To minimize cross-campus cable congestion and packet latency, the central server should be physically placed in the building block containing the <strong>maximum number of computers/workstations</strong>.",
+        "stepMarking": "(1 Mark) 80/20 rule dictates server placement in block with max computers.",
+        "cautionTrap": "Always examine the computer count table in the CBSE case study; pick the block with the highest count.",
+        "topperTip": "CBSE Case Study Server rule: Server is ALWAYS placed in the wing/block with MAXIMUM computers.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2024-2",
+        "marks": 1,
+        "year": "CBSE 2024 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Variable Arguments",
+        "stem": "In Python, a function definition header def calc(*args): collects incoming positional arguments into which data type?",
+        "options": [
+            "(a) list",
+            "(b) tuple",
+            "(c) dictionary",
+            "(d) set"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) tuple</strong><br><br>The single asterisk <code>*args</code> collects arbitrary positional arguments into an immutable <strong>tuple</strong>. (In contrast, double asterisk <code>**kwargs</code> collects keyword arguments into a <strong>dictionary</strong>).",
+        "stepMarking": "(1 Mark) *args collects into a tuple.",
+        "cautionTrap": "*args is a tuple; **kwargs is a dictionary.",
+        "topperTip": "*args \\(\\to\\) tuple | **kwargs \\(\\to\\) dict.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2023-2",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Recursion",
+        "stem": "What runtime exception is raised if a recursive Python function fails to reach its base case condition?",
+        "options": [
+            "(a) RecursionError",
+            "(b) StackOverflowException",
+            "(c) InfiniteLoopError",
+            "(d) ZeroDivisionError"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) RecursionError</strong><br><br>Python maintains a recursion depth limit (default 1000 frames). When recursive calls exceed this limit without terminating at a base case, Python raises <code>RecursionError: maximum recursion depth exceeded</code>.",
+        "stepMarking": "(1 Mark) Identifying RecursionError.",
+        "cautionTrap": "In C/C++ it is a OS stack overflow; in Python it is a catchable <code>RecursionError</code>.",
+        "topperTip": "Recursion must always have: (1) Base condition that terminates, (2) Recursive step that converges to base.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Using a mutable default argument like def add_item(val, my_list = []): can produce unexpected shared state across successive calls.<br>Reason (R): Default parameter expressions are evaluated once at function definition time, not every time the function is called.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In Python, default arguments are created once when the <code>def</code> statement is executed (definition time). If the default is a mutable object (like a list or dict), every subsequent call that omits the parameter appends into the exact same persistent list in memory. The standard idiomatic idiom is <code>def add_item(val, my_list=None): if my_list is None: my_list = []</code>. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Default arguments evaluate once at function definition time.",
+        "cautionTrap": "Never use mutable objects ([], {}) as default arguments in Python!",
+        "topperTip": "Safe idiom: use <code>default=None</code> and instantiate inside the function.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2021-2",
+        "marks": 1,
+        "year": "CBSE 2021 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Built-in Functions",
+        "stem": "Which built-in Python function returns the unique integer memory address identifier of an object?",
+        "options": [
+            "(a) type()",
+            "(b) id()",
+            "(c) mem()",
+            "(d) addr()"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) id()</strong><br><br>The <code>id(obj)</code> built-in function returns the unique identity of an object, which is an integer representing its memory address during its lifetime. The <code>is</code> operator compares <code>id(a) == id(b)</code>.",
+        "stepMarking": "(1 Mark) id() returns object memory identifier.",
+        "cautionTrap": "type() returns data type (e.g. <class 'int'>); id() returns memory identity.",
+        "topperTip": "Equality vs Identity: <code>==</code> checks values | <code>is</code> checks <code>id()</code> memory addresses.",
+        "mnemonic": ""
+    });
+
+    pushQ("Python Functions", {
+        "id": "cs-pf-mcq-2019-2",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "String Immutability",
+        "stem": "What is the output of the following code:<br><pre><code>def modify(s):\n    s += ' World'\nmsg = 'Hello'\nmodify(msg)\nprint(msg)</code></pre>",
+        "options": [
+            "(a) Hello World",
+            "(b) Hello",
+            "(c) None",
+            "(d) Error"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Hello</strong><br><br>Strings in Python are <strong>immutable</strong>. Inside <code>modify()</code>, <code>s += ' World'</code> creates a completely new string object and rebinds the local variable <code>s</code>. The original string <code>msg</code> in the caller scope remains unchanged as <code>'Hello'</code>.",
+        "stepMarking": "(1 Mark) String immutability prevents caller mutation.",
+        "cautionTrap": "If msg were a list, in-place append would mutate caller. Strings are immutable!",
+        "topperTip": "Immutable types in Python: int, float, bool, string, tuple, frozenset.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2024-2",
+        "marks": 1,
+        "year": "CBSE 2024 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "EOF in Pickle",
+        "stem": "Which exception is raised when pickle.load() reaches the end of a binary file with no more objects to deserialize?",
+        "options": [
+            "(a) EOFError",
+            "(b) FileNotFoundError",
+            "(c) StopIteration",
+            "(d) UnpicklingError"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) EOFError</strong><br><br>When sequentially reading binary records with <code>pickle.load(f)</code> inside a <code>while True</code> loop, attempting to read past the end of the file raises an <code>EOFError</code> (End-of-File Error). Standard CBSE code handles this inside a <code>try-except EOFError:</code> block.",
+        "stepMarking": "(1 Mark) pickle.load() raises EOFError at end of file.",
+        "cautionTrap": "Text files return empty string '' at EOF; binary pickle files RAISE EOFError!",
+        "topperTip": "Standard binary read template: <code>try: while True: rec = pickle.load(f) except EOFError: pass</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2023-2",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Seek Modes",
+        "stem": "In the method f.seek(offset, whence), what does whence = 2 represent?",
+        "options": [
+            "(a) Beginning of the file",
+            "(b) Current file pointer position",
+            "(c) End of the file",
+            "(d) Middle of the file"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) End of the file</strong><br><br>The reference point <code>whence</code> in <code>seek(offset, whence)</code> accepts three integer values:<br>• <strong>0</strong>: Beginning of file (default)<br>• <strong>1</strong>: Current file pointer position<br>• <strong>2</strong>: End of the file.<br>For example, <code>f.seek(-10, 2)</code> positions the pointer 10 bytes before the end of a binary file.",
+        "stepMarking": "(1 Mark) whence = 2 denotes End of File.",
+        "cautionTrap": "In Python 3 text files, non-zero seek relative to current (1) or end (2) is disallowed; only binary mode supports it.",
+        "topperTip": "whence values: 0 = Start | 1 = Current | 2 = End.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Using with open('notes.txt', 'r') as f: is safer than opening files without the with block.<br>Reason (R): The with statement creates a context manager that automatically closes the file even if exceptions occur.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The <code>with</code> statement handles resource cleanup through Python's context management protocol (calling <code>f.__exit__()</code> upon exiting the block). Even if unhandled exceptions or early <code>return</code> statements occur, the file stream is guaranteed to be closed and flushed, preventing memory leaks and data corruption. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) with context manager guarantees automatic file closure.",
+        "cautionTrap": "Always use <code>with open()</code> in CBSE practicals and project code.",
+        "topperTip": "Context manager <code>with</code> automatically calls <code>f.close()</code> under all conditions.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2020-2",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "File Buffer",
+        "stem": "Which method immediately forces unwritten buffered data in memory to be written to disk without closing the file?",
+        "options": [
+            "(a) flush()",
+            "(b) sync()",
+            "(c) write()",
+            "(d) dump()"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) flush()</strong><br><br>The <code>f.flush()</code> method clears the internal buffer of the file by writing all stored data directly to the disk without closing the file handle. (Closing the file via <code>f.close()</code> automatically flushes the buffer as well).",
+        "stepMarking": "(1 Mark) flush() forces buffer to disk.",
+        "cautionTrap": "Calling <code>write()</code> only places data in memory buffer; <code>flush()</code> commits it to physical storage.",
+        "topperTip": "flush() writes memory buffer to disk while keeping file open.",
+        "mnemonic": ""
+    });
+
+    pushQ("File Handling", {
+        "id": "cs-fh-mcq-2018-2",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Reading Specific Bytes",
+        "stem": "What does file_object.read(5) return when executed on a text file?",
+        "options": [
+            "(a) The first 5 lines of the file",
+            "(b) Exactly 5 characters (bytes) from the current position",
+            "(c) The line at index 5",
+            "(d) An error if file has fewer than 5 lines"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Exactly 5 characters (bytes) from the current position</strong><br><br>When the integer parameter \\(n\\) is passed to <code>read(n)</code>, it reads at most \\(n\\) characters (in text mode) or \\(n\\) bytes (in binary mode) from the current pointer location, advancing the file cursor by that amount.",
+        "stepMarking": "(1 Mark) read(n) reads at most n characters.",
+        "cautionTrap": "To read 5 lines, you would use a loop with <code>readline()</code>; <code>read(5)</code> reads 5 CHARACTERS.",
+        "topperTip": "<code>read(5)</code> = 5 characters | <code>readline()</code> = 1 whole line.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2024-2",
+        "marks": 1,
+        "year": "CBSE 2024 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Stack Infix to Postfix",
+        "stem": "The equivalent Postfix expression for the Infix expression (A + B) * C is:",
+        "options": [
+            "(a) A B + C *",
+            "(b) A B C + *",
+            "(c) * + A B C",
+            "(d) A B * C +"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) A B + C *</strong><br><br>1. Expression inside parentheses evaluated first: <code>(A + B) \\(\\to\\) A B +</code>.<br>2. Multiply by C: <code>(A B +) * C \\(\\to\\) A B + C *</code>.<br>Result: <code>A B + C *</code>.",
+        "stepMarking": "(1 Mark) Parentheses take precedence: A B + C *.",
+        "cautionTrap": "Without parentheses, \\(A + B * C\\) would be \\(A B C * +\\). Parentheses force addition first!",
+        "topperTip": "Operator follows its operands in Postfix.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2023-2",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Stack Top Pointer",
+        "stem": "In an array implementation of a Stack of size N, what is the value of the Top pointer when the Stack is completely empty?",
+        "options": [
+            "(a) 0",
+            "(b) -1",
+            "(c) N - 1",
+            "(d) NULL"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) -1</strong><br><br>In array-based stack implementation with 0-based indexing:<br>• <strong>Empty Stack:</strong> <code>Top = -1</code>.<br>• <strong>After 1st Push:</strong> <code>Top = 0</code>.<br>• <strong>Full Stack:</strong> <code>Top = N - 1</code>.",
+        "stepMarking": "(1 Mark) Top = -1 represents empty stack.",
+        "cautionTrap": "Top = 0 means there is already ONE element in the stack at index 0!",
+        "topperTip": "Empty stack: <code>Top = -1</code> | Full stack: <code>Top = N - 1</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): A Stack is used by compilers to check whether parentheses, brackets, and braces in a code block are balanced.<br>Reason (R): Opening brackets are pushed onto the stack, and when a closing bracket is encountered, it must match the bracket popped from the top of the stack.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The delimiter matching algorithm pushes every opening symbol (<code>(</code>, <code>[</code>, <code>{</code>) onto a stack. When a closing symbol (<code>)</code>, <code>]</code>, <code>}</code>) is scanned, the top element is popped and verified to be the corresponding opening symbol. If the stack is empty or types mismatch, it is unbalanced. At the end, the stack must be empty. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Standard stack delimiter matching algorithm.",
+        "cautionTrap": "If closing bracket occurs when stack is empty, it is an immediate Underflow/unbalanced error.",
+        "topperTip": "Balanced parentheses algorithm is a classic CBSE stack application.",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2021-2",
+        "marks": 1,
+        "year": "CBSE 2021 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Postfix Evaluation",
+        "stem": "Evaluate the Postfix expression using a stack: 6 3 2 + * 5 -",
+        "options": [
+            "(a) 25",
+            "(b) 30",
+            "(c) 20",
+            "(d) 35"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 25</strong><br><br>Trace:<br>1. Push 6, 3, 2 \\(\\implies\\) Stack: [6, 3, 2]<br>2. Operator '+': pop 2, pop 3 \\(\\to 3 + 2 = 5\\). Push 5 \\(\\implies\\) Stack: [6, 5]<br>3. Operator '*': pop 5, pop 6 \\(\\to 6 \\times 5 = 30\\). Push 30 \\(\\implies\\) Stack: [30]<br>4. Push 5 \\(\\implies\\) Stack: [30, 5]<br>5. Operator '-': pop 5, pop 30 \\(\\to 30 - 5 = 25\\). Push 25.<br>Final answer: <strong>25</strong>.",
+        "stepMarking": "(1 Mark) Step trace: (3+2)=5; 6*5=30; 30-5=25.",
+        "cautionTrap": "For subtraction and division, remember order: first popped is operand 2, second popped is operand 1 (\\(\\text{op1} - \\text{op2}\\)).",
+        "topperTip": "Postfix subtraction: \\(30\\text{ and }5\\text{ with } - \\implies 30 - 5 = 25\\).",
+        "mnemonic": ""
+    });
+
+    pushQ("Data Structures: Stacks", {
+        "id": "cs-st-mcq-2019-2",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Stack Peek Operation",
+        "stem": "Which Python expression inspects the top element of a stack implemented as a list without removing it?",
+        "options": [
+            "(a) stack[-1]",
+            "(b) stack[0]",
+            "(c) stack.pop()",
+            "(d) stack.top()"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) stack[-1]</strong><br><br>The 'Peek' operation views the top element of a stack without deleting it. When a Python list is used as a stack (where items are appended to the end), the top element is always at the last index: <code>stack[-1]</code>. <code>stack.pop()</code> would delete the element.",
+        "stepMarking": "(1 Mark) stack[-1] accesses top element without deletion.",
+        "cautionTrap": "Lists in Python have no built-in <code>.top()</code> method; use negative indexing <code>[-1]</code>.",
+        "topperTip": "Peek in Python stack: <code>stack[-1]</code> (ensure <code>len(stack) > 0</code> first!).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2024-2",
+        "marks": 1,
+        "year": "CBSE 2024 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "DDL vs DML",
+        "stem": "Which of the following SQL commands belongs to Data Definition Language (DDL)?",
+        "options": [
+            "(a) UPDATE",
+            "(b) ALTER",
+            "(c) INSERT",
+            "(d) DELETE"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) ALTER</strong><br><br>• <strong>DDL (Data Definition Language)</strong> commands modify table schema and structure: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>.<br>• <strong>DML (Data Manipulation Language)</strong> commands manipulate data rows inside tables: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.",
+        "stepMarking": "(1 Mark) ALTER is DDL; others are DML.",
+        "cautionTrap": "ALTER modifies table structure (DDL); UPDATE modifies row data inside table (DML).",
+        "topperTip": "DDL = Structure (CREATE, ALTER, DROP) | DML = Data (INSERT, UPDATE, DELETE).",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2023-2",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "NULL Checking",
+        "stem": "Which condition correctly checks whether the attribute Commission contains a NULL value in SQL?",
+        "options": [
+            "(a) WHERE Commission = NULL",
+            "(b) WHERE Commission IS NULL",
+            "(c) WHERE Commission == NULL",
+            "(d) WHERE Commission EQUALS NULL"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) WHERE Commission IS NULL</strong><br><br>In SQL three-valued logic, NULL represents an unknown or missing value, not a zero or empty string. Therefore, comparing NULL with standard arithmetic equality operators (<code>= NULL</code> or <code>!= NULL</code>) always yields UNKNOWN (never TRUE). The dedicated <code>IS NULL</code> (or <code>IS NOT NULL</code>) operator must be used.",
+        "stepMarking": "(1 Mark) IS NULL is required for null checking.",
+        "cautionTrap": "Never write <code>= NULL</code>! It will return 0 rows without throwing an error.",
+        "topperTip": "Always use <code>IS NULL</code> or <code>IS NOT NULL</code>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In SQL, the DROP TABLE command permanently deletes both the table data and its schema definition.<br>Reason (R): The DELETE FROM table command removes rows from the table, but leaves the empty table structure intact in the database.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Both A and R are true but R is not the correct explanation of A</strong><br><br>Assertion is true: <code>DROP TABLE</code> (DDL) destroys the table completely from the database catalog (schema, constraints, indexes, and data).<br>Reason is true: <code>DELETE FROM</code> (DML) removes data tuples while keeping the column structure available for future inserts.<br>Both statements describe true SQL behavior, but Reason is a contrast rather than the cause of why DROP deletes everything. Thus, both A and R are true but R is not the correct explanation of A.",
+        "stepMarking": "(1 Mark) Distinguishing DROP TABLE (DDL destroys schema) vs DELETE (DML deletes rows).",
+        "cautionTrap": "DROP = destroys table structure + data | DELETE = deletes rows only | TRUNCATE = clears all rows fast (DDL).",
+        "topperTip": "DROP destroys table completely; DELETE empties records.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2021-2",
+        "marks": 1,
+        "year": "CBSE 2021 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "DISTINCT Keyword",
+        "stem": "Which SQL keyword eliminates duplicate rows from the query output?",
+        "options": [
+            "(a) UNIQUE",
+            "(b) DISTINCT",
+            "(c) DIFFERENT",
+            "(d) SINGLE"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) DISTINCT</strong><br><br>The <code>DISTINCT</code> keyword is used in the <code>SELECT</code> clause to suppress duplicate values in the result set, returning each unique value only once (e.g. <code>SELECT DISTINCT City FROM Customer;</code>). (UNIQUE is a table constraint, not a SELECT query keyword).",
+        "stepMarking": "(1 Mark) DISTINCT eliminates duplicates in SELECT results.",
+        "cautionTrap": "UNIQUE is a table creation constraint; DISTINCT is the query keyword.",
+        "topperTip": "Use <code>SELECT DISTINCT col FROM tab;</code> to get unique values.",
+        "mnemonic": ""
+    });
+
+    pushQ("Relational Databases and SQL", {
+        "id": "cs-sql-mcq-2019-2",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Foreign Key",
+        "stem": "An attribute in a table that references the primary key of another table to maintain referential integrity is called a:",
+        "options": [
+            "(a) Primary Key",
+            "(b) Candidate Key",
+            "(c) Foreign Key",
+            "(d) Alternate Key"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Foreign Key</strong><br><br>A <strong>Foreign Key</strong> is a field (or collection of fields) in one table that uniquely identifies a row of another table by referencing its Primary Key. It enforces <strong>referential integrity</strong>, ensuring invalid child records cannot exist without a valid parent record.",
+        "stepMarking": "(1 Mark) Foreign key enforces referential integrity.",
+        "cautionTrap": "Foreign key values can be duplicated and can contain NULL, unlike Primary Key.",
+        "topperTip": "Primary Key = Entity Integrity | Foreign Key = Referential Integrity.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2024-2",
+        "marks": 1,
+        "year": "CBSE 2024 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Web Protocols",
+        "stem": "Which secure protocol encrypts web traffic using SSL/TLS to protect passwords and credit card transactions over port 443?",
+        "options": [
+            "(a) HTTP",
+            "(b) HTTPS",
+            "(c) FTP",
+            "(d) SMTP"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) HTTPS</strong><br><br><strong>HTTPS (Hypertext Transfer Protocol Secure)</strong> uses Transport Layer Security (TLS) or Secure Sockets Layer (SSL) to encrypt communications between web browsers and servers over TCP port 443. Ordinary HTTP transmits plaintext over port 80 and is vulnerable to eavesdropping.",
+        "stepMarking": "(1 Mark) HTTPS provides encrypted web transmission.",
+        "cautionTrap": "HTTP = port 80 (insecure); HTTPS = port 443 (encrypted).",
+        "topperTip": "E-commerce and banking require HTTPS to prevent man-in-the-middle packet sniffing.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2023-2",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Network Hardware",
+        "stem": "A central networking device that broadcasts incoming packets to ALL connected ports indiscriminately is a:",
+        "options": [
+            "(a) Hub",
+            "(b) Switch",
+            "(c) Router",
+            "(d) Bridge"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Hub</strong><br><br>• <strong>Hub</strong>: An unintelligent Layer 1 device that regenerates received electrical signals and broadcasts them blindly to <em>every</em> connected port, causing collision domains.<br>• <strong>Switch</strong>: An intelligent Layer 2 device that maintains a MAC address table and forwards frames unicast directly to the destination port only.",
+        "stepMarking": "(1 Mark) Hub broadcasts to all ports; switch forwards intelligently.",
+        "cautionTrap": "Always recommend a Switch (not a Hub) in CBSE case study design to prevent network collisions.",
+        "topperTip": "Hub = Unintelligent broadcast | Switch = Intelligent unicast (MAC table).",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Cookies stored on a client browser are not malicious executable programs or viruses.<br>Reason (R): Cookies are simple plain-text files storing session tokens and browsing preferences created by web servers.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>A cookie is a small plain-text file sent by a web server and stored locally on the user's computer by the browser. Because it contains only text strings (user IDs, cart contents, session states) and possesses no executable code, a cookie cannot execute actions, infect systems, or replicate itself like a virus. Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Cookies are plain text data files, not executable malware.",
+        "cautionTrap": "Although not viruses, third-party tracking cookies can present privacy concerns.",
+        "topperTip": "Cookies = Plain-text session data files, NOT executable code.",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2021-2",
+        "marks": 1,
+        "year": "CBSE 2021 Term 1",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Network Types",
+        "stem": "A network interconnecting computers within a single room, school building, or office campus within 1 km is a:",
+        "options": [
+            "(a) PAN",
+            "(b) LAN",
+            "(c) MAN",
+            "(d) WAN"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) LAN</strong><br><br>• <strong>PAN (Personal Area Network):</strong> Up to 10 meters (e.g. Bluetooth, wireless mouse).<br>• <strong>LAN (Local Area Network):</strong> Within a room, office, or school campus (up to 1 km).<br>• <strong>MAN (Metropolitan Area Network):</strong> Spanning an entire city (e.g. cable TV network).<br>• <strong>WAN (Wide Area Network):</strong> Spanning countries or global continents (e.g. the Internet).",
+        "stepMarking": "(1 Mark) LAN covers a building or campus up to 1 km.",
+        "cautionTrap": "PAN is \\(\\le 10\\text{ m}\\); LAN is up to \\(1\\text{ km}\\); MAN is city-wide.",
+        "topperTip": "Network scope: PAN (10m) \\(\\to\\) LAN (1km) \\(\\to\\) MAN (city) \\(\\to\\) WAN (global).",
+        "mnemonic": ""
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-cn-mcq-2018-2",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Cyber Security",
+        "stem": "An attempt to fraudulently acquire sensitive information such as usernames, passwords, and credit card numbers by masquerading as a trustworthy entity in an electronic communication is:",
+        "options": [
+            "(a) Phishing",
+            "(b) Spamming",
+            "(c) Hacking",
+            "(d) Snooping"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Phishing</strong><br><br><strong>Phishing</strong> is a social engineering attack where fraudulent emails or spoofed websites impersonate reputable organizations (like banks or school portals) to trick victims into revealing sensitive personal credentials and banking details.",
+        "stepMarking": "(1 Mark) Identifying phishing attack.",
+        "cautionTrap": "Spamming is sending unsolicited bulk messages; Phishing is deceptive credential theft.",
+        "topperTip": "Fraudulent imitation of authentic website to steal credentials = Phishing.",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Notice Writing Rubric",
+        "stem": "Which of the following is an essential format requirement in official CBSE Notice Writing?",
+        "options": [
+            "(a) Writing in informal first-person narrative ('I invite you all')",
+            "(b) Enclosing the entire notice within a rectangular drawn box",
+            "(c) Including the writer's complete personal home address",
+            "(d) Writing at least 150 words"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Enclosing the entire notice within a rectangular drawn box</strong><br><br>According to the official CBSE Marking Scheme for Notice Writing (4 Marks):<br>1. <strong>Box:</strong> The entire notice must be enclosed in a neat, drawn box (0.5 mark deduction if box is missing).<br>2. <strong>Format:</strong> Name of Issuing Authority/Organization (top centre), word 'NOTICE' in bold/caps, Date of issue (left), Eye-catching Heading/Title, Body with 5 W's (What, When, Where, Who, Whom), and Sign-off (Name & Designation).<br>3. Word limit is strictly <strong>50 words</strong>, and it must be written in formal, impersonal third-person.",
+        "stepMarking": "(1 Mark) Identifying mandatory rectangular box enclosure.",
+        "cautionTrap": "Missing box loses 0.5 marks automatically in CBSE board evaluation! Avoid 'I' or 'We'.",
+        "topperTip": "Notice Checklist: Box + Issuing Authority + NOTICE + Date + Title + Body (50 words) + Name & Designation.",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Formal Invitation Reply",
+        "stem": "A formal letter of reply accepting an invitation to preside over an annual day function should be written in:",
+        "options": [
+            "(a) First person ('I am happy to accept your invitation')",
+            "(b) Third person ('Dr. Sharma thanks the Principal and has great pleasure in accepting...')",
+            "(c) Second person ('You are cordially invited to see me')",
+            "(d) Informal poetic prose"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Third person ('Dr. Sharma thanks the Principal and has great pleasure in accepting...')</strong><br><br>Official CBSE formal invitation replies (both acceptance and regrets) are written strictly in the <strong>Third Person</strong> (e.g. 'Mr. and Mrs. Roy thank...', 'Dr. Verma regrets his inability...'). No first person pronouns ('I', 'We') are permitted, and the reply is enclosed within a box with no complimentary close (no 'Yours sincerely').",
+        "stepMarking": "(1 Mark) Formal replies must be written in third person.",
+        "cautionTrap": "Using 'I' or 'We' in a formal invitation reply is an immediate format penalty.",
+        "topperTip": "Formal Reply Rubric: Third person, brief (50 words), acknowledges invitation, states date/time/venue, confirms acceptance or gives concise reason for regret, enclosed in box.",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In a Job Application with Bio-data, the covering letter and the bio-data are evaluated as two distinct parts.<br>Reason (R): The covering letter must follow formal business letter layout, while the bio-data / curriculum vitae must feature a structured tabular profile of personal, educational, and professional credentials.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>In CBSE English Core (5 Marks), Job Application consists of: (1) Covering letter (Sender's address, Date, Receiver's address, Subject, Salutation, 3-paragraph body referencing advertisement and offering candidature, Complimentary close), and (2) Detailed Bio-data/CV (Personal details, Educational qualifications in a 5-column table, Work experience, References, Declaration, Signature). Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Standard CBSE job application rubric.",
+        "cautionTrap": "Never merge bio-data into the letter body; Bio-data must be appended as a structured separate section.",
+        "topperTip": "Always draw a clean table for Educational Qualifications: Exam | Board/Univ | Year | Subjects | Percentage.",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Letter to Editor",
+        "stem": "What is the primary role of the opening sentence in a formal Letter to the Editor?",
+        "options": [
+            "(a) Ordering the editor to resolve the civic problem immediately",
+            "(b) Drawing public attention and concerned authorities to the issue through the columns of the esteemed newspaper",
+            "(c) Requesting personal employment in the newspaper editorial team",
+            "(d) Asking the editor for financial aid"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Drawing public attention and concerned authorities to the issue through the columns of the esteemed newspaper</strong><br><br>The editor is not an executive civic authority; the editor merely provides a media platform. Therefore, standard CBSE opening is: <em>'Through the columns of your esteemed daily, I wish to draw the attention of the concerned municipal authorities and the general public towards...'</em>. Asking the editor to fix potholes directly is a fatal misconception.",
+        "stepMarking": "(1 Mark) Standard Letter to Editor purpose.",
+        "cautionTrap": "Never write 'I request you to repair the broken streetlights'; the editor publishes, the municipality repairs!",
+        "topperTip": "Standard opening: 'Through the columns of your widely circulated daily...'",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Article Writing",
+        "stem": "In formal Article Writing for school magazines or newspapers, the Byline should be placed:",
+        "options": [
+            "(a) at the very end after the conclusion",
+            "(b) immediately below the eye-catching Title/Heading",
+            "(c) in the footer of the page",
+            "(d) inside a bracket in the middle of paragraph 2"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) immediately below the eye-catching Title/Heading</strong><br><br>In CBSE Article Writing layout: Title/Heading is placed at the top centre, followed immediately by the Byline (e.g. <em>By: Rohan Sharma, XII-A</em>) on the next line (either centered or flush right). The body then proceeds in 3-4 structured paragraphs: Introduction, Cause & Impact Analysis, Remedial Measures & Conclusion.",
+        "stepMarking": "(1 Mark) Byline directly below title.",
+        "cautionTrap": "Do not put the byline at the end; in articles it is placed under the title (unlike Letters which sign off at the end).",
+        "topperTip": "Article structure: [Title] \\(\\to\\) [By: Name] \\(\\to\\) [Introduction] \\(\\to\\) [Body/Data/Causes] \\(\\to\\) [Remedies/Conclusion].",
+        "mnemonic": ""
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-ws-ar-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 SQP",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): In formal CBSE letters, 'Yours sincerely' should NOT be written with an apostrophe as 'Your's sincerely'.<br>Reason (R): 'Yours' is a possessive pronoun, and possessive pronouns in English never take apostrophes.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Writing <code>Your's sincerely</code> or <code>Your's faithfully</code> is an egregious grammatical error penalised under CBSE format/accuracy rubrics. Possessive pronouns (yours, hers, its, ours, theirs) never use an apostrophe. The correct spelling is strictly <strong>Yours sincerely</strong> (with lowercase 's' in sincerely). Both A and R are true and R is the correct explanation.",
+        "stepMarking": "(1 Mark) Correct explanation of possessive pronoun without apostrophe.",
+        "cautionTrap": "Never write 'Your's'! Write 'Yours faithfully' (when recipient name unknown) or 'Yours sincerely' (when named).",
+        "topperTip": "Complimentary close: <strong>Yours sincerely</strong> (no apostrophe, capital Y, lowercase s).",
+        "mnemonic": ""
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-ll-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Literary Themes",
+        "stem": "What order from Berlin caused a profound stillness and solemn gloom in M. Hamel's classroom?",
+        "options": [
+            "(a) An order to close all French schools permanently",
+            "(b) An order that only German was to be taught in the schools of Alsace and Lorraine",
+            "(c) An order conscripting all young boys into the Prussian army",
+            "(d) An order arresting M. Hamel for insubordination"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) An order that only German was to be taught in the schools of Alsace and Lorraine</strong><br><br>Following France's defeat in the Franco-Prussian War (1870-71), Bismarck's Prussia annexed the French border districts of Alsace and Lorraine. The decree from Berlin imposed the German language, stripping the conquered populace of their mother tongue—a classic manifestation of <strong>linguistic chauvinism</strong>.",
+        "stepMarking": "(1 Mark) Identifying Berlin order imposing German language.",
+        "cautionTrap": "The schools were not closed; only the medium of instruction was forcibly changed to German.",
+        "topperTip": "Key theme: <strong>Linguistic Chauvinism</strong>—the aggressive imposition of one language to erase cultural identity.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-ll-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Symbolism",
+        "stem": "M. Hamel dressed in his beautiful green coat, frilled shirt, and embroidered black silk cap. Why did he wear this special attire?",
+        "options": [
+            "(a) It was an official inspection day by Prussian officers",
+            "(b) It was prize-distribution day at the school",
+            "(c) In honour of his last lesson and forty years of faithful service to the village",
+            "(d) He was invited to a wedding banquet later that afternoon"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) In honour of his last lesson and forty years of faithful service to the village</strong><br><br>M. Hamel donned his Sunday best clothes—which he wore only on inspection and prize days—as a ceremonial tribute to his mother tongue (French) and in honour of this final lesson marking forty years of dedicated teaching in Alsace.",
+        "stepMarking": "(1 Mark) Identifying special clothes worn in honour of last lesson.",
+        "cautionTrap": "It was NOT an inspection or prize day, although he wore the clothes reserved for those occasions.",
+        "topperTip": "Clothing symbolism: M. Hamel's formal attire reflects deep reverence and grief for the lost language.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-ll-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): M. Hamel declared that French was the most beautiful, clearest, and most logical language in the world.<br>Reason (R): He urged the villagers to guard their mother tongue, declaring that when people are enslaved, as long as they hold fast to their language it is as if they had the key to their prison.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>M. Hamel celebrated French to awaken patriotic pride and linguistic vigilance among the subjugated villagers. His famous metaphor—holding fast to one's native language is the 'key to their prison'—illustrates that language preserves collective identity, memory, and dignity under foreign tyranny. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Metaphor of language as the key to prison.",
+        "cautionTrap": "Remember M. Hamel's exact words: 'Vive La France!' written in gigantic letters on the blackboard.",
+        "topperTip": "High-frequency quote: 'When a people are enslaved, as long as they hold fast to their language it is as if they had the key to their prison.'",
+        "mnemonic": ""
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-ll-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Character Analysis",
+        "stem": "Franz wondered ironically: 'Will they make them sing in German, even the pigeons?' What does this thought emphasize?",
+        "options": [
+            "(a) Franz's love for birds and ornithology",
+            "(b) The unnatural and oppressive absurdity of trying to subjugate nature and human minds",
+            "(c) The Prussian soldiers' cruelty to animals",
+            "(d) That pigeons were being trained as carrier messengers"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The unnatural and oppressive absurdity of trying to subjugate nature and human minds</strong><br><br>Franz's rhetorical, innocent question highlights the limits of political tyranny. Conquerors can occupy land and issue military decrees, but cannot subjugate the innate spirit, nature, or natural voice of living beings. Man cannot conquer nature's freedom.",
+        "stepMarking": "(1 Mark) Satirical commentary on the absurdity of cultural enslavement.",
+        "cautionTrap": "Do not interpret literally; the pigeons represent the indomitable freedom of nature.",
+        "topperTip": "Franz's quote exposes the futility of trying to force linguistic uniformity upon free spirits.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-ll-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Climax Scene",
+        "stem": "At the stroke of noon, as the church clock struck twelve and Prussian trumpets sounded, what did M. Hamel do before dismissing the class?",
+        "options": [
+            "(a) Delivered a fiery speech urging armed revolt",
+            "(b) Wept loudly and fell to the floor",
+            "(c) Wrote in gigantic letters 'Vive La France!' on the blackboard and gestured that school was dismissed",
+            "(d) Handed out grammar certificates to old Hauser"
+        ],
+        "correctOption": "(c)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (c) Wrote in gigantic letters 'Vive La France!' on the blackboard and gestured that school was dismissed</strong><br><br>Overcome with profound emotion, M. Hamel choked and could not speak. Turning to the blackboard, he took a piece of chalk and, bearing on with all his might, wrote as large as he could: <strong>'Vive La France!'</strong> (Long Live France!). He then leaned his head against the wall and gestured with his hand: 'School is dismissed — you may go.'",
+        "stepMarking": "(1 Mark) Climax gesture writing Vive La France! on blackboard.",
+        "cautionTrap": "M. Hamel was too choked with tears to speak aloud; his final act was silent writing and a hand gesture.",
+        "topperTip": "Emotional climax: Silent gesture, intense dignity, indelible blackboard declaration.",
+        "mnemonic": ""
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Literary Meaning",
+        "stem": "What is the stinging irony in the name of the ragpicker boy 'Saheb-e-Alam'?",
+        "options": [
+            "(a) He comes from a royal lineage in Dhaka",
+            "(b) His name means 'Lord of the Universe', while he wanders barefoot scrounging through garbage dumps",
+            "(c) He refuses to attend school despite having plenty of wealth",
+            "(d) He owns a tea stall but pretends to be a ragpicker"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) His name means 'Lord of the Universe', while he wanders barefoot scrounging through garbage dumps</strong><br><br>'Saheb-e-Alam' translates to 'Lord of the Universe'. The bitter irony lies in the sharp contrast between his grand, monarchical name and his impoverished, barefoot reality as an undocumented refugee scrounging for coins among garbage heaps in Seemapuri.",
+        "stepMarking": "(1 Mark) Irony of 'Lord of the Universe' scrounging garbage barefoot.",
+        "cautionTrap": "Saheb was completely unaware of what his name meant; if he knew, he would have had a hard time believing it.",
+        "topperTip": "Literary device: <strong>Situational Irony</strong> contrasting lofty name with abject poverty.",
+        "mnemonic": ""
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Perception of Garbage",
+        "stem": "What does garbage mean to the children of Seemapuri versus their elder parents?",
+        "options": [
+            "(a) To children it is wrapped in wonder; to elders it is a means of daily survival",
+            "(b) To children it is dirty waste; to elders it is a profitable trade",
+            "(c) To both it is simply worthless refuse",
+            "(d) To children it is a game; to elders it is a burden"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) To children it is wrapped in wonder; to elders it is a means of daily survival</strong><br><br>Anees Jung notes the poignant contrast in perspective: For the elders, garbage is bread, a roof over their heads, their sole <strong>means of survival</strong>. But for children like Saheb, garbage is <strong>wrapped in wonder</strong>—a magical hunting ground where they might unexpectedly find a rupee note, a silver coin, or a discarded pair of tennis shoes.",
+        "stepMarking": "(1 Mark) Contrast: wonder for children vs survival for elders.",
+        "cautionTrap": "Do not state that garbage is worthless to them; to them garbage is literally 'gold'.",
+        "topperTip": "CBSE keyword pair: Children \\(\\to\\) 'Wrapped in wonder' | Elders \\(\\to\\) 'Means of survival'.",
+        "mnemonic": ""
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The bangle makers of Firozabad are unable to organize themselves into a cooperative to escape exploitation.<br>Reason (R): They are trapped in a vicious web spun by sahukars, middlemen, policemen, bureaucrats, and politicians who harass and jail anyone attempting to unionize.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The bangle makers are trapped in two distinct vicious circles: first, the stigma of caste and karma ('we were born in the caste of bangle makers'); second, a nexus of exploiters (sahukars, middlemen, policemen, keepers of law, and politicians). If the youth try to organize a cooperative, the police beat and drag them to jail under trumped-up charges of doing something illegal. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Nexus of middlemen, police, and bureaucrats prevents cooperative formation.",
+        "cautionTrap": "Lack of leadership and fear of police brutality keep them subjugated.",
+        "topperTip": "Dual circles of oppression: (1) Societal fatalism/caste stigma, (2) Corrupt nexus of police/politicians/sahukars.",
+        "mnemonic": ""
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Loss of Freedom",
+        "stem": "When Saheb starts working at the tea stall earning 800 rupees and all his meals, why is his carefree look gone?",
+        "options": [
+            "(a) The steel canister feels heavier than the plastic garbage bag because he is no longer his own master",
+            "(b) He hates the taste of milk and tea",
+            "(c) The tea stall owner beats him continuously",
+            "(d) He wants to move back to Dhaka"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) The steel canister feels heavier than the plastic garbage bag because he is no longer his own master</strong><br><br>The plastic garbage bag belonged to Saheb; he was a free sovereign spirit. The steel milk canister belongs to the tea stall owner. He is bound to another man's command, forfeiting his childhood liberty. The canister symbolizes the crushing weight of bonded labor and wage slavery: <em>'Saheb is no longer his own master!'</em>",
+        "stepMarking": "(1 Mark) Contrast between plastic bag (freedom) and steel canister (servitude).",
+        "cautionTrap": "Even though he earns fixed wages (800 rupees), he has lost his priceless freedom.",
+        "topperTip": "Symbolic contrast: Plastic bag = Freedom (his own master) | Steel canister = Servitude (belonging to another).",
+        "mnemonic": ""
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-mcq-2019-1",
+        "marks": 1,
+        "year": "CBSE 2019 SQP",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Character Daring",
+        "stem": "How is Mukesh's attitude towards his future fundamentally different from the rest of his family in Firozabad?",
+        "options": [
+            "(a) He wants to become a politician",
+            "(b) He dares to break the family lineage by dreaming of becoming a motor mechanic",
+            "(c) He wants to migrate abroad to Dubai",
+            "(d) He wants to open a big jewelry shop in Delhi"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) He dares to break the family lineage by dreaming of becoming a motor mechanic</strong><br><br>Unlike generations of bangle makers who fatalistically accept their hereditary destiny, Mukesh exhibits agency and determination. He insists: <em>'I will be a motor mechanic. I will learn to drive a car.'</em> Though the garage is far from his home, he declares he will walk. His dream looms like a mirage, but his courage to dream breaks the cycle of generational submission.",
+        "stepMarking": "(1 Mark) Mukesh dares to dream of becoming a motor mechanic.",
+        "cautionTrap": "He does not dream of flying planes; when asked about planes, he is content with cars running on roads.",
+        "topperTip": "Mukesh's dream represents the rare spark of revolt against generational conditioning.",
+        "mnemonic": ""
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Psychological Trauma",
+        "stem": "At the age of ten or eleven, William Douglas decided to learn to swim at the YMCA pool in Yakima because:",
+        "options": [
+            "(a) His mother insisted he swim in the treacherous Yakima River",
+            "(b) The YMCA pool was safe, only two to three feet deep at the shallow end and nine feet at the deep end",
+            "(c) All his school friends were swimming champions",
+            "(d) It was free of cost"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The YMCA pool was safe, only two to three feet deep at the shallow end and nine feet at the deep end</strong><br><br>Douglas's mother continually warned him against the treacherous Yakima River, which had claimed many lives through drowning. The YMCA pool was chosen because it was safe: gentle drop in depth, 2-3 feet at the shallow end, gradually sloping to 9 feet at the deep end.",
+        "stepMarking": "(1 Mark) YMCA pool chosen for safety and gradual depth.",
+        "cautionTrap": "The Yakima River was notorious for drownings, so his mother strictly warned him against it.",
+        "topperTip": "Pool specifications: 2-3 ft shallow end, 9 ft deep end with gradual slope.",
+        "mnemonic": ""
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Near-Death Experience",
+        "stem": "When Douglas was tossed into the deep end by the big bruiser of a boy, what was his planned strategy to save himself?",
+        "options": [
+            "(a) To shout loudly for the lifeguard",
+            "(b) To make a big jump when his feet hit the bottom, bob to the surface like a cork, lie flat, and paddle to the edge",
+            "(c) To dive deeper and crawl along the floor",
+            "(d) To wait underwater until someone pulled him out"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) To make a big jump when his feet hit the bottom, bob to the surface like a cork, lie flat, and paddle to the edge</strong><br><br>While sinking, Douglas retained his reasoning: <em>'When my feet hit the bottom, I would make a big jump, come to the surface, lie flat on it, and paddle to the edge of the pool.'</em> However, nine feet felt like ninety, his jump produced little upward thrust, and terror paralyzed his lungs and limbs.",
+        "stepMarking": "(1 Mark) Jump from bottom, pop to surface like cork, paddle to edge.",
+        "cautionTrap": "His plan failed because terror froze his motor reflexes and his jump was too weak.",
+        "topperTip": "Metaphor: 'Bob to the surface like a cork'.",
+        "mnemonic": ""
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The swimming instructor built a swimmer out of Douglas piece by piece.<br>Reason (R): The instructor trained Douglas incrementally: first with a belt and pulley system, then teaching him to exhale underwater and inhale above water, and finally perfecting his kicking legs.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>The instructor used structured, behavioral desensitization over several months. He attached a rope to Douglas's belt running over an overhead pulley to give psychological security, trained him to put his face in water to exhale and raise his nose to inhale, and spent weeks having him kick at the side of the pool. Piece by piece, he assembled these individual skills into an integrated swimmer. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Step-by-step training dismantled subconscious phobia.",
+        "cautionTrap": "Even after the instructor said 'Now you can swim', Douglas's personal conquest of fear was not finished until he tested himself alone at Lake Wentworth.",
+        "topperTip": "Key motif: Methodical, incremental discipline conquers psychological terror.",
+        "mnemonic": ""
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Roosevelt's Philosophy",
+        "stem": "What profound philosophical truth did Douglas derive from his brush with death, echoing President Roosevelt?",
+        "options": [
+            "(a) 'Water is the source of all mortal life'",
+            "(b) 'All we have to fear is fear itself'",
+            "(c) 'Death is the ultimate punishment'",
+            "(d) 'Never trust a stranger at a swimming pool'"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) 'All we have to fear is fear itself'</strong><br><br>Douglas realized that in death there is absolute peace; the real terror exists solely in the <em>fear of death</em>. Quoting Franklin D. Roosevelt's inaugural address—<em>'All we have to fear is fear itself'</em>—he reflected that having experienced both the sensation of dying and the terror that the fear of it produces, his will to live grew intensely.",
+        "stepMarking": "(1 Mark) Roosevelt's quotation on conquering fear.",
+        "cautionTrap": "In death there is peace; the agony lies in the anticipation and terror of drowning.",
+        "topperTip": "Thematic bedrock of Deep Water: <strong>'All we have to fear is fear itself'</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Final Conquest of Fear",
+        "stem": "Where did Douglas finally dive to confirm that the last vestige of his water phobia was truly conquered?",
+        "options": [
+            "(a) In the YMCA pool during winter",
+            "(b) At Lake Wentworth in New Hampshire and Warm Lake in the Cascade Mountains",
+            "(c) In the Pacific Ocean off California",
+            "(d) In the Columbia River rapids"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) At Lake Wentworth in New Hampshire and Warm Lake in the Cascade Mountains</strong><br><br>To ensure no remnant of terror remained, Douglas went to Lake Wentworth in New Hampshire, dived off a dock at Triggs Island, and swam two miles across the lake to Stamp Act Island. When tiny remnants of fear surfaced in the middle of the lake, he laughed and said: <em>'Well, Mr. Terror, what do you think you can do to me?'</em> He confirmed his triumph by swimming across Warm Lake in the Cascades.",
+        "stepMarking": "(1 Mark) Final test at Lake Wentworth and Warm Lake.",
+        "cautionTrap": "Do not confuse YMCA pool (initial training) with Lake Wentworth / Warm Lake (final solo victory).",
+        "topperTip": "Defiance dialogue: 'Well, Mr. Terror, what do you think you can do to me?'",
+        "mnemonic": ""
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Central Metaphor",
+        "stem": "According to the peddler's philosophical daydream, what does the whole world represent?",
+        "options": [
+            "(a) A vast iron foundry",
+            "(b) A giant rattrap offering riches, food, and shelter as bait to trap greedy human beings",
+            "(c) A dark forest without exits",
+            "(d) A church where sinners are forgiven"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) A giant rattrap offering riches, food, and shelter as bait to trap greedy human beings</strong><br><br>The peddler conceived that the entire world exists solely to set baits for people. Just as cheese and pork lure a rat into a cage, the world offers riches, joys, food, and shelter. As soon as anyone is tempted to touch the bait, the trap snaps shut, bringing everything to an end.",
+        "stepMarking": "(1 Mark) Identifying world as a giant rattrap setting baits.",
+        "cautionTrap": "The 30 kronor he stole from the crofter was the exact bait that trapped him in the dark forest.",
+        "topperTip": "Central theme: Materialistic lures trap humans, but genuine love and compassion liberate them.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Character Redemption",
+        "stem": "Why did the peddler sign his thank-you letter to Edla Willmansson as 'Captain von Stahle'?",
+        "options": [
+            "(a) He wanted to mock her father, the ironmaster",
+            "(b) Edla treated him with the dignity and respect due to a real captain, which empowered him to rise above his baser criminal self",
+            "(c) He had secretly served in the Swedish army",
+            "(d) He hoped to claim a captain's military pension"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Edla treated him with the dignity and respect due to a real captain, which empowered him to rise above his baser criminal self</strong><br><br>Even after his vagrant identity was exposed, Edla Willmansson showed him unconditional kindness, feeding him Christmas dinner and refusing to expel him into the snow. Because she treated him as if he were a real captain, she dignified his wounded soul. Signing as 'Captain von Stahle' signifies his moral redemption and spiritual resurrection.",
+        "stepMarking": "(1 Mark) Kindness dignified him to act with noble captain-like integrity.",
+        "cautionTrap": "He returned the stolen 30 kronor with a request to return it to the old crofter.",
+        "topperTip": "Climax signature: 'Captain von Stahle' represents the triumph of compassion over cynicism.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): The old crofter at the roadside cottage treated the vagrant peddler with unusual warmth and hospitality.<br>Reason (R): The crofter was an old man without wife or child, happy to have someone to talk to in his loneliness, and shared his porridge, tobacco, and mjolis game.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Unlike the sour faces the peddler usually met, the crofter welcomed him warmly. Being solitary, childless, and lonely, he craved human companionship. He served hot porridge, cut a generous chunk from his tobacco roll, and played the Swedish card game 'mjolis' until bedtime. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Crofter's hospitality explained by his intense loneliness.",
+        "cautionTrap": "The crofter was naive and trusting, showing him the leather pouch with 30 kronor hanging by the window.",
+        "topperTip": "Crofter represents innocent human loneliness betrayed by cynicism.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Ironmaster vs Edla",
+        "stem": "How did the Ironmaster and his daughter Edla react when the peddler's true identity was revealed in broad daylight?",
+        "options": [
+            "(a) The ironmaster wanted to call the sheriff, while Edla interceded and insisted on keeping him as their Christmas guest",
+            "(b) Both immediately called the police",
+            "(c) Edla was furious while her father defended the peddler",
+            "(d) They gave him a bag of gold coins and sent him away"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) The ironmaster wanted to call the sheriff, while Edla interceded and insisted on keeping him as their Christmas guest</strong><br><br>Seeing the clean-shaven peddler in daylight, the ironmaster realized he was an impostor, grew angry, and threatened to summon the sheriff. Edla stepped in, closed the door, and argued with profound empathy that they had promised him Christmas cheer and should not turn him away into the bitter cold. Her compassion prevailed.",
+        "stepMarking": "(1 Mark) Contrast: Father threatens sheriff vs Edla defends Christian hospitality.",
+        "cautionTrap": "Ironmaster reacted with transactional anger; Edla reacted with pure unconditional benevolence.",
+        "topperTip": "Edla symbolizes unconditional love and Christian grace on Christmas Eve.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Christmas Gift Symbolism",
+        "stem": "What Christmas present did the peddler leave behind for Edla Willmansson?",
+        "options": [
+            "(a) A gold watch and chain",
+            "(b) A small packet containing a little rattrap, three wrinkled ten-kronor notes, and a heartfelt letter",
+            "(c) A warm winter coat",
+            "(d) A Bible inscribed with his initials"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) A small packet containing a little rattrap, three wrinkled ten-kronor notes, and a heartfelt letter</strong><br><br>The peddler left a ragged parcel containing: (1) a miniature wire rattrap as a Christmas gift, (2) the three 10-kronor notes stolen from the crofter with a plea to return them, and (3) a letter thanking Edla for treating him like a real captain and freeing him from the world's rattrap.",
+        "stepMarking": "(1 Mark) Rattrap, 30 kronor returned, and redemption letter.",
+        "cautionTrap": "He did not keep the 30 kronor; he returned every single note.",
+        "topperTip": "The little rattrap gift symbolizes his liberation from the world's materialistic snare.",
+        "mnemonic": ""
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Historical Context",
+        "stem": "Under the ancient sharecropping agreement in Champaran, what proportion of their holding were the Indian peasants compelled to plant with indigo?",
+        "options": [
+            "(a) 15 percent (3/20th or tinkathia system)",
+            "(b) 25 percent",
+            "(c) 50 percent",
+            "(d) 10 percent"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) 15 percent (3/20th or tinkathia system)</strong><br><br>By ancient contract, British landlords compelled the tenants to plant <strong>15% (3/20th, known locally as tinkathia)</strong> of their land with indigo and surrender the entire indigo harvest to the landlords as rent. When Germany developed synthetic indigo, natural indigo became uncommercial, prompting landlords to extort illegal compensation.",
+        "stepMarking": "(1 Mark) 15% (3/20th) tinkathia sharecropping system.",
+        "cautionTrap": "Do not confuse the 15% planting requirement with the 25% refund that Gandhi subsequently negotiated!",
+        "topperTip": "Champaran numbers: Compulsory planting = <strong>15%</strong> | Refund agreed by landlords = <strong>25%</strong>.",
+        "mnemonic": ""
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Gandhi's Strategy",
+        "stem": "Why did Mahatma Gandhi agree to a refund of only 25% from the British planters when peasants had demanded 50%?",
+        "options": [
+            "(a) He ran out of funds to continue the campaign",
+            "(b) The amount of money was less important than breaking the planters' prestige and making them surrender their imperial arrogance",
+            "(c) The British planters threatened violence",
+            "(d) Rajkumar Shukla persuaded him to accept"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The amount of money was less important than breaking the planters' prestige and making them surrender their imperial arrogance</strong><br><br>Gandhi explained that the monetary refund was secondary. Far more momentous was that the British planters—who had long behaved as lords above the law—were forced to surrender part of their extortion money and, with it, part of their imperial prestige. For the first time, Indian peasants realized they had rights and defenders, shattering their fear.",
+        "stepMarking": "(1 Mark) Planters surrendered prestige and peasant fear was broken.",
+        "cautionTrap": "The core battle was psychological: overthrowing the peasants' deep-seated terror of the British.",
+        "topperTip": "Gandhi's strategic genius: Sacrificing money to break the psychological terror of the Raj.",
+        "mnemonic": ""
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Champaran was the turning point in Mahatma Gandhi's political life and the Indian Freedom Struggle.<br>Reason (R): For the first time in British India, spontaneous mass peasant resistance forced the Crown to drop charges, proving that Civil Disobedience could triumph.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>When Gandhi was summoned to Motihari court for refusing to leave Champaran, thousands of peasants gathered around the courthouse in a spontaneous demonstration of solidarity. The British administration felt completely powerless without Gandhi's cooperation. The lieutenant-governor ordered the case withdrawn. Civil Disobedience had triumphed for the first time in modern India. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Motihari courthouse demonstration marked first victory of Civil Disobedience.",
+        "cautionTrap": "Gandhi declared: 'What I did was a very ordinary thing. I declared that the British could not order me about in my own country.'",
+        "topperTip": "Champaran significance: First successful experiment in Civil Disobedience on Indian soil.",
+        "mnemonic": ""
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Self-Reliance Lesson",
+        "stem": "Why did Gandhi strictly oppose having Charles Freer Andrews, an English pacifist, stay in Champaran to assist the lawyers?",
+        "options": [
+            "(a) Gandhi disliked English citizens",
+            "(b) Having an Englishman on their side showed an underlying mental weakness; the cause was just and Indians had to rely on themselves to win",
+            "(c) Andrews demanded a high salary",
+            "(d) Andrews did not speak Hindi"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Having an Englishman on their side showed an underlying mental weakness; the cause was just and Indians had to rely on themselves to win</strong><br><br>Lawyers like Rajendra Prasad thought having an Englishman would be advantageous. Gandhi sharply chided them: <em>'You think that in this unequal fight it would be helpful if we have an Englishman on our side. This shows the weakness of your heart. You must rely upon yourselves to win the battle.'</em> He taught them the foundational lesson of <strong>self-reliance (swavalamban)</strong>.",
+        "stepMarking": "(1 Mark) Gandhi insisted on self-reliance instead of leaning on an Englishman.",
+        "cautionTrap": "Gandhi loved Andrews as a dear friend, but refused to use him as an emotional prop.",
+        "topperTip": "Prasad noted: 'Gandhi read our minds... Self-reliance, Indian independence and help to sharecroppers were all bound together.'",
+        "mnemonic": ""
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Social Reform",
+        "stem": "Beyond political agitation, what social reforms did Gandhi immediately launch in Champaran villages?",
+        "options": [
+            "(a) Opening commercial banks and post offices",
+            "(b) Opening primary schools, promoting community sanitation, and providing mobile healthcare with castor oil, quinine, and sulphur ointment",
+            "(c) Constructing railway lines and highways",
+            "(d) Organizing military training for peasants"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Opening primary schools, promoting community sanitation, and providing mobile healthcare with castor oil, quinine, and sulphur ointment</strong><br><br>Seeing the appalling cultural and social backwardness in Champaran, Gandhi appealed for volunteer teachers. Primary schools were opened in six villages; his wife Kasturbai taught ashram rules on cleanliness and community sanitation. A volunteer doctor dispensed simple medicines: castor oil for coated tongue, quinine for malaria, and sulphur ointment for skin eruptions.",
+        "stepMarking": "(1 Mark) Primary schools, sanitation rules by Kasturbai, basic medicines.",
+        "cautionTrap": "Gandhi was never satisfied with purely political or economic solutions; social uplift was integral to his satyagraha.",
+        "topperTip": "Medicines used: Castor oil, Quinine, Sulphur ointment.",
+        "mnemonic": ""
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tb-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Poetic Philosophy",
+        "stem": "According to John Keats, why does 'a thing of beauty' remain a joy forever?",
+        "options": [
+            "(a) Its loveliness increases and it will never pass into nothingness",
+            "(b) It can be bought and sold for profit",
+            "(c) It prevents human physical death",
+            "(d) It is manufactured by human hands"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Its loveliness increases and it will never pass into nothingness</strong><br><br>Keats opens his romantic epic <em>Endymion</em> with the immortal lines: <em>'A thing of beauty is a joy forever / Its loveliness increases; it will never / Pass into nothingness'</em>. Beauty possesses timeless permanence. Far from fading with time, its transcendent impact deepens in human memory, providing an evergreen sanctuary of peace.",
+        "stepMarking": "(1 Mark) Keats' definition: loveliness increases and never fades into nothingness.",
+        "cautionTrap": "Mortal objects decay, but true beauty leaves an immortal impression that never passes into nothingness.",
+        "topperTip": "Core theme: Beauty is eternal, transcendent, and an antidote to worldly suffering.",
+        "mnemonic": ""
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tb-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Metaphors and Imagery",
+        "stem": "What does the poet mean by the metaphor 'an endless fountain of immortal drink'?",
+        "options": [
+            "(a) A physical waterfall in a garden",
+            "(b) The divine, perennial flow of beauty poured into human souls by the heavens",
+            "(c) A fountain of vintage wine",
+            "(d) A magical elixir granting physical immortality"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The divine, perennial flow of beauty poured into human souls by the heavens</strong><br><br>In the closing lines, Keats envisions all natural beauty and legendary tales of heroic martyrs as <em>'An endless fountain of immortal drink, / Pouring unto us from the heaven's brink'</em>. Nature and high art are divine nectar bestowed upon humanity to sustain the weary human spirit amid suffering and mortality.",
+        "stepMarking": "(1 Mark) Metaphor of divine nectar sustaining humanity.",
+        "cautionTrap": "It is not a literal liquid; it is a spiritual metaphor for the sublime gifts of nature and art.",
+        "topperTip": "Literary device: <strong>Metaphor</strong> ('endless fountain of immortal drink' = divine bounty of beauty).",
+        "mnemonic": ""
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tb-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Despite despondence, inhuman dearth of noble natures, and gloomy days, man continues to cling to life.<br>Reason (R): Some shape of beauty moves away the pall from our dark spirits, restoring hope, vitality, and peace.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Keats catalogs human tribulations: the 'pall of despondence', lack of noble virtues, bleak days, and unwholesome ways. Yet, despite these sorrows, humanity does not surrender to despair because beautiful sights in nature (sun, moon, trees, daffodils, clear rills) lift the dark shroud ('pall') from our burdened spirits, rekindling our love for existence. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Beauty lifts the dark pall of despondence from the soul.",
+        "cautionTrap": "'Pall' means a heavy dark cloth spread over a coffin; here it metaphorically represents depressing sadness.",
+        "topperTip": "Keats' catalogue of beauty: Sun, Moon, Trees old and young, Daffodils, Clear rills, Musk-rose blooms, Mighty dead.",
+        "mnemonic": ""
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tb-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Poetic Image",
+        "stem": "In the poem, what do 'simple sheep' symbolize?",
+        "options": [
+            "(a) Naive farm animals bred for wool",
+            "(b) Innocent humanity under the benevolent protective canopy of nature",
+            "(c) Victims of wolves in the wild",
+            "(d) Religious sacrifice"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Innocent humanity under the benevolent protective canopy of nature</strong><br><br>'Simple sheep' carries pastoral and biblical undertones: Jesus Christ as the Good Shepherd watching over his flock. In Keats' verse, the sheep symbolize vulnerable, innocent humanity receiving peaceful shade and blessing from trees 'old and young'.",
+        "stepMarking": "(1 Mark) Symbolism of innocent humanity under nature's protection.",
+        "cautionTrap": "Do not treat sheep as literal livestock; Keats weaves an idyllic pastoral allegory.",
+        "topperTip": "Pastoral imagery: Trees sprout a 'shady boon for simple sheep'.",
+        "mnemonic": ""
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tb-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "The Mighty Dead",
+        "stem": "Why does the poet associate 'grandeur' with 'the mighty dead'?",
+        "options": [
+            "(a) They accumulated immense monetary wealth during their lifetime",
+            "(b) Their noble heroic deeds and sublime sacrifices inspire magnificent legends and art that outlive mortality",
+            "(c) They possessed powerful armies and castles",
+            "(d) They had opulent royal funerals"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Their noble heroic deeds and sublime sacrifices inspire magnificent legends and art that outlive mortality</strong><br><br>'The mighty dead' refers to legendary heroes, visionaries, and martyrs who sacrificed their lives for noble causes. The 'grandeur' lies in the magnificent epics, literature, and immortal tales celebrating their deeds, providing moral inspiration to succeeding generations.",
+        "stepMarking": "(1 Mark) Grandeur of noble sacrifice celebrated in art and lore.",
+        "cautionTrap": "It is moral and artistic grandeur, not materialistic or martial conquest.",
+        "topperTip": "Two sources of beauty in Keats: (1) Living nature, (2) Heroic heritage and art ('all lovely tales that we have heard or read').",
+        "mnemonic": ""
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Philosophical Thesis",
+        "stem": "What does Pablo Neruda ask humanity to do while he counts up to twelve?",
+        "options": [
+            "(a) Run a competitive marathon",
+            "(b) Keep quiet, stop speaking in any language, and cease all physical movement for one second",
+            "(c) Go to sleep for twelve hours",
+            "(d) Recite a religious prayer"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Keep quiet, stop speaking in any language, and cease all physical movement for one second</strong><br><br>Neruda proposes a momentary global truce: counting to twelve (symbolizing the 12 hours on a clock or 12 months in a year), during which all human beings refrain from speaking in divisive languages and halt all agitated bodily motion for just one second to experience shared stillness.",
+        "stepMarking": "(1 Mark) Momentary silence and cessation of divisive speech/movement.",
+        "cautionTrap": "The poet does NOT advocate eternal silence; only a fleeting moment of self-reflection.",
+        "topperTip": "Number twelve symbolizes cosmic completeness: 12 hours, 12 months, 12 zodiac signs.",
+        "mnemonic": ""
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Exotic Moment",
+        "stem": "Why does the poet describe this pause as an 'exotic moment'?",
+        "options": [
+            "(a) Because people will travel to foreign islands",
+            "(b) Because it will be unprecedented—without rush, without engines, creating a rare and sudden collective togetherness",
+            "(c) Because foreign delicacies will be served",
+            "(d) Because fireworks will light up the sky"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Because it will be unprecedented—without rush, without engines, creating a rare and sudden collective togetherness</strong><br><br>The moment is 'exotic' (extraordinary, uniquely transcendent) because modern industrial society has never witnessed the complete cessation of commercial hurry ('without rush') and mechanical clamor ('without engines'). In that tranquil pause, all humans would feel an unprecedented sense of mutual brotherhood and peace.",
+        "stepMarking": "(1 Mark) Exotic because free from engines, rush, and alienation.",
+        "cautionTrap": "'Exotic' here means rare, extraordinary, and sublime—not foreign or tropical.",
+        "topperTip": "Phrasing: 'It would be an exotic moment, / without rush, without engines, / we would all be together / in a sudden strangeness.'",
+        "mnemonic": ""
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Pablo Neruda clarifies that his message of silence must not be confused with total inactivity.<br>Reason (R): Total inactivity equals death, with which the poet wants no association; life is about active living, and quiet introspection is meant to heal life, not extinguish it.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Neruda explicitly warns against misinterpreting his philosophy: <em>'What I want should not be confused with total inactivity. Life is what it is about; I want no truck with death.'</em> Total inactivity is stagnation and physical death. In contrast, conscious quietude is dynamic self-awareness that allows us to reflect, discard destructive behaviors (wars, ecocide), and resume life with renewed purpose. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) Silence is not death/inactivity; it is vital self-renewal.",
+        "cautionTrap": "CBSE high-frequency distinction: Total inactivity = Death | Quiet introspection = Healing of Life.",
+        "topperTip": "Idiom: 'No truck with death' = refuse to associate with or accept death.",
+        "mnemonic": ""
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Nature as Teacher",
+        "stem": "What lesson can the Earth teach humanity according to Pablo Neruda?",
+        "options": [
+            "(a) How to extract minerals efficiently",
+            "(b) That when everything seems dead, life continues quietly beneath the surface and later proves to be alive",
+            "(c) That natural disasters are inevitable",
+            "(d) How to survive without water"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) That when everything seems dead, life continues quietly beneath the surface and later proves to be alive</strong><br><br>The closing stanza cites the Earth as humanity's supreme philosophical teacher: <em>'Perhaps the Earth can teach us / as when everything seems dead / and later proves to be alive.'</em> In winter, nature appears lifeless and dormant, yet quietly prepares seeds for glorious rebirth in spring. In the same way, quiet stillness is not death; it is the incubation of renewed life.",
+        "stepMarking": "(1 Mark) Earth demonstrates quiet regeneration beneath apparent stillness.",
+        "cautionTrap": "Stillness is not extinction; it is the quiet genesis of rebirth.",
+        "topperTip": "Earth teaches regeneration: winter dormancy \\(\\to\\) spring revival.",
+        "mnemonic": ""
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Anti-War Critique",
+        "stem": "What does the poet mean by 'victory with no survivors' when describing green wars, wars with gas, and wars with fire?",
+        "options": [
+            "(a) The war was fought by automated drones",
+            "(b) Modern chemical and nuclear warfare creates total devastation where even the victorious side has nobody left alive to celebrate",
+            "(c) A victory achieved without shedding any blood",
+            "(d) A sports match ending in a draw"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Modern chemical and nuclear warfare creates total devastation where even the victorious side has nobody left alive to celebrate</strong><br><br>Neruda delivers a searing critique of modern militarism and environmental destruction ('green wars' = wars against nature/deforestation; 'wars with gas' = chemical warfare; 'wars with fire' = firebombing/nuclear weapons). The bitter paradox <strong>'victory with no survivors'</strong> highlights the hollow futility of war: when weapons of mass destruction kill everyone, winning is an absurd illusion.",
+        "stepMarking": "(1 Mark) Paradox of victory with no survivors.",
+        "cautionTrap": "Identify the literary device: <strong>Irony / Paradox</strong>.",
+        "topperTip": "War critique: Aggressors should 'put on clean clothes and walk with their brothers in the shade, doing nothing'.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Poetic Symbolism",
+        "stem": "In Adrienne Rich's poem, Aunt Jennifer's embroidered tigers symbolize:",
+        "options": [
+            "(a) Ferocious wild beasts that should be hunted",
+            "(b) Aunt Jennifer's suppressed inner desire for freedom, fearlessness, and chivalric dignity",
+            "(c) Uncle's aggressive and domineering personality",
+            "(d) A traditional family crest"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Aunt Jennifer's suppressed inner desire for freedom, fearlessness, and chivalric dignity</strong><br><br>Aunt Jennifer's needlework tigers prance across the screen with bright topaz brilliance, fearless of men beneath the tree, stepping in sleek chivalric certainty. They embody the exact opposite of Aunt Jennifer's cowed, oppressed reality—symbolizing her untamed creative spirit, autonomy, and longing for liberation from patriarchal bondage.",
+        "stepMarking": "(1 Mark) Tigers symbolize Aunt's inner longing for fearlessness and freedom.",
+        "cautionTrap": "The tigers do NOT represent the husband; they represent HER OWN suppressed creative courage!",
+        "topperTip": "Dual contrast: Terrified Aunt Jennifer vs Fearless Prancing Tigers.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Metaphor Analysis",
+        "stem": "What does 'the massive weight of Uncle's wedding band' sitting heavily upon Aunt Jennifer's hand signify?",
+        "options": [
+            "(a) The gold ring was too expensive and heavy to wear comfortably",
+            "(b) The crushing emotional burden and patriarchal subjugation of an unhappy, restrictive marriage",
+            "(c) Uncle gifted her a lead ring instead of gold",
+            "(d) Aunt Jennifer had arthritis in her fingers"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The crushing emotional burden and patriarchal subjugation of an unhappy, restrictive marriage</strong><br><br>The wedding band is physically a tiny ring of metal, but metaphorically it carries 'massive weight'—representing the suffocating constraints, emotional trauma, and loss of personal identity endured in a male-dominated, oppressive marital union. It weighs down her very fingers, making even the ivory needle hard to pull.",
+        "stepMarking": "(1 Mark) Wedding band metaphorizes patriarchal oppression.",
+        "cautionTrap": "Do not give a literal physical explanation; the weight is psychological and emotional.",
+        "topperTip": "Key metaphor: 'Uncle's wedding band' = Institutionalized patriarchal oppression.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Even in death, Aunt Jennifer's hands remain terrified, ringed with ordeals she was mastered by.<br>Reason (R): However, the tigers in the tapestry she created will survive her and go on prancing, proud and unafraid, symbolizing the immortality of art.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Both A and R are true but R is not the correct explanation of A</strong><br><br>Assertion is true: The final stanza states that even when dead, her hands will remain marked by the marital ordeals that subjugated her in life.<br>Reason is true: Her artistic creation—the embroidered tigers—will outlive her mortal subjugation, continuing to prance proudly across the screen.<br>Both statements express the poignant central irony and feminist triumph of art over mortal suffering, but R is a juxtaposition (contrast) rather than the causal reason for A. Both A and R are true, but R is not the correct explanation of A.",
+        "stepMarking": "(1 Mark) Identifying both true; relation is artistic contrast, not direct cause.",
+        "cautionTrap": "Notice the word 'ringed': it serves a double meaning (encircled by wedding ring + trapped by ordeals).",
+        "topperTip": "Artistic immortality: The mortal creator dies oppressed, but the created art remains eternally free.",
+        "mnemonic": ""
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Poetic Devices",
+        "stem": "Which poetic device is used in the phrase 'fingers fluttering through her wool'?",
+        "options": [
+            "(a) Alliteration and Onomatopoeia",
+            "(b) Simile",
+            "(c) Hyperbole",
+            "(d) Oxymoron"
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a) Alliteration and Onomatopoeia</strong><br><br>• <strong>Alliteration:</strong> Repetition of the consonant sound /f/ in <em>'<strong>f</strong>ingers <strong>f</strong>luttering'</em>.<br>• It also evokes auditory and visual imagery of nervous, trembling physical frailty caused by domestic intimidation.",
+        "stepMarking": "(1 Mark) Identifying alliteration (/f/ sound).",
+        "cautionTrap": "The fluttering fingers highlight her nervous terror and physical feebleness under Uncle's tyranny.",
+        "topperTip": "Poetic devices in poem: 'fingers fluttering' (Alliteration), 'bright topaz denizens' (Metaphor), 'sleek chivalric certainty' (Alliteration).",
+        "mnemonic": ""
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Vocabulary and Tone",
+        "stem": "In the line 'They pace in sleek chivalric certainty', the word 'chivalric' conveys that the tigers are:",
+        "options": [
+            "(a) Cowardly and skittish",
+            "(b) Noble, confident, gallant, and majestic like medieval knights",
+            "(c) Tame and obedient to human masters",
+            "(d) Treacherous and predatory"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) Noble, confident, gallant, and majestic like medieval knights</strong><br><br>'Chivalric' derives from medieval chivalry—the code of knights characterized by honor, bravery, gallantry, and unyielding confidence. Rich uses this epithet to portray the tigers not as mindless beasts of prey, but as noble sovereigns who possess majestic grace and fear nobody.",
+        "stepMarking": "(1 Mark) Chivalric signifies noble, confident gallantry.",
+        "cautionTrap": "Do not select 'predatory'; Rich intentionally endows the tigers with dignified chivalry.",
+        "topperTip": "Word association: Chivalric = Knightly nobility, honor, and fearlessness.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-te-mcq-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Moral Conflict",
+        "stem": "What was the central ethical dilemma faced by Dr. Sadao Hoki when the wounded American prisoner of war washed ashore near his house?",
+        "options": [
+            "(a) Whether to demand a ransom from the US Navy",
+            "(b) The conflict between his professional humanitarian duty as a doctor to save life versus his patriotic duty to hand over an enemy to the Japanese army",
+            "(c) Whether to run away with his family to America",
+            "(d) Whether to sell medical secrets to the enemy"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The conflict between his professional humanitarian duty as a doctor to save life versus his patriotic duty to hand over an enemy to the Japanese army</strong><br><br>During World War II, harboring an escaped American sailor (Tom) carried charges of treason and death. Yet, as a surgeon bound by the Hippocratic Oath, Dr. Sadao had been trained never to let a man die if he could help it. The story explores the profound tension between universal human compassion and narrow nationalistic prejudice.",
+        "stepMarking": "(1 Mark) Conflict between medical humanitarianism and wartime patriotism.",
+        "cautionTrap": "Sadao did not harbor the American out of sympathy for the US; he saved him purely out of professional duty as a physician.",
+        "topperTip": "Core theme of The Enemy: Universal humanism transcends wartime borders and racial prejudice.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-te-mcq-2023-1",
+        "marks": 1,
+        "year": "CBSE 2023 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Servants' Reaction",
+        "stem": "How did Dr. Sadao's domestic servants (the cook, gardener, and maid Yumi) react to the presence of the white prisoner in the house?",
+        "options": [
+            "(a) They nursed the American soldier with great devotion",
+            "(b) They refused to touch or serve the white enemy, grew suspicious and hostile, and eventually walked out of the household together",
+            "(c) They reported Dr. Sadao directly to the military police",
+            "(d) They fled the country"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) They refused to touch or serve the white enemy, grew suspicious and hostile, and eventually walked out of the household together</strong><br><br>The servants represented traditional, superstitious Japanese society. The gardener argued that the ocean had tried to drown the white man and the gun had shot him; saving him would curse them. Yumi flatly refused to wash the dirty white prisoner. When Sadao operated on him, all three servants packed their belongings and walked out in protest, though they loved the master and did not betray him to the police.",
+        "stepMarking": "(1 Mark) Servants walked out in superstitious and patriotic protest.",
+        "cautionTrap": "The servants left the house, but they did NOT report him to the police out of personal loyalty.",
+        "topperTip": "Servants embody conventional racial animosity and superstitious fear.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-te-ar-2024-1",
+        "marks": 1,
+        "year": "CBSE 2024 Board Exam",
+        "pacing": "1.5 min",
+        "type": "Assertion-Reasoning",
+        "competency": "Assertion-Reasoning",
+        "stem": "Assertion (A): Dr. Sadao was not sent abroad with the Japanese troops during World War II.<br>Reason (R): The elderly General Takima was in delicate health, might require emergency surgery at any moment, and trusted only Dr. Sadao's surgical expertise.",
+        "options": [
+            "(a) Both A and R are true and R is the correct explanation of A.",
+            "(b) Both A and R are true but R is not the correct explanation of A.",
+            "(c) A is true but R is false.",
+            "(d) A is false but R is true."
+        ],
+        "correctOption": "(a)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (a)</strong><br><br>Dr. Sadao was a world-renowned surgeon and scientist who was perfecting a discovery to render wounds clean. However, the paramount reason he was kept in Japan rather than sent to the war front was that the old General was suffering from a condition for which he might need an operation at any moment, and he trusted nobody else to perform it. Both A and R are true and R explains A.",
+        "stepMarking": "(1 Mark) General Takima kept Sadao for his own potential medical emergency.",
+        "cautionTrap": "A secondary factor was Sadao's research on wounds, but the General's personal self-preservation was the decisive reason.",
+        "topperTip": "General Takima's self-absorption ultimately shielded Sadao from treason charges.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-te-mcq-2020-1",
+        "marks": 1,
+        "year": "CBSE 2020 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "General's Character",
+        "stem": "Why did General Takima fail to send his private assassins to quietly murder the American prisoner, as he had promised Dr. Sadao?",
+        "options": [
+            "(a) The American escaped before the assassins arrived",
+            "(b) The General was preoccupied with his own severe illness and pain, and simply forgot his promise",
+            "(c) The General secretly sympathized with Americans",
+            "(d) Military police arrested the assassins"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) The General was preoccupied with his own severe illness and pain, and simply forgot his promise</strong><br><br>The General had promised to send two of his capable private assassins to quietly kill the prisoner and dispose of his body. However, after suffering an acute medical attack requiring emergency surgery, the General became entirely absorbed in his own agony. When Sadao later reminded him that the prisoner had escaped, the General confessed with embarrassment that he had simply forgotten his promise due to self-absorption.",
+        "stepMarking": "(1 Mark) General forgot promise due to personal illness and pain.",
+        "cautionTrap": "The General's lapse was not treason or humanitarianism; it was pure selfish forgetfulness.",
+        "topperTip": "Irony: The prisoner's life was saved by the General's self-centered medical preoccupation.",
+        "mnemonic": ""
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-te-mcq-2018-1",
+        "marks": 1,
+        "year": "CBSE 2018 Board Exam",
+        "pacing": "1.5 min",
+        "type": "MCQ",
+        "competency": "Escape and Resolution",
+        "stem": "How did Dr. Sadao assist the American prisoner Tom to escape safely without detection?",
+        "options": [
+            "(a) He put him on a commercial passenger flight to Tokyo",
+            "(b) He provided his private boat with food, bottled water, warm quilts, and a flashlight to row to an uninhabited island to catch a Korean fishing boat",
+            "(c) He hid him inside a military truck",
+            "(d) He disguised him as a Japanese samurai"
+        ],
+        "correctOption": "(b)",
+        "diagram": "",
+        "modelAnswer": "<strong>Correct Option: (b) He provided his private boat with food, bottled water, warm quilts, and a flashlight to row to an uninhabited island to catch a Korean fishing boat</strong><br><br>Realizing the assassins might come any night, Sadao arranged the prisoner's escape. He placed his sturdy boat on the shore equipped with provisions, water, and two quilts, gave Tom Japanese clothes and a dark cloth to wrap his blond hair, and instructed him to row to an uninhabited islet nearby and signal with two flashes at sunset if he ran out of food until a Korean fishing boat picked him up.",
+        "stepMarking": "(1 Mark) Arranged private boat, provisions, flashlight signals to reach Korean boat.",
+        "cautionTrap": "Flashlight instructions: signal once at sunset if all is well; signal twice if food is exhausted; never signal in the dark.",
+        "topperTip": "Sadao's closing reflection: <em>'I wonder why I could not kill him.'</em>",
+        "mnemonic": ""
+    });
+
   }
 
   addTenYearQuestions();
