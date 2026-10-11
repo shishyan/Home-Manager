@@ -82,18 +82,6 @@
       ]
     }
   };
-  groups.examSprint = {
-    label: 'The Exam Sprint',
-    icon: 'timer-reset',
-    note: 'A separate 75-day CBSE Class 12 practice and review plan',
-    route: 'study/exam-sprint',
-    items: [
-      ['75-Day Exam Sprint', 'timer-reset', 'study/exam-sprint'],
-      ['Interactive questions', 'file-question', 'study/exam-sprint/questions'],
-      ['Weekly missions', 'calendar-range', 'study/exam-sprint/weeks'],
-      ['Marking schemes', 'badge-check', 'study/exam-sprint/answers']
-    ]
-  };
 
   const settingsGroups = [
     ['household', 'Household profile', 'house', 'Home address, language and family defaults'],
@@ -260,7 +248,6 @@
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/reports': ['Education Reports', 'Academic and whole-child review'],
     'study/board-sprints': ['The Board Sprints', 'CBSE Class 12 high-impact exam preparation & sprints'],
-    'study/exam-sprint': ['The Exam Sprint', 'CBSE Class 12 75-day interactive practice and review'],
     'study/board-sprints/pb2': ['Pre-Board II Sprint', 'High-yield targets & questions for Oct 16 - Nov 06 Pre-Board II'],
     'study/board-sprints/model': ['January Model Sprint', 'Full syllabus mock & model exam sprint'],
     'study/board-sprints/questions': ['High-Probability Question Bank', 'Class 12 CBSE questions with step marking & diagrams'],
@@ -976,7 +963,7 @@
             <div class="education-class-sprints-row" style="padding: 4px 8px 6px;">
               <button type="button" class="education-sprints-btn ${route.startsWith('study/board-sprints') ? 'active' : ''}" data-route="study/board-sprints" data-student="${e(profile.personId)}" ${route.startsWith('study/board-sprints') ? 'aria-current="page"' : ''} style="display:flex; align-items:center; gap:8px; width:100%; border-radius:6px; font-weight:700; color:#ea580c;">
                 <span class="nav-icon" style="color:#ea580c;"><i data-lucide="flame"></i></span>
-                <span>The Exam Sprint</span>
+                <span>The Board Sprints</span>
               </button>
             </div>
           ` : ''}
@@ -1888,8 +1875,8 @@
       'study/focus': practiceAndTests,
       'study/analytics': learningReports
     };
-    if (route.startsWith('study/board-sprints')) {
-      return (window.HM && window.HM.boardSprintsView) ? window.HM.boardSprintsView(route) : '';
+    if (route.startsWith('study/board-sprints') || route.startsWith('study/exam-sprint')) {
+      return (window.HM && window.HM.boardSprintsView) ? window.HM.boardSprintsView(route.startsWith('study/exam-sprint') ? 'study/board-sprints' : route) : '';
     }
     return (map[route] || unified)();
   }

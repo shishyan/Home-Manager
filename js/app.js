@@ -203,8 +203,7 @@
   }
 
   function groupForRoute(currentRoute) {
-    if (currentRoute.startsWith('study/board-sprints')) return 'boardSprints';
-    if (currentRoute.startsWith('study/exam-sprint')) return 'examSprint';
+    if (currentRoute.startsWith('study/board-sprints') || currentRoute.startsWith('study/exam-sprint')) return 'boardSprints';
     if (currentRoute.startsWith('study/')) return 'learning';
     if (currentRoute.startsWith('kitchen/')) return 'household';
     if (currentRoute === 'community/directory') return 'community';
@@ -539,9 +538,6 @@
             : '';
           return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
         }).join('');
-      }
-      if (activeGroup !== 'examSprint' && V.groups.examSprint) {
-        navEl.insertAdjacentHTML('beforeend', `<div class="nav-featured-link"><button type="button" data-route="study/exam-sprint" aria-label="Open The Exam Sprint"><span class="nav-icon"><i data-lucide="timer-reset"></i></span><span>The Exam Sprint</span><small>75-day CBSE plan</small></button></div>`);
       }
     }
 
