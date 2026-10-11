@@ -539,6 +539,9 @@
           return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
         }).join('');
       }
+      if (activeGroup !== 'boardSprints' && V.groups.boardSprints) {
+        navEl.insertAdjacentHTML('beforeend', `<div class="nav-featured-link"><button type="button" data-route="study/board-sprints" aria-label="Open The Exam Sprint"><span class="nav-icon"><i data-lucide="flame"></i></span><span>The Exam Sprint</span><small>75-day CBSE plan</small></button></div>`);
+      }
     }
 
     // MOBILE BOTTOM NAV: group icons only
