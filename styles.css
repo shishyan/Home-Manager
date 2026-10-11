@@ -8143,7 +8143,7 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  zoom: 1.2;
+  zoom: 1.1;
 }
 
 .zen-sprint-header {
@@ -8217,14 +8217,32 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   border-color: #cbd5e1;
 }
 
-/* Books Submenu Navigation (Clean horizontal tabs) */
+/* Combined Controls Strip & Books Navigation */
+.zen-controls-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
 .zen-books-navbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid #f1f5f9;
+  padding-top: 0;
+  border-top: none;
+}
+
+.zen-filters-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed #f1f5f9;
 }
 
 .zen-book-pill {
@@ -9848,7 +9866,7 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
 
 .rag-table-header {
   display: grid;
-  grid-template-columns: 200px 110px 1fr 65px 85px 125px;
+  grid-template-columns: 110px 1fr 200px 65px 85px 125px;
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.15rem;
@@ -9868,7 +9886,7 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
 
 .rag-table-row {
   display: grid;
-  grid-template-columns: 200px 110px 1fr 65px 85px 125px;
+  grid-template-columns: 110px 1fr 200px 65px 85px 125px;
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.15rem;

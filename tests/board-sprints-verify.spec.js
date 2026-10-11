@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Question Bank', () => {
   test('Master Overview displays 75-day architecture, weekly allocation rationale, and RAG gateway', async ({ page }) => {
-    await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
     // Verify Master Hero
@@ -51,7 +51,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
   });
 
   test('Dedicated R-A-G Chapter Audit Tracker displays 47 chapters in high-density list with real-time toggles', async ({ page }) => {
-    await page.goto('http://localhost:8765/#/study/board-sprints/rag', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:8765/#/study/board-sprints/rag', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
     // Verify Title
@@ -98,7 +98,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
   });
 
   test('Master 10-Year Question Bank displays 500+ questions with interactive 1M MCQs and student tracking', async ({ page }) => {
-    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
     // Verify Header
@@ -157,7 +157,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
   });
 
   test('Weekly Page (Week 1) has All Subjects pill and focused question deck', async ({ page }) => {
-    await page.goto('http://localhost:8765/#/study/board-sprints/week-1', { waitUntil: 'networkidle' });
+    await page.goto('http://localhost:8765/#/study/board-sprints/week-1', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
     // Verify strategy dashboard banner is NOT rendered on weekly page

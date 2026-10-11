@@ -2307,9 +2307,9 @@
         <!-- HIGH-DENSITY AUDIT LIST/TABLE -->
         <div class="rag-audit-table-wrap" id="ragAuditTracker" style="margin-top: 1rem;">
           <div class="rag-table-header">
-            <div class="rag-col rag-col-status">Status Toggle</div>
             <div class="rag-col rag-col-subj">Subject</div>
             <div class="rag-col rag-col-ch">Chapter Name & Derivation Focus</div>
+            <div class="rag-col rag-col-status">Status Toggle</div>
             <div class="rag-col rag-col-weight">Weight</div>
             <div class="rag-col rag-col-qs">Practice Bank</div>
             <div class="rag-col rag-col-yt">Masterclass Video</div>
@@ -2322,13 +2322,6 @@
               const qCount = getChapterQuestionCount(ch.name, allQuestions);
               return `
                 <div class="rag-table-row rag-chapter-card" data-rag-chapter="${escapeHtml(ch.name)}" data-subject="${escapeHtml(ch.subject)}" data-current-rag="${status}">
-                  <div class="rag-col rag-col-status">
-                    <div class="rag-toggle-group-sm">
-                      <button type="button" class="btn-rag-toggle rag-t-red ${status === 'red' ? 'active' : ''}" data-rag-color="red" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'red')" title="Mark as Red (Urgent / Confused)">🔴 Red</button>
-                      <button type="button" class="btn-rag-toggle rag-t-amber ${status === 'amber' ? 'active' : ''}" data-rag-color="amber" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'amber')" title="Mark as Amber (Review Formulas & Qs)">🟡 Amber</button>
-                      <button type="button" class="btn-rag-toggle rag-t-green ${status === 'green' ? 'active' : ''}" data-rag-color="green" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'green')" title="Mark as Green (Mastered 95%+)">🟢 Green</button>
-                    </div>
-                  </div>
                   <div class="rag-col rag-col-subj">
                     <span class="rag-subj-badge" style="background: ${subjConf.badgeBg}; color: ${subjConf.color};">
                       ${escapeHtml(ch.subject)}
@@ -2337,6 +2330,13 @@
                   <div class="rag-col rag-col-ch">
                     <strong class="rag-ch-title">${escapeHtml(ch.name)}</strong>
                     <span class="rag-ch-role">${escapeHtml(ch.role)}</span>
+                  </div>
+                  <div class="rag-col rag-col-status">
+                    <div class="rag-toggle-group-sm">
+                      <button type="button" class="btn-rag-toggle rag-t-red ${status === 'red' ? 'active' : ''}" data-rag-color="red" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'red')" title="Mark as Red (Urgent / Confused)">🔴 Red</button>
+                      <button type="button" class="btn-rag-toggle rag-t-amber ${status === 'amber' ? 'active' : ''}" data-rag-color="amber" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'amber')" title="Mark as Amber (Review Formulas & Qs)">🟡 Amber</button>
+                      <button type="button" class="btn-rag-toggle rag-t-green ${status === 'green' ? 'active' : ''}" data-rag-color="green" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'green')" title="Mark as Green (Mastered 95%+)">🟢 Green</button>
+                    </div>
                   </div>
                   <div class="rag-col rag-col-weight">
                     <span class="rag-weight-tag">${escapeHtml(ch.weight)}</span>
@@ -2438,54 +2438,55 @@
             </div>
           </div>
 
-          <!-- SUBJECT NAVBAR PILLS -->
-          <nav class="zen-books-navbar" aria-label="Filter question bank by subject">
-            <button type="button" class="zen-book-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
-              <i data-lucide="layers"></i>
-              <span>All Subjects (${allQuestions.length})</span>
-            </button>
-            ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
-              const sCount = allQuestions.filter(q => q.subject === sName).length;
-              return `
-                <button type="button" class="zen-book-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
-                  <i data-lucide="${sConf.icon}"></i>
-                  <span>${escapeHtml(sName)} (${sCount})</span>
-                </button>
-              `;
-            }).join('')}
-          </nav>
-        </header>
-
-        <!-- FILTER CONTROLS BAR -->
-        <section class="zen-filter-bar" style="margin-top: 1rem;">
-          <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
-            <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M Case</button>
-            <button type="button" class="zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M Long</button>
-          </div>
-
-          <div class="qb-chapter-select-wrap">
-            <select id="qbChapterSelect" class="qb-chapter-dropdown" onchange="HM.setQbChapter(this.value)">
-              <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters (${availableChapters.length})</option>
-              ${availableChapters.map(ch => `
-                <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
-              `).join('')}
-            </select>
-          </div>
-
-          <div class="zen-search-wrap">
-            <i data-lucide="search" class="zen-search-icon"></i>
-            <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search questions, formulas, keywords..." value="${escapeHtml(state.search)}">
-            ${state.search ? `
-              <button type="button" class="search-clear-btn" id="sprintSearchClear" title="Clear search">
-                <i data-lucide="x"></i>
+          <!-- UNIFIED CONTROLS: SUBJECTS + MARKS + CHAPTER + SEARCH IN ONE COHESIVE STRIP -->
+          <div class="zen-controls-strip">
+            <nav class="zen-books-navbar" aria-label="Filter question bank by subject">
+              <button type="button" class="zen-book-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
+                <i data-lucide="layers"></i>
+                <span>All Subjects (${allQuestions.length})</span>
               </button>
-            ` : ''}
+              ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
+                const sCount = allQuestions.filter(q => q.subject === sName).length;
+                return `
+                  <button type="button" class="zen-book-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
+                    <i data-lucide="${sConf.icon}"></i>
+                    <span>${escapeHtml(sName)} (${sCount})</span>
+                  </button>
+                `;
+              }).join('')}
+            </nav>
+
+            <div class="zen-filters-inline">
+              <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
+                <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
+                <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
+                <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+                <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+                <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M Case</button>
+                <button type="button" class="zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M Long</button>
+              </div>
+
+              <div class="qb-chapter-select-wrap">
+                <select id="qbChapterSelect" class="qb-chapter-dropdown" onchange="HM.setQbChapter(this.value)">
+                  <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters (${availableChapters.length})</option>
+                  ${availableChapters.map(ch => `
+                    <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div class="zen-search-wrap">
+                <i data-lucide="search" class="zen-search-icon"></i>
+                <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search questions, formulas, keywords..." value="${escapeHtml(state.search)}">
+                ${state.search ? `
+                  <button type="button" class="search-clear-btn" id="sprintSearchClear" title="Clear search">
+                    <i data-lucide="x"></i>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
           </div>
-        </section>
+        </header>
 
         <!-- SUMMARY STRIP -->
         <div class="qb-summary-strip" style="margin-top: 0.75rem;">
@@ -2601,45 +2602,46 @@
             </div>
           </div>
 
-          <!-- BOOK TABS (CLEAN, MINIMAL TEXT PILLS) -->
-          <nav class="zen-books-navbar" aria-label="Select book for this week">
-            <button type="button" class="zen-book-pill ${isAll ? 'active' : ''}" data-route="study/board-sprints/${week}/all">
-              <i data-lucide="layers"></i>
-              <span>All Subjects (${weekTotalQuestions})</span>
-            </button>
-            ${Object.entries(currentWeekConf.books).map(([bKey, bConf]) => {
-              const isActive = !isAll && bKey === book;
-              const bCount = getBookQuestionCount(bConf, allQuestions);
-              return `
-                <button type="button" class="zen-book-pill ${isActive ? 'active' : ''}" data-route="study/board-sprints/${week}/${bKey}">
-                  <i data-lucide="${bConf.icon}"></i>
-                  <span>${escapeHtml(bConf.label.split('·')[0].trim())} (${bCount})</span>
-                </button>
-              `;
-            }).join('')}
-          </nav>
+          <!-- UNIFIED CONTROLS: BOOKS NAVBAR + MARKS + SEARCH IN ONE COHESIVE STRIP -->
+          <div class="zen-controls-strip">
+            <nav class="zen-books-navbar" aria-label="Select book for this week">
+              <button type="button" class="zen-book-pill ${isAll ? 'active' : ''}" data-route="study/board-sprints/${week}/all">
+                <i data-lucide="layers"></i>
+                <span>All Subjects (${weekTotalQuestions})</span>
+              </button>
+              ${Object.entries(currentWeekConf.books).map(([bKey, bConf]) => {
+                const isActive = !isAll && bKey === book;
+                const bCount = getBookQuestionCount(bConf, allQuestions);
+                return `
+                  <button type="button" class="zen-book-pill ${isActive ? 'active' : ''}" data-route="study/board-sprints/${week}/${bKey}">
+                    <i data-lucide="${bConf.icon}"></i>
+                    <span>${escapeHtml(bConf.label.split('·')[0].trim())} (${bCount})</span>
+                  </button>
+                `;
+              }).join('')}
+            </nav>
+
+            <div class="zen-filters-inline">
+              <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
+                <button type="button" class="zen-mark-btn ${state.marks === 'all' ? 'active' : ''}" data-marks-filter="all">All</button>
+                <button type="button" class="zen-mark-btn ${state.marks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
+                <button type="button" class="zen-mark-btn ${state.marks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+                <button type="button" class="zen-mark-btn ${state.marks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+                <button type="button" class="zen-mark-btn ${state.marks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
+                <button type="button" class="zen-mark-btn ${state.marks === '5' ? 'active' : ''}" data-marks-filter="5">5M</button>
+              </div>
+
+              <div class="zen-search-wrap">
+                <i data-lucide="search" class="zen-search-icon"></i>
+                <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search derivations, theorems, diagrams..." value="${escapeHtml(state.search)}">
+                ${state.search ? `<button type="button" class="search-clear-btn" id="sprintSearchClear"><i data-lucide="x"></i></button>` : ''}
+              </div>
+            </div>
+          </div>
         </header>
 
         <!-- MAIN BODY CONTENT -->
         ${isFormulae ? renderFormulaLedger() : `
-          <!-- ZEN FILTER BAR (SUBTLE MARKS & SEARCH) -->
-          <section class="zen-filter-bar">
-            <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
-              <button type="button" class="zen-mark-btn ${state.marks === 'all' ? 'active' : ''}" data-marks-filter="all">All</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
-              <button type="button" class="zen-mark-btn ${state.marks === '5' ? 'active' : ''}" data-marks-filter="5">5M</button>
-            </div>
-
-            <div class="zen-search-wrap">
-              <i data-lucide="search" class="zen-search-icon"></i>
-              <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search derivations, theorems, diagrams..." value="${escapeHtml(state.search)}">
-              ${state.search ? `<button type="button" class="search-clear-btn" id="sprintSearchClear"><i data-lucide="x"></i></button>` : ''}
-            </div>
-          </section>
-
           <!-- QUESTION CARDS (CLEAN, INTEGRATED STUDY DECK) -->
           <main class="zen-questions-deck" aria-label="Curated questions">
             ${filteredQuestions.length === 0 ? `
