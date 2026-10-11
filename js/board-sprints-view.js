@@ -1538,6 +1538,20 @@
             }).join('')}
           </div>
         </section>
+
+        <!-- OFFICIAL CBSE COMPUTER SCIENCE SOURCES -->
+        <section class="official-cs-question-bank">
+          <div class="roadmap-header">
+            <div class="roadmap-title-wrap"><i data-lucide="file-question"></i><h2>CBSE Class 12 Computer Science · official question bank</h2></div>
+            <p class="roadmap-note">Questions and marking schemes downloaded from CBSE Academic. Use the question bank for practice, then open the matching marking scheme to review the expected answer points.</p>
+          </div>
+          <div class="official-cs-resource-grid">
+            <a href="assets/exam-papers/cbse-class12-computer-science/question-bank.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="book-open"></i><span><b>CBSE Question Bank</b><small>Python, files, data structures, SQL and networks · answers included in the official PDF</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2025-26-sqp.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="clipboard-list"></i><span><b>2025–26 Sample Question Paper</b><small>37 questions · 70 marks · current paper structure</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2025-26-ms.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="badge-check"></i><span><b>2025–26 Marking Scheme</b><small>Answer points and mark allocation for the sample paper</small></span></a>
+            <a href="assets/exam-papers/cbse-class12-computer-science/2024-25-ms.pdf" target="_blank" rel="noopener noreferrer"><i data-lucide="file-check-2"></i><span><b>2024–25 Marking Scheme</b><small>Additional worked answer reference for revision</small></span></a>
+          </div>
+        </section>
       </div>
     `;
   }
