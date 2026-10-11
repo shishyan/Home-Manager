@@ -1146,6 +1146,186 @@
     }
   }
 
+  // =========================================================================
+  // INTERACTIVE R-A-G CHAPTER AUDIT TRACKER (LEVEL 1 IMPLEMENTATION)
+  // =========================================================================
+  const RAG_STORAGE_KEY = 'hm_board_sprints_rag_audit';
+
+  const RAG_CHAPTERS = [
+    // --- PHYSICS (12 Core High-Yield Chapters) ---
+    { name: 'Electric Charges and Fields', subject: 'Physics', weight: '8M', role: 'Gauss Law Derivations & Flux', defaultRag: 'amber' },
+    { name: 'Electrostatic Potential and Capacitance', subject: 'Physics', weight: '8M', role: 'Dielectric Slab Capacitance & Energy', defaultRag: 'red' },
+    { name: 'Current Electricity', subject: 'Physics', weight: '7M', role: 'Drift Velocity & Kirchhoff Loops', defaultRag: 'amber' },
+    { name: 'Moving Charges and Magnetism', subject: 'Physics', weight: '8M', role: 'Biot-Savart & Galvanometer Shunt', defaultRag: 'red' },
+    { name: 'Magnetism and Matter', subject: 'Physics', weight: '3M', role: 'Dia/Para/Ferro & Susceptibility', defaultRag: 'green' },
+    { name: 'Electromagnetic Induction', subject: 'Physics', weight: '4M', role: 'Faraday, Lenz Law & Mutual M', defaultRag: 'amber' },
+    { name: 'Alternating Current', subject: 'Physics', weight: '8M', role: 'Series LCR Phasor & Resonance', defaultRag: 'red' },
+    { name: 'Ray Optics and Optical Instruments', subject: 'Physics', weight: '9M', role: 'Lens Maker & Telescope Diagrams', defaultRag: 'red' },
+    { name: 'Wave Optics', subject: 'Physics', weight: '9M', role: 'Huygens Wavefronts & YDSE Fringe', defaultRag: 'red' },
+    { name: 'Dual Nature of Radiation and Matter', subject: 'Physics', weight: '4M', role: 'Photoelectric Eqn & de Broglie', defaultRag: 'green' },
+    { name: 'Atoms and Nuclei', subject: 'Physics', weight: '7M', role: 'Bohr Radius & Binding Energy', defaultRag: 'amber' },
+    { name: 'Semiconductor Electronics', subject: 'Physics', weight: '7M', role: 'Full-Wave Rectifiers & p-n V-I', defaultRag: 'amber' },
+
+    // --- CHEMISTRY (10 Core Chapters) ---
+    { name: 'Solutions', subject: 'Chemistry', weight: '7M', role: 'Raoult, Freezing Point & van \'t Hoff i', defaultRag: 'amber' },
+    { name: 'Electrochemistry', subject: 'Chemistry', weight: '9M', role: 'Nernst EMF & Kohlrausch Conductivity', defaultRag: 'red' },
+    { name: 'Chemical Kinetics', subject: 'Chemistry', weight: '7M', role: '1st Order Rate, Half-life & Arrhenius', defaultRag: 'green' },
+    { name: 'd- and f-Block Elements', subject: 'Chemistry', weight: '7M', role: 'Lanthanoid Contraction & KMnO4', defaultRag: 'amber' },
+    { name: 'Coordination Compounds', subject: 'Chemistry', weight: '7M', role: 'IUPAC, VBT Hybridization & CFT Δ₀', defaultRag: 'red' },
+    { name: 'Haloalkanes and Haloarenes', subject: 'Chemistry', weight: '6M', role: 'SN1 vs SN2 Walden Inversion', defaultRag: 'amber' },
+    { name: 'Alcohols, Phenols and Ethers', subject: 'Chemistry', weight: '6M', role: 'Reimer-Tiemann, Kolbe & Williamson', defaultRag: 'red' },
+    { name: 'Aldehydes, Ketones and Carboxylic Acids', subject: 'Chemistry', weight: '8M', role: 'Aldol, Cannizzaro & Tollens Test', defaultRag: 'red' },
+    { name: 'Amines', subject: 'Chemistry', weight: '6M', role: 'Hoffmann Bromamide & Gabriel Phthalimide', defaultRag: 'amber' },
+    { name: 'Biomolecules', subject: 'Chemistry', weight: '7M', role: 'Glucose Structure, Peptide & DNA/RNA', defaultRag: 'green' },
+
+    // --- MATHEMATICS (10 Core Chapters) ---
+    { name: 'Relations and Functions', subject: 'Mathematics', weight: '5M', role: 'Equivalence Proofs & Injective/Surjective', defaultRag: 'green' },
+    { name: 'Inverse Trigonometric Functions', subject: 'Mathematics', weight: '4M', role: 'Principal Value Branches & Domain', defaultRag: 'green' },
+    { name: 'Matrices and Determinants', subject: 'Mathematics', weight: '10M', role: 'AX = B Linear Systems & adj(A)', defaultRag: 'amber' },
+    { name: 'Continuity and Differentiability', subject: 'Mathematics', weight: '9M', role: 'Logarithmic Differentiation & k value', defaultRag: 'amber' },
+    { name: 'Applications of Derivatives', subject: 'Mathematics', weight: '9M', role: '5M Maxima-Minima Optimization Word Problems', defaultRag: 'red' },
+    { name: 'Integrals', subject: 'Mathematics', weight: '12M', role: 'King\'s Rule Definite Properties', defaultRag: 'red' },
+    { name: 'Differential Equations', subject: 'Mathematics', weight: '8M', role: 'Homogeneous & Linear with Integrating Factor', defaultRag: 'red' },
+    { name: 'Three Dimensional Geometry', subject: 'Mathematics', weight: '7M', role: 'Shortest Distance Between Skew Lines', defaultRag: 'red' },
+    { name: 'Linear Programming', subject: 'Mathematics', weight: '5M', role: 'Bounded Feasible Region Corner Point Method', defaultRag: 'green' },
+    { name: 'Probability', subject: 'Mathematics', weight: '8M', role: 'Bayes\' Theorem & Conditional Distributions', defaultRag: 'red' },
+
+    // --- COMPUTER SCIENCE (5 Core Chapters) ---
+    { name: 'Python Functions', subject: 'Computer Science', weight: '10M', role: 'LEGB Scope Resolution & Default Arguments', defaultRag: 'green' },
+    { name: 'File Handling', subject: 'Computer Science', weight: '15M', role: 'Text, Binary (pickle) & CSV File Streams', defaultRag: 'red' },
+    { name: 'Data Structures: Stacks', subject: 'Computer Science', weight: '5M', role: 'LIFO Push() & Pop() with Underflow Check', defaultRag: 'amber' },
+    { name: 'Relational Databases and SQL', subject: 'Computer Science', weight: '20M', role: 'GROUP BY, HAVING, Aggregate & 2-Table Joins', defaultRag: 'amber' },
+    { name: 'Computer Networks', subject: 'Computer Science', weight: '10M', role: '80/20 Server Placement, Repeaters & Topologies', defaultRag: 'amber' },
+
+    // --- ENGLISH CORE (10 Core Chapters & Formats) ---
+    { name: 'Writing Skills Box Formats', subject: 'English Core', weight: '18M', role: 'Notice, Formal Invitation & Job Bio-Data', defaultRag: 'green' },
+    { name: 'The Last Lesson', subject: 'English Core', weight: '5M', role: 'Linguistic Chauvinism & Franz\'s Awakening', defaultRag: 'green' },
+    { name: 'Lost Spring', subject: 'English Core', weight: '5M', role: 'Saheb & Mukesh: Perpetuated Poverty', defaultRag: 'amber' },
+    { name: 'Deep Water', subject: 'English Core', weight: '5M', role: 'William Douglas: Methodical Conquest of Fear', defaultRag: 'green' },
+    { name: 'The Rattrap', subject: 'English Core', weight: '5M', role: 'Compassion as Catalyst for Moral Redemption', defaultRag: 'amber' },
+    { name: 'Indigo', subject: 'English Core', weight: '5M', role: 'Champaran: Self-Reliance & Civil Disobedience', defaultRag: 'green' },
+    { name: 'A Thing of Beauty', subject: 'English Core', weight: '4M', role: 'Keatsian Joy: Endless Fountain of Immortal Drink', defaultRag: 'green' },
+    { name: 'Keeping Quiet', subject: 'English Core', weight: '4M', role: 'Neruda: Exotics of Stillness & Introspection', defaultRag: 'green' },
+    { name: 'Aunt Jennifer\'s Tigers', subject: 'English Core', weight: '4M', role: 'Feminist Symbolism & Chivalric Certainty', defaultRag: 'amber' },
+    { name: 'The Enemy', subject: 'English Core', weight: '5M', role: 'Dr. Sadao: Professional Ethics vs Nationalism', defaultRag: 'red' }
+  ];
+
+  function getRagAuditMap() {
+    try {
+      const raw = localStorage.getItem(RAG_STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {
+      console.error(e);
+    }
+    const seed = {};
+    RAG_CHAPTERS.forEach(ch => {
+      seed[ch.name] = ch.defaultRag || 'amber';
+    });
+    try {
+      localStorage.setItem(RAG_STORAGE_KEY, JSON.stringify(seed));
+    } catch (e) {}
+    return seed;
+  }
+
+  function saveRagAuditMap(map) {
+    try {
+      localStorage.setItem(RAG_STORAGE_KEY, JSON.stringify(map));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // Active RAG UI Filter State
+  const ragFilterState = {
+    subject: 'all',
+    status: 'all',
+    search: ''
+  };
+
+  HM.updateRagStatus = function (chName, color) {
+    const map = getRagAuditMap();
+    map[chName] = color;
+    saveRagAuditMap(map);
+
+    // Update active button state on row
+    const card = document.querySelector(`[data-rag-chapter="${CSS.escape(chName)}"]`);
+    if (card) {
+      card.querySelectorAll('.btn-rag-toggle').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.ragColor === color);
+      });
+      card.dataset.currentRag = color;
+    }
+
+    // Recompute RAG KPIs
+    const total = RAG_CHAPTERS.length;
+    let redCount = 0, amberCount = 0, greenCount = 0;
+    RAG_CHAPTERS.forEach(ch => {
+      const c = map[ch.name] || 'amber';
+      if (c === 'red') redCount++;
+      else if (c === 'amber') amberCount++;
+      else if (c === 'green') greenCount++;
+    });
+
+    const readiness = Math.round(((greenCount * 1.0 + amberCount * 0.5) / total) * 100);
+
+    const redEl = document.getElementById('ragRedCount');
+    const amberEl = document.getElementById('ragAmberCount');
+    const greenEl = document.getElementById('ragGreenCount');
+    const scoreEl = document.getElementById('ragReadinessScore');
+    const barGreen = document.getElementById('ragBarGreen');
+    const barAmber = document.getElementById('ragBarAmber');
+    const barRed = document.getElementById('ragBarRed');
+
+    if (redEl) redEl.textContent = redCount;
+    if (amberEl) amberEl.textContent = amberCount;
+    if (greenEl) greenEl.textContent = greenCount;
+    if (scoreEl) scoreEl.textContent = `${readiness}%`;
+
+    if (barGreen) barGreen.style.width = `${Math.round((greenCount / total) * 100)}%`;
+    if (barAmber) barAmber.style.width = `${Math.round((amberCount / total) * 100)}%`;
+    if (barRed) barRed.style.width = `${Math.round((redCount / total) * 100)}%`;
+
+    // Reapply active filter if needed
+    HM.applyRagFilters();
+  };
+
+  HM.setRagSubjectFilter = function (subj) {
+    ragFilterState.subject = subj;
+    document.querySelectorAll('#ragSubjFilter .btn-rag-filter').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.val === subj);
+    });
+    HM.applyRagFilters();
+  };
+
+  HM.setRagStatusFilter = function (status) {
+    ragFilterState.status = status;
+    document.querySelectorAll('#ragStatusFilter .btn-rag-filter').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.val === status);
+    });
+    HM.applyRagFilters();
+  };
+
+  HM.handleRagSearch = function (q) {
+    ragFilterState.search = (q || '').trim().toLowerCase();
+    HM.applyRagFilters();
+  };
+
+  HM.applyRagFilters = function () {
+    const cards = document.querySelectorAll('.rag-chapter-card');
+    cards.forEach(card => {
+      const cardSubj = card.dataset.subject || '';
+      const cardRag = card.dataset.currentRag || '';
+      const cardName = (card.dataset.ragChapter || '').toLowerCase();
+
+      let match = true;
+      if (ragFilterState.subject !== 'all' && cardSubj !== ragFilterState.subject) match = false;
+      if (ragFilterState.status !== 'all' && cardRag !== ragFilterState.status) match = false;
+      if (ragFilterState.search && !cardName.includes(ragFilterState.search)) match = false;
+
+      card.style.display = match ? '' : 'none';
+    });
+  };
+
   // Active in-memory state
   const state = {
     week: 'week-1',
@@ -1262,6 +1442,17 @@
     const countdown = getCountdownStats();
     const masteredTotal = allQuestions.filter(q => mastered.has(q.id)).length;
     const masteredPercent = allQuestions.length > 0 ? Math.round((masteredTotal / allQuestions.length) * 100) : 0;
+
+    const ragMap = getRagAuditMap();
+    const totalChapters = RAG_CHAPTERS.length;
+    let redCount = 0, amberCount = 0, greenCount = 0;
+    RAG_CHAPTERS.forEach(ch => {
+      const c = ragMap[ch.name] || 'amber';
+      if (c === 'red') redCount++;
+      else if (c === 'amber') amberCount++;
+      else if (c === 'green') greenCount++;
+    });
+    const readinessScore = Math.round(((greenCount * 1.0 + amberCount * 0.5) / totalChapters) * 100);
 
     return `
       <div class="board-sprints-container master-sprint-container zen-focus-container" id="boardSprintsContainer">
@@ -1406,6 +1597,118 @@
                 <span><i data-lucide="clock"></i> Jan 01 – Exam Kickoff</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        <!-- INTERACTIVE R-A-G CHAPTER AUDIT TRACKER (LEVEL 1 IMPLEMENTATION) -->
+        <section class="rag-audit-tracker-section" id="ragAuditTracker">
+          <div class="system-header">
+            <div class="system-title-wrap">
+              <i data-lucide="shield-alert"></i>
+              <h2>Interactive R-A-G Chapter Audit Tracker (Level 1 Mop-Up)</h2>
+            </div>
+            <span class="system-badge">Syllabus Mop-Up Engine · Target: 0 Red Chapters</span>
+          </div>
+          <p class="rag-section-intro">
+            Categorize each chapter into <strong>Red</strong> (uncomfortable/avoided), <strong>Amber</strong> (needs formula & question revision), or <strong>Green</strong> (mastered 95%+). 
+            According to the 75-Day Protocol, <strong>all Red chapters must be cleared during Level 1 (Weeks 1–3)</strong> before moving into past paper marathons.
+          </p>
+
+          <!-- RAG KPI SHELF & READINESS PROGRESS METER -->
+          <div class="rag-kpi-shelf">
+            <div class="rag-kpi-card kpi-red" onclick="HM.setRagStatusFilter('red')" title="Filter Red Chapters">
+              <div class="kpi-icon"><i data-lucide="alert-circle"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Red Flag Chapters</span>
+                <span class="kpi-value" id="ragRedCount">${redCount}</span>
+                <small class="kpi-desc">Action: Urgent Level 1 Mop-Up</small>
+              </div>
+            </div>
+            <div class="rag-kpi-card kpi-amber" onclick="HM.setRagStatusFilter('amber')" title="Filter Amber Chapters">
+              <div class="kpi-icon"><i data-lucide="clock"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Amber Chapters</span>
+                <span class="kpi-value" id="ragAmberCount">${amberCount}</span>
+                <small class="kpi-desc">Action: 10-Yr Question Practice</small>
+              </div>
+            </div>
+            <div class="rag-kpi-card kpi-green" onclick="HM.setRagStatusFilter('green')" title="Filter Green Chapters">
+              <div class="kpi-icon"><i data-lucide="check-circle-2"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Green Mastered</span>
+                <span class="kpi-value" id="ragGreenCount">${greenCount}</span>
+                <small class="kpi-desc">Action: 3-Hour Mock Ready</small>
+              </div>
+            </div>
+            <div class="rag-kpi-card kpi-score">
+              <div class="kpi-icon"><i data-lucide="gauge"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Readiness Index</span>
+                <span class="kpi-value" id="ragReadinessScore">${readinessScore}%</span>
+                <small class="kpi-desc">Target: 95%+ Board Ready</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- STACKED PROGRESS BAR -->
+          <div class="rag-meter-wrap">
+            <div class="rag-meter-bar">
+              <div class="rag-bar-segment seg-green" id="ragBarGreen" style="width: ${Math.round((greenCount / totalChapters) * 100)}%;" title="Green Mastered"></div>
+              <div class="rag-bar-segment seg-amber" id="ragBarAmber" style="width: ${Math.round((amberCount / totalChapters) * 100)}%;" title="Amber Review"></div>
+              <div class="rag-bar-segment seg-red" id="ragBarRed" style="width: ${Math.round((redCount / totalChapters) * 100)}%;" title="Red Urgent"></div>
+            </div>
+            <div class="rag-meter-labels">
+              <span>🟢 Green (${greenCount})</span>
+              <span>🟡 Amber (${amberCount})</span>
+              <span>🔴 Red (${redCount})</span>
+            </div>
+          </div>
+
+          <!-- RAG CONTROLS & FILTER BAR -->
+          <div class="rag-controls-bar">
+            <div class="rag-subject-filter-pills" id="ragSubjFilter">
+              <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagSubjectFilter('all')">All (${totalChapters})</button>
+              <button type="button" class="btn-rag-filter" data-val="Physics" onclick="HM.setRagSubjectFilter('Physics')">Physics</button>
+              <button type="button" class="btn-rag-filter" data-val="Chemistry" onclick="HM.setRagSubjectFilter('Chemistry')">Chemistry</button>
+              <button type="button" class="btn-rag-filter" data-val="Mathematics" onclick="HM.setRagSubjectFilter('Mathematics')">Math</button>
+              <button type="button" class="btn-rag-filter" data-val="Computer Science" onclick="HM.setRagSubjectFilter('Computer Science')">Computer Science</button>
+              <button type="button" class="btn-rag-filter" data-val="English Core" onclick="HM.setRagSubjectFilter('English Core')">English Core</button>
+            </div>
+            <div class="rag-status-filter-pills" id="ragStatusFilter">
+              <button type="button" class="btn-rag-filter active" data-val="all" onclick="HM.setRagStatusFilter('all')">All Status</button>
+              <button type="button" class="btn-rag-filter filter-red" data-val="red" onclick="HM.setRagStatusFilter('red')">🔴 Red Only</button>
+              <button type="button" class="btn-rag-filter filter-amber" data-val="amber" onclick="HM.setRagStatusFilter('amber')">🟡 Amber Only</button>
+              <button type="button" class="btn-rag-filter filter-green" data-val="green" onclick="HM.setRagStatusFilter('green')">🟢 Green Only</button>
+            </div>
+            <div class="rag-search-box">
+              <input type="text" id="ragSearchInput" placeholder="Filter chapter name..." oninput="HM.handleRagSearch(this.value)">
+            </div>
+          </div>
+
+          <!-- CHAPTER CARDS MATRIX -->
+          <div class="rag-chapters-grid" id="ragChaptersGrid">
+            ${RAG_CHAPTERS.map(ch => {
+              const status = ragMap[ch.name] || ch.defaultRag || 'amber';
+              const subjConf = SUBJECT_CONFIG[ch.subject] || { color: '#0d9488', badgeBg: '#f0fdfa' };
+              return `
+                <div class="rag-chapter-card" data-rag-chapter="${escapeHtml(ch.name)}" data-subject="${escapeHtml(ch.subject)}" data-current-rag="${status}">
+                  <div class="rag-card-header">
+                    <span class="rag-subj-badge" style="background: ${subjConf.badgeBg}; color: ${subjConf.color};">
+                      ${escapeHtml(ch.subject)}
+                    </span>
+                    <span class="rag-weight-tag">${escapeHtml(ch.weight)}</span>
+                  </div>
+                  <h4 class="rag-chapter-title">${escapeHtml(ch.name)}</h4>
+                  <p class="rag-chapter-role">${escapeHtml(ch.role)}</p>
+                  
+                  <div class="rag-toggle-group">
+                    <button type="button" class="btn-rag-toggle rag-t-red ${status === 'red' ? 'active' : ''}" data-rag-color="red" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'red')">🔴 Red</button>
+                    <button type="button" class="btn-rag-toggle rag-t-amber ${status === 'amber' ? 'active' : ''}" data-rag-color="amber" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'amber')">🟡 Amber</button>
+                    <button type="button" class="btn-rag-toggle rag-t-green ${status === 'green' ? 'active' : ''}" data-rag-color="green" onclick="HM.updateRagStatus('${escapeHtml(ch.name)}', 'green')">🟢 Green</button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
           </div>
         </section>
 

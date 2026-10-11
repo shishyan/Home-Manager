@@ -9545,6 +9545,296 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
 }
 
+/* INTERACTIVE R-A-G AUDIT TRACKER STYLES */
+.rag-audit-tracker-section {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.02);
+}
+
+.rag-section-intro {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.rag-kpi-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.rag-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.rag-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.kpi-red { border-left: 4px solid #ef4444; }
+.kpi-red .kpi-icon { background: #fef2f2; color: #ef4444; }
+.kpi-amber { border-left: 4px solid #f59e0b; }
+.kpi-amber .kpi-icon { background: #fef3c7; color: #d97706; }
+.kpi-green { border-left: 4px solid #10b981; }
+.kpi-green .kpi-icon { background: #f0fdf4; color: #10b981; }
+.kpi-score { border-left: 4px solid #7c3aed; }
+.kpi-score .kpi-icon { background: #faf5ff; color: #7c3aed; }
+
+.kpi-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.kpi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.kpi-value {
+  font-size: 1.45rem;
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.kpi-desc {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Stacked meter */
+.rag-meter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rag-meter-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.rag-bar-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.seg-green { background: #10b981; }
+.seg-amber { background: #f59e0b; }
+.seg-red { background: #ef4444; }
+
+.rag-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 650;
+}
+
+/* Controls */
+.rag-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.rag-subject-filter-pills, .rag-status-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.btn-rag-filter {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 650;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-rag-filter:hover {
+  background: #f1f5f9;
+}
+
+.btn-rag-filter.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.filter-red.active { background: #ef4444 !important; border-color: #ef4444 !important; color: #fff !important; }
+.filter-amber.active { background: #d97706 !important; border-color: #d97706 !important; color: #fff !important; }
+.filter-green.active { background: #10b981 !important; border-color: #10b981 !important; color: #fff !important; }
+
+.rag-search-box input {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.76rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  min-width: 180px;
+}
+
+/* Chapter Cards Grid */
+.rag-chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.rag-chapter-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rag-chapter-card[data-current-rag="red"] {
+  border-left: 4px solid #ef4444;
+}
+.rag-chapter-card[data-current-rag="amber"] {
+  border-left: 4px solid #f59e0b;
+}
+.rag-chapter-card[data-current-rag="green"] {
+  border-left: 4px solid #10b981;
+}
+
+.rag-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rag-subj-badge {
+  font-size: 0.68rem;
+  font-weight: 750;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.rag-weight-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.rag-chapter-title {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.rag-chapter-role {
+  font-size: 0.76rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.rag-toggle-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-rag-toggle {
+  padding: 0.35rem 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.btn-rag-toggle:hover {
+  background: #f1f5f9;
+}
+
+.btn-rag-toggle.rag-t-red.active {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+  font-weight: 800;
+}
+
+.btn-rag-toggle.rag-t-amber.active {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fcd34d;
+  font-weight: 800;
+}
+
+.btn-rag-toggle.rag-t-green.active {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #86efac;
+  font-weight: 800;
+}
+
 /* CONFERENZA 75-DAY FRAMEWORK & BESTSELLER ELEMENTS */
 .four-levels-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

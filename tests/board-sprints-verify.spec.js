@@ -38,6 +38,23 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
     const protocolCards = page.locator('.protocol-step-card');
     await expect(protocolCards).toHaveCount(4);
 
+    // Verify Interactive R-A-G Audit Tracker
+    const ragSection = page.locator('#ragAuditTracker');
+    await expect(ragSection).toBeVisible();
+
+    const ragCards = page.locator('.rag-chapter-card');
+    await expect(ragCards).toHaveCount(47);
+
+    // Test interactive toggle
+    const firstRed = page.locator('.rag-chapter-card[data-current-rag="red"]').first();
+    if (await firstRed.count() > 0) {
+      const chName = await firstRed.getAttribute('data-rag-chapter');
+      await firstRed.locator('.rag-t-green').click();
+      await page.waitForTimeout(300);
+      const updated = page.locator(`.rag-chapter-card[data-rag-chapter="${chName}"]`);
+      await expect(updated).toHaveAttribute('data-current-rag', 'green');
+    }
+
     // Verify Subject Weightage Matrix
     const subjectCards = page.locator('.subject-card');
     await expect(subjectCards).toHaveCount(5);

@@ -5279,6 +5279,1360 @@ SELECT COUNT(DISTINCT City) FROM DEPARTMENT;
       topperTip: 'Include the key phrase: "The essential goodness in human beings can be awakened through understanding and love." Quote the signature "Captain von Stahle".',
       mnemonic: 'Rattrap Redemption: Crofter (Temptation) ⟶ Ironmaster (Rejection) ⟶ Edla (Salvation).'
     });
+
+    // --- 10-YEAR OFFICIAL CBSE IMPORTED QUESTION SETS ---
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-cap-10y-2024",
+        "marks": 3,
+        "year": "CBSE 2024 (Set 55/2/1 Q27)",
+        "pacing": "5 min",
+        "type": "Derivation & Dielectrics",
+        "competency": "High-Order Derivation",
+        "stem": "A parallel plate capacitor of plate area A and separation d is charged to potential V. A dielectric slab of dielectric constant K and thickness t (t < d) is inserted between the plates. Derive the expression for the capacitance of the capacitor.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 400 160\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 200px;\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"50\" y=\"20\" width=\"10\" height=\"120\" fill=\"#3b82f6\"/><rect x=\"340\" y=\"20\" width=\"10\" height=\"120\" fill=\"#ef4444\"/><text x=\"45\" y=\"15\" font-size=\"11\" font-weight=\"bold\" fill=\"#1e40af\">+Q</text><text x=\"335\" y=\"15\" font-size=\"11\" font-weight=\"bold\" fill=\"#b91c1c\">-Q</text><rect x=\"140\" y=\"30\" width=\"120\" height=\"100\" fill=\"#fef08a\" stroke=\"#ca8a04\" stroke-width=\"1.5\"/><text x=\"175\" y=\"85\" font-size=\"12\" font-weight=\"bold\" fill=\"#854d0e\">Dielectric (K, t)</text><line x1=\"60\" y1=\"145\" x2=\"340\" y2=\"145\" stroke=\"#475569\" stroke-width=\"1\" marker-start=\"url(#ar)\" marker-end=\"url(#ar)\"/><text x=\"195\" y=\"155\" font-size=\"11\" fill=\"#475569\">d</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Electric Fields:</strong><br>\n      • Electric field in vacuum region (thickness d - t): <code>E₀ = σ / ε₀ = Q / (A ε₀)</code>.<br>\n      • Electric field inside dielectric slab (thickness t): <code>E = E₀ / K = Q / (K A ε₀)</code>.</p>\n      <p><strong>2. Potential Difference:</strong><br>\n      Total potential difference V between plates is the work done per unit charge:<br>\n      <code>V = E₀ (d - t) + E t = E₀ [ (d - t) + t / K ] = [ Q / (A ε₀) ] [ d - t (1 - 1/K) ]</code>.</p>\n      <p><strong>3. Capacitance Expression:</strong><br>\n      <code>C = Q / V = (A ε₀) / [ d - t (1 - 1/K) ]</code>.<br>\n      When t = d (slab fills entire space): <code>C = K ε₀ A / d = K C₀</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct electric fields in air and dielectric | [1 Mark] Total potential difference relation V = E₀(d - t) + Et | [1 Mark] Final boxed formula C = ε₀A / [d - t(1 - 1/K)]",
+        "cautionTrap": "Confusing (1 - 1/K) with (1 + 1/K) or forgetting to state that field inside dielectric reduces by factor K.",
+        "topperTip": "Always verify the limiting case: put t = d and check if C becomes K C₀, and put t = 0 to check if C becomes C₀.",
+        "mnemonic": "Dielectric Slab Formula: C = ε₀A / (d - t + t/K)."
+    });
+
+    pushQ("Electrostatic Potential and Capacitance", {
+        "id": "phy-cap-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 55/1/1 Q31)",
+        "pacing": "10 min",
+        "type": "Capacitor Energy & Redistribution",
+        "competency": "Problem Solving & Energy Analysis",
+        "stem": "(a) A capacitor of capacitance C₁ is charged to potential V. It is then disconnected from battery and connected across an uncharged capacitor C₂. Derive the expression for the common potential and loss in electrostatic energy on sharing charges.\\n(b) A 900 pF capacitor is charged by a 100 V battery. How much electrostatic energy is stored by it? If it is disconnected and connected to another uncharged 900 pF capacitor, find the total electrostatic energy stored by the system.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Common Potential & Energy Loss:</strong><br>\n      • Initial charge: <code>Q = C₁ V</code>. When connected in parallel, total charge remains conserved: <code>(C₁ + C₂) V_common = C₁ V  ⟹  V_common = (C₁ V) / (C₁ + C₂)</code>.<br>\n      • Initial energy: <code>U_i = ½ C₁ V²</code>.<br>\n      • Final energy: <code>U_f = ½ (C₁ + C₂) V_common² = ½ [ C₁² V² / (C₁ + C₂) ]</code>.<br>\n      • Energy loss: <code>ΔU = U_i - U_f = ½ [ C₁ C₂ / (C₁ + C₂) ] V²</code>. (This energy is dissipated as heat in connecting wires and EM radiation).</p>\n      <p><strong>(b) Numerical Calculation:</strong><br>\n      • Initial energy: <code>U_i = ½ C V² = ½ (900 × 10⁻¹² F) (100 V)² = 4.5 × 10⁻⁶ J = 4.5 μJ</code>.<br>\n      • When connected to identical uncharged capacitor (C₁ = C₂ = 900 pF):<br>\n      <code>V_common = V / 2 = 50 V</code>.<br>\n      • Final total energy: <code>U_f = ½ (C₁ + C₂) V_common² = ½ (1800 × 10⁻¹²) (50)² = 2.25 × 10⁻⁶ J = 2.25 μJ</code>.<br>\n      • Exactly half the initial energy (2.25 μJ) is lost!</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Derivation of common potential V_common | [1.5 Marks] Derivation of energy loss ΔU = ½ C₁C₂/(C₁+C₂) V² | [1 Mark] Initial energy 4.5 μJ calculation | [1 Mark] Final energy 2.25 μJ calculation",
+        "cautionTrap": "Assuming charge is lost when capacitors are connected. Charge is strictly conserved; only mechanical/thermal electrostatic energy is lost.",
+        "topperTip": "When two identical capacitors share charge, final energy is ALWAYS exactly half of the initial energy: U_final = U_initial / 2.",
+        "mnemonic": "Identical Sharing: Voltage halves (V/2), Energy halves (U/2)!"
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-curr-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/2 Q29)",
+        "pacing": "5 min",
+        "type": "Derivation & Microscopic Ohm's Law",
+        "competency": "Theoretical Derivation",
+        "stem": "Define drift velocity of free electrons. Derive the relation between electric current I and drift velocity v_d. Hence deduce Ohm's law in the form I = V / R and write the expression for resistivity in terms of relaxation time τ.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Definition:</strong> Drift velocity (v_d) is the average velocity with which free electrons in a conductor get drifted towards the positive terminal under the influence of an external electric field.<br>\n      <code>v_d = (e E τ) / m = (e V τ) / (m l)</code>.</p>\n      <p><strong>2. Relation I = n e A v_d:</strong><br>\n      In time Δt, electrons travel distance <code>Δx = v_d Δt</code>.<br>\n      Volume containing these electrons = <code>A v_d Δt</code>.<br>\n      Total charge crossing area in time Δt: <code>ΔQ = n e A v_d Δt</code>.<br>\n      Therefore: <strong>I = ΔQ / Δt = n e A v_d</strong>.</p>\n      <p><strong>3. Deduction of Ohm's Law:</strong><br>\n      Substitute v_d: <code>I = n e A [ (e V τ) / (m l) ] = [ (n e² A τ) / (m l) ] V</code>.<br>\n      <code>V / I = (m l) / (n e² A τ) = R</code> (constant at given temperature).<br>\n      <strong>Resistivity: ρ = m / (n e² τ)</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Definition of drift velocity and formula | [1 Mark] Derivation of I = neAv_d | [1 Mark] Deduction of V = IR and resistivity ρ = m/(ne²τ)",
+        "cautionTrap": "Omitting the negative sign or omitting relaxation time τ definition in v_d = eEτ/m.",
+        "topperTip": "Explicitly identify every term in ρ = m/(ne²τ): m = electron mass, n = free electron density, e = elementary charge, τ = relaxation time.",
+        "mnemonic": "Current Drift: I = n-e-A-v_d ('Never Eat Apples Very Dry')."
+    });
+
+    pushQ("Current Electricity", {
+        "id": "phy-curr-10y-2020",
+        "marks": 3,
+        "year": "CBSE 2020 (Delhi Set 2 Q23)",
+        "pacing": "6 min",
+        "type": "Kirchhoff Rules & Wheatstone Bridge",
+        "competency": "Circuit Analysis",
+        "stem": "State Kirchhoff's rules for an electrical network. Using these rules, deduce the condition for a balanced Wheatstone bridge P/Q = R/S.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 320 220\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 200px;\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"160,20 260,110 160,200 60,110\" fill=\"none\" stroke=\"#0f172a\" stroke-width=\"2\"/><text x=\"100\" y=\"60\" font-size=\"12\" font-weight=\"bold\" fill=\"#1e40af\">P</text><text x=\"210\" y=\"60\" font-size=\"12\" font-weight=\"bold\" fill=\"#1e40af\">Q</text><text x=\"100\" y=\"165\" font-size=\"12\" font-weight=\"bold\" fill=\"#047857\">R</text><text x=\"210\" y=\"165\" font-size=\"12\" font-weight=\"bold\" fill=\"#047857\">S</text><line x1=\"160\" y1=\"20\" x2=\"160\" y2=\"200\" stroke=\"#dc2626\" stroke-width=\"1.5\" stroke-dasharray=\"4\"/><circle cx=\"160\" cy=\"110\" r=\"14\" fill=\"#fee2e2\" stroke=\"#dc2626\" stroke-width=\"1.5\"/><text x=\"155\" y=\"115\" font-size=\"11\" font-weight=\"bold\" fill=\"#dc2626\">G</text><text x=\"155\" y=\"12\" font-size=\"10\" font-weight=\"bold\">B</text><text x=\"155\" y=\"215\" font-size=\"10\" font-weight=\"bold\">D</text><text x=\"45\" y=\"114\" font-size=\"10\" font-weight=\"bold\">A</text><text x=\"265\" y=\"114\" font-size=\"10\" font-weight=\"bold\">C</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Kirchhoff's Rules:</strong><br>\n      • <strong>Junction Rule (KCL):</strong> The algebraic sum of currents entering any junction is zero: <code>∑ I = 0</code> (Conservation of charge).<br>\n      • <strong>Loop Rule (KVL):</strong> In any closed loop, the algebraic sum of EMFs equals the algebraic sum of potential drops: <code>∑ ΔV = 0</code> (Conservation of energy).</p>\n      <p><strong>2. Wheatstone Bridge Balanced Condition:</strong><br>\n      Under balanced condition, no current flows through galvanometer (<code>I_g = 0</code>, potential <code>V_B = V_D</code>).<br>\n      • In Loop ABDA: <code>- I₁ P + I₂ R = 0  ⟹  I₁ P = I₂ R</code> ...(1)<br>\n      • In Loop BCDB: <code>- I₁ Q + I₂ S = 0  ⟹  I₁ Q = I₂ S</code> ...(2)<br>\n      Dividing equation (1) by (2):<br>\n      <strong>P / Q = R / S</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct statement and conservation laws for KCL and KVL | [1 Mark] Applying KVL to loops ABDA and BCDB with I_g = 0 | [1 Mark] Derivation of balance condition P/Q = R/S",
+        "cautionTrap": "Forgetting to state that KCL is based on conservation of charge and KVL is based on conservation of energy.",
+        "topperTip": "Draw the 4-arm diamond bridge clearly. Clearly state 'At balance: I_g = 0 so V_B = V_D'.",
+        "mnemonic": "Wheatstone Balance: Top ratio = Bottom ratio (P/Q = R/S)."
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mag-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/1 Q28)",
+        "pacing": "5 min",
+        "type": "Ampere's Law & Solenoid",
+        "competency": "Magnetic Field Derivation",
+        "stem": "State Ampere's Circuital Law. Use it to derive the magnetic field inside an ideal, infinitely long straight solenoid having n turns per unit length carrying current I.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 360 140\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 180px;\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"30\" y=\"30\" width=\"300\" height=\"80\" rx=\"4\" fill=\"#f1f5f9\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"50\" y1=\"70\" x2=\"310\" y2=\"70\" stroke=\"#2563eb\" stroke-width=\"2.5\" marker-end=\"url(#ar)\"/><text x=\"140\" y=\"65\" font-size=\"12\" font-weight=\"bold\" fill=\"#1d4ed8\">B (Axial)</text><rect x=\"90\" y=\"50\" width=\"120\" height=\"40\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"1.5\" stroke-dasharray=\"3\"/><text x=\"95\" y=\"45\" font-size=\"10\" fill=\"#dc2626\">Amperian Loop (a-b-c-d)</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Statement of Ampere's Circuital Law:</strong><br>\n      The line integral of magnetic field <strong>B</strong> around any closed loop is equal to <code>μ₀</code> times the total enclosed current <code>I_enclosed</code>:<br>\n      <code>∮ B · dl = μ₀ I_enclosed</code>.</p>\n      <p><strong>2. Derivation for Solenoid:</strong><br>\n      Consider a rectangular Amperian loop <em>abcd</em> of length <em>L</em>:<br>\n      • Along <em>ab</em> (inside solenoid): B is parallel to dl ⟹ <code>∫ B · dl = B L</code>.<br>\n      • Along <em>bc</em> and <em>da</em>: B is perpendicular to dl ⟹ <code>∫ B · dl = 0</code>.<br>\n      • Along <em>cd</em> (outside solenoid): Field B ≈ 0 ⟹ <code>∫ B · dl = 0</code>.<br>\n      Total line integral: <code>∮ B · dl = B L</code>.</p>\n      <p>Number of turns in length L = <code>n L</code>. Enclosed current: <code>I_enclosed = n L I</code>.<br>\n      According to Ampere's Law: <code>B L = μ₀ (n L I)  ⟹  <strong>B = μ₀ n I</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Ampere's Circuital Law statement with equation | [1 Mark] Breakdown of line integral into 4 segments ab, bc, cd, da | [1 Mark] Final boxed formula B = μ₀ n I",
+        "cautionTrap": "Confusing n (turns per unit length = N/L) with N (total turns). Always define n = N/L.",
+        "topperTip": "Explicitly explain why the other 3 sides contribute zero to the integral: 2 are perpendicular (cos 90° = 0) and 1 is outside the solenoid (B = 0).",
+        "mnemonic": "Solenoid Field: B = μ₀·n·I ('Muni' rule)."
+    });
+
+    pushQ("Moving Charges and Magnetism", {
+        "id": "phy-mag-10y-2020",
+        "marks": 5,
+        "year": "CBSE 2020 (Delhi Set 1 Q32)",
+        "pacing": "10 min",
+        "type": "Galvanometer Conversion",
+        "competency": "Instrument Design & Numerical",
+        "stem": "(a) Explain the principle and working of a Moving Coil Galvanometer. Why is a radial magnetic field used in it, and how is it produced?\\n(b) A galvanometer of resistance 15 Ω gives full scale deflection for a current of 4 mA. How will you convert it into: (i) an ammeter of range 0 to 6 A, and (ii) a voltmeter of range 0 to 18 V?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Principle & Radial Field:</strong><br>\n      • <strong>Principle:</strong> A current-carrying coil placed in a magnetic field experiences a deflecting torque: <code>τ = N I A B sin θ</code>. At equilibrium, deflecting torque balances restoring torque: <code>N I A B = k θ  ⟹  θ = (NAB / k) I</code>.<br>\n      • <strong>Radial Magnetic Field:</strong> Cylindrical soft iron core and concave pole pieces ensure that plane of coil is ALWAYS parallel to field lines (θ = 90°). Hence torque is always maximum: <code>τ = N I A B</code> (linear scale θ ∝ I).</p>\n      <p><strong>(b) Calculations:</strong><br>\n      Given: G = 15 Ω, I_g = 4 mA = 0.004 A.<br>\n      • <strong>(i) Conversion to Ammeter (0 - 6 A):</strong> Connected with parallel shunt S:<br>\n      <code>S = (I_g G) / (I - I_g) = (0.004 × 15) / (6 - 0.004) = 0.06 / 5.996 ≈ 0.01 Ω</code>.<br>\n      Connect a shunt resistance of <strong>0.01 Ω in parallel</strong> with galvanometer.<br>\n      • <strong>(ii) Conversion to Voltmeter (0 - 18 V):</strong> Connected with series resistor R:<br>\n      <code>R = (V / I_g) - G = (18 / 0.004) - 15 = 4500 - 15 = 4485 Ω</code>.<br>\n      Connect a resistance of <strong>4485 Ω in series</strong> with galvanometer.</p>\n    </div>",
+        "stepMarking": "[2 Marks] Principle, torque equilibrium, and radial field explanation | [1.5 Marks] Ammeter shunt calculation S = 0.01 Ω | [1.5 Marks] Voltmeter series resistance R = 4485 Ω",
+        "cautionTrap": "Inverting the conversion modes: Ammeter requires LOW shunt in PARALLEL; Voltmeter requires HIGH resistance in SERIES.",
+        "topperTip": "Always state the final physical action: 'Connect 0.01 Ω in parallel' and 'Connect 4485 Ω in series'.",
+        "mnemonic": "Ammeter Shunt = Parallel (ASP); Voltmeter Series = High Series (VSH)."
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-10y-2024",
+        "marks": 3,
+        "year": "CBSE 2024 (Set 55/1/1 Q20)",
+        "pacing": "5 min",
+        "type": "Comparative Magnetic Properties",
+        "competency": "Classification & Reasoning",
+        "stem": "Distinguish between diamagnetic, paramagnetic, and ferromagnetic substances on the basis of: (i) Magnetic susceptibility (χ_m), (ii) Behavior in an external non-uniform magnetic field, and (iii) Effect of temperature.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <div class=\"overflow-x-auto\">\n        <table class=\"w-full border-collapse border border-slate-300 text-left text-xs\">\n          <thead>\n            <tr class=\"bg-slate-100\">\n              <th class=\"border border-slate-300 p-1.5 font-bold\">Property</th>\n              <th class=\"border border-slate-300 p-1.5 font-bold text-amber-700\">Diamagnetic</th>\n              <th class=\"border border-slate-300 p-1.5 font-bold text-blue-700\">Paramagnetic</th>\n              <th class=\"border border-slate-300 p-1.5 font-bold text-emerald-700\">Ferromagnetic</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr>\n              <td class=\"border border-slate-300 p-1.5 font-medium\">Susceptibility (χ_m)</td>\n              <td class=\"border border-slate-300 p-1.5\">Small & negative (-1 ≤ χ < 0)</td>\n              <td class=\"border border-slate-300 p-1.5\">Small & positive (0 < χ < ε)</td>\n              <td class=\"border border-slate-300 p-1.5\">Very large & positive (χ >> 1000)</td>\n            </tr>\n            <tr>\n              <td class=\"border border-slate-300 p-1.5 font-medium\">Non-Uniform Field</td>\n              <td class=\"border border-slate-300 p-1.5\">Expelled: moves from stronger to weaker field</td>\n              <td class=\"border border-slate-300 p-1.5\">Weakly attracted: moves from weaker to stronger field</td>\n              <td class=\"border border-slate-300 p-1.5\">Strongly attracted into strongest field region</td>\n            </tr>\n            <tr>\n              <td class=\"border border-slate-300 p-1.5 font-medium\">Temperature Effect</td>\n              <td class=\"border border-slate-300 p-1.5\">Independent of temperature</td>\n              <td class=\"border border-slate-300 p-1.5\">Inversely proportional (χ ∝ 1/T, Curie's law)</td>\n              <td class=\"border border-slate-300 p-1.5\">Becomes paramagnetic above Curie temperature T_c</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>",
+        "stepMarking": "[1 Mark] Correct susceptibility comparison | [1 Mark] Correct motion in non-uniform magnetic field | [1 Mark] Temperature dependence and Curie temperature",
+        "cautionTrap": "Writing that diamagnetic susceptibility depends on temperature. Diamagnetism is strictly temperature-INDEPENDENT.",
+        "topperTip": "Draw the comparison table directly. Memorize one classic example for each: Bismuth/Water (Dia), Aluminium/Oxygen (Para), Iron/Cobalt (Ferro).",
+        "mnemonic": "Susceptibility signs: Dia = Negative (-), Para = Tiny Positive (+), Ferro = Mega Positive (+++)."
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/1 Q26)",
+        "pacing": "5 min",
+        "type": "Motional EMF Derivation",
+        "competency": "Derivation & Energy Conservation",
+        "stem": "A conducting rod of length l moves with uniform velocity v perpendicular to a uniform magnetic field B on U-shaped rails. Derive the expression for the motional EMF induced across the ends of the rod. Hence find the electric power dissipated as heat in the circuit of resistance R.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 340 140\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 180px;\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"40\" y1=\"30\" x2=\"300\" y2=\"30\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"110\" x2=\"300\" y2=\"110\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"30\" x2=\"40\" y2=\"110\" stroke=\"#0f172a\" stroke-width=\"2\"/><rect x=\"180\" y=\"20\" width=\"10\" height=\"100\" fill=\"#dc2626\"/><line x1=\"190\" y1=\"70\" x2=\"250\" y2=\"70\" stroke=\"#2563eb\" stroke-width=\"2\" marker-end=\"url(#ar)\"/><text x=\"210\" y=\"60\" font-size=\"11\" font-weight=\"bold\" fill=\"#1d4ed8\">v</text><text x=\"182\" y=\"15\" font-size=\"10\" font-weight=\"bold\" fill=\"#dc2626\">Rod (l)</text><text x=\"100\" y=\"75\" font-size=\"12\" fill=\"#94a3b8\">B (inward ⊗)</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Flux Linkage & Motional EMF:</strong><br>\n      Let distance of rod from left rail base be <em>x</em>. Enclosed area: <code>A = l x</code>.<br>\n      Magnetic flux linked with the loop: <code>Φ_B = B A = B l x</code>.<br>\n      By Faraday's Law, induced EMF: <code>ε = - dΦ_B / dt = - B l (dx/dt) = - B l v</code>.<br>\n      Magnitude of motional EMF: <strong>ε = B l v</strong>.</p>\n      <p><strong>2. Induced Current & Power Dissipated:</strong><br>\n      • Induced current: <code>I = ε / R = (B l v) / R</code>.<br>\n      • Retarding magnetic force: <code>F = I l B = (B² l² v) / R</code>.<br>\n      • Mechanical power required: <code>P_mech = F v = (B² l² v²) / R</code>.<br>\n      • Electrical power dissipated as Joule heat: <code>P_elec = I² R = (B l v / R)² R = <strong>(B² l² v²) / R</strong></code>.<br>\n      <em>Conclusion:</em> Mechanical power spent in pulling rod converts entirely into electrical thermal power (Conservation of Energy).</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Flux Φ_B = Blx and derivative ε = Blv | [1.5 Marks] Current I = Blv/R and power formula P = B²l²v²/R with energy conservation statement",
+        "cautionTrap": "Omitting the mechanical-to-electrical energy equivalence statement. CBSE specifically awards marks for explaining conservation of energy.",
+        "topperTip": "Use Fleming's Right Hand Rule to state the direction of induced current.",
+        "mnemonic": "Motional EMF: ε = B-l-v ('Beloved' velocity)."
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 55/1/1 Q33)",
+        "pacing": "10 min",
+        "type": "Huygens Wavefront & Laws of Refraction",
+        "competency": "Wave Optics Derivation",
+        "stem": "(a) Define a wavefront. Using Huygens' principle, verify Snell's law of refraction of a plane wave propagating from a rarer medium (refractive index n₁) into a denser medium (refractive index n₂).\\n(b) In a Young's double slit experiment using monochromatic light of wavelength λ, what is the effect on fringe width if: (i) distance between slits is doubled, (ii) separation between slits and screen is halved, and (iii) the entire apparatus is immersed in water (refractive index 4/3)?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Wavefront & Snell's Law Derivation:</strong><br>\n      • <strong>Wavefront:</strong> The locus of all points vibrating in the same phase.<br>\n      • Let plane wavefront AB be incident at angle <em>i</em> on interface separating medium 1 (speed v₁) and medium 2 (speed v₂ < v₁).<br>\n      • Time taken for ray to travel from B to C: <code>τ = BC / v₁  ⟹  BC = v₁ τ</code>.<br>\n      • Secondary wavelet from point A spreads in medium 2 with speed v₂. In time τ, distance traveled: <code>AD = v₂ τ</code>.<br>\n      • In right ΔABC: <code>sin i = BC / AC = (v₁ τ) / AC</code>.<br>\n      • In right ΔADC: <code>sin r = AD / AC = (v₂ τ) / AC</code>.<br>\n      Dividing both: <code>sin i / sin r = v₁ / v₂ = n₂ / n₁</code> (Snell's Law of Refraction verified!).</p>\n      <p><strong>(b) Young's Double Slit Effects (Fringe Width β = λ D / d):</strong><br>\n      • (i) If slit separation d is doubled (d' = 2d): <strong>β' = β / 2 (Halved)</strong>.<br>\n      • (ii) If screen distance D is halved (D' = D/2): <strong>β' = β / 2 (Halved)</strong>.<br>\n      • (iii) When immersed in water (λ' = λ / μ = 3λ / 4): <strong>β' = β / μ = 3/4 β (Reduces to 75%)</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Definition of wavefront | [2 Marks] Huygens geometric proof: sin i/sin r = v₁/v₂ = n₂/n₁ | [2 Marks] 0.5M, 0.5M, 1M for the three fringe width variations",
+        "cautionTrap": "Confusing angle of incidence i with angle of inclination of wavefront. In right triangle ABC, angle BAC = i and angle ACD = r.",
+        "topperTip": "Draw the two right-angled triangles ABC and ADC sharing the common hypotenuse AC. Box Snell's law.",
+        "mnemonic": "Common Hypotenuse Rule: sin i = BC/AC, sin r = AD/AC."
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-10y-2024",
+        "marks": 3,
+        "year": "CBSE 2024 (Set 55/1/1 Q24)",
+        "pacing": "5 min",
+        "type": "Photoelectric Equation & Stopping Potential",
+        "competency": "Quantum Physics Analysis",
+        "stem": "Write Einstein's photoelectric equation. State how it explains: (i) existence of threshold frequency, (ii) instantaneous emission of photoelectrons without time lag, and (iii) independence of maximum kinetic energy on light intensity.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Einstein's Photoelectric Equation:</strong><br>\n      <code>K_max = h ν - Φ₀ = h (ν - ν₀)</code>, or <code>e V₀ = h ν - Φ₀</code><br>\n      where h = Planck's constant, ν = incident frequency, Φ₀ = h ν₀ = work function, V₀ = stopping potential.</p>\n      <p><strong>2. Three Key Explanations:</strong><br>\n      • <strong>(i) Threshold Frequency (ν₀):</strong> Since K_max must be ≥ 0, emission occurs only if <code>h ν ≥ Φ₀  ⟹  ν ≥ ν₀</code>. Below ν₀, no emission is possible regardless of intensity.<br>\n      • <strong>(ii) Instantaneous Emission (~10⁻⁹ s):</strong> Photoelectric emission is an elastic 1-to-1 collision between a single photon and an electron. Energy transfer is instantaneous without cumulative energy absorption.<br>\n      • <strong>(iii) K_max independent of intensity:</strong> Intensity corresponds to number of photons per second, not energy per photon. Each photon has energy hν. Hence K_max depends solely on incident frequency ν, not on intensity.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Einstein equation with all symbols defined | [2 Marks] 0.67M each for explaining threshold frequency, 1-to-1 collision, and photon energy independence",
+        "cautionTrap": "Saying that higher intensity gives electrons higher kinetic energy. Higher intensity ONLY increases the number of emitted photoelectrons (saturation current)!",
+        "topperTip": "Explicitly write the 1-to-1 photon-electron interaction principle to explain zero time lag.",
+        "mnemonic": "Intensity = Quantity (Current); Frequency = Quality (Energy / K_max)."
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/1 Q29)",
+        "pacing": "5 min",
+        "type": "Bohr Model & Energy Levels",
+        "competency": "Atomic Physics Derivation",
+        "stem": "State Bohr's postulates for hydrogen atom. Derive the expression for the total energy of an electron in the n-th stationary orbit of hydrogen atom. What is the physical significance of the negative sign in the total energy expression?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Bohr's Postulates:</strong><br>\n      • <strong>Quantization Condition:</strong> Angular momentum <code>L = m v r = (n h) / (2π)</code>.<br>\n      • <strong>Electrostatic Centripetal Force:</strong> <code>(m v²) / r = (1 / 4πε₀) (e² / r²)</code>.<br>\n      • <strong>Frequency Condition:</strong> <code>h ν = E₂ - E₁</code>.</p>\n      <p><strong>2. Total Energy Derivation:</strong><br>\n      • Kinetic Energy: <code>K = ½ m v² = (e²) / (8πε₀ r)</code>.<br>\n      • Potential Energy: <code>U = - (e²) / (4πε₀ r)</code>.<br>\n      • Total Energy: <code>E = K + U = - (e²) / (8πε₀ r)</code>.<br>\n      Substituting radius <code>r_n = (ε₀ n² h²) / (π m e²)</code>:<br>\n      <strong>E_n = - (m e⁴) / (8 ε₀² n² h²) = - 13.6 / n² eV</strong>.</p>\n      <p><strong>3. Significance of Negative Sign:</strong><br>\n      The negative sign indicates that the electron is <strong>bound to the nucleus</strong> by electrostatic attraction. Energy must be supplied from outside to liberate the electron to infinity (where E = 0).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Statement of Bohr's angular momentum quantization | [1 Mark] Derivation of E_n = -13.6/n² eV | [1 Mark] Physical explanation of the negative sign (bound state)",
+        "cautionTrap": "Confusing kinetic energy (+e²/8πε₀r) with total energy (-e²/8πε₀r). Notice that E = -K.",
+        "topperTip": "State the key relation: Total Energy E = - Kinetic Energy K = Potential Energy U / 2.",
+        "mnemonic": "Bohr Energy Rule: U = -2K, E = -K, so Total is Negative."
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-kin-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q27)",
+        "pacing": "5 min",
+        "type": "Integrated Rate Equation Proof",
+        "competency": "First-Order Rate Proof",
+        "stem": "Show that for a first order reaction, the time required for 99% completion is twice the time required for 90% completion of the reaction. (log 10 = 1, log 2 = 0.3010)",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. First-Order Integrated Rate Equation:</strong><br>\n      <code>t = (2.303 / k) log [R₀ / R]</code></p>\n      <p><strong>2. For 99% completion (t₉₉%):</strong><br>\n      Let [R₀] = 100. Amount reacted = 99, so remaining [R] = 100 - 99 = 1.<br>\n      <code>t₉₉% = (2.303 / k) log (100 / 1) = (2.303 / k) log (10²) = 2 × (2.303 / k)</code> ...(1)</p>\n      <p><strong>3. For 90% completion (t₉₀%):</strong><br>\n      Remaining [R] = 100 - 90 = 10.<br>\n      <code>t₉₀% = (2.303 / k) log (100 / 10) = (2.303 / k) log (10) = 1 × (2.303 / k)</code> ...(2)</p>\n      <p><strong>4. Comparing (1) and (2):</strong><br>\n      <code>t₉₉% / t₉₀% = [2 × (2.303 / k)] / [1 × (2.303 / k)] = 2</code>.<br>\n      Therefore: <strong>t₉₉% = 2 × t₉₀%</strong>. (Hence Proved).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct formula t = (2.303/k)log([R₀]/[R]) | [1 Mark] Setting up expressions for t₉₉% and t₉₀% | [1 Mark] Ratio calculation and final proof t₉₉% = 2 t₉₀%",
+        "cautionTrap": "Taking remaining concentration as 99 instead of (100 - 99 = 1). [R] is the REMAINING concentration, not reacted concentration!",
+        "topperTip": "Always define [R] = [R₀] - x clearly before substituting into the log expression.",
+        "mnemonic": "Kinetics: Remaining [R] = Initial - Reacted."
+    });
+
+    pushQ("Chemical Kinetics", {
+        "id": "chem-kin-10y-2020",
+        "marks": 5,
+        "year": "CBSE 2020 (Delhi Set 1 Q31)",
+        "pacing": "10 min",
+        "type": "Arrhenius Equation Numerical",
+        "competency": "Activation Energy Calculation",
+        "stem": "The rate constants of a reaction at 500 K and 700 K are 0.02 s⁻¹ and 0.07 s⁻¹ respectively. Calculate the values of activation energy (E_a) and frequency factor (A). (R = 8.314 J K⁻¹ mol⁻¹, log 3.5 = 0.5441)",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Arrhenius Two-Temperature Formula:</strong><br>\n      <code>log (k₂ / k₁) = [ E_a / (2.303 R) ] [ (T₂ - T₁) / (T₁ T₂) ]</code></p>\n      <p><strong>2. Substitution:</strong><br>\n      T₁ = 500 K, k₁ = 0.02 s⁻¹; T₂ = 700 K, k₂ = 0.07 s⁻¹.<br>\n      <code>k₂ / k₁ = 0.07 / 0.02 = 3.5  ⟹  log (3.5) = 0.5441</code>.<br>\n      <code>0.5441 = [ E_a / (2.303 × 8.314) ] [ (700 - 500) / (500 × 700) ]</code><br>\n      <code>0.5441 = [ E_a / 19.147 ] [ 200 / 350000 ] = [ E_a / 19.147 ] [ 1 / 1750 ]</code>.<br>\n      <code>E_a = 0.5441 × 19.147 × 1750 = 18,230 J/mol = <strong>18.23 kJ/mol</strong></code>.</p>\n      <p><strong>3. Calculating Frequency Factor A:</strong><br>\n      From <code>log k₁ = log A - E_a / (2.303 R T₁)</code>:<br>\n      <code>log (0.02) = log A - 18230 / (19.147 × 500) = log A - 1.904</code>.<br>\n      Since log(0.02) = -1.6990 ⟹ <code>-1.6990 = log A - 1.904  ⟹  log A = 0.205</code>.<br>\n      <code>A = 10^0.205 = <strong>1.603 s⁻¹</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Correct Arrhenius equation and substitution | [2 Marks] Calculation of E_a = 18.23 kJ/mol | [1.5 Marks] Calculation of log A and frequency factor A = 1.603 s⁻¹",
+        "cautionTrap": "Forgetting to convert E_a to kJ/mol or using R in calories instead of 8.314 J K⁻¹ mol⁻¹.",
+        "topperTip": "Express E_a with correct SI units (kJ/mol) and box the final result with units.",
+        "mnemonic": "Arrhenius Slope: log(k₂/k₁) = (E_a / 2.303R) (ΔT / T₁T₂)."
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q29)",
+        "pacing": "5 min",
+        "type": "Reasoning & Lanthanoid Contraction",
+        "competency": "Chemical Reasoning",
+        "stem": "Account for the following observations:\\n(a) Zr (atomic radius 160 pm) and Hf (atomic radius 159 pm) have almost identical atomic and ionic radii.\\n(b) Transition metals exhibit high enthalpies of atomization.\\n(c) Mn²⁺ compounds are more stable than Fe²⁺ compounds towards oxidation to +3 state.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Similarity in Zr and Hf Radii:</strong><br>\n      Due to <strong>Lanthanoid Contraction</strong>. The intervention of 14 <em>4f</em> electrons before 5d series elements (like Hf) provides poor shielding of the nuclear charge. The increase in effective nuclear charge pulls the electrons inward, compensating for the expected expansion due to an extra shell.</p>\n      <p><strong>(b) High Enthalpies of Atomization:</strong><br>\n      Transition metals have a large number of unpaired electrons in their (n-1)d orbitals which participate alongside ns electrons in strong interatomic metallic bonding (covalent bonding between overlapping d orbitals), requiring very high energy to separate atoms.</p>\n      <p><strong>(c) Stability of Mn²⁺ vs Fe²⁺:</strong><br>\n      • Mn²⁺ has stable <strong>half-filled d⁵</strong> electronic configuration: <code>[Ar] 3d⁵</code>. Removing another electron requires high ionization enthalpy.<br>\n      • Fe²⁺ has configuration <code>[Ar] 3d⁶</code>. Losing one electron gives a highly stable half-filled <code>3d⁵ (Fe³⁺)</code> state. Hence Fe²⁺ is readily oxidized to Fe³⁺, whereas Mn²⁺ resists oxidation.</p>\n    </div>",
+        "stepMarking": "[1 Mark] (a) Lanthanoid contraction with poor 4f shielding | [1 Mark] (b) Strong metallic bonding due to unpaired d-electrons | [1 Mark] (c) Half-filled 3d⁵ stability in Mn²⁺ vs easy loss to 3d⁵ in Fe³⁺",
+        "cautionTrap": "Saying 4f electrons provide strong shielding. 4f orbitals are diffuse and provide extremely POOR shielding!",
+        "topperTip": "Always write out the electronic configurations: Mn²⁺ = [Ar] 3d⁵ and Fe²⁺ = [Ar] 3d⁶.",
+        "mnemonic": "Shielding efficiency order: s > p > d > f (f is weakest)."
+    });
+
+    pushQ("Coordination Compounds", {
+        "id": "chem-coord-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q28)",
+        "pacing": "6 min",
+        "type": "CFT & Hybridization Analysis",
+        "competency": "Coordination Theory",
+        "stem": "Using Crystal Field Theory (CFT) and Valence Bond Theory (VBT), compare the octahedral complexes [Co(NH₃)₆]³⁺ and [CoF₆]³⁻ with respect to: (i) Oxidation state of central metal, (ii) Hybridization & geometry, (iii) Magnetic behavior (diamagnetic / paramagnetic with spin-only magnetic moment).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Cobalt has atomic number 27: <code>[Ar] 3d⁷ 4s²</code>. In both complexes, Co is in <strong>+3 oxidation state</strong>: <code>Co³⁺ = [Ar] 3d⁶</code>.<br><br>\n      • <strong>1. [Co(NH₃)₆]³⁺ Complex:</strong><br>\n      - <em>Ligand field:</em> NH₃ is a <strong>strong field ligand</strong> (Δₒ > P). It causes pairing of 3d electrons: <code>t₂g⁶ eg⁰</code>.<br>\n      - <em>Hybridization:</em> Two 3d, one 4s, and three 4p orbitals hybridize to form <strong>d²sp³</strong> (Inner orbital octahedral).<br>\n      - <em>Magnetic property:</em> All 6 electrons are paired (n = 0). <strong>Diamagnetic</strong> (μ = 0 BM, low-spin).<br><br>\n      • <strong>2. [CoF₆]³⁻ Complex:</strong><br>\n      - <em>Ligand field:</em> F⁻ is a <strong>weak field ligand</strong> (Δₒ < P). Cannot force pairing: <code>t₂g⁴ eg²</code>.<br>\n      - <em>Hybridization:</em> Uses outer 4d orbitals to form <strong>sp³d²</strong> (Outer orbital octahedral).<br>\n      - <em>Magnetic property:</em> 4 unpaired electrons (n = 4). <strong>Paramagnetic</strong> (high-spin).<br>\n      <code>μ = √(n(n+2)) = √(4(6)) = √24 ≈ 4.90 BM</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Oxidation state +3 and configuration Co³⁺ = 3d⁶ | [1 Mark] [Co(NH₃)₆]³⁺ inner orbital d²sp³, paired t₂g⁶, diamagnetic | [1 Mark] [CoF₆]³⁻ outer orbital sp³d², 4 unpaired electrons, μ = 4.9 BM",
+        "cautionTrap": "Assuming NH₃ is always a weak ligand. With Co³⁺, NH₃ acts as a STRONG field ligand causing electron pairing!",
+        "topperTip": "Draw the 5 d-orbitals splitting into t₂g (lower 3) and eg (upper 2) to get bonus marks from examiners.",
+        "mnemonic": "NH₃ with Co³⁺ pairs up (Inner d²sp³); Halides never pair up (Outer sp³d²)."
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-halo-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q24)",
+        "pacing": "5 min",
+        "type": "Reaction Mechanisms & Inversion",
+        "competency": "Organic Mechanism Comparison",
+        "stem": "(a) Why are haloarenes extremely less reactive towards nucleophilic substitution reactions than haloalkanes? (Give two reasons)\\n(b) Which alkyl halide in each of the following pairs will react faster in an S_N2 reaction? Explain why.\\n  (i) 1-Bromobutane or 2-Bromobutane\\n  (ii) 1-Chlorobutane or 1-Iodobutane",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Low Reactivity of Haloarenes:</strong><br>\n      1. <strong>Resonance Effect:</strong> The lone pair of electrons on halogen delocalizes with the benzene ring π-electrons, imparting a <strong>partial double bond character</strong> to the C-X bond which is shorter and harder to break than a pure single bond in haloalkanes.<br>\n      2. <strong>Hybridization Difference:</strong> In haloarenes, carbon is <strong>sp² hybridized</strong> (33% s-character, more electronegative, holds C-X bond tightly), whereas in haloalkanes carbon is <strong>sp³ hybridized</strong> (25% s-character).<br>\n      3. <strong>Instability of Phenyl Cation:</strong> Phenyl cation cannot be stabilized by resonance.</p>\n      <p><strong>(b) S_N2 Reactivity:</strong><br>\n      • (i) <strong>1-Bromobutane</strong> reacts faster than 2-bromobutane. S_N2 proceeds via a single-step backside attack. Primary (1°) halide has much less steric hindrance than secondary (2°) halide.<br>\n      • (ii) <strong>1-Iodobutane</strong> reacts faster than 1-chlorobutane. Iodine is a larger atom with lower bond dissociation enthalpy (C-I bond is weaker and I⁻ is a better leaving group than Cl⁻).</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Two valid reasons for low reactivity of haloarenes (Resonance + sp² hybridization) | [0.75 Mark] 1-Bromobutane faster due to less steric hindrance | [0.75 Mark] 1-Iodobutane faster due to better leaving group ability of I⁻",
+        "cautionTrap": "Confusing S_N1 with S_N2 order! S_N2 order is 1° > 2° > 3° (least steric hindrance); S_N1 is 3° > 2° > 1° (carbocation stability).",
+        "topperTip": "Always pair 'less steric hindrance' with S_N2, and 'better leaving group' with C-I over C-Cl.",
+        "mnemonic": "S_N2 = 1° First (Crowd bad); S_N1 = 3° First (Carbocation good)."
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-alc-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q25)",
+        "pacing": "5 min",
+        "type": "Named Reactions & Mechanisms",
+        "competency": "Organic Reactions",
+        "stem": "Write the chemical equations and reaction conditions for the following named organic reactions:\\n(a) Reimer-Tiemann Reaction\\n(b) Kolbe's Reaction\\n(c) Williamson Ether Synthesis (including why tert-butyl ethyl ether must be prepared from sodium tert-butoxide and ethyl bromide, not vice versa).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Reimer-Tiemann Reaction:</strong><br>\n      Phenol treated with chloroform (CHCl₃) in aqueous NaOH at 340 K followed by acid hydrolysis yields <strong>Salicylaldehyde (2-hydroxybenzaldehyde)</strong>:<br>\n      <code>C₆H₅OH + CHCl₃ + 3NaOH  ⟶  C₆H₄(OH)(CHO) [o-Salicylaldehyde] + 3NaCl + 2H₂O</code> (Electrophile is dichlorocarbene :CCl₂).</p>\n      <p><strong>(b) Kolbe's Reaction:</strong><br>\n      Sodium phenoxide treated with carbon dioxide (CO₂) under pressure (4-7 atm) at 400 K followed by acidification produces <strong>Salicylic acid (2-hydroxybenzoic acid)</strong>:<br>\n      <code>C₆H₅ONa + CO₂ (400 K, 4-7 atm)  ⟶  C₆H₄(OH)(COONa)  —[H⁺]⟶  C₆H₄(OH)(COOH)</code>.</p>\n      <p><strong>(c) Williamson Synthesis & Steric Restriction:</strong><br>\n      Reaction involves S_N2 attack of alkoxide on primary alkyl halide:<br>\n      <code>(CH₃)₃C-O⁻ Na⁺ + CH₃CH₂-Br  ⟶  (CH₃)₃C-O-CH₂CH₃ + NaBr</code>.<br>\n      <em>Why not vice versa?</em> If tertiary alkyl halide (CH₃)₃C-Br is reacted with strong base CH₃CH₂O⁻Na⁺, <strong>elimination predominates over substitution</strong>, yielding an alkene (2-methylpropene) rather than an ether.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Reimer-Tiemann equation producing salicylaldehyde | [1 Mark] Kolbe's reaction producing salicylic acid | [1 Mark] Williamson synthesis equation and explanation of elimination with 3° halides",
+        "cautionTrap": "Using tertiary alkyl halide in Williamson ether synthesis. 3° halide gives ALKENE via E2 elimination!",
+        "topperTip": "Remember the electrophile in Reimer-Tiemann is neutral dichlorocarbene :CCl₂. Mentioning this impresses examiners.",
+        "mnemonic": "Reimer makes Aldehyde (R-A); Kolbe makes Acid (K-A)."
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-ald-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 56/1/1 Q33)",
+        "pacing": "10 min",
+        "type": "Organic Conversions & Tests",
+        "competency": "Carbonyl Chemistry & Distinguishing Tests",
+        "stem": "(a) Distinguish chemically between the following pairs of compounds:\\n  (i) Acetaldehyde (Ethanal) and Benzaldehyde\\n  (ii) Pentan-2-one and Pentan-3-one\\n(b) Write the chemical equations for:\\n  (i) Aldol Condensation of ethanal\\n  (ii) Cannizzaro Reaction of benzaldehyde\\n  (iii) Hell-Volhard-Zelinsky (HVZ) reaction of propanoic acid.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Distinguishing Chemical Tests:</strong><br>\n      • (i) <strong>Ethanal vs Benzaldehyde (Fehling's Test / Iodoform Test):</strong><br>\n      Ethanal gives a red precipitate of Cu₂O with Fehling's solution (aliphatic aldehyde), whereas Benzaldehyde (aromatic aldehyde) does not reduce Fehling's solution. Alternatively, Ethanal gives yellow CHI₃ precipitate with I₂/NaOH (Iodoform test).<br>\n      • (ii) <strong>Pentan-2-one vs Pentan-3-one (Iodoform Test):</strong><br>\n      Pentan-2-one contains a methyl ketone group (CH₃-C=O) and forms a <strong>yellow crystalline precipitate of Iodoform (CHI₃)</strong> upon warming with I₂ and NaOH. Pentan-3-one lacks a methyl ketone group and gives no yellow precipitate.</p>\n      <p><strong>(b) Chemical Equations:</strong><br>\n      • (i) <strong>Aldol Condensation:</strong><br>\n      <code>2 CH₃CHO  —[dil. NaOH]⟶  CH₃-CH(OH)-CH₂-CHO (3-hydroxybutanal)  —[Δ, -H₂O]⟶  CH₃-CH=CH-CHO (But-2-enal)</code>.<br>\n      • (ii) <strong>Cannizzaro Reaction:</strong><br>\n      Aldehydes without α-hydrogen undergo disproportionation with conc. NaOH:<br>\n      <code>2 C₆H₅CHO + conc. NaOH  ⟶  C₆H₅COONa (Sodium benzoate) + C₆H₅CH₂OH (Benzyl alcohol)</code>.<br>\n      • (iii) <strong>HVZ Reaction:</strong><br>\n      Carboxylic acids with α-hydrogen react with Br₂ in presence of red phosphorus to form α-bromo carboxylic acid:<br>\n      <code>CH₃-CH₂-COOH + Br₂ —[Red P]⟶ CH₃-CH(Br)-COOH (2-bromopropanoic acid) + HBr</code>.</p>\n    </div>",
+        "stepMarking": "[2 Marks] 1M each for correct chemical tests with observable results (Fehling's / Iodoform) | [3 Marks] 1M each for Aldol, Cannizzaro, and HVZ balanced equations",
+        "cautionTrap": "Writing that benzaldehyde reduces Fehling's solution. Aromatic aldehydes DO NOT reduce Fehling's solution!",
+        "topperTip": "Always state the clear observable result: e.g. 'Yellow crystalline precipitate of CHI₃ with antiseptic smell'.",
+        "mnemonic": "Iodoform Key: Needs CH₃-C=O or CH₃-CH(OH)- group."
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q26)",
+        "pacing": "5 min",
+        "type": "Hinsberg Test & Basic Strength",
+        "competency": "Functional Group Identification",
+        "stem": "(a) How will you distinguish between primary (1°), secondary (2°), and tertiary (3°) amines using the Hinsberg reagent (benzenesulphonyl chloride)? Give reactions and observations.\\n(b) Arrange the following in increasing order of their basic strength in aqueous solution:\\n  (C₂H₅)₃N, (C₂H₅)₂NH, C₂H₅NH₂, NH₃.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Hinsberg Test (C₆H₅SO₂Cl):</strong><br>\n      1. <strong>Primary (1°) Amine:</strong> Reacts with Hinsberg reagent to form N-alkylbenzenesulphonamide, which has an acidic hydrogen attached to nitrogen. Hence, it <strong>dissolves in aqueous KOH / NaOH</strong>.<br>\n      <code>C₆H₅SO₂Cl + R-NH₂  ⟶  C₆H₅SO₂-NH-R + HCl  —[KOH]⟶  Soluble potassium salt</code>.<br>\n      2. <strong>Secondary (2°) Amine:</strong> Reacts to form N,N-dialkylbenzenesulphonamide, which has no acidic hydrogen. Hence, it <strong>remains insoluble in alkali</strong>.<br>\n      <code>C₆H₅SO₂Cl + R₂NH  ⟶  C₆H₅SO₂-NR₂ + HCl (Insoluble precipitate)</code>.<br>\n      3. <strong>Tertiary (3°) Amine:</strong> Has no hydrogen atom on nitrogen and <strong>does not react</strong> with Hinsberg reagent.</p>\n      <p><strong>(b) Basic Strength in Aqueous Medium:</strong><br>\n      Governed by the combined interplay of inductive effect (+I), steric hindrance, and hydration of conjugate cations.<br>\n      For ethyl-substituted amines, the order is <strong>2° > 3° > 1° > NH₃</strong>:<br>\n      <strong>NH₃ < C₂H₅NH₂ < (C₂H₅)₃N < (C₂H₅)₂NH</strong>.</p>\n    </div>",
+        "stepMarking": "[2 Marks] Complete Hinsberg distinction: 1° dissolves in KOH, 2° insoluble in KOH, 3° no reaction | [1 Mark] Correct basic strength order with explanation of 2° maximum",
+        "cautionTrap": "Confusing ethyl vs methyl order! For Ethyl: 2° > 3° > 1° (231 rule). For Methyl: 2° > 1° > 3° (213 rule).",
+        "topperTip": "State the rule: 'Ethyl groups are bigger, so order is 2-3-1 (231); Methyl groups are smaller, so order is 2-1-3 (213)'.",
+        "mnemonic": "Ethyl amine order = 231; Methyl amine order = 213."
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 56/1/1 Q23)",
+        "pacing": "5 min",
+        "type": "Protein Denaturation & Nucleic Acids",
+        "competency": "Biological Chemistry",
+        "stem": "(a) What is meant by denaturation of proteins? Which protein structures are destroyed and which structure remains intact during denaturation? Give one common example.\\n(b) Write two structural differences between DNA and RNA.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Denaturation of Proteins:</strong><br>\n      • When a protein in its native state is subjected to physical change (e.g. heating) or chemical change (e.g. pH change), the hydrogen bonds are broken, globules unfold, and the protein loses its biological activity. This is called <strong>denaturation</strong>.<br>\n      • <strong>Structures:</strong> Secondary (2°) and tertiary (3°) structures are completely destroyed, while the <strong>primary (1°) structure (covalent peptide backbone sequence) remains completely intact</strong>.<br>\n      • <strong>Examples:</strong> Coagulation of egg white on boiling (albumin), or curdling of milk caused by lactic acid bacteria.</p>\n      <p><strong>(b) Two Differences between DNA and RNA:</strong><br>\n      1. <strong>Pentose Sugar:</strong> DNA contains 2-deoxy-D-ribose sugar; RNA contains D-ribose sugar.<br>\n      2. <strong>Nitrogenous Bases:</strong> DNA contains Thymine (along with Adenine, Guanine, Cytosine); RNA contains <strong>Uracil</strong> instead of Thymine.<br>\n      3. <strong>Structure:</strong> DNA is double-stranded helical; RNA is single-stranded.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Denaturation definition, identifying 2°/3° destroyed while 1° remains intact, and example | [1.5 Marks] Two correct structural differences between DNA and RNA",
+        "cautionTrap": "Claiming that primary structure is destroyed during boiling an egg. Primary peptide covalent bonds NEVER break during denaturation!",
+        "topperTip": "Emphasize that the covalent peptide sequence (primary structure) remains 100% intact.",
+        "mnemonic": "Denaturation: 1° survives; 2° and 3° untangle."
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-10y-2023",
+        "marks": 2,
+        "year": "CBSE 2023 (Set 65/1/1 Q19)",
+        "pacing": "3 min",
+        "type": "Principal Value Evaluation",
+        "competency": "Domain & Principal Value",
+        "stem": "Find the principal value of each of the following:\\n(a) sin⁻¹(-1/2) + 2 cos⁻¹(-√3/2)\\n(b) tan⁻¹(tan 3π/4)",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Evaluation of sin⁻¹(-1/2) + 2 cos⁻¹(-√3/2):</strong><br>\n      • Principal branch of sin⁻¹ is <code>[-π/2, π/2]</code>: <code>sin⁻¹(-1/2) = - sin⁻¹(1/2) = - π/6</code>.<br>\n      • Principal branch of cos⁻¹ is <code>[0, π]</code>: <code>cos⁻¹(-√3/2) = π - cos⁻¹(√3/2) = π - π/6 = 5π/6</code>.<br>\n      • Sum = <code>- π/6 + 2 (5π/6) = - π/6 + 5π/3 = - π/6 + 10π/6 = 9π/6 = <strong>3π/2</strong></code>.</p>\n      <p><strong>(b) Evaluation of tan⁻¹(tan 3π/4):</strong><br>\n      • The principal value branch of tan⁻¹ is <code>(-π/2, π/2)</code>.<br>\n      • 3π/4 does not belong to (-π/2, π/2).<br>\n      • Write <code>tan (3π/4) = tan (π - π/4) = - tan (π/4) = tan (-π/4)</code>.<br>\n      • Since -π/4 ∈ (-π/2, π/2):<br>\n      <strong>tan⁻¹(tan 3π/4) = - π/4</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct principal values of sin⁻¹ and cos⁻¹ and sum = 3π/2 | [1 Mark] Handling range of tan⁻¹ and obtaining -π/4",
+        "cautionTrap": "Writing tan⁻¹(tan 3π/4) = 3π/4 directly! The formula tan⁻¹(tan x) = x holds ONLY when x belongs to the principal branch (-π/2, π/2).",
+        "topperTip": "Always verify that your final angle lies within the principal value interval before moving to the next question.",
+        "mnemonic": "Range check: sin⁻¹ & tan⁻¹ live in (-π/2, π/2); cos⁻¹ lives in [0, π]."
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cont-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 65/1/1 Q23)",
+        "pacing": "5 min",
+        "type": "Continuity at a Point & Finding k",
+        "competency": "Limit & Continuity",
+        "stem": "Find the value of k so that the function f(x) defined by:\\nf(x) = { (1 - cos 4x) / (8 x²), if x ≠ 0 ;  k, if x = 0 }\\nis continuous at x = 0.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Condition for Continuity:</strong><br>\n      For f(x) to be continuous at x = 0, we must have: <code>lim_{x → 0} f(x) = f(0) = k</code>.</p>\n      <p><strong>2. Evaluating the Limit:</strong><br>\n      Using trigonometric identity: <code>1 - cos 4x = 2 sin²(2x)</code>.<br>\n      <code>lim_{x → 0} [ 2 sin²(2x) ] / (8 x²) = lim_{x → 0} [ 2 sin²(2x) ] / [ 2 (4 x²) ]</code><br>\n      <code>= lim_{x → 0} [ sin²(2x) ] / [ (2x)² ] = [ lim_{x → 0} sin(2x) / (2x) ]²</code>.<br>\n      Since <code>lim_{θ → 0} (sin θ / θ) = 1</code>:<br>\n      <strong>Limit = (1)² = 1</strong>.</p>\n      <p><strong>3. Determining k:</strong><br>\n      Since lim_{x → 0} f(x) = f(0) = k: <strong>k = 1</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Statement of continuity condition lim_{x→0} f(x) = f(0) | [1 Mark] Use of identity 1 - cos 4x = 2 sin²(2x) | [1 Mark] Standard limit evaluation sin(2x)/(2x) → 1 and finding k = 1",
+        "cautionTrap": "Forgetting to square the standard limit or miscalculating the coefficient of (2x)².",
+        "topperTip": "You can alternatively apply L'Hôpital's rule twice: (4 sin 4x)/(16x) ⟹ (16 cos 4x)/16 = 1. Mention both methods for verification.",
+        "mnemonic": "Continuity: LHL = RHL = Value of Function at the point."
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-diff-10y-2020",
+        "marks": 5,
+        "year": "CBSE 2020 (Delhi Set 1 Q32)",
+        "pacing": "10 min",
+        "type": "Second Order Differential Equation Proof",
+        "competency": "Parametric & Second Derivative Proof",
+        "stem": "If y = (sin⁻¹ x)², prove that (1 - x²) (d²y/dx²) - x (dy/dx) - 2 = 0.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. First Derivative:</strong><br>\n      Given <code>y = (sin⁻¹ x)²</code>.<br>\n      Differentiating with respect to x:<br>\n      <code>dy/dx = 2 (sin⁻¹ x) · (1 / √(1 - x²))</code>.<br>\n      Cross-multiplying: <code>√(1 - x²) (dy/dx) = 2 sin⁻¹ x</code>.</p>\n      <p><strong>2. Squaring Both Sides:</strong><br>\n      <code>(1 - x²) (dy/dx)² = 4 (sin⁻¹ x)² = 4 y</code>.</p>\n      <p><strong>3. Differentiating Again with respect to x:</strong><br>\n      Using product rule on LHS:<br>\n      <code>(1 - x²) · [ 2 (dy/dx) (d²y/dx²) ] + (dy/dx)² · [ - 2x ] = 4 (dy/dx)</code>.<br>\n      Factoring out <code>2 (dy/dx)</code> on both sides (since dy/dx ≠ 0 in general):<br>\n      <code>2 (dy/dx) [ (1 - x²) (d²y/dx²) - x (dy/dx) ] = 2 (dy/dx) [ 2 ]</code>.<br>\n      Cancelling <code>2 (dy/dx)</code>:<br>\n      <strong>(1 - x²) (d²y/dx²) - x (dy/dx) - 2 = 0</strong>. (Hence Proved).</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] First derivative dy/dx and cross multiplication | [1.5 Marks] Squaring both sides to get (1 - x²)(dy/dx)² = 4y | [2 Marks] Second differentiation and cancelling 2(dy/dx) to achieve final relation",
+        "cautionTrap": "Differentiating dy/dx directly using quotient rule without cross-multiplying first. Direct quotient rule leads to massive algebraic mess with square roots!",
+        "topperTip": "Golden Topper Strategy: Always cross-multiply √(1 - x²) and SQUARE both sides before taking the second derivative.",
+        "mnemonic": "Cross-Multiply ⟹ Square Both Sides ⟹ Differentiate Again."
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-10y-2022",
+        "marks": 5,
+        "year": "CBSE 2022 (Term 2 Q14)",
+        "pacing": "10 min",
+        "type": "Shortest Distance between Skew Lines",
+        "competency": "3D Vector Geometry",
+        "stem": "Find the shortest distance between the following two skew lines:\\nLine 1: r⃗ = (î + 2ĵ + 3k̂) + λ (î - 3ĵ + 2k̂)\\nLine 2: r⃗ = (4î + 5ĵ + 6k̂) + μ (2î + 3ĵ + k̂)",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 340 180\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 200px;\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"30\" y1=\"40\" x2=\"310\" y2=\"70\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><line x1=\"30\" y1=\"140\" x2=\"310\" y2=\"120\" stroke=\"#16a34a\" stroke-width=\"2.5\"/><line x1=\"170\" y1=\"56\" x2=\"170\" y2=\"130\" stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"4\"/><text x=\"180\" y=\"95\" font-size=\"12\" font-weight=\"bold\" fill=\"#dc2626\">Shortest Distance d</text><text x=\"40\" y=\"30\" font-size=\"11\" font-weight=\"bold\" fill=\"#1d4ed8\">Line 1 (a⃗₁, b⃗₁)</text><text x=\"40\" y=\"160\" font-size=\"11\" font-weight=\"bold\" fill=\"#15803d\">Line 2 (a⃗₂, b⃗₂)</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Identify Vectors:</strong><br>\n      • Line 1: <code>a⃗₁ = î + 2ĵ + 3k̂</code>,  <code>b⃗₁ = î - 3ĵ + 2k̂</code>.<br>\n      • Line 2: <code>a⃗₂ = 4î + 5ĵ + 6k̂</code>, <code>b⃗₂ = 2î + 3ĵ + k̂</code>.<br>\n      • Difference vector: <code>a⃗₂ - a⃗₁ = (4-1)î + (5-2)ĵ + (6-3)k̂ = 3î + 3ĵ + 3k̂</code>.</p>\n      <p><strong>2. Cross Product (b⃗₁ × b⃗₂):</strong><br>\n      <code>b⃗₁ × b⃗₂ = | î   ĵ   k̂ |\\n| 1  -3   2 |\\n| 2   3   1 |</code><br>\n      <code>= î [(-3)(1) - (2)(3)] - ĵ [(1)(1) - (2)(2)] + k̂ [(1)(3) - (-3)(2)]</code><br>\n      <code>= î [-3 - 6] - ĵ [1 - 4] + k̂ [3 + 6] = -9î + 3ĵ + 9k̂</code>.<br>\n      Magnitude: <code>|b⃗₁ × b⃗₂| = √[(-9)² + 3² + 9²] = √[81 + 9 + 81] = √171 = 3√19</code>.</p>\n      <p><strong>3. Dot Product (a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂):</strong><br>\n      <code>(3î + 3ĵ + 3k̂) · (-9î + 3ĵ + 9k̂) = (3)(-9) + (3)(3) + (3)(9) = -27 + 9 + 27 = 9</code>.</p>\n      <p><strong>4. Shortest Distance Formula:</strong><br>\n      <code>d = | [ (a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂) ] / |b⃗₁ × b⃗₂| | = | 9 / (3√19) | = 3 / √19 = <strong>(3√19) / 19 units</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct formula d = |(a⃗₂ - a⃗₁) · (b⃗₁ × b⃗₂)| / |b⃗₁ × b⃗₂| | [1.5 Marks] Cross product b⃗₁ × b⃗₂ and its magnitude 3√19 | [1.5 Marks] Dot product calculation (value = 9) | [1 Mark] Final rationalized shortest distance (3√19)/19 units",
+        "cautionTrap": "Dropping the absolute value brackets. Distance is always a non-negative scalar quantity!",
+        "topperTip": "Rationalize the denominator: express 3/√19 as 3√19 / 19 units with proper units stated.",
+        "mnemonic": "Skew Distance: d = |(Δa⃗ · (b⃗₁ × b⃗₂)) / |b⃗₁ × b⃗₂||."
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lpp-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 65/1/1 Q35)",
+        "pacing": "10 min",
+        "type": "Bounded Feasible Region Optimization",
+        "competency": "Graphical Method & Corner Point Evaluation",
+        "stem": "Solve the following Linear Programming Problem graphically:\\nMaximize: Z = 4x + y\\nSubject to constraints:\\nx + y ≤ 50\\n3x + y ≤ 90\\nx ≥ 0, y ≥ 0.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 300 220\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 220px;\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"40\" y1=\"180\" x2=\"280\" y2=\"180\" stroke=\"#0f172a\" stroke-width=\"2\"/><line x1=\"40\" y1=\"180\" x2=\"40\" y2=\"20\" stroke=\"#0f172a\" stroke-width=\"2\"/><polygon points=\"40,180 40,80 80,100 160,180\" fill=\"#bbf7d0\" fill-opacity=\"0.6\" stroke=\"#16a34a\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"180\" r=\"4\" fill=\"#0f172a\"/><circle cx=\"40\" cy=\"80\" r=\"4\" fill=\"#0f172a\"/><circle cx=\"80\" cy=\"100\" r=\"4\" fill=\"#dc2626\"/><circle cx=\"160\" cy=\"180\" r=\"4\" fill=\"#0f172a\"/><text x=\"25\" y=\"195\" font-size=\"10\" font-weight=\"bold\">O(0,0)</text><text x=\"5\" y=\"80\" font-size=\"10\" font-weight=\"bold\">B(0,50)</text><text x=\"90\" y=\"95\" font-size=\"10\" font-weight=\"bold\" fill=\"#dc2626\">C(20,30)</text><text x=\"150\" y=\"195\" font-size=\"10\" font-weight=\"bold\">A(30,0)</text><text x=\"260\" y=\"195\" font-size=\"11\" font-weight=\"bold\">X</text><text x=\"25\" y=\"25\" font-size=\"11\" font-weight=\"bold\">Y</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Boundary Lines & Intercepts:</strong><br>\n      • Line 1: <code>x + y = 50</code> passes through (50, 0) and (0, 50). Testing (0,0): 0 + 0 ≤ 50 (True, contains origin).<br>\n      • Line 2: <code>3x + y = 90</code> passes through (30, 0) and (0, 90). Testing (0,0): 0 + 0 ≤ 90 (True, contains origin).<br>\n      • Non-negativity constraints <code>x ≥ 0, y ≥ 0</code> restrict the region to the First Quadrant.</p>\n      <p><strong>2. Point of Intersection (C):</strong><br>\n      Subtracting: <code>(3x + y) - (x + y) = 90 - 50  ⟹  2x = 40  ⟹  x = 20</code>.<br>\n      Substitute x = 20: <code>20 + y = 50  ⟹  y = 30</code>. Intersection point is <strong>C(20, 30)</strong>.</p>\n      <p><strong>3. Corner Points & Objective Value Z = 4x + y:</strong><br>\n      The feasible region OACB is bounded.</p>\n      <div class=\"overflow-x-auto\">\n        <table class=\"w-full border-collapse border border-slate-300 text-left text-xs\">\n          <thead>\n            <tr class=\"bg-slate-100\">\n              <th class=\"border border-slate-300 p-1 font-bold\">Corner Point</th>\n              <th class=\"border border-slate-300 p-1 font-bold\">Z = 4x + y Value</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr><td class=\"border border-slate-300 p-1\">O (0, 0)</td><td class=\"border border-slate-300 p-1\">Z = 4(0) + 0 = 0</td></tr>\n            <tr><td class=\"border border-slate-300 p-1\">A (30, 0)</td><td class=\"border border-slate-300 p-1 font-bold text-indigo-700\">Z = 4(30) + 0 = 120 (MAXIMUM)</td></tr>\n            <tr><td class=\"border border-slate-300 p-1\">C (20, 30)</td><td class=\"border border-slate-300 p-1\">Z = 4(20) + 30 = 80 + 30 = 110</td></tr>\n            <tr><td class=\"border border-slate-300 p-1\">B (0, 50)</td><td class=\"border border-slate-300 p-1\">Z = 4(0) + 50 = 50</td></tr>\n          </tbody>\n        </table>\n      </div>\n      <p><strong>Conclusion:</strong> Maximum value of Z is <strong>120 at point A(30, 0)</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Accurate plotting of both constraint lines and shading feasible region OACB | [1 Mark] Finding intersection point C(20, 30) | [1.5 Marks] Corner point table with Z evaluation | [1 Mark] Final conclusion: Max Z = 120 at (30, 0)",
+        "cautionTrap": "Assuming the maximum must occur at the intersection point C(20, 30). Here A(30,0) gives 120 while C(20,30) gives only 110!",
+        "topperTip": "Always evaluate Z at ALL corner points in a neat table. Never guess which point gives the optimum.",
+        "mnemonic": "LPP 4 Steps: Plot lines ⟹ Shade Region ⟹ Find Corner Points ⟹ Table Z."
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 65/1/1 Q34)",
+        "pacing": "10 min",
+        "type": "Bayes' Theorem Application",
+        "competency": "Conditional Probability & Bayes' Law",
+        "stem": "An insurance company insured 2000 scooter drivers, 4000 car drivers and 6000 truck drivers. The probability of an accident involving a scooter, car, and truck is 0.01, 0.03, and 0.15 respectively. One of the insured persons meets with an accident. What is the probability that he is a scooter driver?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Define Events:</strong><br>\n      • Total insured drivers = 2000 + 4000 + 6000 = 12,000.<br>\n      • Let E₁ = Insured person is a scooter driver ⟹ <code>P(E₁) = 2000 / 12000 = 2/12 = 1/6</code>.<br>\n      • Let E₂ = Insured person is a car driver ⟹ <code>P(E₂) = 4000 / 12000 = 4/12 = 1/3</code>.<br>\n      • Let E₃ = Insured person is a truck driver ⟹ <code>P(E₃) = 6000 / 12000 = 6/12 = 1/2</code>.<br>\n      • Let A = Person meets with an accident.</p>\n      <p><strong>2. Conditional Probabilities:</strong><br>\n      • <code>P(A|E₁) = 0.01 = 1/100</code>.<br>\n      • <code>P(A|E₂) = 0.03 = 3/100</code>.<br>\n      • <code>P(A|E₃) = 0.15 = 15/100</code>.</p>\n      <p><strong>3. Applying Bayes' Theorem:</strong><br>\n      We need <code>P(E₁|A)</code>:<br>\n      <code>P(E₁|A) = [ P(E₁) P(A|E₁) ] / [ P(E₁) P(A|E₁) + P(E₂) P(A|E₂) + P(E₃) P(A|E₃) ]</code>.<br>\n      Numerator = <code>(1/6) × (1/100) = 1 / 600</code>.<br>\n      Denominator = <code>(1/6)(1/100) + (1/3)(3/100) + (1/2)(15/100)</code><br>\n      <code>= (1/600) + (6/600) + (45/600) = 52 / 600</code>.<br>\n      Therefore: <code>P(E₁|A) = (1 / 600) / (52 / 600) = <strong>1 / 52</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct definition of events E₁, E₂, E₃ and prior probabilities | [1 Mark] Correct conditional probabilities P(A|E_i) | [1.5 Marks] Statement of Bayes' formula | [1.5 Marks] Numerator/denominator evaluation and final answer 1/52",
+        "cautionTrap": "Confusing P(A|E₁) with P(E₁|A). P(A|E₁) is given (probability of accident given scooter); P(E₁|A) is asked (probability of scooter given accident).",
+        "topperTip": "Express all prior probabilities with a common denominator (e.g. out of 600) to cancel denominators instantly and prevent fraction arithmetic errors.",
+        "mnemonic": "Bayes' Law: Posterior = (Prior × Likelihood) / Total Evidence."
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-net-10y-2023",
+        "marks": 4,
+        "year": "CBSE 2023 (Set 083 Q35)",
+        "pacing": "8 min",
+        "type": "Network Architecture Case Study",
+        "competency": "Network Design & 80-20 Rule",
+        "stem": "Knowledge Hub Organization has set up its new center in Mangalore. It has 4 blocks of buildings: Admin Block, Tech Block, Research Block, and Training Block.\\n\nDistances between blocks:\\n\n• Admin to Tech: 60 m\\n\n• Admin to Research: 110 m\\n\n• Admin to Training: 45 m\\n\n• Tech to Research: 70 m\\n\n• Tech to Training: 95 m\\n\n• Research to Training: 140 m\\n\nNumber of Computers in each block: Admin: 30, Tech: 120, Research: 40, Training: 25.\\n\n(a) Suggest the most suitable block to house the SERVER with justification.\\n\n(b) Suggest the best cable layout connecting the blocks.\\n\n(c) Suggest the placement of: (i) Repeater, and (ii) Hub/Switch with justification.\\n\n(d) Which fast wired transmission media should be used to connect the blocks?",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 340 180\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 200px;\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"30\" y=\"30\" width=\"80\" height=\"50\" rx=\"6\" fill=\"#e0f2fe\" stroke=\"#0284c7\" stroke-width=\"1.5\"/><text x=\"45\" y=\"55\" font-size=\"10\" font-weight=\"bold\" fill=\"#0369a1\">Admin</text><text x=\"50\" y=\"70\" font-size=\"9\" fill=\"#0369a1\">(30 PCs)</text><rect x=\"230\" y=\"30\" width=\"80\" height=\"50\" rx=\"6\" fill=\"#fef3c7\" stroke=\"#d97706\" stroke-width=\"2\"/><text x=\"245\" y=\"52\" font-size=\"10\" font-weight=\"bold\" fill=\"#b45309\">Tech (SERVER)</text><text x=\"250\" y=\"68\" font-size=\"9\" fill=\"#b45309\">(120 PCs)</text><rect x=\"30\" y=\"110\" width=\"80\" height=\"50\" rx=\"6\" fill=\"#f1f5f9\" stroke=\"#475569\" stroke-width=\"1.5\"/><text x=\"45\" y=\"132\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\">Training</text><text x=\"50\" y=\"148\" font-size=\"9\" fill=\"#334155\">(25 PCs)</text><rect x=\"230\" y=\"110\" width=\"80\" height=\"50\" rx=\"6\" fill=\"#ecfdf5\" stroke=\"#059669\" stroke-width=\"1.5\"/><text x=\"245\" y=\"132\" font-size=\"10\" font-weight=\"bold\" fill=\"#047857\">Research</text><text x=\"250\" y=\"148\" font-size=\"9\" fill=\"#047857\">(40 PCs)</text><line x1=\"230\" y1=\"55\" x2=\"110\" y2=\"55\" stroke=\"#2563eb\" stroke-width=\"2\"/><line x1=\"270\" y1=\"80\" x2=\"270\" y2=\"110\" stroke=\"#2563eb\" stroke-width=\"2\"/><line x1=\"70\" y1=\"80\" x2=\"70\" y2=\"110\" stroke=\"#2563eb\" stroke-width=\"2\"/></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Server Placement:</strong><br>\n      The Server should be housed in the <strong>Tech Block</strong>. Justification: According to the <strong>80/20 rule of networking</strong>, the server must be installed in the building containing the maximum number of computers (120 computers), which minimizes network transit traffic.</p>\n      <p><strong>(b) Cable Layout:</strong><br>\n      Star Topology centered at Tech Block or Bus Topology minimizing cable length:<br>\n      • Tech Block to Admin Block: 60 m<br>\n      • Tech Block to Research Block: 70 m<br>\n      • Admin Block to Training Block: 45 m<br>\n      Total cable required = 60 + 70 + 45 = <strong>175 m</strong> (Optimal minimal spanning tree layout).</p>\n      <p><strong>(c) Device Placements:</strong><br>\n      • <strong>Repeater:</strong> Required between blocks where distance exceeds 100 m (e.g. between Admin and Research: 110 m, or Training and Research: 140 m) to regenerate signals and prevent attenuation.<br>\n      • <strong>Hub / Switch:</strong> Required in <strong>EACH of the 4 blocks</strong> to interconnect computers within that local building network.</p>\n      <p><strong>(d) Transmission Media:</strong><br>\n      <strong>Optical Fiber Cable (OF)</strong> for high-speed, high-bandwidth inter-block backbone communication, or <strong>CAT-6 UTP (Twisted Pair)</strong> for cost-effective local intra-block wiring.</p>\n    </div>",
+        "stepMarking": "[1 Mark] (a) Server in Tech block with 80/20 rule justification | [1 Mark] (b) Star / Minimal spanning tree diagram with 175m calculation | [1 Mark] (c) Repeater for >100m runs + Hub/Switch in each block | [1 Mark] (d) Optical Fiber / CAT-6 cable",
+        "cautionTrap": "Suggesting a repeater for a distance under 70m. Repeaters are only justified when cable length exceeds 100 meters (Ethernet 100m limit)!",
+        "topperTip": "Draw the block diagram with arrows showing Tech connected to Admin, Tech connected to Research, and Admin connected to Training.",
+        "mnemonic": "80/20 Rule: Server goes to the Crowded Block (Max PCs)."
+    });
+
+    pushQ("Computer Networks", {
+        "id": "cs-net-10y-2024",
+        "marks": 2,
+        "year": "CBSE 2024 (Set 083 Q18)",
+        "pacing": "3 min",
+        "type": "Network Hardware & Protocols",
+        "competency": "Device Functionality",
+        "stem": "(a) Differentiate between a Switch and a Router in computer networking.\\n(b) Expand and explain the purpose of: (i) VoIP, and (ii) DNS.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Switch vs Router:</strong><br>\n      • <strong>Switch:</strong> Operates at Data Link Layer (Layer 2). Connects devices within the <em>same local network (LAN)</em> and forwards data packets using physical <strong>MAC addresses</strong>.<br>\n      • <strong>Router:</strong> Operates at Network Layer (Layer 3). Connects <em>different, disparate networks</em> (e.g. connecting a LAN to the Internet WAN) and routes packets using logical <strong>IP addresses</strong>.</p>\n      <p><strong>(b) Expansions & Purpose:</strong><br>\n      • (i) <strong>VoIP (Voice over Internet Protocol):</strong> Enables transmission of voice calls, multimedia, and audio sessions over digital IP networks (Internet) rather than traditional analogue PSTN phone circuits.<br>\n      • (ii) <strong>DNS (Domain Name System):</strong> Translates human-readable domain names (e.g. <code>www.cbse.gov.in</code>) into machine-readable numerical IP addresses (e.g. <code>164.100.128.5</code>).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct distinction between Switch (Layer 2, MAC, LAN) and Router (Layer 3, IP, inter-network) | [0.5 Mark] VoIP expansion and purpose | [0.5 Mark] DNS expansion and purpose",
+        "cautionTrap": "Saying switch and router both connect to the internet. A switch only connects local devices; ONLY the router routes to outside networks.",
+        "topperTip": "Mention MAC address for Switch and IP address for Router to demonstrate precise technical mastery.",
+        "mnemonic": "Switch = Same Subnet (MAC); Router = Remote Routes (IP)."
+    });
+
+    pushQ("Writing Skills Box Formats", {
+        "id": "eng-inv-10y-2023",
+        "marks": 4,
+        "year": "CBSE 2023 (Set 301 Q4)",
+        "pacing": "7 min",
+        "type": "Formal Invitation Card Format",
+        "competency": "Card Format & Formal Etiquette",
+        "stem": "You are the Principal of St. Xavier's Senior Secondary School, Delhi. Draft a formal printed invitation card in not more than 50 words inviting parents and guests to the Annual Prize Distribution Ceremony on 15th November 2026. The Minister of Education has consented to be the Chief Guest.",
+        "diagram": "<div class=\"practice-diagram-wrap my-3 flex justify-center\"><svg viewBox=\"0 0 520 200\" class=\"max-w-full h-auto rounded-lg bg-slate-50 border border-slate-200 shadow-sm\" style=\"max-height: 200px;\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"15\" y=\"15\" width=\"490\" height=\"170\" fill=\"#ffffff\" stroke=\"#1e293b\" stroke-width=\"2\"/><text x=\"260\" y=\"40\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\" text-anchor=\"middle\">THE MANAGEMENT, STAFF AND STUDENTS OF</text><text x=\"260\" y=\"58\" font-size=\"13\" font-weight=\"extrabold\" fill=\"#1e40af\" text-anchor=\"middle\">ST. XAVIER'S SR. SEC. SCHOOL, DELHI</text><text x=\"260\" y=\"78\" font-size=\"10\" font-style=\"italic\" fill=\"#475569\" text-anchor=\"middle\">cordially solicit your benign presence on the auspicious occasion of their</text><text x=\"260\" y=\"98\" font-size=\"12\" font-weight=\"bold\" fill=\"#dc2626\" text-anchor=\"middle\">ANNUAL PRIZE DISTRIBUTION CEREMONY</text><text x=\"260\" y=\"118\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\" text-anchor=\"middle\">on Saturday, 15th November 2026 at 10:00 AM</text><text x=\"260\" y=\"134\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">in the School Auditorium</text><text x=\"35\" y=\"165\" font-size=\"9\" font-weight=\"bold\" fill=\"#0f172a\">RSVP: Principal (011-2748XXXX)</text><text x=\"360\" y=\"165\" font-size=\"9\" fill=\"#dc2626\">Special Instructions: Carry Invite</text></svg></div>",
+        "modelAnswer": "<div class=\"space-y-2 text-xs border-2 border-slate-800 p-3 bg-white text-slate-900 font-serif\">\n      <div class=\"text-center text-xs tracking-wider\">The Management, Staff and Students of</div>\n      <div class=\"text-center font-bold text-sm text-indigo-900 tracking-wide my-1\">ST. XAVIER'S SENIOR SECONDARY SCHOOL, DELHI</div>\n      <div class=\"text-center italic text-xs text-slate-700\">cordially solicit the benign presence of</div>\n      <div class=\"text-center font-semibold text-xs my-1\">____________________________________________________</div>\n      <div class=\"text-center italic text-xs text-slate-700\">on the auspicious occasion of the</div>\n      <div class=\"text-center font-extrabold text-sm text-red-700 tracking-widest my-1\">ANNUAL PRIZE DISTRIBUTION CEREMONY</div>\n      <div class=\"text-center font-bold text-xs my-1\">on Saturday, 15th November 2026 at 10:00 AM</div>\n      <div class=\"text-center text-xs\">in the <strong>School Auditorium</strong></div>\n      <div class=\"text-center text-xs my-1\"><strong>Hon'ble Minister of Education</strong> has kindly consented to be the Chief Guest.</div>\n      <div class=\"flex justify-between items-end mt-3 pt-2 border-t border-slate-200 text-xs\">\n        <div><strong>RSVP:</strong><br>Principal<br>Phone: 011-2748XXXX</div>\n        <div class=\"text-right text-red-600 font-medium\">Please be seated by 9:45 AM.<br>Entry by invitation card only.</div>\n      </div>\n    </div>",
+        "stepMarking": "[1 Mark] Format: Box, 3rd person pronoun, centered card layout, RSVP | [2 Marks] Content: Host, Occasion, Date, Time, Venue, Chief Guest | [1 Mark] Expression: Grammatical accuracy, formal vocabulary, 50-word limit",
+        "cautionTrap": "Writing in the first person ('I invite you' / 'We invite you'). Printed formal invitations must ALWAYS be drafted in the THIRD PERSON ('The Management... cordially solicits the presence of...').",
+        "topperTip": "Include 'RSVP' at bottom left and 'Please be seated by 9:45 AM' at bottom right. Never sign your personal name inside a printed card.",
+        "mnemonic": "Card Rules: Box + 3rd Person + RSVP + Centered Elegance."
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q8)",
+        "pacing": "10 min",
+        "type": "Comparative Essay & Social Critique",
+        "competency": "Social Theme & Character Contrast",
+        "stem": "“Survival in Seemapuri means rag-picking. Through the years, it has acquired the proportions of a fine art.” Contrast the lives of Saheb-e-Alam in Seemapuri with Mukesh in Firozabad. How does Anees Jung highlight the apathy of society and the vicious cycle that crushes children's dreams in “Lost Spring”?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In <em>“Lost Spring”</em>, Anees Jung presents a harrowing indictment of the perpetual poverty and callous societal apathy that rob millions of Indian children of their childhood innocence and aspirations.<br><br>\n      • <strong>Saheb-e-Alam (The Irony of Name):</strong> Saheb, whose name ironically means “Lord of the Universe”, scrounges garbage dumps in Seemapuri for “gold”. Garbage to elders is daily bread; to children, it is wrapped in wonder. However, when Saheb takes up a job at a tea stall for ₹800, his carefree freedom is replaced by a heavy steel canister—he is no longer his own master.<br><br>\n      • <strong>Mukesh (The Daring Spark):</strong> In Firozabad, every family is caught in the suffocating glass bangle-making furnaces where children lose their eyesight before adulthood. Unlike his peers who surrender to fate (<em>karma</em>), Mukesh dares to dream of becoming a <strong>motor mechanic</strong>, refusing to fly aeroplanes but aiming for tangible independence.<br><br>\n      • <strong>The Vicious Circle:</strong> Anees Jung exposes the twin strangleholds: the stigma of caste and the ruthless <strong>“sahukars, middlemen, policemen, bureaucrats, and politicians”</strong> who collude to keep child labourers terrified and unorganized.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Analysis of Saheb: name irony, garbage as survival vs wonder, loss of freedom at tea stall | [1.5 Marks] Analysis of Mukesh: glass industry perils vs courageous dream of motor mechanic | [2 Marks] Critique of societal apathy, nexus of middlemen/police, and theme of stolen childhood",
+        "cautionTrap": "Describing only the physical garbage without analyzing the psychological surrender of Saheb vs the defiant optimism of Mukesh.",
+        "topperTip": "Quote the crucial nexus: 'Sahukars, middlemen, keepers of law, bureaucrats and politicians'. It secures full marks for thematic depth.",
+        "mnemonic": "Lost Spring = Saheb (Surrender to Canister) vs Mukesh (Daring Mechanic)."
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q9)",
+        "pacing": "10 min",
+        "type": "Psychological Analysis & Overcoming Fear",
+        "competency": "Autobiographical Analysis",
+        "stem": "“All we have to fear is fear itself.” Trace William Douglas's journey from visceral childhood terror to complete psychological triumph over hydrophobia in “Deep Water”. How does Roosevelt's philosophy illuminate Douglas's ultimate realization?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In William Douglas's autobiographical narrative <em>“Deep Water”</em>, the author chronicles how deep-seated trauma can paralyze human existence and how methodical willpower can overcome the most crippling fears.<br><br>\n      • <strong>Roots of Childhood Terror:</strong> At age three or four on California beach, waves knocked him down. At ten or eleven, the YMCA pool misadventure occurred when a big bruiser hurled him into the 9-foot deep end. Douglas experienced utter black asphyxiation, paralyzed lungs, and the peace of near-death where “there is no fear, only peaceful oblivion.”<br><br>\n      • <strong>Systematic Rebuilding by Instructor:</strong> Determined to reclaim his life, Douglas hired an instructor who built a swimmer <strong>“piece by piece”</strong>—first putting a belt and pulley system over him for months, teaching him to exhale underwater and inhale above water, and kicking his legs until his terror-stiffened muscles yielded.<br><br>\n      • <strong>Solo Confrontation:</strong> Knowing residual fear lingered, Douglas tested himself alone at Lake Wentworth in New Hampshire and Warm Lake, boldly commanding terror: <em>“Well, Mr Terror, what do you think you can do to me?”</em><br><br>\n      • <strong>Roosevelt’s Realization:</strong> Douglas concludes that in death there is peace; fear exists only in the anticipation of death. Having conquered the dread of dying, the will to live grew intensely triumphant.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Description of YMCA near-drowning trauma and sensory paralysis | [1.5 Marks] Instructor's systematic step-by-step physical conditioning | [1 Mark] Solo tests at Lake Wentworth and Warm Lake | [1 Mark] Application of Roosevelt's quote 'All we have to fear is fear itself'",
+        "cautionTrap": "Omitting Douglas's solo swimming tests after the instructor finished. The instructor built the swimmer, but Douglas himself had to conquer the lingering psychological terror alone at Lake Wentworth!",
+        "topperTip": "Conclude with the exact quote: 'The will to live somehow grew in intensity.' It highlights the existential victory.",
+        "mnemonic": "Douglas Conquest: YMCA Trauma ⟶ Instructor Rebuild ⟶ Lake Wentworth Solo Test ⟶ Roosevelt Freedom."
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q10)",
+        "pacing": "10 min",
+        "type": "Historical Leadership & Civil Disobedience",
+        "competency": "Historical Narrative & Self-Reliance",
+        "stem": "Why did Mahatma Gandhi consider the Champaran episode to be the turning point in his life and the Indian freedom struggle? How did he combine political action with deep socio-economic and medical reform in Louis Fischer's “Indigo”?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Louis Fischer's <em>“Indigo”</em> demonstrates how Gandhi's first campaign of Civil Disobedience in India became the ideological and strategic foundation of the freedom movement.<br><br>\n      • <strong>Spontaneous Peasant Mobilization:</strong> When Gandhi arrived in Motihari and was served an eviction notice by the British magistrate, he disobeyed. Thousands of unlettered peasants spontaneously surrounded the courthouse—their spontaneous demonstration was the beginning of their <strong>liberation from the fear of the British</strong>.<br><br>\n      • <strong>The 25% Compromise:</strong> When landlords offered only a 25% refund of the illegally extorted money, Gandhi immediately accepted. For him, the refund percentage was secondary; what mattered was that the arrogant British planters were forced to <strong>surrender their prestige and refund stolen money</strong>.<br><br>\n      • <strong>Holistic Constructive Work:</strong> Gandhi recognized that political freedom was meaningless without social upliftment. He recruited voluntary teachers (Mahadev Desai, Narhari Parikh), opened primary schools in six villages, engaged Kasturbai to teach personal hygiene, and deployed a doctor offering three basic medicines (castor oil, quinine, sulphur ointment).<br><br>\n      • <strong>Lesson in Self-Reliance:</strong> Gandhi fiercely opposed retaining Charles Freer Andrews as a supporter, asserting that Indians must rely on their own strength: <strong>“Self-reliance, Indian independence, and help to sharecroppers were all bound together.”</strong></p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Civil disobedience at Motihari court and liberation from fear | [1 Mark] Rationale behind accepting 25% refund (loss of British prestige) | [1.5 Marks] Social, educational, and medical reforms initiated in Champaran villages | [1 Mark] Refusal of C.F. Andrews' help and doctrine of self-reliance",
+        "cautionTrap": "Focusing only on the indigo sharecropping contract (tinkathia system) while completely ignoring the social, health, and hygiene reforms that Gandhi led.",
+        "topperTip": "Include the concluding synthesis: 'Self-reliance, Indian independence and help to sharecroppers were all bound together.'",
+        "mnemonic": "Champaran Formula: Courtyard Courage + 25% Refund + Village Reform + Self-Reliance."
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tob-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q7)",
+        "pacing": "8 min",
+        "type": "Poetic Philosophy & Imagery",
+        "competency": "Literary & Philosophical Analysis",
+        "stem": "“A thing of beauty is a joy forever: Its loveliness increases; it will never pass into nothingness.” How does John Keats establish the therapeutic and immortal power of beauty against human despair and mortality? Discuss the imagery of the “bower quiet” and the “endless fountain of immortal drink”.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In his romantic masterpiece <em>“A Thing of Beauty”</em> (excerpted from <em>Endymion</em>), John Keats presents beauty as an eternal, transcendent sanctuary that preserves human sanity amidst existential misery.<br><br>\n      • <strong>Permanence vs Transience:</strong> Human life is afflicted by despondence, dearth of noble natures, unhealthy ways, and dark days. Yet beauty never diminishes (<em>“never passes into nothingness”</em>); instead, its emotional resonance multiplies over time.<br><br>\n      • <strong>The “Bower Quiet”:</strong> Keats uses the pastoral metaphor of a bower—a peaceful shaded arbor that grants quiet refuge, sound sleep, sweet dreams, and soothing health. Every morning we weave a “flowery band” to bind our weary souls to the earth.<br><br>\n      • <strong>Catalogue of Beautiful Things:</strong> Keats finds solace in the sun, moon, old and young trees providing shade for simple sheep, vibrant daffodils in green world, clear cooling rills defying hot summer, and fair musk-rose blooms in mid-forest brakes.<br><br>\n      • <strong>The Endless Fountain:</strong> Keats links the magnificence of heroic ancestors (<em>“the mighty dead”</em>) and immortal literature to <strong>“an endless fountain of immortal drink”</strong> poured by divine grace from the brink of heaven, ensuring spiritual rejuvenation.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Keatsian philosophy: loveliness increases and never fades into nothingness | [1.5 Marks] Analysis of bower quiet and flowery band binding us to earth | [1 Mark] Examples of natural beauty (daffodils, clear rills, musk-rose) | [1 Mark] Metaphor of the endless fountain of immortal drink from heaven's brink",
+        "cautionTrap": "Treating beauty merely as sensory physical pleasure rather than Keats' philosophical medicine that lifts the 'pall of despondence' from dark spirits.",
+        "topperTip": "Quote the crucial lines: 'Removes the pall from our dark spirits' and 'Endless fountain of immortal drink, pouring unto us from the heaven's brink.'",
+        "mnemonic": "Keats Triad: Joy Forever ⟶ Bower Quiet ⟶ Heavenly Immortal Drink."
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q8)",
+        "pacing": "8 min",
+        "type": "Introspection & Universal Brotherhood",
+        "competency": "Eco-Poetic Analysis",
+        "stem": "How does Pablo Neruda advocate for peaceful coexistence and self-introspection in “Keeping Quiet”? Why does he explicitly clarify that his message must not be confused with “total inactivity”?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In <em>“Keeping Quiet”</em>, Pablo Neruda presents an urgent philosophical plea for global cessation of frantic, destructive pursuits to allow humanity time for soul-searching and mutual solidarity.<br><br>\n      • <strong>The Exotic Moment:</strong> Counting up to twelve and maintaining silence for one second transcends linguistic barriers and nationalist divides. In this pause—free from engines, screeching factories, and rush—humanity experiences a sudden, luminous strangeness of togetherness.<br><br>\n      • <strong>Healing of Nature and Self:</strong> The fisherman will refrain from hunting whales in the cold seas, and the salt gatherer will pause to tend to his bruised, bleeding hands—symbolizing the restoration of ecology and human well-being.<br><br>\n      • <strong>Stop All Destructive Wars:</strong> Those who orchestrate <em>“green wars, wars with gas, wars with fire”</em> (yielding victories with no survivors) are urged to put on clean clothes and walk alongside their brothers in the shade, doing nothing.<br><br>\n      • <strong>Clarification against Total Inactivity:</strong> Neruda explicitly warns: <em>“What I want should not be confused with total inactivity. Life is what it is about; I want no truck with death.”</em> Silence is not lifeless inertia; it is like the dormant earth in winter that appears dead but secretly nurtures vibrant life for spring.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Significance of counting to twelve and the exotic moment without rush/engines | [1 Mark] Healing of nature (whales) and worker self-care (hurt hands) | [1 Mark] Critique of green wars / chemical wars ('victory with no survivors') | [1.5 Marks] Vital distinction between silent rejuvenation vs total inactivity/death with Earth analogy",
+        "cautionTrap": "Confusing Neruda's silence with passivity or death. Neruda explicitly states: 'I want no truck with death'—silence is active regeneration!",
+        "topperTip": "Cite the Earth symbol: 'As when everything seems dead and later proves to be alive.'",
+        "mnemonic": "Neruda Steps: Count to 12 ⟶ Exotic Pause ⟶ Stop Wars ⟶ Earth Regenerates."
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q9)",
+        "pacing": "8 min",
+        "type": "Feminist Imagery & Art Immortality",
+        "competency": "Poetic Symbolism & Gender Critique",
+        "stem": "Analyze the powerful contrast between Aunt Jennifer and her embroidered tigers in Adrienne Rich's poem. How does the poem critique patriarchal subjugation, and in what way does Aunt Jennifer achieve immortality through her artistic creation?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Adrienne Rich's <em>“Aunt Jennifer's Tigers”</em> is a profound feminist critique of patriarchal domestic oppression, counterpoised against the liberating immortality of art.<br><br>\n      • <strong>The Vivid Tigers:</strong> Across the woollen screen, Aunt Jennifer prances tigers of <em>“bright topaz denizens of a world of green”</em>. They are fearless, confident, and majestic—they <em>“pace in sleek chivalric certainty”</em>, unafraid of the men standing beneath the trees.<br><br>\n      • <strong>The Oppressed Creator:</strong> In stark contrast, Aunt Jennifer's own hands are <em>“fluttering through her wool”</em>, unable even to pull the delicate ivory needle. The cause is <strong>“the massive weight of Uncle's wedding band”</strong>, a poignant metaphor for the stifling, patriarchal matrimony that has physically and emotionally subjugated her throughout her life.<br><br>\n      • <strong>Ordeals that Outlive the Mortal Body:</strong> Even in death, her terrified hands will remain <em>“ringed with ordeals she was mastered by”</em>—the social institution of male domination marks her corpse.<br><br>\n      • <strong>The Triumph of Art:</strong> Yet her soul finds defiance through creativity. The tigers she created in the tapestry will outlive her, continuing to <strong>“go on prancing, proud and unafraid”</strong>—immortalizing her suppressed longing for freedom and courage.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Vibrant characterization of tigers: topaz denizens, chivalric certainty, fearless | [1.5 Marks] Symbolism of fluttering fingers and massive weight of Uncle's wedding band | [1 Mark] Critique of lifelong patriarchal subjugation ('mastered by ordeals') | [1 Mark] Immortality of art: tigers prancing proud and unafraid after her death",
+        "cautionTrap": "Failing to explain the symbolism of 'wedding band'. It is not just a ring; it represents the oppressive weight of patriarchal marriage.",
+        "topperTip": "Contrast the key words: 'fluttering fingers' vs 'sleek chivalric certainty'; 'mastered' vs 'proud and unafraid'.",
+        "mnemonic": "Rich Contrast: Frail Jennifer (Oppressed) vs Fierce Tigers (Immortal Art)."
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-en-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q11)",
+        "pacing": "10 min",
+        "type": "Moral Dilemma & Humanitarian Ethics",
+        "competency": "Ethical Conflict & Character Study",
+        "stem": "“A surgeon should not let a man die if he can save him.” How does Dr. Sadao Hoki navigate the agonizing conflict between professional duty and intense nationalistic loyalty during wartime in Pearl S. Buck's “The Enemy”? How does compassion ultimately triumph?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In Pearl S. Buck's <em>“The Enemy”</em>, Dr. Sadao Hoki embodies the profound moral dilemma between universal humanitarian ethics (the Hippocratic Oath) and militant nationalism during World War II.<br><br>\n      • <strong>The Dilemma:</strong> A severely wounded, unconscious American POW (Tom) is washed ashore outside Sadao's beachside house. As Japanese citizens during wartime, harbouring an American is high treason punishable by death. Throwing him back into the sea means certain death for the wounded youth.<br><br>\n      • <strong>Triumph of the Doctor:</strong> Trained in America to value every human life, Sadao's surgical instincts instinctively take command: <em>“He was a surgeon, and his hands knew their work.”</em> Aided reluctantly by his terrified wife Hana, Sadao operates, removes the bullet lodged near Tom's kidney, and nurses his mortal enemy back to health despite open rebellion and abandonment by his domestic servants.<br><br>\n      • <strong>Patriotic Duty & General's Selfishness:</strong> To fulfill his patriotic duty, Sadao informs General Takima about the prisoner. The General promises to dispatch private assassins, but fails due to self-absorbed illness.<br><br>\n      • <strong>Compassionate Resolution:</strong> Realizing the General is unreliable and unable to kill in cold blood, Sadao secretly equips Tom with a boat, provisions, flashlight, and Japanese kimono, enabling him to escape to an American vessel. Looking out at the ocean, Sadao muses why he could not kill him—proving that <strong>human compassion transcends national borders and wartime hatred</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Nature of moral dilemma: harbouring enemy POW vs medical oath to save life | [1.5 Marks] Surgical courage: operating near kidney, Hana's assistance despite servants' revolt | [1 Mark] Confession to General Takima and the forgotten assassins | [1 Mark] Final humanitarian rescue: providing boat, supplies, and escape to freedom",
+        "cautionTrap": "Portraying Sadao as an unpatriotic traitor. He reported the prisoner to the General! His dilemma was navigating between humanity and duty.",
+        "topperTip": "Cite Sadao's introspective concluding thought: 'I wonder why I could not kill him.' It encapsulates the victory of humanism over wartime conditioning.",
+        "mnemonic": "Sadao's Moral Compass: Save the Dying ⟶ Report to General ⟶ Assist Escape ⟶ Universal Humanity."
+    });
+
+
+    // --- 10-YEAR OFFICIAL CBSE IMPORTED QUESTION SETS (BATCH 2) ---
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q5)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Magnetic Dipole & Properties",
+        "stem": "Write two characteristic properties of magnetic field lines. Why can two magnetic field lines never intersect each other?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Two Characteristic Properties:</strong><br>\n      • Magnetic field lines form <strong>continuous closed loops</strong> (they emerge outside from North to South pole and continue inside the magnet from South to North pole). This reflects the non-existence of isolated magnetic monopoles (<code>∇ · B = 0</code>).<br>\n      • The tangent drawn to a magnetic field line at any point gives the <strong>direction of the magnetic field B</strong> at that point.</p>\n      <p><strong>2. Why Lines Never Intersect:</strong><br>\n      If two field lines intersected at a point, then two tangents could be drawn at the point of intersection, indicating <strong>two different directions of magnetic field at the same single point</strong>, which is physically impossible.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Two correct properties of magnetic field lines | [1 Mark] Reason why lines never intersect (two tangents = two directions)",
+        "cautionTrap": "Saying magnetic field lines start at North and end at South. They DO NOT end; they form continuous closed loops!",
+        "topperTip": "Contrast with electric field lines: Electric field lines are discontinuous (start on +q and terminate on -q), whereas magnetic field lines are continuous closed loops.",
+        "mnemonic": "Field Line Rule: One Point = One Direction (Never Intersect)."
+    });
+
+    pushQ("Magnetism and Matter", {
+        "id": "phy-mm-10y-2019",
+        "marks": 3,
+        "year": "CBSE 2019 (All India Q19)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Magnetic Dipole in Uniform Field",
+        "stem": "A magnetic dipole of magnetic moment M is placed in a uniform magnetic field B. Derive an expression for the potential energy stored in the dipole. Hence identify the orientations of stable and unstable equilibrium.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Work Done in Rotating Dipole:</strong><br>\n      Torque acting on dipole at angle θ: <code>τ = M B sin θ</code>.<br>\n      Small work done in rotating through dθ: <code>dW = τ dθ = M B sin θ dθ</code>.<br>\n      Total work done in rotating from θ₁ to θ₂:<br>\n      <code>W = ∫_{θ₁}^{θ₂} M B sin θ dθ = - M B [cos θ₂ - cos θ₁]</code>.</p>\n      <p><strong>2. Potential Energy:</strong><br>\n      Taking reference orientation at θ₁ = 90° (where U = 0):<br>\n      <code>U(θ) = - M B cos θ = <strong>- M⃗ · B⃗</strong></code>.</p>\n      <p><strong>3. Equilibrium States:</strong><br>\n      • <strong>Stable Equilibrium:</strong> At <strong>θ = 0°</strong> (M⃗ parallel to B⃗), torque τ = 0 and potential energy is minimum: <code>U_min = - M B</code>.<br>\n      • <strong>Unstable Equilibrium:</strong> At <strong>θ = 180°</strong> (M⃗ antiparallel to B⃗), torque τ = 0 and potential energy is maximum: <code>U_max = + M B</code>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Integration of dW = MB sinθ dθ to obtain U = -MB cosθ | [0.75 Mark] Stable equilibrium at θ = 0° (U = -MB) | [0.75 Mark] Unstable equilibrium at θ = 180° (U = +MB)",
+        "cautionTrap": "Setting θ = 90° as equilibrium. At 90°, torque is MAXIMUM (τ = MB); equilibrium requires net torque to be zero (θ = 0° or 180°).",
+        "topperTip": "Always state both conditions for equilibrium: Torque must be zero, and identify whether U is minimum (stable) or maximum (unstable).",
+        "mnemonic": "0° = Minimum Energy (Stable); 180° = Maximum Energy (Unstable)."
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q9)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Self & Mutual Inductance",
+        "stem": "Define mutual inductance between a pair of coils. Derive the expression for the mutual inductance M of two long coaxial solenoids S₁ and S₂ of same length l, radii r₁ and r₂ (r₁ < r₂), and turns n₁ and n₂ per unit length.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Definition of Mutual Inductance:</strong><br>\n      The magnetic flux linked with the secondary coil per unit current flowing in the primary coil: <code>Φ₂ = M I₁</code>, or the induced EMF produced in secondary when rate of change of current in primary is unity: <code>ε₂ = - M (dI₁/dt)</code>. SI unit is <strong>Henry (H)</strong>.</p>\n      <p><strong>2. Derivation for Coaxial Solenoids:</strong><br>\n      • Let current I₂ pass through outer solenoid S₂ (radius r₂, turns n₂).<br>\n      • Magnetic field inside S₂: <code>B₂ = μ₀ n₂ I₂</code>.<br>\n      • This field permeates inner solenoid S₁ of area <code>A₁ = π r₁²</code>.<br>\n      • Total flux linked with inner solenoid S₁ of length l (total turns N₁ = n₁ l):<br>\n      <code>Φ₁ = N₁ (B₂ A₁) = (n₁ l) (μ₀ n₂ I₂) (π r₁²) = μ₀ n₁ n₂ π r₁² l I₂</code>.<br>\n      • By definition: <code>Φ₁ = M₁₂ I₂  ⟹  <strong>M₁₂ = μ₀ n₁ n₂ π r₁² l</strong></code>.<br>\n      By reciprocity theorem: <code>M₂₁ = M₁₂ = M = <strong>μ₀ n₁ n₂ π r₁² l</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Definition of mutual inductance and SI unit (Henry) | [1.5 Marks] Magnetic field B₂ = μ₀n₂I₂ and total flux Φ₁ = N₁B₂A₁ | [0.5 Mark] Final boxed formula M = μ₀ n₁ n₂ π r₁² l",
+        "cautionTrap": "Using the area of the larger solenoid A₂ = π r₂²! The flux is confined only within the cross-section of the INNER solenoid (π r₁²).",
+        "topperTip": "Explicitly state the Reciprocity Theorem: M₁₂ = M₂₁ = M.",
+        "mnemonic": "Mutual Inductance: M = μ₀ · n₁ · n₂ · (Area of Smaller) · Length."
+    });
+
+    pushQ("Electromagnetic Induction", {
+        "id": "phy-emi-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q16)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Lenz's Law & Conservation of Energy",
+        "stem": "State Lenz's law. A bar magnet falls vertically through a stationary horizontal copper ring. Will its acceleration be equal to, greater than, or less than acceleration due to gravity g? Justify your answer using Lenz's law.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Statement of Lenz's Law:</strong><br>\n      The polarity of induced EMF is such that it produces an induced current whose magnetic field <strong>opposes the change in magnetic flux</strong> that produces it: <code>ε = - dΦ_B / dt</code>.</p>\n      <p><strong>2. Falling Magnet through Copper Ring:</strong><br>\n      • As the North pole of the magnet approaches the copper ring from above, the downward magnetic flux increases.<br>\n      • By Lenz's law, an induced current is set up in the ring in an anticlockwise direction (viewed from above), forming an induced North pole on top that <strong>repels the approaching North pole</strong>.<br>\n      • Therefore, an upward retarding magnetic force acts on the falling magnet.<br>\n      • As the magnet leaves below the ring, an induced South pole attracts the departing North pole, again exerting an upward retarding force.<br>\n      • <strong>Conclusion:</strong> In both phases, the net downward acceleration of the magnet is <strong>strictly less than g (a < g)</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct statement of Lenz's Law | [1 Mark] Deduction that acceleration a < g due to upward repulsive/attractive magnetic forces",
+        "cautionTrap": "Saying acceleration becomes zero. The magnet still accelerates downwards, but with a < g (not a = 0).",
+        "topperTip": "Mention that Lenz's law is a direct manifestation of the Law of Conservation of Energy.",
+        "mnemonic": "Lenz Opposition: Approaching is repelled; Leaving is attracted (a < g always)."
+    });
+
+    pushQ("Alternating Current", {
+        "id": "phy-ac-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/1 Q27)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Average Power & Wattless Current",
+        "stem": "Derive the expression for the average power consumed in a series LCR AC circuit: P_avg = V_rms I_rms cos φ. Under what condition is the current in an AC circuit said to be 'wattless'?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Instantaneous Power Derivation:</strong><br>\n      Let alternating voltage be: <code>v = V₀ sin(ωt)</code>.<br>\n      Then alternating current is: <code>i = I₀ sin(ωt - φ)</code> (where φ is the phase difference).<br>\n      Instantaneous power: <code>p = v · i = V₀ I₀ sin(ωt) sin(ωt - φ)</code>.<br>\n      Using <code>2 sin A sin B = cos(A - B) - cos(A + B)</code>:<br>\n      <code>p = (V₀ I₀ / 2) [ cos φ - cos(2ωt - φ) ]</code>.</p>\n      <p><strong>2. Average Power over a Full Cycle:</strong><br>\n      The average of the time-dependent term <code>cos(2ωt - φ)</code> over a complete cycle is zero.<br>\n      <code>P_avg = (V₀ I₀ / 2) cos φ = (V₀ / √2) (I₀ / √2) cos φ = <strong>V_rms I_rms cos φ</strong></code>.<br>\n      Here <code>cos φ = R / Z</code> is called the <strong>Power Factor</strong>.</p>\n      <p><strong>3. Wattless Current Condition:</strong><br>\n      When the circuit is purely inductive (L) or purely capacitive (C) with zero resistance (R = 0), phase angle <strong>φ = ± π/2 (90°)</strong>.<br>\n      Then <code>cos(90°) = 0  ⟹  P_avg = 0</code>.<br>\n      The current flowing in such a circuit consumes zero average electrical power and is termed <strong>Wattless Current</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Instantaneous power trigonometric expansion | [1 Mark] Cycle average and P_avg = V_rms I_rms cos φ | [0.5 Mark] Wattless condition (R = 0, φ = 90°, cos φ = 0)",
+        "cautionTrap": "Writing P_avg = V_rms I_rms without the power factor cos φ. cos φ is mandatory for reactive AC circuits!",
+        "topperTip": "Define cos φ = R/Z explicitly. In pure inductor/capacitor circuits, power consumed is zero.",
+        "mnemonic": "AC Power: P = V_rms · I_rms · cos φ (cos φ is the Power Factor)."
+    });
+
+    pushQ("Ray Optics and Optical Instruments", {
+        "id": "phy-ro-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q10)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Prism Formula Derivation",
+        "stem": "Derive the prism formula relating the refractive index μ of the material of a prism with the angle of prism A and the angle of minimum deviation δ_m: μ = sin((A + δ_m)/2) / sin(A/2).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Geometric Relations:</strong><br>\n      Consider a ray incident at angle <em>i</em> on face AB of a prism of angle <em>A</em>, refracted at angle <em>r₁</em>, incident on face AC at angle <em>r₂</em>, and emerging at angle <em>e</em>.<br>\n      • In quadrilateral AQNR: <code>∠A + ∠QNR = 180°</code>.<br>\n      • In triangle QNR: <code>r₁ + r₂ + ∠QNR = 180°  ⟹  <strong>r₁ + r₂ = A</strong></code> ...(1)<br>\n      • Total deviation: <code>δ = (i - r₁) + (e - r₂) = (i + e) - (r₁ + r₂) = <strong>(i + e) - A</strong></code> ...(2)</p>\n      <p><strong>2. Condition of Minimum Deviation (δ = δ_m):</strong><br>\n      At minimum deviation, the ray passes symmetrically through the prism parallel to its base:<br>\n      <code>i = e</code>  and  <code>r₁ = r₂ = r</code>.<br>\n      • From (1): <code>r + r = A  ⟹  <strong>r = A / 2</strong></code>.<br>\n      • From (2): <code>δ_m = 2i - A  ⟹  <strong>i = (A + δ_m) / 2</strong></code>.</p>\n      <p><strong>3. Applying Snell's Law:</strong><br>\n      By Snell's law at first surface: <code>μ = sin i / sin r</code>.<br>\n      Substituting i and r:<br>\n      <strong>μ = sin [ (A + δ_m) / 2 ] / sin [ A / 2 ]</strong>. (Hence Derived).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Proof of r₁ + r₂ = A and δ = i + e - A | [1 Mark] Symmetry condition at minimum deviation: i = e, r = A/2, i = (A + δ_m)/2 | [1 Mark] Snell's law substitution to obtain final formula",
+        "cautionTrap": "Forgetting to state that at minimum deviation, the refracted ray inside the prism is PARALLEL to the base of the prism.",
+        "topperTip": "Draw the ray through the equilateral prism with incident angle i, emergence angle e, and deviation angle δ clearly marked.",
+        "mnemonic": "Prism Minimum: i = e, r = A/2, ray parallels base."
+    });
+
+    pushQ("Wave Optics", {
+        "id": "phy-wo-10y-2020",
+        "marks": 3,
+        "year": "CBSE 2020 (Delhi Set 1 Q21)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Diffraction at Single Slit",
+        "stem": "Describe diffraction of light at a single slit of width 'a'. Explain why the central maximum is twice as wide as any secondary maximum. Write the condition for secondary minima and maxima.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Diffraction Condition at Single Slit:</strong><br>\n      When a plane wavefront of wavelength λ is incident on a slit of width <em>a</em>, secondary wavelets from different parts of the slit interfere.<br>\n      • <strong>Secondary Minima:</strong> Occur when path difference across the slit is an integral multiple of λ:<br>\n      <code>a sin θ_n = n λ  ⟹  θ_n ≈ (n λ) / a</code> (for n = ±1, ±2, ±3...).<br>\n      • <strong>Secondary Maxima:</strong> Occur at: <code>a sin θ_n = (2n + 1) λ / 2  ⟹  θ_n ≈ (2n + 1) λ / (2a)</code> (for n = 1, 2, 3...).</p>\n      <p><strong>2. Width of Central Maximum:</strong><br>\n      The central maximum extends between the first minima on either side (from <code>θ = - λ/a</code> to <code>θ = + λ/a</code>).<br>\n      • Angular width of central maximum: <code>2 θ₁ = <strong>2 λ / a</strong></code>.<br>\n      • Linear width on screen at distance D: <code>β_0 = (2 λ D) / a</code>.<br>\n      • Angular width of any secondary maximum (between consecutive minima n and n+1):<br>\n      <code>Δθ = (n + 1) λ / a - n λ / a = <strong>λ / a</strong></code>.<br>\n      <em>Conclusion:</em> The angular and linear width of the central diffraction maximum is <strong>strictly twice that of any secondary maximum</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Conditions for secondary minima (a sin θ = nλ) and maxima | [1 Mark] Angular width calculation 2θ₁ = 2λ/a | [1 Mark] Proof that central width is double secondary maximum width",
+        "cautionTrap": "Confusing diffraction minima condition (a sin θ = nλ) with interference maxima condition (d sin θ = nλ). In diffraction, nλ gives MINIMA!",
+        "topperTip": "Draw the central diffraction envelope showing the central peak having 2λ/a width and secondary peaks having λ/a width.",
+        "mnemonic": "Diffraction Inversion: Single slit a sin θ = nλ gives ZERO (dark minima)!"
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q11)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Nuclear Binding Energy Curve",
+        "stem": "Draw a plot showing the variation of binding energy per nucleon (BE/A) with mass number A. Explain using this curve: (i) why nuclear fission occurs in very heavy nuclei (A > 200), and (ii) why nuclear fusion occurs in very light nuclei (A < 20).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Key Features of BE/A Curve:</strong><br>\n      • BE/A is very low for light nuclei (e.g. ²H has ~1.1 MeV/nucleon).<br>\n      • Peaks at <strong>⁵⁶Fe with maximum value of ~8.75 MeV/nucleon</strong>.<br>\n      • Remains nearly constant at ~8.5 MeV/nucleon for intermediate nuclei (30 < A < 170).<br>\n      • Decreases gradually for heavy nuclei, dropping to ~7.6 MeV/nucleon for ²³⁸U.</p>\n      <p><strong>2. Explanation of Fission & Fusion:</strong><br>\n      • <strong>(i) Nuclear Fission:</strong> Heavy nuclei (A > 200) have lower BE/A (~7.6 MeV) due to strong Coulombic repulsion among numerous protons. When a heavy nucleus splits into two middle-mass fragments (A ~ 100-120), BE/A rises to ~8.5 MeV. The fragments are more tightly bound, releasing enormous energy (<code>Q = ΔBE > 0</code>).<br>\n      • <strong>(ii) Nuclear Fusion:</strong> Very light nuclei (A < 20) have low BE/A. When two light nuclei fuse to form a heavier nucleus (e.g. four protons fusing into ⁴He with BE/A ~ 7.1 MeV), BE/A increases steeply, releasing immense nuclear energy.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct sketch of BE/A vs A curve with peak at ⁵⁶Fe (~8.8 MeV) | [1 Mark] Fission explanation via increase in BE/A from 7.6 to 8.5 MeV | [1 Mark] Fusion explanation via steep rise in BE/A from light to heavier nuclei",
+        "cautionTrap": "Saying heavy nuclei fuse and light nuclei undergo fission. Remember: Heavy nuclei SPLIT (fission), light nuclei JOIN (fusion) to reach the peak at ⁵⁶Fe.",
+        "topperTip": "Explicitly quote the numbers: ⁵⁶Fe has peak BE/A of 8.75 MeV; Uranium has ~7.6 MeV; Helium has ~7.1 MeV.",
+        "mnemonic": "Iron is King: All roads (Fission & Fusion) lead towards ⁵⁶Fe peak."
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-semi-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 55/1/1 Q30)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Rectifier Circuit & Working",
+        "stem": "With the help of a labeled circuit diagram, explain the working of a full-wave rectifier using two p-n junction diodes. Draw the input AC voltage and output rectified voltage waveforms across the load resistor.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Circuit Arrangement:</strong><br>\n      Uses a center-tapped step-down transformer, two p-n junction diodes (D₁ and D₂), and a load resistor R_L connected between the center tap and common diode cathode junction.</p>\n      <p><strong>2. Working Mechanism:</strong><br>\n      • <strong>Positive Half Cycle of AC:</strong> Terminal A becomes positive and B negative relative to center tap. Diode <strong>D₁ is forward biased (conducts)</strong> while diode D₂ is reverse biased (blocks). Current flows through R_L from X to Y.<br>\n      • <strong>Negative Half Cycle of AC:</strong> Terminal A becomes negative and B positive relative to center tap. Diode <strong>D₂ is forward biased (conducts)</strong> while D₁ is reverse biased. Current again flows through R_L in the <strong>SAME direction from X to Y</strong>.<br>\n      • Since current through R_L is unidirectional in both half-cycles, a continuous full-wave rectified DC output is achieved.</p>\n      <p><strong>3. Frequency Relation:</strong><br>\n      Output ripple frequency is <strong>twice the input frequency: f_out = 2 f_in</strong> (e.g. 100 Hz output for 50 Hz input).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct circuit diagram with center-tapped transformer, D₁, D₂, and R_L | [1 Mark] Clear explanation of D₁ conducting in +ve half and D₂ in -ve half | [1 Mark] Accurate input AC vs unidirectional pulsating DC output waveforms",
+        "cautionTrap": "Drawing output current in alternating directions. Current through R_L MUST flow in the exact same direction during both cycles!",
+        "topperTip": "State the output frequency relation: f_out = 2 × f_in. Examiners love this detail.",
+        "mnemonic": "Full-Wave: D₁ works top half, D₂ works bottom half; Load current never reverses."
+    });
+
+    pushQ("Relations and Functions", {
+        "id": "math-rf-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 65/1/1 Q21)",
+        "pacing": "5 min",
+        "type": "Equivalence Relation Proof",
+        "competency": "Equivalence Relation Verification",
+        "stem": "Show that the relation R on the set Z of all integers defined by R = {(a, b) : (a - b) is divisible by 5} is an equivalence relation.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>To prove R is an equivalence relation, we must prove Reflexivity, Symmetry, and Transitivity on set Z:</p>\n      <p><strong>1. Reflexive:</strong><br>\n      For any integer <code>a ∈ Z</code>, <code>a - a = 0 = 5 × 0</code>, which is divisible by 5.<br>\n      Hence, <code>(a, a) ∈ R</code> for all a ∈ Z. Therefore, R is <strong>Reflexive</strong>.</p>\n      <p><strong>2. Symmetric:</strong><br>\n      Let <code>(a, b) ∈ R</code>. Then <code>a - b = 5k</code> for some integer k.<br>\n      Then <code>b - a = - (a - b) = - 5k = 5 (-k)</code>.<br>\n      Since -k is also an integer, <code>(b - a)</code> is divisible by 5.<br>\n      Hence, <code>(b, a) ∈ R</code>. Therefore, R is <strong>Symmetric</strong>.</p>\n      <p><strong>3. Transitive:</strong><br>\n      Let <code>(a, b) ∈ R</code> and <code>(b, c) ∈ R</code>.<br>\n      Then <code>a - b = 5k₁</code> and <code>b - c = 5k₂</code> for some integers k₁, k₂.<br>\n      Adding both equations:<br>\n      <code>(a - b) + (b - c) = 5k₁ + 5k₂  ⟹  a - c = 5 (k₁ + k₂)</code>.<br>\n      Since (k₁ + k₂) is an integer, <code>(a - c)</code> is divisible by 5.<br>\n      Hence, <code>(a, c) ∈ R</code>. Therefore, R is <strong>Transitive</strong>.</p>\n      <p><em>Conclusion:</em> Since R is reflexive, symmetric, and transitive, R is an <strong>Equivalence Relation</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Proof of Reflexivity: a - a = 0 is divisible by 5 | [1 Mark] Proof of Symmetry: b - a = -5k = 5(-k) | [1 Mark] Proof of Transitivity: a - c = 5(k₁ + k₂) and conclusion",
+        "cautionTrap": "Omitting the definition of k as an integer. Divisibility holds only if the quotient belongs to the set of integers Z!",
+        "topperTip": "Structure into 3 neat labeled headers: 1. Reflexive, 2. Symmetric, 3. Transitive, concluding with 'Equivalence Relation verified'.",
+        "mnemonic": "Equivalence Trio: Reflexive (Self), Symmetric (Swap), Transitive (Chain)."
+    });
+
+    pushQ("Matrices and Determinants", {
+        "id": "math-mat-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 65/1/1 Q31)",
+        "pacing": "10 min",
+        "type": "System of Linear Equations Matrix Method",
+        "competency": "Matrix Inverse & Equation Solving",
+        "stem": "Solve the following system of linear equations using matrix method:\\n2x + 3y + 3z = 5\\nx - 2y + z = -4\\n3x - y - 2z = 3",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Matrix Representation AX = B:</strong><br>\n      <code>A = [ [2, 3, 3], [1, -2, 1], [3, -1, -2] ]</code>,  <code>X = [ [x], [y], [z] ]</code>,  <code>B = [ [5], [-4], [3] ]</code>.</p>\n      <p><strong>2. Determinant |A|:</strong><br>\n      <code>|A| = 2 [(-2)(-2) - (1)(-1)] - 3 [(1)(-2) - (1)(3)] + 3 [(1)(-1) - (-2)(3)]</code><br>\n      <code>= 2 [4 + 1] - 3 [-2 - 3] + 3 [-1 + 6] = 2(5) - 3(-5) + 3(5) = 10 + 15 + 15 = <strong>40 ≠ 0</strong></code>.<br>\n      Since |A| ≠ 0, A is non-singular and has a unique solution given by <code>X = A⁻¹ B</code>.</p>\n      <p><strong>3. Adjoint of Matrix A:</strong><br>\n      Cofactors: A₁₁ = 5, A₁₂ = 5, A₁₃ = 5; A₂₁ = 3, A₂₂ = -13, A₂₃ = 11; A₃₁ = 9, A₃₂ = 1, A₃₃ = -7.<br>\n      <code>adj(A) = [ [5, 3, 9], [5, -13, 1], [5, 11, -7] ]</code>.<br>\n      <code>A⁻¹ = (1/40) adj(A)</code>.</p>\n      <p><strong>4. Calculating X = A⁻¹ B:</strong><br>\n      <code>X = (1/40) [ [5, 3, 9], [5, -13, 1], [5, 11, -7] ] [ [5], [-4], [3] ]</code><br>\n      • x = (1/40) [ (5)(5) + (3)(-4) + (9)(3) ] = (1/40) [ 25 - 12 + 27 ] = (1/40) [40] = <strong>1</strong>.<br>\n      • y = (1/40) [ (5)(5) + (-13)(-4) + (1)(3) ] = (1/40) [ 25 + 52 + 3 ] = (1/40) [80] = <strong>2</strong>.<br>\n      • z = (1/40) [ (5)(5) + (11)(-4) + (-7)(3) ] = (1/40) [ 25 - 44 - 21 ] = (1/40) [-40] = <strong>-1</strong>.<br>\n      <strong>Final Solution: x = 1, y = 2, z = -1</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct matrix formulation AX = B and |A| = 40 calculation | [2 Marks] Finding all 9 cofactors and transposing to find adj(A) | [2 Marks] Matrix multiplication A⁻¹B and final values x = 1, y = 2, z = -1",
+        "cautionTrap": "Forgetting to TRANSPOSE the cofactor matrix to get the adjoint! adj(A) is the transpose of the cofactor matrix.",
+        "topperTip": "Substitute x = 1, y = 2, z = -1 back into equation 1: 2(1) + 3(2) + 3(-1) = 2 + 6 - 3 = 5. Always check your answer in 10 seconds!",
+        "mnemonic": "Matrix Solving: AX = B ⟹ |A| ≠ 0 ⟹ adj(A) = C^T ⟹ X = A⁻¹B."
+    });
+
+    pushQ("Differential Equations", {
+        "id": "math-de-10y-2023",
+        "marks": 3,
+        "year": "CBSE 2023 (Set 65/1/1 Q25)",
+        "pacing": "5 min",
+        "type": "Linear Differential Equation",
+        "competency": "Integrating Factor Method",
+        "stem": "Find the particular solution of the differential equation: dy/dx + y cot x = 2x + x² cot x, given that y = 0 when x = π/2.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Standard Linear Form:</strong><br>\n      The equation is in standard linear form <code>dy/dx + P(x) y = Q(x)</code>, where:<br>\n      <code>P(x) = cot x</code> and <code>Q(x) = 2x + x² cot x</code>.</p>\n      <p><strong>2. Integrating Factor (I.F.):</strong><br>\n      <code>I.F. = e^{∫ P dx} = e^{∫ cot x dx} = e^{log(sin x)} = <strong>sin x</strong></code>.</p>\n      <p><strong>3. General Solution:</strong><br>\n      <code>y · (I.F.) = ∫ Q(x) · (I.F.) dx + C</code><br>\n      <code>y sin x = ∫ (2x + x² cot x) sin x dx + C = ∫ (2x sin x + x² cos x) dx + C</code>.<br>\n      Notice that <code>d/dx [ x² sin x ] = 2x sin x + x² cos x</code>!<br>\n      Therefore: <code>y sin x = x² sin x + C</code>.</p>\n      <p><strong>4. Particular Solution (y = 0 at x = π/2):</strong><br>\n      <code>0 · sin(π/2) = (π/2)² sin(π/2) + C  ⟹  0 = π²/4 + C  ⟹  <strong>C = - π² / 4</strong></code>.<br>\n      Dividing by sin x:<br>\n      <strong>y = x² - (π² / 4) cosec x</strong> (or <strong>y sin x = x² sin x - π²/4</strong>).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct integrating factor I.F. = sin x | [1 Mark] Integration of ∫(2x sin x + x² cos x)dx = x² sin x | [1 Mark] Evaluation of constant C = -π²/4 and final particular solution",
+        "cautionTrap": "Trying to integrate 2x sin x and x² cos x separately by parts. Recognize the product derivative d/dx[x² sin x] immediately!",
+        "topperTip": "e^{log(sin x)} simplifies directly to sin x. Box the final particular solution.",
+        "mnemonic": "Linear DE: dy/dx + Py = Q ⟹ I.F. = e^{∫P dx} ⟹ y·(I.F.) = ∫Q·(I.F.)dx + C."
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-tll-10y-2023",
+        "marks": 5,
+        "year": "CBSE 2023 (Set 301 Q9)",
+        "pacing": "10 min",
+        "type": "Linguistic Chauvinism & Patriotism",
+        "competency": "Literary & Historical Analysis",
+        "stem": "“When a people are enslaved, as long as they hold fast to their language it is as if they had the key to their prison.” Analyze M. Hamel's profound discourse on the French language in Alphonse Daudet's “The Last Lesson”. How does linguistic identity become the ultimate bastion against political subjugation?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>In Alphonse Daudet's <em>“The Last Lesson”</em>, set against the backdrop of the Franco-Prussian War (1870-71), the Prussian mandate enforcing German in Alsace and Lorraine strikes at the core of human identity.<br><br>\n      • <strong>Awakening of Franz:</strong> Little Franz, who previously dreaded M. Hamel's iron ruler and found French participles tedious, is stricken with visceral remorse. The books that seemed nuisance suddenly feel like <em>“old friends that I couldn't give up.”</em><br><br>\n      • <strong>M. Hamel's Eulogy to French:</strong> M. Hamel calls French <strong>“the most beautiful language in the world—the clearest, the most logical”</strong>. He commands them to guard it among themselves and never forget it. His profound metaphor—that holding fast to one's mother tongue is having <em>“the key to their prison”</em>—identifies linguistic consciousness as an unconquerable fortress that no occupier can breach.<br><br>\n      • <strong>Universal Collective Guilt:</strong> M. Hamel does not spare himself or the parents, pointing out how education was subordinated to petty earnings at mills and fishing holidays.<br><br>\n      • <strong>The Climax of Defiance:</strong> As the church clock strikes twelve and Prussian trumpets sound, M. Hamel chokes with emotion, turns to the blackboard, and with all his might writes in towering letters: <strong>“VIVE LA FRANCE!”</strong> (Long Live France!).</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Prussian imposition of German and Franz's transformation from dread to emotional awakening | [1.5 Marks] M. Hamel's speech on French as the clearest/most logical language and 'key to prison' | [1 Mark] Reflection on collective procrastination and societal guilt | [1 Mark] Climax: Writing 'VIVE LA FRANCE!' on the blackboard",
+        "cautionTrap": "Describing Franz's tardiness without analyzing the geopolitical and psychological themes of linguistic chauvinism and colonial subjugation.",
+        "topperTip": "Quote 'Vive La France!' and the key phrase: 'Key to their prison'.",
+        "mnemonic": "Last Lesson: Prussian Order ⟶ French as Prison Key ⟶ Collective Remorse ⟶ Vive La France."
+    });
+
+
+    // --- 10-YEAR OFFICIAL CBSE IMPORTED QUESTION SETS (BATCH 3) ---
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q7)",
+        "pacing": "5 min",
+        "type": "de Broglie Wavelength Derivation & Numerical",
+        "competency": "Matter Wave Physics",
+        "stem": "(a) Derive the expression for the de Broglie wavelength λ of an electron accelerated from rest through a potential difference of V volts.\\n(b) An electron, an alpha-particle, and a proton have the same kinetic energy. Which of these particles has the shortest de Broglie wavelength?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Derivation of λ = h / √(2mqV):</strong><br>\n      • Kinetic energy acquired by electron: <code>K = e V</code>.<br>\n      • Relation between momentum and KE: <code>p = √(2 m K) = √(2 m e V)</code>.<br>\n      • de Broglie wavelength: <code>λ = h / p = h / √(2 m e V)</code>.<br>\n      Substituting constants (h = 6.63×10⁻³⁴ J·s, m = 9.1×10⁻³¹ kg, e = 1.6×10⁻¹⁹ C):<br>\n      <strong>λ = 1.227 / √V nm = 12.27 / √V Å</strong>.</p>\n      <p><strong>(b) Comparing de Broglie Wavelengths for Equal Kinetic Energy:</strong><br>\n      • Formula: <code>λ = h / √(2 m K) ∝ 1 / √m</code> (since K is identical for all three).<br>\n      • Masses: <code>m_alpha ≈ 4 m_p >> m_p >> m_e</code>.<br>\n      • Since mass of alpha-particle is largest (m_alpha ≈ 4 amu), its de Broglie wavelength is the <strong>shortest</strong>.<br>\n      Order: <strong>λ_alpha < λ_proton < λ_electron</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Derivation of λ = h/√(2meV) and evaluation of 1.227/√V nm | [1.5 Marks] Deduction that λ ∝ 1/√m and concluding alpha particle has shortest wavelength",
+        "cautionTrap": "Saying electron has shortest wavelength. Wavelength is INVERSELY proportional to mass; heavier particles have SHORTER matter wavelengths!",
+        "topperTip": "Express the final formula as 1.227/√V nm and state λ_alpha < λ_proton < λ_electron.",
+        "mnemonic": "Heavier Particle = Shorter Wave: Alpha is heaviest, so Alpha has shortest λ."
+    });
+
+    pushQ("Dual Nature of Radiation and Matter", {
+        "id": "phy-dn-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q14)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Photoelectric Graphs",
+        "stem": "Draw graphs showing the variation of stopping potential with: (i) frequency of incident radiation for two different metals A and B having work functions Φ_A > Φ_B, and (ii) intensity of incident radiation.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(i) Stopping Potential V₀ vs Frequency ν:</strong><br>\n      From Einstein's equation: <code>e V₀ = h ν - Φ₀  ⟹  V₀ = (h / e) ν - (Φ₀ / e)</code>.<br>\n      • The plot is a straight line with slope <code>h / e</code> (identical for all metals).<br>\n      • Intercept on frequency axis gives threshold frequency <code>ν₀ = Φ₀ / h</code>.<br>\n      • Since Φ_A > Φ_B, threshold frequency for metal A is greater (<code>ν₀_A > ν₀_B</code>), so line for metal A is shifted to the right of line for metal B (parallel slopes).</p>\n      <p><strong>(ii) Stopping Potential V₀ vs Intensity:</strong><br>\n      • The stopping potential is <strong>completely independent of the intensity</strong> of incident light.<br>\n      • The graph is a straight horizontal line parallel to the intensity axis.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct parallel lines for metals A and B with ν₀_A > ν₀_B and slope h/e | [1 Mark] Horizontal line showing stopping potential independent of intensity",
+        "cautionTrap": "Drawing different slopes for metals A and B. The slope is h/e, which is a universal constant for ALL metals!",
+        "topperTip": "Emphasize that the slope is universally (h/e) and both lines must be strictly parallel.",
+        "mnemonic": "Slope = h/e (Parallel); Intensity = Flatline (No effect on V₀)."
+    });
+
+    pushQ("Atoms and Nuclei", {
+        "id": "phy-an-10y-2019",
+        "marks": 3,
+        "year": "CBSE 2019 (All India Q21)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Rutherford Model & Alpha Scattering",
+        "stem": "In Geiger-Marsden experiment, calculate the distance of closest approach for an alpha particle of kinetic energy 5.5 MeV approaching a gold nucleus (Z = 79). State two main drawbacks of Rutherford's atomic model.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Distance of Closest Approach (r₀):</strong><br>\n      At distance of closest approach r₀, the entire kinetic energy of the alpha particle converts into electrostatic potential energy:<br>\n      <code>K = (1 / 4πε₀) [ (q₁ q₂) / r₀ ] = (1 / 4πε₀) [ (2e)(Ze) / r₀ ] = (2 Z e²) / (4πε₀ r₀)</code>.<br>\n      <code>r₀ = [ 2 Z e² ] / [ 4πε₀ K ]</code>.<br>\n      Given: Z = 79, K = 5.5 MeV = 5.5 × 10⁶ × 1.6 × 10⁻¹⁹ J = 8.8 × 10⁻¹³ J.<br>\n      <code>r₀ = [ (9 × 10⁹) × 2 × 79 × (1.6 × 10⁻¹⁹)² ] / (8.8 × 10⁻¹³)</code><br>\n      <code>r₀ = [ 1.422 × 10⁻²⁶ × 79 ] / (8.8 × 10⁻¹³) ≈ <strong>4.13 × 10⁻¹⁴ m = 41.3 fm</strong></code>.</p>\n      <p><strong>2. Two Drawbacks of Rutherford's Model:</strong><br>\n      1. <strong>Atomic Instability:</strong> According to Maxwell's electromagnetic theory, an accelerating charged electron orbiting the nucleus must continuously radiate energy, spiraling into the nucleus in ~10⁻⁸ s. Hence the model cannot explain the stability of the atom.<br>\n      2. <strong>Discrete Line Spectra:</strong> As electrons spiral inwards, emitted radiation should produce a continuous spectrum. However, experimental atomic spectra consist of sharp, discrete spectral lines.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Formulation of r₀ = 2Ze²/(4πε₀K) and calculation of r₀ ≈ 4.1×10⁻¹⁴ m | [1.5 Marks] 0.75M each for atomic stability (spiral collapse) and discrete line spectrum drawbacks",
+        "cautionTrap": "Forgetting that alpha particle charge is 2e (not 1e). q₁ = 2e and q₂ = Ze!",
+        "topperTip": "Convert MeV to Joules before calculating: 1 MeV = 1.6 × 10⁻¹³ J.",
+        "mnemonic": "Closest Approach: Kinetic Energy = Electrostatic Potential Energy (½mv² = 2Ze²/4πε₀r₀)."
+    });
+
+    pushQ("Semiconductor Electronics", {
+        "id": "phy-semi-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q12)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Energy Band Theory & Extrinsic Doping",
+        "stem": "(a) Distinguish between conductors, semiconductors, and insulators on the basis of energy band diagrams (valence band, conduction band, and forbidden band gap E_g).\\n(b) Differentiate between n-type and p-type semiconductors based on dopant atom type, majority charge carriers, and energy level created in the band gap.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Energy Band Classification:</strong><br>\n      • <strong>Conductors:</strong> Conduction band and valence band either overlap, or the conduction band is partially filled with zero band gap (<code>E_g ≈ 0 eV</code>). Electrons move freely.<br>\n      • <strong>Semiconductors:</strong> Possess a small, finite forbidden band gap (<code>0 < E_g < 3 eV</code>, e.g. Si: 1.1 eV, Ge: 0.7 eV). At room temperature, some electrons cross over.<br>\n      • <strong>Insulators:</strong> Possess a very large forbidden energy band gap (<code>E_g > 3 eV</code>, e.g. Diamond: 5.4 eV). Conduction band is completely empty.</p>\n      <p><strong>(b) n-type vs p-type Semiconductors:</strong><br>\n      • <strong>n-type:</strong> Doped with <strong>pentavalent impurity</strong> (P, As, Sb). Majority carriers are <strong>electrons (n_e >> n_h)</strong>. Creates a <strong>Donor Energy Level (E_d)</strong> located just below the bottom of the conduction band.<br>\n      • <strong>p-type:</strong> Doped with <strong>trivalent impurity</strong> (B, Al, In). Majority carriers are <strong>holes (n_h >> n_e)</strong>. Creates an <strong>Acceptor Energy Level (E_a)</strong> located just above the top of the valence band.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Band gap classification: Conductor (overlap/0eV), Semiconductor (E_g < 3eV), Insulator (E_g > 3eV) | [1.5 Marks] Complete n-type vs p-type comparison: dopant, majority carriers, and donor/acceptor levels",
+        "cautionTrap": "Saying that n-type semiconductor is negatively charged! Both n-type and p-type bulk crystals remain electrically NEUTRAL overall.",
+        "topperTip": "Draw the energy band diagram showing Donor level E_d just below CB and Acceptor level E_a just above VB.",
+        "mnemonic": "n-type = Pentavalent + Donor (top); p-type = Trivalent + Acceptor (bottom)."
+    });
+
+    pushQ("d- and f-Block Elements", {
+        "id": "chem-df-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q8)",
+        "pacing": "5 min",
+        "type": "Inorganic Reactions & Preparation",
+        "competency": "Industrial Preparation of Oxidizing Agents",
+        "stem": "Describe the preparation of potassium dichromate (K₂Cr₂O₇) from chromite ore (FeCr₂O₄). Write balanced chemical equations for all three steps involved.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Potassium dichromate is industrially manufactured from chromite ore in three sequential steps:<br><br>\n      • <strong>Step 1: Conversion of Chromite Ore into Sodium Chromate:</strong><br>\n      Finely powdered chromite ore is fused with sodium carbonate in the presence of excess air in a reverberatory furnace:<br>\n      <code>4 FeCr₂O₄ + 8 Na₂CO₃ + 7 O₂  ⟶  8 Na₂CrO₄ (Yellow solution) + 2 Fe₂O₃ + 8 CO₂ ↑</code>.<br><br>\n      • <strong>Step 2: Conversion of Sodium Chromate into Sodium Dichromate:</strong><br>\n      The yellow solution of sodium chromate is filtered, acidified with concentrated sulfuric acid:<br>\n      <code>2 Na₂CrO₄ + H₂SO₄  ⟶  Na₂Cr₂O₇ (Orange solution) + Na₂SO₄ + H₂O</code>.<br><br>\n      • <strong>Step 3: Conversion of Sodium Dichromate into Potassium Dichromate:</strong><br>\n      The hot concentrated solution of sodium dichromate is treated with potassium chloride (KCl). Since K₂Cr₂O₇ is much less soluble than sodium salts, it crystallizes out as bright orange crystals:<br>\n      <code>Na₂Cr₂O₇ + 2 KCl  ⟶  K₂Cr₂O₇ ↓ (Orange crystals) + 2 NaCl</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Step 1 balanced equation producing yellow Na₂CrO₄ | [1 Mark] Step 2 acidification producing orange Na₂Cr₂O₇ | [1 Mark] Step 3 potassium exchange with KCl producing crystalline K₂Cr₂O₇",
+        "cautionTrap": "Writing K₂CO₃ in Step 1. Potassium chromate is highly soluble and difficult to crystallize; hence Na₂CO₃ is used first, followed by KCl displacement in Step 3!",
+        "topperTip": "State the pH dependency: Chromate (yellow, CrO₄²⁻) and Dichromate (orange, Cr₂O₇²⁻) exist in equilibrium: 2 CrO₄²⁻ + 2 H⁺ ⇌ Cr₂O₇²⁻ + H₂O.",
+        "mnemonic": "Dichromate 3 Steps: Fuse with Soda (Yellow) ⟶ Acidify (Orange) ⟶ Salt with KCl (Crystals)."
+    });
+
+    pushQ("Haloalkanes and Haloarenes", {
+        "id": "chem-halo-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q9)",
+        "pacing": "5 min",
+        "type": "Organometallic Reactions & Grignard",
+        "competency": "Reagent Chemistry & Precaution",
+        "stem": "(a) Why must Grignard reagents (RMgX) be prepared and stored under strictly anhydrous (dry) conditions?\\n(b) Write chemical equations for:\\n  (i) Sandmeyer reaction for preparing chlorobenzene from aniline\\n  (ii) Fittig reaction for preparing biphenyl.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Strict Anhydrous Requirement for Grignard Reagent:</strong><br>\n      Grignard reagents are highly reactive organometallic compounds. The carbon-magnesium bond is strongly polarized (<code>R^δ⁻ - Mg^δ⁺X</code>). The carbanion-like R group is an extremely strong base and nucleophile. It reacts instantaneously with any source of proton (even traces of moisture/water, alcohols, or amines) to produce hydrocarbons:<br>\n      <code>R-MgX + H₂O  ⟶  R-H (Alkane) + Mg(OH)X</code>.<br>\n      Therefore, presence of moisture completely destroys the reagent into an alkane.</p>\n      <p><strong>(b) Chemical Reactions:</strong><br>\n      • (i) <strong>Sandmeyer Reaction:</strong><br>\n      Aniline treated with NaNO₂ + HCl at 273-278 K forms benzene diazonium chloride, which when treated with Cu₂Cl₂/HCl yields <strong>Chlorobenzene</strong>:<br>\n      <code>C₆H₅NH₂ + NaNO₂ + 2HCl (0-5°C)  ⟶  C₆H₅N₂⁺Cl⁻  —[Cu₂Cl₂ / HCl]⟶  C₆H₅Cl + N₂ ↑</code>.<br>\n      • (ii) <strong>Fittig Reaction:</strong><br>\n      Two molecules of aryl halide react with metallic sodium in dry ether to form <strong>Biphenyl</strong>:<br>\n      <code>2 C₆H₅Cl + 2 Na —[dry ether]⟶ C₆H₅-C₆H₅ (Biphenyl) + 2 NaCl</code>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Anhydrous condition explanation with R-MgX + H₂O ⟶ R-H equation | [0.75 Mark] Sandmeyer reaction with diazonium intermediate | [0.75 Mark] Fittig reaction producing biphenyl",
+        "cautionTrap": "Confusing Wurtz-Fittig with Fittig reaction. Fittig uses TWO aryl halides (yielding biphenyl); Wurtz-Fittig uses ONE alkyl halide and ONE aryl halide (yielding alkylbenzene)!",
+        "topperTip": "Always state the temperature for diazotization: 0°C to 5°C (273 - 278 K).",
+        "mnemonic": "Grignard Water Rule: RMgX + Water = Alkane (Ruined Reagent)."
+    });
+
+    pushQ("Alcohols, Phenols and Ethers", {
+        "id": "chem-alc-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q10)",
+        "pacing": "5 min",
+        "type": "Acidic Strength & Distinguishing Test",
+        "competency": "Comparative Acidity & Lucas Test",
+        "stem": "(a) Explain why phenol is significantly more acidic than ethanol.\\n(b) How does the Lucas Test distinguish between primary (1°), secondary (2°), and tertiary (3°) alcohols? Give observations.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Acidity of Phenol vs Ethanol:</strong><br>\n      • <strong>Phenol:</strong> Deprotonation yields the <strong>phenoxide ion (C₆H₅O⁻)</strong>. The negative charge on oxygen is delocalized over the ortho and para positions of the aromatic benzene ring across 5 resonating structures, stabilizing the phenoxide ion effectively.<br>\n      • <strong>Ethanol:</strong> Deprotonation yields the <strong>ethoxide ion (C₂H₅O⁻)</strong>. The ethyl group exerts an electron-donating inductive effect (+I effect), which intensifies the negative charge on oxygen, making the ethoxide ion unstable.<br>\n      • Therefore, phenol releases H⁺ much more readily than ethanol (<code>pK_a(phenol) ≈ 10</code> vs <code>pK_a(ethanol) ≈ 16</code>).</p>\n      <p><strong>(b) Lucas Test (Conc. HCl + anhydrous ZnCl₂):</strong><br>\n      Alcohols react to form insoluble alkyl chlorides that produce cloudiness (turbidity):<br>\n      • <strong>Tertiary (3°) Alcohol:</strong> Forms turbidity <strong>immediately at room temperature</strong> due to high stability of tertiary carbocation.<br>\n      • <strong>Secondary (2°) Alcohol:</strong> Produces turbidity <strong>within 5 minutes</strong> upon standing.<br>\n      • <strong>Primary (1°) Alcohol:</strong> Produces <strong>no turbidity at room temperature</strong>; cloudiness appears only upon heating.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Phenol acidity explained via phenoxide resonance stabilization vs ethoxide +I destabilization | [1.5 Marks] Lucas test observations: 3° immediate, 2° within 5 min, 1° only upon heating",
+        "cautionTrap": "Saying phenol is basic because it has an -OH group. Phenol is weakly acidic (carbolic acid) and reacts with aqueous NaOH!",
+        "topperTip": "Lucas reagent composition is: concentrated HCl + anhydrous ZnCl₂. State this definition.",
+        "mnemonic": "Lucas Turbidity Timer: 3° = Instant, 2° = 5 minutes, 1° = Never (unless heated)."
+    });
+
+    pushQ("Aldehydes, Ketones and Carboxylic Acids", {
+        "id": "chem-ald-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q11)",
+        "pacing": "5 min",
+        "type": "Carbonyl Reductions & Decarboxylation",
+        "competency": "Carbonyl Synthetic Methods",
+        "stem": "Write balanced chemical equations for:\\n(a) Clemmensen Reduction of acetone\\n(b) Wolff-Kishner Reduction of acetophenone\\n(c) Decarboxylation of sodium ethanoate using soda lime.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Clemmensen Reduction:</strong><br>\n      Carbonyl group (>C=O) of aldehydes or ketones is reduced to methylene group (>CH₂) by treatment with <strong>Zinc amalgam (Zn-Hg) and concentrated HCl</strong>:<br>\n      <code>CH₃-CO-CH₃ (Acetone) + 4[H] —[Zn-Hg / conc. HCl]⟶ CH₃-CH₂-CH₃ (Propane) + H₂O</code>.</p>\n      <p><strong>(b) Wolff-Kishner Reduction:</strong><br>\n      Carbonyl group treated with hydrazine (NH₂NH₂) forms a hydrazone, which upon heating with KOH in ethylene glycol decomposes to give hydrocarbon:<br>\n      <code>C₆H₅-CO-CH₃ (Acetophenone) + NH₂NH₂  ⟶  C₆H₅-C(=N-NH₂)-CH₃  —[KOH / ethylene glycol, Δ]⟶  C₆H₅-CH₂-CH₃ (Ethylbenzene) + N₂ ↑</code>.</p>\n      <p><strong>(c) Decarboxylation with Soda Lime:</strong><br>\n      Heating sodium salt of carboxylic acid with soda lime (NaOH + CaO in 3:1 ratio) removes carbon dioxide as carbonate, yielding an alkane with one less carbon atom:<br>\n      <code>CH₃COONa + NaOH —[CaO, Δ]⟶ CH₄ (Methane) + Na₂CO₃</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Clemmensen reduction equation with Zn-Hg/conc. HCl | [1 Mark] Wolff-Kishner equation with hydrazine and KOH/glycol | [1 Mark] Soda lime decarboxylation yielding methane",
+        "cautionTrap": "Using Clemmensen reduction for acid-sensitive compounds. Clemmensen uses conc. HCl (acidic); Wolff-Kishner uses KOH (basic)!",
+        "topperTip": "State the complementary roles: Clemmensen is for base-sensitive molecules; Wolff-Kishner is for acid-sensitive molecules.",
+        "mnemonic": "Clemmensen uses Acid (Zn-Hg/HCl); Wolff-Kishner uses Base (Hydrazine/KOH)."
+    });
+
+    pushQ("Amines", {
+        "id": "chem-am-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q13)",
+        "pacing": "5 min",
+        "type": "Gabriel Phthalimide & Carbylamine Test",
+        "competency": "Named Synthesis & Test",
+        "stem": "(a) Explain why aromatic primary amines (like aniline) cannot be prepared by Gabriel Phthalimide Synthesis.\\n(b) Write the chemical equation and observation for the Carbylamine Test. Which class of amines gives this test?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Why Aniline cannot be prepared by Gabriel Synthesis:</strong><br>\n      • Gabriel phthalimide synthesis involves an <strong>S_N2 nucleophilic substitution</strong> reaction between the potassium phthalimide anion and an alkyl halide (<code>R-X</code>).<br>\n      • Aryl halides (like bromobenzene) do not undergo nucleophilic substitution with phthalimide anion under normal conditions because the C-X bond has partial double bond character due to resonance with the benzene ring and steric hindrance prevents backside attack.<br>\n      • Hence, aromatic primary amines cannot be prepared by this method.</p>\n      <p><strong>(b) Carbylamine Test (Isocyanide Test):</strong><br>\n      • <strong>Applicability:</strong> Given <strong>ONLY by primary (1°) amines</strong> (both aliphatic and aromatic). Secondary and tertiary amines do NOT give this test.<br>\n      • <strong>Reaction:</strong> Primary amine warmed with chloroform (CHCl₃) and ethanolic KOH produces an <strong>extremely foul / obnoxious smelling isocyanide (carbylamine)</strong>:<br>\n      <code>R-NH₂ + CHCl₃ + 3 KOH (ethanolic) —[Δ]⟶ R-NC (Alkyl isocyanide) + 3 KCl + 3 H₂O</code>.<br>\n      • <em>Observation:</em> Unmistakable, highly offensive foul odor of isocyanide.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Explanation of aryl halide resonance/partial double bond preventing S_N2 attack by phthalimide anion | [1.5 Marks] Carbylamine equation, foul smelling isocyanide observation, and restriction to 1° amines",
+        "cautionTrap": "Saying secondary amines give carbylamine test. ONLY primary (1°) amines give the carbylamine test!",
+        "topperTip": "Always state the observation: 'Extremely foul-smelling carbylamine (isocyanide) evolved'.",
+        "mnemonic": "Carbylamine Test = 1° Amine ONLY (Foul Odor NC)."
+    });
+
+    pushQ("Biomolecules", {
+        "id": "chem-bio-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q14)",
+        "pacing": "5 min",
+        "type": "Glucose Structural Evidence Reactions",
+        "competency": "Chemical Proof of Structure",
+        "stem": "Write chemical equations for the following reactions of D-glucose and state what structural information each reaction provides regarding the glucose molecule:\\n(a) Reaction with hydroxylamine (NH₂OH)\\n(b) Reaction with bromine water (Br₂ / H₂O)\\n(c) Reaction with concentrated nitric acid (HNO₃).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>(a) Reaction with Hydroxylamine (NH₂OH):</strong><br>\n      <code>CHO-(CHOH)₄-CH₂OH + NH₂OH  ⟶  CH=N-OH-(CHOH)₄-CH₂OH (Glucose oxime) + H₂O</code>.<br>\n      • <em>Structural Deduction:</em> Confirms the presence of a <strong>carbonyl group (>C=O)</strong> in glucose.</p>\n      <p><strong>(b) Reaction with Bromine Water (Br₂ / H₂O):</strong><br>\n      Bromine water is a mild oxidizing agent that selectively oxidizes the aldehyde group to a carboxylic acid without affecting alcoholic groups:<br>\n      <code>CHO-(CHOH)₄-CH₂OH + [O] —[Br₂ water]⟶ COOH-(CHOH)₄-CH₂OH (Gluconic acid)</code>.<br>\n      • <em>Structural Deduction:</em> Confirms that the carbonyl group is an <strong>aldehyde group (-CHO)</strong>, not a ketone.</p>\n      <p><strong>(c) Reaction with Concentrated Nitric Acid (HNO₃):</strong><br>\n      Concentrated HNO₃ is a strong oxidizing agent that oxidizes both the terminal aldehyde group and the terminal primary alcohol group into carboxylic acids:<br>\n      <code>CHO-(CHOH)₄-CH₂OH + 3[O] —[conc. HNO₃]⟶ COOH-(CHOH)₄-COOH (Saccharic acid / Glucaric acid) + 2H₂O</code>.<br>\n      • <em>Structural Deduction:</em> Confirms the presence of a <strong>primary alcoholic group (-CH₂OH)</strong> at one end of the chain.</p>\n    </div>",
+        "stepMarking": "[1 Mark] (a) Oxime formation proving carbonyl group | [1 Mark] (b) Gluconic acid formation with Br₂ water proving aldehyde group | [1 Mark] (c) Saccharic acid formation with conc. HNO₃ proving primary alcohol",
+        "cautionTrap": "Writing that Br₂ water oxidizes the alcohol groups. Br₂ water is mild and ONLY oxidizes the -CHO group to -COOH!",
+        "topperTip": "Remember the triad: NH₂OH proves Carbonyl; Br₂ water proves Aldehyde; HNO₃ proves Primary Alcohol.",
+        "mnemonic": "Glucose Proofs: Oxime = Carbonyl, Gluconic = Aldehyde, Saccharic = Primary Alcohol."
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q4)",
+        "pacing": "4 min",
+        "type": "Simplification & Trigonometric Identity",
+        "competency": "Algebraic Simplification",
+        "stem": "Write the function in the simplest form:\\nf(x) = tan⁻¹ [ (cos x - sin x) / (cos x + sin x) ], where -π/4 < x < 3π/4.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Divide Numerator and Denominator by cos x (cos x ≠ 0):</strong><br>\n      <code>[ (cos x - sin x) / cos x ] / [ (cos x + sin x) / cos x ] = [ 1 - tan x ] / [ 1 + tan x ]</code>.</p>\n      <p><strong>2. Apply Compound Angle Formula:</strong><br>\n      Since <code>tan(π/4) = 1</code>:<br>\n      <code>[ tan(π/4) - tan x ] / [ 1 + tan(π/4) tan x ] = tan [ π/4 - x ]</code>.<br>\n      Therefore: <code>f(x) = tan⁻¹ [ tan (π/4 - x) ]</code>.</p>\n      <p><strong>3. Verify Principal Range:</strong><br>\n      Given <code>-π/4 < x < 3π/4  ⟹  -3π/4 < -x < π/4</code>.<br>\n      Adding π/4: <code>-3π/4 + π/4 < π/4 - x < π/4 + π/4  ⟹  -π/2 < π/4 - x < π/2</code>.<br>\n      Since (π/4 - x) strictly lies within the principal value branch <code>(-π/2, π/2)</code> of tan⁻¹:<br>\n      <strong>f(x) = π/4 - x</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Dividing by cos x to get (1 - tan x)/(1 + tan x) | [1 Mark] Applying tan(π/4 - x) compound angle identity | [1 Mark] Domain verification showing -π/2 < π/4 - x < π/2 and concluding π/4 - x",
+        "cautionTrap": "Skipping the domain check! CBSE awards 1 full mark exclusively for showing that (π/4 - x) lies within (-π/2, π/2).",
+        "topperTip": "Always show the 3-line domain verification: -π/4 < x < 3π/4 ⟹ -π/2 < (π/4 - x) < π/2.",
+        "mnemonic": "Divide by cos x ⟹ Convert to tan(π/4 - x) ⟹ Domain check ⟹ π/4 - x."
+    });
+
+    pushQ("Applications of Derivatives", {
+        "id": "math-aod-10y-2022",
+        "marks": 5,
+        "year": "CBSE 2022 (Term 2 Q13)",
+        "pacing": "10 min",
+        "type": "Maxima & Minima Optimization",
+        "competency": "Geometric Optimization",
+        "stem": "Show that the semi-vertical angle of a right circular cone of given surface area and maximum volume is sin⁻¹(1/3).",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Surface Area & Dimensions:</strong><br>\n      Let r be radius, h be height, l be slant height, and α be the semi-vertical angle of the cone.<br>\n      <code>l² = r² + h²</code>, and <code>sin α = r / l</code>.<br>\n      Given total surface area: <code>S = π r² + π r l = constant  ⟹  l = (S - π r²) / (π r)</code>.</p>\n      <p><strong>2. Volume Equation:</strong><br>\n      <code>V = (1/3) π r² h  ⟹  V² = (1/9) π² r⁴ h² = (1/9) π² r⁴ (l² - r²)</code>.<br>\n      Let <code>Z = V²</code> (maximizing Z maximizes V):<br>\n      <code>Z = (1/9) π² r⁴ [ ( (S - π r²) / (π r) )² - r² ] = (1/9) π² r⁴ [ (S² - 2π S r² + π² r⁴ - π² r⁴) / (π² r²) ]</code><br>\n      <code>Z = (1/9) r² (S² - 2π S r²) = (1/9) [ S² r² - 2π S r⁴ ]</code>.</p>\n      <p><strong>3. First Derivative & Critical Point:</strong><br>\n      <code>dZ/dr = (1/9) [ 2 S² r - 8π S r³ ]</code>.<br>\n      Setting dZ/dr = 0: <code>2 S r [ S - 4π r² ] = 0  ⟹  <strong>S = 4π r²</strong></code> (since r > 0).</p>\n      <p><strong>4. Second Derivative Test:</strong><br>\n      <code>d²Z/dr² = (1/9) [ 2 S² - 24π S r² ]</code>.<br>\n      At S = 4π r²: <code>d²Z/dr² = (1/9) [ 2(4π r²)² - 24π (4π r²) r² ] = (1/9) [ 32 π² r⁴ - 96 π² r⁴ ] = - (64/9) π² r⁴ < 0</code>.<br>\n      By second derivative test, volume is <strong>maximum when S = 4π r²</strong>.</p>\n      <p><strong>5. Finding Semi-Vertical Angle α:</strong><br>\n      Since S = π r² + π r l: <code>4π r² = π r² + π r l  ⟹  3π r² = π r l  ⟹  l = 3r  ⟹  r / l = 1/3</code>.<br>\n      Since <code>sin α = r / l = 1/3  ⟹  <strong>α = sin⁻¹(1/3)</strong></code>. (Hence Proved!).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Formulating l = (S - πr²)/(πr) and V² function | [1.5 Marks] First derivative dZ/dr and solving S = 4πr² | [1.5 Marks] Second derivative test d²Z/dr² < 0 proving maximality | [1 Mark] Proving l = 3r and final angle α = sin⁻¹(1/3)",
+        "cautionTrap": "Differentiating V with square root √(l² - r²). Always maximize Z = V² to eliminate radical signs and avoid differentiation errors!",
+        "topperTip": "Substitute Z = V². Maximizing V² is mathematically identical to maximizing V and simplifies algebra by 70%.",
+        "mnemonic": "Cone Surface Max Volume: S = 4πr² ⟹ l = 3r ⟹ sin α = 1/3."
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-10y-2020",
+        "marks": 5,
+        "year": "CBSE 2020 (Delhi Set 1 Q34)",
+        "pacing": "10 min",
+        "type": "Foot of Perpendicular & Image",
+        "competency": "Perpendicular Distance & Coordinates",
+        "stem": "Find the coordinates of the foot of the perpendicular and the length of the perpendicular drawn from the point P(1, 2, 3) to the line: (x - 6)/3 = (y - 7)/2 = (z - 7)/(-2). Also find the image of point P in the line.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. General Point on the Line (Q):</strong><br>\n      Let <code>(x - 6)/3 = (y - 7)/2 = (z - 7)/(-2) = λ</code>.<br>\n      Coordinates of any point Q on the line: <code>Q(3λ + 6, 2λ + 7, -2λ + 7)</code>.</p>\n      <p><strong>2. Direction Ratios of Line PQ:</strong><br>\n      Direction ratios of PQ connecting P(1, 2, 3) and Q:<br>\n      <code>(3λ + 6 - 1, 2λ + 7 - 2, -2λ + 7 - 3) = (3λ + 5, 2λ + 5, -2λ + 4)</code>.<br>\n      Direction ratios of the given line: <code>(a, b, c) = (3, 2, -2)</code>.</p>\n      <p><strong>3. Perpendicularity Condition (PQ ⊥ Line):</strong><br>\n      <code>a₁ a₂ + b₁ b₂ + c₁ c₂ = 0</code><br>\n      <code>3(3λ + 5) + 2(2λ + 5) + (-2)(-2λ + 4) = 0</code><br>\n      <code>9λ + 15 + 4λ + 10 + 4λ - 8 = 0  ⟹  17λ + 17 = 0  ⟹  <strong>λ = -1</strong></code>.</p>\n      <p><strong>4. Foot of Perpendicular (Q) & Length (d):</strong><br>\n      Substituting λ = -1 into Q:<br>\n      <code>x = 3(-1) + 6 = 3</code>, <code>y = 2(-1) + 7 = 5</code>, <code>z = -2(-1) + 7 = 9</code>.<br>\n      <strong>Foot of Perpendicular: Q(3, 5, 9)</strong>.<br>\n      Length: <code>|PQ| = √[(3 - 1)² + (5 - 2)² + (9 - 3)²] = √[4 + 9 + 36] = √49 = <strong>7 units</strong></code>.</p>\n      <p><strong>5. Image Point P'(x', y', z'):</strong><br>\n      Q is the midpoint of segment PP':<br>\n      <code>(1 + x')/2 = 3  ⟹  x' = 5</code><br>\n      <code>(2 + y')/2 = 5  ⟹  y' = 8</code><br>\n      <code>(3 + z')/2 = 9  ⟹  z' = 15</code>.<br>\n      <strong>Image Point: P'(5, 8, 15)</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] General point Q in terms of parameter λ | [1.5 Marks] Orthogonality condition a₁a₂ + b₁b₂ + c₁c₂ = 0 and finding λ = -1 | [1 Mark] Foot of perpendicular Q(3, 5, 9) and length PQ = 7 units | [1 Mark] Image coordinates P'(5, 8, 15) using midpoint formula",
+        "cautionTrap": "Forgetting the negative sign in c = -2 when applying the dot product. (-2)(-2λ + 4) = +4λ - 8.",
+        "topperTip": "Always verify that Q(3, 5, 9) satisfies the original line equation: (3-6)/3 = -1, (5-7)/2 = -1, (9-7)/(-2) = -1. Perfect check!",
+        "mnemonic": "Foot of Perpendicular: Line in λ ⟹ Dot Product = 0 ⟹ Find Q ⟹ Midpoint gives Image."
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q11)",
+        "pacing": "5 min",
+        "type": "Probability Distribution & Mean",
+        "competency": "Random Variable Expectation",
+        "stem": "Find the probability distribution of the number of doublets in three throws of a pair of dice. Also calculate the mean (expected value) of the distribution.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Define Parameters:</strong><br>\n      When a pair of dice is thrown, total outcomes = 36.<br>\n      Doublets = {(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)} (6 outcomes).<br>\n      Probability of getting a doublet in a single throw: <code>p = 6/36 = 1/6</code>.<br>\n      Probability of not getting a doublet: <code>q = 1 - p = 5/6</code>.<br>\n      Number of throws: <code>n = 3</code>.<br>\n      Let random variable X = Number of doublets in 3 throws. Possible values: <code>X = 0, 1, 2, 3</code>.</p>\n      <p><strong>2. Probability Distribution:</strong><br>\n      • <code>P(X = 0) = ³C₀ (1/6)⁰ (5/6)³ = 1 × 1 × (125/216) = 125/216</code>.<br>\n      • <code>P(X = 1) = ³C₁ (1/6)¹ (5/6)² = 3 × (1/6) × (25/36) = 75/216</code>.<br>\n      • <code>P(X = 2) = ³C₂ (1/6)² (5/6)¹ = 3 × (1/36) × (5/6) = 15/216</code>.<br>\n      • <code>P(X = 3) = ³C₃ (1/6)³ (5/6)⁰ = 1 × (1/216) × 1 = 1/216</code>.<br>\n      (Check: Sum = 125 + 75 + 15 + 1 = 216/216 = 1).</p>\n      <p><strong>3. Mean (Expected Value E(X) = ∑ x_i P(x_i)):</strong><br>\n      <code>Mean = 0(125/216) + 1(75/216) + 2(15/216) + 3(1/216) = (0 + 75 + 30 + 3) / 216 = 108 / 216 = <strong>1/2</strong></code>.<br>\n      (Alternatively, for binomial distribution: <code>Mean = n p = 3 × (1/6) = 1/2</code>).</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct identification of p = 1/6, q = 5/6 and values of X | [1.5 Marks] Complete probability distribution table with all 4 probabilities evaluated | [0.5 Mark] Mean calculation E(X) = 1/2",
+        "cautionTrap": "Leaving fractions with different denominators. Keep all probabilities over common denominator 216 so you can verify that the sum of probabilities equals exactly 1!",
+        "topperTip": "Always verify that ∑ P(X) = 1. Mention both the table method and n·p formula for full marks.",
+        "mnemonic": "Binomial Mean = n · p (3 × 1/6 = 0.5)."
+    });
+
+    pushQ("Lost Spring", {
+        "id": "eng-ls-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q5)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Character & Thematic Analysis",
+        "stem": "Why does Mukesh's grandmother accept her husband's blindness as 'his karam, his destiny'? What does this reveal about the mind-set of the bangle makers of Firozabad?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Mukesh's grandmother views her husband's blindness—caused by the fine glass dust from polishing glass bangles—as an inescapable, divine decree: <em>“It is his karam, his destiny. Can a god-given lineage ever be broken?”</em><br><br>\n      This reveals the deeply entrenched <strong>fatalism and psychological paralysis</strong> that grips the bangle makers of Firozabad. Generations of unbroken exploitation and crushing poverty have conditioned them to believe that suffering is ordained by birth. This defeatist mindset kills all initiative, stifles ambition, and prevents them from organizing into cooperatives or seeking alternative livelihoods.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Explanation of grandmother's belief in 'god-given lineage' and karma | [1 Mark] Analysis of psychological paralysis, fatalism, and crushed initiative",
+        "cautionTrap": "Explaining only the physical cause of blindness (glass dust) without analyzing the cultural fatalism and hopelessness.",
+        "topperTip": "Quote the phrase: 'Can a god-given lineage ever be broken?' to demonstrate text familiarity.",
+        "mnemonic": "Firozabad Trap: Glass Dust + God-Given Lineage = Crushed Ambition."
+    });
+
+    pushQ("Deep Water", {
+        "id": "eng-dw-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q6)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Narrative Plot & Sensory Detail",
+        "stem": "What physical and psychological sensations did William Douglas experience as he was hurled into the YMCA pool and began sinking to the bottom?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>When the eighteen-year-old bully tossed nine-year-old Douglas into the deep end, he experienced acute visceral trauma:<br><br>\n      • <strong>Physical Sensations:</strong> The nine feet seemed like ninety feet. His lungs were ready to burst; his mouth swallowed filthy water instead of air; his throat was choked, and his legs felt dead, paralyzed, and rigid like dead weights.<br><br>\n      • <strong>Psychological Terror:</strong> An unreasoning, absolute panic gripped him—a terror that <em>“knows no understanding, knows no control”</em>. When his frantic attempts to spring from the tile bottom failed three times, all terror ceased and a black curtain wiped out reason, plunging him into the quiet, peaceful numbness of near-death.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Physical sensations: burst lungs, choking, paralyzed legs | [1 Mark] Psychological terror: stark panic followed by the quiet numbness of oblivion",
+        "cautionTrap": "Writing only that he was scared. Mention the specific physical details: 'nine feet seemed like ninety', 'lungs ready to burst', and 'legs hung as dead weights'.",
+        "topperTip": "Describe the transition from stark panic to peaceful oblivion ('curtain of life fell').",
+        "mnemonic": "YMCA Pool: 9 feet = 90 ⟶ Lungs bursting ⟶ Rigid legs ⟶ Black oblivion."
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q7)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Historical Narrative & Legal Ethics",
+        "stem": "Why did Mahatma Gandhi chide the lawyers of Muzaffarpur who came to brief him about the Champaran sharecroppers' court cases?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Mahatma Gandhi chided the Muzaffarpur lawyers for <strong>collecting exorbitant fees from the impoverished, crushed sharecroppers</strong>.<br><br>\n      Gandhi pointed out that taking such cases to court did little good when the peasants were so crushed and fear-stricken. He declared: <em>“The real relief for them is to be free from fear.”</em> Law courts could not liberate peasants who were physically intimidated by British planters; what was needed was fearless collective action rather than costly, prolonged litigation.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Gandhi's rebuke regarding exorbitant legal fees taken from poor peasants | [1 Mark] Real relief philosophy: liberation from fear rather than court litigation",
+        "cautionTrap": "Saying Gandhi opposed the lawyers personally. He opposed the mercenary system of draining poor peasants' money in ineffective courts!",
+        "topperTip": "Quote Gandhi's famous deduction: 'The real relief for them is to be free from fear.'",
+        "mnemonic": "Muzaffarpur Rebuke: Stop heavy fees; Law courts can't cure fear."
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-en-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q8)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Character & Domestic Conflict",
+        "stem": "How did the domestic servants react to Dr. Sadao's decision to harbour and operate on the wounded American prisoner? What does their reaction signify?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>The domestic servants (Yumi the maid, the old gardener, and the cook) reacted with <strong>deep superstition, overt terror, and quiet defiance</strong>:<br><br>\n      • Yumi flatly refused to wash the white soldier, threatening to quit.<br>\n      • The old gardener superstitiously believed the sea and the gun had tried to kill him, and saving him would invite natural retribution.<br>\n      • Viewing Sadao's action as treason and fearful of being arrested as accomplices, all three servants packed their belongings and left the household in protest.<br><br>\n      • <strong>Significance:</strong> Their reaction highlights the pervasive, blind wartime patriotism and xenophobia among the common masses, in contrast to Dr. Sadao and Hana's higher humanist consciousness that transcended national hatred.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Specific servant rebellions: Yumi refusing to wash, gardener's superstition, packing bags | [1 Mark] Significance: Blind nationalist conditioning vs Sadao's medical humanism",
+        "cautionTrap": "Saying the servants reported Sadao to the police. They did NOT betray him; they only quit their jobs quietly out of fear!",
+        "topperTip": "Emphasize that the servants remained loyal by not snitching, but could not overcome their wartime prejudice.",
+        "mnemonic": "Servants' Revolt: Fear of Law + Superstition ⟶ Depart Household ⟶ Highlight Common Xenophobia."
+    });
+
+
+    // --- 10-YEAR OFFICIAL CBSE IMPORTED QUESTION SETS (BATCH 4) ---
+    pushQ("Amines", {
+        "id": "chem-am-10y-2020",
+        "marks": 3,
+        "year": "CBSE 2020 (Delhi Set 1 Q22)",
+        "pacing": "5 min",
+        "type": "Named Degradation Reaction",
+        "competency": "Carbon Chain Step-Down Synthesis",
+        "stem": "Write the chemical equation for Hoffmann Bromamide Degradation Reaction. Why is this reaction considered a 'step-down' reaction? Give an example of converting ethanamide to methanamine.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Hoffmann Bromamide Degradation Reaction:</strong><br>\n      An aliphatic or aromatic primary amide is treated with bromine (Br₂) in aqueous or ethanolic sodium hydroxide (NaOH) to yield a primary amine:<br>\n      <code>R-CO-NH₂ + Br₂ + 4 NaOH  ⟶  R-NH₂ + Na₂CO₃ + 2 NaBr + 2 H₂O</code>.</p>\n      <p><strong>2. Why Called a 'Step-Down' Reaction:</strong><br>\n      The primary amine produced contains <strong>exactly one carbon atom less</strong> than the starting amide (the carbonyl carbon is removed as sodium carbonate Na₂CO₃). Hence, it is widely utilized for stepping down a homologous series.</p>\n      <p><strong>3. Conversion of Ethanamide to Methanamine:</strong><br>\n      <code>CH₃-CO-NH₂ (Ethanamide, 2 carbons) + Br₂ + 4 NaOH  ⟶  CH₃-NH₂ (Methanamine, 1 carbon) + Na₂CO₃ + 2 NaBr + 2 H₂O</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] General balanced equation for Hoffmann bromamide degradation | [1 Mark] Explanation of 'step-down' (one carbon less) | [1 Mark] Specific conversion of ethanamide to methanamine",
+        "cautionTrap": "Balancing with 2 NaOH instead of 4 NaOH. 4 moles of NaOH are consumed per mole of amide!",
+        "topperTip": "Mention that this reaction proceeds via an isocyanate intermediate (R-N=C=O).",
+        "mnemonic": "Hoffmann Bromamide: Amide ⟶ Lose C=O ⟶ 1° Amine (Step Down)."
+    });
+
+    pushQ("Inverse Trigonometric Functions", {
+        "id": "math-itf-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q18)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Inverse Trigonometric Evaluation",
+        "stem": "Find the exact numerical value of: cos [ cos⁻¹(-√3/2) + π/6 ].",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Principal Value of cos⁻¹(-√3/2):</strong><br>\n      • The principal value branch of cos⁻¹ is <code>[0, π]</code>.<br>\n      • Using property <code>cos⁻¹(-x) = π - cos⁻¹(x)</code>:<br>\n      <code>cos⁻¹(-√3/2) = π - cos⁻¹(√3/2) = π - π/6 = 5π/6</code>.</p>\n      <p><strong>2. Evaluating the Expression:</strong><br>\n      <code>cos [ 5π/6 + π/6 ] = cos [ 6π/6 ] = cos(π) = <strong>-1</strong></code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct evaluation of cos⁻¹(-√3/2) = 5π/6 | [1 Mark] Evaluating cos(π) = -1",
+        "cautionTrap": "Writing cos⁻¹(-√3/2) = -π/6. The range of cos⁻¹ is [0, π], never negative!",
+        "topperTip": "Remember: cos⁻¹(-x) = π - cos⁻¹(x). Never drop the π.",
+        "mnemonic": "cos⁻¹ Negative: Flip from π (π - θ)."
+    });
+
+    pushQ("Continuity and Differentiability", {
+        "id": "math-cont-10y-2022",
+        "marks": 3,
+        "year": "CBSE 2022 (Term 2 Q5)",
+        "pacing": "5 min",
+        "type": "Core / Derivation (3M)",
+        "competency": "Logarithmic Differentiation",
+        "stem": "Differentiate with respect to x: y = x^(sin x) + (sin x)^(cos x) for x > 0.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Let <code>y = u + v</code>, where <code>u = x^(sin x)</code> and <code>v = (sin x)^(cos x)</code>.<br>\n      Then <code>dy/dx = du/dx + dv/dx</code>.</p>\n      <p><strong>1. Differentiating u = x^(sin x):</strong><br>\n      Taking natural logarithm: <code>log u = sin x · log x</code>.<br>\n      Differentiating with respect to x:<br>\n      <code>(1/u)(du/dx) = cos x · log x + sin x · (1/x)</code>.<br>\n      <code>du/dx = x^(sin x) [ cos x · log x + (sin x) / x ]</code>.</p>\n      <p><strong>2. Differentiating v = (sin x)^(cos x):</strong><br>\n      Taking natural logarithm: <code>log v = cos x · log(sin x)</code>.<br>\n      Differentiating with respect to x:<br>\n      <code>(1/v)(dv/dx) = (- sin x) · log(sin x) + cos x · [ (1/sin x) · cos x ]</code><br>\n      <code>= - sin x · log(sin x) + cos x · cot x</code>.<br>\n      <code>dv/dx = (sin x)^(cos x) [ cos x · cot x - sin x · log(sin x) ]</code>.</p>\n      <p><strong>3. Final Derivative:</strong><br>\n      <strong>dy/dx = x^(sin x) [ cos x · log x + (sin x)/x ] + (sin x)^(cos x) [ cos x · cot x - sin x · log(sin x) ]</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Splitting into y = u + v | [1 Mark] Logarithmic differentiation of u = x^(sin x) | [1 Mark] Logarithmic differentiation of v = (sin x)^(cos x) and final sum",
+        "cautionTrap": "Taking log of y directly: log y ≠ log u + log v! Logarithm cannot be distributed over addition: log(u + v) ≠ log u + log v.",
+        "topperTip": "Always split composite sums into u and v separately before taking logs.",
+        "mnemonic": "Log rule: Split into u + v; Never take log of a sum!"
+    });
+
+    pushQ("Three Dimensional Geometry", {
+        "id": "math-3d-10y-2019",
+        "marks": 3,
+        "year": "CBSE 2019 (All India Q26)",
+        "pacing": "5 min",
+        "type": "Shortest Distance between Parallel Lines",
+        "competency": "Parallel Line Vector Geometry",
+        "stem": "Find the shortest distance between the parallel lines:\\nr⃗ = (î + 2ĵ - 4k̂) + λ (2î + 3ĵ + 6k̂)\\nr⃗ = (3î + 3ĵ - 5k̂) + μ (2î + 3ĵ + 6k̂)",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Identify Parallel Line Vectors:</strong><br>\n      Both lines share the same direction vector: <code>b⃗ = 2î + 3ĵ + 6k̂</code>.<br>\n      Position vectors of given points on the lines:<br>\n      • <code>a⃗₁ = î + 2ĵ - 4k̂</code><br>\n      • <code>a⃗₂ = 3î + 3ĵ - 5k̂</code><br>\n      • Difference vector: <code>a⃗₂ - a⃗₁ = (3 - 1)î + (3 - 2)ĵ + (-5 - (-4))k̂ = 2î + ĵ - k̂</code>.</p>\n      <p><strong>2. Cross Product b⃗ × (a⃗₂ - a⃗₁):</strong><br>\n      <code>b⃗ × (a⃗₂ - a⃗₁) = | î   ĵ   k̂ |\\n| 2   3   6 |\\n| 2   1  -1 |</code><br>\n      <code>= î [ (3)(-1) - (6)(1) ] - ĵ [ (2)(-1) - (6)(2) ] + k̂ [ (2)(1) - (3)(2) ]</code><br>\n      <code>= î [ -3 - 6 ] - ĵ [ -2 - 12 ] + k̂ [ 2 - 6 ] = -9î + 14ĵ - 4k̂</code>.<br>\n      Magnitude: <code>|b⃗ × (a⃗₂ - a⃗₁)| = √[(-9)² + 14² + (-4)²] = √[81 + 196 + 16] = √293</code>.</p>\n      <p><strong>3. Magnitude of Vector b⃗:</strong><br>\n      <code>|b⃗| = √[2² + 3² + 6²] = √[4 + 9 + 36] = √49 = 7</code>.</p>\n      <p><strong>4. Shortest Distance Formula for Parallel Lines:</strong><br>\n      <code>d = | [ b⃗ × (a⃗₂ - a⃗₁) ] | / |b⃗| = <strong>√293 / 7 units</strong> ≈ 2.44 units</code>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correct formula d = |b⃗ × (a⃗₂ - a⃗₁)| / |b⃗| | [1 Mark] Evaluation of cross product b⃗ × (a⃗₂ - a⃗₁) = -9î + 14ĵ - 4k̂ and magnitude √293 | [1 Mark] Division by |b⃗| = 7 and final answer √293 / 7 units",
+        "cautionTrap": "Using the skew lines formula containing dot product with (b⃗₁ × b⃗₂). For parallel lines b⃗₁ × b⃗₂ = 0, so the cross product formula d = |b⃗ × (a⃗₂ - a⃗₁)| / |b⃗| MUST be used!",
+        "topperTip": "Recognize parallel lines immediately when the direction vectors are identical or proportional.",
+        "mnemonic": "Parallel Lines Distance: Cross Product with b⃗ divided by magnitude of b⃗."
+    });
+
+    pushQ("Linear Programming", {
+        "id": "math-lpp-10y-2020",
+        "marks": 5,
+        "year": "CBSE 2020 (Delhi Set 1 Q36)",
+        "pacing": "10 min",
+        "type": "Unbounded Feasible Region Minimization",
+        "competency": "Unbounded Region Optimization",
+        "stem": "Minimize: Z = 3x + 5y\\nSubject to constraints:\\nx + 3y ≥ 3\\nx + y ≥ 2\\nx ≥ 0, y ≥ 0.\\nGraph the feasible region and explain the extra half-plane test required for unbounded feasible regions.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Constraints & Lines:</strong><br>\n      • Line 1: <code>x + 3y = 3</code> passes through (3, 0) and (0, 1). Testing (0,0): 0 ≥ 3 (False; region lies away from origin).<br>\n      • Line 2: <code>x + y = 2</code> passes through (2, 0) and (0, 2). Testing (0,0): 0 ≥ 2 (False; region lies away from origin).<br>\n      • Intersection Point: Subtracting gives <code>2y = 1 ⟹ y = 1/2</code>; then <code>x = 3/2</code>. Point is <strong>(3/2, 1/2)</strong>.<br>\n      • The feasible region is <strong>unbounded</strong> with corner points: A(3, 0), B(3/2, 1/2), and C(0, 2).</p>\n      <p><strong>2. Evaluating Z = 3x + 5y at Corner Points:</strong><br>\n      • At A(3, 0): <code>Z = 3(3) + 5(0) = 9</code>.<br>\n      • At B(3/2, 1/2): <code>Z = 3(3/2) + 5(1/2) = (9 + 5)/2 = 14/2 = <strong>7 (Smallest)</strong></code>.<br>\n      • At C(0, 2): <code>Z = 3(0) + 5(2) = 10</code>.<br>\n      Candidate minimum value is <strong>M = 7</strong>.</p>\n      <p><strong>3. Open Half-Plane Test for Unbounded Region:</strong><br>\n      Since the region is unbounded, we must test whether the open half-plane <code>3x + 5y < 7</code> has any common points with the feasible region.<br>\n      • Line <code>3x + 5y = 7</code> passes through (7/3 ≈ 2.33, 0) and (0, 1.4).<br>\n      • Testing (3/2, 1/2): <code>3(3/2) + 5(1/2) = 7</code> (lies on the boundary).<br>\n      • The open half-plane <code>3x + 5y < 7</code> has <strong>NO common points</strong> with the feasible region.<br>\n      <strong>Conclusion:</strong> Minimum value of Z is <strong>7 at point (3/2, 1/2)</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Accurate graphing of lines and shading unbounded feasible region | [1 Mark] Corner points evaluation (A=9, B=7, C=10) | [1.5 Marks] Crucial open half-plane test 3x + 5y < 7 showing no common points | [1 Mark] Final conclusion: Min Z = 7 at (3/2, 1/2)",
+        "cautionTrap": "Skipping the open half-plane test! CBSE marking schemes strictly deduct 1.5 to 2 marks if the open half-plane check ax + by < M is omitted for unbounded regions.",
+        "topperTip": "Draw the line 3x + 5y = 7 as a dashed line to indicate the boundary of the open half-plane.",
+        "mnemonic": "Unbounded Rule: Check Open Half-Plane (No common points = True Minimum)."
+    });
+
+    pushQ("Probability", {
+        "id": "math-prob-10y-2019",
+        "marks": 2,
+        "year": "CBSE 2019 (All India Q18)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Independent Events & Set Probability",
+        "stem": "If A and B are two independent events such that P(A) = 0.3 and P(B) = 0.6, find:\\n(a) P(A ∩ B)\\n(b) P(A ∪ B)\\n(c) P(A | B)\\n(d) P(B | A)",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Since A and B are independent events:<br><br>\n      • <strong>(a) P(A ∩ B):</strong><br>\n      <code>P(A ∩ B) = P(A) · P(B) = 0.3 × 0.6 = <strong>0.18</strong></code>.<br><br>\n      • <strong>(b) P(A ∪ B):</strong><br>\n      <code>P(A ∪ B) = P(A) + P(B) - P(A ∩ B) = 0.3 + 0.6 - 0.18 = 0.90 - 0.18 = <strong>0.72</strong></code>.<br><br>\n      • <strong>(c) P(A | B):</strong><br>\n      By definition of independent events: <code>P(A | B) = P(A) = <strong>0.3</strong></code> (or <code>0.18 / 0.6 = 0.3</code>).<br><br>\n      • <strong>(d) P(B | A):</strong><br>\n      By definition of independent events: <code>P(B | A) = P(B) = <strong>0.6</strong></code> (or <code>0.18 / 0.3 = 0.6</code>).</p>\n    </div>",
+        "stepMarking": "[0.5 Mark] P(A ∩ B) = 0.18 | [0.5 Mark] P(A ∪ B) = 0.72 | [0.5 Mark] P(A | B) = 0.3 | [0.5 Mark] P(B | A) = 0.6",
+        "cautionTrap": "Adding P(A) and P(B) directly without subtracting P(A ∩ B) for union. Independent does NOT mean mutually exclusive!",
+        "topperTip": "For independent events: P(A|B) is simply P(A), and P(B|A) is simply P(B).",
+        "mnemonic": "Independent: Intersection = Product; Conditional = Unaffected."
+    });
+
+    pushQ("The Last Lesson", {
+        "id": "eng-tll-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q8)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Character & Social Context",
+        "stem": "Why were the village elders (Old Hauser, the former mayor, the former postmaster) seated on the back benches of the classroom during the last French lesson?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>The village elders were seated on the back benches for three poignant reasons:<br><br>\n      1. <strong>Tribute and Gratitude:</strong> To honor and thank M. Hamel for his <strong>forty years of faithful, devoted service</strong> to the village school.<br>\n      2. <strong>Remorse for Neglect:</strong> They felt collective sorrow and guilt that they had not gone to school more often and had prioritized work at mills over their children's education.<br>\n      3. <strong>Patriotic Solidarity:</strong> It was their solemn way of showing respect for their conquered country and the French language that was no longer theirs.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Respect and gratitude for M. Hamel's 40 years of service | [1 Mark] Collective sorrow/guilt for neglecting education and patriotic respect for their mother tongue",
+        "cautionTrap": "Saying they were there to inspect or audit the school. They were there as grieving citizens paying solemn farewell!",
+        "topperTip": "Mention the specific tenure: '40 years of faithful service'.",
+        "mnemonic": "Back Benches: Honor Hamel (40 yrs) + Regret Lost Schooling + Patriotic Farewell."
+    });
+
+    pushQ("The Rattrap", {
+        "id": "eng-rt-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q9)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Psychological Motivation & Plot",
+        "stem": "Why did the peddler decline the ironmaster's invitation to spend Christmas Eve at the manor house?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>The peddler declined the invitation because he was acutely aware that the ironmaster had mistaken him for his old regimental comrade, Captain Nils Olof.<br><br>\n      Having <strong>thirty stolen kronor in his pocket</strong> (stolen from the old crofter), going up to the grand manor house felt like walking voluntarily into the <strong>lion's den</strong>. He feared his true identity would be discovered immediately in full daylight, leading to his arrest by the sheriff. He only desired to sleep on the forge floor and slip away unnoticed.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Awareness of mistaken identity and possession of stolen 30 kronor | [1 Mark] Fear of walking into 'lion's den' and being handed to the sheriff",
+        "cautionTrap": "Saying he declined because he was shy. He declined out of mortal fear of arrest with stolen money in his pocket!",
+        "topperTip": "Use the author's metaphor: 'Throwing himself voluntarily into the lion's den.'",
+        "mnemonic": "Manor House Rejection: Stolen 30 Kronor + Mistaken Identity = Lion's Den Fear."
+    });
+
+    pushQ("Indigo", {
+        "id": "eng-ind-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q10)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Character Trait & Historical Narrative",
+        "stem": "Why is Rajkumar Shukla described as being 'resolute' in Louis Fischer's 'Indigo'?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Rajkumar Shukla is described as <strong>'resolute' (determined)</strong> because he refused to give up until he brought Mahatma Gandhi to Champaran:<br><br>\n      • When Gandhi explained he had pre-arranged commitments in Cawnpore (Kanpur) and across India, Shukla did not return home; he <strong>accompanied Gandhi everywhere</strong>.<br>\n      • He followed Gandhi to his ashram near Ahmedabad and waited patiently for weeks.<br>\n      • Finally, he tracked Gandhi to Calcutta, sat on his haunches for hours until Gandhi was free, and boarded the train with him to Patna.<br>\n      His unyielding perseverance and tenacity ultimately compelled Gandhi to champion the sharecroppers' cause.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Following Gandhi across Kanpur, ashram at Ahmedabad, and waiting for weeks | [1 Mark] Meeting him in Calcutta, boarding train, and unshakeable tenacity",
+        "cautionTrap": "Calling Shukla an educated political leader. Shukla was an illiterate, poor sharecropper whose only weapon was unyielding determination!",
+        "topperTip": "Quote Gandhi's reaction: 'Impressed by the sharecropper's tenacity and story, Gandhi relented.'",
+        "mnemonic": "Shukla's Resolute Trail: Kanpur ⟶ Ashram ⟶ Calcutta ⟶ Champaran Victory."
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tob-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q7)",
+        "pacing": "3 min",
+        "type": "Poetic Line Analysis",
+        "competency": "Symbolic Interpretation",
+        "stem": "What does Keats mean by the line: 'Therefore, on every morrow, are we wreathing a flowery band to bind us to the earth'?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Keats suggests that despite human life being overwhelmed by grief, disappointment, cruelty, and despondence, the <strong>enchanting creations of beauty act as an emotional anchor</strong>.<br><br>\n      Every morning ('morrow'), we symbolically weave a garland of beautiful memories and encounters with nature (the 'flowery band'). This floral wreath binds our exhausted, disillusioned spirits to life on earth, giving us hope, optimism, and the willpower to continue living amidst earthly trials.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Earthly despair, sorrow, and despondence context | [1 Mark] Flowery band as emotional anchor/garland connecting human soul to love for life",
+        "cautionTrap": "Taking 'flowery band' literally as making flower necklaces. It is a metaphor for cultivating joy and beauty to anchor our will to live!",
+        "topperTip": "Pair 'flowery band' with 'spite of despondence' to highlight the contrast.",
+        "mnemonic": "Flowery Band: Metaphor for Beautiful Memories Binding Us to Earth."
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q8)",
+        "pacing": "3 min",
+        "type": "Poetic Imagery Analysis",
+        "competency": "Eco-Poetic Symbols",
+        "stem": "What message does Pablo Neruda convey through the images of: (i) the fisherman in the cold sea, and (ii) the man gathering salt looking at his hurt hands?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Fisherman in the Cold Sea:</strong><br>\n      Symbolizes humanity's predatory exploitation of nature. The fisherman ceasing to harm whales represents an <strong>end to ecological destruction and ruthless exploitation of marine wildlife</strong>, establishing harmony between man and nature.</p>\n      <p><strong>2. Man Gathering Salt Looking at Hurt Hands:</strong><br>\n      Symbolizes the relentless, agonizing toll of modern industrial labor. In the frenzied quest for material survival and economic gain, humans blind themselves to self-harm. Pausing allows workers time for <strong>self-healing, self-reflection, and reclaiming physical and emotional well-being</strong>.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Fisherman: Cessation of ecological violence / cruelty against nature | [1 Mark] Salt gatherer: Pause for self-reflection and healing from destructive commercial toil",
+        "cautionTrap": "Treating these images as literal career advice. They are universal symbols of ecological violence and capitalist self-destruction!",
+        "topperTip": "Frame both as twin dimensions: Outer Harmony (saving whales) and Inner Harmony (healing hurt hands).",
+        "mnemonic": "Neruda Imagery: Fisherman = Stop Hurting Nature; Salt Gatherer = Stop Hurting Self."
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-10y-2022",
+        "marks": 2,
+        "year": "CBSE 2022 (Term 2 Q9)",
+        "pacing": "3 min",
+        "type": "Symbolic Analysis",
+        "competency": "Feminist Imagery",
+        "stem": "Why are Aunt Jennifer's fingers described as 'fluttering through her wool'? What prevents her from pulling the needle?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Aunt Jennifer's fingers are 'fluttering through her wool' due to <strong>deep physical nervousness, psychological trauma, and physical weakness</strong> born out of a lifetime of domestic oppression.<br><br>\n      She finds even the lightweight ivory needle hard to pull because her hands are mentally weighed down by <strong>'the massive weight of Uncle's wedding band'</strong>. The wedding ring represents the patriarchal tyranny, terror, and loss of personal autonomy that have systematically crushed her vitality.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Fluttering fingers: nervous trembling caused by domestic intimidation | [1 Mark] Inability to pull needle: psychological burden of 'Uncle's wedding band' (patriarchal oppression)",
+        "cautionTrap": "Saying she is physically ill or old. Her trembling is emotional and psychological trauma from marital subjugation!",
+        "topperTip": "Connect 'fluttering fingers' directly with 'massive weight of Uncle's wedding band'.",
+        "mnemonic": "Aunt Jennifer: Fluttering Fingers = Living Trauma; Wedding Band = Patriarchal Yoke."
+    });
+
+    pushQ("The Enemy", {
+        "id": "eng-en-10y-2020",
+        "marks": 3,
+        "year": "CBSE 2020 (Delhi Set 1 Q11)",
+        "pacing": "5 min",
+        "type": "Plot & Ethical Resolution",
+        "competency": "Moral Conflict Resolution",
+        "stem": "How did Dr. Sadao help the American prisoner of war, Tom, to escape to safety? What does this final act reveal about Dr. Sadao's character?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Method of Escape:</strong><br>\n      Realizing that the General had forgotten his promise of sending assassins and that keeping Tom posed continuous danger, Dr. Sadao organized a clandestine escape:<br>\n      • Put his sturdy boat on the shore, loaded with <strong>bottled water, food provisions, extra quilts</strong>, and a flashlight.<br>\n      • Dressed Tom in Japanese clothes and wrapped his blond hair in a black cloth.<br>\n      • Instructed him to row to a nearby uninhabited island and wait for a Korean fishing boat, using flash signals (two flashes at dusk if out of food; one flash if safe).<br>\n      Tom escaped safely without alerting authorities.</p>\n      <p><strong>2. Character Revelation:</strong><br>\n      This final act demonstrates that Dr. Sadao was an exemplary human being whose <strong>reverence for human life and professional ethics completely superseded wartime jingoism, racial prejudice, and parochial nationalism</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Details of boat, provisions, disguising clothes, island destination, and flashlight code | [1.5 Marks] Character analysis: Universal humanism triumphing over wartime hatred and racial prejudice",
+        "cautionTrap": "Omitting the details of the escape plan (boat, provisions, flashlight signals). These specific details score top marks in CBSE English!",
+        "topperTip": "Cite the flashcode instructions: 'Two flashes at sundown if in trouble; one flash if safe.'",
+        "mnemonic": "Tom's Escape: Boat + Japanese Kimono + Island Haven + Flashlight Code."
+    });
+
+
+    // --- 10-YEAR OFFICIAL CBSE IMPORTED QUESTION SETS (BATCH 5) ---
+    pushQ("Linear Programming", {
+        "id": "math-lpp-10y-2019",
+        "marks": 4,
+        "year": "CBSE 2019 (All India Q29)",
+        "pacing": "8 min",
+        "type": "Case-Based / Diet Problem Formulation",
+        "competency": "Linear Model Formulation",
+        "stem": "A dietician wishes to mix two types of foods in such a way that vitamin contents of the mixture contain at least 8 units of vitamin A and 10 units of vitamin C. Food 'X' contains 2 units/kg of vitamin A and 1 unit/kg of vitamin C. Food 'Y' contains 1 unit/kg of vitamin A and 2 units/kg of vitamin C. It costs ₹50/kg to purchase Food 'X' and ₹70/kg to purchase Food 'Y'. Formulate this problem as a linear programming problem to minimize the cost of such a mixture and find the minimum cost graphically.",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Mathematical Formulation:</strong><br>\n      Let x kg of Food 'X' and y kg of Food 'Y' be mixed.<br>\n      • Objective Function: <strong>Minimize Z = 50x + 70y</strong>.<br>\n      • Constraints:<br>\n        - Vitamin A: <code>2x + y ≥ 8</code><br>\n        - Vitamin C: <code>x + 2y ≥ 10</code><br>\n        - Non-negativity: <code>x ≥ 0, y ≥ 0</code>.</p>\n      <p><strong>2. Feasible Region & Corner Points:</strong><br>\n      • Line 1: <code>2x + y = 8</code> passes through (4, 0) and (0, 8).<br>\n      • Line 2: <code>x + 2y = 10</code> passes through (10, 0) and (0, 5).<br>\n      • Intersection: Multiplying line 2 by 2: <code>2x + 4y = 20</code>; subtracting line 1: <code>3y = 12 ⟹ y = 4</code>; then <code>x = 2</code>. Point is <strong>B(2, 4)</strong>.<br>\n      The feasible region is unbounded with corner points: A(10, 0), B(2, 4), and C(0, 8).</p>\n      <p><strong>3. Corner Points & Z Evaluation:</strong><br>\n      • At A(10, 0): <code>Z = 50(10) + 70(0) = ₹500</code>.<br>\n      • At B(2, 4): <code>Z = 50(2) + 70(4) = 100 + 280 = <strong>₹380 (MINIMUM)</strong></code>.<br>\n      • At C(0, 8): <code>Z = 50(0) + 70(8) = ₹560</code>.<br>\n      • Open half-plane <code>50x + 70y < 380  ⟹  5x + 7y < 38</code> has no common points with the feasible region.<br>\n      <strong>Conclusion:</strong> Minimum cost is <strong>₹380</strong> obtained by mixing <strong>2 kg of Food X and 4 kg of Food Y</strong>.</p>\n    </div>",
+        "stepMarking": "[1.5 Marks] Formulation of objective function Z = 50x + 70y and constraints | [1.5 Marks] Feasible region graph and intersection B(2, 4) | [1 Mark] Evaluating Z at corner points and concluding minimum cost ₹380",
+        "cautionTrap": "Reversing coefficients for Vitamin A and C in the table. Match Food X units with x and Food Y units with y!",
+        "topperTip": "Create a 3-column table: Nutrient | Food X (x) | Food Y (y) | Minimum Requirement, to write constraints error-free.",
+        "mnemonic": "LPP Diet: Constraints = Columns in Nutrients."
+    });
+
+    pushQ("A Thing of Beauty", {
+        "id": "eng-tob-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q7)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Poetic Catalogue of Nature",
+        "stem": "List four things of beauty mentioned by John Keats in his poem. What quiet blessing do they offer to humanity?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p><strong>1. Four Things of Beauty:</strong><br>\n      1. The <strong>sun</strong> and the <strong>moon</strong> (cosmic celestial beacons).<br>\n      2. <strong>Trees old and young</strong> sprouting a shady boon for simple sheep.<br>\n      3. <strong>Daffodils</strong> blooming amidst their green world.<br>\n      4. <strong>Clear rills (streams)</strong> that make cooling shelters against the hot season.<br>\n      (Also: mid-forest brake musk-rose blooms and lovely heroic tales of the mighty dead).</p>\n      <p><strong>2. The Quiet Blessing:</strong><br>\n      They offer a <strong>'bower quiet'</strong>—an immortal spiritual sanctuary providing peaceful health, sweet dreams, quiet breathing, and lifting the heavy pall of depression from human souls.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Correctly listing 4 natural things of beauty from the poem | [1 Mark] Explanation of the blessing (quiet bower, lifting gloom, spiritual rejuvenation)",
+        "cautionTrap": "Listing generic things like 'mountains and oceans' not explicitly in Keats' poem. Stick strictly to: Sun, Moon, Trees, Sheep, Daffodils, Clear rills, Musk-roses!",
+        "topperTip": "Name the specific text images: 'shady boon for simple sheep' and 'clear rills'.",
+        "mnemonic": "Keats List: Sun, Moon, Trees, Daffodils, Rills, Musk-rose."
+    });
+
+    pushQ("Keeping Quiet", {
+        "id": "eng-kq-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q8)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Linguistic & Philosophical Analysis",
+        "stem": "Why does Pablo Neruda ask us 'not to speak in any language' and 'stop for one second'?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>Pablo Neruda asks us not to speak in any language because <strong>spoken languages are historical barriers that divide humanity</strong> into conflicting nationalities, races, and cultural factions. Speech often leads to arguments, hate propaganda, and geopolitical hostility.<br><br>\n      By keeping silent and motionless for one brief second, all divisive national identities vanish. Humanity enters a state of <strong>universal, meditative silence</strong>, fostering genuine empathy, mutual brotherhood, and global peace.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Language as a source of division, arguments, and ideological strife | [1 Mark] Silence as a universal equalizer uniting all humanity in mutual brotherhood",
+        "cautionTrap": "Saying silence saves energy. Neruda's silence is about transcending linguistic divisions and war!",
+        "topperTip": "State that silence eliminates the Babel of conflicting national tongues.",
+        "mnemonic": "Silence Unites: Language divides nations; Silence unites humanity."
+    });
+
+    pushQ("Aunt Jennifer's Tigers", {
+        "id": "eng-ajt-10y-2020",
+        "marks": 2,
+        "year": "CBSE 2020 (Delhi Set 1 Q9)",
+        "pacing": "3 min",
+        "type": "Short Answer (2M)",
+        "competency": "Diction & Characterization",
+        "stem": "What do the words 'chivalric' and 'denizens' signify in the context of Aunt Jennifer's tigers?",
+        "diagram": "",
+        "modelAnswer": "<div class=\"space-y-2 text-xs\">\n      <p>• <strong>'Denizens':</strong> Means citizens or rightful inhabitants. Tigers are the natural, proud occupants of the lush green forest. They belong to their wild habitat with complete belonging, ease, and regal freedom—unlike Aunt Jennifer who feels like an insecure alien in her own domestic household.<br><br>\n      • <strong>'Chivalric Certainty':</strong> 'Chivalric' connotes knightly bravery, courtly dignity, and noble confidence. The tigers pace with fearless, majestic swagger, untainted by cowardice or self-doubt. This stands in acute, tragic contrast to Aunt Jennifer's own terrified submission, fluttering fingers, and shattered self-esteem under patriarchal intimidation.</p>\n    </div>",
+        "stepMarking": "[1 Mark] Denizens: Rightful natural inhabitants possessing absolute freedom and belonging | [1 Mark] Chivalric certainty: Knightly bravery, bold majesty, and contrast with Aunt's subjugation",
+        "cautionTrap": "Defining chivalric only as 'polite'. In poetry, chivalric refers to knightly fearlessness and heroic confidence!",
+        "topperTip": "Directly contrast the tigers' 'chivalric certainty' with Aunt Jennifer's 'fluttering fear'.",
+        "mnemonic": "Denizens = Proud Citizens; Chivalric = Knightly Fearless Swagger."
+    });
+
   }
 
   addTenYearQuestions();
