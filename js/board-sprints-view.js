@@ -849,6 +849,17 @@
         'Verify Python file modes (r, w, a, rb, wb, ab) and SQL aggregate constraints.',
         'Review standard CBSE format borders and marking scheme allotments.'
       ]
+    },
+    'week-11': {
+      goal: 'Final Calm Sprint, Error Leak Log Review & Pre-Exam Taper (Days 71–75)',
+      whyNow: 'The final 72 to 120 hours before board exams require psychological calm, zero panic studying, and reviewing your personal Error Leak Log alongside One-Page Formula Ledgers. No new topics are permitted; focus is exclusively on preserving mental stamina, sleep hygiene (8 hours), and error-free execution.',
+      marksCoverage: 'All 5 Subjects · 100% Retrieval Confidence & Error Leak Prevention',
+      rapidCheckpoints: [
+        'Review personal Error Leak Log: inspect recurring arithmetic signs, missing SI units, and formula slips.',
+        'Perform a 20-minute rapid flip-through of the One-Page Formula & Code Ledgers.',
+        'Ensure 8 hours of uninterrupted sleep every night from 10 PM to 6 AM (circadian consolidation).',
+        'Organize stationery (transparent pouch, black/blue ballpoint pens, geometry box) and official admit card.'
+      ]
     }
   };
 
@@ -963,7 +974,7 @@
       defaultBook: 'physics'
     },
     'week-10': {
-      title: 'Week 10 · Formula & Code Ledgers (Jan 16 – Board Kickoff)',
+      title: 'Week 10 · Formula & Code Ledgers (Jan 16 – Jan 25)',
       subtitle: 'Target: High-Yield Formulae, Derivations, Named Reactions, Code Blueprints & Formats',
       books: {
         'physics': { label: 'Physics Formula & Derivations Ledger', subject: 'Physics', icon: 'atom', chapters: [] },
@@ -971,6 +982,18 @@
         'math': { label: 'Mathematics Integral & Matrix Ledger', subject: 'Mathematics', icon: 'calculator', chapters: [] },
         'cs': { label: 'Computer Science Algorithms & Syntax', subject: 'Computer Science', icon: 'binary', chapters: [] },
         'english': { label: 'English Box Formats & Mark Breakdown', subject: 'English Core', icon: 'book-open', chapters: [] }
+      },
+      defaultBook: 'physics'
+    },
+    'week-11': {
+      title: 'Week 11 · Final Calm Sprint & Taper (Days 71–75)',
+      subtitle: 'Target: Error Leak Review, One-Page Formula Recaps & Psychological Peak Calm',
+      books: {
+        'physics': { label: 'Physics · Formula Recap & Error Log', subject: 'Physics', icon: 'atom', chapters: [] },
+        'chemistry': { label: 'Chemistry · Reaction Recap & Error Log', subject: 'Chemistry', icon: 'flask-conical', chapters: [] },
+        'math': { label: 'Mathematics · Formula Recap & Error Log', subject: 'Mathematics', icon: 'calculator', chapters: [] },
+        'cs': { label: 'Computer Science · Syntax Recap & Error Log', subject: 'Computer Science', icon: 'binary', chapters: [] },
+        'english': { label: 'English Core · Formats & Essay Check', subject: 'English Core', icon: 'book-open', chapters: [] }
       },
       defaultBook: 'physics'
     }
@@ -1313,50 +1336,237 @@
           </div>
         </section>
 
-        <!-- SPRINT CONCEPT & PEDAGOGICAL BREAKDOWN -->
+        <!-- SPRINT CONCEPT & 4-LEVEL 75-DAY ARCHITECTURE (CONFERENZA FRAMEWORK) -->
         <section class="sprint-concept-section">
           <div class="concept-header">
             <div class="concept-title-wrap">
               <i data-lucide="sparkles"></i>
-              <h2>The 75-Day Sprint Architecture: How & Why It Works</h2>
+              <h2>Sprint Architecture: The 75-Day 4-Level Framework</h2>
             </div>
-            <span class="concept-badge">Zero Cognitive Overload · 100% Preparedness Validation</span>
+            <span class="concept-badge">Conferenza Pedagogical System · 100% Preparedness Validation</span>
           </div>
 
-          <div class="concept-cards-grid">
-            <div class="concept-card">
+          <div class="concept-cards-grid four-levels-grid">
+            <div class="concept-card level-card lv1-card">
               <div class="concept-card-head">
-                <span class="phase-number">PHASE 1</span>
-                <h3>Weeks 1–3 · High-Yield Foundation & Pre-Board II</h3>
+                <div class="level-badge-row">
+                  <span class="level-pill lv1-pill">LEVEL 1 · DAYS 1–20</span>
+                  <span class="rag-pill">R-A-G Audit</span>
+                </div>
+                <h3>Weeks 1–3 · Syllabus Mop-Up & Red Flag Clearance</h3>
               </div>
-              <p>Targets the heaviest, foundational units: Electrostatics, Solutions, Chemical Kinetics, Matrices, Python Scope, and Writing Formats. Completing these secures an immediate 45+ mark baseline and provides the mathematical and chemical foundations for the rest of the syllabus.</p>
+              <p>Color-code all 71 chapters into Red (avoided/confused), Amber (shaky), and Green (mastered). Clear every single Red chapter first. Lock foundational units: Electrostatics, Solutions, Chemical Kinetics, Matrices, and Python Scope. <strong>Strict Rule:</strong> No new concepts can be introduced after Level 1.</p>
               <div class="phase-meta">
-                <span><i data-lucide="check-circle-2"></i> 40% of Total Board Marks</span>
+                <span><i data-lucide="check-circle-2"></i> 45+ Scoring Baseline</span>
                 <span><i data-lucide="clock"></i> Oct 16 – Nov 06</span>
               </div>
             </div>
 
-            <div class="concept-card">
+            <div class="concept-card level-card lv2-card">
               <div class="concept-card-head">
-                <span class="phase-number">PHASE 2</span>
-                <h3>Weeks 4–7 · Advanced Core & Syllabi Completion</h3>
+                <div class="level-badge-row">
+                  <span class="level-pill lv2-pill">LEVEL 2 · DAYS 21–45</span>
+                  <span class="rag-pill">Pattern Recognition</span>
+                </div>
+                <h3>Weeks 4–6 · 10-Year Question Bank & Step Marking</h3>
               </div>
-              <p>Covers optics, organic reaction mechanisms, King's rule definite integrals, campus networks, and Dr. Sadao's moral dilemma. Completes 100% of the Class 12 curriculum before mid-December, leaving Weeks 8–10 entirely clear for intense paper rehearsal.</p>
+              <p>CBSE has favorite question blueprints repeated with tweaked variables. Solve authentic 2015–2024 board questions chapter-wise. Analyze official marking schemes to see where half-marks are awarded (formula, substitution, units). Master Galvanometers, SN1/SN2 inversion, King's Rule integrals, and SQL 2-Table Joins.</p>
               <div class="phase-meta">
-                <span><i data-lucide="check-circle-2"></i> 100% Curriculum Done</span>
-                <span><i data-lucide="clock"></i> Nov 07 – Dec 18</span>
+                <span><i data-lucide="check-circle-2"></i> 70% Board Mark Patterns</span>
+                <span><i data-lucide="clock"></i> Nov 07 – Dec 05</span>
               </div>
             </div>
 
-            <div class="concept-card">
+            <div class="concept-card level-card lv3-card">
               <div class="concept-card-head">
-                <span class="phase-number">PHASE 3</span>
-                <h3>Weeks 8–10 · 10-Yr Past Papers, 3h Mocks & Ledgers</h3>
+                <div class="level-badge-row">
+                  <span class="level-pill lv3-pill">LEVEL 3 · DAYS 46–60</span>
+                  <span class="rag-pill">Active Recall</span>
+                </div>
+                <h3>Weeks 7–8 · One-Page Revision Sheets & Ledgers</h3>
               </div>
-              <p>Shifts entirely from learning to testing endurance and retrieval speed. Focuses on recurring 2015–2024 board questions, 3-hour timed board simulations, and rapid formula and code retrieval ledgers for the final exam morning.</p>
+              <p>Condense sprawling NCERT textbooks into single-page recall ledgers containing only boxed formulas, boundary conditions, named reactions, and examiner traps. <strong>Active testing beats reading:</strong> close your notes and write each ledger from memory onto blank paper.</p>
               <div class="phase-meta">
-                <span><i data-lucide="check-circle-2"></i> Peak Exam Temperament</span>
-                <span><i data-lucide="clock"></i> Dec 19 – Board Exams</span>
+                <span><i data-lucide="check-circle-2"></i> 100% Curriculum Compressed</span>
+                <span><i data-lucide="clock"></i> Dec 06 – Dec 31</span>
+              </div>
+            </div>
+
+            <div class="concept-card level-card lv4-card">
+              <div class="concept-card-head">
+                <div class="level-badge-row">
+                  <span class="level-pill lv4-pill">LEVEL 4 · DAYS 61–75</span>
+                  <span class="rag-pill">Peak Temperament</span>
+                </div>
+                <h3>Weeks 9–11 · 3-Hour Timed Mocks & Ruthless Error Repair</h3>
+              </div>
+              <p>Simulate strict exam hall conditions from 10:30 AM to 1:30 PM with zero distractions. Maintain a personal <em>Error Leak Log</em> to record recurring slips (arithmetic signs, missing units, pacing traps). Enter the final 72-hour calm taper with 8 hours of sleep and zero panic studying.</p>
+              <div class="phase-meta">
+                <span><i data-lucide="check-circle-2"></i> 95%+ Target Precision</span>
+                <span><i data-lucide="clock"></i> Jan 01 – Exam Kickoff</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- POWER-UPS TO GRAB VS TRAPS TO DODGE -->
+        <section class="conferenza-powerups-traps-section">
+          <div class="system-header">
+            <div class="system-title-wrap">
+              <i data-lucide="zap"></i>
+              <h2>Power-Ups to Grab vs Traps to Dodge</h2>
+            </div>
+            <span class="system-badge">Proven High-Performance Habits</span>
+          </div>
+
+          <div class="powerups-traps-grid">
+            <div class="powerup-column">
+              <h3 class="col-head powerup-head"><i data-lucide="sparkle"></i> Essential Power-Ups</h3>
+              <div class="pt-tile powerup-tile">
+                <div class="pt-icon"><i data-lucide="brain-circuit"></i></div>
+                <div class="pt-info">
+                  <h4>Active Recall Over Passive Re-reading</h4>
+                  <p>Reading notes 10 times gives an illusion of competence. Closing the book and testing yourself on blank paper reveals true recall gaps immediately.</p>
+                </div>
+              </div>
+              <div class="pt-tile powerup-tile">
+                <div class="pt-icon"><i data-lucide="check-check"></i></div>
+                <div class="pt-info">
+                  <h4>Solve Marking Schemes, Not Just Stems</h4>
+                  <p>Examiners award marks for exact keywords, step formulas, and SI units. Write your answers aligned directly with official CBSE marking rubrics.</p>
+                </div>
+              </div>
+              <div class="pt-tile powerup-tile">
+                <div class="pt-icon"><i data-lucide="moon-star"></i></div>
+                <div class="pt-info">
+                  <h4>Sleep & Fuel as Your Cognitive Edge</h4>
+                  <p>Your brain consolidates memory traces during 7–8 hours of deep sleep. Sleep-deprived students lose 30% speed on quantitative numericals.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="trap-column">
+              <h3 class="col-head trap-head"><i data-lucide="alert-octagon"></i> Fatal Traps to Dodge</h3>
+              <div class="pt-tile trap-tile">
+                <div class="pt-icon"><i data-lucide="paintbrush"></i></div>
+                <div class="pt-info">
+                  <h4>The Over-Highlighting Trap</h4>
+                  <p>Turning textbooks into rainbow coloring books is passive recognition. If you can’t write the derivation on a blank sheet, you don’t know it.</p>
+                </div>
+              </div>
+              <div class="pt-tile trap-tile">
+                <div class="pt-icon"><i data-lucide="shield-alert"></i></div>
+                <div class="pt-info">
+                  <h4>Dodging Your Weakest Subjects</h4>
+                  <p>Spending 80% of your time on favorite topics feels comforting, but neglected subjects drag down your overall CBSE aggregate. Attack Red chapters first.</p>
+                </div>
+              </div>
+              <div class="pt-tile trap-tile">
+                <div class="pt-icon"><i data-lucide="flame-kindling"></i></div>
+                <div class="pt-info">
+                  <h4>The All-Nighter Fallacy</h4>
+                  <p>Pulling an all-nighter before a mock destroys working memory and leads to careless calculation mistakes. Rested sharpness beats exhausted cramming.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INTERACTIVE CHECKPOINT QUIZ -->
+        <section class="conferenza-checkpoint-quiz-section">
+          <div class="system-header">
+            <div class="system-title-wrap">
+              <i data-lucide="help-circle"></i>
+              <h2>Interactive Strategy Checkpoint: Test Your Exam Intuition</h2>
+            </div>
+            <span class="system-badge">3 Self-Assessment Reality Checks</span>
+          </div>
+
+          <div class="checkpoint-quiz-grid">
+            <details class="zen-checkpoint-card">
+              <summary>
+                <div class="checkpoint-summary-content">
+                  <span class="cp-number">CHECKPOINT 01</span>
+                  <strong>Recognition vs Active Recall: If you read a derivation and nod along thinking "yes, I know this", is it mastered?</strong>
+                </div>
+                <i data-lucide="chevron-down" class="cp-arrow"></i>
+              </summary>
+              <div class="checkpoint-answer-body">
+                <div class="cp-verdict wrong"><i data-lucide="x-circle"></i> <strong>False! That is Recognition, not Recall.</strong></div>
+                <p>Nodding while reading is passive familiarity. The CBSE exam gives you a blank sheet of paper, not multiple choice options for derivations. Close the book immediately and derive it from scratch on blank paper. If you get stuck at step 3, you have identified your exact recall bottleneck.</p>
+              </div>
+            </details>
+
+            <details class="zen-checkpoint-card">
+              <summary>
+                <div class="checkpoint-summary-content">
+                  <span class="cp-number">CHECKPOINT 02</span>
+                  <strong>Peak Energy Allocation: When during your day should you study your hardest "Red Flag" chapter?</strong>
+                </div>
+                <i data-lucide="chevron-down" class="cp-arrow"></i>
+              </summary>
+              <div class="checkpoint-answer-body">
+                <div class="cp-verdict right"><i data-lucide="check-circle-2"></i> <strong>During your sharpest circadian window (typically morning 8 AM – 11 AM).</strong></div>
+                <p>Studying difficult subjects late at night when willpower and cognitive energy are depleted triggers frustration and avoidance. Schedule tough derivations and complex numericals first thing in the morning when your working memory is fresh.</p>
+              </div>
+            </details>
+
+            <details class="zen-checkpoint-card">
+              <summary>
+                <div class="checkpoint-summary-content">
+                  <span class="cp-number">CHECKPOINT 03</span>
+                  <strong>3-Hour Mock Time-Leak Budget: Why is finishing a 70M/80M paper at exactly 180 minutes dangerous?</strong>
+                </div>
+                <i data-lucide="chevron-down" class="cp-arrow"></i>
+              </summary>
+              <div class="checkpoint-answer-body">
+                <div class="cp-verdict right"><i data-lucide="check-circle-2"></i> <strong>You need 15–20 minutes reserved exclusively for the Error Leak Audit.</strong></div>
+                <p>Writing until the final bell prevents checking for missing question numbers, sign errors in integration, forgotten units (e.g. Ω, C, V), and unattempted sub-parts. Aim for a 160-minute target finish to safeguard an easy 4–8 marks in the final 20 minutes.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- EXAM DAY PROTOCOL: PLAY IT CALM -->
+        <section class="exam-day-protocol-section">
+          <div class="system-header">
+            <div class="system-title-wrap">
+              <i data-lucide="clipboard-check"></i>
+              <h2>Exam Day Protocol: Play It Calm Under Pressure</h2>
+            </div>
+            <span class="system-badge">Hall Strategy & Execution Order</span>
+          </div>
+
+          <div class="protocol-steps-grid">
+            <div class="protocol-step-card">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>15-Minute Reading Time Prime</h4>
+                <p>Skim Section E (5-mark long answers) and Section D (Case studies) first. While reading other sections, your subconscious brain will already start assembling derivation steps and formulas for the heavyweights. Mark your internal choices quietly.</p>
+              </div>
+            </div>
+
+            <div class="protocol-step-card">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>High-Confidence Sequence of Attack</h4>
+                <p>Start with Section B (2M) or Section C (3M) where you have 100% confidence. Securing early marks builds unstoppable exam momentum and stabilizes nerves before tackling Section D & E. Don't get stuck on ambiguous 1M MCQs early.</p>
+              </div>
+            </div>
+
+            <div class="protocol-step-card">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Examiner-Friendly Presentation</h4>
+                <p>Leave 2 blank lines between consecutive answers. Highlight or box final numerical answers with explicit SI units. Use a sharp pencil for ray diagrams and circuit schematics. A clean answer script earns the benefit of the doubt.</p>
+              </div>
+            </div>
+
+            <div class="protocol-step-card">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Final 20-Minute Error Sweep</h4>
+                <p>Audit question numbering against the question paper. Verify calculation signs, powers of 10, and integration constants (+ C). Verify that every sub-part (a, b, c) is addressed before tying your supplementary sheets securely.</p>
               </div>
             </div>
           </div>
@@ -1479,12 +1689,12 @@
           </div>
         </section>
 
-        <!-- 10-WEEK EXECUTION ROADMAP CARDS -->
+        <!-- 75-DAY EXECUTION ROADMAP CARDS -->
         <section class="roadmap-section">
           <div class="roadmap-header">
             <div class="roadmap-title-wrap">
               <i data-lucide="calendar"></i>
-              <h2>10-Week Execution Roadmap · Direct Training Decks</h2>
+              <h2>75-Day Execution Roadmap · Direct Training Decks (11 Weeks)</h2>
             </div>
             <p class="roadmap-note">Select any week to enter its focused, quiet question-and-answer training deck. Zero clutter, pure active recall.</p>
           </div>

@@ -9545,16 +9545,326 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
 }
 
-.btn-enter-week:hover {
-  opacity: 0.95;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+/* CONFERENZA 75-DAY FRAMEWORK & BESTSELLER ELEMENTS */
+.four-levels-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.level-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #0d9488;
+}
+
+.lv1-card { border-top-color: #ef4444; }
+.lv2-card { border-top-color: #3b82f6; }
+.lv3-card { border-top-color: #f59e0b; }
+.lv4-card { border-top-color: #10b981; }
+
+.level-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.level-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lv1-pill { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+.lv2-pill { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
+.lv3-pill { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.lv4-pill { background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7; }
+
+.rag-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Power-Ups vs Traps Grid */
+.conferenza-powerups-traps-section {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.02);
+}
+
+.powerups-traps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.powerup-column, .trap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.col-head {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 750;
+  margin: 0 0 0.25rem 0;
+}
+
+.powerup-head { color: #047857; }
+.powerup-head i { width: 16px; height: 16px; color: #059669; }
+.trap-head { color: #b91c1c; }
+.trap-head i { width: 16px; height: 16px; color: #dc2626; }
+
+.pt-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.pt-tile:hover {
   transform: translateY(-1px);
 }
 
-.btn-enter-week i {
-  width: 15px;
-  height: 15px;
-  color: #ffffff;
+.powerup-tile {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.powerup-tile .pt-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trap-tile {
+  background: #fff5f5;
+  border-color: #fecaca;
+}
+
+.trap-tile .pt-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pt-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.pt-info h4 {
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+}
+
+.pt-info p {
+  font-size: 0.78rem;
+  line-height: 1.48;
+  color: #475569;
+  margin: 0;
+}
+
+/* Interactive Checkpoint Quiz */
+.conferenza-checkpoint-quiz-section, .exam-day-protocol-section {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.02);
+}
+
+.checkpoint-quiz-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.zen-checkpoint-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zen-checkpoint-card[open] {
+  border-color: #0d9488;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.06);
+}
+
+.zen-checkpoint-card summary {
+  padding: 0.95rem 1.2rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  user-select: none;
+}
+
+.zen-checkpoint-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.checkpoint-summary-content {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cp-number {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #0d9488;
+  background: #f0fdfa;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.checkpoint-summary-content strong {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.cp-arrow {
+  width: 18px;
+  height: 18px;
+  color: #64748b;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.zen-checkpoint-card[open] .cp-arrow {
+  transform: rotate(180deg);
+  color: #0d9488;
+}
+
+.checkpoint-answer-body {
+  padding: 0 1.2rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.85rem;
+}
+
+.cp-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 750;
+  width: fit-content;
+}
+
+.cp-verdict i {
+  width: 16px;
+  height: 16px;
+}
+
+.cp-verdict.wrong {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+}
+
+.cp-verdict.right {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #dcfce7;
+}
+
+.checkpoint-answer-body p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #334155;
+  margin: 0;
+}
+
+/* Exam Day Protocol */
+.protocol-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.protocol-step-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.15rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.step-num {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0d9488;
+  line-height: 1;
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 0.35rem 0;
+}
+
+.step-content p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0;
 }
 
 /* PRINT & PDF STYLES */

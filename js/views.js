@@ -60,7 +60,7 @@
       ['Local services', 'life-buoy', 'community/directory']
     ]},
     boardSprints: {
-      label: 'The Exam Sprint',
+      label: 'The Board Sprints',
       icon: 'flame',
       note: 'CBSE Class 12 high-impact exam preparation & sprints',
       route: 'study/board-sprints',
@@ -75,9 +75,22 @@
         ['Week 7 · 3D Lines & Semiconductors', 'calendar', 'study/board-sprints/week-7'],
         ['Week 8 · 10-Year Board Papers', 'list-ordered', 'study/board-sprints/week-8'],
         ['Week 9 · January Model Exam (Full 3h)', 'calendar-check', 'study/board-sprints/week-9'],
-        ['Week 10 · Formula & Code Ledgers', 'sigma', 'study/board-sprints/week-10']
+        ['Week 10 · Formula & Code Ledgers', 'sigma', 'study/board-sprints/week-10'],
+        ['Week 11 · Final Calm Sprint & Taper', 'calendar-range', 'study/board-sprints/week-11']
       ]
     }
+  };
+  groups.examSprint = {
+    label: 'The Exam Sprint',
+    icon: 'timer-reset',
+    note: 'A separate 75-day CBSE Class 12 practice and review plan',
+    route: 'study/exam-sprint',
+    items: [
+      ['75-Day Exam Sprint', 'timer-reset', 'study/exam-sprint'],
+      ['Interactive questions', 'file-question', 'study/exam-sprint/questions'],
+      ['Weekly missions', 'calendar-range', 'study/exam-sprint/weeks'],
+      ['Marking schemes', 'badge-check', 'study/exam-sprint/answers']
+    ]
   };
 
   const settingsGroups = [
@@ -244,7 +257,8 @@
     'study/assessments': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/reports': ['Education Reports', 'Academic and whole-child review'],
-    'study/board-sprints': ['The Exam Sprint', 'CBSE Class 12 75-day high-impact exam preparation & sprints'],
+    'study/board-sprints': ['The Board Sprints', 'CBSE Class 12 high-impact exam preparation & sprints'],
+    'study/exam-sprint': ['The Exam Sprint', 'CBSE Class 12 75-day interactive practice and review'],
     'study/board-sprints/pb2': ['Pre-Board II Sprint', 'High-yield targets & questions for Oct 16 - Nov 06 Pre-Board II'],
     'study/board-sprints/model': ['January Model Sprint', 'Full syllabus mock & model exam sprint'],
     'study/board-sprints/questions': ['High-Probability Question Bank', 'Class 12 CBSE questions with step marking & diagrams'],

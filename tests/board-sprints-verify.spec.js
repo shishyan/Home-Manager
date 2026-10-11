@@ -17,16 +17,34 @@ test.describe('Board Sprints - Master Overview & Weekly Question Decks', () => {
     const conceptHeader = page.locator('.concept-header h2');
     await expect(conceptHeader).toContainText('Sprint Architecture');
 
-    const bestsellerHeader = page.locator('.system-header h2');
+    const bestsellerHeader = page.locator('.bestseller-system-section .system-header h2');
     await expect(bestsellerHeader).toContainText('The Amazon #1 Bestseller Prep System');
+
+    // Verify 4-Level 75-Day Framework
+    const levelCards = page.locator('.level-card');
+    await expect(levelCards).toHaveCount(4);
+
+    // Verify Power-Ups & Traps
+    const powerupTiles = page.locator('.powerup-tile');
+    const trapTiles = page.locator('.trap-tile');
+    await expect(powerupTiles).toHaveCount(3);
+    await expect(trapTiles).toHaveCount(3);
+
+    // Verify Interactive Checkpoint Quiz Cards
+    const checkpointCards = page.locator('.zen-checkpoint-card');
+    await expect(checkpointCards).toHaveCount(3);
+
+    // Verify Exam Protocol Steps
+    const protocolCards = page.locator('.protocol-step-card');
+    await expect(protocolCards).toHaveCount(4);
 
     // Verify Subject Weightage Matrix
     const subjectCards = page.locator('.subject-card');
     await expect(subjectCards).toHaveCount(5);
 
-    // Verify 10-Week Roadmap
+    // Verify 75-Day 11-Week Roadmap
     const roadmapCards = page.locator('.roadmap-card');
-    await expect(roadmapCards).toHaveCount(10);
+    await expect(roadmapCards).toHaveCount(11);
 
     // Take screenshot of master dashboard
     await page.screenshot({ path: 'master-board-sprint-overview.png' });

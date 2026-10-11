@@ -204,6 +204,7 @@
 
   function groupForRoute(currentRoute) {
     if (currentRoute.startsWith('study/board-sprints')) return 'boardSprints';
+    if (currentRoute.startsWith('study/exam-sprint')) return 'examSprint';
     if (currentRoute.startsWith('study/')) return 'learning';
     if (currentRoute.startsWith('kitchen/')) return 'household';
     if (currentRoute === 'community/directory') return 'community';
@@ -475,13 +476,13 @@
       'home/life/education': 'study/overview', 'community/events': 'community/participate', 'community/polls': 'community/participate'
     })[route] || route;
 
-    const isZenSprintMode = activeGroup === 'boardSprints';
+    const isZenSprintMode = activeGroup === 'boardSprints' || activeGroup === 'examSprint';
     document.body.classList.toggle('zen-sprint-mode', isZenSprintMode);
 
     let availableGroups = Object.entries(V.groups).filter(([key]) => personaCanSeeGroup(key));
     if (isZenSprintMode) {
       // ZEN FOCUS MODE: except for Home menu, everything else hides when board sprint mode is on
-      availableGroups = availableGroups.filter(([key]) => key === 'household' || key === 'boardSprints');
+      availableGroups = availableGroups.filter(([key]) => key === 'household' || key === 'boardSprints' || key === 'examSprint');
     }
 
     // Update hidden select (accessibility / legacy)
@@ -501,7 +502,7 @@
     }
 
     // SIDEBAR: render sub-items of the active group only (no group list)
-    const legacyOrder = ['household', 'learning', 'money', 'leisure', 'community', 'boardSprints'];
+    const legacyOrder = ['household', 'learning', 'money', 'leisure', 'community', 'boardSprints', 'examSprint'];
     const selectOptions = legacyOrder.map(key => {
       const item = V.groups[key];
       if (!item) return '';
@@ -539,8 +540,8 @@
           return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
         }).join('');
       }
-      if (activeGroup !== 'boardSprints' && V.groups.boardSprints) {
-        navEl.insertAdjacentHTML('beforeend', `<div class="nav-featured-link"><button type="button" data-route="study/board-sprints" aria-label="Open The Exam Sprint"><span class="nav-icon"><i data-lucide="flame"></i></span><span>The Exam Sprint</span><small>75-day CBSE plan</small></button></div>`);
+      if (activeGroup !== 'examSprint' && V.groups.examSprint) {
+        navEl.insertAdjacentHTML('beforeend', `<div class="nav-featured-link"><button type="button" data-route="study/exam-sprint" aria-label="Open The Exam Sprint"><span class="nav-icon"><i data-lucide="timer-reset"></i></span><span>The Exam Sprint</span><small>75-day CBSE plan</small></button></div>`);
       }
     }
 
