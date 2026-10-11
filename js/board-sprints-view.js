@@ -1232,7 +1232,7 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Master 70-Day Board Sprint Concept Dashboard (Only rendered on #/study/board-sprints overview)
+  // Master 75-Day Board Sprint Concept Dashboard (Only rendered on #/study/board-sprints overview)
   function renderMasterBoardSprintDashboard() {
     const allQuestions = getAllQuestions();
     const mastered = getMasteredSet();
@@ -1246,11 +1246,11 @@
         <header class="master-sprint-hero">
           <div class="master-hero-content">
             <div class="master-badge-row">
-              <span class="hero-badge"><i data-lucide="compass"></i> CBSE Class 12 · 70-Day Master Strategy</span>
+              <span class="hero-badge"><i data-lucide="compass"></i> CBSE Class 12 · 75-Day Master Strategy</span>
               <span class="hero-subbadge"><i data-lucide="shield-check"></i> 2015–2024 Past 10-Year Question Bank</span>
               <span class="hero-tag">Bestseller Methodology</span>
             </div>
-            <h1 class="master-title">70-Day Board Sprint Master Plan</h1>
+            <h1 class="master-title">75-Day Exam Sprint Master Plan</h1>
             <p class="master-subtitle">A direct, question-driven exam validation system engineered to secure 95%+ across Physics (042), Chemistry (043), Mathematics (041), Computer Science (083), and English Core (301).</p>
           </div>
           <div class="master-hero-actions">
@@ -1258,7 +1258,7 @@
               <i data-lucide="house"></i>
               <span>Home</span>
             </button>
-            <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Full 70-Day Roadmap">
+            <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Full 75-Day Roadmap">
               <i data-lucide="printer"></i>
               <span>Print Plan</span>
             </button>
@@ -1318,7 +1318,7 @@
           <div class="concept-header">
             <div class="concept-title-wrap">
               <i data-lucide="sparkles"></i>
-              <h2>The 70-Day Sprint Architecture: How & Why It Works</h2>
+              <h2>The 75-Day Sprint Architecture: How & Why It Works</h2>
             </div>
             <span class="concept-badge">Zero Cognitive Overload · 100% Preparedness Validation</span>
           </div>

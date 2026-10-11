@@ -60,12 +60,12 @@
       ['Local services', 'life-buoy', 'community/directory']
     ]},
     boardSprints: {
-      label: 'The Board Sprints',
+      label: 'The Exam Sprint',
       icon: 'flame',
       note: 'CBSE Class 12 high-impact exam preparation & sprints',
       route: 'study/board-sprints',
       items: [
-        ['70-Day Sprint Master Plan', 'compass', 'study/board-sprints'],
+        ['75-Day Sprint Master Plan', 'compass', 'study/board-sprints'],
         ['Week 1 · High-Yield Foundation', 'calendar', 'study/board-sprints/week-1'],
         ['Week 2 · Laws & Numericals', 'calendar', 'study/board-sprints/week-2'],
         ['Week 3 · Pre-Board II Climax', 'target', 'study/board-sprints/week-3'],
@@ -244,7 +244,7 @@
     'study/assessments': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/practice': ['Practice & Tests', 'Chapter questions, assessments and error repair'],
     'study/reports': ['Education Reports', 'Academic and whole-child review'],
-    'study/board-sprints': ['The Board Sprints', 'CBSE Class 12 high-impact exam preparation & sprints'],
+    'study/board-sprints': ['The Exam Sprint', 'CBSE Class 12 75-day high-impact exam preparation & sprints'],
     'study/board-sprints/pb2': ['Pre-Board II Sprint', 'High-yield targets & questions for Oct 16 - Nov 06 Pre-Board II'],
     'study/board-sprints/model': ['January Model Sprint', 'Full syllabus mock & model exam sprint'],
     'study/board-sprints/questions': ['High-Probability Question Bank', 'Class 12 CBSE questions with step marking & diagrams'],
@@ -960,7 +960,7 @@
             <div class="education-class-sprints-row" style="padding: 4px 8px 6px;">
               <button type="button" class="education-sprints-btn ${route.startsWith('study/board-sprints') ? 'active' : ''}" data-route="study/board-sprints" data-student="${e(profile.personId)}" ${route.startsWith('study/board-sprints') ? 'aria-current="page"' : ''} style="display:flex; align-items:center; gap:8px; width:100%; border-radius:6px; font-weight:700; color:#ea580c;">
                 <span class="nav-icon" style="color:#ea580c;"><i data-lucide="flame"></i></span>
-                <span>The Board Sprints</span>
+                <span>The Exam Sprint</span>
               </button>
             </div>
           ` : ''}
