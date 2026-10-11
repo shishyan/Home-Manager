@@ -28,6 +28,9 @@
     learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/student-overview', items: [
       ['Progress', 'route', 'study/curriculum'], ['Calendar', 'calendar-clock', 'study/planner'], ['Dashboard', 'layout-dashboard', 'study/student-overview']
     ]},
+    examSprint: { label: 'The Exam Sprint', icon: 'timer-reset', note: 'A focused 75-day CBSE Class 12 board plan', route: 'study/exam-sprint', items: [
+      ['Sprint dashboard', 'layout-dashboard', 'study/exam-sprint'], ['75-day map', 'map', 'study/exam-sprint'], ['Weekly missions', 'calendar-range', 'study/exam-sprint'], ['Technique check', 'circle-help', 'study/exam-sprint'], ['Exam week', 'flag', 'study/exam-sprint']
+    ]},
     community: { label: 'Community', icon: 'map-pinned', note: 'Local participation', route: 'community/overview', items: [
       ['Overview', 'map', 'community/overview'], ['Updates', 'newspaper', 'community/feed'], ['Events & polls', 'calendar-heart', 'community/participate'], ['Volunteer', 'hand-heart', 'community/volunteer'], ['Civic issues', 'ticket-check', 'community/tickets'], ['Local services', 'life-buoy', 'community/directory'], ['Guides', 'book-marked', 'community/guides']
     ]}
@@ -49,7 +52,7 @@
     ['Family contacts', 'users-round', 'home/directory'], ['Kovaipudur services', 'map-pinned', 'community/directory']
   ] };
   delete groups.kitchen; delete groups.care; delete groups.community;
-  const menuOrder = ['household', 'learning', 'money', 'leisure', 'contacts'];
+  const menuOrder = ['household', 'learning', 'examSprint', 'money', 'leisure', 'contacts'];
   const orderedGroups = Object.fromEntries(menuOrder.map(key => [key, groups[key]]));
   Object.keys(groups).forEach(key => delete groups[key]);
   Object.assign(groups, orderedGroups);
@@ -1711,6 +1714,37 @@
     return `<section class="choice-grid">${settingsLink('Community events', 'Meetings, markets and neighbourhood activities', 'community/events', 'calendar-heart')}${settingsLink('Community polls', 'Preferences stored only in this browser', 'community/polls', 'chart-no-axes-column')}</section>`;
   }
 
+  function examSprint() {
+    const phases = [
+      ['01', 'Syllabus sweep', 'Days 1–18', 'Map every chapter, close the red gaps and make a one-page baseline for each subject.', 'list-checks', 'Start with the chapters you avoid. Tag each one red, amber or green, then clear the reds first.'],
+      ['02', 'Past-paper pattern', 'Days 19–36', 'Use previous-year and sample papers to learn the language, weight and recurring question types.', 'file-question', 'Solve one timed section per subject, mark it honestly and maintain an error notebook.'],
+      ['03', 'Revision sheets', 'Days 37–54', 'Compress every chapter into formulas, dates, keywords, diagrams and answer frameworks.', 'notebook-pen', 'A good one-pager lets you reconstruct the chapter without reopening the textbook.'],
+      ['04', 'Mock marathon', 'Days 55–75', 'Rehearse the real exam, review every mistake and protect sleep, pace and confidence.', 'timer', 'Full papers happen under exam conditions. Review is the learning block, not an optional extra.']
+    ];
+    const weeks = [
+      ['Week 1 · Map it', 'Days 1–7', ['List every chapter in every subject.', 'Tag red, amber or green using evidence.', 'Checkpoint: every chapter has a colour.']],
+      ['Week 2 · Mop-up', 'Days 8–14', ['Clear red chapters in focused blocks.', 'Begin a one-page sheet after each chapter.', 'Checkpoint: no red chapter is untouched.']],
+      ['Week 3 · Finish the sweep', 'Days 15–21', ['Close amber gaps and complete baseline recall.', 'Attempt one diagnostic section per subject.', 'Checkpoint: you know the marks available in each unit.']],
+      ['Week 4 · Papers on', 'Days 22–28', ['Solve one past or sample paper per subject.', 'Read the marking scheme after marking yourself.', 'Checkpoint: you have seen each paper’s shape.']],
+      ['Week 5 · Repair patterns', 'Days 29–35', ['Re-solve only questions you missed.', 'Turn repeated errors into flashcards.', 'Checkpoint: your error list is shrinking.']],
+      ['Week 6 · Speed and selection', 'Days 36–42', ['Time sections and practise question choice.', 'Finish the first revision sheet pass.', 'Checkpoint: you can budget a paper.']],
+      ['Week 7 · Sheets first', 'Days 43–49', ['Revise from one-pagers, not full chapters.', 'Use active recall before checking notes.', 'Checkpoint: rebuild a chapter from its sheet.']],
+      ['Week 8 · Mixed practice', 'Days 50–56', ['Rotate subjects and interleave weak topics.', 'Complete two timed sections each day.', 'Checkpoint: no subject is being avoided.']],
+      ['Week 9 · Mock marathon', 'Days 57–63', ['Sit full papers in one sitting.', 'Review every lost mark the same day.', 'Checkpoint: finish within the time limit.']],
+      ['Week 10 · Exam rehearsal', 'Days 64–70', ['Alternate full mocks and light sheet passes.', 'Practise the first 15 minutes and final check.', 'Checkpoint: the routine feels ordinary.']],
+      ['Days 71–75 · Calm finish', 'Days 71–75', ['Follow the date sheet and revise only the next paper.', 'Pack permitted stationery and sleep normally.', 'Checkpoint: enter the hall rested and ready.']]
+    ];
+    const habits = [['Active recall', 'Close the book and write what you remember.', 'brain-circuit'], ['Past papers', 'Solve, mark and repair instead of passively rereading.', 'file-check-2'], ['Sleep and fuel', 'Protect 7–8 hours, water and a short movement break.', 'moon-star']];
+    return `<section class="exam-sprint-hero"><div><span class="section-kicker">THE EXAM SPRINT · CBSE CLASS 12</span><h1>75 days from scattered notes to exam-ready</h1><p>One calm, evidence-led plan for Science, Commerce and Humanities. Choose today’s mission, work in focused blocks and let the checkpoints tell you what to do next.</p><div class="exam-sprint-actions"><button class="primary" data-route="study/planner">${icon('calendar-plus')}<span>Put this on my calendar</span></button><button data-route="study/curriculum">${icon('route')}<span>Open chapter progress</span></button></div></div><div class="exam-sprint-countdown"><span>${icon('timer-reset')}</span><strong>75</strong><small>days · 4 phases · 11 missions</small></div></section>
+      <section class="exam-sprint-stats" aria-label="Sprint facts"><article><b>75</b><span>days on the clock</span></article><article><b>4</b><span>levels to clear</span></article><article><b>11</b><span>weekly missions</span></article><article><b>3</b><span>daily power-ups</span></article></section>
+      <section id="map" class="panel exam-sprint-section"><div class="section-head"><div><span class="section-kicker">YOUR 75-DAY MAP</span><h2>Four levels to clear in order</h2><p>Each level makes the next one faster. Move on when the checkpoint is true, not when the calendar says so.</p></div></div><div class="exam-phase-grid">${phases.map(([n,title,days,desc,ic,tip]) => `<article class="exam-phase-card"><div class="exam-phase-number">${n}</div><div class="exam-phase-icon">${icon(ic)}</div><span class="context-badge study">${days}</span><h3>${title}</h3><p>${desc}</p><small><b>Checkpoint</b> ${tip}</small></article>`).join('')}</div></section>
+      <section class="exam-sprint-two-col"><section class="panel"><div class="section-head"><div><span class="section-kicker">DAILY POWER-UPS</span><h2>Small habits, large marks</h2></div></div><div class="exam-habit-list">${habits.map(([title,desc,ic]) => `<div><span>${icon(ic)}</span><div><b>${title}</b><p>${desc}</p></div></div>`).join('')}</div></section><section class="panel exam-traps"><div class="section-head"><div><span class="section-kicker">DODGE THESE</span><h2>Protect your attention</h2></div></div><ul><li><b>Over-highlighting</b><span>Turn lines into questions you can answer from memory.</span></li><li><b>Dodging weak subjects</b><span>Put your weakest topic in your sharpest hour.</span></li><li><b>All-nighters</b><span>Steady daily blocks beat one dramatic cram.</span></li></ul></section></section>
+      <section id="weeks" class="panel exam-sprint-section"><div class="section-head"><div><span class="section-kicker">WEEKLY MISSIONS</span><h2>Slide the missions to fit your date sheet</h2><p>Tick a mission after its checkpoint is true. The controls are deliberately simple enough for a daily update.</p></div><button class="primary" data-route="study/planner">${icon('calendar-range')}<span>Open study calendar</span></button></div><div class="exam-week-grid">${weeks.map(([title,days,items], index) => `<article class="exam-week-card"><header><span>0${index + 1}</span><div><b>${title}</b><small>${days}</small></div></header><ul>${items.map(item => `<li><label><input type="checkbox"><span>${e(item)}</span></label></li>`).join('')}</ul></article>`).join('')}</div></section>
+      <section id="check" class="panel exam-sprint-section exam-checkpoint"><div class="section-head"><div><span class="section-kicker">TECHNIQUE CHECK</span><h2>Is your method working?</h2><p>Use these quick prompts at the end of a study block.</p></div></div><div class="exam-quiz-grid"><details><summary>${icon('circle-help')} A chapter felt easy after rereading. Ready?</summary><p>Not yet. Familiarity is recognition. Close the book and write the main points from memory.</p></details><details><summary>${icon('circle-help')} Strongest or weakest subject first?</summary><p>Warm up on a medium task, put your weakest topic in your sharpest hour and end on something enjoyable.</p></details><details><summary>${icon('circle-help')} A mock ran past the time limit?</summary><p>Good—you found the leak now. Budget minutes per section and choose your opening questions.</p></details></div></section>
+      <section id="exam-week" class="exam-final-banner"><div><span class="section-kicker">DAYS 71–75 · EXAM WEEK</span><h2>Protect the work you have banked</h2><p>Follow the date sheet. Revise only the next paper. Pack the night before, sleep normally and save the final minutes in the hall to check.</p></div><span class="exam-final-icon">${icon('flag')}</span></section>
+      <p class="exam-sprint-source">Built from the linked CBSE Class 12 revision framework, expanded from 45 to 75 days with three additional consolidation weeks. Confirm the current syllabus, date sheet and permitted materials on the official CBSE website.</p>`;
+  }
+
   function render(route) {
     activeRenderRoute = route;
     if (route.startsWith('kitchen/')) return HM.kitchen.render(route, D.state, { e, icon, date: D.date });
@@ -1761,6 +1795,7 @@
       'community/directory': () => directory('community'),
       'community/guides': guides,
       'study/student-overview': studentStudyOverview,
+      'study/exam-sprint': examSprint,
       'study/overview': studyOverview,
       'study/books': books,
       'study/genius': geniusMindTeacher,
