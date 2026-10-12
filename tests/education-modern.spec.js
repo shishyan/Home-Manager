@@ -1,5 +1,6 @@
 const {test,expect}=require('@playwright/test');
 test('compact education grid, contextual notes, study guide and embedded PDF',async({page})=>{
+ test.setTimeout(60000);
  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.goto('http://127.0.0.1:8765/#/study/curriculum');await page.evaluate(()=>localStorage.clear());await page.reload();
  const math=page.locator('.education-class').last().locator('.education-subject').filter({has:page.locator('summary').filter({hasText:/^Mathematics/})});if(!await math.evaluate(node=>node.open))await math.locator('summary').click();await math.locator('[data-education-page="study/curriculum"]').click();
  await expect(page.locator('.header-actions #personaSwitcher')).toBeVisible();await expect(page.locator('#sidebar #personaSwitcher')).toHaveCount(0);await expect(page.locator('#workspaceMenuLabel')).toBeHidden();

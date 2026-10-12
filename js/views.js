@@ -41,11 +41,15 @@
       ['Net worth', 'scale', 'home/money/networth'],
       ['Reports', 'chart-no-axes-combined', 'home/money/reports']
     ]},
-    learning: { label: 'Education', icon: 'graduation-cap', note: 'Study and development', route: 'study/curriculum', items: [
-      ['Curriculum', 'route', 'study/curriculum'],
-      ['Planner', 'calendar-clock', 'study/planner'],
-      ['Overview', 'activity', 'study/overview'],
-      ['Progress', 'chart-no-axes-combined', 'study/reports']
+    learning: { label: 'Education', icon: 'graduation-cap', note: 'Academic development, curriculum & exam readiness', route: 'study/student-overview', items: [
+      ['Student Dashboard', 'layout-dashboard', 'study/student-overview'],
+      ['The Board Sprints', 'flame', 'study/board-sprints'],
+      ['Curriculum & Chapters', 'route', 'study/curriculum'],
+      ['Study Planner & Calendar', 'calendar-clock', 'study/planner'],
+      ['Practice & Assessments', 'list-checks', 'study/practice-hub'],
+      ['Genius Mind & Concepts', 'brain', 'study/genius'],
+      ['Textbook Library', 'book-open-check', 'study/books'],
+      ['JEE Main Track', 'target', 'study/jee']
     ]},
     leisure: { label: 'Leisure', icon: 'palmtree', note: 'Travel, entertainment and web life', route: 'home/travel', items: [
       ['Travel', 'luggage', 'home/travel'],
@@ -948,9 +952,62 @@
 
     return `<div id="sectionNav" class="education-tree" role="group" aria-label="Education pages">
       <select id="educationLearner" class="sr-only" aria-label="Education student">${(D.state.academicProfiles || []).map(p => `<option value="${e(p.personId)}" ${p.personId === targetStudentId ? 'selected' : ''}>${e(p.name)} · Class ${e(p.grade)}</option>`).join('')}</select>
-      <button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}>
-        <span class="nav-icon" style="color:var(--tone-2,#c4b5fd);"><i data-lucide="layout-dashboard"></i></span><span>Student dashboard</span>
-      </button>
+      
+      <!-- Elevated Learner Switcher Card -->
+      <div class="edu-learner-card">
+        <div class="edu-learner-pills" role="tablist" aria-label="Select student">
+          <button type="button" class="edu-learner-pill ${targetStudentId === 'p3' ? 'active' : ''}" onclick="HM.switchLearner('p3')" role="tab" aria-selected="${targetStudentId === 'p3'}">
+            <span class="edu-learner-avatar">S</span>
+            <div class="edu-learner-info">
+              <b>Sasha</b>
+              <small>Class 12 · CBSE &amp; JEE</small>
+            </div>
+          </button>
+          <button type="button" class="edu-learner-pill ${targetStudentId === 'p4' ? 'active' : ''}" onclick="HM.switchLearner('p4')" role="tab" aria-selected="${targetStudentId === 'p4'}">
+            <span class="edu-learner-avatar">I</span>
+            <div class="edu-learner-info">
+              <b>Ishaan</b>
+              <small>Class 7 · Peepal Grove</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Core Direct Shortcuts -->
+      <div class="edu-nav-shortcuts">
+        <button type="button" class="education-student-dashboard ${route==='study/student-overview'?'active':''}" data-education-student-dashboard ${route==='study/student-overview'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-2,#c4b5fd);"><i data-lucide="layout-dashboard"></i></span><span>Student dashboard</span>
+        </button>
+        ${(targetStudentId === 'p3') ? `
+          <button type="button" class="education-quick-nav-btn ${route.startsWith('study/board-sprints') ? 'active' : ''}" data-route="study/board-sprints" ${route.startsWith('study/board-sprints') ? 'aria-current="page"' : ''} style="color:#ea580c; font-weight:700;">
+            <span class="nav-icon" style="color:#ea580c;"><i data-lucide="flame"></i></span>
+            <span>The Board Sprints</span>
+            <span class="badge warning" style="margin-left:auto; font-size:9px; padding:1px 6px;">75-Day</span>
+          </button>
+        ` : ''}
+        <button type="button" class="education-quick-nav-btn ${route==='study/curriculum'?'active':''}" data-route="study/curriculum" ${route==='study/curriculum'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-1,#99f6e4);"><i data-lucide="route"></i></span><span>Curriculum &amp; Chapters</span>
+        </button>
+        <button type="button" class="education-quick-nav-btn ${route==='study/planner'?'active':''}" data-route="study/planner" ${route==='study/planner'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-3,#fbcfe8);"><i data-lucide="calendar-clock"></i></span><span>Study Planner</span>
+        </button>
+        <button type="button" class="education-quick-nav-btn ${route==='study/practice-hub'?'active':''}" data-route="study/practice-hub" ${route==='study/practice-hub'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-4,#bbf7d0);"><i data-lucide="list-checks"></i></span><span>Practice &amp; Assignments</span>
+        </button>
+        <button type="button" class="education-quick-nav-btn ${route==='study/genius'?'active':''}" data-route="study/genius" ${route==='study/genius'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-5,#fed7aa);"><i data-lucide="brain"></i></span><span>Genius Mind</span>
+        </button>
+        <button type="button" class="education-quick-nav-btn ${route==='study/books'?'active':''}" data-route="study/books" ${route==='study/books'?'aria-current="page"':''}>
+          <span class="nav-icon" style="color:var(--tone-6,#e2e8f0);"><i data-lucide="book-open-check"></i></span><span>Textbook Library</span>
+        </button>
+        ${(targetStudentId === 'p3') ? `
+          <button type="button" class="education-quick-nav-btn ${route==='study/jee'?'active':''}" data-route="study/jee" ${route==='study/jee'?'aria-current="page"':''}>
+            <span class="nav-icon" style="color:#38bdf8;"><i data-lucide="target"></i></span><span>JEE Main Track</span>
+          </button>
+        ` : ''}
+      </div>
+
+      <div class="edu-classes-divider"><small>CURRICULUM BY SUBJECT</small></div>
       ${profiles.map(profile => {
         const selected = D.state.settings.activeLearningSubject?.[profile.personId] || profile.subjects[0] || 'Mathematics';
         const isClassOpen = !collapsedClasses.includes(profile.personId);
@@ -987,11 +1044,7 @@
             const isActiveSubject = profile.personId === activeId && subject === selected;
             const isExpanded = !expandedSubject || (expandedSubject.studentId === profile.personId && expandedSubject.subject === subject) || isActiveSubject;
 
-            return `<details class="education-subject tab-tone-${toneIndex}" ${isExpanded ? 'open' : ''}>
-              <summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}>
-                <span class="nav-icon" style="color:var(--tone-${toneIndex});"><i data-lucide="${sIcon}"></i></span>
-                <span>${e(subject)}</span>
-              </summary>
+            return `<details class="education-subject tab-tone-${toneIndex}" ${isExpanded ? 'open' : ''}><summary data-education-subject="${e(subject)}" data-student="${e(profile.personId)}" class="${isActiveSubject?'active':''}" ${isActiveSubject?'aria-current="location"':''}><span class="nav-icon" style="color:var(--tone-${toneIndex});"><i data-lucide="${sIcon}"></i></span><span>${e(subject)}</span></summary>
               <div class="education-pages-list">
                 ${pages.map(([label, page, pIcon], pIdx) => {
                   const isActivePage = isActiveSubject && (page === activePage || pageLabelById[page] === activePage || route === page || (['learning', 'summary', 'understand', 'resource'].includes(page) && ['learning', 'summary', 'understand', 'resource'].includes(activePage)));

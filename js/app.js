@@ -619,6 +619,13 @@
         bsSlot.replaceChildren();
       }
     }
+    if (route && (!route.startsWith('study/') || route.startsWith('study/board-sprints'))) {
+      const eduSlot = $('#educationTopBar');
+      if (eduSlot) {
+        eduSlot.hidden = true;
+        eduSlot.replaceChildren();
+      }
+    }
   }
 
   function render() {
@@ -676,6 +683,9 @@
     if (window.HM && typeof window.HM.updateBoardSprintsTopBar === 'function') {
       window.HM.updateBoardSprintsTopBar(route);
     }
+    if (window.HM && typeof window.HM.updateEducationTopBar === 'function') {
+      window.HM.updateEducationTopBar(route);
+    }
     bindView();
     if (route === 'home/directory' && !HM.workspace.cache.contacts?.length) {
       requestAnimationFrame(() => {
@@ -693,6 +703,8 @@
     requestAnimationFrame(() => $('#sectionNav .active')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     if (legacyPracticeLesson) requestAnimationFrame(() => openChapterWorkspace(legacyPracticeLesson, 'practice'));
   }
+  HM.go = go;
+  HM.render = render;
 
   function inputAttributes(name, type) {
     if (type !== 'number') return '';
