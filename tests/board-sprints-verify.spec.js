@@ -218,4 +218,33 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.waitForTimeout(500);
     expect(page.url()).toContain('#/global/overview');
   });
+
+  test('Board Sprints is the default landing page until March 2027 and has 10% wider sidebar (278px)', async ({ page }) => {
+    // 1. Visit bare root URL without hash
+    await page.goto('http://localhost:8765/', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // Verify default landing page is study/board-sprints
+    expect(page.url()).toContain('#/study/board-sprints');
+
+    // Verify sidebar width under board sprints is 278px (+10% from 252px)
+    const sprintSidebarWidth = await page.evaluate(() => {
+      const sb = document.querySelector('#sidebar');
+      return window.getComputedStyle(sb).width;
+    });
+    expect(sprintSidebarWidth).toBe('278px');
+
+    // 2. Navigate to Home
+    const homeTab = page.locator('#personaTabs .group-tab[data-group="household"]');
+    await homeTab.click();
+    await page.waitForTimeout(500);
+    expect(page.url()).toContain('#/global/overview');
+
+    // Verify sidebar width returns to default 252px under Home
+    const homeSidebarWidth = await page.evaluate(() => {
+      const sb = document.querySelector('#sidebar');
+      return window.getComputedStyle(sb).width;
+    });
+    expect(homeSidebarWidth).toBe('252px');
+  });
 });

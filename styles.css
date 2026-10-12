@@ -7946,7 +7946,9 @@ details.education-class-group summary:hover,
    - Sidebar & Navigation: Deep Orange to Violet Gradient theme
    ========================================================================== */
 
-body.zen-sprint-mode {
+body.zen-sprint-mode,
+body.group-boardSprints {
+  --sidebar: 278px;
   background-color: #fafafa !important;
   background-image:
     radial-gradient(circle 800px at 10% 10%, rgba(234, 88, 12, 0.04), transparent),
@@ -7959,7 +7961,13 @@ body.zen-sprint-mode {
   color: #1e293b !important;
 }
 
-body.zen-sprint-mode::after {
+body.zen-sprint-mode #sidebar,
+body.group-boardSprints #sidebar {
+  width: var(--sidebar);
+}
+
+body.zen-sprint-mode::after,
+body.group-boardSprints::after {
   display: none !important;
 }
 

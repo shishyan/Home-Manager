@@ -2,10 +2,15 @@
   const D = HM.data;
   const V = HM.views;
   const $ = selector => document.querySelector(selector);
-  let route = location.hash.slice(2) || 'global/overview';
+  const isBeforeApril2027 = new Date() < new Date('2027-04-01T00:00:00');
+  const defaultLandingRoute = isBeforeApril2027 ? 'study/board-sprints' : 'global/overview';
+  let route = location.hash.slice(2) || defaultLandingRoute;
+  if (!location.hash.slice(2)) {
+    location.replace('#/' + defaultLandingRoute);
+  }
   let workspace = route.split('/')[0];
   const migratedGroup = ({ today: 'household', family: 'household', kitchen: 'household', care: 'household', community: 'household', travel: 'leisure', web: 'household', entertainment: 'household' })[D.state.settings.activeGroup];
-  let activeGroup = migratedGroup || D.state.settings.activeGroup || 'household';
+  let activeGroup = (route.startsWith('study/board-sprints') ? 'boardSprints' : (migratedGroup || D.state.settings.activeGroup || 'household'));
   let expandedGroup = activeGroup;
   let lastDeleted = null;
   let toastTimer = null;
@@ -602,7 +607,7 @@
 
   function render() {
     HM.life.ensure();
-    route = location.hash.slice(2) || route;
+    route = location.hash.slice(2) || defaultLandingRoute;
     const legacyPracticeRoute = ['study/practice', 'study/assessments', 'study/focus'].includes(route);
     const legacyPracticeLesson = legacyPracticeRoute
       ? (D.state.settings.activePracticeLesson?.[D.state.settings.activeLearnerId] || D.state.settings.activeGeniusLesson?.[D.state.settings.activeLearnerId] || V.defaultLessonId())
