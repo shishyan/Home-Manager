@@ -522,8 +522,14 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     expect(weeklyTopBarBox).not.toBeNull();
     expect(weeklyTopBarBox.y).toBeLessThan(62);
 
-    // 3. Visit Master Plan (Overview) and verify topbar filter is hidden
+    // 3. Visit Master Plan (Overview) and verify topbar shows Master Plan KPIs
     await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(500);
+    await expect(topBar).toBeVisible();
+    await expect(page.locator('.master-topbar-filters')).toBeVisible();
+
+    // 4. Visit outside page (e.g. global/overview) and verify topbar is hidden
+    await page.goto('http://localhost:8765/#/global/overview', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(500);
     await expect(topBar).toBeHidden();
   });
@@ -587,6 +593,97 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
 
     const reExpandedSidebarBox = await page.locator('#sidebar').boundingBox();
     expect(Math.round(reExpandedSidebarBox.width)).toBe(278);
+  });
+
+  test('RAG Chapter KPIs and Master Plan countdown persistently fill topbar on scroll and Home tab is compact icon-only', async ({ page }) => {
+    await page.goto('http://localhost:8765/#/study/board-sprints/rag', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // 1. Verify Home tab has house icon and is compact
+    const homeTab = page.locator('#personaTabs .group-tab[data-group="household"]');
+    await expect(homeTab).toBeVisible();
+    await expect(homeTab).toHaveAttribute('title', 'Home');
+    const homeIcon = homeTab.locator('svg, i');
+    await expect(homeIcon).toBeVisible();
+    // Verify visible text is empty (only sr-only for accessibility)
+    const homeText = await homeTab.locator('span:not(.sr-only)').count();
+    expect(homeText).toBe(0);
+    const homeBox = await homeTab.boundingBox();
+    expect(homeBox.width).toBeLessThan(55); // compact icon-only tab
+
+    // 2. Verify RAG persistent topbar is visible and populated with KPIs
+    const topBar = page.locator('#boardSprintsTopBar');
+    await expect(topBar).toBeVisible();
+
+    const topGreen = page.locator('#topbarRagGreen');
+    const topAmber = page.locator('#topbarRagAmber');
+    const topRed = page.locator('#topbarRagRed');
+    const topScore = page.locator('#topbarRagScore');
+    await expect(topGreen).toBeVisible();
+    await expect(topAmber).toBeVisible();
+    await expect(topRed).toBeVisible();
+    await expect(topScore).toBeVisible();
+
+    const initialGreenText = await topGreen.textContent();
+    expect(initialGreenText).toContain('Green');
+
+    // 3. Scroll down 800px and verify topbar and KPIs remain persistently visible at top: 0
+    await page.evaluate(() => window.scrollTo(0, 800));
+    await page.waitForTimeout(300);
+
+    const scrollY = await page.evaluate(() => window.scrollY);
+    expect(scrollY).toBeGreaterThan(500);
+
+    const topBarBox = await topBar.boundingBox();
+    expect(topBarBox.y).toBeLessThan(65); // inside the 62px header at top
+    await expect(topGreen).toBeVisible();
+    await expect(topRed).toBeVisible();
+
+    // 4. Test RAG dual-sync search from topbar
+    const topSearch = page.locator('#topbarRagSearchInput');
+    await expect(topSearch).toBeVisible();
+    await topSearch.fill('Electrostatic');
+    await page.waitForTimeout(300);
+
+    // In-page search input should sync
+    const inPageSearchVal = await page.locator('#ragSearchInput').inputValue();
+    expect(inPageSearchVal).toBe('Electrostatic');
+
+    // Only Electrostatic row should be visible
+    const visibleRows = page.locator('.rag-chapter-card:visible');
+    const rowCount = await visibleRows.count();
+    expect(rowCount).toBe(1);
+
+    // Clear search
+    await topSearch.fill('');
+    await page.waitForTimeout(300);
+
+    // 5. Test real-time update of Top Bar RAG KPI when status is changed
+    const greenBtn = page.locator('.rag-chapter-card .btn-rag-toggle.rag-t-green').first();
+    await greenBtn.click();
+    await page.waitForTimeout(300);
+    const updatedGreenText = await topGreen.textContent();
+    expect(updatedGreenText).toContain('Green');
+
+    // 6. Navigate to 75-Day Master Plan Overview (#/study/board-sprints)
+    await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // Topbar should have master plan KPIs
+    await expect(topBar).toBeVisible();
+    const pb2Kpi = page.locator('.master-topbar-filters .kpi-pb2');
+    const modelKpi = page.locator('.master-topbar-filters .kpi-model');
+    const qbKpi = page.locator('.master-topbar-filters .kpi-qb');
+    await expect(pb2Kpi).toBeVisible();
+    await expect(modelKpi).toBeVisible();
+    await expect(qbKpi).toBeVisible();
+
+    // Scroll down 800px on Master Plan and verify topbar stays persistently visible
+    await page.evaluate(() => window.scrollTo(0, 800));
+    await page.waitForTimeout(300);
+    const masterTopBarBox = await topBar.boundingBox();
+    expect(masterTopBarBox.y).toBeLessThan(65);
+    await expect(pb2Kpi).toBeVisible();
   });
 });
 

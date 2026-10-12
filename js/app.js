@@ -509,6 +509,9 @@
     if (tabsContainer) {
       tabsContainer.innerHTML = availableGroups.map(([key, item]) => {
         const active = key === activeGroup;
+        if (key === 'household') {
+          return `<button type="button" class="group-tab group-tab-home ${active ? 'active' : ''}" data-group="${key}" data-route="${item.route}" aria-pressed="${active}" title="Home"><i data-lucide="${item.icon}"></i><span class="sr-only">Home</span></button>`;
+        }
         return `<button type="button" class="group-tab ${active ? 'active' : ''}" data-group="${key}" data-route="${item.route}" aria-pressed="${active}"><i data-lucide="${item.icon}"></i><span>${D.esc(item.label)}</span></button>`;
       }).join('');
     }

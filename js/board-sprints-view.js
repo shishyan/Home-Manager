@@ -1325,13 +1325,27 @@
     if (barAmber) barAmber.style.width = `${Math.round((amberCount / total) * 100)}%`;
     if (barRed) barRed.style.width = `${Math.round((redCount / total) * 100)}%`;
 
+    // Sync Top Bar RAG KPIs
+    const topGreen = document.getElementById('topbarRagGreen');
+    const topAmber = document.getElementById('topbarRagAmber');
+    const topRed = document.getElementById('topbarRagRed');
+    const topScore = document.getElementById('topbarRagScore');
+    if (topGreen) topGreen.innerHTML = `<i data-lucide="check-circle-2"></i><span>${greenCount} Green</span>`;
+    if (topAmber) topAmber.innerHTML = `<i data-lucide="alert-triangle"></i><span>${amberCount} Amber</span>`;
+    if (topRed) topRed.innerHTML = `<i data-lucide="alert-circle"></i><span>${redCount} Red</span>`;
+    if (topScore) topScore.innerHTML = `<i data-lucide="gauge"></i><span>${readiness}% Ready</span>`;
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+
     // Reapply active filter if needed
     HM.applyRagFilters();
   };
 
   HM.setRagSubjectFilter = function (subj) {
     ragFilterState.subject = subj;
-    document.querySelectorAll('#ragSubjFilter .btn-rag-filter').forEach(btn => {
+    document.querySelectorAll('#ragSubjFilter .btn-rag-filter, .topbar-rag-subj-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.val === subj);
     });
     HM.applyRagFilters();
@@ -1339,14 +1353,19 @@
 
   HM.setRagStatusFilter = function (status) {
     ragFilterState.status = status;
-    document.querySelectorAll('#ragStatusFilter .btn-rag-filter').forEach(btn => {
+    document.querySelectorAll('#ragStatusFilter .btn-rag-filter, .topbar-rag-status-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.val === status);
     });
     HM.applyRagFilters();
   };
 
   HM.handleRagSearch = function (q) {
-    ragFilterState.search = (q || '').trim().toLowerCase();
+    const val = q || '';
+    ragFilterState.search = val.trim().toLowerCase();
+    const inPageSearch = document.getElementById('ragSearchInput');
+    const topbarSearch = document.getElementById('topbarRagSearchInput');
+    if (inPageSearch && inPageSearch.value !== val) inPageSearch.value = val;
+    if (topbarSearch && topbarSearch.value !== val) topbarSearch.value = val;
     HM.applyRagFilters();
   };
 
@@ -1928,11 +1947,16 @@
       return { isOverview: true, week: 'week-1', book: 'all', isFormulae: false };
     }
 
-    if (route.includes('formulae') || route.endsWith('/formulae')) {
+    const cleanRoute = route.replace(/^#\/?/, '');
+    if (!cleanRoute.startsWith('study/board-sprints')) {
+      return null;
+    }
+
+    if (cleanRoute.includes('formulae') || cleanRoute.endsWith('/formulae')) {
       return { isOverview: false, isFormulae: true, week: 'week-10', book: 'physics' };
     }
 
-    const parts = route.split('/').filter(Boolean);
+    const parts = cleanRoute.split('/').filter(Boolean);
     // parts[0] = 'study', parts[1] = 'board-sprints'
     if (parts.length <= 2 || parts[2] === 'overview') {
       return { isOverview: true, week: 'week-1', book: 'all', isFormulae: false };
@@ -3137,10 +3161,18 @@
     const topBarSlot = document.getElementById('boardSprintsTopBar');
     if (!topBarSlot) return;
 
-    const route = routeParam || (typeof location !== 'undefined' ? location.hash.slice(2) : '');
-    const routeInfo = parseSprintRoute(route);
+    const route = routeParam || (typeof location !== 'undefined' ? location.hash.replace(/^#\/?/, '') : '');
+    const cleanRoute = (route || '').replace(/^#\/?/, '');
 
-    if (!routeInfo || (!routeInfo.isQuestions && !route.includes('week-'))) {
+    if (!cleanRoute.startsWith('study/board-sprints')) {
+      topBarSlot.hidden = true;
+      topBarSlot.innerHTML = '';
+      return;
+    }
+
+    const routeInfo = parseSprintRoute(cleanRoute);
+
+    if (!routeInfo || (!routeInfo.isQuestions && !cleanRoute.includes('week-') && !routeInfo.isRag && !routeInfo.isOverview)) {
       topBarSlot.hidden = true;
       topBarSlot.innerHTML = '';
       return;
@@ -3149,7 +3181,162 @@
     const allQuestions = getAllQuestions();
     const mastered = getMasteredSet();
 
-    if (routeInfo.isQuestions) {
+    if (routeInfo.isRag) {
+      const ragMap = getRagAuditMap();
+      const totalChapters = RAG_CHAPTERS.length;
+      let redCount = 0, amberCount = 0, greenCount = 0;
+      RAG_CHAPTERS.forEach(ch => {
+        const c = ragMap[ch.name] || ch.defaultRag || 'amber';
+        if (c === 'red') redCount++;
+        else if (c === 'amber') amberCount++;
+        else if (c === 'green') greenCount++;
+      });
+      const readiness = Math.round(((greenCount * 1.0 + amberCount * 0.5) / totalChapters) * 100);
+
+      const activeEl = document.activeElement;
+      const isSearchFocused = activeEl && activeEl.id === 'topbarRagSearchInput';
+      const cursorPos = isSearchFocused ? activeEl.selectionStart : null;
+
+      topBarSlot.hidden = false;
+      topBarSlot.innerHTML = `
+        <div class="topbar-filter-group rag-topbar-filters">
+          <!-- RAG Live KPIs -->
+          <div class="topbar-kpis-wrap">
+            <span class="topbar-kpi-pill kpi-green" id="topbarRagGreen" onclick="HM.setRagStatusFilter('green')" title="Filter Green Mastered">
+              <i data-lucide="check-circle-2"></i>
+              <span>${greenCount} Green</span>
+            </span>
+            <span class="topbar-kpi-pill kpi-amber" id="topbarRagAmber" onclick="HM.setRagStatusFilter('amber')" title="Filter Amber Review">
+              <i data-lucide="alert-triangle"></i>
+              <span>${amberCount} Amber</span>
+            </span>
+            <span class="topbar-kpi-pill kpi-red" id="topbarRagRed" onclick="HM.setRagStatusFilter('red')" title="Filter Red Urgent">
+              <i data-lucide="alert-circle"></i>
+              <span>${redCount} Red</span>
+            </span>
+            <span class="topbar-kpi-pill kpi-score" id="topbarRagScore" title="Readiness Index: Target 95%+">
+              <i data-lucide="gauge"></i>
+              <span>${readiness}% Ready</span>
+            </span>
+          </div>
+
+          <!-- Dual-Sync Search -->
+          <div class="topbar-search-wrap">
+            <i data-lucide="search" class="topbar-search-icon"></i>
+            <input type="text" id="topbarRagSearchInput" class="topbar-search-input" placeholder="Search chapters..." value="${escapeHtml(ragFilterState.search || '')}" oninput="HM.handleRagSearch(this.value)">
+            ${ragFilterState.search ? `<button type="button" class="topbar-search-clear" onclick="HM.handleRagSearch('')" title="Clear search"><i data-lucide="x"></i></button>` : ''}
+          </div>
+
+          <!-- Status Filters -->
+          <div class="topbar-marks-pills">
+            <button type="button" class="topbar-rag-status-btn ${ragFilterState.status === 'all' ? 'active' : ''}" data-val="all" onclick="HM.setRagStatusFilter('all')">All</button>
+            <button type="button" class="topbar-rag-status-btn ${ragFilterState.status === 'red' ? 'active' : ''}" data-val="red" onclick="HM.setRagStatusFilter('red')"><span class="rag-dot dot-red"></span><span>Red</span></button>
+            <button type="button" class="topbar-rag-status-btn ${ragFilterState.status === 'amber' ? 'active' : ''}" data-val="amber" onclick="HM.setRagStatusFilter('amber')"><span class="rag-dot dot-amber"></span><span>Amber</span></button>
+            <button type="button" class="topbar-rag-status-btn ${ragFilterState.status === 'green' ? 'active' : ''}" data-val="green" onclick="HM.setRagStatusFilter('green')"><span class="rag-dot dot-green"></span><span>Green</span></button>
+          </div>
+
+          <!-- Subject Filters -->
+          <div class="topbar-subject-pills">
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'all' ? 'active' : ''}" data-val="all" onclick="HM.setRagSubjectFilter('all')">
+              <span>All (${totalChapters})</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'Physics' ? 'active' : ''}" data-val="Physics" onclick="HM.setRagSubjectFilter('Physics')">
+              <i data-lucide="atom"></i>
+              <span>Physics</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'Chemistry' ? 'active' : ''}" data-val="Chemistry" onclick="HM.setRagSubjectFilter('Chemistry')">
+              <i data-lucide="flask-conical"></i>
+              <span>Chemistry</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'Mathematics' ? 'active' : ''}" data-val="Mathematics" onclick="HM.setRagSubjectFilter('Mathematics')">
+              <i data-lucide="sigma"></i>
+              <span>Maths</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'Computer Science' ? 'active' : ''}" data-val="Computer Science" onclick="HM.setRagSubjectFilter('Computer Science')">
+              <i data-lucide="binary"></i>
+              <span>CS</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-rag-subj-btn ${ragFilterState.subject === 'English Core' ? 'active' : ''}" data-val="English Core" onclick="HM.setRagSubjectFilter('English Core')">
+              <i data-lucide="book-open"></i>
+              <span>English</span>
+            </button>
+          </div>
+
+          <!-- Quick Practice Link -->
+          <button type="button" class="topbar-pill topbar-shortcut" onclick="location.hash='#/study/board-sprints/questions'" title="Practice in 10-Year Question Bank">
+            <i data-lucide="list-ordered"></i>
+            <span>Question Bank</span>
+          </button>
+        </div>
+      `;
+
+      if (isSearchFocused) {
+        const newSearchInput = document.getElementById('topbarRagSearchInput');
+        if (newSearchInput) {
+          newSearchInput.focus();
+          newSearchInput.selectionStart = newSearchInput.selectionEnd = cursorPos;
+        }
+      }
+    } else if (routeInfo.isOverview) {
+      const countdown = getCountdownStats();
+      const masteredTotal = allQuestions.filter(q => mastered.has(q.id)).length;
+      const masteredPercent = allQuestions.length > 0 ? Math.round((masteredTotal / allQuestions.length) * 100) : 0;
+
+      const ragMap = getRagAuditMap();
+      const totalChapters = RAG_CHAPTERS.length;
+      let redCount = 0, amberCount = 0, greenCount = 0;
+      RAG_CHAPTERS.forEach(ch => {
+        const c = ragMap[ch.name] || 'amber';
+        if (c === 'red') redCount++;
+        else if (c === 'amber') amberCount++;
+        else if (c === 'green') greenCount++;
+      });
+      const readinessScore = Math.round(((greenCount * 1.0 + amberCount * 0.5) / totalChapters) * 100);
+
+      topBarSlot.hidden = false;
+      topBarSlot.innerHTML = `
+        <div class="topbar-filter-group master-topbar-filters">
+          <div class="topbar-kpis-wrap">
+            <span class="topbar-kpi-pill kpi-pb2" title="Pre-Board II Kickoff: Target 45+ Foundation Baseline">
+              <i data-lucide="target"></i>
+              <span>PB-II: <strong>${countdown.pb2Days}d</strong></span>
+            </span>
+            <span class="topbar-kpi-pill kpi-model" title="January Model Exam: 3-Hour Simulation">
+              <i data-lucide="calendar-check"></i>
+              <span>Model: <strong>${countdown.modelDays}d</strong></span>
+            </span>
+            <span class="topbar-kpi-pill kpi-qb" title="Authentic 10-Year Question Bank">
+              <i data-lucide="layers"></i>
+              <span><strong>${allQuestions.length}</strong> Qs</span>
+            </span>
+            <span class="topbar-kpi-pill kpi-score" title="Syllabus Readiness Index: ${greenCount} Green, ${amberCount} Amber, ${redCount} Red">
+              <i data-lucide="gauge"></i>
+              <span>Readiness: <strong>${readinessScore}%</strong></span>
+            </span>
+            <span class="topbar-kpi-pill" title="RAG Breakdown: ${greenCount} Green, ${amberCount} Amber, ${redCount} Red">
+              <span class="rag-dot dot-green"></span>${greenCount}
+              <span class="rag-dot dot-amber" style="margin-left: 4px;"></span>${amberCount}
+              <span class="rag-dot dot-red" style="margin-left: 4px;"></span>${redCount}
+            </span>
+          </div>
+
+          <div class="topbar-subject-pills">
+            <button type="button" class="topbar-pill topbar-shortcut" onclick="location.hash='#/study/board-sprints/rag'" title="Open R-A-G Chapter Audit Tracker">
+              <i data-lucide="shield-alert"></i>
+              <span>RAG Tracker</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-shortcut" onclick="location.hash='#/study/board-sprints/questions'" title="Open 10-Year Question Bank">
+              <i data-lucide="list-ordered"></i>
+              <span>Question Bank</span>
+            </button>
+            <button type="button" class="topbar-pill topbar-shortcut" onclick="location.hash='#/study/board-sprints/week-1/all'" title="Start Week 1 Sprint">
+              <i data-lucide="flame"></i>
+              <span>Week 1 Sprint</span>
+            </button>
+          </div>
+        </div>
+      `;
+    } else if (routeInfo.isQuestions) {
       const currentSubject = state.qbSubject || 'all';
       const currentMarks = state.marks || 'all';
       const currentChapter = state.qbChapter || 'all';
