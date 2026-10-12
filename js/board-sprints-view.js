@@ -2710,6 +2710,24 @@
     const correctLetter = (q.correctOption || '').match(/[a-d]/i) ? (q.correctOption.match(/[a-d]/i)[0].toLowerCase()) : null;
     const coreAnswer = getCoreAnswer(q);
 
+    // Group all hints, tips, step marking, etc. into bullet points with bold header as first phrase
+    const insights = [];
+    if (q.stepMarking) {
+      insights.push(`<li><strong>Step Marking:</strong> ${escapeHtml(q.stepMarking)}</li>`);
+    }
+    if (q.cautionTrap) {
+      insights.push(`<li><strong>Examiner Caution:</strong> ${escapeHtml(q.cautionTrap)}</li>`);
+    }
+    if (q.topperTip) {
+      insights.push(`<li><strong>Topper's Secret:</strong> ${escapeHtml(q.topperTip)}</li>`);
+    }
+    if (q.mnemonic) {
+      insights.push(`<li><strong>Memory Mnemonic:</strong> ${escapeHtml(q.mnemonic)}</li>`);
+    }
+    if (q.explanation) {
+      insights.push(`<li><strong>Examiner Tip:</strong> ${escapeHtml(q.explanation)}</li>`);
+    }
+
     return `
       <article class="board-question-card zen-card ${isMastered ? 'is-mastered' : ''}" id="card-${escapeHtml(q.id)}">
         <!-- Minimal Zen Header -->
@@ -2808,82 +2826,42 @@
             </div>
           </div>
 
-          <!-- BELOW ANSWER: Model Answer, Marking Scheme, Links, Appeared on (ALL SHADELESS) -->
-          <details class="q-card-accordion zen-accordion" ${userAns || !hasOptions ? 'open' : ''}>
-            <summary class="q-accordion-summary">
-              <div class="summary-left">
-                <i data-lucide="book-open"></i>
-                <strong>CBSE Model Answer & Marking Scheme</strong>
-              </div>
-            </summary>
-
-            <div class="q-accordion-content">
-              <!-- Model Answer (SHADELESS) -->
-              <div class="model-answer-prose">
-                ${q.modelAnswer}
-              </div>
-
-              <!-- Step Marking (SHADELESS) -->
-              ${q.stepMarking ? `
-                <div class="zen-marking-note">
-                  <span class="note-label"><i data-lucide="award"></i> Step Marking:</span>
-                  <span class="note-text">${escapeHtml(q.stepMarking)}</span>
-                </div>
-              ` : ''}
-
-              <!-- Caution Trap (SHADELESS) -->
-              ${q.cautionTrap ? `
-                <div class="zen-caution-box">
-                  <div class="caution-badge"><i data-lucide="alert-triangle"></i> <strong>CBSE Examiner Caution (80% Trap)</strong></div>
-                  <p class="caution-text">${escapeHtml(q.cautionTrap)}</p>
-                </div>
-              ` : ''}
-
-              <!-- Topper's Secret (SHADELESS) -->
-              ${q.topperTip ? `
-                <div class="zen-topper-box">
-                  <div class="topper-badge"><i data-lucide="sparkles"></i> <strong>Topper's Scoring Secret</strong></div>
-                  <p class="topper-text">${escapeHtml(q.topperTip)}</p>
-                </div>
-              ` : ''}
-
-              <!-- Rapid Mnemonic (SHADELESS) -->
-              ${q.mnemonic ? `
-                <div class="zen-mnemonic-box">
-                  <div class="mnemonic-badge"><i data-lucide="brain"></i> <strong>Memory Hook / Mnemonic</strong></div>
-                  <p class="mnemonic-text">${escapeHtml(q.mnemonic)}</p>
-                </div>
-              ` : ''}
-
-              <!-- Examiner Tip (SHADELESS) -->
-              ${q.explanation ? `
-                <div class="zen-examiner-note">
-                  <span class="note-label"><i data-lucide="lightbulb"></i> Examiner Tip:</span>
-                  <span class="note-text">${escapeHtml(q.explanation)}</span>
-                </div>
-              ` : ''}
-
-              <!-- Appeared on & Links (SHADELESS footer below answer) -->
-              ${(q.crossRef || q.youtube || q.year) ? `
-                <div class="shadeless-footer-meta">
-                  <div class="meta-chip-item strip-paper">
-                    <i data-lucide="file-check-2"></i>
-                    <span class="strip-label">Appeared on:</span>
-                    <span class="strip-value"><strong>${escapeHtml(q.year || (q.crossRef && q.crossRef.papers ? q.crossRef.papers[0] : 'CBSE Board Exam'))}</strong></span>
-                  </div>
-                  ${q.youtube ? `
-                    <span class="meta-chip-dot">·</span>
-                    <a href="${escapeHtml(q.youtube.url)}" target="_blank" rel="noopener noreferrer" class="meta-chip-link" title="${escapeHtml(q.youtube.title)}">
-                      <i data-lucide="play-circle"></i>
-                      <span class="strip-label">Masterclass:</span>
-                      <span class="strip-channel"><strong>${escapeHtml(q.youtube.channel.split('·')[0].trim())} (Tamil)</strong></span>
-                      <i data-lucide="external-link" class="strip-ext"></i>
-                    </a>
-                  ` : ''}
-                </div>
-              ` : ''}
+          <!-- DIRECT STEPS FLOW (REMOVED REPEATED ACCORDION TITLE TO SAVE SPACE) -->
+          <div class="q-card-steps-flow q-accordion-content zen-accordion">
+            <!-- Model Answer & Derivation Steps (SHADELESS) -->
+            <div class="model-answer-prose">
+              ${q.modelAnswer}
             </div>
-          </details>
+
+            <!-- Grouped Hints, Tips, Step Marking as Bullet Points -->
+            ${insights.length > 0 ? `
+              <div class="q-insights-group">
+                <ul class="q-insights-list">
+                  ${insights.join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <!-- Appeared on & Links (SHADELESS footer below answer) -->
+            ${(q.crossRef || q.youtube || q.year) ? `
+              <div class="shadeless-footer-meta">
+                <div class="meta-chip-item strip-paper">
+                  <i data-lucide="file-check-2"></i>
+                  <span class="strip-label">Appeared on:</span>
+                  <span class="strip-value"><strong>${escapeHtml(q.year || (q.crossRef && q.crossRef.papers ? q.crossRef.papers[0] : 'CBSE Board Exam'))}</strong></span>
+                </div>
+                ${q.youtube ? `
+                  <span class="meta-chip-dot">·</span>
+                  <a href="${escapeHtml(q.youtube.url)}" target="_blank" rel="noopener noreferrer" class="meta-chip-link" title="${escapeHtml(q.youtube.title)}">
+                    <i data-lucide="play-circle"></i>
+                    <span class="strip-label">Masterclass:</span>
+                    <span class="strip-channel"><strong>${escapeHtml(q.youtube.channel.split('·')[0].trim())} (Tamil)</strong></span>
+                    <i data-lucide="external-link" class="strip-ext"></i>
+                  </a>
+                ` : ''}
+              </div>
+            ` : ''}
+          </div>
         </div>
       </article>
     `;

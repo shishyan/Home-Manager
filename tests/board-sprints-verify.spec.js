@@ -115,12 +115,21 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(stemBg).toBe('rgb(241, 245, 249)');
 
-    // Verify Answer has green/teal shade (#f0fdfa / rgb(240, 253, 250))
-    const answerBg = await page.evaluate(() => {
+    // Verify Answer has green/teal shade with 2px dashed border
+    const answerStyle = await page.evaluate(() => {
       const ans = document.querySelector('.q-answer-green-shade');
-      return ans ? window.getComputedStyle(ans).backgroundColor : null;
+      if (!ans) return null;
+      const cs = window.getComputedStyle(ans);
+      return { bg: cs.backgroundColor, borderStyle: cs.borderTopStyle, borderWidth: cs.borderTopWidth };
     });
-    expect(answerBg).toBe('rgb(240, 253, 250)');
+    expect(answerStyle.bg).toBe('rgb(240, 253, 250)');
+    expect(answerStyle.borderStyle).toBe('dashed');
+    expect(parseFloat(answerStyle.borderWidth)).toBeGreaterThanOrEqual(1.8);
+    expect(parseFloat(answerStyle.borderWidth)).toBeLessThanOrEqual(2.2);
+
+    // Verify repeated title "CBSE Model Answer & Marking Scheme" is removed to save space
+    const repeatedSummary = page.locator('.q-accordion-summary');
+    await expect(repeatedSummary).toHaveCount(0);
 
     // Verify Model Answer prose is SHADELESS (transparent / rgba(0, 0, 0, 0))
     const modelAnswerBg = await page.evaluate(() => {
@@ -146,11 +155,12 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     const qCount = await questionCards.count();
     expect(qCount).toBeGreaterThanOrEqual(500);
 
-    // Verify caution and topper boxes
-    const cautionBoxes = page.locator('.zen-caution-box');
-    const topperBoxes = page.locator('.zen-topper-box');
-    expect(await cautionBoxes.count()).toBeGreaterThan(0);
-    expect(await topperBoxes.count()).toBeGreaterThan(0);
+    // Verify hints, tips, and step marking are grouped into bullet points with bold header
+    const insightsList = page.locator('.q-insights-list');
+    await expect(insightsList.first()).toBeVisible();
+    const insightItems = insightsList.first().locator('li');
+    expect(await insightItems.count()).toBeGreaterThan(0);
+    await expect(insightItems.first().locator('strong')).toBeVisible();
 
     // Test 1M (MCQ / A-R) Marks Filter
     const mcqPill = page.locator('.zen-mark-btn[data-marks-filter="1"]').first();

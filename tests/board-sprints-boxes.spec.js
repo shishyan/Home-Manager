@@ -10,9 +10,9 @@ test('Weekly Page - Full Model Answer & Bestseller Boxes', async ({ page }) => {
   });
   await page.waitForTimeout(400);
 
-  // Scroll to step-marking and caution box of first card
-  const cautionBox = page.locator('.zen-caution-box').first();
-  await cautionBox.scrollIntoViewIfNeeded();
+  // Scroll to insights list of first card
+  const insightsList = page.locator('.q-insights-list').first();
+  await insightsList.scrollIntoViewIfNeeded();
 
   await page.screenshot({ path: 'week-1-model-answer-boxes.png' });
 });
