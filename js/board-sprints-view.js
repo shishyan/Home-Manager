@@ -2659,6 +2659,46 @@
     return renderWeeklySprint(routeInfo);
   }
 
+  // Extract or formulate concise core answer for both MCQs and Subjective questions
+  function getCoreAnswer(q) {
+    if (q.options && q.correctOption) {
+      const match = (q.correctOption || '').match(/[a-d]/i);
+      const letter = match ? match[0].toLowerCase() : '';
+      const opt = (q.options || []).find(o => {
+        const m = o.match(/^\(([a-d])\)/i);
+        return m && m[1].toLowerCase() === letter;
+      }) || q.options[letter ? letter.charCodeAt(0) - 97 : 0] || q.correctOption;
+      const cleanOpt = opt ? opt.replace(/^\([a-d]\)\s*/i, '').trim() : '';
+      return `<strong>Option (${(letter || 'a').toUpperCase()}):</strong> ${cleanOpt}`;
+    }
+    if (q.answer) return q.answer;
+    if (q.finalAnswer) return q.finalAnswer;
+
+    const ma = q.modelAnswer || '';
+    const finalFormMatch = ma.match(/(?:In vector form|Hence|Therefore|Thus|Shortest distance|Capacitance|Electric field|Magnetic field|Result|Final Answer|Key Result)[:\s]*<strong>[\s\S]*?<\/strong>(?:\s*\([^)]+\))?/i);
+    if (finalFormMatch) {
+      return finalFormMatch[0];
+    }
+    const emeraldMatch = ma.match(/class="[^"]*bg-emerald-50[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+    if (emeraldMatch) {
+      return emeraldMatch[1];
+    }
+    const strongMatch = ma.match(/<strong>(?:Final Answer|Key Result|Answer|Result|Value|Conclusion)[:\s]*<\/strong>([\s\S]*?)(?:<\/p>|<br>|\n)/i);
+    if (strongMatch) {
+      return strongMatch[0];
+    }
+    const pMatches = Array.from(ma.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi));
+    if (pMatches.length > 0) {
+      const lastP = pMatches[pMatches.length - 1][1];
+      if (lastP.includes('<strong>') || lastP.includes('<code>') || lastP.length < 220) {
+        return lastP;
+      }
+    }
+    const text = ma.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const firstSentence = text.split(/(?<=[.?!])\s+/)[0] || text.slice(0, 140);
+    return firstSentence.length > 200 ? firstSentence.slice(0, 195) + '...' : firstSentence;
+  }
+
   // Render Individual Question Card
   function renderQuestionCard(q, idx, isMastered) {
     const hasValidDiagram = q.diagram && q.diagram.trim().length > 30 && !q.diagram.includes('<svg></svg>');
@@ -2668,6 +2708,7 @@
     const isAnsCorrect = userAns ? userAns.isCorrect : false;
     const selectedLetter = userAns ? ((userAns.selected || '').match(/[a-d]/i) || [''])[0].toLowerCase() : null;
     const correctLetter = (q.correctOption || '').match(/[a-d]/i) ? (q.correctOption.match(/[a-d]/i)[0].toLowerCase()) : null;
+    const coreAnswer = getCoreAnswer(q);
 
     return `
       <article class="board-question-card zen-card ${isMastered ? 'is-mastered' : ''}" id="card-${escapeHtml(q.id)}">
@@ -2756,39 +2797,33 @@
             </div>
           ` : ''}
 
-          <!-- UNIFIED STUDY STRIP: Exam Paper & Masterclass -->
-          ${(q.crossRef || q.youtube || q.year) ? `
-            <div class="zen-study-strip">
-              <div class="study-strip-item strip-paper">
-                <i data-lucide="file-check-2"></i>
-                <span class="strip-label">Appeared in:</span>
-                <span class="strip-value">${escapeHtml(q.year || (q.crossRef && q.crossRef.papers ? q.crossRef.papers[0] : 'CBSE Board Exam'))}</span>
-              </div>
-              ${q.youtube ? `
-                <a href="${escapeHtml(q.youtube.url)}" target="_blank" rel="noopener noreferrer" class="study-strip-item strip-video" title="${escapeHtml(q.youtube.title)}">
-                  <i data-lucide="play-circle"></i>
-                  <span class="strip-label">Masterclass:</span>
-                  <span class="strip-channel">${escapeHtml(q.youtube.channel.split('·')[0].trim())} (Tamil)</span>
-                  <i data-lucide="external-link" class="strip-ext"></i>
-                </a>
-              ` : ''}
+          <!-- PROMINENT GREEN / TEAL SHADED ANSWER BOX -->
+          <div class="q-answer-green-shade">
+            <div class="ans-badge">
+              <i data-lucide="check-circle-2"></i>
+              <span>Answer:</span>
             </div>
-          ` : ''}
+            <div class="ans-text">
+              ${coreAnswer}
+            </div>
+          </div>
 
-          <!-- Model Answer & Marking Scheme -->
+          <!-- BELOW ANSWER: Model Answer, Marking Scheme, Links, Appeared on (ALL SHADELESS) -->
           <details class="q-card-accordion zen-accordion" ${userAns || !hasOptions ? 'open' : ''}>
             <summary class="q-accordion-summary">
               <div class="summary-left">
-                <i data-lucide="check-check"></i>
-                <strong>Model Answer & Marking Scheme</strong>
+                <i data-lucide="book-open"></i>
+                <strong>CBSE Model Answer & Marking Scheme</strong>
               </div>
             </summary>
 
             <div class="q-accordion-content">
+              <!-- Model Answer (SHADELESS) -->
               <div class="model-answer-prose">
                 ${q.modelAnswer}
               </div>
 
+              <!-- Step Marking (SHADELESS) -->
               ${q.stepMarking ? `
                 <div class="zen-marking-note">
                   <span class="note-label"><i data-lucide="award"></i> Step Marking:</span>
@@ -2796,6 +2831,7 @@
                 </div>
               ` : ''}
 
+              <!-- Caution Trap (SHADELESS) -->
               ${q.cautionTrap ? `
                 <div class="zen-caution-box">
                   <div class="caution-badge"><i data-lucide="alert-triangle"></i> <strong>CBSE Examiner Caution (80% Trap)</strong></div>
@@ -2803,6 +2839,7 @@
                 </div>
               ` : ''}
 
+              <!-- Topper's Secret (SHADELESS) -->
               ${q.topperTip ? `
                 <div class="zen-topper-box">
                   <div class="topper-badge"><i data-lucide="sparkles"></i> <strong>Topper's Scoring Secret</strong></div>
@@ -2810,6 +2847,7 @@
                 </div>
               ` : ''}
 
+              <!-- Rapid Mnemonic (SHADELESS) -->
               ${q.mnemonic ? `
                 <div class="zen-mnemonic-box">
                   <div class="mnemonic-badge"><i data-lucide="brain"></i> <strong>Memory Hook / Mnemonic</strong></div>
@@ -2817,10 +2855,31 @@
                 </div>
               ` : ''}
 
+              <!-- Examiner Tip (SHADELESS) -->
               ${q.explanation ? `
                 <div class="zen-examiner-note">
                   <span class="note-label"><i data-lucide="lightbulb"></i> Examiner Tip:</span>
                   <span class="note-text">${escapeHtml(q.explanation)}</span>
+                </div>
+              ` : ''}
+
+              <!-- Appeared on & Links (SHADELESS footer below answer) -->
+              ${(q.crossRef || q.youtube || q.year) ? `
+                <div class="shadeless-footer-meta">
+                  <div class="meta-chip-item strip-paper">
+                    <i data-lucide="file-check-2"></i>
+                    <span class="strip-label">Appeared on:</span>
+                    <span class="strip-value"><strong>${escapeHtml(q.year || (q.crossRef && q.crossRef.papers ? q.crossRef.papers[0] : 'CBSE Board Exam'))}</strong></span>
+                  </div>
+                  ${q.youtube ? `
+                    <span class="meta-chip-dot">·</span>
+                    <a href="${escapeHtml(q.youtube.url)}" target="_blank" rel="noopener noreferrer" class="meta-chip-link" title="${escapeHtml(q.youtube.title)}">
+                      <i data-lucide="play-circle"></i>
+                      <span class="strip-label">Masterclass:</span>
+                      <span class="strip-channel"><strong>${escapeHtml(q.youtube.channel.split('·')[0].trim())} (Tamil)</strong></span>
+                      <i data-lucide="external-link" class="strip-ext"></i>
+                    </a>
+                  ` : ''}
                 </div>
               ` : ''}
             </div>

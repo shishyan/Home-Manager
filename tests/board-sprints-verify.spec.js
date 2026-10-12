@@ -115,19 +115,31 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(stemBg).toBe('rgb(241, 245, 249)');
 
-    // Verify Model Answer prose has darker reading shade (#edf3f8 / rgb(237, 243, 248))
+    // Verify Answer has green/teal shade (#f0fdfa / rgb(240, 253, 250))
     const answerBg = await page.evaluate(() => {
+      const ans = document.querySelector('.q-answer-green-shade');
+      return ans ? window.getComputedStyle(ans).backgroundColor : null;
+    });
+    expect(answerBg).toBe('rgb(240, 253, 250)');
+
+    // Verify Model Answer prose is SHADELESS (transparent / rgba(0, 0, 0, 0))
+    const modelAnswerBg = await page.evaluate(() => {
       const prose = document.querySelector('.model-answer-prose');
       return prose ? window.getComputedStyle(prose).backgroundColor : null;
     });
-    expect(answerBg).toBe('rgb(237, 243, 248)');
+    expect(modelAnswerBg).toBe('rgba(0, 0, 0, 0)');
 
-    // Verify Tips and step marking are NOT part of the answer shade (.q-accordion-content is clean white)
+    // Verify Tips, step marking, links, and appeared on are placed below answer and shadeless
     const contentBg = await page.evaluate(() => {
       const cont = document.querySelector('.q-accordion-content');
       return cont ? window.getComputedStyle(cont).backgroundColor : null;
     });
     expect(contentBg).toBe('rgb(255, 255, 255)');
+
+    // Verify Appeared on and Links are rendered in shadeless footer meta below answer
+    const footerMeta = page.locator('.shadeless-footer-meta');
+    await expect(footerMeta.first()).toBeVisible();
+    await expect(footerMeta.first()).toContainText('Appeared on:');
 
     // Verify Question Cards count is >= 500 (501 total)
     const questionCards = page.locator('.board-question-card');
