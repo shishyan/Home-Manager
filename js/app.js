@@ -103,10 +103,10 @@
   function go(next) { location.hash = '#/' + next; }
 
   function renderHomeIdentity() {
-    let name = String(D.state.settings.householdName || 'Divine Nest').trim() || 'Divine Nest';
-    if (/lotus/i.test(name)) {
-      name = 'Divine Nest';
-      D.state.settings.householdName = 'Divine Nest';
+    let name = String(D.state.settings.householdName || 'Our Divine Nest').trim() || 'Our Divine Nest';
+    if (/lotus/i.test(name) || name === 'Divine Nest') {
+      name = 'Our Divine Nest';
+      D.state.settings.householdName = 'Our Divine Nest';
       D.save();
     }
     const address = String(D.state.settings.primaryAddress || '32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042').trim();

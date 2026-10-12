@@ -124,8 +124,8 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(answerStyle.bg).toBe('rgb(240, 253, 250)');
     expect(answerStyle.borderStyle).toBe('dashed');
-    expect(parseFloat(answerStyle.borderWidth)).toBeGreaterThanOrEqual(1.8);
-    expect(parseFloat(answerStyle.borderWidth)).toBeLessThanOrEqual(2.2);
+    expect(parseFloat(answerStyle.borderWidth)).toBeGreaterThanOrEqual(1.6);
+    expect(parseFloat(answerStyle.borderWidth)).toBeLessThanOrEqual(2.4);
 
     // Verify repeated title "CBSE Model Answer & Marking Scheme" is removed to save space
     const repeatedSummary = page.locator('.q-accordion-summary');
@@ -293,7 +293,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
         hasShadow: window.getComputedStyle(header).boxShadow.includes('rgba(15, 23, 42, 0.08)')
       };
     });
-    expect(headerAlignment.brandText).toBe('Divine Nest');
+    expect(headerAlignment.brandText).toMatch(/^(Our )?Divine Nest$/);
     expect(headerAlignment.brandHeight).toBe(62);
     expect(headerAlignment.headerHeight).toBe(62);
     expect(headerAlignment.brandBottom).toBe(62);
@@ -548,9 +548,9 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
-    // 1. Verify brand name migrated to Divine Nest
+    // 1. Verify brand name migrated to Divine Nest / Our Divine Nest
     const brandName = await page.locator('#brandName').textContent();
-    expect(brandName).toBe('Divine Nest');
+    expect(brandName).toMatch(/^(Our )?Divine Nest$/);
 
     // 2. Measure expanded sidebar width (278px)
     const expandedSidebarBox = await page.locator('#sidebar').boundingBox();

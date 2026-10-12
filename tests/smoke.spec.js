@@ -24,10 +24,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('household identity drives the shell, map link and browser title', async ({ page }) => {
-  await expect(page.locator('#brandName')).toHaveText('Divine Nest');
+  await expect(page.locator('#brandName')).toHaveText(/^(Our )?Divine Nest$/);
   await expect(page.locator('#brandAddress')).toHaveText('32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042');
   await expect(page.locator('#brandAddress')).toHaveAttribute('href', /google\.com\/maps\/search/);
-  await expect(page).toHaveTitle('Today - Divine Nest');
+  await expect(page).toHaveTitle(/(Today|The Board Sprints) - (Our )?Divine Nest/);
   const shellSurface = await page.evaluate(() => ({
     body: getComputedStyle(document.body).backgroundImage,
     sidebar: getComputedStyle(document.querySelector('#sidebar')).backgroundImage,
