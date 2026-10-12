@@ -103,7 +103,12 @@
   function go(next) { location.hash = '#/' + next; }
 
   function renderHomeIdentity() {
-    const name = String(D.state.settings.householdName || 'Divine Nest').trim() || 'Divine Nest';
+    let name = String(D.state.settings.householdName || 'Divine Nest').trim() || 'Divine Nest';
+    if (/lotus/i.test(name)) {
+      name = 'Divine Nest';
+      D.state.settings.householdName = 'Divine Nest';
+      D.save();
+    }
     const address = String(D.state.settings.primaryAddress || '32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042').trim();
     const brandName = $('#brandName');
     const brandAddress = $('#brandAddress');
@@ -544,9 +549,9 @@
           const direct = !nested.length;
           const tone = `tab-tone-${index + 1}`;
           const subnav = nested.length && childActive
-            ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => `<button type="button" data-route="${subitem[2]}" class="section-subitem ${route === subitem[2] ? 'active' : ''}" ${route === subitem[2] ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`).join('')}</div>`
+            ? `<div class="section-subnav" role="group" aria-label="${D.esc(child[0])} pages">${nested.map(subitem => `<button type="button" data-route="${subitem[2]}" title="${D.esc(subitem[0])}" aria-label="${D.esc(subitem[0])}" class="section-subitem ${route === subitem[2] ? 'active' : ''}" ${route === subitem[2] ? 'aria-current="page"' : ''}><i data-lucide="${subitem[1]}"></i><span>${D.esc(subitem[0])}</span></button>`).join('')}</div>`
             : '';
-          return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
+          return `<div class="nav-sub-item"><button type="button" data-route="${child[2]}" aria-label="Open ${D.esc(child[0])}" title="${D.esc(child[0])}" class="nav-parent ${tone} ${childActive ? 'active' : ''}" ${childActive && direct ? 'aria-current="page"' : ''}><span class="nav-icon"><i data-lucide="${child[1]}"></i></span><span>${D.esc(child[0])}</span></button>${subnav}</div>`;
         }).join('');
       }
     }
@@ -2242,7 +2247,17 @@
     document.body.classList.remove('dark');
     document.body.dataset.nature = background;
     document.body.dataset.shell = shellStyle;
-    document.body.classList.toggle('collapsed', Boolean(D.state.settings.sidebarCollapsed));
+    const isCollapsed = Boolean(D.state.settings.sidebarCollapsed);
+    document.body.classList.toggle('collapsed', isCollapsed);
+    const collapseBtn = $('#collapse');
+    if (collapseBtn) {
+      collapseBtn.innerHTML = `<i data-lucide="${isCollapsed ? 'panel-left-open' : 'panel-left-close'}"></i>`;
+      collapseBtn.title = isCollapsed ? 'Expand navigation' : 'Collapse navigation';
+      collapseBtn.setAttribute('aria-label', isCollapsed ? 'Expand navigation' : 'Collapse navigation');
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
     $('#theme').title = `Next mountain background (current: ${V.natureBackgrounds.find(item => item[0] === background)[1]})`;
     document.querySelector('meta[name="theme-color"]').content = getComputedStyle(document.body).getPropertyValue('--app-bg').trim() || '#edf7f3';
   }

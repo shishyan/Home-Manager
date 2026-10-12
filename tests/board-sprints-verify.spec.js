@@ -527,5 +527,67 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.waitForTimeout(500);
     await expect(topBar).toBeHidden();
   });
+
+  test('Sidebar collapse toggles to 68px showing icons only with clean padding and brand displays Divine Nest', async ({ page }) => {
+    // Set legacy Lotus Naga Home in localStorage before loading to verify migration
+    await page.addInitScript(() => {
+      try {
+        const existing = localStorage.getItem('hm_settings');
+        let data = existing ? JSON.parse(existing) : {};
+        data.householdName = 'Lotus Naga Home';
+        localStorage.setItem('hm_settings', JSON.stringify(data));
+      } catch(e){}
+    });
+
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // 1. Verify brand name migrated to Divine Nest
+    const brandName = await page.locator('#brandName').textContent();
+    expect(brandName).toBe('Divine Nest');
+
+    // 2. Measure expanded sidebar width (278px)
+    const expandedSidebarBox = await page.locator('#sidebar').boundingBox();
+    expect(Math.round(expandedSidebarBox.width)).toBe(278);
+
+    // 3. Click collapse button
+    const collapseBtn = page.locator('#collapse');
+    await collapseBtn.click();
+    await page.waitForTimeout(400);
+
+    // 4. Verify collapsed state
+    const isCollapsed = await page.evaluate(() => document.body.classList.contains('collapsed'));
+    expect(isCollapsed).toBe(true);
+
+    const collapsedSidebarBox = await page.locator('#sidebar').boundingBox();
+    expect(Math.round(collapsedSidebarBox.width)).toBe(68);
+
+    const appHeaderBox = await page.locator('.app-header').boundingBox();
+    expect(Math.round(appHeaderBox.x)).toBe(68);
+
+    // Verify text labels are hidden and icons are visible
+    const brandCopyVisible = await page.locator('.brand div').isVisible();
+    expect(brandCopyVisible).toBe(false);
+
+    const workspaceLabelVisible = await page.locator('.workspace-menu-label').isVisible();
+    expect(workspaceLabelVisible).toBe(false);
+
+    const navTextVisible = await page.evaluate(() => {
+      const span = document.querySelector('#sidebar #nav .nav-parent span:not(.nav-icon)');
+      return span ? window.getComputedStyle(span).display !== 'none' : false;
+    });
+    expect(navTextVisible).toBe(false);
+
+    const iconVisible = await page.locator('#sidebar #nav .nav-icon').first().isVisible();
+    expect(iconVisible).toBe(true);
+
+    // 5. Click collapse button again to expand
+    await collapseBtn.click();
+    await page.waitForTimeout(400);
+
+    const reExpandedSidebarBox = await page.locator('#sidebar').boundingBox();
+    expect(Math.round(reExpandedSidebarBox.width)).toBe(278);
+  });
 });
+
 

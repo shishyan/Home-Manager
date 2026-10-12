@@ -8267,9 +8267,173 @@ body.zen-sprint-mode .app-header {
 }
 
 body.collapsed .app-header,
+body.zen-sprint-mode.collapsed .app-header,
+body.group-boardSprints.collapsed .app-header,
 .workspace-study.collapsed .app-header {
   left: 68px !important;
   right: 0 !important;
+}
+
+body.collapsed #sidebar,
+body.zen-sprint-mode.collapsed #sidebar,
+body.group-boardSprints.collapsed #sidebar {
+  width: 68px !important;
+  min-width: 68px !important;
+  max-width: 68px !important;
+  padding: 0 10px 14px !important;
+  transition: width 0.2s ease, padding 0.2s ease !important;
+}
+
+body.collapsed .app-shell,
+body.zen-sprint-mode.collapsed .app-shell,
+body.group-boardSprints.collapsed .app-shell {
+  margin-left: 68px !important;
+  transition: margin-left 0.2s ease !important;
+}
+
+/* Collapsed Sidebar - Icons Only with Clean Padding */
+body.collapsed #sidebar .brand {
+  height: 62px !important;
+  min-height: 62px !important;
+  max-height: 62px !important;
+  padding: 0 !important;
+  margin: 0 -10px 12px -10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-bottom: 1px solid rgba(20, 184, 166, 0.22) !important;
+}
+
+body.collapsed #sidebar .brand div,
+body.collapsed #sidebar .brand-copy,
+body.collapsed #sidebar #brandName,
+body.collapsed #sidebar #brandTagline,
+body.collapsed #sidebar .workspace-menu-label {
+  display: none !important;
+}
+
+body.collapsed #sidebar .brand-mark {
+  width: 38px !important;
+  height: 38px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+body.collapsed #sidebar #nav {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+body.collapsed #sidebar #nav .nav-sub-item {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+body.collapsed #sidebar #nav .nav-parent {
+  width: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  margin: 2px auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+}
+
+body.collapsed #sidebar #nav .nav-parent span:not(.nav-icon) {
+  display: none !important;
+}
+
+body.collapsed #sidebar #nav .nav-parent .nav-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+body.collapsed #sidebar #nav .nav-parent .nav-icon svg,
+body.collapsed #sidebar #nav .nav-parent .nav-icon i {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+}
+
+body.collapsed #sidebar #nav .section-subnav {
+  margin: 2px 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-left: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 3px !important;
+  width: 100% !important;
+}
+
+body.collapsed #sidebar #nav .section-subitem {
+  width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  margin: 1px auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 6px !important;
+  text-align: center !important;
+}
+
+body.collapsed #sidebar #nav .section-subitem span {
+  display: none !important;
+}
+
+body.collapsed #sidebar #nav .section-subitem::before {
+  display: none !important;
+}
+
+body.collapsed #sidebar #nav .section-subitem i,
+body.collapsed #sidebar #nav .section-subitem svg {
+  margin: 0 !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+body.collapsed #sidebar .sidebar-bottom {
+  margin-top: auto !important;
+  padding: 8px 0 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+body.collapsed #sidebar .sidebar-bottom .collapse-button,
+body.collapsed #sidebar #collapse {
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px !important;
+}
+
+body.collapsed #sidebar .sidebar-bottom .collapse-button svg,
+body.collapsed #sidebar #collapse svg {
+  width: 20px !important;
+  height: 20px !important;
 }
 
 @media (max-width: 900px) {
