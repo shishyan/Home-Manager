@@ -101,11 +101,21 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
-    // Verify Header
-    const title = page.locator('.zen-title');
-    await expect(title).toContainText('10-Year Master Question Bank');
+    // Verify 2-Row Header
+    const header = page.locator('.qb-2row-header');
+    await expect(header).toBeVisible();
 
-    // Verify Question Cards count is >= 500 (507 total)
+    const title = page.locator('.qb-compact-title');
+    await expect(title).toContainText('Question Bank');
+
+    // Verify Question Stem has distinct attention shade (#f1f5f9)
+    const stemBg = await page.evaluate(() => {
+      const stem = document.querySelector('.q-card-stem');
+      return stem ? window.getComputedStyle(stem).backgroundColor : null;
+    });
+    expect(stemBg).toBe('rgb(241, 245, 249)');
+
+    // Verify Question Cards count is >= 500 (501 total)
     const questionCards = page.locator('.board-question-card');
     const qCount = await questionCards.count();
     expect(qCount).toBeGreaterThanOrEqual(500);
@@ -142,14 +152,14 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     const savedAnswers = await page.evaluate(() => localStorage.getItem('hm_board_sprints_mcq_answers'));
     expect(savedAnswers).not.toBeNull();
 
-    // Test Subject Filter Pill (e.g. Computer Science)
-    const csPill = page.locator('.zen-books-navbar button:has-text("Computer Science")');
-    if (await csPill.count() > 0) {
-      await csPill.click();
+    // Test Subject Filter Pill (e.g. Physics)
+    const physPill = page.locator('.zen-books-navbar button:has-text("Physics")');
+    if (await physPill.count() > 0) {
+      await physPill.click();
       await page.waitForTimeout(500);
-      const csQuestions = page.locator('.board-question-card');
-      const csCount = await csQuestions.count();
-      expect(csCount).toBeGreaterThan(0);
+      const physQuestions = page.locator('.board-question-card');
+      const physCount = await physQuestions.count();
+      expect(physCount).toBeGreaterThan(0);
     }
 
     // Take screenshot of Master Question Bank

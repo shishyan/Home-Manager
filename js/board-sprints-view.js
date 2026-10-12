@@ -2410,26 +2410,40 @@
 
     return `
       <div class="board-sprints-container qb-page-container zen-focus-container" id="boardSprintsContainer">
-        <!-- HEADER -->
-        <header class="zen-sprint-header">
-          <div class="zen-header-main">
-            <div class="zen-header-titles">
-              <div class="master-badge-row" style="margin-bottom: 0.35rem;">
-                <span class="hero-badge"><i data-lucide="shield-check"></i> 10-Year CBSE Question Bank</span>
-                <span class="hero-subbadge"><i data-lucide="check-check"></i> ${allQuestions.length} Authentic Board Questions</span>
-                <span class="hero-tag">Step Marking & Caution Traps</span>
-              </div>
-              <h1 class="zen-title">10-Year Master Question Bank</h1>
-              <p class="zen-subtitle">Complete question browser across Physics (042), Chemistry (043), Mathematics (041), Computer Science (083), and English Core (301) with official CBSE marking rubrics.</p>
+        <!-- CLEAN 2-ROW HEADER (CALM, ZERO CLUTTER) -->
+        <header class="zen-sprint-header qb-2row-header">
+          <!-- ROW 1: Brand/Title + Subject Pills + Quick Actions -->
+          <div class="qb-header-row-1">
+            <div class="qb-header-brand">
+              <h1 class="zen-title qb-compact-title">Question Bank</h1>
+              <span class="qb-total-pill">${filteredQuestions.length} Qs</span>
             </div>
-            <div class="zen-header-actions">
+
+            <nav class="zen-books-navbar qb-subject-nav" aria-label="Filter question bank by subject">
+              <button type="button" class="zen-book-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
+                <i data-lucide="layers"></i>
+                <span>All (${allQuestions.length})</span>
+              </button>
+              ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
+                const sCount = allQuestions.filter(q => q.subject === sName).length;
+                const shortLabel = sName === 'Mathematics' ? 'Maths' : (sName === 'Computer Science' ? 'CS' : (sName === 'English Core' ? 'English' : sName));
+                return `
+                  <button type="button" class="zen-book-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
+                    <i data-lucide="${sConf.icon}"></i>
+                    <span>${escapeHtml(shortLabel)} (${sCount})</span>
+                  </button>
+                `;
+              }).join('')}
+            </nav>
+
+            <div class="zen-header-actions qb-quick-actions">
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="View 75-Day Master Plan">
                 <i data-lucide="compass"></i>
-                <span>Master Plan</span>
+                <span>Plan</span>
               </button>
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints/rag'" title="Open R-A-G Audit Tracker">
                 <i data-lucide="check-check"></i>
-                <span>R-A-G Audit</span>
+                <span>R-A-G</span>
               </button>
               <button type="button" class="btn-zen-action" onclick="window.print()" title="Print Questions">
                 <i data-lucide="printer"></i>
@@ -2438,72 +2452,45 @@
             </div>
           </div>
 
-          <!-- UNIFIED CONTROLS: SUBJECTS + MARKS + CHAPTER + SEARCH IN ONE COHESIVE STRIP -->
-          <div class="zen-controls-strip">
-            <nav class="zen-books-navbar" aria-label="Filter question bank by subject">
-              <button type="button" class="zen-book-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
-                <i data-lucide="layers"></i>
-                <span>All Subjects (${allQuestions.length})</span>
-              </button>
-              ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
-                const sCount = allQuestions.filter(q => q.subject === sName).length;
-                return `
-                  <button type="button" class="zen-book-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
-                    <i data-lucide="${sConf.icon}"></i>
-                    <span>${escapeHtml(sName)} (${sCount})</span>
-                  </button>
-                `;
-              }).join('')}
-            </nav>
+          <!-- ROW 2: Marks Filter + Chapter Selector + Search + Compact Mastery Tracker -->
+          <div class="qb-header-row-2">
+            <div class="zen-marks-pills qb-marks-pills" role="group" aria-label="Filter by marks">
+              <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
+              <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+              <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+              <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+              <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
+              <button type="button" class="zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M</button>
+            </div>
 
-            <div class="zen-filters-inline">
-              <div class="zen-marks-pills" role="group" aria-label="Filter by marks">
-                <button type="button" class="zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All Marks</button>
-                <button type="button" class="zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M (MCQ / A-R)</button>
-                <button type="button" class="zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
-                <button type="button" class="zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
-                <button type="button" class="zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M Case</button>
-                <button type="button" class="zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M Long</button>
-              </div>
+            <div class="qb-chapter-select-wrap">
+              <select id="qbChapterSelect" class="qb-chapter-dropdown" onchange="HM.setQbChapter(this.value)">
+                <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters (${availableChapters.length})</option>
+                ${availableChapters.map(ch => `
+                  <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
+                `).join('')}
+              </select>
+            </div>
 
-              <div class="qb-chapter-select-wrap">
-                <select id="qbChapterSelect" class="qb-chapter-dropdown" onchange="HM.setQbChapter(this.value)">
-                  <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters (${availableChapters.length})</option>
-                  ${availableChapters.map(ch => `
-                    <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
-                  `).join('')}
-                </select>
-              </div>
+            <div class="zen-search-wrap qb-search-wrap">
+              <i data-lucide="search" class="zen-search-icon"></i>
+              <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search questions..." value="${escapeHtml(state.search)}">
+              ${state.search ? `
+                <button type="button" class="search-clear-btn" id="sprintSearchClear" title="Clear search">
+                  <i data-lucide="x"></i>
+                </button>
+              ` : ''}
+            </div>
 
-              <div class="zen-search-wrap">
-                <i data-lucide="search" class="zen-search-icon"></i>
-                <input type="text" id="sprintSearchInput" class="zen-search-input" placeholder="Search questions, formulas, keywords..." value="${escapeHtml(state.search)}">
-                ${state.search ? `
-                  <button type="button" class="search-clear-btn" id="sprintSearchClear" title="Clear search">
-                    <i data-lucide="x"></i>
-                  </button>
-                ` : ''}
-              </div>
+            <div class="qb-mastery-compact" title="${masteredCount} of ${filteredQuestions.length} questions mastered">
+              <i data-lucide="check-circle-2" class="qb-mastery-icon"></i>
+              <span>${masteredCount}/${filteredQuestions.length} (${progressPercent}%)</span>
             </div>
           </div>
         </header>
 
-        <!-- SUMMARY STRIP -->
-        <div class="qb-summary-strip" style="margin-top: 0.75rem;">
-          <div class="qb-count-info">
-            <strong>Showing ${filteredQuestions.length}</strong> of ${allQuestions.length} questions
-            ${currentSubject !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentSubject)}</span>` : ''}
-            ${currentChapter !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentChapter)}</span>` : ''}
-            ${currentMarks !== 'all' ? `<span class="qb-active-tag">${escapeHtml(currentMarks)} Marks</span>` : ''}
-          </div>
-          <div class="qb-mastery-meter">
-            <span>${masteredCount}/${filteredQuestions.length} Mastered (${progressPercent}%)</span>
-            <div class="qb-meter-bar"><div class="qb-meter-fill" style="width: ${progressPercent}%;"></div></div>
-          </div>
-        </div>
-
         <!-- QUESTIONS LIST -->
-        <main class="zen-questions-deck" id="zenQuestionsDeck" style="margin-top: 1rem;">
+        <main class="zen-questions-deck" id="zenQuestionsDeck">
           ${filteredQuestions.length === 0 ? `
             <div class="sprint-empty-state zen-empty">
               <i data-lucide="filter-x"></i>

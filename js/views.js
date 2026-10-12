@@ -67,7 +67,7 @@
       items: [
         ['75-Day Sprint Master Plan', 'compass', 'study/board-sprints'],
         ['R-A-G Chapter Audit Tracker', 'check-check', 'study/board-sprints/rag'],
-        ['10-Year Question Bank (314+ Qs)', 'list-ordered', 'study/board-sprints/questions'],
+        ['10-Year Question Bank (500+ Qs)', 'list-ordered', 'study/board-sprints/questions'],
         ['Week 1 · High-Yield Foundation', 'calendar', 'study/board-sprints/week-1'],
         ['Week 2 · Laws & Numericals', 'calendar', 'study/board-sprints/week-2'],
         ['Week 3 · Pre-Board II Climax', 'target', 'study/board-sprints/week-3'],
