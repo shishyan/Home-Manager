@@ -483,8 +483,8 @@
       // ZEN FOCUS MODE: except for Home menu, everything else hides when board sprint mode is on
       availableGroups = availableGroups.filter(([key]) => key === 'household' || key === 'boardSprints');
     } else {
-      // Main app: remove board sprints and exam sprints menu from topbar and mobile nav
-      availableGroups = availableGroups.filter(([key]) => key !== 'boardSprints' && key !== 'examSprint');
+      // Main app: keep board sprints in the menu, but remove obsolete old exam sprints
+      availableGroups = availableGroups.filter(([key]) => key !== 'examSprint');
     }
 
     // Update hidden select (accessibility / legacy)
@@ -506,7 +506,7 @@
     // SIDEBAR: render sub-items of the active group only (no group list)
     const legacyOrder = isZenSprintMode
       ? ['household', 'boardSprints']
-      : ['household', 'learning', 'money', 'leisure', 'community'];
+      : ['household', 'learning', 'money', 'leisure', 'community', 'boardSprints'];
     const selectOptions = legacyOrder.map(key => {
       const item = V.groups[key];
       if (!item) return '';

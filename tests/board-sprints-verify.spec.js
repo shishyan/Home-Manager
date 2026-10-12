@@ -177,20 +177,35 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await page.screenshot({ path: 'week-1-all-subjects.png' });
   });
 
-  test('Main app uses #fafafa content background and does not show Exam Sprints menu', async ({ page }) => {
+  test('Main app uses #fafafa background across body and content, shows The Board Sprints menu, and hides obsolete Exam Sprints', async ({ page }) => {
     await page.goto('http://localhost:8765/#/global/overview', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
-    // Verify #content background color is #fafafa (rgb(250, 250, 250))
+    // Verify body, app-shell, and #content background color are #fafafa (rgb(250, 250, 250))
+    const bodyBg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    expect(bodyBg).toBe('rgb(250, 250, 250)');
+
     const contentBg = await page.evaluate(() => getComputedStyle(document.getElementById('content')).backgroundColor);
     expect(contentBg).toBe('rgb(250, 250, 250)');
 
-    // Verify main app topbar tabs do not have boardSprints or examSprint
-    const sprintTab = page.locator('#personaTabs .group-tab[data-group="boardSprints"], #personaTabs .group-tab[data-group="examSprint"]');
-    await expect(sprintTab).toHaveCount(0);
+    // Verify main app topbar tabs have boardSprints ("The Board Sprints")
+    const boardSprintTab = page.locator('#personaTabs .group-tab[data-group="boardSprints"]');
+    await expect(boardSprintTab).toBeVisible();
+    await expect(boardSprintTab).toContainText('The Board Sprints');
 
-    // Verify mobile bottom nav does not have boardSprints or examSprint
-    const sprintBottom = page.locator('#bottomNav button[data-group="boardSprints"], #bottomNav button[data-group="examSprint"]');
-    await expect(sprintBottom).toHaveCount(0);
+    // Verify obsolete examSprint is NOT present anywhere
+    const examSprintTab = page.locator('#personaTabs .group-tab[data-group="examSprint"]');
+    await expect(examSprintTab).toHaveCount(0);
+
+    // Verify clicking The Board Sprints tab navigates to study/board-sprints
+    await boardSprintTab.click();
+    await page.waitForTimeout(500);
+    expect(page.url()).toContain('#/study/board-sprints');
+
+    // Verify returning to Home works smoothly
+    const homeTab = page.locator('#personaTabs .group-tab[data-group="household"]');
+    await homeTab.click();
+    await page.waitForTimeout(500);
+    expect(page.url()).toContain('#/global/overview');
   });
 });

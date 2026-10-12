@@ -74,21 +74,24 @@
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05), 0 1px 4px rgba(15, 23, 42, .04);
   --shadow: 0 18px 48px rgba(15, 23, 42, .10);
   --radius: 13px;
-  --shell-navigation-bg: linear-gradient(135deg, #0d9488 0%, #2563eb 50%, #10b981 100%);
-  --shell-navigation-base: #1e3a8a;
+  --shell-navigation-bg: none;
+  --shell-navigation-base: #fafafa;
 }
 
 * { box-sizing: border-box; }
-html { min-width: 320px; overflow-x: hidden; }
+html { min-width: 320px; overflow-x: hidden; background-color: #fafafa; }
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--app-bg);
-  background-image: var(--nature-image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(circle 800px at 10% 10%, rgba(13, 148, 136, 0.03), transparent),
+    radial-gradient(circle 800px at 90% 20%, rgba(124, 58, 237, 0.03), transparent),
+    radial-gradient(circle 600px at 50% 80%, rgba(13, 148, 136, 0.02), transparent),
+    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
   background-attachment: fixed;
   color: var(--ink);
   font: 14px/1.5 Manrope, "Segoe UI", system-ui, sans-serif;
@@ -100,6 +103,7 @@ body::before {
 }
 body::after {
   content: none !important;
+  display: none !important;
 }
 
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -1723,9 +1727,19 @@ body[data-nature] { --app-bg: #ccfbf1; --shell-bg: rgba(250, 252, 255, .94); --b
 
 
 .shell-style-teal .shell-style-swatch { background: linear-gradient(rgba(4,35,33,.12), rgba(4,31,29,.20)), url("assets/backgrounds/teal-circuit-shell.png") center / cover; }
-body { background-color: var(--shell-navigation-base); background-image: var(--shell-navigation-bg); background-position: center; background-size: cover; background-attachment: fixed; }
-body::after { inset: 56px var(--utility) 0 var(--sidebar); overflow: hidden; border-radius: 20px 20px 0 0; background: transparent; background-color: transparent; background-image: none; box-shadow: none; transition: inset .2s ease; }
-.app-shell, #content, main { background: transparent; background-color: transparent; }
+body, body.workspace-home, body.workspace-community, body.workspace-study, .app-shell, #content {
+  background-color: #fafafa !important;
+  background-image:
+    radial-gradient(circle 800px at 10% 10%, rgba(13, 148, 136, 0.03), transparent),
+    radial-gradient(circle 800px at 90% 20%, rgba(124, 58, 237, 0.03), transparent),
+    radial-gradient(circle 600px at 50% 80%, rgba(13, 148, 136, 0.02), transparent),
+    linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px !important;
+  background-attachment: fixed !important;
+}
+body::after { display: none !important; }
+.app-shell, #content, main { background-color: #fafafa; }
 .collapsed::after { left: 68px; }
 .learning-command-bar.subject-first { display: block; padding: 4px 6px; overflow: hidden; }
 .education-command-row { min-width: 0; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: thin; }
