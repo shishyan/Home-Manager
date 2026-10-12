@@ -224,7 +224,7 @@ function normalize(value){
     learningSubjectTabs:inputSettings.learningSubjectTabs&&typeof inputSettings.learningSubjectTabs==='object'?clone(inputSettings.learningSubjectTabs):{},
     activeLearningSubject:inputSettings.activeLearningSubject&&typeof inputSettings.activeLearningSubject==='object'?clone(inputSettings.activeLearningSubject):{},
     sidebarCollapsed:Boolean(inputSettings.sidebarCollapsed),
-    householdName:typeof inputSettings.householdName==='string'&&inputSettings.householdName.trim()?inputSettings.householdName.trim():'Lotus Naga Home',
+    householdName:typeof inputSettings.householdName==='string'&&inputSettings.householdName.trim()?inputSettings.householdName.trim():'Divine Nest',
     language:typeof inputSettings.language==='string'?inputSettings.language:'English',
     primaryAddress:typeof inputSettings.primaryAddress==='string'&&inputSettings.primaryAddress.trim()?inputSettings.primaryAddress.trim():'32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042',
     timezone:typeof inputSettings.timezone==='string'?inputSettings.timezone:'Asia/Kolkata',

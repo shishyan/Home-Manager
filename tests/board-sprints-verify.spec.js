@@ -115,18 +115,19 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(stemBg).toBe('rgb(241, 245, 249)');
 
-    // Verify Answer Section has darker shade for easy reading (#edf3f8 / rgb(237, 243, 248))
+    // Verify Model Answer prose has darker reading shade (#edf3f8 / rgb(237, 243, 248))
     const answerBg = await page.evaluate(() => {
-      const ansContent = document.querySelector('.q-accordion-content');
-      return ansContent ? window.getComputedStyle(ansContent).backgroundColor : null;
+      const prose = document.querySelector('.model-answer-prose');
+      return prose ? window.getComputedStyle(prose).backgroundColor : null;
     });
     expect(answerBg).toBe('rgb(237, 243, 248)');
 
-    const summaryBg = await page.evaluate(() => {
-      const sum = document.querySelector('.q-accordion-summary');
-      return sum ? window.getComputedStyle(sum).backgroundColor : null;
+    // Verify Tips and step marking are NOT part of the answer shade (.q-accordion-content is clean white)
+    const contentBg = await page.evaluate(() => {
+      const cont = document.querySelector('.q-accordion-content');
+      return cont ? window.getComputedStyle(cont).backgroundColor : null;
     });
-    expect(summaryBg).toBe('rgb(216, 226, 238)');
+    expect(contentBg).toBe('rgb(255, 255, 255)');
 
     // Verify Question Cards count is >= 500 (501 total)
     const questionCards = page.locator('.board-question-card');
@@ -246,6 +247,31 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
       return window.getComputedStyle(sb).width;
     });
     expect(sprintSidebarWidth).toBe('278px');
+
+    // Verify Brand is "Divine Nest" and height matches topbar exactly at 62px (+10%)
+    const headerAlignment = await page.evaluate(() => {
+      const brand = document.querySelector('#sidebar .brand');
+      const header = document.querySelector('.app-header');
+      const bRect = brand.getBoundingClientRect();
+      const hRect = header.getBoundingClientRect();
+      return {
+        brandText: brand.querySelector('b') ? brand.querySelector('b').textContent : null,
+        brandHeight: Math.round(bRect.height),
+        headerHeight: Math.round(hRect.height),
+        brandBottom: Math.round(bRect.bottom),
+        headerBottom: Math.round(hRect.bottom),
+        headerRight: Math.round(hRect.right),
+        windowWidth: window.innerWidth,
+        hasShadow: window.getComputedStyle(header).boxShadow.includes('rgba(15, 23, 42, 0.08)')
+      };
+    });
+    expect(headerAlignment.brandText).toBe('Divine Nest');
+    expect(headerAlignment.brandHeight).toBe(62);
+    expect(headerAlignment.headerHeight).toBe(62);
+    expect(headerAlignment.brandBottom).toBe(62);
+    expect(headerAlignment.headerBottom).toBe(62);
+    expect(headerAlignment.headerRight).toBe(headerAlignment.windowWidth);
+    expect(headerAlignment.hasShadow).toBe(true);
 
     // 2. Navigate to Home
     const homeTab = page.locator('#personaTabs .group-tab[data-group="household"]');

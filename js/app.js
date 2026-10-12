@@ -103,7 +103,7 @@
   function go(next) { location.hash = '#/' + next; }
 
   function renderHomeIdentity() {
-    const name = String(D.state.settings.householdName || 'Lotus Naga Home').trim() || 'Lotus Naga Home';
+    const name = String(D.state.settings.householdName || 'Divine Nest').trim() || 'Divine Nest';
     const address = String(D.state.settings.primaryAddress || '32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042').trim();
     const brandName = $('#brandName');
     const brandAddress = $('#brandAddress');
