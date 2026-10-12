@@ -3107,54 +3107,56 @@
           <div class="q-card-stem">
             <span class="q-num">Q${idx + 1}.</span>
             <div class="q-stem-text">${q.stem}</div>
-          </div>
 
-          <!-- INTERACTIVE MCQ OPTIONS (CBSE SECTION A) -->
-          ${hasOptions ? `
-            <div class="q-mcq-container" data-qid="${escapeHtml(q.id)}" data-correct="${escapeHtml(q.correctOption || '')}">
-              <div class="mcq-options-grid ${q.options.length <= 4 && q.options.every(o => o.length < 40) ? 'grid-2col' : ''}">
-                ${q.options.map((opt, optIdx) => {
-                  const match = opt.match(/^\(([a-d])\)\s*(.*)$/i);
-                  const optLetterChar = match ? match[1].toLowerCase() : String.fromCharCode(97 + optIdx);
-                  const letterDisplay = `(${optLetterChar})`;
-                  const optText = match ? match[2] : opt;
+            <!-- INTERACTIVE MCQ OPTIONS (CBSE SECTION A) - PART OF QUESTION SHADE AS A SIMPLE LIST -->
+            ${hasOptions ? `
+              <div class="q-mcq-container" data-qid="${escapeHtml(q.id)}" data-correct="${escapeHtml(q.correctOption || '')}">
+                <ul class="mcq-options-list" role="list">
+                  ${q.options.map((opt, optIdx) => {
+                    const match = opt.match(/^\(([a-d])\)\s*(.*)$/i);
+                    const optLetterChar = match ? match[1].toLowerCase() : String.fromCharCode(97 + optIdx);
+                    const letterDisplay = `(${optLetterChar})`;
+                    const optText = match ? match[2] : opt;
 
-                  let optClass = 'mcq-option-btn';
-                  if (userAns) {
-                    if (optLetterChar === selectedLetter) {
-                      optClass += isAnsCorrect ? ' is-correct' : ' is-incorrect';
-                    } else if (!isAnsCorrect && optLetterChar === correctLetter) {
-                      optClass += ' is-correct-revealed';
+                    let optClass = 'mcq-option-btn';
+                    if (userAns) {
+                      if (optLetterChar === selectedLetter) {
+                        optClass += isAnsCorrect ? ' is-correct' : ' is-incorrect';
+                      } else if (!isAnsCorrect && optLetterChar === correctLetter) {
+                        optClass += ' is-correct-revealed';
+                      }
                     }
-                  }
 
-                  return `
-                    <button type="button" class="${optClass}" data-qid="${escapeHtml(q.id)}" data-option="${escapeHtml(letterDisplay)}" data-correct="${escapeHtml(q.correctOption || '')}">
-                      <span class="mcq-letter">${escapeHtml(letterDisplay)}</span>
-                      <span class="mcq-text">${optText}</span>
-                    </button>
-                  `;
-                }).join('')}
-              </div>
+                    return `
+                      <li class="mcq-option-item">
+                        <button type="button" class="${optClass}" data-qid="${escapeHtml(q.id)}" data-option="${escapeHtml(letterDisplay)}" data-correct="${escapeHtml(q.correctOption || '')}">
+                          <span class="mcq-letter">${escapeHtml(letterDisplay)}</span>
+                          <span class="mcq-text">${optText}</span>
+                        </button>
+                      </li>
+                    `;
+                  }).join('')}
+                </ul>
 
-              <!-- Real-time Feedback Banner -->
-              <div class="mcq-feedback-banner ${userAns ? (isAnsCorrect ? 'fb-correct' : 'fb-incorrect') : ''}" style="${userAns ? 'display:flex;' : 'display:none;'}">
-                ${userAns ? (isAnsCorrect ? `
-                  <i data-lucide="check-circle-2" class="fb-icon"></i>
-                  <div class="fb-text">
-                    <strong>Correct! Option ${escapeHtml((q.correctOption || '').toUpperCase())} is accurate.</strong>
-                    <span>Step explanation and examiner notes are open below.</span>
-                  </div>
-                ` : `
-                  <i data-lucide="alert-circle" class="fb-icon"></i>
-                  <div class="fb-text">
-                    <strong>Incorrect. The correct answer is ${escapeHtml((q.correctOption || '').toUpperCase())}.</strong>
-                    <span>See step explanation and CBSE caution trap below.</span>
-                  </div>
-                `) : ''}
+                <!-- Real-time Feedback Banner -->
+                <div class="mcq-feedback-banner ${userAns ? (isAnsCorrect ? 'fb-correct' : 'fb-incorrect') : ''}" style="${userAns ? 'display:flex;' : 'display:none;'}">
+                  ${userAns ? (isAnsCorrect ? `
+                    <i data-lucide="check-circle-2" class="fb-icon"></i>
+                    <div class="fb-text">
+                      <strong>Correct! Option ${escapeHtml((q.correctOption || '').toUpperCase())} is accurate.</strong>
+                      <span>Step explanation and examiner notes are open below.</span>
+                    </div>
+                  ` : `
+                    <i data-lucide="alert-circle" class="fb-icon"></i>
+                    <div class="fb-text">
+                      <strong>Incorrect. The correct answer is ${escapeHtml((q.correctOption || '').toUpperCase())}.</strong>
+                      <span>See step explanation and CBSE caution trap below.</span>
+                    </div>
+                  `) : ''}
+                </div>
               </div>
-            </div>
-          ` : ''}
+            ` : ''}
+          </div>
 
           <!-- SVG Visual Diagram (ONLY IF VALID NON-EMPTY CONTENT) -->
           ${hasValidDiagram ? `

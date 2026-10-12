@@ -168,14 +168,20 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await mcqPill.click();
     await page.waitForTimeout(500);
 
-    // Verify MCQ containers are rendered
-    const mcqContainers = page.locator('.q-mcq-container');
+    // Verify MCQ containers are rendered inside the question shade (.q-card-stem) as a simple list
+    const mcqContainers = page.locator('.q-card-stem .q-mcq-container');
     const mcqCount = await mcqContainers.count();
     expect(mcqCount).toBeGreaterThan(100);
 
-    // Test interactive option selection on first MCQ
     const firstMcq = mcqContainers.first();
+    const optionsList = firstMcq.locator('ul.mcq-options-list');
+    await expect(optionsList).toBeVisible();
+
+    // Test interactive option selection on first MCQ
     const firstOpt = firstMcq.locator('.mcq-option-btn').first();
+    const optBoxShadow = await firstOpt.evaluate(el => window.getComputedStyle(el).boxShadow);
+    expect(optBoxShadow).toBe('none');
+
     await firstOpt.click();
     await page.waitForTimeout(300);
 
