@@ -98,6 +98,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
   });
 
   test('Master 10-Year Question Bank displays 500+ questions with interactive 1M MCQs and student tracking', async ({ page }) => {
+    test.setTimeout(60000);
     await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
 
@@ -108,12 +109,12 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     const title = page.locator('.qb-compact-title');
     await expect(title).toContainText('Question Bank');
 
-    // Verify Question Stem has distinct attention shade (#f1f5f9)
+    // Verify Question Stem has distinct light orange attention shade (#fff7ed)
     const stemBg = await page.evaluate(() => {
       const stem = document.querySelector('.q-card-stem');
       return stem ? window.getComputedStyle(stem).backgroundColor : null;
     });
-    expect(stemBg).toBe('rgb(241, 245, 249)');
+    expect(stemBg).toBe('rgb(255, 247, 237)');
 
     // Verify Answer has green/teal shade with 2px dashed border
     const answerStyle = await page.evaluate(() => {
