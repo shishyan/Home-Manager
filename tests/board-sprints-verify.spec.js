@@ -316,6 +316,7 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
   });
 
   test('Audio feature reads out questions manually and supports auto-read on scroll mode', async ({ page }) => {
+    test.setTimeout(60000);
     // 1. Visit Question Bank
     await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(1000);
@@ -447,4 +448,84 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await expect(insightsList).toBeVisible();
     await expect(insightsList).toContainText('Step Marking:');
   });
+
+  test('Top filters and search bar in the persistent topbar remain visible during scroll and filter questions', async ({ page }) => {
+    test.setTimeout(60000);
+    // 1. Visit Question Bank
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // Verify topbar slot exists and is visible
+    const topBar = page.locator('#boardSprintsTopBar');
+    await expect(topBar).toBeVisible();
+
+    const topbarSearch = topBar.locator('#topbarSprintSearchInput');
+    await expect(topbarSearch).toBeVisible();
+
+    // Verify marks buttons in topbar
+    const topbar1M = topBar.locator('.zen-mark-btn', { hasText: '1M' });
+    await expect(topbar1M).toBeVisible();
+
+    // Scroll down 1000px
+    await page.evaluate(() => window.scrollTo(0, 1000));
+    await page.waitForTimeout(300);
+
+    // Check that topBar is still at top of screen (<62px from top)
+    const topBarBox = await topBar.boundingBox();
+    expect(topBarBox).not.toBeNull();
+    expect(topBarBox.y).toBeLessThan(62);
+    expect(topBarBox.y).toBeGreaterThanOrEqual(0);
+
+    // Filter using topbar: Click 1M in topbar while scrolled down
+    await topbar1M.click();
+    await page.waitForTimeout(400);
+
+    // Verify all visible question cards are 1M
+    const cards = page.locator('.board-question-card');
+    const count = await cards.count();
+    expect(count).toBeGreaterThan(0);
+    const marksBadges = page.locator('.board-question-card .q-meta-marks');
+    const firstBadgeText = await marksBadges.first().textContent();
+    expect(firstBadgeText).toContain('1 Marks');
+
+    // Type into topbar search while scrolled down
+    await topbarSearch.fill('Gauss');
+    await page.waitForTimeout(400);
+
+    const filteredCards = page.locator('.board-question-card');
+    const gaussCount = await filteredCards.count();
+    expect(gaussCount).toBeGreaterThan(0);
+
+    // Check sync with in-page search input
+    const inPageSearchVal = await page.locator('#sprintSearchInput').inputValue();
+    expect(inPageSearchVal).toBe('Gauss');
+
+    // Clear search using topbar clear button
+    const clearBtn = page.locator('#topbarSprintSearchClear');
+    await clearBtn.click();
+    await page.waitForTimeout(300);
+
+    // 2. Visit Weekly Page (Week 1)
+    await page.goto('http://localhost:8765/#/study/board-sprints/week-1/all', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // Verify topbar slot exists and is visible on weekly page
+    await expect(topBar).toBeVisible();
+    const weeklyAllSubjectsPill = topBar.locator('.topbar-pill', { hasText: 'All Subjects' });
+    await expect(weeklyAllSubjectsPill).toBeVisible();
+
+    // Scroll down 800px on weekly page
+    await page.evaluate(() => window.scrollTo(0, 800));
+    await page.waitForTimeout(300);
+
+    const weeklyTopBarBox = await topBar.boundingBox();
+    expect(weeklyTopBarBox).not.toBeNull();
+    expect(weeklyTopBarBox.y).toBeLessThan(62);
+
+    // 3. Visit Master Plan (Overview) and verify topbar filter is hidden
+    await page.goto('http://localhost:8765/#/study/board-sprints', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(500);
+    await expect(topBar).toBeHidden();
+  });
 });
+

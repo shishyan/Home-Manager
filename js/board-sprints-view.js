@@ -3132,8 +3132,202 @@
   }
 
   // Main View Renderer
+  // Update Persistent Top Bar Filters & Search for Board Sprints
+  function updateBoardSprintsTopBar(routeParam) {
+    const topBarSlot = document.getElementById('boardSprintsTopBar');
+    if (!topBarSlot) return;
+
+    const route = routeParam || (typeof location !== 'undefined' ? location.hash.slice(2) : '');
+    const routeInfo = parseSprintRoute(route);
+
+    if (!routeInfo || (!routeInfo.isQuestions && !route.includes('week-'))) {
+      topBarSlot.hidden = true;
+      topBarSlot.innerHTML = '';
+      return;
+    }
+
+    const allQuestions = getAllQuestions();
+    const mastered = getMasteredSet();
+
+    if (routeInfo.isQuestions) {
+      const currentSubject = state.qbSubject || 'all';
+      const currentMarks = state.marks || 'all';
+      const currentChapter = state.qbChapter || 'all';
+      const searchQuery = (state.search || '').trim();
+
+      const filtered = allQuestions.filter(q => {
+        if (currentSubject !== 'all' && q.subject !== currentSubject) return false;
+        if (currentMarks !== 'all' && String(q.marks) !== String(currentMarks)) return false;
+        if (currentChapter !== 'all') {
+          const c1 = q.chapter.toLowerCase();
+          const c2 = currentChapter.toLowerCase();
+          if (c1 !== c2 && !c1.includes(c2) && !c2.includes(c1)) return false;
+        }
+        if (searchQuery) {
+          const text = `${q.chapter} ${q.stem} ${q.subject} ${q.type || ''} ${q.year || ''} ${q.modelAnswer || ''}`.toLowerCase();
+          if (!text.includes(searchQuery.toLowerCase())) return false;
+        }
+        return true;
+      });
+
+      const masteredCount = filtered.filter(q => mastered.has(q.id)).length;
+      const availableChapters = Array.from(new Set(
+        allQuestions
+          .filter(q => currentSubject === 'all' || q.subject === currentSubject)
+          .map(q => q.chapter)
+      )).sort();
+
+      const activeEl = document.activeElement;
+      const isSearchFocused = activeEl && activeEl.id === 'topbarSprintSearchInput';
+      const cursorPos = isSearchFocused ? activeEl.selectionStart : null;
+
+      topBarSlot.hidden = false;
+      topBarSlot.innerHTML = `
+        <div class="topbar-filter-group qb-topbar-filters">
+          <div class="topbar-search-wrap">
+            <i data-lucide="search" class="topbar-search-icon"></i>
+            <input type="text" id="topbarSprintSearchInput" class="topbar-search-input" placeholder="Search 500+ questions..." value="${escapeHtml(state.search)}">
+            ${state.search ? `<button type="button" class="topbar-search-clear" id="topbarSprintSearchClear" title="Clear search"><i data-lucide="x"></i></button>` : ''}
+          </div>
+
+          <div class="topbar-subject-pills">
+            <button type="button" class="topbar-pill ${currentSubject === 'all' ? 'active' : ''}" onclick="HM.setQbSubject('all')">
+              <span>All (${allQuestions.length})</span>
+            </button>
+            ${Object.entries(SUBJECT_CONFIG).map(([sName, sConf]) => {
+              const shortLabel = sName === 'Mathematics' ? 'Maths' : (sName === 'Computer Science' ? 'CS' : (sName === 'English Core' ? 'English' : sName));
+              return `
+                <button type="button" class="topbar-pill ${currentSubject === sName ? 'active' : ''}" onclick="HM.setQbSubject('${escapeHtml(sName)}')">
+                  <i data-lucide="${sConf.icon}"></i>
+                  <span>${escapeHtml(shortLabel)}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="topbar-marks-pills">
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M</button>
+          </div>
+
+          <div class="topbar-chapter-wrap">
+            <select id="topbarQbChapterSelect" class="topbar-chapter-select" onchange="HM.setQbChapter(this.value)">
+              <option value="all" ${currentChapter === 'all' ? 'selected' : ''}>All Chapters</option>
+              ${availableChapters.map(ch => `
+                <option value="${escapeHtml(ch)}" ${currentChapter.toLowerCase() === ch.toLowerCase() ? 'selected' : ''}>${escapeHtml(ch)}</option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="topbar-audio-actions">
+            <button type="button" class="topbar-action-btn btn-autoread-toggle ${AudioReader.isEnabled() ? 'active' : ''}" id="topbarAutoReadToggle" onclick="HM.AudioReader.toggleAutoRead()" title="Auto-read question aloud when scrolled into view">
+              <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
+              <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
+            </button>
+            <button type="button" class="topbar-action-btn btn-speed-toggle" id="topbarSpeedToggle" onclick="HM.AudioReader.cycleSpeed()" title="Click to adjust audio speech speed (default 70%)">
+              <i data-lucide="gauge"></i>
+              <span>Speed: <strong>${Math.round(AudioReader.getSpeed() * 100)}%</strong></span>
+            </button>
+          </div>
+
+          <div class="topbar-badge" title="${masteredCount} of ${filtered.length} questions mastered">
+            <i data-lucide="check-circle-2"></i>
+            <span>${masteredCount}/${filtered.length}</span>
+          </div>
+        </div>
+      `;
+
+      if (isSearchFocused) {
+        const newSearchInput = document.getElementById('topbarSprintSearchInput');
+        if (newSearchInput) {
+          newSearchInput.focus();
+          newSearchInput.selectionStart = newSearchInput.selectionEnd = cursorPos;
+        }
+      }
+    } else {
+      // Weekly Sprint Topbar
+      const { week, book } = routeInfo;
+      const currentWeekConf = WEEK_BOOK_MAP[week] || WEEK_BOOK_MAP['week-1'];
+      const isAll = (book === 'all');
+      const weekTotalQuestions = getWeekTotalQuestions(week, allQuestions);
+      const currentMarks = state.marks || 'all';
+
+      const activeEl = document.activeElement;
+      const isSearchFocused = activeEl && activeEl.id === 'topbarSprintSearchInput';
+      const cursorPos = isSearchFocused ? activeEl.selectionStart : null;
+
+      topBarSlot.hidden = false;
+      topBarSlot.innerHTML = `
+        <div class="topbar-filter-group weekly-topbar-filters">
+          <div class="topbar-search-wrap">
+            <i data-lucide="search" class="topbar-search-icon"></i>
+            <input type="text" id="topbarSprintSearchInput" class="topbar-search-input" placeholder="Search derivations & Qs..." value="${escapeHtml(state.search)}">
+            ${state.search ? `<button type="button" class="topbar-search-clear" id="topbarSprintSearchClear" title="Clear search"><i data-lucide="x"></i></button>` : ''}
+          </div>
+
+          <div class="topbar-subject-pills">
+            <button type="button" class="topbar-pill ${isAll ? 'active' : ''}" data-route="study/board-sprints/${week}/all">
+              <i data-lucide="layers"></i>
+              <span>All Subjects (${weekTotalQuestions})</span>
+            </button>
+            ${Object.entries(currentWeekConf.books).map(([bKey, bConf]) => {
+              const isActive = !isAll && bKey === book;
+              const bCount = getBookQuestionCount(bConf, allQuestions);
+              const shortLabel = bConf.label.split('·')[0].trim();
+              return `
+                <button type="button" class="topbar-pill ${isActive ? 'active' : ''}" data-route="study/board-sprints/${week}/${bKey}">
+                  <i data-lucide="${bConf.icon}"></i>
+                  <span>${escapeHtml(shortLabel)} (${bCount})</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="topbar-marks-pills">
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === 'all' ? 'active' : ''}" data-marks-filter="all">All</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '1' ? 'active' : ''}" data-marks-filter="1">1M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '2' ? 'active' : ''}" data-marks-filter="2">2M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '3' ? 'active' : ''}" data-marks-filter="3">3M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '4' ? 'active' : ''}" data-marks-filter="4">4M</button>
+            <button type="button" class="topbar-mark-btn zen-mark-btn ${currentMarks === '5' ? 'active' : ''}" data-marks-filter="5">5M</button>
+          </div>
+
+          <div class="topbar-audio-actions">
+            <button type="button" class="topbar-action-btn btn-autoread-toggle ${AudioReader.isEnabled() ? 'active' : ''}" id="topbarAutoReadToggle" onclick="HM.AudioReader.toggleAutoRead()" title="Auto-read question aloud when scrolled into view">
+              <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
+              <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
+            </button>
+            <button type="button" class="topbar-action-btn btn-speed-toggle" id="topbarSpeedToggle" onclick="HM.AudioReader.cycleSpeed()" title="Click to adjust audio speech speed (default 70%)">
+              <i data-lucide="gauge"></i>
+              <span>Speed: <strong>${Math.round(AudioReader.getSpeed() * 100)}%</strong></span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      if (isSearchFocused) {
+        const newSearchInput = document.getElementById('topbarSprintSearchInput');
+        if (newSearchInput) {
+          newSearchInput.focus();
+          newSearchInput.selectionStart = newSearchInput.selectionEnd = cursorPos;
+        }
+      }
+    }
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
+
   function boardSprintsView(routeParam) {
     const routeInfo = parseSprintRoute(routeParam);
+    setTimeout(() => {
+      updateBoardSprintsTopBar(routeParam);
+    }, 10);
     if (routeInfo.isOverview) {
       return renderMasterBoardSprintDashboard();
     }
@@ -3477,7 +3671,7 @@
   // Global click delegator for Board Sprints
   document.addEventListener('click', event => {
     // Book pill navigation
-    const bookPill = event.target.closest('.zen-book-pill');
+    const bookPill = event.target.closest('.zen-book-pill, .topbar-pill[data-route]');
     if (bookPill && bookPill.dataset.route) {
       location.hash = '#/' + bookPill.dataset.route;
       return;
@@ -3492,7 +3686,7 @@
     }
 
     // Search clear
-    if (event.target.closest('#sprintSearchClear')) {
+    if (event.target.closest('#sprintSearchClear') || event.target.closest('#topbarSprintSearchClear')) {
       state.search = '';
       rerender();
       return;
@@ -3588,19 +3782,26 @@
     }
   });
 
-  // Search input live filtering with debounce
+  // Search input live filtering with debounce & dual-sync (in-page and persistent topbar)
   let searchTimeout = null;
   document.addEventListener('input', event => {
-    if (event.target.id === 'sprintSearchInput') {
+    if (event.target.id === 'sprintSearchInput' || event.target.id === 'topbarSprintSearchInput') {
       const val = event.target.value;
       state.search = val;
+
+      const otherId = event.target.id === 'sprintSearchInput' ? 'topbarSprintSearchInput' : 'sprintSearchInput';
+      const otherInput = document.getElementById(otherId);
+      if (otherInput && otherInput.value !== val) {
+        otherInput.value = val;
+      }
+
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         rerender();
-        const input = document.getElementById('sprintSearchInput');
-        if (input) {
-          input.focus();
-          input.selectionStart = input.selectionEnd = input.value.length;
+        const activeInput = document.getElementById(event.target.id);
+        if (activeInput) {
+          activeInput.focus();
+          activeInput.selectionStart = activeInput.selectionEnd = activeInput.value.length;
         }
       }, 150);
     }
@@ -3624,9 +3825,9 @@
 
   // Helper to re-render in place
   function rerender() {
+    const currentRoute = location.hash.slice(2) || 'study/board-sprints/week-1';
     const container = document.getElementById('boardSprintsContainer');
     if (container) {
-      const currentRoute = location.hash.slice(2) || 'study/board-sprints/week-1';
       container.outerHTML = boardSprintsView(currentRoute);
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons();
@@ -3637,12 +3838,14 @@
         }, 60);
       }
     }
+    updateBoardSprintsTopBar(currentRoute);
   }
 
   // Export to window.HM
   HM.boardSprintsView = boardSprintsView;
   HM.boardSprintsState = state;
   HM.boardSprintsRerender = rerender;
+  HM.updateBoardSprintsTopBar = updateBoardSprintsTopBar;
   HM.AudioReader = AudioReader;
   HM.setQbSubject = function(subj) {
     state.qbSubject = subj;

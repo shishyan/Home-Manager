@@ -600,9 +600,17 @@
 
   function placeEducationMasterControls() {
     const slot = $('#educationHeaderTabs');
-    if (!slot) return;
-    slot.hidden = true;
-    slot.replaceChildren();
+    if (slot) {
+      slot.hidden = true;
+      slot.replaceChildren();
+    }
+    if (route && !route.startsWith('study/board-sprints')) {
+      const bsSlot = $('#boardSprintsTopBar');
+      if (bsSlot) {
+        bsSlot.hidden = true;
+        bsSlot.replaceChildren();
+      }
+    }
   }
 
   function render() {
@@ -657,6 +665,9 @@
     $('#content').dataset.activePersona = persona.id;
     $('#content').innerHTML = V.render(route);
     placeEducationMasterControls();
+    if (window.HM && typeof window.HM.updateBoardSprintsTopBar === 'function') {
+      window.HM.updateBoardSprintsTopBar(route);
+    }
     bindView();
     if (route === 'home/directory' && !HM.workspace.cache.contacts?.length) {
       requestAnimationFrame(() => {
