@@ -8903,32 +8903,43 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
 
 /* Accordion Solution */
 .zen-accordion {
-  background: #fafbfc !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 8px;
+  background: #eaf0f6 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04) !important;
 }
 
 .q-accordion-summary {
-  padding: 0.65rem 0.95rem;
-  color: #334155;
+  background: #d8e2ee !important;
+  color: #0f172a !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+  font-weight: 700 !important;
+  padding: 0.65rem 1rem !important;
   cursor: pointer;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
+  transition: background 0.15s ease;
+}
+
+.zen-accordion:not([open]) .q-accordion-summary {
+  border-bottom: none !important;
 }
 
 .q-accordion-summary:hover {
-  background: #f1f5f9;
+  background: #cbd8e8 !important;
 }
 
 .summary-left {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  color: #0d9488;
+  gap: 0.45rem;
+  color: #0f766e !important;
 }
 
 .q-accordion-content {
-  border-top: 1px solid #e2e8f0;
-  padding: 1rem 1.15rem;
+  background: #edf3f8 !important;
+  border-top: none !important;
+  padding: 1.15rem 1.25rem !important;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -8937,18 +8948,24 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
 .model-answer-prose,
 .model-answer-prose p,
 .model-answer-prose li {
-  color: #1e293b !important;
-  line-height: 1.65;
-  font-size: 0.92rem;
+  color: #0f172a !important;
+  line-height: 1.72 !important;
+  font-size: 0.94rem !important;
+}
+
+.model-answer-prose strong {
+  color: #0f172a !important;
+  font-weight: 800 !important;
 }
 
 .model-answer-prose code {
-  background: #f1f5f9 !important;
+  background: #ffffff !important;
   color: #0d9488 !important;
-  border: 1px solid #e2e8f0 !important;
-  padding: 0.1rem 0.35rem;
+  border: 1px solid #cbd5e1 !important;
+  padding: 0.12rem 0.38rem;
   border-radius: 4px;
   font-size: 0.85em;
+  font-weight: 600;
 }
 
 .zen-marking-note, .zen-examiner-note {

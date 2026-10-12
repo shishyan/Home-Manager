@@ -115,6 +115,19 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(stemBg).toBe('rgb(241, 245, 249)');
 
+    // Verify Answer Section has darker shade for easy reading (#edf3f8 / rgb(237, 243, 248))
+    const answerBg = await page.evaluate(() => {
+      const ansContent = document.querySelector('.q-accordion-content');
+      return ansContent ? window.getComputedStyle(ansContent).backgroundColor : null;
+    });
+    expect(answerBg).toBe('rgb(237, 243, 248)');
+
+    const summaryBg = await page.evaluate(() => {
+      const sum = document.querySelector('.q-accordion-summary');
+      return sum ? window.getComputedStyle(sum).backgroundColor : null;
+    });
+    expect(summaryBg).toBe('rgb(216, 226, 238)');
+
     // Verify Question Cards count is >= 500 (501 total)
     const questionCards = page.locator('.board-question-card');
     const qCount = await questionCards.count();
