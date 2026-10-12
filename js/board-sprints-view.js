@@ -1560,11 +1560,46 @@
       const voices = this.synth.getVoices ? this.synth.getVoices() : [];
       if (!voices || voices.length === 0) return null;
 
-      // Preference: en-IN (Indian English for CBSE) -> en-GB / en-US natural
-      return voices.find(v => v.lang === 'en-IN') ||
-             voices.find(v => v.lang.startsWith('en') && /natural|neural|online|google/i.test(v.name)) ||
-             voices.find(v => v.lang.startsWith('en')) ||
-             voices[0];
+      const isUsLang = v => {
+        const l = (v.lang || '').replace('_', '-').toLowerCase();
+        return l === 'en-us' || l.startsWith('en-us');
+      };
+
+      const isFemale = v => {
+        const n = (v.name || '').toLowerCase();
+        return /female|zira|jenny|aria|samantha|victoria|ava|allison|susan|michelle|stephanie|sarah|karen|siri/i.test(n) ||
+               (n.includes('google us english') && !n.includes('male'));
+      };
+
+      const isMale = v => {
+        const n = (v.name || '').toLowerCase();
+        return /male|david|guy|mark|george|alex|fred|richard|james|tom|daniel/i.test(n);
+      };
+
+      // 1. Preferred voice: US Female
+      const usFemale = voices.find(v => isUsLang(v) && isFemale(v));
+      if (usFemale) return usFemale;
+
+      // An en-US voice that is not explicitly named male
+      const usNonMale = voices.find(v => isUsLang(v) && !isMale(v));
+      if (usNonMale) return usNonMale;
+
+      // 2. Default if US Female unavailable: US Male
+      const usMale = voices.find(v => isUsLang(v) && isMale(v));
+      if (usMale) return usMale;
+
+      // Any remaining US voice
+      const anyUs = voices.find(v => isUsLang(v));
+      if (anyUs) return anyUs;
+
+      // 3. Fallbacks: General English Female -> Male -> Any English
+      const anyEnFemale = voices.find(v => (v.lang || '').toLowerCase().startsWith('en') && isFemale(v));
+      if (anyEnFemale) return anyEnFemale;
+
+      const anyEnMale = voices.find(v => (v.lang || '').toLowerCase().startsWith('en') && isMale(v));
+      if (anyEnMale) return anyEnMale;
+
+      return voices.find(v => (v.lang || '').toLowerCase().startsWith('en')) || voices[0];
     },
 
     handleManualToggle(qId) {
@@ -3041,6 +3076,67 @@
     return firstSentence.length > 200 ? firstSentence.slice(0, 195) + '...' : firstSentence;
   }
 
+  // Normalize string for duplicate detection (stripping tags, entities, punctuation, whitespace)
+  function normalizeTextForComparison(htmlOrText) {
+    if (!htmlOrText) return '';
+    return String(htmlOrText)
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/[^a-zA-Z0-9]/g, '')
+      .toLowerCase();
+  }
+
+  // Deduplicate model answer against shaded core answer:
+  // If model answer and shaded answer are identical or substantially same, skip duplicate.
+  // If model answer contains additional / new derivation steps, show only the new steps.
+  function getDeduplicatedModelAnswer(modelAnswer, coreAnswer) {
+    if (!modelAnswer) return '';
+    if (!coreAnswer) return modelAnswer;
+
+    const normModel = normalizeTextForComparison(modelAnswer);
+    const normCore = normalizeTextForComparison(coreAnswer);
+
+    // 1. If exact or near-exact match, skip completely (prevents verbatim duplicates)
+    if (normModel === normCore) {
+      return '';
+    }
+
+    // 2. If core answer already covers all or almost all of model answer
+    if (normCore.length >= normModel.length && (normCore.includes(normModel) || normModel.length <= normCore.length + 10)) {
+      return '';
+    }
+
+    // 3. If model answer contains the core answer (e.g. core answer was extracted as final conclusion)
+    if (normModel.includes(normCore) && normCore.length > 25) {
+      // Remove any paragraph/block in model answer that matches coreAnswer
+      let stripped = modelAnswer;
+      const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/gi;
+      let matchedP = false;
+      stripped = modelAnswer.replace(pRegex, (match, pInner) => {
+        const normP = normalizeTextForComparison(pInner);
+        if (normP === normCore || (normP.length > 25 && (normCore.includes(normP) || normP.includes(normCore)))) {
+          matchedP = true;
+          return '';
+        }
+        return match;
+      });
+
+      const remainingNorm = normalizeTextForComparison(stripped);
+      if (matchedP && remainingNorm.length > 25) {
+        return stripped.trim();
+      }
+
+      if (remainingNorm.length <= 25 || remainingNorm === normCore) {
+        return '';
+      }
+      return stripped.trim();
+    }
+
+    // 4. Return model answer with new steps / verbiage
+    return modelAnswer;
+  }
+
   // Render Individual Question Card
   function renderQuestionCard(q, idx, isMastered) {
     const hasValidDiagram = q.diagram && q.diagram.trim().length > 30 && !q.diagram.includes('<svg></svg>');
@@ -3051,22 +3147,25 @@
     const selectedLetter = userAns ? ((userAns.selected || '').match(/[a-d]/i) || [''])[0].toLowerCase() : null;
     const correctLetter = (q.correctOption || '').match(/[a-d]/i) ? (q.correctOption.match(/[a-d]/i)[0].toLowerCase()) : null;
     const coreAnswer = getCoreAnswer(q);
+    const dedupedModelAnswer = getDeduplicatedModelAnswer(q.modelAnswer, coreAnswer);
+    const normCore = normalizeTextForComparison(coreAnswer);
 
     // Group all hints, tips, step marking, etc. into bullet points with bold header as first phrase
+    // Only include if not already duplicate of shaded answer
     const insights = [];
-    if (q.stepMarking) {
+    if (q.stepMarking && normalizeTextForComparison(q.stepMarking) !== normCore) {
       insights.push(`<li><strong>Step Marking:</strong> ${escapeHtml(q.stepMarking)}</li>`);
     }
-    if (q.cautionTrap) {
+    if (q.cautionTrap && normalizeTextForComparison(q.cautionTrap) !== normCore) {
       insights.push(`<li><strong>Examiner Caution:</strong> ${escapeHtml(q.cautionTrap)}</li>`);
     }
-    if (q.topperTip) {
+    if (q.topperTip && normalizeTextForComparison(q.topperTip) !== normCore) {
       insights.push(`<li><strong>Topper's Secret:</strong> ${escapeHtml(q.topperTip)}</li>`);
     }
-    if (q.mnemonic) {
+    if (q.mnemonic && normalizeTextForComparison(q.mnemonic) !== normCore) {
       insights.push(`<li><strong>Memory Mnemonic:</strong> ${escapeHtml(q.mnemonic)}</li>`);
     }
-    if (q.explanation) {
+    if (q.explanation && normalizeTextForComparison(q.explanation) !== normCore) {
       insights.push(`<li><strong>Examiner Tip:</strong> ${escapeHtml(q.explanation)}</li>`);
     }
 
@@ -3178,10 +3277,12 @@
 
           <!-- DIRECT STEPS FLOW (REMOVED REPEATED ACCORDION TITLE TO SAVE SPACE) -->
           <div class="q-card-steps-flow q-accordion-content zen-accordion">
-            <!-- Model Answer & Derivation Steps (SHADELESS) -->
-            <div class="model-answer-prose">
-              ${q.modelAnswer}
-            </div>
+            <!-- Model Answer & Derivation Steps (SHADELESS) - Only rendered if distinct from shaded answer -->
+            ${dedupedModelAnswer ? `
+              <div class="model-answer-prose">
+                ${dedupedModelAnswer}
+              </div>
+            ` : ''}
 
             <!-- Grouped Hints, Tips, Step Marking as Bullet Points -->
             ${insights.length > 0 ? `

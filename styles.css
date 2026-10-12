@@ -9152,6 +9152,10 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   font-size: 0.94rem !important;
 }
 
+.model-answer-prose:empty {
+  display: none !important;
+}
+
 .model-answer-prose p,
 .model-answer-prose li {
   color: #0f172a !important;

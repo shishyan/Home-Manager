@@ -377,4 +377,61 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     const sprintReadBtns = page.locator('.btn-read-question');
     expect(await sprintReadBtns.count()).toBeGreaterThan(0);
   });
+
+  test('Voice model prefers US Female, defaults to US Male, and skips duplicate answer text', async ({ page }) => {
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions?chapter=Solutions', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // 1. Verify Audio voice preference algorithm
+    const voiceTestResult = await page.evaluate(() => {
+      const mockVoices = [
+        { name: 'Microsoft David Desktop - English (United States)', lang: 'en-US' },
+        { name: 'Microsoft Zira Desktop - English (United States)', lang: 'en-US' },
+        { name: 'Microsoft George - English (United Kingdom)', lang: 'en-GB' }
+      ];
+
+      // Test with Zira (US Female) present
+      const origSynth = window.HM.AudioReader.synth;
+      window.HM.AudioReader.synth = { getVoices: () => mockVoices };
+      const chosen1 = window.HM.AudioReader.getPreferredVoice();
+
+      // Test with only US Male present
+      window.HM.AudioReader.synth = {
+        getVoices: () => [
+          { name: 'Microsoft David Desktop - English (United States)', lang: 'en-US' },
+          { name: 'Microsoft George - English (United Kingdom)', lang: 'en-GB' }
+        ]
+      };
+      const chosen2 = window.HM.AudioReader.getPreferredVoice();
+
+      // Restore
+      window.HM.AudioReader.synth = origSynth;
+
+      return {
+        prefersUsFemale: chosen1 ? chosen1.name.includes('Zira') : false,
+        defaultsToUsMale: chosen2 ? chosen2.name.includes('David') : false
+      };
+    });
+
+    expect(voiceTestResult.prefersUsFemale).toBe(true);
+    expect(voiceTestResult.defaultsToUsMale).toBe(true);
+
+    // 2. Verify answer deduplication on the van 't Hoff question (from user's screenshot)
+    const card = page.locator('.board-question-card:has-text("van \'t Hoff factor")').first();
+    await expect(card).toBeVisible();
+
+    // Verify shaded answer box is present and contains the answer
+    const shadedAns = card.locator('.q-answer-green-shade .ans-text');
+    await expect(shadedAns).toBeVisible();
+    await expect(shadedAns).toContainText('256 g');
+
+    // Verify duplicate model-answer-prose was skipped so it is NOT repeated twice
+    const dupModelAns = card.locator('.model-answer-prose');
+    await expect(dupModelAns).toHaveCount(0);
+
+    // Verify insights (Step Marking & Examiner Tip) remain intact below
+    const insightsList = card.locator('.q-insights-list');
+    await expect(insightsList).toBeVisible();
+    await expect(insightsList).toContainText('Step Marking:');
+  });
 });
