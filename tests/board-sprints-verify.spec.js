@@ -325,6 +325,19 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     await expect(autoReadBtn).toBeVisible();
     await expect(autoReadBtn).toContainText('Auto-Read:');
 
+    // Verify Speed toggle button is present with 70% default
+    const speedBtn = page.locator('#btnSpeedToggle');
+    await expect(speedBtn).toBeVisible();
+    await expect(speedBtn).toContainText('Speed: 70%');
+
+    // Test cycling speed button: 70% -> 85% -> 100% -> 70%
+    await speedBtn.click();
+    await expect(speedBtn).toContainText('Speed: 85%');
+    await speedBtn.click();
+    await expect(speedBtn).toContainText('Speed: 100%');
+    await speedBtn.click();
+    await expect(speedBtn).toContainText('Speed: 70%');
+
     // Verify Listen buttons exist on all question cards
     const readBtns = page.locator('.btn-read-question');
     const readBtnCount = await readBtns.count();

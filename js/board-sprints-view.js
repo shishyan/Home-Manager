@@ -1451,12 +1451,51 @@
     synth: typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null,
     currentSpeakingId: null,
     autoReadEnabled: typeof localStorage !== 'undefined' ? localStorage.getItem('hm_board_sprints_autoread') === 'true' : false,
+    speechSpeed: typeof localStorage !== 'undefined' ? parseFloat(localStorage.getItem('hm_board_sprints_audiospeed') || '0.70') : 0.70,
+    activeAudio: null,
     observer: null,
     debounceTimer: null,
     lastScrolledId: null,
 
     isEnabled() {
       return this.autoReadEnabled;
+    },
+
+    getSpeed() {
+      return this.speechSpeed || 0.70;
+    },
+
+    setSpeed(spd) {
+      this.speechSpeed = Math.round(spd * 100) / 100;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('hm_board_sprints_audiospeed', String(this.speechSpeed));
+      }
+      this.updateSpeedButtons();
+    },
+
+    cycleSpeed() {
+      const current = this.getSpeed();
+      let next = 0.70;
+      if (Math.abs(current - 0.70) < 0.05) next = 0.85;
+      else if (Math.abs(current - 0.85) < 0.05) next = 1.00;
+      else next = 0.70;
+      this.setSpeed(next);
+      if (this.currentSpeakingId) {
+        const qId = this.currentSpeakingId;
+        this.stop();
+        this.speak(qId, { userInitiated: true });
+      }
+    },
+
+    updateSpeedButtons() {
+      const btns = document.querySelectorAll('.btn-speed-toggle');
+      const pct = Math.round(this.getSpeed() * 100);
+      btns.forEach(btn => {
+        btn.innerHTML = `<i data-lucide="gauge"></i><span>Speed: <strong>${pct}%</strong></span>`;
+      });
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
     },
 
     cleanText(raw) {
@@ -1611,8 +1650,6 @@
     },
 
     speak(qId, options = {}) {
-      if (!this.synth) return;
-
       const text = this.getQuestionText(qId);
       if (!text) return;
 
@@ -1627,36 +1664,101 @@
       this.currentSpeakingId = qId;
       this.updateCardUi(qId, true);
 
+      const spd = this.getSpeed(); // 0.70 default (70% speed)
+      const rateDelta = Math.round((spd - 1.0) * 100);
+      const rateStr = (rateDelta >= 0 ? '+' : '') + rateDelta + '%';
+
+      // Determine local neural TTS endpoint URL
+      const isLocalHost = typeof location !== 'undefined' && (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+      const ttsBaseUrl = isLocalHost ? '/api/tts' : 'http://127.0.0.1:8765/api/tts';
+      const neuralUrl = `${ttsBaseUrl}?voice=en-US-JennyNeural&rate=${encodeURIComponent(rateStr)}&text=${encodeURIComponent(text)}`;
+
+      let audioTried = false;
+      const playViaWebSpeech = () => {
+        if (!this.synth) {
+          this.updateCardUi(qId, false);
+          this.currentSpeakingId = null;
+          return;
+        }
+        try {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.rate = spd; // Exactly 0.70 (70% of normal speed)
+          utterance.pitch = 1.0;
+          const voice = this.getPreferredVoice();
+          if (voice) utterance.voice = voice;
+
+          utterance.onend = () => {
+            if (this.currentSpeakingId === qId) {
+              this.updateCardUi(qId, false);
+              this.currentSpeakingId = null;
+            }
+          };
+
+          utterance.onerror = () => {
+            if (this.currentSpeakingId === qId) {
+              this.updateCardUi(qId, false);
+              this.currentSpeakingId = null;
+            }
+          };
+
+          this.synth.speak(utterance);
+        } catch (err) {
+          console.warn('SpeechSynthesis error:', err);
+          this.updateCardUi(qId, false);
+          this.currentSpeakingId = null;
+        }
+      };
+
+      // Try High-Quality Neural Audio first (edge-tts / Jenny Neural US Female)
       try {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.95;
-        utterance.pitch = 1.0;
-        const voice = this.getPreferredVoice();
-        if (voice) utterance.voice = voice;
+        const audio = new Audio();
+        this.activeAudio = audio;
+        audioTried = true;
 
-        utterance.onend = () => {
+        let hasStarted = false;
+        audio.onplay = () => {
+          hasStarted = true;
+        };
+
+        audio.onended = () => {
           if (this.currentSpeakingId === qId) {
             this.updateCardUi(qId, false);
             this.currentSpeakingId = null;
+            this.activeAudio = null;
           }
         };
 
-        utterance.onerror = () => {
-          if (this.currentSpeakingId === qId) {
+        audio.onerror = () => {
+          if (!hasStarted && this.currentSpeakingId === qId) {
+            this.activeAudio = null;
+            playViaWebSpeech();
+          } else {
             this.updateCardUi(qId, false);
             this.currentSpeakingId = null;
+            this.activeAudio = null;
           }
         };
 
-        this.synth.speak(utterance);
-      } catch (err) {
-        console.warn('SpeechSynthesis error:', err);
-        this.updateCardUi(qId, false);
-        this.currentSpeakingId = null;
+        audio.src = neuralUrl;
+        audio.play().catch(() => {
+          if (!hasStarted && this.currentSpeakingId === qId) {
+            this.activeAudio = null;
+            playViaWebSpeech();
+          }
+        });
+      } catch (e) {
+        playViaWebSpeech();
       }
     },
 
     stop() {
+      if (this.activeAudio) {
+        try {
+          this.activeAudio.pause();
+          this.activeAudio.currentTime = 0;
+        } catch (e) {}
+        this.activeAudio = null;
+      }
       if (this.synth) {
         try {
           this.synth.cancel();
@@ -2810,6 +2912,10 @@
                 <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
                 <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
               </button>
+              <button type="button" class="btn-zen-action btn-speed-toggle" id="btnSpeedToggle" onclick="HM.AudioReader.cycleSpeed()" title="Click to adjust audio speech speed (default 70%)">
+                <i data-lucide="gauge"></i>
+                <span>Speed: <strong>${Math.round(AudioReader.getSpeed() * 100)}%</strong></span>
+              </button>
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="View 75-Day Master Plan">
                 <i data-lucide="compass"></i>
                 <span>Plan</span>
@@ -2950,6 +3056,10 @@
               <button type="button" class="btn-zen-action btn-autoread-toggle ${AudioReader.isEnabled() ? 'active' : ''}" id="btnAutoReadToggleSprint" onclick="HM.AudioReader.toggleAutoRead()" title="Auto-read question aloud when scrolled into view">
                 <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
                 <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
+              </button>
+              <button type="button" class="btn-zen-action btn-speed-toggle" id="btnSpeedToggleSprint" onclick="HM.AudioReader.cycleSpeed()" title="Click to adjust audio speech speed (default 70%)">
+                <i data-lucide="gauge"></i>
+                <span>Speed: <strong>${Math.round(AudioReader.getSpeed() * 100)}%</strong></span>
               </button>
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="Exit sprint and return to Master Plan">
                 <i data-lucide="compass"></i>

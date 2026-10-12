@@ -8771,6 +8771,24 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   color: #0d9488 !important;
 }
 
+.btn-speed-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-speed-toggle svg {
+  width: 14px !important;
+  height: 14px !important;
+  color: #0d9488 !important;
+}
+
+.btn-speed-toggle strong {
+  color: #0d9488 !important;
+}
+
 .board-question-card.is-audio-active {
   border-color: #0d9488 !important;
   box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.22), 0 6px 20px rgba(13, 148, 136, 0.08) !important;
