@@ -308,4 +308,67 @@ test.describe('Board Sprints - Master Overview, Dedicated RAG Audit & Master Que
     });
     expect(homeSidebarWidth).toBe('252px');
   });
+
+  test('Audio feature reads out questions manually and supports auto-read on scroll mode', async ({ page }) => {
+    // 1. Visit Question Bank
+    await page.goto('http://localhost:8765/#/study/board-sprints/questions', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    // Verify Auto-Read toggle button is present in the toolbar
+    const autoReadBtn = page.locator('#btnAutoReadToggle');
+    await expect(autoReadBtn).toBeVisible();
+    await expect(autoReadBtn).toContainText('Auto-Read:');
+
+    // Verify Listen buttons exist on all question cards
+    const readBtns = page.locator('.btn-read-question');
+    const readBtnCount = await readBtns.count();
+    expect(readBtnCount).toBeGreaterThan(0);
+
+    const firstCard = page.locator('.board-question-card').first();
+    const firstReadBtn = firstCard.locator('.btn-read-question');
+    await expect(firstReadBtn).toContainText('Listen');
+
+    // 2. Click manual "Listen" button
+    await firstReadBtn.click();
+    await page.waitForTimeout(200);
+
+    // Verify card gets is-audio-active and button gets is-reading / Stop text
+    await expect(firstCard).toHaveClass(/is-audio-active/);
+    await expect(firstReadBtn).toHaveClass(/is-reading/);
+    await expect(firstReadBtn).toContainText('Stop');
+
+    // Click again to stop
+    await firstReadBtn.click();
+    await page.waitForTimeout(200);
+
+    // Verify card is no longer audio-active and button returns to Listen
+    await expect(firstCard).not.toHaveClass(/is-audio-active/);
+    await expect(firstReadBtn).not.toHaveClass(/is-reading/);
+    await expect(firstReadBtn).toContainText('Listen');
+
+    // 3. Test Auto-Read toggle button interaction
+    const initialText = await autoReadBtn.textContent();
+    const isInitiallyOn = initialText.includes('ON');
+
+    // Toggle Auto-Read state
+    await autoReadBtn.click();
+    await page.waitForTimeout(200);
+
+    const toggledText = await autoReadBtn.textContent();
+    expect(toggledText).toContain(isInitiallyOn ? 'OFF' : 'ON');
+
+    // Verify state in localStorage
+    const storedState = await page.evaluate(() => localStorage.getItem('hm_board_sprints_autoread'));
+    expect(storedState).toBe(isInitiallyOn ? 'false' : 'true');
+
+    // 4. Verify Weekly Sprint also has Auto-Read toggle and Listen buttons
+    await page.goto('http://localhost:8765/#/study/board-sprints/week-1/all', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(1000);
+
+    const sprintAutoReadBtn = page.locator('#btnAutoReadToggleSprint');
+    await expect(sprintAutoReadBtn).toBeVisible();
+
+    const sprintReadBtns = page.locator('.btn-read-question');
+    expect(await sprintReadBtns.count()).toBeGreaterThan(0);
+  });
 });

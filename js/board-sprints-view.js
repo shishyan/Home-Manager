@@ -1444,6 +1444,340 @@
     return seen.size;
   }
 
+  // =========================================================================
+  // AUDIO READER: SPEECH SYNTHESIS ENGINE (MANUAL CLICK & SCROLL AUTO-READ)
+  // =========================================================================
+  const AudioReader = {
+    synth: typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null,
+    currentSpeakingId: null,
+    autoReadEnabled: typeof localStorage !== 'undefined' ? localStorage.getItem('hm_board_sprints_autoread') === 'true' : false,
+    observer: null,
+    debounceTimer: null,
+    lastScrolledId: null,
+
+    isEnabled() {
+      return this.autoReadEnabled;
+    },
+
+    cleanText(raw) {
+      if (!raw) return '';
+      let text = String(raw);
+
+      // Strip SVG diagrams, style, script
+      text = text.replace(/<svg[\s\S]*?<\/svg>/gi, ' diagram ');
+      text = text.replace(/<style[\s\S]*?<\/style>/gi, ' ');
+      text = text.replace(/<script[\s\S]*?<\/script>/gi, ' ');
+
+      // Convert line breaks and block tags into natural pauses
+      text = text.replace(/<\/(p|div|li|tr|h[1-6])>/gi, '. ');
+      text = text.replace(/<br\s*[\/]?>/gi, '. ');
+      text = text.replace(/<[^>]+>/g, ' ');
+
+      // HTML Entities
+      text = text.replace(/&nbsp;/gi, ' ')
+                 .replace(/&amp;/gi, ' and ')
+                 .replace(/&lt;/gi, ' less than ')
+                 .replace(/&gt;/gi, ' greater than ')
+                 .replace(/&times;/gi, ' times ')
+                 .replace(/&divide;/gi, ' divided by ')
+                 .replace(/&plusmn;/gi, ' plus or minus ')
+                 .replace(/&deg;/gi, ' degrees ');
+
+      // Common LaTeX & Scientific Symbols to Spoken English
+      text = text.replace(/\\lambda/gi, ' lambda ')
+                 .replace(/\\epsilon_0|\\varepsilon_0/gi, ' epsilon naught ')
+                 .replace(/\\epsilon|\\varepsilon/gi, ' epsilon ')
+                 .replace(/\\mu_0/gi, ' mu naught ')
+                 .replace(/\\mu/gi, ' mu ')
+                 .replace(/\\theta/gi, ' theta ')
+                 .replace(/\\omega/gi, ' omega ')
+                 .replace(/\\pi/gi, ' pi ')
+                 .replace(/\\Delta|\\delta/gi, ' delta ')
+                 .replace(/\\phi|\\Phi/gi, ' phi ')
+                 .replace(/\\alpha/gi, ' alpha ')
+                 .replace(/\\beta/gi, ' beta ')
+                 .replace(/\\gamma|\\Gamma/gi, ' gamma ')
+                 .replace(/\\sigma|\\Sigma/gi, ' sigma ')
+                 .replace(/\\rho/gi, ' rho ')
+                 .replace(/\\tau/gi, ' tau ')
+                 .replace(/\\nu/gi, ' nu ')
+                 .replace(/\\times/gi, ' times ')
+                 .replace(/\\cdot/gi, ' dot ')
+                 .replace(/\\approx/gi, ' approximately ')
+                 .replace(/\\neq/gi, ' is not equal to ')
+                 .replace(/\\leq|\\le/gi, ' is less than or equal to ')
+                 .replace(/\\geq|\\ge/gi, ' is greater than or equal to ')
+                 .replace(/\\pm/gi, ' plus or minus ')
+                 .replace(/\\infty/gi, ' infinity ')
+                 .replace(/\\int/gi, ' integral ')
+                 .replace(/\\sqrt\{([^}]+)\}/gi, ' square root of $1 ')
+                 .replace(/\\sqrt/gi, ' square root ')
+                 .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/gi, ' $1 divided by $2 ')
+                 .replace(/\\to|\\rightarrow/gi, ' leads to ')
+                 .replace(/\\rightleftharpoons|\\leftrightarrow/gi, ' in equilibrium with ')
+                 .replace(/\\^2|²/g, ' squared ')
+                 .replace(/\\^3|³/g, ' cubed ')
+                 .replace(/°|\\circ/g, ' degrees ')
+                 .replace(/\\vec\{([^}]+)\}/gi, ' vector $1 ')
+                 .replace(/\\mathbf\{([^}]+)\}/gi, ' $1 ')
+                 .replace(/\\text\{([^}]+)\}/gi, ' $1 ')
+                 .replace(/\\left|\\right/gi, ' ')
+                 .replace(/\\[a-zA-Z]+/g, ' ');
+
+      // Punctuation and whitespace cleanup
+      text = text.replace(/\$/g, ' ');
+      text = text.replace(/[{}]/g, ' ');
+      text = text.replace(/\s+/g, ' ').trim();
+      return text;
+    },
+
+    getQuestionText(qId) {
+      const allQs = getAllQuestions();
+      const q = allQs.find(item => item.id === qId);
+      if (!q) {
+        const card = document.getElementById(`card-${qId}`);
+        if (!card) return '';
+        const stemEl = card.querySelector('.q-stem-text');
+        return stemEl ? this.cleanText(stemEl.textContent) : '';
+      }
+
+      let spoken = '';
+      const cleanStem = this.cleanText(q.stem);
+      spoken += cleanStem;
+
+      // Add options if MCQ
+      if (Array.isArray(q.options) && q.options.length > 0) {
+        spoken += '. Options: ';
+        const optTexts = q.options.map(opt => this.cleanText(opt));
+        spoken += optTexts.join('. ') + '.';
+      }
+
+      return spoken;
+    },
+
+    getPreferredVoice() {
+      if (!this.synth) return null;
+      const voices = this.synth.getVoices ? this.synth.getVoices() : [];
+      if (!voices || voices.length === 0) return null;
+
+      // Preference: en-IN (Indian English for CBSE) -> en-GB / en-US natural
+      return voices.find(v => v.lang === 'en-IN') ||
+             voices.find(v => v.lang.startsWith('en') && /natural|neural|online|google/i.test(v.name)) ||
+             voices.find(v => v.lang.startsWith('en')) ||
+             voices[0];
+    },
+
+    handleManualToggle(qId) {
+      if (this.currentSpeakingId === qId) {
+        this.stop();
+      } else {
+        this.speak(qId, { userInitiated: true });
+      }
+    },
+
+    speak(qId, options = {}) {
+      if (!this.synth) return;
+
+      const text = this.getQuestionText(qId);
+      if (!text) return;
+
+      // If already speaking this question, don't restart unless user-initiated
+      if (this.currentSpeakingId === qId && !options.userInitiated) {
+        return;
+      }
+
+      // Stop any current speech
+      this.stop();
+
+      this.currentSpeakingId = qId;
+      this.updateCardUi(qId, true);
+
+      try {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        const voice = this.getPreferredVoice();
+        if (voice) utterance.voice = voice;
+
+        utterance.onend = () => {
+          if (this.currentSpeakingId === qId) {
+            this.updateCardUi(qId, false);
+            this.currentSpeakingId = null;
+          }
+        };
+
+        utterance.onerror = () => {
+          if (this.currentSpeakingId === qId) {
+            this.updateCardUi(qId, false);
+            this.currentSpeakingId = null;
+          }
+        };
+
+        this.synth.speak(utterance);
+      } catch (err) {
+        console.warn('SpeechSynthesis error:', err);
+        this.updateCardUi(qId, false);
+        this.currentSpeakingId = null;
+      }
+    },
+
+    stop() {
+      if (this.synth) {
+        try {
+          this.synth.cancel();
+        } catch (e) {}
+      }
+      if (this.currentSpeakingId) {
+        this.updateCardUi(this.currentSpeakingId, false);
+        this.currentSpeakingId = null;
+      }
+    },
+
+    updateCardUi(qId, isReading) {
+      const card = document.getElementById(`card-${qId}`);
+      if (!card) return;
+
+      if (isReading) {
+        card.classList.add('is-audio-active');
+      } else {
+        card.classList.remove('is-audio-active');
+      }
+
+      const readBtn = card.querySelector('.btn-read-question');
+      if (readBtn) {
+        if (isReading) {
+          readBtn.classList.add('is-reading');
+          readBtn.innerHTML = '<i data-lucide="square"></i><span>Stop</span>';
+          readBtn.title = 'Stop reading question';
+        } else {
+          readBtn.classList.remove('is-reading');
+          readBtn.innerHTML = '<i data-lucide="volume-2"></i><span>Listen</span>';
+          readBtn.title = 'Listen to question readout';
+        }
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }
+    },
+
+    toggleAutoRead() {
+      this.autoReadEnabled = !this.autoReadEnabled;
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('hm_board_sprints_autoread', this.autoReadEnabled ? 'true' : 'false');
+      }
+
+      this.updateAutoReadToggleButtons();
+
+      if (this.autoReadEnabled) {
+        this.attachObserver();
+        this.readMostVisibleCard();
+      } else {
+        this.detachObserver();
+        this.stop();
+      }
+    },
+
+    updateAutoReadToggleButtons() {
+      const buttons = document.querySelectorAll('.btn-autoread-toggle');
+      buttons.forEach(btn => {
+        if (this.autoReadEnabled) {
+          btn.classList.add('active');
+          btn.innerHTML = '<i data-lucide="volume-2"></i><span>Auto-Read: <strong>ON</strong></span>';
+        } else {
+          btn.classList.remove('active');
+          btn.innerHTML = '<i data-lucide="volume-x"></i><span>Auto-Read: <strong>OFF</strong></span>';
+        }
+      });
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    },
+
+    readMostVisibleCard() {
+      const cards = Array.from(document.querySelectorAll('.board-question-card'));
+      if (cards.length === 0) return;
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestCard = null;
+      let minDistance = Infinity;
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          const cardCenter = rect.top + rect.height / 2;
+          const dist = Math.abs(cardCenter - viewportCenter);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestCard = card;
+          }
+        }
+      });
+
+      if (closestCard) {
+        const qId = closestCard.id.replace('card-', '');
+        this.lastScrolledId = qId;
+        this.speak(qId, { userInitiated: false });
+      }
+    },
+
+    attachObserver() {
+      if (!this.autoReadEnabled) return;
+      this.detachObserver();
+
+      if (typeof IntersectionObserver === 'undefined') return;
+
+      const cards = document.querySelectorAll('.board-question-card');
+      if (cards.length === 0) return;
+
+      this.observer = new IntersectionObserver((entries) => {
+        if (!this.autoReadEnabled) return;
+
+        const visibleEntries = entries.filter(e => e.isIntersecting);
+        if (visibleEntries.length === 0) return;
+
+        const viewportCenter = window.innerHeight / 2;
+        let bestTarget = null;
+        let minDiff = Infinity;
+
+        visibleEntries.forEach(entry => {
+          const rect = entry.target.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const diff = Math.abs(cardCenter - viewportCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            bestTarget = entry.target;
+          }
+        });
+
+        if (bestTarget) {
+          const qId = bestTarget.id.replace('card-', '');
+          if (qId && qId !== this.lastScrolledId) {
+            clearTimeout(this.debounceTimer);
+            this.debounceTimer = setTimeout(() => {
+              if (this.autoReadEnabled) {
+                this.lastScrolledId = qId;
+                this.speak(qId, { userInitiated: false });
+              }
+            }, 350);
+          }
+        }
+      }, {
+        rootMargin: '-10% 0px -25% 0px',
+        threshold: [0.2, 0.5, 0.8]
+      });
+
+      cards.forEach(card => this.observer.observe(card));
+    },
+
+    detachObserver() {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+      clearTimeout(this.debounceTimer);
+    }
+  };
+
   // Parse Route to Extract Week and Book
   function parseSprintRoute(route) {
     // Expected patterns:
@@ -2437,6 +2771,10 @@
             </nav>
 
             <div class="zen-header-actions qb-quick-actions">
+              <button type="button" class="btn-zen-action btn-autoread-toggle ${AudioReader.isEnabled() ? 'active' : ''}" id="btnAutoReadToggle" onclick="HM.AudioReader.toggleAutoRead()" title="Auto-read question aloud when scrolled into view">
+                <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
+                <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
+              </button>
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="View 75-Day Master Plan">
                 <i data-lucide="compass"></i>
                 <span>Plan</span>
@@ -2574,6 +2912,10 @@
               <p class="zen-subtitle">${escapeHtml(bookLabel)} · <span>${totalInBook} Curated Questions</span></p>
             </div>
             <div class="zen-header-actions">
+              <button type="button" class="btn-zen-action btn-autoread-toggle ${AudioReader.isEnabled() ? 'active' : ''}" id="btnAutoReadToggleSprint" onclick="HM.AudioReader.toggleAutoRead()" title="Auto-read question aloud when scrolled into view">
+                <i data-lucide="${AudioReader.isEnabled() ? 'volume-2' : 'volume-x'}"></i>
+                <span>Auto-Read: <strong>${AudioReader.isEnabled() ? 'ON' : 'OFF'}</strong></span>
+              </button>
               <button type="button" class="btn-zen-action" onclick="location.hash='#/study/board-sprints'" title="Exit sprint and return to Master Plan">
                 <i data-lucide="compass"></i>
                 <span>Master Plan</span>
@@ -2748,10 +3090,16 @@
             <span class="q-meta-chapter">${escapeHtml(q.chapter)}</span>
           </div>
 
-          <button type="button" class="btn-master-toggle ${isMastered ? 'mastered' : ''}" data-master-toggle="${escapeHtml(q.id)}" title="${isMastered ? 'Mastered' : 'Mark as mastered'}">
-            <i data-lucide="${isMastered ? 'badge-check' : 'circle'}"></i>
-            <span>${isMastered ? 'Mastered' : 'Mark Mastered'}</span>
-          </button>
+          <div class="q-card-actions">
+            <button type="button" class="btn-read-question ${AudioReader.currentSpeakingId === q.id ? 'is-reading' : ''}" data-read-question="${escapeHtml(q.id)}" title="${AudioReader.currentSpeakingId === q.id ? 'Stop reading' : 'Listen to question readout'}">
+              <i data-lucide="${AudioReader.currentSpeakingId === q.id ? 'square' : 'volume-2'}"></i>
+              <span>${AudioReader.currentSpeakingId === q.id ? 'Stop' : 'Listen'}</span>
+            </button>
+            <button type="button" class="btn-master-toggle ${isMastered ? 'mastered' : ''}" data-master-toggle="${escapeHtml(q.id)}" title="${isMastered ? 'Mastered' : 'Mark as mastered'}">
+              <i data-lucide="${isMastered ? 'badge-check' : 'circle'}"></i>
+              <span>${isMastered ? 'Mastered' : 'Mark Mastered'}</span>
+            </button>
+          </div>
         </header>
 
         <!-- Question Body -->
@@ -2999,6 +3347,17 @@
       return;
     }
 
+    // Read Question Aloud (SpeechSynthesis)
+    const readBtn = event.target.closest('[data-read-question]');
+    if (readBtn) {
+      event.preventDefault();
+      const qId = readBtn.dataset.readQuestion;
+      if (AudioReader) {
+        AudioReader.handleManualToggle(qId);
+      }
+      return;
+    }
+
     // Mastered toggle button
     const masterToggle = event.target.closest('[data-master-toggle]');
     if (masterToggle) {
@@ -3034,6 +3393,22 @@
     }
   });
 
+  // Global Route Lifecycle for Audio Narration
+  window.addEventListener('hashchange', () => {
+    if (!location.hash.startsWith('#/study/board-sprints')) {
+      if (AudioReader) {
+        AudioReader.stop();
+        AudioReader.detachObserver();
+      }
+    } else {
+      setTimeout(() => {
+        if (AudioReader && AudioReader.isEnabled()) {
+          AudioReader.attachObserver();
+        }
+      }, 120);
+    }
+  });
+
   // Helper to re-render in place
   function rerender() {
     const container = document.getElementById('boardSprintsContainer');
@@ -3043,6 +3418,11 @@
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons();
       }
+      if (AudioReader && AudioReader.isEnabled()) {
+        setTimeout(() => {
+          AudioReader.attachObserver();
+        }, 60);
+      }
     }
   }
 
@@ -3050,6 +3430,7 @@
   HM.boardSprintsView = boardSprintsView;
   HM.boardSprintsState = state;
   HM.boardSprintsRerender = rerender;
+  HM.AudioReader = AudioReader;
   HM.setQbSubject = function(subj) {
     state.qbSubject = subj;
     state.qbChapter = 'all';
