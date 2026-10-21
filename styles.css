@@ -12227,3 +12227,5 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   font-size: 0.78rem;
   opacity: 0.9;
 }
+
+.topbar-quick-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: inherit; }
