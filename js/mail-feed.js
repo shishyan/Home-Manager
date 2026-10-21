@@ -31,7 +31,10 @@
       if (!item?.gmailId || excluded(item.sender)) continue;
       const sourceRef = `${ACCOUNT}:${item.gmailId}`;
       if (D.state.syncSuggestions.some(existing => existing.source === 'gmail' && existing.sourceRef === sourceRef)) continue;
-      D.state.syncSuggestions.push({ id: D.uid('mail'), source: 'gmail', sourceRef, sourceAccount: ACCOUNT, title: text(item.subject, 160) || 'Email update', summary: text(item.summary || item.body), sender: text(item.sender, 100), receivedAt: text(item.receivedAt, 40), processedAt: feed.syncedAt, category: category(item), status: 'pending', urgency: 'normal', decision: 'Review email', personId: personId(item.memberHint), trusted: false });
+      const rawText = (item.subject || '') + ' ' + (item.body || '');
+      const amountMatch = rawText.match(/(?:INR|Rs\.?|₹)\s*([\d,]+(?:\.\d{2})?)/i);
+      const amount = amountMatch ? parseFloat(amountMatch[1].replace(/,/g, '')) : 0;
+      D.state.syncSuggestions.push({ id: D.uid('mail'), source: 'gmail', sourceRef, sourceAccount: ACCOUNT, title: text(item.subject, 160) || 'Email update', summary: text(item.summary || item.body), sender: text(item.sender, 100), receivedAt: text(item.receivedAt, 40), processedAt: feed.syncedAt, category: category(item), amount, status: 'pending', urgency: 'normal', decision: 'Review email', personId: personId(item.memberHint), trusted: false });
       messages++;
     }
     for (const item of feed.events) {

@@ -12228,4 +12228,10 @@ body.zen-sprint-mode #sidebar #nav .section-subitem.active i {
   opacity: 0.9;
 }
 
-.topbar-quick-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: inherit; }
+.topbar-quick-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; width: 34px; height: 34px; border-radius: 9px; transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease; }
+.topbar-quick-link:hover { transform: translateY(-1px) scale(1.08); filter: brightness(1.12); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18); }
+.topbar-quick-link[title*="Code Server"] { background: linear-gradient(135deg, #0284c7, #2563eb) !important; color: #ffffff !important; }
+.topbar-quick-link[title*="Guru Kula Desam"] { background: linear-gradient(135deg, #059669, #10b981) !important; color: #ffffff !important; }
+.topbar-quick-link[title*="ZenERP"] { background: linear-gradient(135deg, #7c3aed, #a855f7) !important; color: #ffffff !important; }
+.topbar-quick-link[title*="ZYSHAM"] { background: linear-gradient(135deg, #ea580c, #f97316) !important; color: #ffffff !important; }
+.topbar-quick-link[title*="Our Divine Nest"] { background: linear-gradient(135deg, #e11d48, #f43f5e) !important; color: #ffffff !important; }
