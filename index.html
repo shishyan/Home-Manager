@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#edf7f3">
   <meta name="description" content="A private, local-first command center for home, community and study life.">
-  <title>Divine Nest</title>
+  <title>Lotus Naga Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,28 +16,9 @@
   <a class="skip-link" href="#content">Skip to content</a>
   <aside id="sidebar" aria-label="Primary navigation">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <defs>
-            <linearGradient id="divineLogoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#99f6e4"/>
-            </linearGradient>
-            <linearGradient id="divineFlameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#5eead4" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.15"/>
-            </linearGradient>
-          </defs>
-          <path d="M3.5 13C4.2 17.5 7.8 20.5 12 20.5s7.8-3 8.5-7.5" stroke="url(#divineLogoGlow)" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M5.5 14.8C7.5 18 10 18.8 12 18.8s4.5-.8 6.5-4" stroke="currentColor" stroke-width="1.6" opacity="0.85" stroke-linecap="round"/>
-          <path d="M12 3.2C10.1 6.2 8.8 8.6 8.8 11a3.2 3.2 0 0 0 6.4 0c0-2.4-1.3-4.8-3.2-7.8Z" fill="url(#divineFlameGrad)" stroke="url(#divineLogoGlow)" stroke-width="1.8" stroke-linejoin="round"/>
-          <circle cx="12" cy="10.8" r="1.3" fill="#ffffff"/>
-          <path d="M7 8.5C8 10 8 11.5 7.2 12.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
-          <path d="M17 8.5C16 10 16 11.5 16.8 12.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
-        </svg>
-      </span>
+      <span class="brand-mark" aria-hidden="true"><i data-lucide="flower-2"></i></span>
       <div class="brand-copy">
-        <b id="brandName">Our Divine Nest</b>
+        <b id="brandName">Lotus Naga Home</b>
       </div>
     </div>
     <div id="workspaceMenuLabel" class="workspace-menu-label"><select id="navigationGroup" class="sr-only" aria-label="Navigation group"></select></div>
@@ -54,18 +35,12 @@
       <div class="topbar">
         <button type="button" id="menu" class="icon-button" title="Open navigation" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
         <div id="personaTabs" class="persona-tabs" aria-label="Switch profile"></div>
-        <div id="boardSprintsTopBar" class="board-sprints-topbar" hidden></div>
-        <div id="educationTopBar" class="education-topbar board-sprints-topbar" hidden></div>
-        <small id="breadcrumb" hidden>Our Divine Nest</small>
+        <small id="breadcrumb" hidden>Lotus Naga Home</small>
         <h1 id="pageTitle" hidden>Today</h1>
         <div id="educationHeaderTabs" class="education-header-tabs" aria-label="Education track and subjects" hidden></div>
         <div id="headerKpis" class="header-kpis" aria-label="Current household signals" hidden></div>
         <div class="header-actions">
-          <a href="https://code.shishyan.in" target="_blank" rel="noopener noreferrer" class="icon-button header-icon-btn topbar-quick-link" title="Code Server" aria-label="Code Server"><i data-lucide="code-2"></i></a>
-          <a href="https://gkd.shishyan.in" target="_blank" rel="noopener noreferrer" class="icon-button header-icon-btn topbar-quick-link" title="Guru Kula Desam" aria-label="Guru Kula Desam"><i data-lucide="globe"></i></a>
-          <a href="https://shishyan.github.io/MyERP/" target="_blank" rel="noopener noreferrer" class="icon-button header-icon-btn topbar-quick-link" title="ZenERP Enterprise Platform" aria-label="ZenERP Enterprise Platform"><i data-lucide="briefcase"></i></a>
-          <a href="https://shishyan.github.io/Zysham2026/" target="_blank" rel="noopener noreferrer" class="icon-button header-icon-btn topbar-quick-link" title="ZYSHAM Student Career Guidance" aria-label="ZYSHAM Student Career Guidance"><i data-lucide="graduation-cap"></i></a>
-          <a href="https://shishyan.github.io/Our-Divine-Nest/" target="_blank" rel="noopener noreferrer" class="icon-button header-icon-btn topbar-quick-link" title="Our Divine Nest Archive" aria-label="Our Divine Nest Archive"><i data-lucide="home"></i></a>
+          <a href="https://games.shishyan.in" id="gamesNav" class="icon-button header-icon-btn" target="_blank" rel="noopener noreferrer" title="Play Games (World of Dharma 3D Open World)" aria-label="Play Games"><i data-lucide="gamepad-2"></i></a>
           <button type="button" id="helpNav" class="icon-button header-icon-btn" data-route="global/questions" title="Help & Guide" aria-label="Help & Guide"><i data-lucide="circle-help"></i></button>
           <button type="button" id="settingsNav" class="icon-button header-icon-btn" data-route="settings/household" title="Settings" aria-label="Settings"><i data-lucide="settings-2"></i></button>
           <div class="persona-header-wrap">
@@ -228,7 +203,6 @@
     <script src="js/school-calendar.js"></script>
     <script src="js/study-progress.js"></script>
     <script src="js/education-ui.js"></script>
-    <script src="js/education-view.js"></script>
   <a id="brandAddress" href="https://www.google.com/maps/search/?api=1&amp;query=32%20SSS%20Jaya%20Enclave%2C%20Kovaipudur%2C%20Coimbatore%2C%20641042" target="_blank" rel="noopener noreferrer" title="Open address in maps">32 SSS Jaya Enclave, Kovaipudur, Coimbatore, 641042</a>
   <script src="js/app.js"></script>
 </body>
